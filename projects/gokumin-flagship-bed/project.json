@@ -1,0 +1,72 @@
+{
+  "slug": "gokumin-flagship-bed",
+  "title": "GOKUMIN フラッグシップベッド（3コンセプト）",
+  "workflow": "product",
+  "created": "2026-09-27 17:34",
+  "updated": "2026-09-27 17:34",
+  "stages": {
+    "01-research": {
+      "status": "in_progress",
+      "versions": [],
+      "adopted": null,
+      "approved_at": null,
+      "feedback": []
+    },
+    "02-planning": {
+      "status": "pending",
+      "versions": [],
+      "adopted": null,
+      "approved_at": null,
+      "feedback": []
+    },
+    "03-design": {
+      "status": "pending",
+      "versions": [],
+      "adopted": null,
+      "approved_at": null,
+      "feedback": []
+    },
+    "04-board": {
+      "status": "pending",
+      "versions": [],
+      "adopted": null,
+      "approved_at": null,
+      "feedback": []
+    },
+    "06-graphic": {
+      "status": "pending",
+      "versions": [],
+      "adopted": null,
+      "approved_at": null,
+      "feedback": []
+    },
+    "08-video": {
+      "status": "pending",
+      "versions": [],
+      "adopted": null,
+      "approved_at": null,
+      "feedback": []
+    },
+    "09-video-production": {
+      "status": "pending",
+      "versions": [],
+      "adopted": null,
+      "approved_at": null,
+      "feedback": []
+    },
+    "10-web": {
+      "status": "pending",
+      "versions": [],
+      "adopted": null,
+      "approved_at": null,
+      "feedback": []
+    },
+    "11-deploy": {
+      "status": "pending",
+      "versions": [],
+      "adopted": null,
+      "approved_at": null,
+      "feedback": []
+    }
+  }
+}
