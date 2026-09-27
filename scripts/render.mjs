@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // HTML を PNG / PDF / 動画(webm) に書き出す。Playwright（グローバル導入済み）を使用。
 //
-//   node scripts/render.mjs png   <in.html> <out.png>  [--width 1200] [--height 800] [--scale 2] [--full]
+//   node scripts/render.mjs png   <in.html> <out.png>  [--width 1200] [--height 800] [--scale 2] [--full] [--transparent]
 //   node scripts/render.mjs pdf   <in.html> <out.pdf>  [--format A3] [--portrait]
 //   node scripts/render.mjs board <in.html> <out-basename>   # A3横 PDF + PNG(プレビュー) を同時出力
 //   node scripts/render.mjs video <in.html> <out.webm> [--width 1920] [--height 1080] [--duration 15]
@@ -9,19 +9,11 @@
 // HTML 側の約束事:
 //   - 日本語フォントは Google Fonts（Noto Sans JP など）を <link> で読み込む
 //   - 動画用 HTML は読み込み完了で自動的にアニメーションを開始し、--duration 秒で完結させる
-import { createRequire } from "node:module";
-import { execSync } from "node:child_process";
 import { existsSync, mkdirSync, renameSync, readdirSync, rmSync } from "node:fs";
 import { dirname, resolve, join } from "node:path";
 import { pathToFileURL } from "node:url";
 
-const require = createRequire(import.meta.url);
-function loadPlaywright() {
-  try { return require("playwright"); } catch {}
-  const root = execSync("npm root -g").toString().trim();
-  return require(join(root, "playwright"));
-}
-const { chromium } = loadPlaywright();
+import { launchBrowser, newContext, newPage } from "./lib/browser.mjs";
 
 const [mode, input, output, ...rest] = process.argv.slice(2);
 if (!mode || !input || !output) {
@@ -39,7 +31,7 @@ const url = pathToFileURL(resolve(input)).href;
 const out = resolve(output);
 mkdirSync(dirname(out), { recursive: true });
 
-const browser = await chromium.launch();
+const browser = await launchBrowser();
 
 async function ready(page) {
   await page.waitForLoadState("networkidle").catch(() => {});
@@ -49,17 +41,18 @@ async function ready(page) {
 
 try {
   if (mode === "png") {
-    const page = await browser.newPage({
+    const page = await newPage(browser, {
       viewport: { width: num("width", 1200), height: num("height", 800) },
       deviceScaleFactor: num("scale", 2),
     });
     await page.goto(url);
     await ready(page);
-    await page.screenshot({ path: out, fullPage: !!opt.full });
+    if (opt.transparent) await page.addStyleTag({ content: "html,body{background:transparent!important}" }).catch(() => {});
+    await page.screenshot({ path: out, fullPage: !!opt.full, omitBackground: !!opt.transparent });
   } else if (mode === "pdf" || mode === "board") {
     // A3 横 = 420mm x 297mm。96dpi で 1587 x 1123 px
     const portrait = !!opt.portrait;
-    const page = await browser.newPage({
+    const page = await newPage(browser, {
       viewport: portrait ? { width: 1123, height: 1587 } : { width: 1587, height: 1123 },
       deviceScaleFactor: 2,
     });
@@ -80,7 +73,7 @@ try {
   } else if (mode === "video") {
     const width = num("width", 1920), height = num("height", 1080);
     const tmp = join(dirname(out), `.rec-${Date.now()}`);
-    const context = await browser.newContext({
+    const context = await newContext(browser, {
       viewport: { width, height },
       recordVideo: { dir: tmp, size: { width, height } },
     });

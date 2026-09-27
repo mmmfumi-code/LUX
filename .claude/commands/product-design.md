@@ -40,7 +40,7 @@ A: PRODUCT DESIGN WORKFLOW を実行します。CLAUDE.md、`workflows/product-d
 
 ## 5. 承認後の進め方（ユーザーが承認したとき）
 - ユーザーの返答を `/approve` の手順で記録してから、次の工程へ進む
-  - STEP 5 承認 → STEP 6 `06-graphic` を実行 → 🔒 STEP 7 で停止
+  - STEP 5 承認 → STEP 6 `06-graphic` を実行 → 🔒 STEP 7 で停止（`graphic/board/vN/overview.png` と `boards-all.pdf` を見せ、A／B／C のどれを採用するかを尋ねる）
   - STEP 7 承認 → STEP 8 `08-video` を実行 → 🔒 STEP 9 で停止
   - STEP 9 承認 → STEP 10 `10-web` → STEP 11 `11-deploy` を連続で実行 → 🔒 最終確認で停止
 - 最終確認の承認後も **実際のデプロイ（外部への公開）は、ユーザーが公開を明示的に指示するまで行わない**

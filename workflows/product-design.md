@@ -68,10 +68,11 @@ projects/<project-name>/
 │   ├── board/vN/board-01〜10.(html|png|pdf), overview.(html|png|pdf), boards-all.pdf
 │   └── 04-board-adopted.md         # STEP 5 で採用された案（承認時に作成）
 ├── graphic/
-│   ├── 06-graphic-vN.md            # STEP 6 3案の説明
-│   ├── vN/A|B|C/ logo.svg, key-visual.(html|png), package.(html|png), ...
-│   ├── vN/overview.png             # 3案の比較用画像
-│   └── 06-graphic-adopted.md       # STEP 7 で採用された案
+│   ├── 06-graphic-vN.md            # STEP 6 3方向の説明（デザインシステム・コピー）
+│   ├── vN/A|B|C/ tokens.css, apps.css, motif.svg, product.png,
+│   │        kv / poster / sns-feed / sns-story / ec-banner / web-hero .(html|png)
+│   ├── board/vN/boards.json, board-A|B|C.(html|png|pdf), overview.(png|pdf), boards-all.pdf
+│   └── 06-graphic-adopted.md       # STEP 7 で採用された方向
 ├── video/
 │   ├── 08-video-vN.md              # STEP 8 2案の説明
 │   ├── vN/A|B/ script.md, storyboard.(html|png), promo.html, promo.webm
@@ -133,10 +134,14 @@ projects/<project-name>/
 - 組み合わせや修正の指示（「3番の形に7番の色で」など） → `revise` で STEP 3〜4 の修正版を作る（前の版は残す）
 
 ## STEP 6 グラフィックデザイン3案（06-graphic / graphic-designer / 🔒）
-- **入力**: 採用されたプロダクトデザイン、STEP 2 の企画
-- **作業**: 方向性の異なる **3案**。各案: ブランド名の扱い、ロゴ（SVG）、カラーパレット（HEX）、書体、キービジュアル、パッケージ／ラベル（該当する場合）、Web・SNSへの展開例
-- **出力**: `graphic/06-graphic-vN.md`、`graphic/vN/A|B|C/`、`graphic/vN/overview.png`（3案の比較）
-- **完了条件**: 3案とも同じ項目がそろい、比較画像で違いが一目で分かる
+- **入力**: 採用されたプロダクトデザインの コンセプト・ターゲット・CMF・ブランド思想・機能・デザイン意図（`product/04-board-adopted.md`、03-design の採用案）
+- **原則**: プロダクトデザイナーの意図を壊さずに広告表現へ変換する（製品の色・形・プロポーションを変えない）
+- **3方向**: A ブランド王道／B エモーショナル／C コンセプチュアル
+- **各方向のデザインシステム**: Typography・Color・Layout・Photography・Lighting・Graphic Motif を数値・条件で定義（`tokens.css` に集約）
+- **各方向の展開物**: Key Visual・広告コピー・ポスター・SNS広告（フィード／ストーリー）・ECバナー・Web Hero（共通キット `templates/graphic/` → `bash scripts/render-apps.sh`）
+- **A3ボード**: 各方向1枚＋3方向の一覧（`graphic/board/vN/boards.json` → `node scripts/board.mjs`、`layout: "graphic"`）
+- **出力**: `graphic/06-graphic-vN.md`、`graphic/vN/A|B|C/`、`graphic/board/vN/`
+- **完了条件**: 3方向すべてに6要素の定義と6点の展開物がある、A3ボードの PNG・PDF がある、画像に日本語の文字がない。詳細は `.claude/agents/graphic-designer.md`
 - **提出後は STEP 7 で停止**
 
 ## STEP 7 USER APPROVAL 🔒

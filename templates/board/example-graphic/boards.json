@@ -1,0 +1,53 @@
+{
+  "layout": "graphic",
+  "project": "SAMPLE — Insulated Bottle",
+  "studio": "AI Design Studio",
+  "date": "2026.09.27",
+  "version": "Graphic v1",
+  "overview": true,
+  "overview_title": "Graphic Direction — 3 Proposals",
+  "overview_tagline": "採用プロダクト「01 STAND」を広告表現へ。STEP 7 で方向をお選びください。",
+  "overview_evidence": "product/04-board-adopted.md、research/research.md 結論3・5",
+  "boards": [
+    {
+      "no": "A",
+      "type": "ブランド王道",
+      "type_en": "Brand Classic",
+      "name": "Quiet Standard",
+      "tagline": "毎日に、ちょうどいい一本。",
+      "accent": "#8a7f70",
+      "key_visual": "../../v1/A/kv.png",
+      "kv_note": "1920 × 1080",
+      "concept": "製品そのものを主役に、CMF の Warm Stone を背景色に展開。信頼感と品のよさで「失敗しない定番」を伝える。",
+      "copy": {
+        "main": "毎日に、ちょうどいい一本。",
+        "sub": "洗いやすさと軽さを、いつもの形のままで。",
+        "body": "パッキン一体のキャップは、分解も洗浄も2パーツだけ。細身で軽いボディは、通勤バッグにすっと収まる。",
+        "cta": "詳しく見る"
+      },
+      "fonts": [
+        { "role": "メインコピー", "family": "Noto Sans JP", "weight": 500, "sample": "ちょうどいい一本", "note": "字間 +40、行間 1.35" },
+        { "role": "欧文・ラベル", "family": "Inter", "weight": 600, "sample": "QUIET STANDARD", "note": "大文字、字間 +240" },
+        { "role": "本文", "family": "Noto Sans JP", "weight": 400, "sample": "洗いやすさと軽さを、いつもの形で。", "note": "12〜16pt、行間 1.7" }
+      ],
+      "colors": [
+        { "name": "Warm Stone", "hex": "#F3F1ED", "role": "背景", "ratio": 60 },
+        { "name": "Stone", "hex": "#CFCBC4", "role": "面・帯", "ratio": 20 },
+        { "name": "Ink", "hex": "#1D1C1A", "role": "文字", "ratio": 12 },
+        { "name": "Clay", "hex": "#8A7F70", "role": "CTA・強調", "ratio": 8 }
+      ],
+      "layout_rule": { "image": "img/layout-a.svg", "text": "左58%に製品、右に縦組みのコピー。余白は短辺の6.5%。製品の上に文字を重ねない。" },
+      "photo": { "image": "img/photo-a.svg", "photography": "無地背景のスタジオ撮影。3/4アングル、目線よりやや上から。", "lighting": "大きなソフトボックス1灯の柔らかい光。影は薄く短く。" },
+      "motif": { "image": "img/motif-a.svg", "text": "製品の肩のR（角丸）を抜き出した細線のフレーム。控えめに一か所だけ使う。" },
+      "applications": [
+        { "kind": "poster", "label": "Poster", "size": "B2", "image": "../../v1/A/poster.png" },
+        { "kind": "sns-feed", "label": "SNS Feed", "size": "1080×1350", "image": "../../v1/A/sns-feed.png" },
+        { "kind": "sns-story", "label": "Story", "size": "1080×1920", "image": "../../v1/A/sns-story.png" },
+        { "kind": "ec-banner", "label": "EC Banner", "size": "1200×628", "image": "../../v1/A/ec-banner.png" },
+        { "kind": "web-hero", "label": "Web Hero", "size": "1920×1080", "image": "../../v1/A/web-hero.png" }
+      ],
+      "evidence": "Product: 01 STAND の CMF（Warm Stone）・デザイン意図「失敗しない定番」を保持",
+      "recommended": true
+    }
+  ]
+}

@@ -23,7 +23,7 @@
 
 | コマンド | 内容 |
 |---|---|
-| `node scripts/render.mjs png <in.html> <out.png> [--width 1200 --height 800 --scale 2 --full]` | 画像に書き出し（デザイン案・キービジュアル・スクリーンショット） |
+| `node scripts/render.mjs png <in.html> <out.png> [--width 1200 --height 800 --scale 2 --full --transparent]` | 画像に書き出し（`--transparent` で背景を透明に） |
 | `node scripts/render.mjs pdf <in.html> <out.pdf> [--format A3 --portrait]` | PDFに書き出し（既定は A3 横） |
 | `node scripts/render.mjs board <in.html> <out-basename>` | A3横プレゼンボードを `<out>.pdf` と `<out>.png` に同時出力 |
 | `node scripts/render.mjs video <in.html> <out.webm> [--width 1920 --height 1080 --duration 15]` | HTMLアニメーションを動画（webm）として録画 |
@@ -41,3 +41,18 @@ node scripts/board.mjs <boards.json> [--only 01,03] [--no-render]
 - レイアウトは共通テンプレート `templates/board/board.css`（A3横 420×297mm、12カラム、白〜ライトグレー）
 - 文字はすべて HTML で組み、画像には文字を入れない（画像とテキストの分離）
 - 文字数の上限超過、画像の欠落、枠からの文字あふれを「⚠」で警告する
+
+## render-apps.sh — グラフィックの展開物をまとめて PNG に
+
+```
+bash scripts/render-apps.sh graphic/v1/A
+```
+
+- フォルダ内の `kv` `poster` `sns-feed` `sns-story` `ec-banner` `web-hero` の HTML を、決まったサイズで PNG に書き出す
+- 展開物の共通キットは `templates/graphic/`（`tokens.css` に色・書体・余白・モチーフを定義し、6点すべてが参照する）
+- 製品画像は `node scripts/render.mjs png <in.svg> product.png --transparent` で背景を透明にして使う
+
+## lib/browser.mjs
+
+render.mjs・board.mjs が共通で使う Chromium の起動処理。プロキシのある環境では、外部リソース（Google Fonts など）を
+Node 側で取得して Chromium に渡す（証明書は NODE_EXTRA_CA_CERTS で検証。TLS の検証は無効にしない）。

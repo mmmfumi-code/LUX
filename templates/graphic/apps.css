@@ -1,0 +1,65 @@
+/* 展開物の共通レイアウト。各 HTML は <body class="kv|poster|feed|story|ec|hero"> を指定する */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--c-bg); }
+body {
+  position: relative; overflow: hidden; color: var(--c-ink);
+  font-family: var(--f-body); -webkit-font-smoothing: antialiased; font-feature-settings: "palt";
+}
+body.kv, body.hero { width: 1920px; height: 1080px; }
+body.poster { width: 1414px; height: 2000px; }
+body.feed { width: 1080px; height: 1350px; }
+body.story { width: 1080px; height: 1920px; }
+body.ec { width: 1200px; height: 628px; }
+
+.motif { position: absolute; inset: 0; background: var(--motif) center / cover no-repeat; opacity: var(--motif-opacity); pointer-events: none; }
+.photo { position: absolute; display: flex; align-items: center; justify-content: center; }
+.photo img { width: 100%; height: 100%; object-fit: contain; }
+.photo.cover img { object-fit: cover; }
+.copy { position: absolute; }
+.label { font-family: var(--f-latin); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--c-ink-2); }
+.main { font-family: var(--f-display); font-weight: var(--w-display); letter-spacing: var(--tracking-display); line-height: 1.35; }
+.sub { color: var(--c-ink); line-height: 1.7; }
+.cta { display: inline-block; background: var(--c-accent); color: #fff; letter-spacing: .12em; }
+.brand { position: absolute; font-family: var(--f-latin); letter-spacing: .3em; font-weight: 600; }
+
+/* 16:9 — Key Visual / Web Hero：左に製品、右にコピー */
+.kv .photo, .hero .photo { left: 0; top: 0; width: 58%; height: 100%; }
+.kv .copy, .hero .copy { right: var(--margin); top: 50%; transform: translateY(-50%); width: 34%; }
+.kv .label, .hero .label { font-size: 18px; margin-bottom: 36px; }
+.kv .main, .hero .main { font-size: 76px; }
+.kv .sub, .hero .sub { font-size: 26px; margin-top: 36px; }
+.hero .cta { font-size: 22px; padding: 22px 48px; margin-top: 48px; }
+.kv .brand, .hero .brand { right: var(--margin); bottom: 64px; font-size: 20px; }
+.hero nav { position: absolute; top: 44px; left: var(--margin); right: var(--margin); display: flex; justify-content: space-between; font-family: var(--f-latin); font-size: 17px; letter-spacing: .2em; }
+
+/* ポスター（A判比率）：上に製品、下にコピー */
+.poster .photo { left: 0; top: 0; width: 100%; height: 64%; }
+.poster .copy { left: var(--margin); right: var(--margin); bottom: 180px; }
+.poster .label { font-size: 22px; margin-bottom: 36px; }
+.poster .main { font-size: 108px; }
+.poster .sub { font-size: 32px; margin-top: 40px; }
+.poster .brand { left: var(--margin); bottom: 90px; font-size: 26px; }
+
+/* SNS フィード 4:5 */
+.feed .photo { left: 0; top: 0; width: 100%; height: 66%; }
+.feed .copy { left: var(--margin); right: var(--margin); bottom: 110px; }
+.feed .label { font-size: 18px; margin-bottom: 22px; }
+.feed .main { font-size: 70px; }
+.feed .sub { font-size: 26px; margin-top: 22px; }
+.feed .brand { right: var(--margin); bottom: 56px; font-size: 18px; }
+
+/* SNS ストーリーズ／リール 9:16（上下 250px はセーフエリア外として文字を置かない） */
+.story .photo { left: 0; top: 250px; width: 100%; height: 58%; }
+.story .copy { left: var(--margin); right: var(--margin); bottom: 330px; }
+.story .label { font-size: 22px; margin-bottom: 26px; }
+.story .main { font-size: 84px; }
+.story .sub { font-size: 30px; margin-top: 26px; }
+.story .cta { font-size: 28px; padding: 24px 56px; margin-top: 44px; border-radius: 999px; }
+
+/* EC バナー 1200x628 */
+.ec .photo { right: 0; top: 0; width: 50%; height: 100%; }
+.ec .copy { left: 6%; top: 50%; transform: translateY(-50%); width: 44%; }
+.ec .label { font-size: 13px; margin-bottom: 16px; }
+.ec .main { font-size: 46px; }
+.ec .sub { font-size: 18px; margin-top: 14px; }
+.ec .cta { font-size: 16px; padding: 12px 28px; margin-top: 22px; }

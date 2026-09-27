@@ -1,0 +1,31 @@
+/* ============================================================
+   方向別デザインシステム（トークン）
+   graphic/vN/<A|B|C>/tokens.css にコピーし、方向ごとに値を決める。
+   6つの展開物（kv / poster / sns-feed / sns-story / ec-banner / web-hero）はすべてこの値を参照する。
+   書体の読み込みは各 HTML の <link id="fonts">（Google Fonts）で行う。CSS の @import はローカルでは読み込まれないため使わない。
+   ============================================================ */
+
+:root {
+  /* Color — 製品の CMF と整合させる（製品の色を変えない） */
+  --c-bg: #f3f1ed;        /* 背景 */
+  --c-surface: #e7e4de;   /* 面・帯 */
+  --c-ink: #1d1c1a;       /* 文字 */
+  --c-ink-2: #6b6862;     /* 補助文字 */
+  --c-accent: #8a7f70;    /* アクセント（CTA・強調） */
+
+  /* Typography — Google Fonts など、ライセンス上問題ない書体 */
+  --f-display: "Inter", "Noto Sans JP", sans-serif;  /* メインコピー */
+  --f-body: "Noto Sans JP", sans-serif;               /* 本文 */
+  --f-latin: "Inter", sans-serif;                     /* 欧文・ラベル */
+  --w-display: 500;
+  --tracking-display: 0.04em;
+  --tracking-label: 0.24em;
+
+  /* Layout — 余白と基準グリッド（キャンバス幅に対する比率） */
+  --margin: 6.5%;
+  --gap: 2.2%;
+
+  /* Graphic Motif — 方向ごとの図形要素（SVG の data URI や画像パス） */
+  --motif: none;
+  --motif-opacity: 0.9;
+}
