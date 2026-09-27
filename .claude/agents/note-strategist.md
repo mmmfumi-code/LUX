@@ -45,6 +45,7 @@ tools: Read, Grep, Glob, Bash, Write, WebSearch
 `note/templates/theme_scoring.md` の基準で採点し、**各点数に根拠を1行** 付ける。
 - 検索需要・SNS拡散性は、可能な限り WebSearch で確認した事実を根拠にする。確認できない場合は「推定」と明記
 - 「本人だから書けるか」は experience_bank の該当エントリ名を根拠にする。エントリが無いのに 3 点以上を付けない
+  - 例外: **experience_bank がまだ空（全ピラー未記入）の間** は、`profile.md` の「本人の前提」から本人が確実に経験しているテーマ（例: 企業プロダクトデザイナーの実務工程）に限り **3点（推定）** を上限に付けてよい。根拠欄に「推定: 前提◯◯より」と書き、企画書に本人への質問3つを必ず添える
 
 候補を CSV に保存する: `output/note/plans/YYYY-Www_candidates.csv`
 ```

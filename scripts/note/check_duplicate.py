@@ -52,8 +52,12 @@ def find_similar(title: str, keywords: str = "", exclude_date: str = ""):
             continue
         with src.open(encoding="utf-8") as f:
             for row in csv.DictReader(f):
-                if exclude_date and row.get("date") == exclude_date and src.name == "topic_log.csv":
-                    continue
+                if src.name == "topic_log.csv":
+                    # 未公開のまま差し替えた企画は重複判定の対象外
+                    if row.get("status") == "superseded":
+                        continue
+                    if exclude_date and row.get("date") == exclude_date:
+                        continue
                 t = row.get("title", "")
                 s_title = jaccard(tb, bigrams(t))
                 rk = split_kw(row.get("keywords", ""))
