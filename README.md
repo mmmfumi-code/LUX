@@ -10,7 +10,7 @@ Claude Code で `/note-weekly 2026-10-05` のように実行する（引数は�
 
 | 役割 | 定義 | 出力 |
 |------|------|------|
-| note-strategist | `.claude/agents/note-strategist.md` | `output/note/plans/YYYY-Www.md` |
+| note-strategist | `.claude/agents/note-strategist.md` | `output/note/plans/YYYY-Www.md`, `YYYY-Www_candidates.csv`（記事は書かない） |
 | note-researcher | `.claude/agents/note-researcher.md` | `research.md`, `references.md` |
 | note-writer | `.claude/agents/note-writer.md` | `article.md`, `title.txt`, `lead.txt`, `hashtags.txt`, `price.txt` |
 | note-editor | `.claude/agents/note-editor.md` | `review.md`（500円レビュー：PASS / REVISE / HOLD） |
@@ -23,6 +23,7 @@ Claude Code で `/note-weekly 2026-10-05` のように実行する（引数は�
 4. `pip install -r scripts/note/requirements.txt`
 
 ### スクリプト
+- `scripts/note/score_themes.py` — テーマ候補を8観点×曜日別の重みで採点し、重複判定つきランキングを出す
 - `scripts/note/check_duplicate.py` — 過去記事・企画済みテーマとの重複判定
 - `scripts/note/make_thumbnail.py` — サムネイル生成
 - `scripts/note/validate_output.py` — 成果物チェック（公開直前は `--strict` で【要記入】ゼロを確認）

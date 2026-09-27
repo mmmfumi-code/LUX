@@ -15,9 +15,12 @@ description: NOTE CONTENT WORKFLOW。note（fumiya_mainac）の月・水・金�
    接続できない場合はスキップし、企画書に「過去記事未同期」と明記する。
 2. `pip install -r scripts/note/requirements.txt`（Pillow）
 
-## 1. 企画 — `note-strategist`
+## 1. テーマ設計 — `note-strategist`（記事は書かない）
 Agent(subagent_type="note-strategist") に対象週を渡す。
-→ `output/note/plans/YYYY-Www.md` と `topic_log.csv`（planned）
+候補10本以上 → 8観点で採点 → 重複確認 → 月＝集客／水＝専門性／金＝収益 の3本を選定。
+→ `output/note/plans/YYYY-Www_candidates.csv`、`output/note/plans/YYYY-Www.md`、`topic_log.csv`（planned）
+
+採点・重複判定・曜日別ランキングは `python3 scripts/note/score_themes.py <candidates.csv>` で出す。
 
 ## 2〜5. 記事ごと（月・水・金の3本。互いに独立なので並列でよい）
 各日付 `D` について順に:
