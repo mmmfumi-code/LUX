@@ -1,0 +1,58 @@
+{
+  "slug": "lux-app",
+  "title": "LUX（スーパー価格比較アプリ）",
+  "workflow": "product",
+  "created": "2026-09-27 15:56",
+  "updated": "2026-09-27 15:56",
+  "stages": {
+    "01-brief": {
+      "status": "pending",
+      "versions": [],
+      "adopted": null,
+      "approved_at": null,
+      "feedback": []
+    },
+    "02-research": {
+      "status": "pending",
+      "versions": [],
+      "adopted": null,
+      "approved_at": null,
+      "feedback": []
+    },
+    "03-concept": {
+      "status": "pending",
+      "versions": [],
+      "adopted": null,
+      "approved_at": null,
+      "feedback": []
+    },
+    "04-ux": {
+      "status": "pending",
+      "versions": [],
+      "adopted": null,
+      "approved_at": null,
+      "feedback": []
+    },
+    "05-ui": {
+      "status": "pending",
+      "versions": [],
+      "adopted": null,
+      "approved_at": null,
+      "feedback": []
+    },
+    "06-prototype": {
+      "status": "pending",
+      "versions": [],
+      "adopted": null,
+      "approved_at": null,
+      "feedback": []
+    },
+    "07-review": {
+      "status": "pending",
+      "versions": [],
+      "adopted": null,
+      "approved_at": null,
+      "feedback": []
+    }
+  }
+}

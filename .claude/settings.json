@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 scripts/studio.py list)",
+      "Bash(python3 scripts/studio.py status:*)",
+      "Bash(python3 scripts/studio.py next:*)",
+      "Bash(python3 scripts/studio.py context:*)",
+      "Bash(python3 scripts/studio.py newver:*)",
+      "Bash(python3 scripts/studio.py start:*)",
+      "Bash(python3 scripts/studio.py submit:*)",
+      "Bash(python3 scripts/studio.py log:*)",
+      "Bash(python3 scripts/studio.py new:*)"
+    ],
+    "ask": [
+      "Bash(python3 scripts/studio.py approve:*)",
+      "Bash(python3 scripts/studio.py deliver:*)"
+    ]
+  }
+}
