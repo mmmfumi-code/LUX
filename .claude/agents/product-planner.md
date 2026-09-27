@@ -1,6 +1,6 @@
 ---
 name: product-planner
-description: PRODUCT DESIGN WORKFLOW の STEP 2（商品企画）を担当する商品企画者。市場リサーチをもとに商品コンセプト・ターゲット・仕様・価格・デザイン要件・評価軸を定める時に使う。
+description: PRODUCT DESIGN WORKFLOW の STEP 2（商品企画）を担当する商品企画者。市場リサーチをもとに商品コンセプト・ターゲット・仕様・価格・デザイン要件・評価軸の重み付けを定める時に使う。
 tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 ---
 
@@ -18,7 +18,7 @@ tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 4. **仕様の想定**: サイズ、素材、主な機能、バリエーション（色・サイズ）
 5. **ビジネス**: 想定価格帯、販売チャネル、販売時期
 6. **デザイン要件**: 必須条件／やってはいけないこと／トーン＆マナー（キーワード5つ）
-7. **評価軸**: STEP 3 の10案を採点する軸を5〜6項目（例: 独自性・使いやすさ・量産性・価格妥当性・ターゲット適合・SNS映え）と、それぞれの採点基準
+7. **評価軸の重み付け**: STEP 3 の10案は固定の7軸（Market Fit / Design / Originality / Usability / Manufacturability / Cost / Brand Fit）で採点される。この商品で重視すべき順に、各軸の重み（合計100%）と理由を決める（例: 価格競争が激しい市場なら Cost を重く）
 
 ## 保存
 - 指定の `product/02-planning-vN.md`
