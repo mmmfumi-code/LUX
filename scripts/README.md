@@ -37,7 +37,8 @@
 node scripts/board.mjs <boards.json> [--only 01,03] [--no-render]
 ```
 
-- `boards.json`（見本: `templates/board/example/boards.json`）から、1案1枚のボード `board-XX`、一覧ボード `overview`、まとめPDF `boards-all.pdf` を HTML・PNG・PDF で出力する
+- `"layout"` で種類を選ぶ: `product`（STEP 4、見本 `templates/board/example/`）／`graphic`（STEP 6、見本 `example-graphic/`）／`video`（STEP 8、見本 `example-video/`）
+- `boards.json` から、1案1枚のボード `board-XX`、一覧ボード `overview`、まとめPDF `boards-all.pdf` を HTML・PNG・PDF で出力する
 - レイアウトは共通テンプレート `templates/board/board.css`（A3横 420×297mm、12カラム、白〜ライトグレー）
 - 文字はすべて HTML で組み、画像には文字を入れない（画像とテキストの分離）
 - 文字数の上限超過、画像の欠落、枠からの文字あふれを「⚠」で警告する

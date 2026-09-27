@@ -260,7 +260,7 @@ p, li, td { font-size: 12px; line-height: 1.75; letter-spacing: .02em; color: va
 .gr .apps .app .al span { color: var(--ink-3); letter-spacing: .04em; }
 
 /* 3方向の一覧 */
-.ov.n3 .bd { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: 1fr; }
+.ov.n3 .bd { grid-template-columns: repeat(var(--ncol, 3), minmax(0, 1fr)); grid-template-rows: 1fr; }
 .ov.n3 .card .img { flex: 0 0 auto; aspect-ratio: 16 / 9; }
 .ov.n3 .card .cname { font-size: 20px; margin-top: 2mm; }
 .ov.n3 .card .ctag { font-size: 15px; color: var(--ink); line-height: 1.6; margin-top: 2mm; }
@@ -271,3 +271,49 @@ p, li, td { font-size: 12px; line-height: 1.75; letter-spacing: .02em; color: va
 .ov.n3 .card .capps .img { height: 52mm; flex: 0 0 auto; background: var(--panel-2); }
 .ov.n3 .card .capps span { font-family: var(--latin); font-size: 8.5px; letter-spacing: .14em; color: var(--ink-3); text-transform: uppercase; margin-top: 1.2mm; }
 .ov.n3 .card .cmeta:empty { display: none; }
+
+.ov.n3 .card .cframes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin-top: 4mm; }
+.ov.n3 .card .cframes .img { aspect-ratio: 16 / 9; }
+.ov.n3 .card .cframes span { font-family: var(--latin); font-size: 8.5px; letter-spacing: .1em; color: var(--ink-3); display: block; margin-top: 1mm; }
+.ov.n3 .card .cdur { font-family: var(--latin); font-size: 10px; letter-spacing: .14em; color: var(--ink-2); margin-top: 3mm; text-transform: uppercase; }
+
+/* ============================================================
+   Video board（プロモーション動画の絵コンテ・演出設計）
+   layout: "video"
+   ============================================================ */
+.vd .bd { grid-template-columns: repeat(12, 1fr); grid-template-rows: auto auto 1fr; row-gap: 5.5mm; }
+.vd .info { grid-column: 1 / 4; grid-row: 1; gap: 4.5mm; }
+.vd .info p { font-size: 11.5px; line-height: 1.75; }
+.vd .fmt { display: grid; grid-template-columns: 17mm 1fr; row-gap: 1mm; font-size: 11px; }
+.vd .fmt dt { font-family: var(--latin); font-size: 8.5px; letter-spacing: .16em; color: var(--ink-3); text-transform: uppercase; padding-top: .5mm; }
+.vd .sb { grid-column: 4 / 13; grid-row: 1; }
+.vd .frames { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4mm 4mm; }
+.vd .fr .img { aspect-ratio: 16 / 9; height: auto; }
+.vd .fr .fh { display: flex; justify-content: space-between; margin-top: 1.4mm; font-family: var(--latin); font-size: 9px; letter-spacing: .08em; }
+.vd .fr .fh .t { color: var(--accent); font-weight: 600; }
+.vd .fr .fh .s { color: var(--ink-3); }
+.vd .fr .ftl { font-size: 11px; font-weight: 500; margin-top: .6mm; line-height: 1.4; }
+.vd .fr .fx { font-size: 9.5px; color: var(--ink-2); line-height: 1.5; margin-top: .4mm; }
+
+.vd .specs { grid-column: 1 / 13; grid-row: 2; }
+.vd .specs .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2.4mm 6mm; }
+.vd .sp { border-left: 0.5mm solid var(--accent); padding-left: 3mm; }
+.vd .sp .k { font-family: var(--latin); font-size: 8.5px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+.vd .sp .k span { font-family: var(--jp); font-weight: 400; letter-spacing: .06em; color: var(--ink-3); margin-left: 1.6mm; text-transform: none; }
+.vd .sp .v { font-size: 10.5px; line-height: 1.55; margin-top: .6mm; }
+
+.vd .tl { grid-column: 1 / 13; grid-row: 3; }
+.vd .lanes { display: grid; gap: 1.6mm; }
+.vd .lane { display: grid; grid-template-columns: 16mm 1fr; align-items: stretch; }
+.vd .lane .ln { font-family: var(--latin); font-size: 8px; letter-spacing: .18em; color: var(--ink-3); padding-top: 1mm; }
+.vd .lane .track { position: relative; min-height: 6.5mm; border-left: 0.2mm solid var(--rule); border-right: 0.2mm solid var(--rule); }
+.vd .ruler .track { min-height: 4mm; border-bottom: 0.2mm solid var(--ink); }
+.vd .ruler i { position: absolute; bottom: 1mm; transform: translateX(-50%); font-style: normal; font-family: var(--latin); font-size: 8px; color: var(--ink-2); }
+.vd .ruler i:first-child { transform: none; }
+.vd .ruler i:last-child { transform: translateX(-100%); }
+.vd .scenes .blk { position: absolute; top: 0; bottom: 0; background: var(--panel-2); border-right: 0.4mm solid var(--paper); display: flex; align-items: center; padding: 0 1.6mm; overflow: hidden; }
+.vd .scenes .blk:nth-child(even) { background: var(--panel); }
+.vd .scenes .blk b { font-family: var(--latin); font-size: 9px; font-weight: 600; letter-spacing: .06em; white-space: nowrap; }
+.vd .copy .txt, .vd .sound .txt { position: absolute; top: 0; padding: .6mm 1.6mm 0; font-size: 9px; line-height: 1.35; overflow: hidden; border-left: 0.2mm solid var(--rule); }
+.vd .copy .txt { color: var(--ink); font-weight: 500; }
+.vd .sound .txt { color: var(--ink-2); }

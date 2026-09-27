@@ -6,6 +6,7 @@
 // レイアウト（boards.json の "layout"、または各ボードの "layout"）:
 //   "product"（既定）… プロダクトデザイン案のボード（STEP 4）
 //   "graphic"        … 広告・ブランディングのデザインシステムのボード（STEP 6）
+//   "video"          … プロモーション動画の絵コンテ・演出設計・タイムラインのボード（STEP 8）
 //
 // boards.json と同じフォルダに次を出力する:
 //   board-01.html / .png / .pdf  …  board-10.*   各案のボード
@@ -58,6 +59,7 @@ const label = (n, en, ja) =>
 const LIMITS = {
   tagline: 40, concept: 120, background: 100, problem: 40, feature_text: 50, structure: 90, scene: 70, advantage: 55, caption: 30,
   g_concept: 110, copy_main: 26, copy_sub: 44, copy_body: 90, copy_cta: 14, g_note: 30, g_short: 64,
+  v_concept: 100, v_story: 120, v_frame_title: 16, v_frame_text: 46, v_spec: 52, v_lane: 22,
 };
 function check(no, field, s, max) {
   if (s && [...String(s)].length > max) warnings.push(`案${no} ${field}: ${[...String(s)].length}字（目安 ${max}字以内）`);
@@ -79,7 +81,7 @@ function header(d, b) {
 function footer(d, b, page, total) {
   return `
   <footer class="ft">
-    <span>${esc(d.studio || "AI Design Studio")} — ${esc(d.footer_title || (d.layout === "graphic" ? "Graphic Design Proposal" : "Product Design Proposal"))}</span>
+    <span>${esc(d.studio || "AI Design Studio")} — ${esc(d.footer_title || ({ graphic: "Graphic Design Proposal", video: "Brand Film Proposal" }[d.layout] || "Product Design Proposal"))}</span>
     <span class="ev">${b.evidence ? "根拠: " + esc(b.evidence) : ""}</span>
     <span>${String(page).padStart(2, "0")} / ${String(total).padStart(2, "0")}</span>
   </footer>`;
@@ -238,12 +240,87 @@ function graphicBoard(d, b, page, total) {
 </section>`;
 }
 
+// ---------------------------------------------------------------- video
+const SPEC_LABELS = [
+  ["camera", "Camera", "カメラ"], ["lens", "Lens", "レンズ"], ["lighting", "Lighting", "ライティング"], ["motion", "Motion", "モーション"],
+  ["typography", "Typography", "タイポグラフィ"], ["sound", "Sound", "サウンド"], ["music", "Music", "音楽"], ["transition", "Transition", "トランジション"],
+];
+const tc = (sec) => { const n = Number(sec) || 0; return `${Math.floor(n / 60)}:${String(Math.floor(n % 60)).padStart(2, "0")}${n % 1 ? "." + String(Math.round((n % 1) * 10)) : ""}`; };
+
+function videoBoard(d, b, page, total) {
+  const no = b.no;
+  check(no, "tagline", b.tagline, LIMITS.tagline);
+  check(no, "concept", b.concept, LIMITS.v_concept);
+  check(no, "story", b.story, LIMITS.v_story);
+  (b.frames || []).forEach((f, i) => {
+    check(no, `frames[${i}].title`, f.title, LIMITS.v_frame_title);
+    check(no, `frames[${i}].text`, f.text, LIMITS.v_frame_text);
+  });
+  SPEC_LABELS.forEach(([k]) => check(no, `specs.${k}`, b.specs?.[k], LIMITS.v_spec));
+  (b.timeline || []).forEach((t, i) => {
+    check(no, `timeline[${i}].copy`, t.copy, LIMITS.v_lane);
+    check(no, `timeline[${i}].sound`, t.sound, LIMITS.v_lane);
+  });
+  if ((b.frames || []).length > 8) warnings.push(`案${no} frames は8コマまで（ボードには先頭8コマを表示）`);
+
+  const tl = b.timeline || [];
+  const dur = Number(b.duration_sec) || Math.max(0, ...tl.map((t) => Number(t.to) || 0)) || 30;
+  if (tl.length && Math.abs(Math.max(...tl.map((t) => Number(t.to) || 0)) - dur) > 0.01)
+    warnings.push(`案${no} timeline の終わり（${Math.max(...tl.map((t) => Number(t.to) || 0))}秒）と duration_sec（${dur}秒）が一致しません`);
+  const pos = (t) => `left:${(Number(t.from) / dur) * 100}%;width:${((Number(t.to) - Number(t.from)) / dur) * 100}%`;
+  const ticks = [];
+  const step = dur > 20 ? 5 : dur > 10 ? 2 : 1;
+  for (let x = 0; x <= dur + 1e-6; x += step) ticks.push(x);
+  const accent = b.accent || d.accent;
+
+  return `
+<section class="board vd" style="${accent ? `--accent:${esc(accent)}` : ""}">
+  ${header(d, b)}
+  <main class="bd">
+    <div class="cell info">
+      <div>${label("01", "Concept", "動画コンセプト")}<p>${br(b.concept)}</p></div>
+      <div>${label("02", "Story", "ストーリー")}<p class="muted">${br(b.story)}</p></div>
+      <div>${label("03", "Format", "尺・仕様")}
+        <dl class="fmt"><dt>Duration</dt><dd>${esc(b.duration || dur + "秒")}</dd><dt>Format</dt><dd>${esc(b.format || "")}</dd>${b.media ? `<dt>Media</dt><dd>${esc(b.media)}</dd>` : ""}</dl>
+      </div>
+    </div>
+
+    <div class="cell sb">${label("04", "Storyboard", "絵コンテ")}
+      <div class="frames">${(b.frames || []).slice(0, 8).map((f) => `
+        <div class="fr">
+          ${img(f.image, "cover", f.title)}
+          <div class="fh"><span class="t">${esc(f.time || "")}</span><span class="s">${esc(f.scene || "")}</span></div>
+          <div class="ftl">${esc(f.title || "")}</div>
+          <div class="fx">${esc(f.text || "")}</div>
+        </div>`).join("")}
+      </div>
+    </div>
+
+    <div class="cell specs">${label("05", "Direction", "演出設計")}
+      <div class="grid">${SPEC_LABELS.map(([k, en, ja]) => `
+        <div class="sp"><div class="k">${en}<span>${ja}</span></div><div class="v">${esc(b.specs?.[k] || "")}</div></div>`).join("")}
+      </div>
+    </div>
+
+    <div class="cell tl">${label("06", "Timeline", "タイムライン")}
+      <div class="lanes">
+        <div class="lane ruler"><span class="ln">TIME</span><div class="track">${ticks.map((x) => `<i style="left:${(x / dur) * 100}%">${tc(x)}</i>`).join("")}</div></div>
+        <div class="lane scenes"><span class="ln">SCENE</span><div class="track">${tl.map((t) => `<div class="blk" style="${pos(t)}"><b>${esc(t.label || "")}</b></div>`).join("")}</div></div>
+        <div class="lane copy"><span class="ln">COPY</span><div class="track">${tl.map((t) => t.copy ? `<div class="txt" style="${pos(t)}">${esc(t.copy)}</div>` : "").join("")}</div></div>
+        <div class="lane sound"><span class="ln">SOUND</span><div class="track">${tl.map((t) => t.sound ? `<div class="txt" style="${pos(t)}">${esc(t.sound)}</div>` : "").join("")}</div></div>
+      </div>
+    </div>
+  </main>
+  ${footer(d, b, page, total)}
+</section>`;
+}
+
 function overview(d, boards, total) {
   const few = boards.length <= 3;
   const cards = boards.map((b) => `
     <div class="card ${b.recommended ? "rec" : ""}">
       ${b.recommended ? '<span class="badge">RECOMMENDED</span>' : ""}
-      ${img(b.main_visual || b.key_visual, b.key_visual ? "cover" : "", b.name)}
+      ${img(b.main_visual || b.key_visual || b.key_frame || b.frames?.[0]?.image, b.main_visual ? "" : "cover", b.name)}
       <div class="row1"><span class="cno">${esc(b.no)}</span><span class="ctype">${esc(b.type)}</span></div>
       <div class="cname">${esc(b.name)}</div>
       <div class="ctag">${esc(b.tagline)}</div>
@@ -252,11 +329,13 @@ function overview(d, boards, total) {
       ${few && b.applications ? `<div class="capps">${b.applications
         .filter((x) => ["poster", "sns-feed", "sns-story"].includes(x.kind)).slice(0, 3)
         .map((x) => `<div style="width:calc(52mm * ${ratioOf(x.ratio || AR[x.kind])})">${img(x.image, "", x.label)}<span>${esc(x.label || x.kind)}</span></div>`).join("")}</div>` : ""}
+      ${few && b.frames ? `<div class="cframes">${b.frames.slice(0, 4).map((f) => `<div>${img(f.image, "cover", f.title)}<span>${esc(f.time || "")}</span></div>`).join("")}</div>` : ""}
+      ${few && b.duration ? `<div class="cdur">${esc(b.duration)}${b.format ? " · " + esc(b.format) : ""}</div>` : ""}
       <div class="cmeta"><span>${b.price ? `<b>${esc(b.price)}</b>` : ""}</span><span>${b.score != null ? `SCORE <b>${esc(b.score)}</b>` : ""}</span></div>
     </div>`).join("");
   const ov = { no: "00", type: `${boards.length}案一覧`, type_en: "OVERVIEW", name: d.overview_title || "Design Proposals", tagline: d.overview_tagline || "" };
   return `
-<section class="board ov ${few ? "n3" : ""}">
+<section class="board ov ${few ? "n3" : ""}" style="${few ? `--ncol:${boards.length}` : ""}">
   ${header(d, ov)}
   <main class="bd">${cards}</main>
   ${footer(d, { evidence: d.overview_evidence }, 1, total)}
@@ -291,7 +370,8 @@ if (hasOverview) {
 }
 boards.forEach((b, i) => {
   const layout = b.layout || data.layout || "product";
-  const sec = (layout === "graphic" ? graphicBoard : board)(data, b, i + 1 + (hasOverview ? 1 : 0), total);
+  const render = { graphic: graphicBoard, video: videoBoard }[layout] || board;
+  const sec = render(data, b, i + 1 + (hasOverview ? 1 : 0), total);
   sections.push(sec);
   if (!only || only.includes(b.no)) {
     const name = `board-${b.no}`;

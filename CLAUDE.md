@@ -25,7 +25,7 @@
 `UserPromptSubmit` フック（`.claude/hooks/detect-trigger.py`）がこのフレーズを検知して知らせる。
 
 STEP 1 市場リサーチ → 2 商品企画 → 3 プロダクトデザイン10案 → 4 A3プレゼンボード → **🔒5 承認**
-→ 6 グラフィック3案 → **🔒7 承認** → 8 プロモーション動画2案 → **🔒9 承認** → 10 Webサイト → 11 デプロイ準備 → **🔒最終確認**
+→ 6 グラフィック3案 → **🔒7 承認** → 8 プロモーション動画2案（絵コンテ・A3ボードまで）→ **🔒9 承認** → 動画 本制作 → 10 Webサイト → 11 デプロイ準備 → **🔒最終確認**
 
 成果物は `projects/<project-name>/` の `research/ product/ graphic/ video/ web/ final/` に保存する（詳細は `workflows/product-design.md`）。
 

@@ -1,0 +1,59 @@
+{
+  "layout": "video",
+  "project": "SAMPLE — Insulated Bottle",
+  "studio": "AI Design Studio",
+  "date": "2026.09.27",
+  "version": "Film v1",
+  "overview": true,
+  "overview_title": "Brand Film — 2 Proposals",
+  "overview_tagline": "採用プロダクト・グラフィック（A Quiet Standard）の世界観で30秒のブランド動画を2案。",
+  "overview_evidence": "product/04-board-adopted.md、graphic/06-graphic-adopted.md",
+  "boards": [
+    {
+      "no": "A",
+      "type": "ストーリー型",
+      "type_en": "Story",
+      "name": "Morning, Two Parts",
+      "tagline": "毎日に、ちょうどいい一本。",
+      "accent": "#8a7f70",
+      "duration": "30秒",
+      "duration_sec": 30,
+      "format": "16:9 1920×1080 / 9:16 カット版 15秒",
+      "media": "Web Hero、YouTube、SNS 広告",
+      "concept": "朝の支度から帰宅して洗うまでの一日を、製品と共に静かに描く。「失敗しない定番」を、生活の中の心地よさとして伝える。",
+      "story": "朝の光で目覚めた部屋 → 一本を手に取り家を出る → 通勤とデスクの時間 → 帰宅後、2パーツだけを洗う → 明日も同じ一本を手に取る。",
+      "frames": [
+        { "time": "0:00–0:03", "scene": "S1", "image": "img/frame-01.svg", "title": "朝の部屋", "text": "カーテン越しの朝の光。無音から環境音が立ち上がる。" },
+        { "time": "0:03–0:07", "scene": "S2", "image": "img/frame-02.svg", "title": "一本を手に取る", "text": "テーブルの製品をゆっくりドリーイン。手が入って持ち上げる。" },
+        { "time": "0:07–0:11", "scene": "S3", "image": "img/frame-03.svg", "title": "通勤", "text": "バッグのポケットに収まる細身のシルエット。" },
+        { "time": "0:11–0:15", "scene": "S4", "image": "img/frame-06.svg", "title": "デスク", "text": "窓際のデスクに置かれた製品。午後の柔らかい光。" },
+        { "time": "0:15–0:20", "scene": "S5", "image": "img/frame-04.svg", "title": "2パーツ", "text": "キャップを外し、2パーツに分かれる動きをスローで。" },
+        { "time": "0:20–0:24", "scene": "S6", "image": "img/frame-05.svg", "title": "洗う", "text": "広口を真上から。水が底まで届く。" },
+        { "time": "0:24–0:27", "scene": "S7", "image": "img/frame-07.svg", "title": "ヒーロー", "text": "無地背景で製品を正面から。ゆっくり回転。" },
+        { "time": "0:27–0:30", "scene": "S8", "image": "img/frame-08.svg", "title": "エンドカード", "text": "メインコピーとロゴ。余韻を残して終わる。" }
+      ],
+      "specs": {
+        "camera": "三脚とスライダー中心の静かなカメラ。手持ちは使わない。ドリーイン／横移動のみ。",
+        "lens": "35mm（生活シーン）／85mm（手元）／100mm マクロ（ディテール）。",
+        "lighting": "自然光を模した大きなソフトライト。色温度 4800K→朝 5600K→夕 3800K。",
+        "motion": "カメラ・文字とも ease-in-out 800ms 以上。速いカットをしない。",
+        "typography": "Noto Sans JP 500、字間 +40。画面下1/3、1行14字以内。",
+        "sound": "環境音（鳥・水・布擦れ）を主役に。ナレーションなし。",
+        "music": "ピアノ中心のミニマルな曲、BPM 72 前後。0:24 でわずかに盛り上げる。",
+        "transition": "基本はカット。時間が飛ぶ所のみ 12 フレームのディゾルブ。"
+      },
+      "timeline": [
+        { "from": 0, "to": 3, "label": "S1 朝", "copy": "", "sound": "環境音 鳥" },
+        { "from": 3, "to": 7, "label": "S2 手に取る", "copy": "", "sound": "ピアノ in" },
+        { "from": 7, "to": 11, "label": "S3 通勤", "copy": "細く、軽く。", "sound": "" },
+        { "from": 11, "to": 15, "label": "S4 デスク", "copy": "", "sound": "" },
+        { "from": 15, "to": 20, "label": "S5 2パーツ", "copy": "洗うのは、ふたつだけ。", "sound": "キャップ SE" },
+        { "from": 20, "to": 24, "label": "S6 洗う", "copy": "", "sound": "水の音" },
+        { "from": 24, "to": 27, "label": "S7 製品", "copy": "", "sound": "曲 ピーク" },
+        { "from": 27, "to": 30, "label": "S8 エンド", "copy": "毎日に、ちょうどいい一本。", "sound": "余韻 fade" }
+      ],
+      "evidence": "Graphic A（Quiet Standard）の色・書体・写真／光の定義に準拠",
+      "recommended": true
+    }
+  ]
+}

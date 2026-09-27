@@ -66,7 +66,12 @@ def load(slug: str) -> dict:
     path = project_dir(slug) / "project.json"
     if not path.exists():
         die(f"プロジェクト '{slug}' が見つかりません（python3 scripts/studio.py list で確認）")
-    return json.loads(path.read_text(encoding="utf-8"))
+    p = json.loads(path.read_text(encoding="utf-8"))
+    # ワークフロー定義に後から追加された工程を補う（未着手として追加）
+    for s in load_workflows()[p["workflow"]]["stages"]:
+        p["stages"].setdefault(s["id"], {"status": "pending", "versions": [], "adopted": None,
+                                         "approved_at": None, "feedback": []})
+    return p
 
 
 def save(p: dict) -> None:
@@ -238,7 +243,7 @@ def cmd_status(a) -> None:
         if not extra and st["versions"]:
             extra = f"  最新: {st['versions'][-1]}"
         step = f"{s['step']} " if s.get("step") else ""
-        print(f"  {s['id']:<13} {STATUS_LABEL[st['status']]:<6} {gate}  {step}{s['title']} [{s['agent']}]{extra}")
+        print(f"  {s['id']:<20} {STATUS_LABEL[st['status']]:<6} {gate}  {step}{s['title']} [{s['agent']}]{extra}")
     print()
     cmd_next(a)
 

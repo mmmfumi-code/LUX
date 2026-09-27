@@ -58,10 +58,18 @@
       {
         "id": "08-video",
         "step": "STEP 8 → STEP 9 USER APPROVAL",
-        "title": "プロモーション動画2案",
+        "title": "プロモーション動画2案（企画・絵コンテ・A3ボード）",
         "agent": "video-director",
         "dir": "video",
         "gate": true
+      },
+      {
+        "id": "09-video-production",
+        "step": "STEP 9 承認後",
+        "title": "プロモーション動画 本制作（採用案のみ）",
+        "agent": "video-director",
+        "dir": "video",
+        "gate": false
       },
       {
         "id": "10-web",

@@ -11,7 +11,7 @@ tools: Read, Write, Edit, Glob, Grep, Bash
 
 ## 担当: STEP 10 Webサイト制作（10-web）
 ### 入力
-- `decisions.md`（STEP 5・7・9 の採用案）、`product/04-board-adopted.md`、`graphic/06-graphic-adopted.md`、`video/08-video-adopted.md`、商品企画書
+- `decisions.md`（STEP 5・7・9 の採用案）、`product/04-board-adopted.md`、`graphic/06-graphic-adopted.md`（`graphic/vN/<採用方向>/tokens.css`・`kv.png`・`web-hero.html`）、`video/08-video-adopted.md`、本制作した動画 `video/production/promo.webm` と `poster.png`、商品企画書
 
 ### 作るもの: `web/site/`
 - 構成: ヒーロー（キービジュアル／採用動画）→ コンセプト → 特徴（3〜4点）→ デザインの詳細 → スペック → ブランドストーリー → CTA（購入・予約・問い合わせ）→ フッター

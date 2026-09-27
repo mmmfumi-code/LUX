@@ -23,11 +23,11 @@ STEP 1 市場リサーチ ─→ STEP 2 商品企画 ─→ STEP 3 プロダク�
                                                      ↓
                                    🔒 STEP 7 USER APPROVAL（グラフィック案を決定）
                                                      ↓
-                                   STEP 8 プロモーション動画2案
+                                   STEP 8 プロモーション動画2案（企画・絵コンテ・A3ボードのみ）
                                                      ↓
                                    🔒 STEP 9 USER APPROVAL（動画案を決定）
                                                      ↓
-                     STEP 10 Webサイト制作 ─→ STEP 11 デプロイ準備
+      動画 本制作（採用案のみ）─→ STEP 10 Webサイト制作 ─→ STEP 11 デプロイ準備
                                                      ↓
                                    🔒 最終確認（公開の可否。実際のデプロイは承認後にユーザーの指示で行う）
 ```
@@ -41,8 +41,9 @@ STEP 1 市場リサーチ ─→ STEP 2 商品企画 ─→ STEP 3 プロダク�
 | 5 | — | **USER APPROVAL** | （ユーザー） | `decisions.md` | — |
 | 6 | 06-graphic | グラフィックデザイン3案 | graphic-designer | `graphic/` | 🔒 → STEP 7 |
 | 7 | — | **USER APPROVAL** | （ユーザー） | `decisions.md` | — |
-| 8 | 08-video | プロモーション動画2案 | video-director | `video/` | 🔒 → STEP 9 |
+| 8 | 08-video | プロモーション動画2案（企画・絵コンテ・A3ボード） | video-director | `video/` | 🔒 → STEP 9 |
 | 9 | — | **USER APPROVAL** | （ユーザー） | `decisions.md` | — |
+| 9+ | 09-video-production | 動画 本制作（採用案のみ） | video-director | `video/production/` | 自動 |
 | 10 | 10-web | Webサイト制作 | web-developer | `web/` | 自動 |
 | 11 | 11-deploy | デプロイ準備 | deploy-engineer | `final/` | 🔒 最終確認 |
 
@@ -74,9 +75,12 @@ projects/<project-name>/
 │   ├── board/vN/boards.json, board-A|B|C.(html|png|pdf), overview.(png|pdf), boards-all.pdf
 │   └── 06-graphic-adopted.md       # STEP 7 で採用された方向
 ├── video/
-│   ├── 08-video-vN.md              # STEP 8 2案の説明
-│   ├── vN/A|B/ script.md, storyboard.(html|png), promo.html, promo.webm
-│   └── 08-video-adopted.md         # STEP 9 で採用された案
+│   ├── 08-video-vN.md              # STEP 8 2案の企画（14項目・タイムライン）
+│   ├── vN/A|B/frames/frame-01〜.(svg|png)   # 絵コンテのコマ（文字なし）
+│   ├── board/vN/boards.json, board-A|B.(html|png|pdf), overview.(png|pdf), boards-all.pdf
+│   ├── 08-video-adopted.md         # STEP 9 で採用された案
+│   ├── 09-video-production-vN.md   # 本制作の記録
+│   └── production/ promo.html, promo.webm, promo-vertical.webm, poster.png, sound-sheet.md
 ├── web/
 │   ├── 10-web-vN.md                # STEP 10 サイト仕様・確認結果
 │   ├── site/                       # 公開用の静的サイト（index.html が入口）
@@ -148,21 +152,28 @@ projects/<project-name>/
 確認すること: **3案のどれを採用するか**、修正点 → 採用案を `graphic/06-graphic-adopted.md` にまとめて承認記録
 
 ## STEP 8 プロモーション動画2案（08-video / video-director / 🔒）
-- **入力**: 採用プロダクト・採用グラフィック
-- **作業**: 切り口の異なる **2案**（例: 情緒・ストーリー型／機能訴求型）。各案:
-  - 企画意図、尺（15〜30秒）、構成台本（秒数・映像・テロップ・ナレーション・音の指示）
-  - 絵コンテ（storyboard.html → PNG）
-  - HTML/CSSアニメーションで作った動画（`promo.html` → `node scripts/render.mjs video ... --duration <秒>` で `promo.webm`、1920×1080。必要なら縦型 1080×1920 も）
-  - 実写撮影や動画生成AIで作り直す場合の指示書・プロンプトは `prompts/08-video-*.md` に保存
-- **出力**: `video/08-video-vN.md`、`video/vN/A|B/`
-- **完了条件**: 2案とも実際に再生できる動画ファイルがある
-- **提出後は STEP 9 で停止**
+- **入力**: 採用 Product Design（`product/04-board-adopted.md`）と採用 Graphic Design（`graphic/06-graphic-adopted.md`、`tokens.css`）。世界観を壊さない
+- **作業**: 15〜30秒のブランドプロモーション動画を、切り口の異なる **2案** で設計（**企画のみ。本制作はしない**）
+  - 各案の14項目: 動画コンセプト・尺・Story・Scene構成・Storyboard・Camera・Lens・Lighting・Motion・Typography・Sound・Music・Copy・Transition
+  - 0秒から最後までのタイムライン表（隙間なし、合計＝尺）
+  - 絵コンテ（文字なしのコマ画像 6〜10枚）
+  - 動画生成AI用のシーン別プロンプト（`prompts/08-video-<A|B>-scenes.md`。ネガティブ・製品の一貫性の指示つき）
+  - A3ボード（`video/board/vN/boards.json` → `node scripts/board.mjs`、`layout: "video"`）
+- **出力**: `video/08-video-vN.md`、`video/vN/A|B/frames/`、`video/board/vN/`、`prompts/08-video-*.md`
+- **完了条件**: 2案とも14項目とタイムラインがそろい、A3ボードの PNG・PDF がある。詳細は `.claude/agents/video-director.md`
+- **Storyboard／A3ボードを提出したら STEP 9 で停止。承認まで本制作に進まない**
 
 ## STEP 9 USER APPROVAL 🔒
-確認すること: **2案のどちらを採用するか**、修正点 → 採用案を `video/08-video-adopted.md` にまとめて承認記録
+確認すること: **2案のどちらを採用するか**、尺・コピー・音楽の修正、**本制作の方法**（① モーショングラフィック（標準）／② 動画生成AI（使える場合）／③ 実写撮影の指示書）→ 採用案を `video/08-video-adopted.md` にまとめて承認記録
+
+## 動画 本制作（09-video-production / video-director / 自動）
+- **入力**: `video/08-video-adopted.md`（採用案・修正指示・本制作の方法）
+- **作業**: 採用案のタイムラインどおりに本制作。標準はHTMLモーショングラフィック → `node scripts/render.mjs video` で `promo.webm`（1920×1080）、縦型 `promo-vertical.webm`、代表フレーム `poster.png`。音は `sound-sheet.md`（書き出した動画は無音）
+- **出力**: `video/09-video-production-vN.md`、`video/production/`
+- 自動進行のため、完了後はそのまま STEP 10 へ
 
 ## STEP 10 Webサイト制作（10-web / web-developer / 自動）
-- **入力**: 採用されたプロダクト・グラフィック・動画、商品企画
+- **入力**: 採用されたプロダクト・グラフィック、本制作した動画（`video/production/`）、商品企画
 - **作業**: 商品のプロモーション用サイト（LP）。構成例: ヒーロー（キービジュアル＋動画）、コンセプト、特徴、デザイン詳細、スペック、ストーリー、購入・問い合わせのCTA、フッター
   - HTML/CSS/JS の静的サイト（外部依存は最小限。フォントは Google Fonts）
   - レスポンシブ対応、アクセシビリティ（alt、コントラスト、見出し構造）、OGP・favicon

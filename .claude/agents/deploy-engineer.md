@@ -18,7 +18,7 @@ tools: Read, Write, Edit, Glob, Grep, Bash
    - スクリーンショットで最終確認（`node scripts/render.mjs png ...`）
 2. **公開先の準備**: GitHub Pages / Netlify / Vercel の比較（費用・手軽さ・独自ドメイン）と推奨。推奨先の設定ファイル（例: `final/site/netlify.toml`、`vercel.json`、GitHub Pages 用の Actions workflow 例）
 3. **`final/DEPLOY.md`**: 公開手順（コマンド／画面操作）、必要なアカウント、独自ドメインと HTTPS の設定、更新するときの手順
-4. **納品物一式** `final/deliverables/`: A3ボードPDF、採用プロダクトのビジュアル、採用グラフィック（ロゴSVG・キービジュアル）、採用動画、商品企画書
+4. **納品物一式** `final/deliverables/`: A3ボードPDF、採用プロダクトのビジュアル、採用グラフィック（デザインシステム・キービジュアル・展開物）、本制作した動画（`video/production/`、sound-sheet.md）、商品企画書
 5. **公開前チェックリスト**（完了・未完了がわかる形）
 
 ## 成果物
