@@ -1,0 +1,95 @@
+{
+  "project": "SAMPLE — Insulated Bottle",
+  "studio": "AI Design Studio",
+  "date": "2026.09.27",
+  "version": "v1",
+  "overview": true,
+  "overview_title": "Insulated Bottle — 10 Proposals",
+  "overview_tagline": "市場分析にもとづく10の方向性。STEP 5 で採用案をお選びください。",
+  "overview_evidence": "research/research.md 結論1〜6",
+  "boards": [
+    {
+      "no": "01",
+      "type": "王道・市場適合型",
+      "type_en": "Market Fit",
+      "name": "STAND",
+      "name_ja": "スタンド",
+      "tagline": "毎日持ち歩ける、ちょうどいい一本。",
+      "accent": "#8a7f70",
+      "main_visual": "img/main-01.svg",
+      "size": "W72 × H210 × D72 mm",
+      "price": "¥3,980",
+      "concept": "売れ筋の容量と保温性能はそのままに、洗いにくさと重さという二大不満だけを確実に解消。誰にでも薦められる、失敗しない定番をつくる。",
+      "background": "上位商品のレビューでは「洗いにくい」「重い」への言及が低評価の過半を占める一方、形や容量への不満は少ない。",
+      "problems": [
+        "飲み口のパッキンが外しにくく、洗うのが面倒",
+        "満水時に重く、バッグの中でかさばる",
+        "結露や臭い移りが気になる"
+      ],
+      "features": [
+        { "title": "2パーツ構造", "text": "パッキン一体型キャップで、分解・洗浄が2パーツだけ" },
+        { "title": "軽量ボディ", "text": "薄肉二重構造で同容量の上位品より約15%軽量【推測】" },
+        { "title": "広口設計", "text": "口径48mmで氷が入り、スポンジで底まで洗える" }
+      ],
+      "structure": {
+        "image": "img/struct.svg",
+        "text": "①キャップ（パッキン一体）②飲み口リング ③真空二重ボディの3層。部品点数は従来比で半減。"
+      },
+      "materials": [
+        { "part": "ボディ", "material": "ステンレス SUS304", "note": "真空二重" },
+        { "part": "キャップ", "material": "PP / シリコーン", "note": "二色成形" }
+      ],
+      "cmf": [
+        { "name": "Warm Stone", "hex": "#CFCBC4", "finish": "マット粉体塗装" },
+        { "name": "Charcoal", "hex": "#4A4845", "finish": "マット粉体塗装" },
+        { "name": "Sage", "hex": "#9FB2A8", "finish": "マット粉体塗装" },
+        { "name": "Ivory", "hex": "#F1EEE8", "finish": "マット粉体塗装" }
+      ],
+      "advantages": [
+        { "vs": "BRAND A", "point": "同価格帯で唯一、パッキンが一体化され洗浄の手間が少ない" },
+        { "vs": "BRAND B", "point": "同容量で軽く、細身でバッグのポケットに収まる" }
+      ],
+      "details": [
+        { "image": "img/detail-1.svg", "caption": "滑りにくいグリップリブ" },
+        { "image": "img/detail-2.svg", "caption": "広口48mmの飲み口" }
+      ],
+      "scene": {
+        "image": "img/scene.svg",
+        "text": "通勤バッグから取り出し、デスクでそのまま使う。帰宅後は2パーツを洗うだけ。"
+      },
+      "evidence": "research.md 結論1・2・6、ユーザーの不満（洗浄 38%・重さ 27%）",
+      "recommended": true,
+      "score": 4.3
+    },
+    {
+      "no": "02",
+      "type": "ミニマル",
+      "type_en": "Minimal",
+      "name": "PLAIN",
+      "name_ja": "プレーン",
+      "tagline": "要素をひとつ減らすと、美しさがひとつ増える。",
+      "accent": "#71877d",
+      "main_visual": "img/main-02.svg",
+      "size": "W70 × H205 × D70 mm",
+      "price": "¥4,500",
+      "concept": "継ぎ目と装飾を極限まで減らした円柱。キャップとボディの境界をほぼ消し、置いたときに一本の線に見える佇まい。",
+      "background": "SNSでは「生活感が出ない」デザインへの支持が伸びているが、該当する商品は高価格帯に偏っている。",
+      "problems": ["デスクや部屋に置いたときに生活感が出る", "ロゴや装飾が主張しすぎる"],
+      "features": [
+        { "title": "フラッシュキャップ", "text": "キャップとボディを同径にし、継ぎ目を目立たせない" },
+        { "title": "無刻印", "text": "ロゴは底面のみに配置" }
+      ],
+      "structure": { "image": "img/struct.svg", "text": "同径ねじ込み式のキャップ＋真空二重ボディの2パーツ。" },
+      "materials": [{ "part": "ボディ", "material": "ステンレス SUS304" }, { "part": "キャップ", "material": "ステンレス / PP" }],
+      "cmf": [
+        { "name": "Mist", "hex": "#C9D6CF", "finish": "サンドブラスト" },
+        { "name": "Graphite", "hex": "#3E4240", "finish": "サンドブラスト" }
+      ],
+      "advantages": [{ "vs": "PREMIUM C", "point": "同等の佇まいを中価格帯で実現" }],
+      "details": [{ "image": "img/detail-2.svg", "caption": "継ぎ目の少ない天面" }],
+      "scene": { "image": "img/scene.svg", "text": "リビングや書斎に出しっぱなしでも景色になじむ。" },
+      "evidence": "research.md 9. カラートレンド、13. SNSトレンド",
+      "score": 3.9
+    }
+  ]
+}

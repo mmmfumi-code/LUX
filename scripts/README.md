@@ -30,3 +30,14 @@
 
 - 日本語フォントは HTML 側で Google Fonts（Noto Sans JP など）を読み込む（書き出し前にフォントの読み込み完了を待つ）
 - MP4 が必要な場合は、ffmpeg を入れて `ffmpeg -i promo.webm -c:v libx264 -pix_fmt yuv420p promo.mp4` で変換する
+
+## board.mjs — A3横プロダクトデザイン・プレゼンボードを生成
+
+```
+node scripts/board.mjs <boards.json> [--only 01,03] [--no-render]
+```
+
+- `boards.json`（見本: `templates/board/example/boards.json`）から、1案1枚のボード `board-XX`、一覧ボード `overview`、まとめPDF `boards-all.pdf` を HTML・PNG・PDF で出力する
+- レイアウトは共通テンプレート `templates/board/board.css`（A3横 420×297mm、12カラム、白〜ライトグレー）
+- 文字はすべて HTML で組み、画像には文字を入れない（画像とテキストの分離）
+- 文字数の上限超過、画像の欠落、枠からの文字あふれを「⚠」で警告する

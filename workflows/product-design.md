@@ -64,7 +64,8 @@ projects/<project-name>/
 │   ├── 03-design-vN.md             # STEP 3 10案の一覧・比較
 │   ├── designs/vN/design-01〜10.(html|svg|png), contact-sheet.png
 │   ├── 04-board-vN.md              # STEP 4 ボードの説明・承認依頼の内容
-│   ├── board/vN/board.html, board.pdf, board.png
+│   ├── board/vN/boards.json        # ボードの内容データ（→ scripts/board.mjs で生成）
+│   ├── board/vN/board-01〜10.(html|png|pdf), overview.(html|png|pdf), boards-all.pdf
 │   └── 04-board-adopted.md         # STEP 5 で採用された案（承認時に作成）
 ├── graphic/
 │   ├── 06-graphic-vN.md            # STEP 6 3案の説明
@@ -117,11 +118,13 @@ projects/<project-name>/
 
 ## STEP 4 A3プレゼンボード生成（04-board / presentation-designer / 🔒）
 - **入力**: STEP 1〜3
-- **作業**: A3横（420×297mm）のプレゼンボードをHTMLで制作し、PDFとPNGを書き出す
-  - 構成（標準）: タイトル・コンセプト／市場の示唆（要点3つ）／10案の一覧（サムネイル＋一言）／推奨3案の詳細／評価の比較表／次のステップ
-  - `node scripts/render.mjs board product/board/vN/board.html product/board/vN/board`
-- **出力**: `product/04-board-vN.md`（ボードの要点と承認依頼の内容）、`product/board/vN/board.(html|pdf|png)`
-- **完了条件**: 印刷して読める文字サイズ（本文9pt相当以上）、PNGで見て崩れがない
+- **作業**: 各デザイン案を **1案1枚の A3横（420×297mm）ボード** にする（10枚）＋ 10案を見比べる一覧ボード1枚
+  - 各ボードの要素: メインビジュアル／コンセプト／開発背景／ユーザー課題／機能／構造／素材／CMF／競合優位性／ディテール／想定使用シーン
+  - デザイン: 白〜ライトグレー背景、十分な余白、12カラムグリッド、高級感、ミニマル（プロダクトデザイン事務所の提案資料）。共通テンプレート `templates/board/board.css`
+  - **画像とテキストを分離**: 画像には文字を入れず、テキストはすべて HTML/CSS で組む
+  - `product/board/vN/boards.json` を書いて `node scripts/board.mjs product/board/vN/boards.json`
+- **出力**: `product/04-board-vN.md`、`product/board/vN/` に各ボードの PNG・PDF、`overview.(png|pdf)`、`boards-all.pdf`
+- **完了条件**: 全ボードの PNG と PDF がある、PDF が 420×297mm、`board.mjs` の警告（文字数超過・画像欠落・あふれ）がない、画像に日本語の文字がない。詳細は `.claude/agents/presentation-designer.md`
 - **提出後は STEP 5 で停止**
 
 ## STEP 5 USER APPROVAL 🔒

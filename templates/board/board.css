@@ -1,0 +1,205 @@
+/* ============================================================
+   Product Design Presentation Board — A3 Landscape (420 x 297mm)
+   白〜ライトグレー / 十分な余白 / 12カラムグリッド / ミニマル
+   ============================================================ */
+@page { size: 420mm 297mm; margin: 0; }
+
+:root {
+  --paper: #fafaf8;          /* 背景（白〜ライトグレー） */
+  --panel: #efefec;          /* 画像パネル */
+  --panel-2: #e7e7e3;
+  --ink: #1b1b1a;            /* 本文 */
+  --ink-2: #5f5f5b;          /* 補足 */
+  --ink-3: #9a9a95;          /* ラベル */
+  --rule: #d8d8d3;           /* 罫線 */
+  --accent: #1b1b1a;         /* 案ごとのアクセント（boards.json の accent で上書き） */
+  --margin: 16mm;
+  --gap: 6mm;
+  --latin: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --jp: "Noto Sans JP", "Hiragino Sans", sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--paper); }
+body {
+  font-family: var(--latin), var(--jp);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "palt";
+}
+
+.board {
+  width: 420mm; height: 297mm;
+  padding: var(--margin);
+  background: var(--paper);
+  display: grid;
+  grid-template-rows: 21mm 1fr 6mm;
+  row-gap: 6mm;
+  overflow: hidden;
+  position: relative;
+  page-break-after: always;
+  break-after: page;
+}
+.board:last-child { page-break-after: auto; break-after: auto; }
+
+/* ---------- header ---------- */
+.hd {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--gap);
+  align-items: end;
+  border-bottom: 0.3mm solid var(--ink);
+  padding-bottom: 3.5mm;
+}
+.hd .no {
+  grid-column: 1 / 2;
+  font-family: var(--latin); font-weight: 200;
+  font-size: 44px; line-height: .8; letter-spacing: -0.02em;
+}
+.hd .title { grid-column: 2 / 8; }
+.hd .type {
+  font-family: var(--latin); font-size: 10px; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--ink-3); margin-bottom: 1.5mm;
+}
+.hd .type b { color: var(--accent); font-weight: 600; }
+.hd .name { font-size: 30px; font-weight: 500; letter-spacing: .02em; line-height: 1.05; }
+.hd .name small { font-size: 14px; font-weight: 400; color: var(--ink-2); margin-left: 3mm; letter-spacing: .06em; }
+.hd .tagline {
+  grid-column: 8 / 11; font-size: 15px; font-weight: 400; line-height: 1.5;
+  color: var(--ink); letter-spacing: .04em;
+}
+.hd .meta {
+  grid-column: 11 / 13; text-align: right;
+  font-family: var(--latin); font-size: 9px; letter-spacing: .12em;
+  color: var(--ink-3); line-height: 1.7; text-transform: uppercase;
+}
+
+/* ---------- body grid ---------- */
+.bd {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 58% 1fr;
+  column-gap: var(--gap);
+  row-gap: 7mm;
+  min-height: 0;
+}
+.cell { min-height: 0; display: flex; flex-direction: column; }
+
+/* section label: 番号 + EN + 日本語 */
+.lbl {
+  display: flex; align-items: baseline; gap: 2mm;
+  padding-bottom: 1.8mm; margin-bottom: 2.6mm;
+  border-bottom: 0.2mm solid var(--rule);
+}
+.lbl .n { font-family: var(--latin); font-size: 9px; color: var(--ink-3); letter-spacing: .1em; }
+.lbl .en {
+  font-family: var(--latin); font-size: 9.5px; font-weight: 600;
+  letter-spacing: .22em; text-transform: uppercase;
+}
+.lbl .ja { font-size: 9.5px; color: var(--ink-2); letter-spacing: .08em; }
+
+p, li, td { font-size: 12px; line-height: 1.75; letter-spacing: .02em; color: var(--ink); }
+.muted { color: var(--ink-2); }
+
+/* image panel */
+.img {
+  background: var(--panel);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; position: relative; min-height: 0;
+}
+.img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.img.cover img { object-fit: cover; }
+.img.empty::after {
+  content: "IMAGE"; font-family: var(--latin); font-size: 9px;
+  letter-spacing: .3em; color: var(--ink-3);
+}
+.cap { font-size: 10px; line-height: 1.55; color: var(--ink-2); margin-top: 1.6mm; }
+
+/* ---------- row A ---------- */
+.main { grid-column: 1 / 7; grid-row: 1; }
+.main .img { flex: 1; }
+.main .spec {
+  display: flex; justify-content: space-between; margin-top: 2mm;
+  font-family: var(--latin); font-size: 9.5px; letter-spacing: .12em; color: var(--ink-2);
+}
+.main .spec b { color: var(--ink); font-weight: 600; }
+
+.story { grid-column: 7 / 10; grid-row: 1; gap: 5mm; }
+.story .concept p { font-size: 13.5px; line-height: 1.8; }
+.story ol { list-style: none; counter-reset: q; }
+.story ol li { counter-increment: q; padding-left: 6mm; position: relative; margin-bottom: 1mm; }
+.story ol li::before {
+  content: counter(q, decimal-leading-zero); position: absolute; left: 0; top: .1em;
+  font-family: var(--latin); font-size: 9px; color: var(--accent); font-weight: 600;
+}
+
+.side { grid-column: 10 / 13; grid-row: 1; gap: 5mm; }
+.side .scene { flex: 1.25; }
+.side .scene .img { flex: 1; }
+.side .adv { flex: 1; }
+.adv table { width: 100%; border-collapse: collapse; }
+.adv td { vertical-align: top; padding: 1.2mm 0; border-bottom: 0.2mm solid var(--rule); }
+.adv td.vs {
+  width: 22mm; font-family: var(--latin); font-size: 9px; letter-spacing: .08em;
+  color: var(--ink-3); padding-right: 2mm; line-height: 1.6; padding-top: 1.7mm;
+}
+
+/* ---------- row B ---------- */
+.feat { grid-column: 1 / 4; grid-row: 2; }
+.feat ul { list-style: none; display: grid; gap: 2.4mm; }
+.feat li b { display: block; font-size: 12.5px; font-weight: 500; line-height: 1.5; }
+.feat li span { font-size: 11px; color: var(--ink-2); line-height: 1.6; display: block; }
+.feat li { padding-left: 4mm; border-left: 0.5mm solid var(--accent); }
+
+.struct { grid-column: 4 / 7; grid-row: 2; }
+.struct .img { flex: 1; }
+
+.mat { grid-column: 7 / 10; grid-row: 2; }
+.mat table { width: 100%; border-collapse: collapse; margin-bottom: 3mm; }
+.mat td { font-size: 11px; padding: .9mm 0; border-bottom: 0.2mm solid var(--rule); vertical-align: top; }
+.mat td:first-child { width: 20mm; color: var(--ink-2); }
+.swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; }
+.sw .chip { height: 13mm; border: 0.2mm solid rgba(0,0,0,.08); margin-bottom: 1.2mm; }
+.sw .nm { font-size: 9.5px; font-weight: 500; line-height: 1.35; }
+.sw .hx { font-family: var(--latin); font-size: 8.5px; color: var(--ink-3); letter-spacing: .06em; }
+.sw .fn { font-size: 9px; color: var(--ink-2); line-height: 1.4; }
+
+.detail { grid-column: 10 / 13; grid-row: 2; }
+.detail .pair { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; min-height: 0; }
+.detail .pair > div { display: flex; flex-direction: column; min-height: 0; }
+.detail .pair .img { flex: 1; }
+
+/* ---------- footer ---------- */
+.ft {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--latin); font-size: 8.5px; letter-spacing: .2em;
+  color: var(--ink-3); text-transform: uppercase;
+  border-top: 0.2mm solid var(--rule); padding-top: 1.8mm;
+}
+.ft .ev { text-transform: none; letter-spacing: .04em; font-family: var(--jp); }
+
+/* ============================================================
+   Overview board（10案一覧）
+   ============================================================ */
+.ov .bd {
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr 1fr;
+  column-gap: var(--gap); row-gap: 7mm;
+}
+.ov .card { display: flex; flex-direction: column; min-height: 0; position: relative; }
+.ov .card .img { flex: 1; }
+.ov .card .row1 { display: flex; align-items: baseline; gap: 2mm; margin-top: 2.4mm; }
+.ov .card .cno { font-family: var(--latin); font-weight: 300; font-size: 20px; line-height: 1; }
+.ov .card .ctype { font-size: 9.5px; color: var(--ink-3); letter-spacing: .08em; }
+.ov .card .cname { font-size: 14px; font-weight: 500; margin-top: 1mm; }
+.ov .card .ctag { font-size: 10.5px; color: var(--ink-2); line-height: 1.55; margin-top: .8mm; min-height: 3.1em; }
+.ov .card .cmeta {
+  display: flex; justify-content: space-between; margin-top: 1.6mm; padding-top: 1.4mm;
+  border-top: 0.2mm solid var(--rule); font-family: var(--latin); font-size: 9.5px; color: var(--ink-2);
+}
+.ov .card .cmeta b { color: var(--ink); font-weight: 600; }
+.ov .card.rec .img { outline: 0.5mm solid var(--ink); outline-offset: -0.5mm; }
+.ov .card.rec .badge {
+  position: absolute; top: 2.5mm; left: 2.5mm; z-index: 2; background: var(--ink); color: #fff;
+  font-family: var(--latin); font-size: 8px; letter-spacing: .2em; padding: 1mm 2mm;
+}

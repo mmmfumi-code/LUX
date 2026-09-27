@@ -86,11 +86,19 @@ description: PRODUCT DESIGN WORKFLOW の STEP 3（プロダクトデザイン10�
 
 ## 5. ビジュアル（必須）
 
-- 各案のコンセプトビジュアルを SVG（または HTML/CSS）で作る。正面図＋斜め（3/4）ビュー、主要な寸法、CMF の色見本を1枚に
-  - `product/designs/vN/design-01.svg` 〜 `design-10.svg`
-  - `node scripts/render.mjs png product/designs/vN/design-01.svg product/designs/vN/design-01.png --width 1200 --height 1200`
+- **画像には文字を入れない。** 日本語の説明・ラベルは STEP 4 のボード（HTML）で組むため、画像は製品だけを見せる（番号・矢印・寸法線などの記号は可）
+- 案ごとに次の画像を SVG（または HTML/CSS）で作り、PNG に書き出す（`node scripts/render.mjs png <in> <out.png> --width 1200 --height 1200`）
+
+| 画像 | ファイル名 | 内容 |
+|---|---|---|
+| メインビジュアル（必須） | `product/designs/vN/design-XX.svg/.png` | 製品の斜め（3/4）ビュー。明るいグレーの無地背景、影つき |
+| 構造図 | `design-XX-structure.svg` | 分解図または断面図。部品番号（①②③）と引き出し線のみ |
+| ディテール | `design-XX-detail-1.svg`、`-2.svg` | 特徴的な部分の拡大 |
+| 使用シーン（任意） | `design-XX-scene.svg/.png` | 使っている場面のシンプルな図 |
+
+  構造図・ディテール・シーンが無い場合は STEP 4 の presentation-designer が補うが、形を一番よく分かっているのはあなたなので、できる限り自分で作る
 - 10案の一覧画像: `product/designs/vN/contact-sheet.html` → `contact-sheet.png`（タイプ名と名称を添える）
-- 画像生成AI（Midjourney / DALL·E / Firefly / Canva など）用のプロンプトを案ごとに `prompts/03-design-image-prompts-vN.md` に保存（日本語で意図＋英語のプロンプト。形状・素材・CMF・撮影スタイルを具体的に）
+- 画像生成AI（Midjourney / DALL·E / Firefly / Canva など）用のプロンプトを案ごとに `prompts/03-design-image-prompts-vN.md` に保存（日本語で意図＋英語のプロンプト。形状・素材・CMF・撮影スタイルを具体的に。末尾に必ず `no text, no letters, no typography, no logo, no watermark`）
 - Canva や Figma の連携ツールが使える場合は、それで作った画像も `product/designs/vN/` に保存してよい（使ったプロンプトも保存）
 - フォント・素材はライセンス上問題ないもののみ
 

@@ -32,7 +32,7 @@ A: PRODUCT DESIGN WORKFLOW を実行します。CLAUDE.md、`workflows/product-d
 
 ## 4. 🔒 STEP 5 USER APPROVAL で必ず停止
 - `04-board` を submit したら **そこで止まる。STEP 6 には絶対に進まない。**
-- ボードの PNG（と PDF）をユーザーに見せる（ファイルを送れる環境なら送る）
+- 一覧ボード `product/board/vN/overview.png` と、全ボードをまとめた `boards-all.pdf` をユーザーに見せる（ファイルを送れる環境なら送る）。推奨3案のボードの PNG も添える
 - CLAUDE.md §3 の承認依頼テンプレートで、次を尋ねる:
   - 10案のうちどれを採用するか（番号。組み合わせも可）
   - brief の仮説で違うところはあるか
