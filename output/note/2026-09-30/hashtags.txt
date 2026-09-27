@@ -1,9 +1,0 @@
-#生成AI
-#プロダクトデザイン
-#3DCG
-#CAD
-#Blender
-#Fusion360
-#Vizcom
-#デザイナー
-#AIとデザイン
