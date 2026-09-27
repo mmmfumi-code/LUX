@@ -11,6 +11,18 @@ import struct
 import sys
 from pathlib import Path
 
+# 煽りすぎ表現（note-writer.md の「タイトルのルール」と揃える）
+HYPE_WORDS = ["絶対", "必ず", "誰でも", "簡単に", "しないと損", "ヤバい", "完全攻略",
+              "最強", "爆速", "放置で", "バレない", "9割が知らない", "稼げる"]
+HYPE_PATTERNS = [r"たった\d+[日秒分時]", r"神(ツール|アプリ|テンプレ|記事|ガジェット|機能|設定)"]
+
+
+def hype_hits(text: str) -> list:
+    hits = [w for w in HYPE_WORDS if w in text]
+    hits += [m.group(0) for p in HYPE_PATTERNS for m in re.finditer(p, text)]
+    return hits
+
+
 REQUIRED = ["article.md", "title.txt", "lead.txt", "thumbnail.png", "hashtags.txt", "price.txt", "references.md"]
 
 
@@ -42,6 +54,8 @@ def main() -> int:
         title = (d / "title.txt").read_text(encoding="utf-8").splitlines()[0].strip()
         if not (15 <= len(title) <= 60):
             warns.append(f"title.txt: {len(title)}字（目安 20〜45字）")
+        if hype_hits(title):
+            errors.append(f"title.txt: 煽り表現 {hype_hits(title)}")
     if (d / "lead.txt").exists():
         n = len((d / "lead.txt").read_text(encoding="utf-8").strip())
         if not (80 <= n <= 260):
@@ -73,6 +87,9 @@ def main() -> int:
 
     if (d / "article.md").exists():
         body = (d / "article.md").read_text(encoding="utf-8")
+        for h in re.findall(r"^#{1,3} .+$", body, re.M):
+            if hype_hits(h):
+                warns.append(f"見出しに煽り表現 {hype_hits(h)}: {h[:40]}")
         holes = re.findall(r"【要記入[:：][^】]*】", body)
         chars = len(re.sub(r"\s", "", body))
         print(f"article.md: {chars:,}字 / 【要記入】{len(holes)}箇所")
