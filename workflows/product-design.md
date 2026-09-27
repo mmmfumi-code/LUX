@@ -55,7 +55,9 @@ projects/<project-name>/
 ├── project.json / brief.md / handoff.md / decisions.md / log.md   # 進行管理（studio.py）
 ├── research/
 │   ├── 00-input.md                 # ユーザーの指示の原文
-│   ├── 01-research-vN.md           # STEP 1 リサーチレポート
+│   ├── research.md                 # STEP 1 市場リサーチ（常に最新版）
+│   ├── versions/research-vN.md     # 提出ごとの版（自動保存）
+│   ├── positioning-map.(svg|png)   # ポジショニングマップ
 │   └── notes/                      # 調査の生データ・出典（URL・取得日つき）
 ├── product/
 │   ├── 02-planning-vN.md           # STEP 2 商品企画書
@@ -91,9 +93,11 @@ projects/<project-name>/
 
 ## STEP 1 市場リサーチ（01-research / market-researcher / 自動）
 - **入力**: `research/00-input.md`、`brief.md`、`_studio/` の記憶
-- **作業**: 市場規模・トレンド、競合商品 8〜12件（価格・素材・デザインの特徴・評判）、ターゲット像と購買動機、デザインのトレンド（形・色・素材・仕上げ）、機会領域
-- **出力**: `research/01-research-vN.md`、`research/notes/*.md`（出典URL・取得日）、競合のポジショニングマップ（SVG/PNG を `research/` に）
-- **完了条件**: 事実には出典がある、デザインへの示唆が5つ以上ある
+- **目的**: 単なる検索ではなく「市場で売れる商品を開発するための調査」
+- **必須の16項目**: 主要ブランド／売れ筋商品／価格帯／ECランキング／Amazon等のレビュー／ユーザーの不満／購入理由／素材トレンド／カラートレンド／形状トレンド／機能トレンド／海外市場／SNSトレンド／競合のメリット／競合のデメリット／市場の空白領域
+- **必須の結論6項目**: 1. 市場で現在売れている理由 2. 避けるべきデザイン 3. 狙うべきターゲット 4. 狙うべき価格 5. 狙うべきデザイン方向 6. 新商品の勝ち筋
+- **出力**: `research/research.md`（提出ごとに `research/versions/research-vN.md` へ自動で版を保存）、`research/notes/*.md`（生データ・出典）、`research/positioning-map.(svg|png)`
+- **完了条件**: すべての主張に【調査】【推測】【未確認】のラベルがあり、【調査】には出典番号（URL・取得日つき）がある。出典15件以上。不満と購入理由は件数・割合で集計。詳細は `.claude/agents/market-researcher.md`
 
 ## STEP 2 商品企画（02-planning / product-planner / 自動）
 - **入力**: STEP 1

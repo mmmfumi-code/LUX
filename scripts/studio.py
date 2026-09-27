@@ -146,7 +146,11 @@ def feedback_path(p: dict, sid: str) -> Path:
 
 
 def next_version_path(p: dict, sid: str) -> Path:
+    """次の版の保存先。stage.output（固定ファイル名）があれば常にそのファイル（版は submit 時に versions/ へ保存）"""
     folder, prefix = stage_prefix(p, sid)
+    if stage_def(p, sid).get("output"):
+        folder.mkdir(parents=True, exist_ok=True)
+        return folder / stage_def(p, sid)["output"]
     folder.mkdir(parents=True, exist_ok=True)
     pat = re.compile(re.escape(prefix) + r"v(\d+)")
     nums = [int(m.group(1)) for f in folder.iterdir() if (m := pat.match(f.name))]
@@ -297,6 +301,23 @@ def cmd_submit(a) -> None:
         if not path.exists():
             die(f"ファイルがありません: {f}")
         files.append(rel(path))
+    out_name = stage_def(p, sid).get("output")
+    if out_name:
+        # 固定ファイル名の成果物は、提出時点のスナップショットを versions/ に残す（上書きしない）
+        folder, _ = stage_prefix(p, sid)
+        stem, ext = Path(out_name).stem, Path(out_name).suffix
+        vdir = folder / "versions"
+        vdir.mkdir(parents=True, exist_ok=True)
+        n = len(list(vdir.glob(f"{stem}-v*{ext}"))) + 1
+        snaps = []
+        for f in files:
+            if Path(f).name == out_name:
+                snap = vdir / f"{stem}-v{n}{ext}"
+                shutil.copy2(ROOT / f, snap)
+                snaps.append(rel(snap))
+            else:
+                snaps.append(f)
+        files = snaps
     st["versions"].extend(files)
     gate = stage_def(p, sid)["gate"]
     st["status"] = "awaiting_approval" if gate else "done"
@@ -371,7 +392,7 @@ def cmd_context(a) -> None:
         if fb.exists():
             print(f"# 現工程への修正指示\n- {rel(fb)}")
     research = [f for f in sorted((d / "research").glob("*"))
-                if f.is_file() and f.name != ".gitkeep" and not f.name.startswith("01-research-")]
+                if f.is_file() and f.name not in {".gitkeep", "research.md"} and not f.name.endswith("-feedback.md")]
     if research:
         print("# 調査資料")
         for f in research:

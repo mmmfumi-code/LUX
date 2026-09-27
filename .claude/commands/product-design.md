@@ -27,7 +27,7 @@ A: PRODUCT DESIGN WORKFLOW を実行します。CLAUDE.md、`workflows/product-d
 3. STEP 3 `03-design` プロダクトデザイン10案（product-designer）
 4. STEP 4 `04-board` A3プレゼンボード生成（presentation-designer）
 
-各ステップの後に進捗を1行で報告する（例: `✅ STEP 1 市場リサーチ完了 → research/01-research-v1.md`）。
+各ステップの後に進捗を1行で報告する（例: `✅ STEP 1 市場リサーチ完了 → research/research.md`）。
 品質チェックでは、完了条件（`workflows/product-design.md`）を満たしているか、ファイルが実際に保存されているか、画像の書き出しが成功しているかを確認し、足りなければ同じAgentにやり直させる。
 
 ## 4. 🔒 STEP 5 USER APPROVAL で必ず停止

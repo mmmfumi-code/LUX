@@ -1,5 +1,5 @@
 {
-  "_comment": "工程定義の唯一の正本。scripts/studio.py と各 workflows/*.md はこの定義に従う。gate=true の工程は、ユーザー承認なしに次工程へ進めない。dirs=プロジェクト作成時のフォルダ、stage.dir=その工程の成果物の保存先（省略時は stages/<id>/）。",
+  "_comment": "工程定義の唯一の正本。scripts/studio.py と各 workflows/*.md はこの定義に従う。gate=true の工程は、ユーザー承認なしに次工程へ進めない。dirs=プロジェクト作成時のフォルダ、stage.dir=その工程の成果物の保存先（省略時は stages/<id>/）。 stage.output=固定ファイル名で保存する成果物（最新版は常にそのファイル、提出ごとに <dir>/versions/ にスナップショット）。",
   "product": {
     "name": "PRODUCT DESIGN WORKFLOW",
     "doc": "workflows/product-design.md",
@@ -20,6 +20,7 @@
         "title": "市場リサーチ",
         "agent": "market-researcher",
         "dir": "research",
+        "output": "research.md",
         "gate": false
       },
       {
