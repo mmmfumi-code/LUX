@@ -1,0 +1,7 @@
+# Next.js などのビルド生成物（各プロジェクトの web/app/ 内）
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store

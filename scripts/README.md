@@ -57,3 +57,18 @@ bash scripts/render-apps.sh graphic/v1/A
 
 render.mjs・board.mjs が共通で使う Chromium の起動処理。プロキシのある環境では、外部リソース（Google Fonts など）を
 Node 側で取得して Chromium に渡す（証明書は NODE_EXTRA_CA_CERTS で検証。TLS の検証は無効にしない）。
+
+## web-check.mjs — Webサイトを Desktop／Tablet／Mobile で確認
+
+```
+node scripts/web-check.mjs web/site web/check [--video] [--base /repo-name]
+```
+
+- 静的サイトを localhost で配信し、1440×900／834×1194／390×844 で開く
+- ページを少しずつスクロールしてスクロール演出を発火させ、ファーストビュー・全体・セクションごと（`section[id]`）のスクリーンショットを保存（`--video` でスクロール動画も）
+- 横スクロール、コンソールエラー、読み込み失敗、表示できない画像、alt、h1 の数、タップ領域（モバイル）をチェックし `report.md` にまとめる
+
+## Webサイトの雛形（templates/web/starter/）
+
+Next.js（App Router・静的書き出し）＋ TypeScript ＋ Tailwind CSS ＋ GSAP ScrollTrigger ＋ Lenis。
+`web/app/` にコピーし、`npm install` → `npm run export` で `web/site/` に書き出す。

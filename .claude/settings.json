@@ -10,7 +10,10 @@
       "Bash(python3 scripts/studio.py submit:*)",
       "Bash(python3 scripts/studio.py log:*)",
       "Bash(python3 scripts/studio.py new:*)",
-      "Bash(node scripts/render.mjs:*)"
+      "Bash(node scripts/render.mjs:*)",
+      "Bash(node scripts/board.mjs:*)",
+      "Bash(node scripts/web-check.mjs:*)",
+      "Bash(bash scripts/render-apps.sh:*)"
     ],
     "ask": [
       "Bash(python3 scripts/studio.py approve:*)",

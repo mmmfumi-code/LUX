@@ -44,7 +44,7 @@ STEP 1 市場リサーチ ─→ STEP 2 商品企画 ─→ STEP 3 プロダク�
 | 8 | 08-video | プロモーション動画2案（企画・絵コンテ・A3ボード） | video-director | `video/` | 🔒 → STEP 9 |
 | 9 | — | **USER APPROVAL** | （ユーザー） | `decisions.md` | — |
 | 9+ | 09-video-production | 動画 本制作（採用案のみ） | video-director | `video/production/` | 自動 |
-| 10 | 10-web | Webサイト制作 | web-developer | `web/` | 自動 |
+| 10 | 10-web | Webサイト制作（ブランド体験サイト） | web-creative-director | `web/` | 自動 |
 | 11 | 11-deploy | デプロイ準備 | deploy-engineer | `final/` | 🔒 最終確認 |
 
 **承認ステップ（5・7・9・最終確認）では絶対に自動で次へ進まない。** オーケストレーターは承認依頼を出した時点でターンを終え、ユーザーの返答を待つ。
@@ -82,9 +82,11 @@ projects/<project-name>/
 │   ├── 09-video-production-vN.md   # 本制作の記録
 │   └── production/ promo.html, promo.webm, promo-vertical.webm, poster.png, sound-sheet.md
 ├── web/
-│   ├── 10-web-vN.md                # STEP 10 サイト仕様・確認結果
-│   ├── site/                       # 公開用の静的サイト（index.html が入口）
-│   └── screenshots/                # desktop.png / mobile.png
+│   ├── site-plan.md                # STEP 10 サイト構成とデザイン方針（実装の前に作る）
+│   ├── app/                        # ソースコード（Next.js。雛形 templates/web/starter/）
+│   ├── site/                       # 書き出した静的サイト（npm run export。公開用）
+│   ├── check/                      # desktop / tablet / mobile のスクリーンショット・スクロール動画・report.md
+│   └── 10-web-vN.md                # 実装レポート
 ├── final/
 │   ├── 11-deploy-vN.md             # STEP 11 デプロイ準備レポート
 │   ├── site/                       # デプロイする完成版サイト
@@ -172,18 +174,19 @@ projects/<project-name>/
 - **出力**: `video/09-video-production-vN.md`、`video/production/`
 - 自動進行のため、完了後はそのまま STEP 10 へ
 
-## STEP 10 Webサイト制作（10-web / web-developer / 自動）
-- **入力**: 採用されたプロダクト・グラフィック、本制作した動画（`video/production/`）、商品企画
-- **作業**: 商品のプロモーション用サイト（LP）。構成例: ヒーロー（キービジュアル＋動画）、コンセプト、特徴、デザイン詳細、スペック、ストーリー、購入・問い合わせのCTA、フッター
-  - HTML/CSS/JS の静的サイト（外部依存は最小限。フォントは Google Fonts）
-  - レスポンシブ対応、アクセシビリティ（alt、コントラスト、見出し構造）、OGP・favicon
-  - desktop（1440幅）と mobile（390幅）のスクリーンショットで表示を確認
-- **出力**: `web/site/`、`web/screenshots/`、`web/10-web-vN.md`
+## STEP 10 Webサイト制作（10-web / web-creative-director / 自動）
+- **目的**: 単なる商品LPではなく、Market Research・Product Design・Graphic Design・Promotion Video のブランド体験を Web 上に再構築する
+- **最重要評価項目**: 第一印象・没入感・ブランド世界観・プロダクト理解・スクロール体験・インタラクション・モーション・購入導線・スマートフォン体験
+- **12セクション**: Hero／Brand Story／Problem／Product Reveal／Features／Details／Technology／Lifestyle／Promotion Movie／Specifications／FAQ／CTA
+- **技術**: Next.js（静的書き出し）＋ TypeScript ＋ Tailwind CSS を土台に、GSAP／Framer Motion／Three.js／React Three Fiber などは体験に必要なものだけ
+- **進め方**: ① `web/site-plan.md`（サイト構成とデザイン方針）→ ② 実装（`web/app/` → `npm run export` → `web/site/`）→ ③ `node scripts/web-check.mjs web/site web/check --video` で Desktop／Tablet／Mobile を確認
+- **出力**: `web/site-plan.md`、`web/app/`、`web/site/`、`web/check/`、`web/10-web-vN.md`
+- **完了条件**: 12セクションがそろい、型チェックと書き出しが通り、3サイズとも自動チェックの ⚠ がなく目視確認済み。詳細は `.claude/agents/web-creative-director.md`
 - 自動進行のため、完了後はそのまま STEP 11 へ
 
 ## STEP 11 デプロイ準備（11-deploy / deploy-engineer / 🔒 最終確認）
 - **作業**:
-  - `web/site/` を `final/site/` にまとめる（画像の最適化、リンク切れ・パス・メタ情報のチェック）
+  - `web/site/` を `final/site/` にまとめる（公開URL・サブパスが決まっていれば `web/app` で `SITE_URL=… BASE_PATH=… npm run export` で書き出し直す。画像の最適化、リンク切れ・パス・メタ情報のチェック）
   - 公開先の候補（GitHub Pages / Netlify / Vercel など）と設定ファイル、`final/DEPLOY.md`（手順・必要なアカウント・独自ドメインの設定）
   - 納品物一式を `final/deliverables/` に集める（A3ボードPDF、採用グラフィック、採用動画、企画書）
   - 公開前チェックリスト

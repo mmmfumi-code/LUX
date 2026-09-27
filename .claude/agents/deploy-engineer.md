@@ -11,6 +11,8 @@ tools: Read, Write, Edit, Glob, Grep, Bash
 
 ## 担当: STEP 11 デプロイ準備（11-deploy）
 1. **公開用サイトの作成**: `web/site/` を `final/site/` にコピーし、次をチェックして直す
+   - サイトは Next.js（`web/app/`）から書き出している。公開URLやサブパス（GitHub Pages など）が決まっている場合は `cd web/app && SITE_URL=https://… BASE_PATH=/repo npm run export` で書き出し直してからコピーする
+   - 最終確認として `node scripts/web-check.mjs final/site final/check` を実行し、Desktop／Tablet／Mobile で ⚠ がないことを確認する
    - リンク切れ・存在しないファイルの参照（相対パス）
    - 画像サイズ（目安: 1枚 500KB 以下）、動画サイズ
    - title / description / OGP / favicon / lang 属性

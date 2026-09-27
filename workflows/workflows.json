@@ -74,8 +74,8 @@
       {
         "id": "10-web",
         "step": "STEP 10",
-        "title": "Webサイト制作",
-        "agent": "web-developer",
+        "title": "Webサイト制作（ブランド体験サイト）",
+        "agent": "web-creative-director",
         "dir": "web",
         "gate": false
       },

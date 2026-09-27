@@ -24,9 +24,17 @@ export async function launchBrowser() {
 export async function newContext(browser, options = {}) {
   const context = await browser.newContext(options);
   if (proxyServer) {
-    await context.route(/^https?:\/\//, async (route) => {
+    await context.route((url) => /^https?:$/.test(url.protocol), async (route) => {
       try {
-        await route.fulfill({ response: await route.fetch() });
+        const u = new URL(route.request().url());
+        if (["localhost", "127.0.0.1"].includes(u.hostname)) {
+          // Playwright はプロキシ設定時にローカル宛ても proxy に送るため、ローカルサーバーへは Node から直接取得する
+          const req = route.request();
+          const res = await fetch(u, { method: req.method(), headers: req.headers(), body: req.postDataBuffer() || undefined });
+          await route.fulfill({ status: res.status, headers: Object.fromEntries(res.headers), body: Buffer.from(await res.arrayBuffer()) });
+        } else {
+          await route.fulfill({ response: await route.fetch() });
+        }
       } catch {
         await route.abort();
       }

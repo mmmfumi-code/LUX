@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+/* ブランドのデザイントークン。採用グラフィックの tokens.css（graphic/vN/<方向>/tokens.css）から移す */
+@theme {
+  --color-bg: #f3f1ed;
+  --color-surface: #e7e4de;
+  --color-ink: #1d1c1a;
+  --color-ink-2: #6b6862;
+  --color-accent: #8a7f70;
+  --font-display: "Inter", "Noto Sans JP", sans-serif;
+  --font-body: "Noto Sans JP", sans-serif;
+  --font-latin: "Inter", sans-serif;
+}
+
+html { background: var(--color-bg); color: var(--color-ink); }
+body { font-family: var(--font-body); -webkit-font-smoothing: antialiased; font-feature-settings: "palt"; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
