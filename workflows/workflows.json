@@ -1,42 +1,179 @@
 {
-  "_comment": "工程定義の唯一の正本。scripts/studio.py と各 workflows/*.md はこの定義に従う。gate=true の工程は、ユーザー承認なしに次工程へ進めない。",
+  "_comment": "工程定義の唯一の正本。scripts/studio.py と各 workflows/*.md はこの定義に従う。gate=true の工程は、ユーザー承認なしに次工程へ進めない。dirs=プロジェクト作成時のフォルダ、stage.dir=その工程の成果物の保存先（省略時は stages/<id>/）。",
   "product": {
     "name": "PRODUCT DESIGN WORKFLOW",
     "doc": "workflows/product-design.md",
+    "trigger": "「〇〇のデザインを提案してください」",
+    "dirs": [
+      "research",
+      "product",
+      "graphic",
+      "video",
+      "web",
+      "final",
+      "prompts"
+    ],
     "stages": [
-      {"id": "01-brief",     "title": "ブリーフ作成",           "agent": "product-strategist", "gate": true},
-      {"id": "02-research",  "title": "ユーザー・競合調査",     "agent": "product-researcher", "gate": true},
-      {"id": "03-concept",   "title": "コンセプト・要件定義",   "agent": "product-strategist", "gate": true},
-      {"id": "04-ux",        "title": "情報設計・画面フロー・ワイヤー", "agent": "ux-designer", "gate": true},
-      {"id": "05-ui",        "title": "ビジュアル・デザインシステム", "agent": "ui-designer", "gate": true},
-      {"id": "06-prototype", "title": "プロトタイプ・実装仕様", "agent": "prototype-engineer", "gate": false},
-      {"id": "07-review",    "title": "デザインレビュー・最終納品", "agent": "design-critic", "gate": true}
+      {
+        "id": "01-research",
+        "step": "STEP 1",
+        "title": "市場リサーチ",
+        "agent": "market-researcher",
+        "dir": "research",
+        "gate": false
+      },
+      {
+        "id": "02-planning",
+        "step": "STEP 2",
+        "title": "商品企画",
+        "agent": "product-planner",
+        "dir": "product",
+        "gate": false
+      },
+      {
+        "id": "03-design",
+        "step": "STEP 3",
+        "title": "プロダクトデザイン10案",
+        "agent": "product-designer",
+        "dir": "product",
+        "gate": false
+      },
+      {
+        "id": "04-board",
+        "step": "STEP 4 → STEP 5 USER APPROVAL",
+        "title": "A3プレゼンボード生成",
+        "agent": "presentation-designer",
+        "dir": "product",
+        "gate": true
+      },
+      {
+        "id": "06-graphic",
+        "step": "STEP 6 → STEP 7 USER APPROVAL",
+        "title": "グラフィックデザイン3案",
+        "agent": "graphic-designer",
+        "dir": "graphic",
+        "gate": true
+      },
+      {
+        "id": "08-video",
+        "step": "STEP 8 → STEP 9 USER APPROVAL",
+        "title": "プロモーション動画2案",
+        "agent": "video-director",
+        "dir": "video",
+        "gate": true
+      },
+      {
+        "id": "10-web",
+        "step": "STEP 10",
+        "title": "Webサイト制作",
+        "agent": "web-developer",
+        "dir": "web",
+        "gate": false
+      },
+      {
+        "id": "11-deploy",
+        "step": "STEP 11",
+        "title": "デプロイ準備（公開前の最終確認）",
+        "agent": "deploy-engineer",
+        "dir": "final",
+        "gate": true
+      }
     ]
   },
   "note": {
     "name": "NOTE CONTENT WORKFLOW",
     "doc": "workflows/note-content.md",
     "stages": [
-      {"id": "01-brief",    "title": "ブリーフ作成",                 "agent": "note-planner",    "gate": true},
-      {"id": "02-research", "title": "読者・テーマ・競合記事調査",   "agent": "note-researcher", "gate": true},
-      {"id": "03-outline",  "title": "タイトル案・構成案",           "agent": "note-planner",    "gate": true},
-      {"id": "04-draft",    "title": "本文執筆",                     "agent": "note-writer",     "gate": false},
-      {"id": "05-edit",     "title": "編集・校正",                   "agent": "note-editor",     "gate": true},
-      {"id": "06-visual",   "title": "見出し画像・図解",             "agent": "note-visual-designer", "gate": true},
-      {"id": "07-package",  "title": "公開パッケージ（最終承認）",   "agent": "note-editor",     "gate": true}
+      {
+        "id": "01-brief",
+        "title": "ブリーフ作成",
+        "agent": "note-planner",
+        "gate": true
+      },
+      {
+        "id": "02-research",
+        "title": "読者・テーマ・競合記事調査",
+        "agent": "note-researcher",
+        "gate": true
+      },
+      {
+        "id": "03-outline",
+        "title": "タイトル案・構成案",
+        "agent": "note-planner",
+        "gate": true
+      },
+      {
+        "id": "04-draft",
+        "title": "本文執筆",
+        "agent": "note-writer",
+        "gate": false
+      },
+      {
+        "id": "05-edit",
+        "title": "編集・校正",
+        "agent": "note-editor",
+        "gate": true
+      },
+      {
+        "id": "06-visual",
+        "title": "見出し画像・図解",
+        "agent": "note-visual-designer",
+        "gate": true
+      },
+      {
+        "id": "07-package",
+        "title": "公開パッケージ（最終承認）",
+        "agent": "note-editor",
+        "gate": true
+      }
     ]
   },
   "instagram": {
     "name": "INSTAGRAM CONTENT WORKFLOW",
     "doc": "workflows/instagram-content.md",
     "stages": [
-      {"id": "01-brief",    "title": "ブリーフ作成",                 "agent": "insta-strategist",      "gate": true},
-      {"id": "02-research", "title": "アカウント・トレンド・競合調査", "agent": "insta-researcher",    "gate": true},
-      {"id": "03-plan",     "title": "投稿企画・カレンダー",         "agent": "insta-strategist",      "gate": true},
-      {"id": "04-copy",     "title": "スライド原稿・リール台本",     "agent": "insta-copywriter",      "gate": true},
-      {"id": "05-visual",   "title": "ビジュアルデザイン",           "agent": "insta-visual-designer", "gate": true},
-      {"id": "06-caption",  "title": "キャプション・ハッシュタグ",   "agent": "insta-copywriter",      "gate": false},
-      {"id": "07-package",  "title": "投稿パッケージ（最終承認）",   "agent": "insta-strategist",      "gate": true}
+      {
+        "id": "01-brief",
+        "title": "ブリーフ作成",
+        "agent": "insta-strategist",
+        "gate": true
+      },
+      {
+        "id": "02-research",
+        "title": "アカウント・トレンド・競合調査",
+        "agent": "insta-researcher",
+        "gate": true
+      },
+      {
+        "id": "03-plan",
+        "title": "投稿企画・カレンダー",
+        "agent": "insta-strategist",
+        "gate": true
+      },
+      {
+        "id": "04-copy",
+        "title": "スライド原稿・リール台本",
+        "agent": "insta-copywriter",
+        "gate": true
+      },
+      {
+        "id": "05-visual",
+        "title": "ビジュアルデザイン",
+        "agent": "insta-visual-designer",
+        "gate": true
+      },
+      {
+        "id": "06-caption",
+        "title": "キャプション・ハッシュタグ",
+        "agent": "insta-copywriter",
+        "gate": false
+      },
+      {
+        "id": "07-package",
+        "title": "投稿パッケージ（最終承認）",
+        "agent": "insta-strategist",
+        "gate": true
+      }
     ]
   }
 }

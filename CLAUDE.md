@@ -13,11 +13,21 @@
 
 | 記号 | ワークフロー | key | 定義 | 起動コマンド |
 |---|---|---|---|---|
-| A | PRODUCT DESIGN WORKFLOW | `product` | `workflows/product-design.md` | `/product` |
+| A | PRODUCT DESIGN WORKFLOW | `product` | `workflows/product-design.md` | `/product-design`、または「〇〇のデザインを提案してください」 |
 | B | NOTE CONTENT WORKFLOW | `note` | `workflows/note-content.md` | `/note` |
 | C | INSTAGRAM CONTENT WORKFLOW | `instagram` | `workflows/instagram-content.md` | `/insta` |
 
 工程・担当Agent・承認ゲートの正本は **`workflows/workflows.json`**。矛盾があれば JSON を優先する。
+
+### A: PRODUCT DESIGN WORKFLOW のトリガー
+ユーザーが **「〇〇のデザインを提案してください」**（同じ意図の言い回しを含む）と言ったら、
+`.claude/commands/product-design.md` の手順で開始する（`/product-design 〇〇` と同じ）。
+`UserPromptSubmit` フック（`.claude/hooks/detect-trigger.py`）がこのフレーズを検知して知らせる。
+
+STEP 1 市場リサーチ → 2 商品企画 → 3 プロダクトデザイン10案 → 4 A3プレゼンボード → **🔒5 承認**
+→ 6 グラフィック3案 → **🔒7 承認** → 8 プロモーション動画2案 → **🔒9 承認** → 10 Webサイト → 11 デプロイ準備 → **🔒最終確認**
+
+成果物は `projects/<project-name>/` の `research/ product/ graphic/ video/ web/ final/` に保存する（詳細は `workflows/product-design.md`）。
 
 ## 2. 指示の振り分け（ユーザーが短い指示しか書かなくても動くこと）
 
@@ -25,7 +35,7 @@
 
 1. **どのプロジェクトか**: 発言・直近の会話・`python3 scripts/studio.py list` から特定する。
    特定できない場合のみ候補を示して一言確認する。新規テーマなら新規プロジェクトを提案する。
-2. **どのワークフローか**: アプリ・Web・UI・サービス設計 → A ／ note記事・ブログ・長文 → B ／ インスタ・投稿・カルーセル・リール → C
+2. **どのワークフローか**: 「〇〇のデザインを提案して」・商品／プロダクト／アプリのデザイン → A ／ note記事・ブログ・長文 → B ／ インスタ・投稿・カルーセル・リール → C
 3. **今どの工程か**: `python3 scripts/studio.py status <slug>` で確認し、その工程の担当Agentに渡す。
 4. **意図の種類**:
    - 「いいね」「OK」「これで」「採用」「進めて」 → 承認の可能性。**対象工程と採用案を復唱して確認してから** `/approve` 相当を実行
@@ -43,6 +53,9 @@
 - 承認は `python3 scripts/studio.py approve` でのみ記録する。このコマンドは `.claude/settings.json` で
   実行前に確認が必要な設定になっている。ユーザーが承認していないのにオーケストレーターが自分で実行してはならない。
 - `gate: false` の工程（自動進行）は、前工程が承認済みなら続けて実行してよい。完了後は次の🔒工程の提出まで続けて進めてよい。
+- A: PRODUCT DESIGN WORKFLOW では、ユーザーが承認したら次の🔒工程まで続けて進める（例: STEP 5 の承認 → STEP 6 を制作 → STEP 7 で停止）。
+  その他のワークフローでは、承認後もユーザーが「進めて」や `/next` と言うまで次工程を始めない。
+- 外部への公開・デプロイ・送信は、最終確認の承認に加えて、ユーザーが明示的に指示したときだけ行う。
 - 工程を開始する前に必ず `studio.py start` を実行する。前工程が未承認ならスクリプトがエラーを返す。**エラーを回避しようとしない。**
 - 複数案を出す工程では、ユーザーが選んだ案を `--adopt <file>` で採用案として記録する。
 
@@ -73,6 +86,8 @@ Agentに仕事を渡す前に、必ず `python3 scripts/studio.py context <slug>
 ## 5. 保存ルール（途中成果物を必ず保存すること）
 
 すべてプロジェクト単位で `projects/<slug>/` に保存する。チャットに出しただけの成果物は「存在しない」とみなす。
+ワークフローごとにフォルダ構成が決まっている場合（`workflows.json` の `dirs` と各工程の `dir`）はそれに従う。
+A: PRODUCT DESIGN は `research/ product/ graphic/ video/ web/ final/ prompts/`、B・C は以下の標準構成。
 
 ```
 projects/<slug>/
@@ -88,6 +103,7 @@ projects/<slug>/
 ```
 
 - 成果物は上書きせず **v1 → v2 → v3** と新しい版で保存する（保存先は `studio.py newver` で取得）。
+- HTML/SVG で作ったデザインは `node scripts/render.mjs png|pdf|board|video` で PNG・PDF（A3ボード）・動画(webm) に書き出す。
 - Agentに渡した依頼文は `prompts/<工程ID>-<agent>-v<N>.md` に保存してから Agent を呼ぶ。
 - 画像生成・デザインツール用のプロンプトは `prompts/` に、生成物は `assets/` に保存する。
 - 調査結果は `research/<工程ID>-<トピック>.md` に、出典（URL・取得日）つきで保存する。
@@ -99,7 +115,7 @@ projects/<slug>/
 2. `studio.py start <slug>` → 開始（ゲート違反ならここで止まる）
 3. `studio.py context <slug>` → 引き継ぎファイルを把握
 4. 依頼文を作成して `prompts/` に保存 → 専門Agentを起動（Agentツール、`subagent_type` = Agent名）
-5. Agentが `stages/<工程ID>/vN.md`（必要に応じて research/ assets/ にも）に保存
+5. Agentが `studio.py start` で示された保存先（例: `product/03-design-v1.md` や `stages/<工程ID>/v1.md`）と関連フォルダに保存
 6. オーケストレーターが品質チェック（ブリーフ・decisions との整合、Definition of Done の充足）
 7. `studio.py submit <slug> <成果物パス...>` → `handoff.md` を更新
 8. 🔒工程ならテンプレートで承認依頼を出して **停止**。自動進行工程なら次工程へ。
@@ -109,8 +125,9 @@ projects/<slug>/
 | コマンド | 用途 |
 |---|---|
 | `/studio <自由な指示>` | 何でも受け付ける窓口。オーケストレーターが振り分ける |
-| `/new <product\|note\|instagram> <テーマ>` | 新規プロジェクト作成とブリーフ作成 |
-| `/product` `/note` `/insta` `<テーマ or slug>` | 各ワークフローの開始・再開 |
+| `/product-design <〇〇>` | A: PRODUCT DESIGN WORKFLOW の開始・再開 |
+| `/new <product\|note\|instagram> <テーマ>` | 新規プロジェクト作成（product は `/product-design` の手順へ） |
+| `/note` `/insta` `<テーマ or slug>` | B・C ワークフローの開始・再開 |
 | `/next [slug]` | 次の工程を実行（承認済みの範囲のみ） |
 | `/approve [slug] [案/コメント]` | 現在の承認待ち工程を承認 |
 | `/revise [slug] <修正指示>` | 修正指示を出して作り直し |

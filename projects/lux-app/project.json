@@ -2,52 +2,59 @@
   "slug": "lux-app",
   "title": "LUX（スーパー価格比較アプリ）",
   "workflow": "product",
-  "created": "2026-09-27 15:56",
-  "updated": "2026-09-27 15:56",
+  "created": "2026-09-27 16:04",
+  "updated": "2026-09-27 16:04",
   "stages": {
-    "01-brief": {
+    "01-research": {
       "status": "pending",
       "versions": [],
       "adopted": null,
       "approved_at": null,
       "feedback": []
     },
-    "02-research": {
+    "02-planning": {
       "status": "pending",
       "versions": [],
       "adopted": null,
       "approved_at": null,
       "feedback": []
     },
-    "03-concept": {
+    "03-design": {
       "status": "pending",
       "versions": [],
       "adopted": null,
       "approved_at": null,
       "feedback": []
     },
-    "04-ux": {
+    "04-board": {
       "status": "pending",
       "versions": [],
       "adopted": null,
       "approved_at": null,
       "feedback": []
     },
-    "05-ui": {
+    "06-graphic": {
       "status": "pending",
       "versions": [],
       "adopted": null,
       "approved_at": null,
       "feedback": []
     },
-    "06-prototype": {
+    "08-video": {
       "status": "pending",
       "versions": [],
       "adopted": null,
       "approved_at": null,
       "feedback": []
     },
-    "07-review": {
+    "10-web": {
+      "status": "pending",
+      "versions": [],
+      "adopted": null,
+      "approved_at": null,
+      "feedback": []
+    },
+    "11-deploy": {
       "status": "pending",
       "versions": [],
       "adopted": null,

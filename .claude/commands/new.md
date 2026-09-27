@@ -1,5 +1,5 @@
 ---
-description: 新規プロジェクトを作成し、ブリーフ工程（01-brief）まで実行する
+description: 新規プロジェクトを作成し、最初の承認ゲートまで実行する
 argument-hint: <product|note|instagram> <テーマ・一言の説明>
 ---
 新規プロジェクトを作成します。CLAUDE.md の規約に従ってください。
@@ -7,6 +7,7 @@ argument-hint: <product|note|instagram> <テーマ・一言の説明>
 入力: $ARGUMENTS
 
 1. 先頭の語からワークフローを判定する（product / note / instagram。「アプリ」「note」「インスタ」などの日本語も可。省略されていたら内容から推定する）
+   - **product の場合は `/product-design` の手順に切り替える**（以下は note / instagram の手順）
 2. テーマから slug を決める（半角英小文字・数字・ハイフン。例: `lux-app`, `note-supermarket-saving`）
 3. `python3 scripts/studio.py new <workflow> <slug> --title "<日本語タイトル>"`
 4. ユーザーの説明と関連資料（README など）を `projects/<slug>/research/00-input.md` に原文のまま保存する

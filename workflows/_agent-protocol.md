@@ -7,15 +7,16 @@
 1. `projects/_studio/brand.md`、`projects/_studio/preferences.md`（ユーザーの好み・NG）
 2. `projects/<slug>/brief.md`、`handoff.md`、`decisions.md`
 3. 前工程の採用成果物
-4. 修正依頼の場合は `stages/<工程ID>/feedback.md` と直前の版
+4. 修正依頼の場合は、その工程の feedback ファイル（`<フォルダ>/<工程ID>-feedback.md` または `stages/<工程ID>/feedback.md`）と直前の版
 
 `decisions.md` に記録された承認済みの決定は **覆さない**。変えるべきだと思ったら、成果物の「申し送り」欄に提案として書く。
 
 ## 2. 保存ルール
-- 成果物はオーケストレーターが指定した保存先（`stages/<工程ID>/vN.md`）に保存する。**既存の版を上書きしない。**
-- 調査の生データ → `research/<工程ID>-<トピック>.md`（出典URL・取得日を必ず付ける）
+- 成果物はオーケストレーターが指定した保存先に保存する。**既存の版を上書きしない。**
+  - ワークフロー定義（`workflows/*.md`）にフォルダ構成が決められている場合はそれに従う（例: PRODUCT DESIGN は `research/ product/ graphic/ video/ web/ final/` で、成果物は `<フォルダ>/<工程ID>-vN.md`）
+  - 決められていない場合は `stages/<工程ID>/vN.md`、画像・HTML・SVG などは `assets/<工程ID>/...`
+- 調査の生データ → `research/` 内（出典URL・取得日を必ず付ける）
 - 画像生成・デザインツール用プロンプト → `prompts/<工程ID>-<内容>.md`
-- 画像・HTML・SVG などのファイル → `assets/<工程ID>/...`
 - チャットで返すだけで保存しない、は禁止。
 
 ## 3. 成果物ファイルの標準フォーマット

@@ -9,11 +9,24 @@
       "Bash(python3 scripts/studio.py start:*)",
       "Bash(python3 scripts/studio.py submit:*)",
       "Bash(python3 scripts/studio.py log:*)",
-      "Bash(python3 scripts/studio.py new:*)"
+      "Bash(python3 scripts/studio.py new:*)",
+      "Bash(node scripts/render.mjs:*)"
     ],
     "ask": [
       "Bash(python3 scripts/studio.py approve:*)",
       "Bash(python3 scripts/studio.py deliver:*)"
+    ]
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/detect-trigger.py\""
+          }
+        ]
+      }
     ]
   }
 }

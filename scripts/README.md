@@ -18,3 +18,15 @@
 | `deliver <slug> <files...>` | 最終承認後のみ output/<slug>/ に納品（実行前に確認が必要） |
 
 状態の遷移: 未着手 → 作業中 → 承認待ち →（承認）承認済み ／（修正指示）修正中 → 作業中 → …
+
+## render.mjs — HTML を PNG / PDF / 動画に書き出す（Playwright）
+
+| コマンド | 内容 |
+|---|---|
+| `node scripts/render.mjs png <in.html> <out.png> [--width 1200 --height 800 --scale 2 --full]` | 画像に書き出し（デザイン案・キービジュアル・スクリーンショット） |
+| `node scripts/render.mjs pdf <in.html> <out.pdf> [--format A3 --portrait]` | PDFに書き出し（既定は A3 横） |
+| `node scripts/render.mjs board <in.html> <out-basename>` | A3横プレゼンボードを `<out>.pdf` と `<out>.png` に同時出力 |
+| `node scripts/render.mjs video <in.html> <out.webm> [--width 1920 --height 1080 --duration 15]` | HTMLアニメーションを動画（webm）として録画 |
+
+- 日本語フォントは HTML 側で Google Fonts（Noto Sans JP など）を読み込む（書き出し前にフォントの読み込み完了を待つ）
+- MP4 が必要な場合は、ffmpeg を入れて `ffmpeg -i promo.webm -c:v libx264 -pix_fmt yuv420p promo.mp4` で変換する

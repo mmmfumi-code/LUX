@@ -1,67 +1,165 @@
 # A: PRODUCT DESIGN WORKFLOW
 
-アプリ・Webサービス・UIの企画からプロトタイプ／実装仕様までを設計する。
-起動: `/product <テーマ or slug>` ／ key: `product`
+市場リサーチから、プロダクトデザイン・グラフィック・プロモーション動画・Webサイト・デプロイ準備までを一気通貫で制作する。
+工程の正本は `workflows/workflows.json` の `product`。
 
-## 工程一覧
+## トリガー
 
-| 工程 | 名称 | 担当Agent | ゲート |
-|---|---|---|---|
-| 01-brief | ブリーフ作成 | product-strategist | 🔒 |
-| 02-research | ユーザー・競合調査 | product-researcher | 🔒 |
-| 03-concept | コンセプト・要件定義 | product-strategist | 🔒 |
-| 04-ux | 情報設計・画面フロー・ワイヤー | ux-designer | 🔒 |
-| 05-ui | ビジュアル・デザインシステム | ui-designer | 🔒 |
-| 06-prototype | プロトタイプ・実装仕様 | prototype-engineer | 自動 |
-| 07-review | デザインレビュー・最終納品 | design-critic | 🔒 |
+次のどちらかで開始する。
+- ユーザーの発言が **「〇〇のデザインを提案してください」**（「〇〇のデザイン案を出して」「〇〇をデザインして」など同じ意図の言い回しも含む）
+- コマンド **`/product-design 〇〇`**
+
+〇〇 が商品テーマになる。追加の質問はせずに開始する。不明な条件は仮説として `brief.md` に書き、STEP 5 の承認時にユーザーが修正できるようにする。
+
+## 全体フロー
+
+```
+STEP 1 市場リサーチ ─→ STEP 2 商品企画 ─→ STEP 3 プロダクトデザイン10案 ─→ STEP 4 A3プレゼンボード
+   （ここまで自動で連続実行）
+                                                     ↓
+                                   🔒 STEP 5 USER APPROVAL（10案から採用案を決定）
+                                                     ↓
+                                   STEP 6 グラフィックデザイン3案
+                                                     ↓
+                                   🔒 STEP 7 USER APPROVAL（グラフィック案を決定）
+                                                     ↓
+                                   STEP 8 プロモーション動画2案
+                                                     ↓
+                                   🔒 STEP 9 USER APPROVAL（動画案を決定）
+                                                     ↓
+                     STEP 10 Webサイト制作 ─→ STEP 11 デプロイ準備
+                                                     ↓
+                                   🔒 最終確認（公開の可否。実際のデプロイは承認後にユーザーの指示で行う）
+```
+
+| STEP | 工程ID | 名称 | 担当Agent | 保存先 | ゲート |
+|---|---|---|---|---|---|
+| 1 | 01-research | 市場リサーチ | market-researcher | `research/` | 自動 |
+| 2 | 02-planning | 商品企画 | product-planner | `product/` | 自動 |
+| 3 | 03-design | プロダクトデザイン10案 | product-designer | `product/` | 自動 |
+| 4 | 04-board | A3プレゼンボード生成 | presentation-designer | `product/` | 🔒 → STEP 5 |
+| 5 | — | **USER APPROVAL** | （ユーザー） | `decisions.md` | — |
+| 6 | 06-graphic | グラフィックデザイン3案 | graphic-designer | `graphic/` | 🔒 → STEP 7 |
+| 7 | — | **USER APPROVAL** | （ユーザー） | `decisions.md` | — |
+| 8 | 08-video | プロモーション動画2案 | video-director | `video/` | 🔒 → STEP 9 |
+| 9 | — | **USER APPROVAL** | （ユーザー） | `decisions.md` | — |
+| 10 | 10-web | Webサイト制作 | web-developer | `web/` | 自動 |
+| 11 | 11-deploy | デプロイ準備 | deploy-engineer | `final/` | 🔒 最終確認 |
+
+**承認ステップ（5・7・9・最終確認）では絶対に自動で次へ進まない。** オーケストレーターは承認依頼を出した時点でターンを終え、ユーザーの返答を待つ。
+
+## プロジェクトのフォルダ構成
+
+```
+projects/<project-name>/
+├── project.json / brief.md / handoff.md / decisions.md / log.md   # 進行管理（studio.py）
+├── research/
+│   ├── 00-input.md                 # ユーザーの指示の原文
+│   ├── 01-research-vN.md           # STEP 1 リサーチレポート
+│   └── notes/                      # 調査の生データ・出典（URL・取得日つき）
+├── product/
+│   ├── 02-planning-vN.md           # STEP 2 商品企画書
+│   ├── 03-design-vN.md             # STEP 3 10案の一覧・比較
+│   ├── designs/vN/design-01〜10.(html|svg|png), contact-sheet.png
+│   ├── 04-board-vN.md              # STEP 4 ボードの説明・承認依頼の内容
+│   ├── board/vN/board.html, board.pdf, board.png
+│   └── 04-board-adopted.md         # STEP 5 で採用された案（承認時に作成）
+├── graphic/
+│   ├── 06-graphic-vN.md            # STEP 6 3案の説明
+│   ├── vN/A|B|C/ logo.svg, key-visual.(html|png), package.(html|png), ...
+│   ├── vN/overview.png             # 3案の比較用画像
+│   └── 06-graphic-adopted.md       # STEP 7 で採用された案
+├── video/
+│   ├── 08-video-vN.md              # STEP 8 2案の説明
+│   ├── vN/A|B/ script.md, storyboard.(html|png), promo.html, promo.webm
+│   └── 08-video-adopted.md         # STEP 9 で採用された案
+├── web/
+│   ├── 10-web-vN.md                # STEP 10 サイト仕様・確認結果
+│   ├── site/                       # 公開用の静的サイト（index.html が入口）
+│   └── screenshots/                # desktop.png / mobile.png
+├── final/
+│   ├── 11-deploy-vN.md             # STEP 11 デプロイ準備レポート
+│   ├── site/                       # デプロイする完成版サイト
+│   ├── DEPLOY.md                   # デプロイ手順
+│   └── deliverables/               # 納品物一式（ボード・グラフィック・動画）
+└── prompts/                        # Agentへの依頼文、画像生成AI用プロンプト（すべて保存）
+```
+
+描画ツール: `node scripts/render.mjs png|pdf|board|video ...`（Playwright）。HTML/SVG で作ったデザインを PNG・PDF・動画(webm) に書き出す。
 
 ---
 
-## 01-brief ブリーフ作成 🔒
-- **入力**: ユーザーの一言、README等の既存資料、`_studio/preferences.md`
-- **作業**: 目的・ターゲット・解決する課題・成功指標・スコープ（やる/やらない）・制約を整理。不明点は「仮説」として埋め、確認事項リストを付ける
-- **出力**: `brief.md` を更新／`stages/01-brief/vN.md`（ブリーフ＋確認事項）
-- **DoD**: 1行で言えるプロダクトの目的、主要ターゲット1〜2種、成功指標、スコープ外の明記
-- **承認で確認すること**: 目的とターゲットはこれで合っているか
+## STEP 1 市場リサーチ（01-research / market-researcher / 自動）
+- **入力**: `research/00-input.md`、`brief.md`、`_studio/` の記憶
+- **作業**: 市場規模・トレンド、競合商品 8〜12件（価格・素材・デザインの特徴・評判）、ターゲット像と購買動機、デザインのトレンド（形・色・素材・仕上げ）、機会領域
+- **出力**: `research/01-research-vN.md`、`research/notes/*.md`（出典URL・取得日）、競合のポジショニングマップ（SVG/PNG を `research/` に）
+- **完了条件**: 事実には出典がある、デザインへの示唆が5つ以上ある
 
-## 02-research ユーザー・競合調査 🔒
-- **入力**: 承認済みブリーフ
-- **作業**: 競合・代替手段（5〜10件）の機能・UX・価格・レビューの不満点、ターゲットの行動と課題、機会領域
-- **出力**: `research/02-*.md`（出典つき生データ）／`stages/02-research/vN.md`（要約・ペルソナ・機会領域・示唆）
-- **DoD**: 全ての事実に出典URLと取得日、競合比較表、ペルソナ1〜2名、示唆3つ以上
-- **承認で確認すること**: どの機会領域・ペルソナに絞るか
+## STEP 2 商品企画（02-planning / product-planner / 自動）
+- **入力**: STEP 1
+- **作業**: 商品コンセプト（一言コピー）、ターゲット・ペルソナ、提供価値、仕様（サイズ・素材・機能の想定）、価格帯と販売チャネル、差別化ポイント、デザインの要件（必須/NG）
+- **出力**: `product/02-planning-vN.md`
+- **完了条件**: STEP 3 の10案を評価する「評価軸」（5〜6項目）が定義されている
 
-## 03-concept コンセプト・要件定義 🔒
-- **入力**: 採用された調査結果
-- **作業**: コンセプト案を **3案**（方向性の違うもの）提示→推奨案を明示。採用案について価値提案・主要ユーザーストーリー・MVP機能一覧（MoSCoW）
-- **出力**: `stages/03-concept/vN.md`
-- **DoD**: 3案の比較表（狙い・強み・リスク）、推奨理由、MVPの Must 機能が10以下
-- **承認で確認すること**: どの案を採用するか（`--adopt` で記録）、MVPスコープ
+## STEP 3 プロダクトデザイン10案（03-design / product-designer / 自動）
+- **入力**: STEP 2 の企画・評価軸
+- **作業**: 方向性がはっきり異なる **10案**。各案: 名前、コンセプト、形・構造、CMF（色・素材・仕上げ）、使うシーン、評価軸での自己採点、長所と懸念点
+- **ビジュアル**: 各案のコンセプトビジュアル（SVG/HTML → PNG）、10案の一覧画像（contact-sheet.png）、画像生成AI用のプロンプト（`prompts/03-design-image-prompts-vN.md`、日本語で意図＋英語のプロンプト）
+- **出力**: `product/03-design-vN.md`、`product/designs/vN/`
+- **完了条件**: 10案すべてにビジュアルと評価がある、推奨する上位3案を理由つきで示している
 
-## 04-ux 情報設計・画面フロー・ワイヤー 🔒
-- **入力**: 採用コンセプト・MVP要件
-- **作業**: 画面一覧、主要タスクのユーザーフロー（Mermaid）、各画面のワイヤー（テキスト/ASCII または `assets/` に低忠実度HTML）
-- **出力**: `stages/04-ux/vN.md`、必要なら `assets/wireframes/*.html`
-- **DoD**: 主要タスクが3タップ以内で完了するか検証済み、空状態・エラー状態を含む
-- **承認で確認すること**: 画面構成と導線
+## STEP 4 A3プレゼンボード生成（04-board / presentation-designer / 🔒）
+- **入力**: STEP 1〜3
+- **作業**: A3横（420×297mm）のプレゼンボードをHTMLで制作し、PDFとPNGを書き出す
+  - 構成（標準）: タイトル・コンセプト／市場の示唆（要点3つ）／10案の一覧（サムネイル＋一言）／推奨3案の詳細／評価の比較表／次のステップ
+  - `node scripts/render.mjs board product/board/vN/board.html product/board/vN/board`
+- **出力**: `product/04-board-vN.md`（ボードの要点と承認依頼の内容）、`product/board/vN/board.(html|pdf|png)`
+- **完了条件**: 印刷して読める文字サイズ（本文9pt相当以上）、PNGで見て崩れがない
+- **提出後は STEP 5 で停止**
 
-## 05-ui ビジュアル・デザインシステム 🔒
-- **入力**: 承認済みワイヤー、`_studio/brand.md`
-- **作業**: ムード/方向性を **2〜3案**（配色・タイポ・トーン）→採用案でデザイントークン（色・文字・余白・角丸）、主要コンポーネント、主要画面のビジュアルモック（HTML/CSS を `assets/` に）
-- **出力**: `stages/05-ui/vN.md`、`assets/ui/`（トークン JSON/CSS、モックHTML）、画像生成を使う場合は `prompts/`
-- **DoD**: コントラスト比 WCAG AA 以上、ライト/ダーク両対応の方針、トークン化されている
-- **承認で確認すること**: ビジュアルの方向性
+## STEP 5 USER APPROVAL 🔒
+ユーザーに確認すること: **10案のうちどれを採用するか**（1案、または組み合わせ）、修正したい点、brief の仮説の訂正
+- 採用 → 採用案を `product/04-board-adopted.md` にまとめ、`studio.py approve --adopt product/04-board-adopted.md`
+- 組み合わせや修正の指示（「3番の形に7番の色で」など） → `revise` で STEP 3〜4 の修正版を作る（前の版は残す）
 
-## 06-prototype プロトタイプ・実装仕様（自動進行）
-- **入力**: 承認済み UI
-- **作業**: クリックできるHTMLプロトタイプ（`assets/prototype/`）、実装仕様（画面ごとの状態・データ項目・コンポーネント対応表）
-- **出力**: `stages/06-prototype/vN.md`、`assets/prototype/`
-- **DoD**: 主要フローがブラウザで一通り動く、仕様書だけで実装者が着手できる
-- 自動進行のため、完了後はそのまま 07 へ進む
+## STEP 6 グラフィックデザイン3案（06-graphic / graphic-designer / 🔒）
+- **入力**: 採用されたプロダクトデザイン、STEP 2 の企画
+- **作業**: 方向性の異なる **3案**。各案: ブランド名の扱い、ロゴ（SVG）、カラーパレット（HEX）、書体、キービジュアル、パッケージ／ラベル（該当する場合）、Web・SNSへの展開例
+- **出力**: `graphic/06-graphic-vN.md`、`graphic/vN/A|B|C/`、`graphic/vN/overview.png`（3案の比較）
+- **完了条件**: 3案とも同じ項目がそろい、比較画像で違いが一目で分かる
+- **提出後は STEP 7 で停止**
 
-## 07-review デザインレビュー・最終納品 🔒
-- **入力**: 全採用成果物
-- **作業**: ブリーフ・要件との整合、ユーザビリティ（ヒューリスティック評価）、アクセシビリティ、一貫性のレビュー。重大指摘は該当工程への差し戻しを提案（オーケストレーターがユーザーに確認）
-- **出力**: `stages/07-review/vN.md`（レビュー結果＋納品物リスト）
-- **DoD**: 指摘が重大度つきで整理され、納品物が揃っている
-- **承認後**: `studio.py deliver` で `output/<slug>/` に納品
+## STEP 7 USER APPROVAL 🔒
+確認すること: **3案のどれを採用するか**、修正点 → 採用案を `graphic/06-graphic-adopted.md` にまとめて承認記録
+
+## STEP 8 プロモーション動画2案（08-video / video-director / 🔒）
+- **入力**: 採用プロダクト・採用グラフィック
+- **作業**: 切り口の異なる **2案**（例: 情緒・ストーリー型／機能訴求型）。各案:
+  - 企画意図、尺（15〜30秒）、構成台本（秒数・映像・テロップ・ナレーション・音の指示）
+  - 絵コンテ（storyboard.html → PNG）
+  - HTML/CSSアニメーションで作った動画（`promo.html` → `node scripts/render.mjs video ... --duration <秒>` で `promo.webm`、1920×1080。必要なら縦型 1080×1920 も）
+  - 実写撮影や動画生成AIで作り直す場合の指示書・プロンプトは `prompts/08-video-*.md` に保存
+- **出力**: `video/08-video-vN.md`、`video/vN/A|B/`
+- **完了条件**: 2案とも実際に再生できる動画ファイルがある
+- **提出後は STEP 9 で停止**
+
+## STEP 9 USER APPROVAL 🔒
+確認すること: **2案のどちらを採用するか**、修正点 → 採用案を `video/08-video-adopted.md` にまとめて承認記録
+
+## STEP 10 Webサイト制作（10-web / web-developer / 自動）
+- **入力**: 採用されたプロダクト・グラフィック・動画、商品企画
+- **作業**: 商品のプロモーション用サイト（LP）。構成例: ヒーロー（キービジュアル＋動画）、コンセプト、特徴、デザイン詳細、スペック、ストーリー、購入・問い合わせのCTA、フッター
+  - HTML/CSS/JS の静的サイト（外部依存は最小限。フォントは Google Fonts）
+  - レスポンシブ対応、アクセシビリティ（alt、コントラスト、見出し構造）、OGP・favicon
+  - desktop（1440幅）と mobile（390幅）のスクリーンショットで表示を確認
+- **出力**: `web/site/`、`web/screenshots/`、`web/10-web-vN.md`
+- 自動進行のため、完了後はそのまま STEP 11 へ
+
+## STEP 11 デプロイ準備（11-deploy / deploy-engineer / 🔒 最終確認）
+- **作業**:
+  - `web/site/` を `final/site/` にまとめる（画像の最適化、リンク切れ・パス・メタ情報のチェック）
+  - 公開先の候補（GitHub Pages / Netlify / Vercel など）と設定ファイル、`final/DEPLOY.md`（手順・必要なアカウント・独自ドメインの設定）
+  - 納品物一式を `final/deliverables/` に集める（A3ボードPDF、採用グラフィック、採用動画、企画書）
+  - 公開前チェックリスト
+- **出力**: `final/11-deploy-vN.md`、`final/site/`、`final/DEPLOY.md`、`final/deliverables/`
+- **実際のデプロイ（外部への公開）はこの工程では行わない。** 最終確認で承認され、ユーザーが公開を指示したときにだけ行う

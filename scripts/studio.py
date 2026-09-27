@@ -132,11 +132,25 @@ def resolve_stage(p: dict, sid: str | None, want: set[str] | None = None) -> str
     return s["id"]
 
 
+def stage_prefix(p: dict, sid: str) -> tuple[Path, str]:
+    """工程の成果物フォルダとファイル名の接頭辞。stage.dir があれば <dir>/<id>-vN.md、なければ stages/<id>/vN.md"""
+    d = stage_def(p, sid)
+    if d.get("dir"):
+        return project_dir(p["slug"]) / d["dir"], f"{sid}-"
+    return project_dir(p["slug"]) / "stages" / sid, ""
+
+
+def feedback_path(p: dict, sid: str) -> Path:
+    folder, prefix = stage_prefix(p, sid)
+    return folder / f"{prefix}feedback.md"
+
+
 def next_version_path(p: dict, sid: str) -> Path:
-    d = project_dir(p["slug"]) / "stages" / sid
-    d.mkdir(parents=True, exist_ok=True)
-    nums = [int(m.group(1)) for f in d.iterdir() if (m := re.match(r"v(\d+)", f.name))]
-    return d / f"v{max(nums, default=0) + 1}.md"
+    folder, prefix = stage_prefix(p, sid)
+    folder.mkdir(parents=True, exist_ok=True)
+    pat = re.compile(re.escape(prefix) + r"v(\d+)")
+    nums = [int(m.group(1)) for f in folder.iterdir() if (m := pat.match(f.name))]
+    return folder / f"{prefix}v{max(nums, default=0) + 1}.md"
 
 
 # ---------------------------------------------------------------- commands
@@ -152,11 +166,9 @@ def cmd_new(a) -> None:
         die(f"プロジェクト '{a.slug}' は既に存在します")
     wf = wfs[a.workflow]
     title = a.title or a.slug
-    for sub in ["research", "prompts", "assets", "stages"]:
+    for sub in wf.get("dirs", ["research", "prompts", "assets", "stages"]):
         (d / sub).mkdir(parents=True, exist_ok=True)
         (d / sub / ".gitkeep").touch()
-    for s in wf["stages"]:
-        (d / "stages" / s["id"]).mkdir(exist_ok=True)
 
     (d / "brief.md").write_text(
         f"# ブリーフ: {title}\n\n"
@@ -221,7 +233,8 @@ def cmd_status(a) -> None:
         extra = f"  採用: {st['adopted']}" if st["adopted"] else ""
         if not extra and st["versions"]:
             extra = f"  最新: {st['versions'][-1]}"
-        print(f"  {s['id']:<13} {STATUS_LABEL[st['status']]:<6} {gate}  {s['title']} [{s['agent']}]{extra}")
+        step = f"{s['step']} " if s.get("step") else ""
+        print(f"  {s['id']:<13} {STATUS_LABEL[st['status']]:<6} {gate}  {step}{s['title']} [{s['agent']}]{extra}")
     print()
     cmd_next(a)
 
@@ -236,7 +249,7 @@ def cmd_next(a) -> None:
     msg = {
         "pending": f"{s['id']} を開始できます（担当: {s['agent']}）",
         "in_progress": f"{s['id']} は作業中です。成果物を保存して submit してください",
-        "revision": f"{s['id']} は修正指示を受けています（stages/{s['id']}/feedback.md）。修正版を作成してください",
+        "revision": f"{s['id']} は修正指示を受けています（{rel(feedback_path(p, s['id']))}）。修正版を作成してください",
         "awaiting_approval": f"{s['id']} はユーザーの承認待ちです。承認（/approve）か修正指示（/revise）が出るまで先へ進めません",
     }[st]
     print(f"次のアクション: {msg}")
@@ -263,7 +276,7 @@ def cmd_start(a) -> None:
     print(f"開始: {sid} {d['title']}（担当Agent: {d['agent']}）")
     print(f"保存先: {rel(next_version_path(p, sid))}")
     if was_revision:
-        print(f"修正指示: {rel(project_dir(p['slug']) / 'stages' / sid / 'feedback.md')}")
+        print(f"修正指示: {rel(feedback_path(p, sid))}")
 
 
 def cmd_newver(a) -> None:
@@ -330,7 +343,7 @@ def cmd_revise(a) -> None:
         if s["id"] == sid:
             reset = True
     save(p)
-    append(project_dir(p["slug"]) / "stages" / sid / "feedback.md", f"\n## {now()}\n{a.note}\n")
+    append(feedback_path(p, sid), f"\n## {now()}\n{a.note}\n")
     log(p, f"{sid} 修正指示: {a.note}")
     print(f"🔁 {sid} に修正指示を記録しました。")
 
@@ -354,10 +367,11 @@ def cmd_context(a) -> None:
                 print(f"- {s['id']}: {f}")
     ns = next_stage(p)
     if ns:
-        fb = d / "stages" / ns["id"] / "feedback.md"
+        fb = feedback_path(p, ns["id"])
         if fb.exists():
             print(f"# 現工程への修正指示\n- {rel(fb)}")
-    research = [f for f in sorted((d / "research").glob("*")) if f.name != ".gitkeep"]
+    research = [f for f in sorted((d / "research").glob("*"))
+                if f.is_file() and f.name != ".gitkeep" and not f.name.startswith("01-research-")]
     if research:
         print("# 調査資料")
         for f in research:
