@@ -87,7 +87,10 @@ description: PRODUCT DESIGN WORKFLOW の STEP 3（プロダクトデザイン10�
 ## 5. ビジュアル（必須）
 
 - **画像には文字を入れない。** 日本語の説明・ラベルは STEP 4 のボード（HTML）で組むため、画像は製品だけを見せる（番号・矢印・寸法線などの記号は可）
-- 案ごとに次の画像を SVG（または HTML/CSS）で作り、PNG に書き出す（`node scripts/render.mjs png <in> <out.png> --width 1200 --height 1200`）
+- **立体物（家具・プロダクト）のメインビジュアルは、3Dレンダー `node scripts/render3d.mjs` を優先する**（部品を寸法 mm で組み立てた scene JSON → 影つき PNG。書き方は `scripts/render3d/README.md`）
+  - scene JSON は `product/designs/vN/design-XX.scene.json` に保存し、`node scripts/render3d.mjs product/designs/vN/design-XX.scene.json product/designs/vN/design-XX --views three-quarter,front,side` で書き出す（メインは `design-XX-three-quarter.png`）
+  - 寸法・部品構成は仕様（形状・構造・製造方法）と一致させる。構造図は分解した状態の scene や `side`／`top` ビューで作る
+- 平面的な図（構造の説明図・ディテールの図解など）は SVG（または HTML/CSS）で作り、PNG に書き出す（`node scripts/render.mjs png <in> <out.png> --width 1200 --height 1200`）
 
 | 画像 | ファイル名 | 内容 |
 |---|---|---|

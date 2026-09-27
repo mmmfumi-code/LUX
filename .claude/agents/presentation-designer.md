@@ -76,7 +76,7 @@ product-designer の各デザイン案を **1案につき1枚の A3横ボード*
 | 役割 | 推奨ファイル名 | 無い場合 |
 |---|---|---|
 | メインビジュアル | `design-XX.png`（または .svg） | 必須。無ければオーケストレーターに報告 |
-| 構造図 | `design-XX-structure.svg` | 自分で SVG を描く（分解図・断面図。番号と引き出し線だけ、文字なし） |
+| 構造図 | `design-XX-structure.svg`（または `.png`） | `design-XX.scene.json` があれば、部品を離した分解状態の scene を作って `node scripts/render3d.mjs` で描画する。無ければ SVG を描く（番号と引き出し線だけ、文字なし） |
 | ディテール 1・2 | `design-XX-detail-1.svg` / `-2.svg` | 自分で SVG を描く（部分の拡大図） |
 | 使用シーン | `design-XX-scene.png` / `.svg` | 簡潔な SVG のシーン図を描く。写真のような画像が必要なら、画像生成AI用プロンプトを `prompts/04-board-scene-XX.md` に保存 |
 

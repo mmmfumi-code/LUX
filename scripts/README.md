@@ -72,3 +72,11 @@ node scripts/web-check.mjs web/site web/check [--video] [--base /repo-name]
 
 Next.js（App Router・静的書き出し）＋ TypeScript ＋ Tailwind CSS ＋ GSAP ScrollTrigger ＋ Lenis。
 `web/app/` にコピーし、`npm install` → `npm run export` で `web/site/` に書き出す。
+
+## render3d.mjs — プロダクトの3Dコンセプトレンダー
+
+```
+node scripts/render3d.mjs <scene.json> <out-basename> [--views three-quarter,front,side]
+```
+
+部品（板・角丸ブロック・円柱・繰り返し）を寸法 mm で組み立てた scene JSON を、竹・木・布・金属などの質感と柔らかい影つきで PNG に描画する。詳細は `scripts/render3d/README.md`。
