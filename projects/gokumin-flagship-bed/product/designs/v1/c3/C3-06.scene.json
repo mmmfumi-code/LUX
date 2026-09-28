@@ -1,0 +1,412 @@
+{
+ "canvas": {
+  "width": 1600,
+  "height": 1200
+ },
+ "background": "#ecebe8",
+ "camera": {
+  "fov": 28,
+  "margin": 0.9,
+  "zoom": 1.12
+ },
+ "lighting": {
+  "key": 2.3,
+  "fill": 0.6,
+  "rim": 0.55,
+  "hemi": 0.6
+ },
+ "shadowOpacity": 0.2,
+ "materials": {
+  "felt": {
+   "type": "fabric",
+   "color": "#3a3835"
+  },
+  "mattress": {
+   "type": "mattress",
+   "color": "#f3f1ec"
+  },
+  "mattress_top": {
+   "type": "mattress",
+   "color": "#faf9f6"
+  },
+  "steel": {
+   "type": "metal",
+   "color": "#2a2a2a",
+   "roughness": 0.45
+  },
+  "under": {
+   "type": "matte",
+   "color": "#2c2b29",
+   "roughness": 0.8
+  },
+  "seam": {
+   "type": "matte",
+   "color": "#2f2e2b"
+  },
+  "flange": {
+   "type": "metal",
+   "color": "#232323",
+   "roughness": 0.5
+  },
+  "socket": {
+   "type": "metal",
+   "color": "#8a8a88",
+   "roughness": 0.4
+  },
+  "robot": {
+   "type": "glossy",
+   "color": "#e9e8e5"
+  },
+  "robot_top": {
+   "type": "glossy",
+   "color": "#2d2e30"
+  },
+  "robot_skirt": {
+   "type": "matte",
+   "color": "#555555"
+  },
+  "shell": {
+   "type": "matte",
+   "color": "#55544f",
+   "roughness": 0.75
+  },
+  "slat": {
+   "type": "bamboo",
+   "color": "#d6b98c"
+  },
+  "fin": {
+   "type": "matte",
+   "color": "#4a4945",
+   "roughness": 0.75
+  }
+ },
+ "parts": [
+  {
+   "type": "rbox",
+   "size": [
+    1000,
+    70,
+    657.0
+   ],
+   "position": [
+    0,
+    160.0,
+    -660.0
+   ],
+   "material": "shell",
+   "radius": 24
+  },
+  {
+   "type": "array",
+   "count": 9,
+   "step": [
+    0,
+    0,
+    65.55555555555556
+   ],
+   "of": {
+    "type": "rbox",
+    "size": [
+     890,
+     10,
+     50
+    ],
+    "position": [
+     0,
+     198,
+     -922.2222222222222
+    ],
+    "material": "slat",
+    "radius": 3
+   }
+  },
+  {
+   "type": "rbox",
+   "size": [
+    1000,
+    70,
+    657.0
+   ],
+   "position": [
+    0,
+    160.0,
+    0
+   ],
+   "material": "shell",
+   "radius": 24
+  },
+  {
+   "type": "array",
+   "count": 9,
+   "step": [
+    0,
+    0,
+    65.55555555555556
+   ],
+   "of": {
+    "type": "rbox",
+    "size": [
+     890,
+     10,
+     50
+    ],
+    "position": [
+     0,
+     198,
+     -262.22222222222223
+    ],
+    "material": "slat",
+    "radius": 3
+   }
+  },
+  {
+   "type": "rbox",
+   "size": [
+    1000,
+    70,
+    657.0
+   ],
+   "position": [
+    0,
+    160.0,
+    660.0
+   ],
+   "material": "shell",
+   "radius": 24
+  },
+  {
+   "type": "array",
+   "count": 9,
+   "step": [
+    0,
+    0,
+    65.55555555555556
+   ],
+   "of": {
+    "type": "rbox",
+    "size": [
+     890,
+     10,
+     50
+    ],
+    "position": [
+     0,
+     198,
+     397.77777777777777
+    ],
+    "material": "slat",
+    "radius": 3
+   }
+  },
+  {
+   "type": "rbox",
+   "size": [
+    24,
+    121,
+    200
+   ],
+   "position": [
+    -330.0,
+    62.5,
+    -660
+   ],
+   "material": "fin",
+   "radius": 8
+  },
+  {
+   "type": "rbox",
+   "size": [
+    20,
+    3,
+    190
+   ],
+   "position": [
+    -330.0,
+    1.5,
+    -660
+   ],
+   "material": "felt",
+   "radius": 1
+  },
+  {
+   "type": "rbox",
+   "size": [
+    24,
+    121,
+    200
+   ],
+   "position": [
+    -330.0,
+    62.5,
+    0
+   ],
+   "material": "fin",
+   "radius": 8
+  },
+  {
+   "type": "rbox",
+   "size": [
+    20,
+    3,
+    190
+   ],
+   "position": [
+    -330.0,
+    1.5,
+    0
+   ],
+   "material": "felt",
+   "radius": 1
+  },
+  {
+   "type": "rbox",
+   "size": [
+    24,
+    121,
+    200
+   ],
+   "position": [
+    -330.0,
+    62.5,
+    660
+   ],
+   "material": "fin",
+   "radius": 8
+  },
+  {
+   "type": "rbox",
+   "size": [
+    20,
+    3,
+    190
+   ],
+   "position": [
+    -330.0,
+    1.5,
+    660
+   ],
+   "material": "felt",
+   "radius": 1
+  },
+  {
+   "type": "rbox",
+   "size": [
+    24,
+    121,
+    200
+   ],
+   "position": [
+    330.0,
+    62.5,
+    -660
+   ],
+   "material": "fin",
+   "radius": 8
+  },
+  {
+   "type": "rbox",
+   "size": [
+    20,
+    3,
+    190
+   ],
+   "position": [
+    330.0,
+    1.5,
+    -660
+   ],
+   "material": "felt",
+   "radius": 1
+  },
+  {
+   "type": "rbox",
+   "size": [
+    24,
+    121,
+    200
+   ],
+   "position": [
+    330.0,
+    62.5,
+    0
+   ],
+   "material": "fin",
+   "radius": 8
+  },
+  {
+   "type": "rbox",
+   "size": [
+    20,
+    3,
+    190
+   ],
+   "position": [
+    330.0,
+    1.5,
+    0
+   ],
+   "material": "felt",
+   "radius": 1
+  },
+  {
+   "type": "rbox",
+   "size": [
+    24,
+    121,
+    200
+   ],
+   "position": [
+    330.0,
+    62.5,
+    660
+   ],
+   "material": "fin",
+   "radius": 8
+  },
+  {
+   "type": "rbox",
+   "size": [
+    20,
+    3,
+    190
+   ],
+   "position": [
+    330.0,
+    1.5,
+    660
+   ],
+   "material": "felt",
+   "radius": 1
+  },
+  {
+   "type": "rbox",
+   "size": [
+    970,
+    230,
+    1950
+   ],
+   "position": [
+    0,
+    318,
+    0
+   ],
+   "material": "mattress",
+   "radius": 30
+  },
+  {
+   "type": "rbox",
+   "size": [
+    960,
+    50,
+    1940
+   ],
+   "position": [
+    0,
+    458,
+    0
+   ],
+   "material": "mattress_top",
+   "radius": 26
+  }
+ ]
+}

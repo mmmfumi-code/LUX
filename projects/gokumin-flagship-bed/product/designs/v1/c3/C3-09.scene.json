@@ -1,0 +1,842 @@
+{
+ "canvas": {
+  "width": 1600,
+  "height": 1200
+ },
+ "background": "#ecebe8",
+ "camera": {
+  "fov": 28,
+  "margin": 0.9,
+  "zoom": 1.12
+ },
+ "lighting": {
+  "key": 2.3,
+  "fill": 0.6,
+  "rim": 0.55,
+  "hemi": 0.6
+ },
+ "shadowOpacity": 0.2,
+ "materials": {
+  "felt": {
+   "type": "fabric",
+   "color": "#3a3835"
+  },
+  "mattress": {
+   "type": "mattress",
+   "color": "#f3f1ec"
+  },
+  "mattress_top": {
+   "type": "mattress",
+   "color": "#faf9f6"
+  },
+  "steel": {
+   "type": "metal",
+   "color": "#2a2a2a",
+   "roughness": 0.45
+  },
+  "under": {
+   "type": "matte",
+   "color": "#2c2b29",
+   "roughness": 0.8
+  },
+  "seam": {
+   "type": "matte",
+   "color": "#3a332b"
+  },
+  "flange": {
+   "type": "metal",
+   "color": "#232323",
+   "roughness": 0.5
+  },
+  "socket": {
+   "type": "metal",
+   "color": "#8a8a88",
+   "roughness": 0.4
+  },
+  "robot": {
+   "type": "glossy",
+   "color": "#e9e8e5"
+  },
+  "robot_top": {
+   "type": "glossy",
+   "color": "#2d2e30"
+  },
+  "robot_skirt": {
+   "type": "matte",
+   "color": "#555555"
+  },
+  "edge": {
+   "type": "bamboo",
+   "color": "#3e3a36"
+  },
+  "edge_z": {
+   "type": "bamboo",
+   "color": "#3e3a36",
+   "grain": "z"
+  },
+  "slat": {
+   "type": "bamboo",
+   "color": "#4a4541"
+  },
+  "leg": {
+   "type": "matte",
+   "color": "#161616",
+   "roughness": 0.9
+  },
+  "led": {
+   "type": "emissive",
+   "color": "#ffcf8a",
+   "intensity": 2.2
+  },
+  "pool": {
+   "type": "emissive",
+   "color": "#f6d7a4",
+   "intensity": 0.55
+  },
+  "pool2": {
+   "type": "emissive",
+   "color": "#f1dcb8",
+   "intensity": 0.35
+  }
+ },
+ "parts": [
+  {
+   "type": "rbox",
+   "size": [
+    40,
+    70,
+    656.0
+   ],
+   "position": [
+    -480.0,
+    160.0,
+    -660.0
+   ],
+   "material": "edge_z",
+   "radius": 8
+  },
+  {
+   "type": "rbox",
+   "size": [
+    40,
+    70,
+    656.0
+   ],
+   "position": [
+    480.0,
+    160.0,
+    -660.0
+   ],
+   "material": "edge_z",
+   "radius": 8
+  },
+  {
+   "type": "array",
+   "count": 8,
+   "step": [
+    0,
+    0,
+    80.0
+   ],
+   "of": {
+    "type": "rbox",
+    "size": [
+     916,
+     14,
+     56
+    ],
+    "position": [
+     0,
+     186,
+     -940.0
+    ],
+    "material": "slat",
+    "radius": 3
+   }
+  },
+  {
+   "type": "rbox",
+   "size": [
+    40,
+    70,
+    656.0
+   ],
+   "position": [
+    -480.0,
+    160.0,
+    0
+   ],
+   "material": "edge_z",
+   "radius": 8
+  },
+  {
+   "type": "rbox",
+   "size": [
+    40,
+    70,
+    656.0
+   ],
+   "position": [
+    480.0,
+    160.0,
+    0
+   ],
+   "material": "edge_z",
+   "radius": 8
+  },
+  {
+   "type": "array",
+   "count": 8,
+   "step": [
+    0,
+    0,
+    80.0
+   ],
+   "of": {
+    "type": "rbox",
+    "size": [
+     916,
+     14,
+     56
+    ],
+    "position": [
+     0,
+     186,
+     -280.0
+    ],
+    "material": "slat",
+    "radius": 3
+   }
+  },
+  {
+   "type": "rbox",
+   "size": [
+    40,
+    70,
+    656.0
+   ],
+   "position": [
+    -480.0,
+    160.0,
+    660.0
+   ],
+   "material": "edge_z",
+   "radius": 8
+  },
+  {
+   "type": "rbox",
+   "size": [
+    40,
+    70,
+    656.0
+   ],
+   "position": [
+    480.0,
+    160.0,
+    660.0
+   ],
+   "material": "edge_z",
+   "radius": 8
+  },
+  {
+   "type": "array",
+   "count": 8,
+   "step": [
+    0,
+    0,
+    80.0
+   ],
+   "of": {
+    "type": "rbox",
+    "size": [
+     916,
+     14,
+     56
+    ],
+    "position": [
+     0,
+     186,
+     380.0
+    ],
+    "material": "slat",
+    "radius": 3
+   }
+  },
+  {
+   "type": "rbox",
+   "size": [
+    922,
+    70,
+    40
+   ],
+   "position": [
+    0,
+    160.0,
+    -970.0
+   ],
+   "material": "edge",
+   "radius": 8
+  },
+  {
+   "type": "rbox",
+   "size": [
+    922,
+    70,
+    40
+   ],
+   "position": [
+    0,
+    160.0,
+    970.0
+   ],
+   "material": "edge",
+   "radius": 8
+  },
+  {
+   "type": "box",
+   "size": [
+    920,
+    6,
+    1900
+   ],
+   "position": [
+    0,
+    128,
+    0
+   ],
+   "material": "under"
+  },
+  {
+   "type": "box",
+   "size": [
+    40,
+    40,
+    1860
+   ],
+   "position": [
+    -260,
+    151.0,
+    0
+   ],
+   "material": "steel"
+  },
+  {
+   "type": "box",
+   "size": [
+    40,
+    40,
+    1860
+   ],
+   "position": [
+    260,
+    151.0,
+    0
+   ],
+   "material": "steel"
+  },
+  {
+   "type": "box",
+   "size": [
+    34,
+    60,
+    4
+   ],
+   "position": [
+    -480.0,
+    160.0,
+    -330.0
+   ],
+   "material": "seam"
+  },
+  {
+   "type": "box",
+   "size": [
+    34,
+    60,
+    4
+   ],
+   "position": [
+    480.0,
+    160.0,
+    -330.0
+   ],
+   "material": "seam"
+  },
+  {
+   "type": "box",
+   "size": [
+    34,
+    60,
+    4
+   ],
+   "position": [
+    -480.0,
+    160.0,
+    330.0
+   ],
+   "material": "seam"
+  },
+  {
+   "type": "box",
+   "size": [
+    34,
+    60,
+    4
+   ],
+   "position": [
+    480.0,
+    160.0,
+    330.0
+   ],
+   "material": "seam"
+  },
+  {
+   "type": "box",
+   "size": [
+    10,
+    3,
+    1800
+   ],
+   "position": [
+    -440.0,
+    123,
+    0
+   ],
+   "material": "led"
+  },
+  {
+   "type": "box",
+   "size": [
+    10,
+    3,
+    1800
+   ],
+   "position": [
+    440.0,
+    123,
+    0
+   ],
+   "material": "led"
+  },
+  {
+   "type": "box",
+   "size": [
+    870,
+    3,
+    10
+   ],
+   "position": [
+    0,
+    123,
+    -930.0
+   ],
+   "material": "led"
+  },
+  {
+   "type": "box",
+   "size": [
+    870,
+    3,
+    10
+   ],
+   "position": [
+    0,
+    123,
+    930.0
+   ],
+   "material": "led"
+  },
+  {
+   "type": "rbox",
+   "size": [
+    50,
+    117,
+    50
+   ],
+   "position": [
+    -300.0,
+    62.5,
+    -640
+   ],
+   "material": "leg",
+   "radius": 5
+  },
+  {
+   "type": "cylinder",
+   "height": 8,
+   "position": [
+    -300.0,
+    121,
+    -640
+   ],
+   "material": "flange",
+   "radius": 43.0
+  },
+  {
+   "type": "cylinder",
+   "height": 4,
+   "position": [
+    -300.0,
+    2,
+    -640
+   ],
+   "material": "felt",
+   "radius": 23.0
+  },
+  {
+   "type": "rbox",
+   "size": [
+    50,
+    117,
+    50
+   ],
+   "position": [
+    -300.0,
+    62.5,
+    0
+   ],
+   "material": "leg",
+   "radius": 5
+  },
+  {
+   "type": "cylinder",
+   "height": 8,
+   "position": [
+    -300.0,
+    121,
+    0
+   ],
+   "material": "flange",
+   "radius": 43.0
+  },
+  {
+   "type": "cylinder",
+   "height": 4,
+   "position": [
+    -300.0,
+    2,
+    0
+   ],
+   "material": "felt",
+   "radius": 23.0
+  },
+  {
+   "type": "rbox",
+   "size": [
+    50,
+    117,
+    50
+   ],
+   "position": [
+    -300.0,
+    62.5,
+    640
+   ],
+   "material": "leg",
+   "radius": 5
+  },
+  {
+   "type": "cylinder",
+   "height": 8,
+   "position": [
+    -300.0,
+    121,
+    640
+   ],
+   "material": "flange",
+   "radius": 43.0
+  },
+  {
+   "type": "cylinder",
+   "height": 4,
+   "position": [
+    -300.0,
+    2,
+    640
+   ],
+   "material": "felt",
+   "radius": 23.0
+  },
+  {
+   "type": "rbox",
+   "size": [
+    50,
+    117,
+    50
+   ],
+   "position": [
+    300.0,
+    62.5,
+    -640
+   ],
+   "material": "leg",
+   "radius": 5
+  },
+  {
+   "type": "cylinder",
+   "height": 8,
+   "position": [
+    300.0,
+    121,
+    -640
+   ],
+   "material": "flange",
+   "radius": 43.0
+  },
+  {
+   "type": "cylinder",
+   "height": 4,
+   "position": [
+    300.0,
+    2,
+    -640
+   ],
+   "material": "felt",
+   "radius": 23.0
+  },
+  {
+   "type": "rbox",
+   "size": [
+    50,
+    117,
+    50
+   ],
+   "position": [
+    300.0,
+    62.5,
+    0
+   ],
+   "material": "leg",
+   "radius": 5
+  },
+  {
+   "type": "cylinder",
+   "height": 8,
+   "position": [
+    300.0,
+    121,
+    0
+   ],
+   "material": "flange",
+   "radius": 43.0
+  },
+  {
+   "type": "cylinder",
+   "height": 4,
+   "position": [
+    300.0,
+    2,
+    0
+   ],
+   "material": "felt",
+   "radius": 23.0
+  },
+  {
+   "type": "rbox",
+   "size": [
+    50,
+    117,
+    50
+   ],
+   "position": [
+    300.0,
+    62.5,
+    640
+   ],
+   "material": "leg",
+   "radius": 5
+  },
+  {
+   "type": "cylinder",
+   "height": 8,
+   "position": [
+    300.0,
+    121,
+    640
+   ],
+   "material": "flange",
+   "radius": 43.0
+  },
+  {
+   "type": "cylinder",
+   "height": 4,
+   "position": [
+    300.0,
+    2,
+    640
+   ],
+   "material": "felt",
+   "radius": 23.0
+  },
+  {
+   "type": "rbox",
+   "size": [
+    970,
+    230,
+    1950
+   ],
+   "position": [
+    0,
+    310,
+    0
+   ],
+   "material": "mattress",
+   "radius": 30
+  },
+  {
+   "type": "rbox",
+   "size": [
+    960,
+    50,
+    1940
+   ],
+   "position": [
+    0,
+    450,
+    0
+   ],
+   "material": "mattress_top",
+   "radius": 26
+  },
+  {
+   "type": "cylinder",
+   "radius": 560.0,
+   "height": 0.4,
+   "position": [
+    0,
+    0.3,
+    0
+   ],
+   "scale": [
+    1,
+    1,
+    1.9821428571428572
+   ],
+   "material": {
+    "type": "emissive",
+    "color": "#e9e2d4",
+    "intensity": 0.144
+   }
+  },
+  {
+   "type": "cylinder",
+   "radius": 505.0,
+   "height": 0.4,
+   "position": [
+    0,
+    0.6,
+    0
+   ],
+   "scale": [
+    1,
+    1,
+    2.1584158415841586
+   ],
+   "material": {
+    "type": "emissive",
+    "color": "#ece1cc",
+    "intensity": 0.22400000000000003
+   }
+  },
+  {
+   "type": "cylinder",
+   "radius": 450.0,
+   "height": 0.4,
+   "position": [
+    0,
+    0.8999999999999999,
+    0
+   ],
+   "scale": [
+    1,
+    1,
+    2.3777777777777778
+   ],
+   "material": {
+    "type": "emissive",
+    "color": "#efdfc2",
+    "intensity": 0.30400000000000005
+   }
+  },
+  {
+   "type": "cylinder",
+   "radius": 395.0,
+   "height": 0.4,
+   "position": [
+    0,
+    1.2,
+    0
+   ],
+   "scale": [
+    1,
+    1,
+    2.6582278481012658
+   ],
+   "material": {
+    "type": "emissive",
+    "color": "#f2ddb8",
+    "intensity": 0.38400000000000006
+   }
+  },
+  {
+   "type": "cylinder",
+   "radius": 340.0,
+   "height": 0.4,
+   "position": [
+    0,
+    1.5,
+    0
+   ],
+   "scale": [
+    1,
+    1,
+    3.0294117647058822
+   ],
+   "material": {
+    "type": "emissive",
+    "color": "#f5dbae",
+    "intensity": 0.4640000000000001
+   }
+  },
+  {
+   "type": "cylinder",
+   "radius": 285.0,
+   "height": 0.4,
+   "position": [
+    0,
+    1.8,
+    0
+   ],
+   "scale": [
+    1,
+    1,
+    3.543859649122807
+   ],
+   "material": {
+    "type": "emissive",
+    "color": "#f7d8a3",
+    "intensity": 0.5439999999999999
+   }
+  },
+  {
+   "type": "cylinder",
+   "radius": 230.0,
+   "height": 0.4,
+   "position": [
+    0,
+    2.0999999999999996,
+    0
+   ],
+   "scale": [
+    1,
+    1,
+    4.304347826086956
+   ],
+   "material": {
+    "type": "emissive",
+    "color": "#f9d598",
+    "intensity": 0.6240000000000001
+   }
+  }
+ ]
+}
