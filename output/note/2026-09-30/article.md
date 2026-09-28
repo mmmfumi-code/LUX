@@ -270,14 +270,4 @@ GV のデザインスプリント（Knapp・Zeratsky・Kowitz『Sprint』2016年
 
 ---
 
-**参考**
-- Ulrich, Eppinger, Yang『Product Design and Development』7th ed.（McGraw Hill, 2020）
-- Pugh のコンセプト選定マトリクス（Schmidt, Wiley Encyclopedia of Operations Research, 2010）
-- Stage-Gate International「Improving Go/Kill Decision Culture」
-- GV Library「Sprint: Wednesday」（John Zeratsky）
-- Norton, Mochon, Ariely (2012) "The IKEA Effect", Journal of Consumer Psychology 22(3)
-- Stevens & Burley (1997) "3,000 Raw Ideas = 1 Commercial Success!", Research-Technology Management 40(3)
-- Bill Buxton "What Sketches (and Prototypes) Are and Are Not"
-- Design Council「The Double Diamond」／ NN/g「Dot Voting」
-- JIS Z 8115 ／ JIS Q 9001:2015 8.3.4
-（URL は references.md。2026年9月時点の情報です）
+参考：Ulrich & Eppinger『Product Design and Development』、Pugh のコンセプト選定、Stage-Gate（Cooper）、GV『Sprint』、IKEA効果（Norton ら 2012）、Stevens & Burley（1997）、Buxton、Design Council、NN/g、JIS Z 8115／JIS Q 9001（2026年9月時点で確認）。
