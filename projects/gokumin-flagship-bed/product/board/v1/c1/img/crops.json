@@ -1,0 +1,186 @@
+[
+ {
+  "src": "../../../../designs/v1/c1/C1-01-frame.png",
+  "out": "C1-01-detail-corner.png",
+  "x": 430,
+  "y": 520,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-01-frame.png",
+  "out": "C1-01-detail-seam.png",
+  "x": 800,
+  "y": 470,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-02-frame.png",
+  "out": "C1-02-detail-corner.png",
+  "x": 430,
+  "y": 520,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-02-frame.png",
+  "out": "C1-02-detail-seam.png",
+  "x": 800,
+  "y": 470,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-03-frame.png",
+  "out": "C1-03-detail-corner.png",
+  "x": 430,
+  "y": 520,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-03-frame.png",
+  "out": "C1-03-detail-seam.png",
+  "x": 800,
+  "y": 470,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-04-frame.png",
+  "out": "C1-04-detail-corner.png",
+  "x": 430,
+  "y": 520,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-04-frame.png",
+  "out": "C1-04-detail-seam.png",
+  "x": 800,
+  "y": 470,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-05-frame.png",
+  "out": "C1-05-detail-corner.png",
+  "x": 430,
+  "y": 520,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-05-frame.png",
+  "out": "C1-05-detail-seam.png",
+  "x": 800,
+  "y": 470,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-06-frame.png",
+  "out": "C1-06-detail-corner.png",
+  "x": 430,
+  "y": 520,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-06-frame.png",
+  "out": "C1-06-detail-seam.png",
+  "x": 800,
+  "y": 470,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-07-frame.png",
+  "out": "C1-07-detail-corner.png",
+  "x": 430,
+  "y": 520,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-07-frame.png",
+  "out": "C1-07-detail-seam.png",
+  "x": 800,
+  "y": 470,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-08-frame.png",
+  "out": "C1-08-detail-corner.png",
+  "x": 430,
+  "y": 520,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-08-frame.png",
+  "out": "C1-08-detail-seam.png",
+  "x": 800,
+  "y": 470,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-09-frame.png",
+  "out": "C1-09-detail-corner.png",
+  "x": 430,
+  "y": 520,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-09-frame.png",
+  "out": "C1-09-detail-seam.png",
+  "x": 800,
+  "y": 470,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-10-frame.png",
+  "out": "C1-10-detail-corner.png",
+  "x": 430,
+  "y": 520,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-10-frame.png",
+  "out": "C1-10-detail-seam.png",
+  "x": 800,
+  "y": 470,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-07-three-quarter-left.png",
+  "out": "C1-07-detail-caster.png",
+  "x": 320,
+  "y": 470,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-02-side.png",
+  "out": "C1-02-detail-leg.png",
+  "x": 1000,
+  "y": 440,
+  "w": 420,
+  "h": 520
+ },
+ {
+  "src": "../../../../designs/v1/c1/C1-10-low.png",
+  "out": "C1-10-detail-base.png",
+  "x": 660,
+  "y": 480,
+  "w": 420,
+  "h": 520
+ }
+]

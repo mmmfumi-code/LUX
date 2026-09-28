@@ -320,7 +320,7 @@ function overview(d, boards, total) {
   const cards = boards.map((b) => `
     <div class="card ${b.recommended ? "rec" : ""}">
       ${b.recommended ? '<span class="badge">RECOMMENDED</span>' : ""}
-      ${img(b.main_visual || b.key_visual || b.key_frame || b.frames?.[0]?.image, b.main_visual ? "" : "cover", b.name)}
+      ${img(b.overview_visual || b.main_visual || b.key_visual || b.key_frame || b.frames?.[0]?.image, (b.overview_visual || b.main_visual) ? "" : "cover", b.name)}
       <div class="row1"><span class="cno">${esc(b.no)}</span><span class="ctype">${esc(b.type)}</span></div>
       <div class="cname">${esc(b.name)}</div>
       <div class="ctag">${esc(b.tagline)}</div>

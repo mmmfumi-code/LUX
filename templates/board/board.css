@@ -54,7 +54,7 @@ body {
 .hd .no {
   grid-column: 1 / 2;
   font-family: var(--latin); font-weight: 200;
-  font-size: 44px; line-height: .8; letter-spacing: -0.02em;
+  font-size: 44px; line-height: .8; letter-spacing: -0.02em; white-space: nowrap;
 }
 .hd .title { grid-column: 2 / 8; }
 .hd .type {
