@@ -1,0 +1,488 @@
+{
+ "canvas": {
+  "width": 1600,
+  "height": 1200
+ },
+ "background": "#ecebe8",
+ "camera": {
+  "fov": 28,
+  "margin": 0.9,
+  "zoom": 1.15
+ },
+ "lighting": {
+  "key": 2.3,
+  "fill": 0.6,
+  "rim": 0.55,
+  "hemi": 0.6
+ },
+ "shadowOpacity": 0.2,
+ "materials": {
+  "bamboo": {
+   "type": "bamboo",
+   "color": "#dcc09a"
+  },
+  "bamboo_z": {
+   "type": "bamboo",
+   "color": "#dcc09a",
+   "grain": "z"
+  },
+  "steel": {
+   "type": "metal",
+   "color": "#2a2a2a",
+   "roughness": 0.45
+  },
+  "felt": {
+   "type": "fabric",
+   "color": "#3a3835"
+  },
+  "mattress": {
+   "type": "mattress",
+   "color": "#f3f1ec"
+  },
+  "mattress_top": {
+   "type": "mattress",
+   "color": "#faf9f6"
+  }
+ },
+ "parts": [
+  {
+   "type": "group",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "parts": [
+    {
+     "type": "group",
+     "position": [
+      0,
+      200,
+      0
+     ],
+     "parts": [
+      {
+       "type": "rbox",
+       "size": [
+        24,
+        58,
+        658
+       ],
+       "position": [
+        -483,
+        -29,
+        -660
+       ],
+       "material": "bamboo_z",
+       "radius": 3
+      },
+      {
+       "type": "rbox",
+       "size": [
+        24,
+        58,
+        658
+       ],
+       "position": [
+        483,
+        -29,
+        -660
+       ],
+       "material": "bamboo_z",
+       "radius": 3
+      },
+      {
+       "type": "rbox",
+       "size": [
+        944,
+        58,
+        24
+       ],
+       "position": [
+        0,
+        -29,
+        -977
+       ],
+       "material": "bamboo",
+       "radius": 3
+      },
+      {
+       "type": "rbox",
+       "size": [
+        944,
+        43.5,
+        24
+       ],
+       "position": [
+        0,
+        -21.75,
+        -343
+       ],
+       "material": "bamboo",
+       "radius": 3
+      },
+      {
+       "type": "box",
+       "size": [
+        40,
+        36,
+        610
+       ],
+       "position": [
+        0,
+        -34,
+        -660
+       ],
+       "material": "steel"
+      },
+      {
+       "type": "array",
+       "count": 13,
+       "step": [
+        0,
+        0,
+        46.92307692307692
+       ],
+       "of": {
+        "type": "rbox",
+        "size": [
+         938,
+         14,
+         40
+        ],
+        "position": [
+         0,
+         -8,
+         -941.5384615384615
+        ],
+        "material": "bamboo",
+        "radius": 2
+       }
+      },
+      {
+       "type": "group",
+       "position": [
+        0,
+        -48,
+        -660
+       ],
+       "rotation": [
+        0,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "rbox",
+         "size": [
+          650,
+          132,
+          20
+         ],
+         "position": [
+          0,
+          -66,
+          0
+         ],
+         "material": "bamboo",
+         "radius": 6
+        }
+       ]
+      },
+      {
+       "type": "rbox",
+       "size": [
+        24,
+        58,
+        658
+       ],
+       "position": [
+        -483,
+        -29,
+        0
+       ],
+       "material": "bamboo_z",
+       "radius": 3
+      },
+      {
+       "type": "rbox",
+       "size": [
+        24,
+        58,
+        658
+       ],
+       "position": [
+        483,
+        -29,
+        0
+       ],
+       "material": "bamboo_z",
+       "radius": 3
+      },
+      {
+       "type": "rbox",
+       "size": [
+        944,
+        43.5,
+        24
+       ],
+       "position": [
+        0,
+        -21.75,
+        -317
+       ],
+       "material": "bamboo",
+       "radius": 3
+      },
+      {
+       "type": "rbox",
+       "size": [
+        944,
+        43.5,
+        24
+       ],
+       "position": [
+        0,
+        -21.75,
+        317
+       ],
+       "material": "bamboo",
+       "radius": 3
+      },
+      {
+       "type": "box",
+       "size": [
+        40,
+        36,
+        610
+       ],
+       "position": [
+        0,
+        -34,
+        0
+       ],
+       "material": "steel"
+      },
+      {
+       "type": "array",
+       "count": 13,
+       "step": [
+        0,
+        0,
+        46.92307692307692
+       ],
+       "of": {
+        "type": "rbox",
+        "size": [
+         938,
+         14,
+         40
+        ],
+        "position": [
+         0,
+         -8,
+         -281.53846153846155
+        ],
+        "material": "bamboo",
+        "radius": 2
+       }
+      },
+      {
+       "type": "group",
+       "position": [
+        0,
+        -48,
+        0
+       ],
+       "rotation": [
+        0,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "rbox",
+         "size": [
+          650,
+          132,
+          20
+         ],
+         "position": [
+          0,
+          -66,
+          0
+         ],
+         "material": "bamboo",
+         "radius": 6
+        }
+       ]
+      },
+      {
+       "type": "rbox",
+       "size": [
+        24,
+        58,
+        658
+       ],
+       "position": [
+        -483,
+        -29,
+        660
+       ],
+       "material": "bamboo_z",
+       "radius": 3
+      },
+      {
+       "type": "rbox",
+       "size": [
+        24,
+        58,
+        658
+       ],
+       "position": [
+        483,
+        -29,
+        660
+       ],
+       "material": "bamboo_z",
+       "radius": 3
+      },
+      {
+       "type": "rbox",
+       "size": [
+        944,
+        43.5,
+        24
+       ],
+       "position": [
+        0,
+        -21.75,
+        343
+       ],
+       "material": "bamboo",
+       "radius": 3
+      },
+      {
+       "type": "rbox",
+       "size": [
+        944,
+        58,
+        24
+       ],
+       "position": [
+        0,
+        -29,
+        977
+       ],
+       "material": "bamboo",
+       "radius": 3
+      },
+      {
+       "type": "box",
+       "size": [
+        40,
+        36,
+        610
+       ],
+       "position": [
+        0,
+        -34,
+        660
+       ],
+       "material": "steel"
+      },
+      {
+       "type": "array",
+       "count": 13,
+       "step": [
+        0,
+        0,
+        46.92307692307692
+       ],
+       "of": {
+        "type": "rbox",
+        "size": [
+         938,
+         14,
+         40
+        ],
+        "position": [
+         0,
+         -8,
+         378.46153846153845
+        ],
+        "material": "bamboo",
+        "radius": 2
+       }
+      },
+      {
+       "type": "group",
+       "position": [
+        0,
+        -48,
+        660
+       ],
+       "rotation": [
+        0,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "rbox",
+         "size": [
+          650,
+          132,
+          20
+         ],
+         "position": [
+          0,
+          -66,
+          0
+         ],
+         "material": "bamboo",
+         "radius": 6
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "parts": [
+    {
+     "type": "rbox",
+     "size": [
+      970,
+      225,
+      1950
+     ],
+     "position": [
+      0,
+      312.5,
+      0
+     ],
+     "material": "mattress",
+     "radius": 30
+    },
+    {
+     "type": "rbox",
+     "size": [
+      960,
+      60,
+      1940
+     ],
+     "position": [
+      0,
+      453,
+      0
+     ],
+     "material": "mattress_top",
+     "radius": 28
+    }
+   ]
+  }
+ ]
+}

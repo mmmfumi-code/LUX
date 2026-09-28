@@ -1,0 +1,811 @@
+{
+ "canvas": {
+  "width": 1600,
+  "height": 1200
+ },
+ "background": "#ecebe8",
+ "camera": {
+  "fov": 28,
+  "margin": 0.9,
+  "zoom": 1.15
+ },
+ "lighting": {
+  "key": 2.3,
+  "fill": 0.6,
+  "rim": 0.55,
+  "hemi": 0.6
+ },
+ "shadowOpacity": 0.2,
+ "materials": {
+  "bamboo": {
+   "type": "bamboo",
+   "color": "#d9b88a"
+  },
+  "bamboo_z": {
+   "type": "bamboo",
+   "color": "#d9b88a",
+   "grain": "z"
+  },
+  "steel": {
+   "type": "metal",
+   "color": "#2a2a2a",
+   "roughness": 0.45
+  },
+  "felt": {
+   "type": "fabric",
+   "color": "#3a3835"
+  },
+  "mattress": {
+   "type": "mattress",
+   "color": "#f3f1ec"
+  },
+  "mattress_top": {
+   "type": "mattress",
+   "color": "#faf9f6"
+  },
+  "smoke": {
+   "type": "bamboo",
+   "color": "#7a5738",
+   "seed": 13
+  }
+ },
+ "parts": [
+  {
+   "type": "group",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "parts": [
+    {
+     "type": "group",
+     "position": [
+      0,
+      215,
+      0
+     ],
+     "parts": [
+      {
+       "type": "rbox",
+       "size": [
+        40,
+        70,
+        596
+       ],
+       "position": [
+        -480,
+        -35,
+        -660
+       ],
+       "material": "bamboo_z",
+       "radius": 6
+      },
+      {
+       "type": "rbox",
+       "size": [
+        40,
+        70,
+        596
+       ],
+       "position": [
+        480,
+        -35,
+        -660
+       ],
+       "material": "bamboo_z",
+       "radius": 6
+      },
+      {
+       "type": "rbox",
+       "size": [
+        922,
+        70,
+        40
+       ],
+       "position": [
+        0,
+        -35,
+        -938
+       ],
+       "material": "bamboo",
+       "radius": 6
+      },
+      {
+       "type": "rbox",
+       "size": [
+        922,
+        52.5,
+        40
+       ],
+       "position": [
+        0,
+        -26.25,
+        -382
+       ],
+       "material": "bamboo",
+       "radius": 6
+      },
+      {
+       "type": "box",
+       "size": [
+        40,
+        40,
+        516
+       ],
+       "position": [
+        0,
+        -37,
+        -660
+       ],
+       "material": "steel"
+      },
+      {
+       "type": "array",
+       "count": 6,
+       "step": [
+        0,
+        0,
+        86
+       ],
+       "of": {
+        "type": "rbox",
+        "size": [
+         916,
+         15,
+         66
+        ],
+        "position": [
+         0,
+         -10.5,
+         -875
+        ],
+        "material": "bamboo",
+        "radius": 3
+       }
+      },
+      {
+       "type": "group",
+       "position": [
+        0,
+        -60,
+        -808
+       ],
+       "rotation": [
+        0,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "rbox",
+         "size": [
+          820,
+          135,
+          36
+         ],
+         "position": [
+          0,
+          -67.5,
+          0
+         ],
+         "material": "smoke",
+         "radius": 6
+        }
+       ]
+      },
+      {
+       "type": "rbox",
+       "size": [
+        40,
+        70,
+        596
+       ],
+       "position": [
+        -480,
+        -35,
+        0
+       ],
+       "material": "bamboo_z",
+       "radius": 6
+      },
+      {
+       "type": "rbox",
+       "size": [
+        40,
+        70,
+        596
+       ],
+       "position": [
+        480,
+        -35,
+        0
+       ],
+       "material": "bamboo_z",
+       "radius": 6
+      },
+      {
+       "type": "rbox",
+       "size": [
+        922,
+        52.5,
+        40
+       ],
+       "position": [
+        0,
+        -26.25,
+        -278
+       ],
+       "material": "bamboo",
+       "radius": 6
+      },
+      {
+       "type": "rbox",
+       "size": [
+        922,
+        52.5,
+        40
+       ],
+       "position": [
+        0,
+        -26.25,
+        278
+       ],
+       "material": "bamboo",
+       "radius": 6
+      },
+      {
+       "type": "box",
+       "size": [
+        40,
+        40,
+        516
+       ],
+       "position": [
+        0,
+        -37,
+        0
+       ],
+       "material": "steel"
+      },
+      {
+       "type": "array",
+       "count": 6,
+       "step": [
+        0,
+        0,
+        86
+       ],
+       "of": {
+        "type": "rbox",
+        "size": [
+         916,
+         15,
+         66
+        ],
+        "position": [
+         0,
+         -10.5,
+         -215
+        ],
+        "material": "bamboo",
+        "radius": 3
+       }
+      },
+      {
+       "type": "group",
+       "position": [
+        0,
+        -60,
+        -178
+       ],
+       "rotation": [
+        0,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "rbox",
+         "size": [
+          820,
+          135,
+          36
+         ],
+         "position": [
+          0,
+          -67.5,
+          0
+         ],
+         "material": "smoke",
+         "radius": 6
+        }
+       ]
+      },
+      {
+       "type": "group",
+       "position": [
+        0,
+        -60,
+        178
+       ],
+       "rotation": [
+        0,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "rbox",
+         "size": [
+          820,
+          135,
+          36
+         ],
+         "position": [
+          0,
+          -67.5,
+          0
+         ],
+         "material": "smoke",
+         "radius": 6
+        }
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 31,
+       "height": 108.11111111111111,
+       "position": [
+        -444.44444444444446,
+        -32,
+        -330
+       ],
+       "rotation": [
+        0,
+        0,
+        90
+       ],
+       "material": "smoke"
+      },
+      {
+       "type": "cylinder",
+       "radius": 31,
+       "height": 108.11111111111111,
+       "position": [
+        -333.33333333333337,
+        -32,
+        -330
+       ],
+       "rotation": [
+        0,
+        0,
+        90
+       ],
+       "material": "bamboo"
+      },
+      {
+       "type": "cylinder",
+       "radius": 31,
+       "height": 108.11111111111111,
+       "position": [
+        -222.22222222222223,
+        -32,
+        -330
+       ],
+       "rotation": [
+        0,
+        0,
+        90
+       ],
+       "material": "smoke"
+      },
+      {
+       "type": "cylinder",
+       "radius": 31,
+       "height": 108.11111111111111,
+       "position": [
+        -111.11111111111109,
+        -32,
+        -330
+       ],
+       "rotation": [
+        0,
+        0,
+        90
+       ],
+       "material": "bamboo"
+      },
+      {
+       "type": "cylinder",
+       "radius": 31,
+       "height": 108.11111111111111,
+       "position": [
+        0,
+        -32,
+        -330
+       ],
+       "rotation": [
+        0,
+        0,
+        90
+       ],
+       "material": "smoke"
+      },
+      {
+       "type": "cylinder",
+       "radius": 31,
+       "height": 108.11111111111111,
+       "position": [
+        111.11111111111109,
+        -32,
+        -330
+       ],
+       "rotation": [
+        0,
+        0,
+        90
+       ],
+       "material": "bamboo"
+      },
+      {
+       "type": "cylinder",
+       "radius": 31,
+       "height": 108.11111111111111,
+       "position": [
+        222.22222222222229,
+        -32,
+        -330
+       ],
+       "rotation": [
+        0,
+        0,
+        90
+       ],
+       "material": "smoke"
+      },
+      {
+       "type": "cylinder",
+       "radius": 31,
+       "height": 108.11111111111111,
+       "position": [
+        333.33333333333337,
+        -32,
+        -330
+       ],
+       "rotation": [
+        0,
+        0,
+        90
+       ],
+       "material": "bamboo"
+      },
+      {
+       "type": "cylinder",
+       "radius": 31,
+       "height": 108.11111111111111,
+       "position": [
+        444.44444444444446,
+        -32,
+        -330
+       ],
+       "rotation": [
+        0,
+        0,
+        90
+       ],
+       "material": "smoke"
+      },
+      {
+       "type": "cylinder",
+       "radius": 31,
+       "height": 108.11111111111111,
+       "position": [
+        -444.44444444444446,
+        -32,
+        330
+       ],
+       "rotation": [
+        0,
+        0,
+        90
+       ],
+       "material": "smoke"
+      },
+      {
+       "type": "cylinder",
+       "radius": 31,
+       "height": 108.11111111111111,
+       "position": [
+        -333.33333333333337,
+        -32,
+        330
+       ],
+       "rotation": [
+        0,
+        0,
+        90
+       ],
+       "material": "bamboo"
+      },
+      {
+       "type": "cylinder",
+       "radius": 31,
+       "height": 108.11111111111111,
+       "position": [
+        -222.22222222222223,
+        -32,
+        330
+       ],
+       "rotation": [
+        0,
+        0,
+        90
+       ],
+       "material": "smoke"
+      },
+      {
+       "type": "cylinder",
+       "radius": 31,
+       "height": 108.11111111111111,
+       "position": [
+        -111.11111111111109,
+        -32,
+        330
+       ],
+       "rotation": [
+        0,
+        0,
+        90
+       ],
+       "material": "bamboo"
+      },
+      {
+       "type": "cylinder",
+       "radius": 31,
+       "height": 108.11111111111111,
+       "position": [
+        0,
+        -32,
+        330
+       ],
+       "rotation": [
+        0,
+        0,
+        90
+       ],
+       "material": "smoke"
+      },
+      {
+       "type": "cylinder",
+       "radius": 31,
+       "height": 108.11111111111111,
+       "position": [
+        111.11111111111109,
+        -32,
+        330
+       ],
+       "rotation": [
+        0,
+        0,
+        90
+       ],
+       "material": "bamboo"
+      },
+      {
+       "type": "cylinder",
+       "radius": 31,
+       "height": 108.11111111111111,
+       "position": [
+        222.22222222222229,
+        -32,
+        330
+       ],
+       "rotation": [
+        0,
+        0,
+        90
+       ],
+       "material": "smoke"
+      },
+      {
+       "type": "cylinder",
+       "radius": 31,
+       "height": 108.11111111111111,
+       "position": [
+        333.33333333333337,
+        -32,
+        330
+       ],
+       "rotation": [
+        0,
+        0,
+        90
+       ],
+       "material": "bamboo"
+      },
+      {
+       "type": "cylinder",
+       "radius": 31,
+       "height": 108.11111111111111,
+       "position": [
+        444.44444444444446,
+        -32,
+        330
+       ],
+       "rotation": [
+        0,
+        0,
+        90
+       ],
+       "material": "smoke"
+      },
+      {
+       "type": "rbox",
+       "size": [
+        40,
+        70,
+        596
+       ],
+       "position": [
+        -480,
+        -35,
+        660
+       ],
+       "material": "bamboo_z",
+       "radius": 6
+      },
+      {
+       "type": "rbox",
+       "size": [
+        40,
+        70,
+        596
+       ],
+       "position": [
+        480,
+        -35,
+        660
+       ],
+       "material": "bamboo_z",
+       "radius": 6
+      },
+      {
+       "type": "rbox",
+       "size": [
+        922,
+        52.5,
+        40
+       ],
+       "position": [
+        0,
+        -26.25,
+        382
+       ],
+       "material": "bamboo",
+       "radius": 6
+      },
+      {
+       "type": "rbox",
+       "size": [
+        922,
+        70,
+        40
+       ],
+       "position": [
+        0,
+        -35,
+        938
+       ],
+       "material": "bamboo",
+       "radius": 6
+      },
+      {
+       "type": "box",
+       "size": [
+        40,
+        40,
+        516
+       ],
+       "position": [
+        0,
+        -37,
+        660
+       ],
+       "material": "steel"
+      },
+      {
+       "type": "array",
+       "count": 6,
+       "step": [
+        0,
+        0,
+        86
+       ],
+       "of": {
+        "type": "rbox",
+        "size": [
+         916,
+         15,
+         66
+        ],
+        "position": [
+         0,
+         -10.5,
+         445
+        ],
+        "material": "bamboo",
+        "radius": 3
+       }
+      },
+      {
+       "type": "group",
+       "position": [
+        0,
+        -60,
+        808
+       ],
+       "rotation": [
+        0,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "rbox",
+         "size": [
+          820,
+          135,
+          36
+         ],
+         "position": [
+          0,
+          -67.5,
+          0
+         ],
+         "material": "smoke",
+         "radius": 6
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "parts": [
+    {
+     "type": "rbox",
+     "size": [
+      970,
+      225,
+      1950
+     ],
+     "position": [
+      0,
+      327.5,
+      0
+     ],
+     "material": "mattress",
+     "radius": 30
+    },
+    {
+     "type": "rbox",
+     "size": [
+      960,
+      60,
+      1940
+     ],
+     "position": [
+      0,
+      468,
+      0
+     ],
+     "material": "mattress_top",
+     "radius": 28
+    }
+   ]
+  }
+ ]
+}

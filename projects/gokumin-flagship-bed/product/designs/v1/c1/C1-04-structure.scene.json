@@ -1,0 +1,1101 @@
+{
+ "canvas": {
+  "width": 1600,
+  "height": 1200
+ },
+ "background": "#ecebe8",
+ "camera": {
+  "fov": 28,
+  "margin": 0.85
+ },
+ "lighting": {
+  "key": 2.3,
+  "fill": 0.6,
+  "rim": 0.55,
+  "hemi": 0.6
+ },
+ "shadowOpacity": 0.2,
+ "materials": {
+  "bamboo": {
+   "type": "bamboo",
+   "color": "#d9b88a"
+  },
+  "bamboo_z": {
+   "type": "bamboo",
+   "color": "#d9b88a",
+   "grain": "z"
+  },
+  "steel": {
+   "type": "metal",
+   "color": "#2a2a2a",
+   "roughness": 0.45
+  },
+  "felt": {
+   "type": "fabric",
+   "color": "#3a3835"
+  },
+  "mattress": {
+   "type": "mattress",
+   "color": "#f3f1ec"
+  },
+  "mattress_top": {
+   "type": "mattress",
+   "color": "#faf9f6"
+  },
+  "cloud": {
+   "type": "matte",
+   "color": "#e6dfd2",
+   "roughness": 0.85
+  }
+ },
+ "parts": [
+  {
+   "type": "group",
+   "position": [
+    -1250,
+    0,
+    0
+   ],
+   "parts": [
+    {
+     "type": "group",
+     "position": [
+      0,
+      76,
+      0
+     ],
+     "parts": [
+      {
+       "type": "rbox",
+       "size": [
+        60,
+        76,
+        654
+       ],
+       "position": [
+        -470,
+        -38,
+        0
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "rbox",
+       "size": [
+        60,
+        76,
+        654
+       ],
+       "position": [
+        470,
+        -38,
+        0
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "rbox",
+       "size": [
+        882,
+        57,
+        60
+       ],
+       "position": [
+        0,
+        -28.5,
+        -297
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "rbox",
+       "size": [
+        882,
+        57,
+        60
+       ],
+       "position": [
+        0,
+        -28.5,
+        297
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "box",
+       "size": [
+        40,
+        40,
+        534
+       ],
+       "position": [
+        0,
+        -38,
+        0
+       ],
+       "material": "steel"
+      },
+      {
+       "type": "array",
+       "count": 7,
+       "step": [
+        0,
+        0,
+        76.28571428571429
+       ],
+       "of": {
+        "type": "rbox",
+        "size": [
+         876,
+         16,
+         58
+        ],
+        "position": [
+         0,
+         -16,
+         -228.85714285714286
+        ],
+        "material": "bamboo",
+        "radius": 8
+       }
+      },
+      {
+       "type": "group",
+       "position": [
+        -380,
+        -58,
+        -187
+       ],
+       "rotation": [
+        -90,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "cylinder",
+         "radius": 30,
+         "height": 154,
+         "position": [
+          0,
+          -77,
+          0
+         ],
+         "material": "bamboo"
+        }
+       ]
+      },
+      {
+       "type": "group",
+       "position": [
+        380,
+        -58,
+        -187
+       ],
+       "rotation": [
+        -90,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "cylinder",
+         "radius": 30,
+         "height": 154,
+         "position": [
+          0,
+          -77,
+          0
+         ],
+         "material": "bamboo"
+        }
+       ]
+      },
+      {
+       "type": "group",
+       "position": [
+        -380,
+        -58,
+        187
+       ],
+       "rotation": [
+        90,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "cylinder",
+         "radius": 30,
+         "height": 154,
+         "position": [
+          0,
+          -77,
+          0
+         ],
+         "material": "bamboo"
+        }
+       ]
+      },
+      {
+       "type": "group",
+       "position": [
+        380,
+        -58,
+        187
+       ],
+       "rotation": [
+        90,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "cylinder",
+         "radius": 30,
+         "height": 154,
+         "position": [
+          0,
+          -77,
+          0
+         ],
+         "material": "bamboo"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "position": [
+      0,
+      76,
+      -330
+     ],
+     "rotation": [
+      180,
+      0,
+      0
+     ],
+     "parts": [
+      {
+       "type": "rbox",
+       "size": [
+        60,
+        76,
+        654
+       ],
+       "position": [
+        -470,
+        -38,
+        -330
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "rbox",
+       "size": [
+        60,
+        76,
+        654
+       ],
+       "position": [
+        470,
+        -38,
+        -330
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "rbox",
+       "size": [
+        882,
+        76,
+        60
+       ],
+       "position": [
+        0,
+        -38,
+        -627
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "rbox",
+       "size": [
+        882,
+        57,
+        60
+       ],
+       "position": [
+        0,
+        -28.5,
+        -33
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "box",
+       "size": [
+        40,
+        40,
+        534
+       ],
+       "position": [
+        0,
+        -38,
+        -330
+       ],
+       "material": "steel"
+      },
+      {
+       "type": "array",
+       "count": 7,
+       "step": [
+        0,
+        0,
+        76.28571428571429
+       ],
+       "of": {
+        "type": "rbox",
+        "size": [
+         876,
+         16,
+         58
+        ],
+        "position": [
+         0,
+         -16,
+         -558.8571428571429
+        ],
+        "material": "bamboo",
+        "radius": 8
+       }
+      },
+      {
+       "type": "group",
+       "position": [
+        -380,
+        -58,
+        -517
+       ],
+       "rotation": [
+        -90,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "cylinder",
+         "radius": 30,
+         "height": 154,
+         "position": [
+          0,
+          -77,
+          0
+         ],
+         "material": "bamboo"
+        }
+       ]
+      },
+      {
+       "type": "group",
+       "position": [
+        380,
+        -58,
+        -517
+       ],
+       "rotation": [
+        -90,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "cylinder",
+         "radius": 30,
+         "height": 154,
+         "position": [
+          0,
+          -77,
+          0
+         ],
+         "material": "bamboo"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "position": [
+      0,
+      152,
+      330
+     ],
+     "rotation": [
+      -180,
+      0,
+      0
+     ],
+     "parts": [
+      {
+       "type": "rbox",
+       "size": [
+        60,
+        76,
+        654
+       ],
+       "position": [
+        -470,
+        -38,
+        330
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "rbox",
+       "size": [
+        60,
+        76,
+        654
+       ],
+       "position": [
+        470,
+        -38,
+        330
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "rbox",
+       "size": [
+        882,
+        57,
+        60
+       ],
+       "position": [
+        0,
+        -28.5,
+        33
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "rbox",
+       "size": [
+        882,
+        76,
+        60
+       ],
+       "position": [
+        0,
+        -38,
+        627
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "box",
+       "size": [
+        40,
+        40,
+        534
+       ],
+       "position": [
+        0,
+        -38,
+        330
+       ],
+       "material": "steel"
+      },
+      {
+       "type": "array",
+       "count": 7,
+       "step": [
+        0,
+        0,
+        76.28571428571429
+       ],
+       "of": {
+        "type": "rbox",
+        "size": [
+         876,
+         16,
+         58
+        ],
+        "position": [
+         0,
+         -16,
+         101.14285714285714
+        ],
+        "material": "bamboo",
+        "radius": 8
+       }
+      },
+      {
+       "type": "group",
+       "position": [
+        -380,
+        -58,
+        517
+       ],
+       "rotation": [
+        90,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "cylinder",
+         "radius": 30,
+         "height": 154,
+         "position": [
+          0,
+          -77,
+          0
+         ],
+         "material": "bamboo"
+        }
+       ]
+      },
+      {
+       "type": "group",
+       "position": [
+        380,
+        -58,
+        517
+       ],
+       "rotation": [
+        90,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "cylinder",
+         "radius": 30,
+         "height": 154,
+         "position": [
+          0,
+          -77,
+          0
+         ],
+         "material": "bamboo"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "group",
+   "position": [
+    300,
+    0,
+    0
+   ],
+   "parts": [
+    {
+     "type": "group",
+     "position": [
+      0,
+      230,
+      0
+     ],
+     "parts": [
+      {
+       "type": "rbox",
+       "size": [
+        60,
+        76,
+        654
+       ],
+       "position": [
+        -470,
+        -38,
+        0
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "rbox",
+       "size": [
+        60,
+        76,
+        654
+       ],
+       "position": [
+        470,
+        -38,
+        0
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "rbox",
+       "size": [
+        882,
+        57,
+        60
+       ],
+       "position": [
+        0,
+        -28.5,
+        -297
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "rbox",
+       "size": [
+        882,
+        57,
+        60
+       ],
+       "position": [
+        0,
+        -28.5,
+        297
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "box",
+       "size": [
+        40,
+        40,
+        534
+       ],
+       "position": [
+        0,
+        -38,
+        0
+       ],
+       "material": "steel"
+      },
+      {
+       "type": "array",
+       "count": 7,
+       "step": [
+        0,
+        0,
+        76.28571428571429
+       ],
+       "of": {
+        "type": "rbox",
+        "size": [
+         876,
+         16,
+         58
+        ],
+        "position": [
+         0,
+         -16,
+         -228.85714285714286
+        ],
+        "material": "bamboo",
+        "radius": 8
+       }
+      },
+      {
+       "type": "cylinder",
+       "radiusTop": 30,
+       "radiusBottom": 24,
+       "height": 154,
+       "position": [
+        -380,
+        -153,
+        -187
+       ],
+       "material": "bamboo"
+      },
+      {
+       "type": "cylinder",
+       "radiusTop": 30,
+       "radiusBottom": 24,
+       "height": 154,
+       "position": [
+        380,
+        -153,
+        -187
+       ],
+       "material": "bamboo"
+      },
+      {
+       "type": "cylinder",
+       "radiusTop": 30,
+       "radiusBottom": 24,
+       "height": 154,
+       "position": [
+        -380,
+        -153,
+        187
+       ],
+       "material": "bamboo"
+      },
+      {
+       "type": "cylinder",
+       "radiusTop": 30,
+       "radiusBottom": 24,
+       "height": 154,
+       "position": [
+        380,
+        -153,
+        187
+       ],
+       "material": "bamboo"
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "position": [
+      0,
+      230,
+      -330
+     ],
+     "rotation": [
+      60,
+      0,
+      0
+     ],
+     "parts": [
+      {
+       "type": "rbox",
+       "size": [
+        60,
+        76,
+        654
+       ],
+       "position": [
+        -470,
+        -38,
+        -330
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "rbox",
+       "size": [
+        60,
+        76,
+        654
+       ],
+       "position": [
+        470,
+        -38,
+        -330
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "rbox",
+       "size": [
+        882,
+        76,
+        60
+       ],
+       "position": [
+        0,
+        -38,
+        -627
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "rbox",
+       "size": [
+        882,
+        57,
+        60
+       ],
+       "position": [
+        0,
+        -28.5,
+        -33
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "box",
+       "size": [
+        40,
+        40,
+        534
+       ],
+       "position": [
+        0,
+        -38,
+        -330
+       ],
+       "material": "steel"
+      },
+      {
+       "type": "array",
+       "count": 7,
+       "step": [
+        0,
+        0,
+        76.28571428571429
+       ],
+       "of": {
+        "type": "rbox",
+        "size": [
+         876,
+         16,
+         58
+        ],
+        "position": [
+         0,
+         -16,
+         -558.8571428571429
+        ],
+        "material": "bamboo",
+        "radius": 8
+       }
+      },
+      {
+       "type": "group",
+       "position": [
+        -380,
+        -58,
+        -517
+       ],
+       "rotation": [
+        -49.50000000000001,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "cylinder",
+         "radius": 30,
+         "height": 154,
+         "position": [
+          0,
+          -77,
+          0
+         ],
+         "material": "bamboo"
+        }
+       ]
+      },
+      {
+       "type": "group",
+       "position": [
+        380,
+        -58,
+        -517
+       ],
+       "rotation": [
+        -49.50000000000001,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "cylinder",
+         "radius": 30,
+         "height": 154,
+         "position": [
+          0,
+          -77,
+          0
+         ],
+         "material": "bamboo"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "position": [
+      0,
+      230,
+      330
+     ],
+     "rotation": [
+      -120,
+      0,
+      0
+     ],
+     "parts": [
+      {
+       "type": "rbox",
+       "size": [
+        60,
+        76,
+        654
+       ],
+       "position": [
+        -470,
+        -38,
+        330
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "rbox",
+       "size": [
+        60,
+        76,
+        654
+       ],
+       "position": [
+        470,
+        -38,
+        330
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "rbox",
+       "size": [
+        882,
+        57,
+        60
+       ],
+       "position": [
+        0,
+        -28.5,
+        33
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "rbox",
+       "size": [
+        882,
+        76,
+        60
+       ],
+       "position": [
+        0,
+        -38,
+        627
+       ],
+       "material": "cloud",
+       "radius": 30
+      },
+      {
+       "type": "box",
+       "size": [
+        40,
+        40,
+        534
+       ],
+       "position": [
+        0,
+        -38,
+        330
+       ],
+       "material": "steel"
+      },
+      {
+       "type": "array",
+       "count": 7,
+       "step": [
+        0,
+        0,
+        76.28571428571429
+       ],
+       "of": {
+        "type": "rbox",
+        "size": [
+         876,
+         16,
+         58
+        ],
+        "position": [
+         0,
+         -16,
+         101.14285714285714
+        ],
+        "material": "bamboo",
+        "radius": 8
+       }
+      },
+      {
+       "type": "group",
+       "position": [
+        -380,
+        -58,
+        517
+       ],
+       "rotation": [
+        49.50000000000001,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "cylinder",
+         "radius": 30,
+         "height": 154,
+         "position": [
+          0,
+          -77,
+          0
+         ],
+         "material": "bamboo"
+        }
+       ]
+      },
+      {
+       "type": "group",
+       "position": [
+        380,
+        -58,
+        517
+       ],
+       "rotation": [
+        49.50000000000001,
+        0,
+        0
+       ],
+       "parts": [
+        {
+         "type": "cylinder",
+         "radius": 30,
+         "height": 154,
+         "position": [
+          0,
+          -77,
+          0
+         ],
+         "material": "bamboo"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
