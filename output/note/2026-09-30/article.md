@@ -217,7 +217,7 @@ GV のデザインスプリント（Knapp・Zeratsky・Kowitz『Sprint』2016年
 | 9/30 | 卓上加湿器 | G | 足切り③ | 既存シリーズと稜線が逆 | 新シリーズとして立ち上げるなら | 天面の凹み |
 | 9/30 | 卓上加湿器 | I | 加点（350・同点3位） | 店頭の差が2 | 価格優先の廉価モデルを出すなら | 部品点数の少ない分割（D に移植できるか設計に確認中） |
 ```
-（記入例は第5章の架空製品のものです）
+（記入例は第5章の架空製品から3行を抜粋したものです）
 
 ### テンプレ3：「なぜこの3案？」の1行説明
 
@@ -239,7 +239,7 @@ GV のデザインスプリント（Knapp・Zeratsky・Kowitz『Sprint』2016年
 
 ---
 
-**参考（一次情報）**
+**参考**
 - Pugh（Schmidt 2010）: https://onlinelibrary.wiley.com/doi/abs/10.1002/9781444316568.wiem05059
 - Ulrich & Eppinger: https://www.mheducation.com/highered/product/product-design-and-development-7-ulrich
 - Stage-Gate: https://www.stage-gate.com/blog/improving-go-kill-decision-culture/
