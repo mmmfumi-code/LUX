@@ -1,0 +1,13 @@
+# 海外市場 生データ（取得 2026-09-28）
+- Amazon Basics Foldable Metal Platform Bed Frame: 工具不要、展開してロック、Queen $94.49、星4.7、レビューで「10分未満で設置」が多い https://theinventory.com/amazon-basics-foldable-bed-frame-no-tools-deal / https://www.amazon.com/dp/B073WRF565
+- asinsight: 米Amazon折りたたみベッドフレーム上位 ASIN B0B8VQLN6Y 推定月10,000台、B0B8VPDXZ3 推定月9,000台 https://www.asinsight.com/report/US/folding-bed-frame （推定値）
+- Forbes Vetted: Best Bed Frames On Amazon 2026 https://www.forbes.com/sites/forbes-personal-shopper/article/best-bed-frame-on-amazon/
+- floating bed trend: housedigest / talkbeds（cleaning-floating.md 参照）
+- Thuma The Bed: 工具不要・日本式継手（ほぞ組）、5〜20分で組立。Twin $795〜CalKing $1,895、Queen $1,195。組立体験が最大の競争優位 https://thefurnishedreview.com/reviews/thuma-classic-bed-review / https://www.livingcozy.com/reviews/thuma-bed-review
+- Forbes: Best Japanese Joinery Bed Frames（ジャンル化） https://www.forbes.com/sites/forbes-personal-shopper/article/best-japanese-joinery-bed-frames/
+- Floyd Bed: 工具不要。パネル追加で Twin→Queen→King 拡張、アドオン（ヘッドボード 3段高さ・2025-04改良、サイドテーブル 最大20lb、ベッド下収納）。「史上最も売れたモジュラーベッド」(自社表記)。Full/Queen 約$1,000超 https://floydhome.com/collections/the-bed-add-ons-expansion-units / https://www.domino.com/style-shopping/floyd-bed-review/
+- Burrow Chorus Bed: 工具不要20分未満、モジュラーヘッドボード（付ける・替える・外す）、Oak/Walnut＋布3色 https://www.livingcozy.com/reviews/burrow-chorus-bed
+- The Keeps Bed: ストラップ式工具不要、2025 布張りヘッドボード追加 https://builtforkeeps.com/products/the-keeps-bed
+- IKEA wedge dowel: 工具不要・再組立可能。組立時間50〜80%短縮（テーブル24分→3分） https://www.dezeen.com/2017/03/06/ikea-introduce-furniture-snaps-together-minutes-without-requiring-tools/
+- Kickstarter: MOTTRESS（モジュラー＆モバイルベッド、折紙式マットレス）https://www.kickstarter.com/projects/mogics/mottress-your-modular-and-mobile-bed 。2025年のツールフリーベッドフレームの大型成功案件は見つからず【未確認】
+- 日本未上陸の流れ【推測】: 「日本式継手（Japanese joinery）」が米国で高価格DTCの記号になっている一方、本家日本市場ではこの訴求の商品が少ない

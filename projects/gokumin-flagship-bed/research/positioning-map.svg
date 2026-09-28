@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" font-family="Noto Sans JP, sans-serif">
+<rect width="100%" height="100%" fill="#fbfaf7"/>
+<text x="600" y="55" text-anchor="middle" font-size="30" font-weight="700" fill="#222">ポジショニングマップ: ベッドフレーム（組立工数 × 質感・価格）</text>
+<text x="600" y="92" text-anchor="middle" font-size="18" fill="#666">2026-09-28 調査 / 位置は公開情報（価格・組立方式・レビュー要約）からの相対評価【推測】</text>
+<rect x="872.0" y="130.0" width="228.0" height="378.0" fill="#e7f1ea" stroke="#2f6f4f" stroke-width="3" stroke-dasharray="10 6" rx="12"/>
+<text x="986.0" y="165.0" text-anchor="middle" font-size="22" font-weight="700" fill="#2f6f4f">空白領域</text>
+<text x="986.0" y="190.0" text-anchor="middle" font-size="14" fill="#2f6f4f">完成品・ワンタッチ × プレミアム</text>
+<text x="986.0" y="210.0" text-anchor="middle" font-size="14" fill="#2f6f4f">（S 4〜6万円台に国内の該当品なし）</text>
+<circle cx="1005.0" cy="364.0" r="11" fill="#c8553d"/>
+<text x="989.0" y="370.0" text-anchor="end" font-size="17" font-weight="700" fill="#c8553d">① 完全組立不要</text>
+<circle cx="948.0" cy="256.0" r="11" fill="#c8553d"/>
+<text x="932.0" y="262.0" text-anchor="end" font-size="17" font-weight="700" fill="#c8553d">② 育つ(アクセサリー)</text>
+<circle cx="986.0" cy="454.0" r="11" fill="#c8553d"/>
+<text x="970.0" y="460.0" text-anchor="end" font-size="17" font-weight="700" fill="#c8553d">③ 清掃性(フローティング)</text>
+<line x1="150" y1="1030" x2="1100" y2="1030" stroke="#333" stroke-width="2"/>
+<line x1="150" y1="1030" x2="150" y2="130" stroke="#333" stroke-width="2"/>
+<line x1="625.0" y1="130" x2="625.0" y2="1030" stroke="#bbb" stroke-dasharray="6 6"/>
+<line x1="150" y1="580.0" x2="1100" y2="580.0" stroke="#bbb" stroke-dasharray="6 6"/>
+<text x="150" y="1070" font-size="18" fill="#333">組立工数 多い（ネジ・工具・2人）</text>
+<text x="1100" y="1070" text-anchor="end" font-size="18" fill="#333">組立工数ゼロ（完成品・開くだけ）</text>
+<text x="625.0" y="1105" text-anchor="middle" font-size="20" font-weight="700" fill="#333">横軸: 組立工数（右ほど少ない）</text>
+<text x="130" y="1030" text-anchor="end" font-size="16" fill="#333">〜1万円</text>
+<text x="130" y="580.0" text-anchor="end" font-size="16" fill="#333">3万円</text>
+<text x="130" y="140" text-anchor="end" font-size="16" fill="#333">10万円〜</text>
+<text x="40" y="580.0" text-anchor="middle" font-size="20" font-weight="700" fill="#333" transform="rotate(-90 40 580.0)">縦軸: 質感・価格帯（上ほどプレミアム）</text>
+<circle cx="359.0" cy="940.0" r="9" fill="#8a8a8a"/>
+<text x="374.0" y="946.0" text-anchor="start" font-size="16" fill="#333">モダンデコ すのこ 7,498円〜</text>
+<circle cx="292.5" cy="805.0" r="9" fill="#8a8a8a"/>
+<text x="307.5" y="811.0" text-anchor="start" font-size="16" fill="#333">LOWYA / RASIK</text>
+<circle cx="625.0" cy="886.0" r="9" fill="#8a8a8a"/>
+<text x="640.0" y="892.0" text-anchor="start" font-size="16" fill="#333">ZINUS SmartBase 10,120円</text>
+<circle cx="986.0" cy="958.0" r="9" fill="#8a8a8a"/>
+<text x="971.0" y="964.0" text-anchor="end" font-size="16" fill="#333">タンスのゲン ワンタッチ折畳</text>
+<circle cx="1033.5" cy="850.0" r="9" fill="#8a8a8a"/>
+<text x="1018.5" y="856.0" text-anchor="end" font-size="16" fill="#333">山善 パタント(完成品)</text>
+<circle cx="910.0" cy="760.0" r="9" fill="#8a8a8a"/>
+<text x="895.0" y="766.0" text-anchor="end" font-size="16" fill="#333">ニトリ 折りたたみ 19,990円</text>
+<circle cx="777.0" cy="814.0" r="9" fill="#8a8a8a"/>
+<text x="792.0" y="820.0" text-anchor="start" font-size="16" fill="#333">タンスのゲン パレット 14,999円〜</text>
+<circle cx="435.0" cy="733.0" r="9" fill="#8a8a8a"/>
+<text x="450.0" y="739.0" text-anchor="start" font-size="16" fill="#333">フローティングLED(無名)</text>
+<circle cx="967.0" cy="661.0" r="9" fill="#8a8a8a"/>
+<text x="952.0" y="667.0" text-anchor="end" font-size="16" fill="#333">エムール 折畳 22,000円〜</text>
+<circle cx="1043.0" cy="607.0" r="9" fill="#2f6f4f"/>
+<text x="1028.0" y="613.0" text-anchor="end" font-size="16" fill="#333">GOKUMIN 折畳バンブー(現行)</text>
+<circle cx="492.0" cy="652.0" r="9" fill="#2f6f4f"/>
+<text x="477.0" y="658.0" text-anchor="end" font-size="16" fill="#333">GOKUMIN コンフォートバンブー 23,998円</text>
+<circle cx="701.0" cy="562.0" r="9" fill="#8a8a8a"/>
+<text x="716.0" y="568.0" text-anchor="start" font-size="16" fill="#333">無印 脚付マットレス 30,900円〜</text>
+<circle cx="758.0" cy="454.0" r="9" fill="#8a8a8a"/>
+<text x="743.0" y="460.0" text-anchor="end" font-size="16" fill="#333">コアラ / ミライカスタム 約6万円</text>
+<circle cx="682.0" cy="310.0" r="9" fill="#5b6b8a"/>
+<text x="697.0" y="316.0" text-anchor="start" font-size="16" fill="#333">Floyd(米) 約$1,000〜</text>
+<circle cx="815.0" cy="220.0" r="9" fill="#5b6b8a"/>
+<text x="800.0" y="226.0" text-anchor="end" font-size="16" fill="#333">Thuma(米) $795〜</text>
+<circle cx="180" cy="1140" r="9" fill="#8a8a8a"/><text x="198" y="1146" font-size="17" fill="#333">国内競合</text>
+<circle cx="430" cy="1140" r="9" fill="#2f6f4f"/><text x="448" y="1146" font-size="17" fill="#333">GOKUMIN 現行</text>
+<circle cx="680" cy="1140" r="9" fill="#5b6b8a"/><text x="698" y="1146" font-size="17" fill="#333">海外(米)</text>
+<circle cx="930" cy="1140" r="9" fill="#c8553d"/><text x="948" y="1146" font-size="17" fill="#333">新コンセプトの狙い位置</text>
+</svg>

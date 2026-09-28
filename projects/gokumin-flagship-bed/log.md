@@ -2,3 +2,4 @@
 
 - 2026-09-27 17:34 プロジェクト作成（PRODUCT DESIGN WORKFLOW）
 - 2026-09-27 17:34 01-research 開始
+- 2026-09-28 12:02 01-research 提出: projects/gokumin-flagship-bed/research/versions/research-v1.md, projects/gokumin-flagship-bed/research/positioning-map.png（自動進行工程のため完了）
