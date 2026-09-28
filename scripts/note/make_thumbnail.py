@@ -87,13 +87,13 @@ def fit(draw, text, path, max_w, max_lines, start, minimum, bold):
     size = start
     while size >= minimum:
         font = ImageFont.truetype(path, size)
-        stroke = max(1, size // 28) if bold else 0
+        stroke = max(1, size // 45) if bold else 0
         lines = wrap(draw, text, font, stroke, max_w)
         if len(lines) <= max_lines:
             return font, stroke, lines
         size -= 4
     font = ImageFont.truetype(path, minimum)
-    stroke = max(1, minimum // 28) if bold else 0
+    stroke = max(1, minimum // 45) if bold else 0
     return font, stroke, wrap(draw, text, font, stroke, max_w)[:max_lines]
 
 
@@ -148,7 +148,7 @@ def main() -> int:
     lh = int(mf.size * 1.18)
     sub_h = 0
     if args.sub:
-        sf, ss, sl = fit(d, args.sub, path, W - pad * 2, 1, 52, 30, bold)
+        sf, ss, sl = fit(d, args.sub, path, W - pad * 2, 1, 52, 30, False)
         sub_h = int(sf.size * 1.6)
     block = lh * len(ml) + sub_h
     y = max(130, (H - block) // 2 + 10)
