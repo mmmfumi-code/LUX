@@ -49,7 +49,7 @@ node scripts/render3d.mjs <scene.json> <out-basename> [--views three-quarter,fro
 
 ### 素材 type
 `matte`（既定）/ `wood` / `bamboo`（節入り）/ `fabric` / `mattress` / `metal` / `glossy`（クリア塗装）/ `glass` / `emissive`（発光。LED など）。
-`color`・`roughness`・`metalness` で調整。
+`color`・`roughness`・`metalness` で調整。`wood`／`bamboo` は `"grain": "z"` で木目を長さ方向にできる（側板用に `bamboo_z` など別の素材として定義する）。
 
 ### コツ
 - マットレス（例: 厚み 200mm）を載せた状態と、フレーム単体の両方を描くと伝わりやすい

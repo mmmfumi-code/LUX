@@ -53,7 +53,10 @@ function makeMaterial(spec = {}) {
   const color = spec.color || "#cccccc";
   const common = { color, roughness: spec.roughness ?? 0.7, metalness: spec.metalness ?? 0 };
   if (t === "wood" || t === "bamboo") {
-    return new THREE.MeshStandardMaterial({ ...common, color: "#ffffff", map: woodTex(color, { bamboo: t === "bamboo", seed: spec.seed || 7 }), roughness: spec.roughness ?? 0.55 });
+    const map = woodTex(color, { bamboo: t === "bamboo", seed: spec.seed || 7 });
+    // grain: "x"（既定。幅方向の木目）／ "z"（長さ方向。側板・長手の部材に）
+    if (spec.grain === "z") { map.center.set(0.5, 0.5); map.rotation = Math.PI / 2; }
+    return new THREE.MeshStandardMaterial({ ...common, color: "#ffffff", map, roughness: spec.roughness ?? 0.55 });
   }
   if (t === "fabric") return new THREE.MeshStandardMaterial({ ...common, color: "#ffffff", map: fabricTex(color, spec.seed || 3), roughness: spec.roughness ?? 0.95 });
   if (t === "metal") return new THREE.MeshStandardMaterial({ ...common, metalness: spec.metalness ?? 0.85, roughness: spec.roughness ?? 0.3 });
