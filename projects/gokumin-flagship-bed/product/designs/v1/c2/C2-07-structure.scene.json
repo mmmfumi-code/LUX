@@ -1,0 +1,1155 @@
+{
+ "canvas": {
+  "width": 1600,
+  "height": 1200
+ },
+ "background": "#ecebe8",
+ "camera": {
+  "fov": 28,
+  "margin": 0.9,
+  "zoom": 1.05
+ },
+ "lighting": {
+  "key": 2.3,
+  "fill": 0.6,
+  "rim": 0.55,
+  "hemi": 0.6
+ },
+ "shadowOpacity": 0.2,
+ "materials": {
+  "felt": {
+   "type": "fabric",
+   "color": "#3a3835"
+  },
+  "mattress": {
+   "type": "mattress",
+   "color": "#f3f1ec"
+  },
+  "mattress_top": {
+   "type": "mattress",
+   "color": "#faf9f6"
+  },
+  "steel": {
+   "type": "metal",
+   "color": "#cfcac0",
+   "roughness": 0.35,
+   "metalness": 0.6
+  },
+  "side": {
+   "type": "bamboo",
+   "color": "#6b4a33",
+   "grain": "z"
+  },
+  "end": {
+   "type": "bamboo",
+   "color": "#6b4a33"
+  },
+  "slat": {
+   "type": "bamboo",
+   "color": "#7a5840"
+  },
+  "leg": {
+   "type": "bamboo",
+   "color": "#5a3e2b"
+  },
+  "rail": {
+   "type": "metal",
+   "color": "#cfcac0",
+   "roughness": 0.35,
+   "metalness": 0.6
+  },
+  "tick": {
+   "type": "matte",
+   "color": "#2a2622"
+  },
+  "lock": {
+   "type": "matte",
+   "color": "#6f9a74"
+  },
+  "acc": {
+   "type": "bamboo",
+   "color": "#6b4a33"
+  },
+  "shade": {
+   "type": "matte",
+   "color": "#efe9df"
+  },
+  "bulb": {
+   "type": "emissive",
+   "color": "#ffd9a0",
+   "intensity": 1.6
+  },
+  "throw": {
+   "type": "fabric",
+   "color": "#8a8f86"
+  }
+ },
+ "parts": [
+  {
+   "type": "rbox",
+   "size": [
+    42,
+    84,
+    656.0
+   ],
+   "position": [
+    -479.0,
+    188.0,
+    -660.0
+   ],
+   "material": "side",
+   "radius": 10
+  },
+  {
+   "type": "rbox",
+   "size": [
+    42,
+    84,
+    656.0
+   ],
+   "position": [
+    479.0,
+    188.0,
+    -660.0
+   ],
+   "material": "side",
+   "radius": 10
+  },
+  {
+   "type": "array",
+   "count": 7,
+   "step": [
+    0,
+    0,
+    80.85714285714286
+   ],
+   "of": {
+    "type": "rbox",
+    "size": [
+     910,
+     15,
+     62
+    ],
+    "position": [
+     0,
+     219.5,
+     -902.5714285714286
+    ],
+    "material": "slat",
+    "radius": 3
+   }
+  },
+  {
+   "type": "box",
+   "size": [
+    40,
+    40,
+    570.0
+   ],
+   "position": [
+    0,
+    192,
+    -660.0
+   ],
+   "material": "steel"
+  },
+  {
+   "type": "rbox",
+   "size": [
+    42,
+    84,
+    656.0
+   ],
+   "position": [
+    -479.0,
+    188.0,
+    0
+   ],
+   "material": "side",
+   "radius": 10
+  },
+  {
+   "type": "rbox",
+   "size": [
+    42,
+    84,
+    656.0
+   ],
+   "position": [
+    479.0,
+    188.0,
+    0
+   ],
+   "material": "side",
+   "radius": 10
+  },
+  {
+   "type": "array",
+   "count": 7,
+   "step": [
+    0,
+    0,
+    80.85714285714286
+   ],
+   "of": {
+    "type": "rbox",
+    "size": [
+     910,
+     15,
+     62
+    ],
+    "position": [
+     0,
+     219.5,
+     -242.57142857142856
+    ],
+    "material": "slat",
+    "radius": 3
+   }
+  },
+  {
+   "type": "box",
+   "size": [
+    40,
+    40,
+    570.0
+   ],
+   "position": [
+    0,
+    192,
+    0
+   ],
+   "material": "steel"
+  },
+  {
+   "type": "rbox",
+   "size": [
+    42,
+    84,
+    656.0
+   ],
+   "position": [
+    -479.0,
+    188.0,
+    660.0
+   ],
+   "material": "side",
+   "radius": 10
+  },
+  {
+   "type": "rbox",
+   "size": [
+    42,
+    84,
+    656.0
+   ],
+   "position": [
+    479.0,
+    188.0,
+    660.0
+   ],
+   "material": "side",
+   "radius": 10
+  },
+  {
+   "type": "array",
+   "count": 7,
+   "step": [
+    0,
+    0,
+    80.85714285714286
+   ],
+   "of": {
+    "type": "rbox",
+    "size": [
+     910,
+     15,
+     62
+    ],
+    "position": [
+     0,
+     219.5,
+     417.42857142857144
+    ],
+    "material": "slat",
+    "radius": 3
+   }
+  },
+  {
+   "type": "box",
+   "size": [
+    40,
+    40,
+    570.0
+   ],
+   "position": [
+    0,
+    192,
+    660.0
+   ],
+   "material": "steel"
+  },
+  {
+   "type": "rbox",
+   "size": [
+    916,
+    84,
+    42
+   ],
+   "position": [
+    0,
+    188.0,
+    -969.0
+   ],
+   "material": "end",
+   "radius": 10
+  },
+  {
+   "type": "rbox",
+   "size": [
+    916,
+    84,
+    42
+   ],
+   "position": [
+    0,
+    188.0,
+    969.0
+   ],
+   "material": "end",
+   "radius": 10
+  },
+  {
+   "type": "rbox",
+   "size": [
+    916,
+    58.8,
+    33.6
+   ],
+   "position": [
+    0,
+    196.6,
+    -349.8
+   ],
+   "material": "end",
+   "radius": 6.0
+  },
+  {
+   "type": "rbox",
+   "size": [
+    916,
+    58.8,
+    33.6
+   ],
+   "position": [
+    0,
+    196.6,
+    -310.2
+   ],
+   "material": "end",
+   "radius": 6.0
+  },
+  {
+   "type": "rbox",
+   "size": [
+    916,
+    58.8,
+    33.6
+   ],
+   "position": [
+    0,
+    196.6,
+    310.2
+   ],
+   "material": "end",
+   "radius": 6.0
+  },
+  {
+   "type": "rbox",
+   "size": [
+    916,
+    58.8,
+    33.6
+   ],
+   "position": [
+    0,
+    196.6,
+    349.8
+   ],
+   "material": "end",
+   "radius": 6.0
+  },
+  {
+   "type": "rbox",
+   "size": [
+    54,
+    146,
+    54
+   ],
+   "position": [
+    -400.0,
+    73.0,
+    -870.0
+   ],
+   "material": "leg",
+   "radius": 5
+  },
+  {
+   "type": "cylinder",
+   "height": 5,
+   "position": [
+    -400.0,
+    2.5,
+    -870.0
+   ],
+   "material": "felt",
+   "radius": 22.68
+  },
+  {
+   "type": "rbox",
+   "size": [
+    54,
+    146,
+    54
+   ],
+   "position": [
+    -400.0,
+    73.0,
+    -220.0
+   ],
+   "material": "leg",
+   "radius": 5
+  },
+  {
+   "type": "cylinder",
+   "height": 5,
+   "position": [
+    -400.0,
+    2.5,
+    -220.0
+   ],
+   "material": "felt",
+   "radius": 22.68
+  },
+  {
+   "type": "rbox",
+   "size": [
+    54,
+    146,
+    54
+   ],
+   "position": [
+    -400.0,
+    73.0,
+    220.0
+   ],
+   "material": "leg",
+   "radius": 5
+  },
+  {
+   "type": "cylinder",
+   "height": 5,
+   "position": [
+    -400.0,
+    2.5,
+    220.0
+   ],
+   "material": "felt",
+   "radius": 22.68
+  },
+  {
+   "type": "rbox",
+   "size": [
+    54,
+    146,
+    54
+   ],
+   "position": [
+    -400.0,
+    73.0,
+    870.0
+   ],
+   "material": "leg",
+   "radius": 5
+  },
+  {
+   "type": "cylinder",
+   "height": 5,
+   "position": [
+    -400.0,
+    2.5,
+    870.0
+   ],
+   "material": "felt",
+   "radius": 22.68
+  },
+  {
+   "type": "rbox",
+   "size": [
+    54,
+    146,
+    54
+   ],
+   "position": [
+    400.0,
+    73.0,
+    -870.0
+   ],
+   "material": "leg",
+   "radius": 5
+  },
+  {
+   "type": "cylinder",
+   "height": 5,
+   "position": [
+    400.0,
+    2.5,
+    -870.0
+   ],
+   "material": "felt",
+   "radius": 22.68
+  },
+  {
+   "type": "rbox",
+   "size": [
+    54,
+    146,
+    54
+   ],
+   "position": [
+    400.0,
+    73.0,
+    -220.0
+   ],
+   "material": "leg",
+   "radius": 5
+  },
+  {
+   "type": "cylinder",
+   "height": 5,
+   "position": [
+    400.0,
+    2.5,
+    -220.0
+   ],
+   "material": "felt",
+   "radius": 22.68
+  },
+  {
+   "type": "rbox",
+   "size": [
+    54,
+    146,
+    54
+   ],
+   "position": [
+    400.0,
+    73.0,
+    220.0
+   ],
+   "material": "leg",
+   "radius": 5
+  },
+  {
+   "type": "cylinder",
+   "height": 5,
+   "position": [
+    400.0,
+    2.5,
+    220.0
+   ],
+   "material": "felt",
+   "radius": 22.68
+  },
+  {
+   "type": "rbox",
+   "size": [
+    54,
+    146,
+    54
+   ],
+   "position": [
+    400.0,
+    73.0,
+    870.0
+   ],
+   "material": "leg",
+   "radius": 5
+  },
+  {
+   "type": "cylinder",
+   "height": 5,
+   "position": [
+    400.0,
+    2.5,
+    870.0
+   ],
+   "material": "felt",
+   "radius": 22.68
+  },
+  {
+   "type": "box",
+   "size": [
+    3,
+    18,
+    636.0
+   ],
+   "position": [
+    500.6,
+    188,
+    -660.0
+   ],
+   "material": "rail"
+  },
+  {
+   "type": "box",
+   "size": [
+    3,
+    18,
+    636.0
+   ],
+   "position": [
+    -500.6,
+    188,
+    -660.0
+   ],
+   "material": "rail"
+  },
+  {
+   "type": "box",
+   "size": [
+    3,
+    18,
+    636.0
+   ],
+   "position": [
+    500.6,
+    188,
+    0
+   ],
+   "material": "rail"
+  },
+  {
+   "type": "box",
+   "size": [
+    3,
+    18,
+    636.0
+   ],
+   "position": [
+    -500.6,
+    188,
+    0
+   ],
+   "material": "rail"
+  },
+  {
+   "type": "box",
+   "size": [
+    3,
+    18,
+    636.0
+   ],
+   "position": [
+    500.6,
+    188,
+    660.0
+   ],
+   "material": "rail"
+  },
+  {
+   "type": "box",
+   "size": [
+    3,
+    18,
+    636.0
+   ],
+   "position": [
+    -500.6,
+    188,
+    660.0
+   ],
+   "material": "rail"
+  },
+  {
+   "type": "box",
+   "size": [
+    976,
+    18,
+    3
+   ],
+   "position": [
+    0,
+    188,
+    -990.6
+   ],
+   "material": "rail"
+  },
+  {
+   "type": "box",
+   "size": [
+    976,
+    18,
+    3
+   ],
+   "position": [
+    0,
+    188,
+    990.6
+   ],
+   "material": "rail"
+  },
+  {
+   "type": "array",
+   "count": 6,
+   "step": [
+    0,
+    0,
+    100
+   ],
+   "of": {
+    "type": "box",
+    "size": [
+     3,
+     8,
+     4
+    ],
+    "position": [
+     502.3,
+     201,
+     -910.0
+    ],
+    "material": "tick"
+   }
+  },
+  {
+   "type": "array",
+   "count": 6,
+   "step": [
+    0,
+    0,
+    100
+   ],
+   "of": {
+    "type": "box",
+    "size": [
+     3,
+     8,
+     4
+    ],
+    "position": [
+     -502.3,
+     201,
+     -910.0
+    ],
+    "material": "tick"
+   }
+  },
+  {
+   "type": "array",
+   "count": 6,
+   "step": [
+    0,
+    0,
+    100
+   ],
+   "of": {
+    "type": "box",
+    "size": [
+     3,
+     8,
+     4
+    ],
+    "position": [
+     502.3,
+     201,
+     -250
+    ],
+    "material": "tick"
+   }
+  },
+  {
+   "type": "array",
+   "count": 6,
+   "step": [
+    0,
+    0,
+    100
+   ],
+   "of": {
+    "type": "box",
+    "size": [
+     3,
+     8,
+     4
+    ],
+    "position": [
+     -502.3,
+     201,
+     -250
+    ],
+    "material": "tick"
+   }
+  },
+  {
+   "type": "array",
+   "count": 6,
+   "step": [
+    0,
+    0,
+    100
+   ],
+   "of": {
+    "type": "box",
+    "size": [
+     3,
+     8,
+     4
+    ],
+    "position": [
+     502.3,
+     201,
+     410.0
+    ],
+    "material": "tick"
+   }
+  },
+  {
+   "type": "array",
+   "count": 6,
+   "step": [
+    0,
+    0,
+    100
+   ],
+   "of": {
+    "type": "box",
+    "size": [
+     3,
+     8,
+     4
+    ],
+    "position": [
+     -502.3,
+     201,
+     410.0
+    ],
+    "material": "tick"
+   }
+  },
+  {
+   "type": "array",
+   "count": 9,
+   "step": [
+    100,
+    0,
+    0
+   ],
+   "of": {
+    "type": "box",
+    "size": [
+     4,
+     8,
+     3
+    ],
+    "position": [
+     -400,
+     201,
+     992.3
+    ],
+    "material": "tick"
+   }
+  },
+  {
+   "type": "rbox",
+   "size": [
+    12,
+    372,
+    90
+   ],
+   "position": [
+    679.0,
+    544.0,
+    -620
+   ],
+   "material": "steel",
+   "radius": 3
+  },
+  {
+   "type": "rbox",
+   "size": [
+    360,
+    22,
+    380
+   ],
+   "position": [
+    853.0,
+    719.0,
+    -620
+   ],
+   "material": "acc",
+   "radius": 6
+  },
+  {
+   "type": "rbox",
+   "size": [
+    14,
+    12,
+    80
+   ],
+   "position": [
+    669.0,
+    388,
+    -620
+   ],
+   "material": "steel",
+   "radius": 2
+  },
+  {
+   "type": "rbox",
+   "size": [
+    198.00000000000003,
+    50,
+    12
+   ],
+   "position": [
+    781.0,
+    683,
+    -620
+   ],
+   "material": "steel",
+   "radius": 3
+  },
+  {
+   "type": "rbox",
+   "size": [
+    10,
+    40,
+    26
+   ],
+   "position": [
+    691.0,
+    408,
+    -590
+   ],
+   "material": "lock",
+   "radius": 4
+  },
+  {
+   "type": "cylinder",
+   "height": 842,
+   "position": [
+    -682.0,
+    779.0,
+    -760
+   ],
+   "material": "steel",
+   "radius": 9
+  },
+  {
+   "type": "cylinder",
+   "height": 240,
+   "position": [
+    -562.0,
+    1200,
+    -760
+   ],
+   "material": "steel",
+   "radius": 7.2,
+   "rotation": [
+    0,
+    0,
+    90
+   ]
+  },
+  {
+   "type": "cylinder",
+   "height": 90,
+   "position": [
+    -442.0,
+    1165,
+    -760
+   ],
+   "material": "shade",
+   "radiusTop": 34,
+   "radiusBottom": 62
+  },
+  {
+   "type": "cylinder",
+   "height": 6,
+   "position": [
+    -442.0,
+    1118,
+    -760
+   ],
+   "material": "bulb",
+   "radius": 30
+  },
+  {
+   "type": "rbox",
+   "size": [
+    14,
+    12,
+    40
+   ],
+   "position": [
+    -674.0,
+    388,
+    -760
+   ],
+   "material": "steel",
+   "radius": 2
+  },
+  {
+   "type": "rbox",
+   "size": [
+    10,
+    40,
+    26
+   ],
+   "position": [
+    -695.0,
+    408,
+    -730
+   ],
+   "material": "lock",
+   "radius": 4
+  },
+  {
+   "type": "rbox",
+   "size": [
+    40,
+    362,
+    12
+   ],
+   "position": [
+    -380,
+    539.0,
+    1253.0
+   ],
+   "material": "steel",
+   "radius": 3
+  },
+  {
+   "type": "rbox",
+   "size": [
+    90,
+    12,
+    14
+   ],
+   "position": [
+    -380,
+    388,
+    1240.0
+   ],
+   "material": "steel",
+   "radius": 2
+  },
+  {
+   "type": "rbox",
+   "size": [
+    26,
+    40,
+    10
+   ],
+   "position": [
+    -380,
+    408,
+    1261.0
+   ],
+   "material": "lock",
+   "radius": 4
+  },
+  {
+   "type": "rbox",
+   "size": [
+    40,
+    362,
+    12
+   ],
+   "position": [
+    380,
+    539.0,
+    1253.0
+   ],
+   "material": "steel",
+   "radius": 3
+  },
+  {
+   "type": "rbox",
+   "size": [
+    90,
+    12,
+    14
+   ],
+   "position": [
+    380,
+    388,
+    1240.0
+   ],
+   "material": "steel",
+   "radius": 2
+  },
+  {
+   "type": "rbox",
+   "size": [
+    26,
+    40,
+    10
+   ],
+   "position": [
+    380,
+    408,
+    1261.0
+   ],
+   "material": "lock",
+   "radius": 4
+  },
+  {
+   "type": "cylinder",
+   "height": 820,
+   "position": [
+    0,
+    720,
+    1267.0
+   ],
+   "material": "acc",
+   "radius": 16,
+   "rotation": [
+    0,
+    0,
+    90
+   ]
+  },
+  {
+   "type": "rbox",
+   "size": [
+    600,
+    260,
+    30
+   ],
+   "position": [
+    0,
+    600,
+    1287.0
+   ],
+   "material": "throw",
+   "radius": 12
+  },
+  {
+   "type": "rbox",
+   "size": [
+    600,
+    40,
+    60
+   ],
+   "position": [
+    0,
+    730,
+    1267.0
+   ],
+   "material": "throw",
+   "radius": 18
+  }
+ ]
+}
