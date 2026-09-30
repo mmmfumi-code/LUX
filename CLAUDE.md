@@ -117,6 +117,7 @@ projects/<slug>/
 4. 依頼文を作成して `prompts/` に保存 → 専門Agentを起動（Agentツール、`subagent_type` = Agent名）
 5. Agentが `studio.py start` で示された保存先（例: `product/03-design-v1.md` や `stages/<工程ID>/v1.md`）と関連フォルダに保存
 6. オーケストレーターが品質チェック（ブリーフ・decisions との整合、Definition of Done の充足）
+   - あわせて **カテゴリの常識チェック**: その商品カテゴリとして当然ある構成要素（例: ベッドフレームのヘッドボード）が、リサーチの傾向などを理由に全案から抜け落ちていないか。案の幅が偏っていないか。`projects/_studio/preferences.md` に反していないか
 7. `studio.py submit <slug> <成果物パス...>` → `handoff.md` を更新
 8. 🔒工程ならテンプレートで承認依頼を出して **停止**。自動進行工程なら次工程へ。
 

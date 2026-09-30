@@ -3,20 +3,25 @@
   "title": "GOKUMIN フラッグシップベッド（3コンセプト）",
   "workflow": "product",
   "created": "2026-09-27 17:34",
-  "updated": "2026-09-30 11:48",
+  "updated": "2026-09-30 13:15",
   "stages": {
     "01-research": {
-      "status": "done",
+      "status": "revision",
       "versions": [
         "projects/gokumin-flagship-bed/research/versions/research-v1.md",
         "projects/gokumin-flagship-bed/research/positioning-map.png"
       ],
       "adopted": null,
       "approved_at": null,
-      "feedback": []
+      "feedback": [
+        {
+          "at": "2026-09-30 13:15",
+          "note": "【ユーザー指示 2026-09-30】全案ヘッドレスは不可。ヘッドボード込みで0から再検討。市場のEC等でよく売れている10万円程度のベッドフレームを分析し、新しい切り口で3コンセプト（①完全組立不要 ②自分仕様に育つ ③掃除が楽になる）と必須条件（組立工数最小・EC販売）に対してデザインを考える。v1 のリサーチは1万円前後の商品が中心で、結論の『ヘッドレス推奨』が企画・デザインに引き継がれたのが原因。"
+        }
+      ]
     },
     "02-planning": {
-      "status": "done",
+      "status": "pending",
       "versions": [
         "projects/gokumin-flagship-bed/product/02-planning-v1.md"
       ],
@@ -25,7 +30,7 @@
       "feedback": []
     },
     "03-design": {
-      "status": "done",
+      "status": "pending",
       "versions": [
         "projects/gokumin-flagship-bed/product/03-design-v1.md"
       ],
@@ -34,7 +39,7 @@
       "feedback": []
     },
     "04-board": {
-      "status": "awaiting_approval",
+      "status": "pending",
       "versions": [
         "projects/gokumin-flagship-bed/product/04-board-v1.md"
       ],
