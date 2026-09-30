@@ -1,0 +1,1141 @@
+{
+  "project": "GOKUMIN Flagship Bed v2 — ② 自分仕様に育つベッド（着せ替えヘッドボード HEAD DOCK）",
+  "studio": "AI Design Studio",
+  "date": "2026.09.30",
+  "version": "v2",
+  "overview": true,
+  "overview_title": "HEAD DOCK — 10 Proposals",
+  "overview_tagline": "ヘッドボードを、着替えるベッド。",
+  "overview_evidence": "research.md（v2）結論1〜6・§6 不満・§7 購入理由・§16 空白C／03-design-v2-c2.md 自己レビュー（加重平均）",
+  "boards": [
+    {
+      "no": "C2-01",
+      "type": "王道・市場適合型",
+      "type_en": "Market Fit",
+      "name": "KIGAE",
+      "name_ja": "きがえ",
+      "tagline": "まずはホテルの顔。飽きたら着替える。",
+      "accent": "#8A7758",
+      "main_visual": "../../../designs/v2/c2/C2-01-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c2/C2-01-frame.png",
+      "size": "W1030 × L2115 × H850 mm（HB込み）",
+      "price": "S ¥99,800",
+      "concept": "10万円帯で最も売れている布張りのもたれられるHBを標準の顔にし、その裏に HEAD DOCK を隠した。買った日は王道のホテルベッド、後から竹・ニッチ・季節の布に着替えられる。",
+      "background": "購入理由「デザイン（ホテル）」35.7%・「もたれられるHB」21.4%。一方で不満は「HBのぐらつき」14.3%と「布が洗えない」。10万円帯に洗える・替えられるHBの国内品はない。",
+      "problems": [
+        "HB込みの組立が重く、2人・半日がかりになる",
+        "後付けのHBがぐらつく・きしむ",
+        "布のHBが汚れても洗えず、飽きても替えられない"
+      ],
+      "features": [
+        {
+          "title": "差すだけ 4動作・約8分",
+          "text": "工具0・ネジ0・部品3点・1人。顔の付け替えは2動作・約1分"
+        },
+        {
+          "title": "縦チャネル布HB 床から850mm",
+          "text": "7本の畝の布の顔。カバーは外して洗える。もたれ6度"
+        },
+        {
+          "title": "床に立つ HEAD DOCK",
+          "text": "支柱2本＋床梁の1ユニット。くさび2点が荷重で締まる"
+        },
+        {
+          "title": "すのこに見えない縁",
+          "text": "縁84mm＋立ち上がり36mm。台座は110mm奥で浮く"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c2/C2-01-structure.png",
+        "text": "左: 支柱だけ＋顔を真上に持ち上げた状態（落とし込む前）／中: 竹フラットの顔／右: ニッチ棚の顔。同じ支柱で顔が替わる"
+      },
+      "materials": [
+        {
+          "part": "本体・縁",
+          "material": "国産竹集成材",
+          "note": "芯は中空スチール"
+        },
+        {
+          "part": "HEAD DOCK",
+          "material": "竹集成材＋スチール芯",
+          "note": "床梁は黒スチール"
+        },
+        {
+          "part": "顔",
+          "material": "撥水布＋ウレタン＋竹合板",
+          "note": "カバーは洗える"
+        },
+        {
+          "part": "掛け金具",
+          "material": "樹脂くさび・フック",
+          "note": "金属どうしを当てない"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "本体 オイル調ウレタン 3分艶"
+        },
+        {
+          "name": "Oat",
+          "hex": "#CDBC9F",
+          "finish": "顔の布（標準）微起毛の平織り"
+        },
+        {
+          "name": "Clay",
+          "hex": "#A8765A",
+          "finish": "顔の布（替え）"
+        },
+        {
+          "name": "Charcoal",
+          "hex": "#55524E",
+          "finish": "顔の布（替え）"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "コアラ",
+          "point": "（99,900円）「2人推奨・寝返りで音」に対し、同価格で1人・工具0。布も洗える"
+        },
+        {
+          "vs": "Floyd 後付けHB",
+          "point": "「クランプが緩む」に対し、床に立つ支柱とくさび2点で緩まない"
+        },
+        {
+          "vs": "布張りHB",
+          "point": "顔を替えられない。KIGAE は替えカバー9,800円・別の顔14,800円〜"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C2-01-detail-hb.png",
+          "caption": "縦チャネル7本。支柱は裏に隠れる"
+        },
+        {
+          "image": "img/C2-01-detail-dock.png",
+          "caption": "支柱の上に顔を落とし込む前の状態"
+        }
+      ],
+      "scene": {
+        "image": "img/C2-01-scene.png",
+        "text": "同棲2年目の寝室。買った日はオートの布、秋にはクレイの顔に着替える。"
+      },
+      "evidence": "research.md 結論4・5・6、§6（ぐらつき 14.3%・布の汚れ）、§7（デザイン 35.7%・もたれ 21.4%）、§10 チャネル",
+      "recommended": false,
+      "score": "4.18"
+    },
+    {
+      "no": "C2-02",
+      "type": "ミニマル",
+      "type_en": "Minimal",
+      "name": "MONO",
+      "name_ja": "もの",
+      "tagline": "支柱も顔も、一枚の面に。",
+      "accent": "#8E7048",
+      "main_visual": "../../../designs/v2/c2/C2-02-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c2/C2-02-frame.png",
+      "size": "W1000 × L2050 × H800 mm（HB込み）",
+      "price": "S ¥94,800",
+      "concept": "支柱と竹の顔を同じ厚み44mm・同じ面にそろえ、4mmの目地2本だけで規格を表す。部品を最小にし、規格があることを感じさせない静かな本体。",
+      "background": "宮付きHBは全長が十数cm伸びる（寸法の不満 21.4%）。国内のHBで最も多い型は素材を見せるフラット（11商品）。重さの不満にも最軽量で応える。",
+      "problems": [
+        "HBを付けると全長が伸びて部屋に入らない",
+        "重くて1人では運べない・動かせない",
+        "線の多い家具で部屋が散らかって見える"
+      ],
+      "features": [
+        {
+          "title": "差すだけ 4動作・約7分",
+          "text": "工具0・ネジ0・部品3点・1人。HB箱は約11kg"
+        },
+        {
+          "title": "竹フラットHB 床から800mm",
+          "text": "厚み44mmの竹一枚板。標準より5cm低い。もたれ4度"
+        },
+        {
+          "title": "面一の2トーン",
+          "text": "淡色竹の顔×ナチュラル竹の支柱。目地の線だけで規格が読める"
+        },
+        {
+          "title": "HB込み全長2050mm",
+          "text": "HBの奥行きは5cm。宮付きのように全長が伸びない"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c2/C2-02-structure.png",
+        "text": "左: 支柱だけ＋竹の顔を持ち上げた状態／中: 布クッションの顔／右: 簾の顔。静かな本体のまま、後から布や簾に替えられる"
+      },
+      "materials": [
+        {
+          "part": "本体・顔",
+          "material": "竹集成材（淡色の選別材）",
+          "note": "見える面すべて"
+        },
+        {
+          "part": "支柱",
+          "material": "竹集成材ナチュラル＋スチール芯",
+          "note": "延長キャップ100mm"
+        },
+        {
+          "part": "床梁",
+          "material": "スチール",
+          "note": "黒。外から見せない"
+        },
+        {
+          "part": "掛け金具",
+          "material": "樹脂くさび2点"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Light Bamboo",
+          "hex": "#D6B584",
+          "finish": "顔・デッキ 1分艶マットクリア"
+        },
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "支柱。目地を強調する2トーン"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "無印 HB付き",
+          "point": "（46,900円）「脚がないとHBを付けられない」に対し、最初から付いて後で替えられる"
+        },
+        {
+          "vs": "シモンズ",
+          "point": "（92,600円）業者設置が前提【推測】。MONO は届いた日に自分で7分"
+        },
+        {
+          "vs": "宮付きベッド",
+          "point": "奥行きで全長が十数cm伸びる。MONO はHB込み2050mm"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C2-02-detail-hb.png",
+          "caption": "支柱と顔が面一。目地だけが見える"
+        },
+        {
+          "image": "img/C2-02-detail-dock.png",
+          "caption": "細い支柱と一枚板の顔。落とし込む前"
+        }
+      ],
+      "scene": {
+        "image": "img/C2-02-scene.png",
+        "text": "線の少ない1LDK。低めの竹の顔が、部屋を広く静かに見せる。"
+      },
+      "evidence": "research.md 結論2-4・3、§6 寸法の不満 21.4%、§10 フラット型が最多（notes/v2-headboard-types.md）",
+      "recommended": false,
+      "score": "4.10"
+    },
+    {
+      "no": "C2-03",
+      "type": "プレミアム",
+      "type_en": "Premium",
+      "name": "KASANE",
+      "name_ja": "かさね",
+      "tagline": "顔を重ねて、スイートに育てる。",
+      "accent": "#5B3D28",
+      "main_visual": "../../../designs/v2/c2/C2-03-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c2/C2-03-frame.png",
+      "size": "W1070 × L2190 × H1050 mm（HB込み）",
+      "price": "S ¥129,800（2層セット）",
+      "concept": "HEAD DOCK の前後2つの掛け位置を両方使い、後ろに炭化竹の高い壁、前にブークレのスラブ2枚を重ねる。竹の壁だけから始め、クッションを重ねて“育つ”過程が上位モデルになる。",
+      "background": "10万円帯の価値は素材・張り地・HBの存在感に出る。家具メーカー品は重く業者頼みで受注40〜60日、D2C は格が一段足りない。その間が空いている。",
+      "problems": [
+        "スイートのような格のHBは、重く業者設置になる",
+        "受注生産で届くまで40〜60日かかる",
+        "一度買うと、HBの格を後から上げられない"
+      ],
+      "features": [
+        {
+          "title": "差すだけ 5動作・約10分",
+          "text": "工具0・ネジ0・部品4点・1人。後層→前層の順に掛ける。3箱"
+        },
+        {
+          "title": "2層HB 床から1050mm",
+          "text": "炭化竹の壁の前にブークレのスラブ2枚。もたれ8度"
+        },
+        {
+          "title": "段階的に買い足せる",
+          "text": "竹の壁だけ99,800円に、スラブ2枚29,800円を重ねる"
+        },
+        {
+          "title": "家具らしい厚み",
+          "text": "縁110mm＋立ち上がり30mm、影のプリンスは60mm奥"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c2/C2-03-structure.png",
+        "text": "左: 支柱だけ＋2層の顔を持ち上げた状態／中: 後ろの竹の壁だけ／右: 前層をモカのチャネルに替えた状態。重ねて育つ"
+      },
+      "materials": [
+        {
+          "part": "本体・後層",
+          "material": "炭化竹集成材",
+          "note": "笠木の小口を研ぎ出し"
+        },
+        {
+          "part": "スラブ",
+          "material": "ブークレ＋高密度ウレタン",
+          "note": "1枚ずつ外して洗える"
+        },
+        {
+          "part": "支柱",
+          "material": "炭化竹＋スチール芯",
+          "note": "後ろ溝と前フック"
+        },
+        {
+          "part": "掛け金具",
+          "material": "樹脂くさび・フック"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Carbonized Bamboo",
+          "hex": "#5B3D28",
+          "finish": "本体・支柱・後層 2分艶"
+        },
+        {
+          "name": "Boucle Latte",
+          "hex": "#D3C2A6",
+          "finish": "スラブ（標準）"
+        },
+        {
+          "name": "Boucle Ivory",
+          "hex": "#E4DCCD",
+          "finish": "スラブ（替え）"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "カリモク・飛騨",
+          "point": "（13〜14万円）業者設置・受注40〜60日に対し、同等の格を即納・自分で10分"
+        },
+        {
+          "vs": "コアラ",
+          "point": "竹の壁と2層の厚みで、布張り1枚のHBより一段上の格"
+        },
+        {
+          "vs": "ハイバックHB",
+          "point": "高さは変えられない。KASANE は壁だけ→2層へ後から育てられる"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C2-03-detail-hb.png",
+          "caption": "炭化竹の笠木とブークレのスラブ"
+        },
+        {
+          "image": "img/C2-03-detail-dock.png",
+          "caption": "2層の顔を支柱の上に落とし込む前"
+        }
+      ],
+      "scene": {
+        "image": "img/C2-03-scene.png",
+        "text": "旅館やスイートの設えが好きな2人。まず竹の壁、記念日にスラブを重ねる。"
+      },
+      "evidence": "research.md 結論3・6 切り口7、§7 仕立て [S42]、§8 ブークレ [S29]、§1 飛騨 受注40〜60日 [S9]",
+      "recommended": true,
+      "score": "4.02"
+    },
+    {
+      "no": "C2-04",
+      "type": "トレンド",
+      "type_en": "Trend",
+      "name": "KUMO",
+      "name_ja": "くも",
+      "tagline": "雲のかたちに、もたれる。",
+      "accent": "#A8765A",
+      "main_visual": "../../../designs/v2/c2/C2-04-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c2/C2-04-frame.png",
+      "size": "W1030 × L2120 × H900 mm（HB頂部）",
+      "price": "S ¥104,800",
+      "concept": "上端が4つの丸い山になった雲形のクッション。2026年の曲線・丸み・くすみ色を、顔だけで取り入れる。流行が変われば顔だけ替えればよい、が②の強み。",
+      "background": "購入理由「デザイン」35.7%。2026年のHBは曲線・アーチ・角丸と、クレイなど自然に近い色が流れ。ただし流行の形は飽きる・買い替えが高いという不安がある【推測】。",
+      "problems": [
+        "流行の形のベッドは、数年で飽きてしまいそう",
+        "曲線のHBは海外品か高価で、替えられない",
+        "SNSで見るホテルのような寝室にしたい"
+      ],
+      "features": [
+        {
+          "title": "差すだけ 4動作・約8分",
+          "text": "工具0・ネジ0・部品3点・1人。顔の付け替えは2動作・約1分"
+        },
+        {
+          "title": "雲形HB 床から900mm",
+          "text": "4つの丸い山の布の顔。谷は床から771mm。もたれ6度"
+        },
+        {
+          "title": "洗えるカバー",
+          "text": "撥水布クレイ（標準）。セージ・オフホワイトに着替えられる"
+        },
+        {
+          "title": "やわらかい縁",
+          "text": "縁90mm・角R34。影のプリンスで本体を浮かせる"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c2/C2-04-structure.png",
+        "text": "左: 支柱だけ＋雲形の顔を持ち上げた状態／中: 2つ山のセージ／右: オフホワイトのチャネル。流行が変われば直線に戻せる"
+      },
+      "materials": [
+        {
+          "part": "本体",
+          "material": "竹集成材",
+          "note": "3分艶"
+        },
+        {
+          "part": "顔の芯",
+          "material": "竹合板（CNCで曲線を切り出し）",
+          "note": "中身はウレタン"
+        },
+        {
+          "part": "顔の布",
+          "material": "撥水布",
+          "note": "カバーは洗える"
+        },
+        {
+          "part": "HEAD DOCK",
+          "material": "竹集成材＋スチール芯",
+          "note": "顔の裏に隠れる"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "本体 3分艶"
+        },
+        {
+          "name": "Clay",
+          "hex": "#A8765A",
+          "finish": "顔の布（標準）微起毛"
+        },
+        {
+          "name": "Sage",
+          "hex": "#A4AD96",
+          "finish": "顔の布（替え）"
+        },
+        {
+          "name": "Off White",
+          "hex": "#ECE6DB",
+          "finish": "顔の布（替え）"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "Castlery",
+          "point": "（約18万円）海外品で顔は替えられない。KUMO は約半額で着せ替えられる"
+        },
+        {
+          "vs": "国内の曲線HB",
+          "point": "形が固定。KUMO は同じ支柱で直線の顔に戻せる（14,800円〜）"
+        },
+        {
+          "vs": "LED 浮き型",
+          "point": "古びやすい照明に頼らず、形と色でトレンドを取り入れる"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C2-04-detail-hb.png",
+          "caption": "一続きになった4つの丸い山"
+        },
+        {
+          "image": "img/C2-04-detail-dock.png",
+          "caption": "雲形の顔を支柱に落とし込む前"
+        }
+      ],
+      "scene": {
+        "image": "img/C2-04-scene.png",
+        "text": "RoomClip を保存している2人の寝室。雲にもたれて、週末は映画を1本。"
+      },
+      "evidence": "research.md §7 デザイン 35.7%、§9 クレイ [S51]、§10 曲線・アーチ [S28][S29]、§11 LED [S54]",
+      "recommended": false,
+      "score": "3.66"
+    },
+    {
+      "no": "C2-05",
+      "type": "機能特化",
+      "type_en": "Function",
+      "name": "HUB",
+      "name_ja": "はぶ",
+      "tagline": "支柱が、寝室の電源になる。",
+      "accent": "#55524E",
+      "main_visual": "../../../designs/v2/c2/C2-05-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c2/C2-05-frame.png",
+      "size": "W1510（ポッド込み） × L2115 × H934 mm",
+      "price": "S ¥114,800（モジュール込み）",
+      "concept": "配線を通した支柱を主役として見せ、上端に読書灯、外側にワイヤレス充電のサイドポッド、前面にUSB-Cを差し込む。家電は支柱に集め、顔は布のまま静かに保つ。",
+      "background": "宮棚・コンセントはECの標準装備だが、深い宮棚は全長が伸びホコリがたまる。電源と照明は家電として早く古くなる。差し替えられるモジュールが答え。",
+      "problems": [
+        "枕元に電源とスマホの置き場が足りない",
+        "宮棚付きは全長が伸び、安っぽく見える",
+        "照明や充電器は数年で古くなる"
+      ],
+      "features": [
+        {
+          "title": "差すだけ 6動作・約10分",
+          "text": "工具0・ネジ0・部品5点・1人。モジュールを差す2動作を追加"
+        },
+        {
+          "title": "布HB 床から820mm",
+          "text": "支柱の間にチャコールのクッション＋竹の笠木。もたれ5度"
+        },
+        {
+          "title": "支柱の電源モジュール",
+          "text": "読書灯・USB-C・無線充電を各2。電源は壁へ1本"
+        },
+        {
+          "title": "全長を伸ばさない",
+          "text": "サイドポッドは横に張り出す。宮棚と違い全長+0"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c2/C2-05-structure.png",
+        "text": "左: 支柱とモジュールだけ＋顔を持ち上げた状態／中: ニッチ棚の顔／右: クレイのチャネル。家電は支柱、顔は自由に替える"
+      },
+      "materials": [
+        {
+          "part": "支柱",
+          "material": "竹集成材（中空・配線内蔵）",
+          "note": "2つ割りで溝を掘る"
+        },
+        {
+          "part": "モジュール",
+          "material": "アルミダイカスト＋竹",
+          "note": "マットブラック"
+        },
+        {
+          "part": "顔",
+          "material": "撥水布＋竹の笠木"
+        },
+        {
+          "part": "電装",
+          "material": "読書灯2700K・USB-C",
+          "note": "PSE 取得が必要"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "本体・支柱 3分艶"
+        },
+        {
+          "name": "Matte Black",
+          "hex": "#232323",
+          "finish": "電源モジュール"
+        },
+        {
+          "name": "Charcoal",
+          "hex": "#55524E",
+          "finish": "顔の布（標準）"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "ニトリ等の宮棚",
+          "point": "（1〜5万円）「全長が伸びる・安っぽい」に対し、全長+0で10万円の質感"
+        },
+        {
+          "vs": "家電一体型",
+          "point": "壊れたら丸ごと古くなる。HUB は家電部分だけ数年ごとに交換できる"
+        },
+        {
+          "vs": "別売りの台",
+          "point": "別売りで寸法・色がずれる。HUB は支柱に差すだけで一体に見える"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C2-05-detail-hb.png",
+          "caption": "支柱上端の読書灯と充電ポッド"
+        },
+        {
+          "image": "img/C2-05-detail-dock.png",
+          "caption": "電源付きの支柱と、落とし込む前の顔"
+        }
+      ],
+      "scene": {
+        "image": "img/C2-05-scene.png",
+        "text": "在宅勤務の2人。寝る前は読書灯を落とし、スマホはポッドに置くだけ。"
+      },
+      "evidence": "research.md 結論2・5（差し替えモジュール）、§11 電源・照明、[S44][S46]、結論6 切り口5",
+      "recommended": false,
+      "score": "3.60"
+    },
+    {
+      "no": "C2-06",
+      "type": "素材特化",
+      "type_en": "Material",
+      "name": "SUDARE",
+      "name_ja": "すだれ",
+      "tagline": "丸竹と簾。裏返せば、洗えるリネン。",
+      "accent": "#8A6240",
+      "main_visual": "../../../designs/v2/c2/C2-06-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c2/C2-06-frame.png",
+      "size": "W1044 × L2106 × H900 mm（HB込み）",
+      "price": "S ¥109,800",
+      "concept": "支柱は節のある丸竹、顔は燻し竹のひごを横に並べた簾。顔はリバーシブルで、裏は洗えるリネン。竹そのものを寝室の顔にする。",
+      "background": "購入理由「無垢・天然素材の質感」35.7%。2026年は竹など触感のある天然素材が注目。一方で布は汚れる、竹は冷たく硬いという両立の悩みがある【推測】。",
+      "problems": [
+        "天然素材のベッドがほしいが、竹は冷たく硬そう",
+        "布のHBは汚れる・洗えない",
+        "国産素材の物語を感じられる家具が少ない"
+      ],
+      "features": [
+        {
+          "title": "差すだけ 4動作・約8分",
+          "text": "工具0・ネジ0・部品3点・1人。表裏の入れ替えは2動作"
+        },
+        {
+          "title": "簾HB 床から860mm",
+          "text": "燻し竹のひご約24本に淡竹を混ぜた簾の顔。もたれ4度"
+        },
+        {
+          "title": "リバーシブルの顔",
+          "text": "夏は簾、冬は裏のリネン。布面は外して洗える"
+        },
+        {
+          "title": "丸竹の支柱",
+          "text": "直径84mm、節3か所。支柱そのものを見せる"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c2/C2-06-structure.png",
+        "text": "左: 丸竹の支柱だけ＋簾を持ち上げた状態／中: 裏返したセージのリネン面／右: 燻し竹のフラット。季節で表裏を替える"
+      },
+      "materials": [
+        {
+          "part": "支柱",
+          "material": "丸竹（真竹）＋スチール芯",
+          "note": "量産は竹集成材の丸削り"
+        },
+        {
+          "part": "顔",
+          "material": "燻し竹のひご＋框",
+          "note": "国内の簾工場に外注【推測】"
+        },
+        {
+          "part": "顔の裏",
+          "material": "リネン混の撥水布",
+          "note": "外して洗える"
+        },
+        {
+          "part": "本体",
+          "material": "燻し竹集成材",
+          "note": "拭き漆風マット"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Smoked Bamboo",
+          "hex": "#8A6240",
+          "finish": "本体・ひご 拭き漆風マット"
+        },
+        {
+          "name": "Node",
+          "hex": "#5E412B",
+          "finish": "丸竹の節"
+        },
+        {
+          "name": "Light Bamboo",
+          "hex": "#D6B584",
+          "finish": "ひごに6本に1本混ぜる"
+        },
+        {
+          "name": "Sage Linen",
+          "hex": "#A4AD96",
+          "finish": "裏の布"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "Nectar",
+          "point": "竹×木組みで日本未展開。丸竹・簾という日本の竹文化の表現で先に取る"
+        },
+        {
+          "vs": "飛騨 月光",
+          "point": "（14万円〜）無垢の格。SUDARE はより安く、素材の物語が強い"
+        },
+        {
+          "vs": "布張りHB",
+          "point": "洗えない。SUDARE は簾の面と洗える布の面を季節で替えられる"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C2-06-detail-hb.png",
+          "caption": "丸竹の節と燻し竹のひごの陰影"
+        },
+        {
+          "image": "img/C2-06-detail-dock.png",
+          "caption": "丸竹の支柱と、落とし込む前の簾"
+        }
+      ],
+      "scene": {
+        "image": "img/C2-06-scene.png",
+        "text": "旅館の設えが好きな夫婦。夏は簾の涼しさ、冬は裏返してリネンに。"
+      },
+      "evidence": "research.md §7 天然素材 35.7%、§8 竹 [S28]、§12 Nectar [S25]、結論6 切り口7、[S4]",
+      "recommended": false,
+      "score": "4.02"
+    },
+    {
+      "no": "C2-07",
+      "type": "UX改善",
+      "type_en": "UX",
+      "name": "KAKERU",
+      "name_ja": "かける",
+      "tagline": "バーを掛けるだけ。1動作で着替える。",
+      "accent": "#806350",
+      "main_visual": "../../../designs/v2/c2/C2-07-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c2/C2-07-frame.png",
+      "size": "W1110（バー） × L2100 × H852 mm",
+      "price": "S ¥99,800",
+      "concept": "顔は竹の丸バーに吊られたクッション。バーを支柱上端の受けに掛ければ完成、持ち上げれば外れる。付け替えを1動作に減らし、説明なしで分かる形にした。",
+      "background": "購入理由1位「工具不要・短時間」57.1%、不満1位「組立が重い・2人必要」28.6%。HBのぐらつき14.3%、布が洗えない不満もある。すべてに1台で答える。",
+      "problems": [
+        "HB込みの組立が重く、2人・長時間かかる",
+        "後付けのHBがぐらつく・外れそうで不安",
+        "布のHBが汚れても洗えない"
+      ],
+      "features": [
+        {
+          "title": "差すだけ 4動作・約6分",
+          "text": "工具0・ネジ0・部品3点・1人。10案で最短。顔は1動作"
+        },
+        {
+          "title": "吊るクッションHB 床から852mm",
+          "text": "竹の丸バー（直径52mm）にモカの布。もたれ3度"
+        },
+        {
+          "title": "自重で2点ロック＋目印",
+          "text": "バーを受けに、下端を支柱の溝に。ロックすると上端の目印が緑に"
+        },
+        {
+          "title": "洗えて替えられる",
+          "text": "カバーはバーから抜いて洗濯機へ。替えクッション9,800円"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c2/C2-07-structure.png",
+        "text": "左: 支柱だけ＋バーごと持ち上げた顔／中: オフホワイトのクッション／右: セージのチャネル。掛けるだけで着替える"
+      },
+      "materials": [
+        {
+          "part": "支柱・バー",
+          "material": "竹集成材",
+          "note": "バーはスチール芯入り"
+        },
+        {
+          "part": "クッション",
+          "material": "撥水布＋ウレタン",
+          "note": "袖でバーを包む"
+        },
+        {
+          "part": "脚",
+          "material": "竹集成材ブロック×6",
+          "note": "90角・R20"
+        },
+        {
+          "part": "受け・目印",
+          "material": "樹脂ライナー／緑の目印"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "本体・支柱・バー 3分艶"
+        },
+        {
+          "name": "Mocha",
+          "hex": "#806350",
+          "finish": "クッション（標準）洗いざらし"
+        },
+        {
+          "name": "Lock Green",
+          "hex": "#4F8A5B",
+          "finish": "ロックの目印"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "Thuma",
+          "point": "交換部品の値上げ不満に対し、顔ごと替えられて価格を公開（9,800円）"
+        },
+        {
+          "vs": "Floyd 後付けHB",
+          "point": "「クランプが緩む」に対し、自重で締まる受け＋溝の2点で外れない"
+        },
+        {
+          "vs": "コアラ",
+          "point": "（99,900円）「2人推奨」に対し、同価格で1人・約6分。布も洗える"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C2-07-detail-hb.png",
+          "caption": "丸バーの受けと緑のロック目印"
+        },
+        {
+          "image": "img/C2-07-detail-dock.png",
+          "caption": "丸い支柱と、バーごと持ち上げた顔"
+        }
+      ],
+      "scene": {
+        "image": "img/C2-07-scene.png",
+        "text": "共働きの2人。季節や来客の前に、バーを持ち上げて掛け替えるだけ。"
+      },
+      "evidence": "research.md 結論5・6 切り口4、§6（組立 28.6%・ぐらつき 14.3%）、§7 工具不要 57.1%、[S20][S23]",
+      "recommended": true,
+      "score": "4.50"
+    },
+    {
+      "no": "C2-08",
+      "type": "構造革新",
+      "type_en": "Structure",
+      "name": "NOBIRU",
+      "name_ja": "のびる",
+      "tagline": "床梁が伸びて、ワイドのホテルヘッドに。",
+      "accent": "#857A66",
+      "main_visual": "../../../designs/v2/c2/C2-08-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c2/C2-08-frame.png",
+      "size": "W2070 × L2100 × H820 mm（ワイド時）",
+      "price": "S ¥129,800（ワイドセット）",
+      "concept": "HEAD DOCK の床梁を伸縮式にし、支柱の間隔を940mmから1900mmまで広げる。同じ本体のまま、ナイトトレー一体のワイドな顔に育てられる。",
+      "background": "2026年のHBは壁一面の wall-to-wall が流れ。ただしワイドは上位モジュールにとどめるのが現実的。購入理由「長く使える」28.6%に、住み替えで育つ形で答える。",
+      "problems": [
+        "住み替えで部屋が広くなっても、ベッドは変えられない",
+        "サイドテーブルを別に買うと寸法・色が合わない",
+        "ホテルの壁一面のHBは高く、業者施工になる"
+      ],
+      "features": [
+        {
+          "title": "差すだけ ワイド時6動作・約12分",
+          "text": "工具0・ネジ0・部品5点・1人。S幅なら標準の4動作"
+        },
+        {
+          "title": "ワイドHB 床から820mm",
+          "text": "幅1990mmの5面パネル（中央で2分割）。布リネン"
+        },
+        {
+          "title": "伸びる床梁",
+          "text": "ロックピンを抜き、支柱の間隔を940→1900mmに"
+        },
+        {
+          "title": "片持ちのナイトトレー",
+          "text": "両脇に竹トレー400×330mm。床から560mm"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c2/C2-08-structure.png",
+        "text": "左: 伸ばした支柱だけ＋ワイドの顔を持ち上げた状態／中: 床梁を縮めたS幅＋チャネルの顔／右: ワイドのクレイ"
+      },
+      "materials": [
+        {
+          "part": "床梁",
+          "material": "スチール角パイプの二重管",
+          "note": "黒で影に沈める"
+        },
+        {
+          "part": "支柱",
+          "material": "竹集成材"
+        },
+        {
+          "part": "顔",
+          "material": "撥水布＋竹合板の芯",
+          "note": "中央で2分割"
+        },
+        {
+          "part": "トレー",
+          "material": "竹集成材",
+          "note": "スチールブラケットで固定"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "本体・支柱・トレー 3分艶"
+        },
+        {
+          "name": "Linen",
+          "hex": "#D9D0C0",
+          "finish": "ワイドの顔（標準）"
+        },
+        {
+          "name": "Clay",
+          "hex": "#A8765A",
+          "finish": "顔の布（替え）"
+        },
+        {
+          "name": "Black",
+          "hex": "#232323",
+          "finish": "床梁"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "壁面HB家具",
+          "point": "（20万円〜）業者設置【推測】に対し、ワイドの顔を後から29,800円で追加"
+        },
+        {
+          "vs": "一般のベッド",
+          "point": "幅は変えられない。NOBIRU は同じ本体のまま支柱の間隔を広げられる"
+        },
+        {
+          "vs": "別売りの台",
+          "point": "寸法と色がずれる。トレーは顔と一体でそろう"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C2-08-detail-hb.png",
+          "caption": "ワイドの顔と片持ちの竹トレー"
+        },
+        {
+          "image": "img/C2-08-detail-dock.png",
+          "caption": "伸ばした床梁。黒で影に沈む"
+        }
+      ],
+      "scene": {
+        "image": "img/C2-08-scene.png",
+        "text": "住み替えで広い寝室に。ベッドはそのまま、ホテルのような横長の顔に育てる。"
+      },
+      "evidence": "research.md §7 長く使える 28.6%、§10 wall-to-wall [S28]・ワイドは上位（推測）、[S44]",
+      "recommended": false,
+      "score": "3.76"
+    },
+    {
+      "no": "C2-09",
+      "type": "少し挑戦的",
+      "type_en": "Challenge",
+      "name": "TILE",
+      "name_ja": "たいる",
+      "tagline": "6枚のクッションを、好きな色で並べる。",
+      "accent": "#6F7A62",
+      "main_visual": "../../../designs/v2/c2/C2-09-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c2/C2-09-frame.png",
+      "size": "W1040 × L2106 × H930 mm（HB込み）",
+      "price": "S ¥109,800（タイル6枚込み）",
+      "concept": "炭化竹の支柱と格子の額縁に、四角いクッションタイル6枚を1枚ずつ付ける。「HBは1枚の面」という常識を崩し、顔を服のように編集させる。",
+      "background": "「HBを変えたい」需要は大きい（楽天「ヘッドボード 後付け」2,924件、RoomClip の DIY 実例）。ただし DIY は手間で、HBを丸ごと買い替えるのは高い。",
+      "problems": [
+        "HBを変えたいが、DIY は手間で失敗しそう",
+        "HBを丸ごと買い替えるのは高い",
+        "服のように寝室の色を少しずつ変えたい"
+      ],
+      "features": [
+        {
+          "title": "差すだけ 4動作・約8分",
+          "text": "工具0・ネジ0・部品3点・1人。タイル6枚は装着済みで届く"
+        },
+        {
+          "title": "タイルHB 床から910mm",
+          "text": "炭化竹の額縁にタイル3列×2段（各約28cm角）。もたれ3度"
+        },
+        {
+          "title": "1枚ずつ付け替え",
+          "text": "スナップ2点で差す。洗える。替え1枚2,980円【推測】"
+        },
+        {
+          "title": "落ち着いた推奨配色",
+          "text": "ミックス／モカ×クレイ／オフホワイト×チャコールの3セット"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c2/C2-09-structure.png",
+        "text": "左: 支柱だけ＋タイルの顔を持ち上げた状態／中: モカ×クレイの市松／右: オフホワイト×チャコールの市松"
+      },
+      "materials": [
+        {
+          "part": "支柱・背板",
+          "material": "炭化竹集成材",
+          "note": "額縁として見せる"
+        },
+        {
+          "part": "タイル",
+          "material": "撥水布＋ウレタン＋樹脂板",
+          "note": "スナップ付き・洗える"
+        },
+        {
+          "part": "本体",
+          "material": "炭化竹集成材",
+          "note": "2分艶"
+        },
+        {
+          "part": "掛け金具",
+          "material": "樹脂くさび2点"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Carbonized Bamboo",
+          "hex": "#5B3D28",
+          "finish": "支柱・背板・本体 2分艶"
+        },
+        {
+          "name": "Sage",
+          "hex": "#A4AD96",
+          "finish": "タイル（6色から）"
+        },
+        {
+          "name": "Clay",
+          "hex": "#A8765A",
+          "finish": "タイル（6色から）"
+        },
+        {
+          "name": "Charcoal",
+          "hex": "#55524E",
+          "finish": "タイル（ほか3色）"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "国内外のHB",
+          "point": "タイルを組み替えるHBは調査範囲では見当たらない（research §16）"
+        },
+        {
+          "vs": "Thuma",
+          "point": "色替えのみ。TILE は配置と色の組み合わせまで編集できる"
+        },
+        {
+          "vs": "HBの DIY",
+          "point": "工具と手間がいる。TILE はスナップで1枚ずつ差し替えるだけ"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C2-09-detail-hb.png",
+          "caption": "6色のタイルと炭化竹の額縁"
+        },
+        {
+          "image": "img/C2-09-detail-dock.png",
+          "caption": "支柱と、落とし込む前のタイルの顔"
+        }
+      ],
+      "scene": {
+        "image": "img/C2-09-scene.png",
+        "text": "インテリアを発信する2人。季節ごとにタイルを2枚替えて、前後を投稿する。"
+      },
+      "evidence": "research.md 結論6 切り口2、§13 着せ替え前後の短尺動画、§16 空白C、[S21][S53][S70]",
+      "recommended": true,
+      "score": "3.40"
+    },
+    {
+      "no": "C2-10",
+      "type": "コンセプトモデル",
+      "type_en": "Concept",
+      "name": "HASHIRA",
+      "name_ja": "はしら",
+      "tagline": "ベッドの柱が、寝室の背骨になる。",
+      "accent": "#9A7243",
+      "main_visual": "../../../designs/v2/c2/C2-10-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c2/C2-10-frame.png",
+      "size": "W2250 × L2115 × H2000 mm",
+      "price": "¥199,800【コンセプト】",
+      "concept": "HEAD DOCK の支柱を床から2000mmまで伸ばし、上梁・棚・灯り・デスクを抱える軸組にする。ベッドを中心に、寝室全体を“編集”する数年先の姿。",
+      "background": "狭い部屋でベッド・棚・デスクを別々に買うと寸法と色がそろわない【推測】。購入理由「後付け・拡張」28.6%。HEAD DOCK という1つの規格で家具を増やす。",
+      "problems": [
+        "寝室と仕事場を兼ねる部屋で、家具がそろわない",
+        "壁面収納一体のベッドは据え付け・業者施工",
+        "引越しのたびに家具を買い替えることになる"
+      ],
+      "features": [
+        {
+          "title": "差し継ぎ 12動作以上・約40分",
+          "text": "工具0・ネジ0・2人推奨・5箱【推測】。まず棚キットから"
+        },
+        {
+          "title": "クッションHB 床から900mm",
+          "text": "標準規格のモカの顔をインセット。柱は2000mm。もたれ5度"
+        },
+        {
+          "title": "柱と梁の軸組",
+          "text": "延長柱を差し継ぎ、上梁で連結。くさびとほぞで工具なし"
+        },
+        {
+          "title": "棚・灯り・デスク",
+          "text": "床から1350mmの棚、読書灯、デスク680×480mm"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c2/C2-10-structure.png",
+        "text": "左: 支柱と棚だけ＋顔を持ち上げた状態／中: クレイのチャネル／右: ニッチ棚の顔。顔は標準の規格のまま替えられる"
+      },
+      "materials": [
+        {
+          "part": "柱・梁・棚",
+          "material": "竹集成材",
+          "note": "柱は2分割"
+        },
+        {
+          "part": "継ぎ手",
+          "material": "スチール芯＋くさび",
+          "note": "上梁はほぞ"
+        },
+        {
+          "part": "顔",
+          "material": "撥水布＋ウレタン",
+          "note": "標準の HEAD DOCK 規格"
+        },
+        {
+          "part": "デスク",
+          "material": "竹集成材",
+          "note": "床から720mm"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "柱・梁・棚 3分艶"
+        },
+        {
+          "name": "Mocha",
+          "hex": "#806350",
+          "finish": "顔の布"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "壁面収納ベッド",
+          "point": "据え付け・業者施工【推測】に対し、工具なしで差し継ぎ、引越しで分解できる"
+        },
+        {
+          "vs": "別々の家具",
+          "point": "寸法と色がずれる。1つの規格で柱・棚・デスクがそろう"
+        },
+        {
+          "vs": "一般のベッド",
+          "point": "ベッドだけで完結する。HASHIRA は寝室全体に広がる規格の旗"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C2-10-detail-hb.png",
+          "caption": "柱の間に収まるモカの顔と棚"
+        },
+        {
+          "image": "img/C2-10-detail-dock.png",
+          "caption": "軸組と、落とし込む前の顔"
+        }
+      ],
+      "scene": {
+        "image": "img/C2-10-scene.png",
+        "text": "寝室と仕事場を兼ねるワンルーム。柱の棚に本を並べ、隣のデスクで仕事。"
+      },
+      "evidence": "research.md 結論6 切り口6、§7 後付け・拡張 28.6%、02-planning-v2 4-2 #10",
+      "recommended": false,
+      "score": "3.18"
+    }
+  ]
+}

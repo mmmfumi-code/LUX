@@ -1,0 +1,1077 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><title>GOKUMIN Flagship Bed v2 — ② 自分仕様に育つベッド（着せ替えヘッドボード HEAD DOCK） — All Boards</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=block" rel="stylesheet"><style>/* ============================================================
+   Product Design Presentation Board — A3 Landscape (420 x 297mm)
+   白〜ライトグレー / 十分な余白 / 12カラムグリッド / ミニマル
+   ============================================================ */
+@page { size: 420mm 297mm; margin: 0; }
+
+:root {
+  --paper: #fafaf8;          /* 背景（白〜ライトグレー） */
+  --panel: #efefec;          /* 画像パネル */
+  --panel-2: #e7e7e3;
+  --ink: #1b1b1a;            /* 本文 */
+  --ink-2: #5f5f5b;          /* 補足 */
+  --ink-3: #9a9a95;          /* ラベル */
+  --rule: #d8d8d3;           /* 罫線 */
+  --accent: #1b1b1a;         /* 案ごとのアクセント（boards.json の accent で上書き） */
+  --margin: 16mm;
+  --gap: 6mm;
+  --latin: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --jp: "Noto Sans JP", "Hiragino Sans", sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--paper); }
+body {
+  font-family: var(--latin), var(--jp);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "palt";
+}
+
+.board {
+  width: 420mm; height: 297mm;
+  padding: var(--margin);
+  background: var(--paper);
+  display: grid;
+  grid-template-rows: 21mm 1fr 6mm;
+  row-gap: 6mm;
+  overflow: hidden;
+  position: relative;
+  page-break-after: always;
+  break-after: page;
+}
+.board:last-child { page-break-after: auto; break-after: auto; }
+
+/* ---------- header ---------- */
+.hd {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--gap);
+  align-items: end;
+  border-bottom: 0.3mm solid var(--ink);
+  padding-bottom: 3.5mm;
+}
+.hd .no {
+  grid-column: 1 / 2;
+  font-family: var(--latin); font-weight: 200;
+  font-size: 44px; line-height: .8; letter-spacing: -0.02em; white-space: nowrap;
+}
+.hd .title { grid-column: 2 / 8; }
+.hd .type {
+  font-family: var(--latin); font-size: 10px; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--ink-3); margin-bottom: 1.5mm;
+}
+.hd .type b { color: var(--accent); font-weight: 600; }
+.hd .name { font-size: 30px; font-weight: 500; letter-spacing: .02em; line-height: 1.05; }
+.hd .name small { font-size: 14px; font-weight: 400; color: var(--ink-2); margin-left: 3mm; letter-spacing: .06em; }
+.hd .tagline {
+  grid-column: 8 / 11; font-size: 15px; font-weight: 400; line-height: 1.5;
+  color: var(--ink); letter-spacing: .04em;
+}
+.hd .meta {
+  grid-column: 11 / 13; text-align: right;
+  font-family: var(--latin); font-size: 9px; letter-spacing: .12em;
+  color: var(--ink-3); line-height: 1.7; text-transform: uppercase;
+}
+
+/* ---------- body grid ---------- */
+.bd {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 58% 1fr;
+  column-gap: var(--gap);
+  row-gap: 7mm;
+  min-height: 0;
+}
+.cell { min-height: 0; display: flex; flex-direction: column; }
+
+/* section label: 番号 + EN + 日本語 */
+.lbl {
+  display: flex; align-items: baseline; gap: 2mm;
+  padding-bottom: 1.8mm; margin-bottom: 2.6mm;
+  border-bottom: 0.2mm solid var(--rule);
+}
+.lbl .n { font-family: var(--latin); font-size: 9px; color: var(--ink-3); letter-spacing: .1em; }
+.lbl .en {
+  font-family: var(--latin); font-size: 9.5px; font-weight: 600;
+  letter-spacing: .22em; text-transform: uppercase;
+}
+.lbl .ja { font-size: 9.5px; color: var(--ink-2); letter-spacing: .08em; }
+
+p, li, td { font-size: 12px; line-height: 1.75; letter-spacing: .02em; color: var(--ink); }
+.muted { color: var(--ink-2); }
+
+/* image panel */
+.img {
+  background: var(--panel);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; position: relative; min-height: 0;
+}
+.img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.img.cover img { object-fit: cover; }
+.img.empty::after {
+  content: "IMAGE"; font-family: var(--latin); font-size: 9px;
+  letter-spacing: .3em; color: var(--ink-3);
+}
+.cap { font-size: 10px; line-height: 1.55; color: var(--ink-2); margin-top: 1.6mm; }
+
+/* ---------- row A ---------- */
+.main { grid-column: 1 / 7; grid-row: 1; }
+.main .img { flex: 1; }
+.main .spec {
+  display: flex; justify-content: space-between; margin-top: 2mm;
+  font-family: var(--latin); font-size: 9.5px; letter-spacing: .12em; color: var(--ink-2);
+}
+.main .spec b { color: var(--ink); font-weight: 600; }
+
+.story { grid-column: 7 / 10; grid-row: 1; gap: 5mm; }
+.story .concept p { font-size: 13.5px; line-height: 1.8; }
+.story ol { list-style: none; counter-reset: q; }
+.story ol li { counter-increment: q; padding-left: 6mm; position: relative; margin-bottom: 1mm; }
+.story ol li::before {
+  content: counter(q, decimal-leading-zero); position: absolute; left: 0; top: .1em;
+  font-family: var(--latin); font-size: 9px; color: var(--accent); font-weight: 600;
+}
+
+.side { grid-column: 10 / 13; grid-row: 1; gap: 5mm; }
+.side .scene { flex: 1.25; }
+.side .scene .img { flex: 1; }
+.side .adv { flex: 1; }
+.adv table { width: 100%; border-collapse: collapse; }
+.adv td { vertical-align: top; padding: 1.2mm 0; border-bottom: 0.2mm solid var(--rule); }
+.adv td.vs {
+  width: 22mm; font-family: var(--latin); font-size: 9px; letter-spacing: .08em;
+  color: var(--ink-3); padding-right: 2mm; line-height: 1.6; padding-top: 1.7mm;
+}
+
+/* ---------- row B ---------- */
+.feat { grid-column: 1 / 4; grid-row: 2; }
+.feat ul { list-style: none; display: grid; gap: 2.4mm; }
+.feat li b { display: block; font-size: 12.5px; font-weight: 500; line-height: 1.5; }
+.feat li span { font-size: 11px; color: var(--ink-2); line-height: 1.6; display: block; }
+.feat li { padding-left: 4mm; border-left: 0.5mm solid var(--accent); }
+
+.struct { grid-column: 4 / 7; grid-row: 2; }
+.struct .img { flex: 1; }
+
+.mat { grid-column: 7 / 10; grid-row: 2; }
+.mat table { width: 100%; border-collapse: collapse; margin-bottom: 3mm; }
+.mat td { font-size: 11px; padding: .9mm 0; border-bottom: 0.2mm solid var(--rule); vertical-align: top; }
+.mat td:first-child { width: 20mm; color: var(--ink-2); }
+.swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; }
+.sw .chip { height: 13mm; border: 0.2mm solid rgba(0,0,0,.08); margin-bottom: 1.2mm; }
+.sw .nm { font-size: 9.5px; font-weight: 500; line-height: 1.35; }
+.sw .hx { font-family: var(--latin); font-size: 8.5px; color: var(--ink-3); letter-spacing: .06em; }
+.sw .fn { font-size: 9px; color: var(--ink-2); line-height: 1.4; }
+
+.detail { grid-column: 10 / 13; grid-row: 2; }
+.detail .pair { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; min-height: 0; }
+.detail .pair > div { display: flex; flex-direction: column; min-height: 0; }
+.detail .pair .img { flex: 1; }
+
+/* ---------- footer ---------- */
+.ft {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--latin); font-size: 8.5px; letter-spacing: .2em;
+  color: var(--ink-3); text-transform: uppercase;
+  border-top: 0.2mm solid var(--rule); padding-top: 1.8mm;
+}
+.ft .ev { text-transform: none; letter-spacing: .04em; font-family: var(--jp); }
+
+/* ============================================================
+   Overview board（10案一覧）
+   ============================================================ */
+.ov .bd {
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr 1fr;
+  column-gap: var(--gap); row-gap: 7mm;
+}
+.ov .card { display: flex; flex-direction: column; min-height: 0; position: relative; }
+.ov .card .img { flex: 1; }
+.ov .card .row1 { display: flex; align-items: baseline; gap: 2mm; margin-top: 2.4mm; }
+.ov .card .cno { font-family: var(--latin); font-weight: 300; font-size: 20px; line-height: 1; }
+.ov .card .ctype { font-size: 9.5px; color: var(--ink-3); letter-spacing: .08em; }
+.ov .card .cname { font-size: 14px; font-weight: 500; margin-top: 1mm; }
+.ov .card .ctag { font-size: 10.5px; color: var(--ink-2); line-height: 1.55; margin-top: .8mm; min-height: 3.1em; }
+.ov .card .cmeta {
+  display: flex; justify-content: space-between; margin-top: 1.6mm; padding-top: 1.4mm;
+  border-top: 0.2mm solid var(--rule); font-family: var(--latin); font-size: 9.5px; color: var(--ink-2);
+}
+.ov .card .cmeta b { color: var(--ink); font-weight: 600; }
+.ov .card.rec > .img { outline: 0.5mm solid var(--ink); outline-offset: -0.5mm; }
+.ov .card.rec .badge {
+  position: absolute; top: 2.5mm; left: 2.5mm; z-index: 2; background: var(--ink); color: #fff;
+  font-family: var(--latin); font-size: 8px; letter-spacing: .2em; padding: 1mm 2mm;
+}
+
+/* ============================================================
+   Graphic Design board（広告・ブランディング 3方向提案）
+   layout: "graphic"
+   ============================================================ */
+.gr .bd {
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 45% 1fr auto;
+  row-gap: 6mm;
+}
+.gr .kv { grid-column: 1 / 7; grid-row: 1; }
+.gr .kv .img { flex: 1; }
+.gr .copy { grid-column: 7 / 10; grid-row: 1; gap: 4mm; }
+.gr .copy .main { font-size: 22px; line-height: 1.45; font-weight: 500; letter-spacing: .04em; }
+.gr .copy .sub { font-size: 13px; line-height: 1.7; color: var(--ink); }
+.gr .copy .body { font-size: 11px; line-height: 1.75; color: var(--ink-2); }
+.gr .copy .cta {
+  display: inline-block; align-self: flex-start; margin-top: 1mm;
+  font-size: 10px; letter-spacing: .12em; padding: 1.4mm 4mm; border: 0.25mm solid var(--accent); color: var(--accent);
+}
+.gr .type { grid-column: 10 / 13; grid-row: 1; }
+.gr .type .spec { padding: 2mm 0 2.4mm; border-bottom: 0.2mm solid var(--rule); }
+.gr .type .spec:last-child { border-bottom: 0; }
+.gr .type .role { display: flex; justify-content: space-between; font-size: 9px; color: var(--ink-3); letter-spacing: .08em; }
+.gr .type .role b { font-family: var(--latin); font-weight: 500; color: var(--ink-2); letter-spacing: .04em; }
+.gr .type .sample { font-size: 17px; line-height: 1.35; margin-top: 1mm; color: var(--ink); overflow: hidden; white-space: nowrap; text-overflow: clip; }
+.gr .type .spec:first-child .sample { font-size: 28px; }
+.gr .type .note { font-size: 9.5px; color: var(--ink-2); line-height: 1.5; margin-top: .6mm; }
+
+.gr .color { grid-column: 1 / 4; grid-row: 2; }
+.gr .color .ratio { display: flex; height: 7mm; margin-bottom: 2.4mm; border: 0.2mm solid rgba(0,0,0,.06); }
+.gr .color .list { display: grid; grid-template-columns: repeat(auto-fill, minmax(18mm, 1fr)); gap: 2mm 3mm; }
+.gr .color .c .chip { height: 8mm; border: 0.2mm solid rgba(0,0,0,.08); margin-bottom: 1mm; }
+.gr .color .c .nm { font-size: 9.5px; font-weight: 500; line-height: 1.3; }
+.gr .color .c .hx { font-family: var(--latin); font-size: 8.5px; color: var(--ink-3); }
+.gr .color .c .rl { font-size: 8.5px; color: var(--ink-2); line-height: 1.35; }
+
+.gr .lay { grid-column: 4 / 7; grid-row: 2; }
+.gr .photo { grid-column: 7 / 10; grid-row: 2; }
+.gr .motif { grid-column: 10 / 13; grid-row: 2; }
+.gr .lay .split, .gr .photo .split, .gr .motif .split { flex: 1; display: grid; grid-template-columns: 42% 1fr; gap: 3mm; min-height: 0; }
+.gr .split .img { height: 100%; }
+.gr .split dl { font-size: 10.5px; line-height: 1.6; }
+.gr .split dt { font-family: var(--latin); font-size: 8.5px; letter-spacing: .16em; color: var(--ink-3); text-transform: uppercase; margin-top: 1mm; }
+.gr .split dt:first-child { margin-top: 0; }
+.gr .split dd { color: var(--ink); }
+.gr .split p { font-size: 10.5px; line-height: 1.65; }
+
+.gr .apps { grid-column: 1 / 13; grid-row: 3; }
+.gr .apps .row { display: flex; gap: 6mm; align-items: flex-end; }
+.gr .apps .app { display: flex; flex-direction: column; flex: 0 0 auto; }
+.gr .apps .app .img { height: 43mm; flex: 0 0 auto; background: var(--panel-2); }
+.gr .apps .app .img img { object-fit: contain; }
+.gr .apps .app .al { display: flex; justify-content: space-between; gap: 2mm; margin-top: 1.4mm; font-family: var(--latin); font-size: 8.5px; letter-spacing: .14em; color: var(--ink-2); text-transform: uppercase; white-space: nowrap; }
+.gr .apps .app .al span { color: var(--ink-3); letter-spacing: .04em; }
+
+/* 3方向の一覧 */
+.ov.n3 .bd { grid-template-columns: repeat(var(--ncol, 3), minmax(0, 1fr)); grid-template-rows: 1fr; }
+.ov.n3 .card .img { flex: 0 0 auto; aspect-ratio: 16 / 9; }
+.ov.n3 .card .cname { font-size: 20px; margin-top: 2mm; }
+.ov.n3 .card .ctag { font-size: 15px; color: var(--ink); line-height: 1.6; margin-top: 2mm; }
+.ov.n3 .card .cdesc { font-size: 11.5px; color: var(--ink-2); line-height: 1.75; margin-top: 2mm; }
+.ov.n3 .card .cpal { display: flex; height: 5mm; margin-top: 4mm; border: 0.2mm solid rgba(0,0,0,.06); }
+.ov.n3 .card .capps { display: flex; gap: 4mm; margin-top: 4mm; align-items: flex-end; }
+.ov.n3 .card .capps > div { display: flex; flex-direction: column; }
+.ov.n3 .card .capps .img { height: 52mm; flex: 0 0 auto; background: var(--panel-2); }
+.ov.n3 .card .capps span { font-family: var(--latin); font-size: 8.5px; letter-spacing: .14em; color: var(--ink-3); text-transform: uppercase; margin-top: 1.2mm; }
+.ov.n3 .card .cmeta:empty { display: none; }
+
+.ov.n3 .card .cframes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin-top: 4mm; }
+.ov.n3 .card .cframes .img { aspect-ratio: 16 / 9; }
+.ov.n3 .card .cframes span { font-family: var(--latin); font-size: 8.5px; letter-spacing: .1em; color: var(--ink-3); display: block; margin-top: 1mm; }
+.ov.n3 .card .cdur { font-family: var(--latin); font-size: 10px; letter-spacing: .14em; color: var(--ink-2); margin-top: 3mm; text-transform: uppercase; }
+
+/* ============================================================
+   Video board（プロモーション動画の絵コンテ・演出設計）
+   layout: "video"
+   ============================================================ */
+.vd .bd { grid-template-columns: repeat(12, 1fr); grid-template-rows: auto auto 1fr; row-gap: 5.5mm; }
+.vd .info { grid-column: 1 / 4; grid-row: 1; gap: 4.5mm; }
+.vd .info p { font-size: 11.5px; line-height: 1.75; }
+.vd .fmt { display: grid; grid-template-columns: 17mm 1fr; row-gap: 1mm; font-size: 11px; }
+.vd .fmt dt { font-family: var(--latin); font-size: 8.5px; letter-spacing: .16em; color: var(--ink-3); text-transform: uppercase; padding-top: .5mm; }
+.vd .sb { grid-column: 4 / 13; grid-row: 1; }
+.vd .frames { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4mm 4mm; }
+.vd .fr .img { aspect-ratio: 16 / 9; height: auto; }
+.vd .fr .fh { display: flex; justify-content: space-between; margin-top: 1.4mm; font-family: var(--latin); font-size: 9px; letter-spacing: .08em; }
+.vd .fr .fh .t { color: var(--accent); font-weight: 600; }
+.vd .fr .fh .s { color: var(--ink-3); }
+.vd .fr .ftl { font-size: 11px; font-weight: 500; margin-top: .6mm; line-height: 1.4; }
+.vd .fr .fx { font-size: 9.5px; color: var(--ink-2); line-height: 1.5; margin-top: .4mm; }
+
+.vd .specs { grid-column: 1 / 13; grid-row: 2; }
+.vd .specs .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2.4mm 6mm; }
+.vd .sp { border-left: 0.5mm solid var(--accent); padding-left: 3mm; }
+.vd .sp .k { font-family: var(--latin); font-size: 8.5px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+.vd .sp .k span { font-family: var(--jp); font-weight: 400; letter-spacing: .06em; color: var(--ink-3); margin-left: 1.6mm; text-transform: none; }
+.vd .sp .v { font-size: 10.5px; line-height: 1.55; margin-top: .6mm; }
+
+.vd .tl { grid-column: 1 / 13; grid-row: 3; }
+.vd .lanes { display: grid; gap: 1.6mm; }
+.vd .lane { display: grid; grid-template-columns: 16mm 1fr; align-items: stretch; }
+.vd .lane .ln { font-family: var(--latin); font-size: 8px; letter-spacing: .18em; color: var(--ink-3); padding-top: 1mm; }
+.vd .lane .track { position: relative; min-height: 6.5mm; border-left: 0.2mm solid var(--rule); border-right: 0.2mm solid var(--rule); }
+.vd .ruler .track { min-height: 4mm; border-bottom: 0.2mm solid var(--ink); }
+.vd .ruler i { position: absolute; bottom: 1mm; transform: translateX(-50%); font-style: normal; font-family: var(--latin); font-size: 8px; color: var(--ink-2); }
+.vd .ruler i:first-child { transform: none; }
+.vd .ruler i:last-child { transform: translateX(-100%); }
+.vd .scenes .blk { position: absolute; top: 0; bottom: 0; background: var(--panel-2); border-right: 0.4mm solid var(--paper); display: flex; align-items: center; padding: 0 1.6mm; overflow: hidden; }
+.vd .scenes .blk:nth-child(even) { background: var(--panel); }
+.vd .scenes .blk b { font-family: var(--latin); font-size: 9px; font-weight: 600; letter-spacing: .06em; white-space: nowrap; }
+.vd .copy .txt, .vd .sound .txt { position: absolute; top: 0; padding: .6mm 1.6mm 0; font-size: 9px; line-height: 1.35; overflow: hidden; border-left: 0.2mm solid var(--rule); }
+.vd .copy .txt { color: var(--ink); font-weight: 500; }
+.vd .sound .txt { color: var(--ink-2); }
+</style></head>
+<body>
+<section class="board ov " style="">
+  
+  <header class="hd">
+    <div class="no">00</div>
+    <div class="title">
+      <div class="type"><b>OVERVIEW</b> — 10案一覧</div>
+      <div class="name">HEAD DOCK — 10 Proposals</div>
+    </div>
+    <div class="tagline">ヘッドボードを、着替えるベッド。</div>
+    <div class="meta">GOKUMIN Flagship Bed v2 — ② 自分仕様に育つベッド（着せ替えヘッドボード HEAD DOCK）<br>2026.09.30<br>v2</div>
+  </header>
+  <main class="bd">
+    <div class="card ">
+      
+      <div class="img "><img src="../../../designs/v2/c2/C2-01-frame.png" alt="KIGAE"></div>
+      <div class="row1"><span class="cno">C2-01</span><span class="ctype">王道・市場適合型</span></div>
+      <div class="cname">KIGAE</div>
+      <div class="ctag">まずはホテルの顔。飽きたら着替える。</div>
+      
+      
+      
+      
+      
+      <div class="cmeta"><span><b>S ¥99,800</b></span><span>SCORE <b>4.18</b></span></div>
+    </div>
+    <div class="card ">
+      
+      <div class="img "><img src="../../../designs/v2/c2/C2-02-frame.png" alt="MONO"></div>
+      <div class="row1"><span class="cno">C2-02</span><span class="ctype">ミニマル</span></div>
+      <div class="cname">MONO</div>
+      <div class="ctag">支柱も顔も、一枚の面に。</div>
+      
+      
+      
+      
+      
+      <div class="cmeta"><span><b>S ¥94,800</b></span><span>SCORE <b>4.10</b></span></div>
+    </div>
+    <div class="card rec">
+      <span class="badge">RECOMMENDED</span>
+      <div class="img "><img src="../../../designs/v2/c2/C2-03-frame.png" alt="KASANE"></div>
+      <div class="row1"><span class="cno">C2-03</span><span class="ctype">プレミアム</span></div>
+      <div class="cname">KASANE</div>
+      <div class="ctag">顔を重ねて、スイートに育てる。</div>
+      
+      
+      
+      
+      
+      <div class="cmeta"><span><b>S ¥129,800（2層セット）</b></span><span>SCORE <b>4.02</b></span></div>
+    </div>
+    <div class="card ">
+      
+      <div class="img "><img src="../../../designs/v2/c2/C2-04-frame.png" alt="KUMO"></div>
+      <div class="row1"><span class="cno">C2-04</span><span class="ctype">トレンド</span></div>
+      <div class="cname">KUMO</div>
+      <div class="ctag">雲のかたちに、もたれる。</div>
+      
+      
+      
+      
+      
+      <div class="cmeta"><span><b>S ¥104,800</b></span><span>SCORE <b>3.66</b></span></div>
+    </div>
+    <div class="card ">
+      
+      <div class="img "><img src="../../../designs/v2/c2/C2-05-frame.png" alt="HUB"></div>
+      <div class="row1"><span class="cno">C2-05</span><span class="ctype">機能特化</span></div>
+      <div class="cname">HUB</div>
+      <div class="ctag">支柱が、寝室の電源になる。</div>
+      
+      
+      
+      
+      
+      <div class="cmeta"><span><b>S ¥114,800（モジュール込み）</b></span><span>SCORE <b>3.60</b></span></div>
+    </div>
+    <div class="card ">
+      
+      <div class="img "><img src="../../../designs/v2/c2/C2-06-frame.png" alt="SUDARE"></div>
+      <div class="row1"><span class="cno">C2-06</span><span class="ctype">素材特化</span></div>
+      <div class="cname">SUDARE</div>
+      <div class="ctag">丸竹と簾。裏返せば、洗えるリネン。</div>
+      
+      
+      
+      
+      
+      <div class="cmeta"><span><b>S ¥109,800</b></span><span>SCORE <b>4.02</b></span></div>
+    </div>
+    <div class="card rec">
+      <span class="badge">RECOMMENDED</span>
+      <div class="img "><img src="../../../designs/v2/c2/C2-07-frame.png" alt="KAKERU"></div>
+      <div class="row1"><span class="cno">C2-07</span><span class="ctype">UX改善</span></div>
+      <div class="cname">KAKERU</div>
+      <div class="ctag">バーを掛けるだけ。1動作で着替える。</div>
+      
+      
+      
+      
+      
+      <div class="cmeta"><span><b>S ¥99,800</b></span><span>SCORE <b>4.50</b></span></div>
+    </div>
+    <div class="card ">
+      
+      <div class="img "><img src="../../../designs/v2/c2/C2-08-frame.png" alt="NOBIRU"></div>
+      <div class="row1"><span class="cno">C2-08</span><span class="ctype">構造革新</span></div>
+      <div class="cname">NOBIRU</div>
+      <div class="ctag">床梁が伸びて、ワイドのホテルヘッドに。</div>
+      
+      
+      
+      
+      
+      <div class="cmeta"><span><b>S ¥129,800（ワイドセット）</b></span><span>SCORE <b>3.76</b></span></div>
+    </div>
+    <div class="card rec">
+      <span class="badge">RECOMMENDED</span>
+      <div class="img "><img src="../../../designs/v2/c2/C2-09-frame.png" alt="TILE"></div>
+      <div class="row1"><span class="cno">C2-09</span><span class="ctype">少し挑戦的</span></div>
+      <div class="cname">TILE</div>
+      <div class="ctag">6枚のクッションを、好きな色で並べる。</div>
+      
+      
+      
+      
+      
+      <div class="cmeta"><span><b>S ¥109,800（タイル6枚込み）</b></span><span>SCORE <b>3.40</b></span></div>
+    </div>
+    <div class="card ">
+      
+      <div class="img "><img src="../../../designs/v2/c2/C2-10-frame.png" alt="HASHIRA"></div>
+      <div class="row1"><span class="cno">C2-10</span><span class="ctype">コンセプトモデル</span></div>
+      <div class="cname">HASHIRA</div>
+      <div class="ctag">ベッドの柱が、寝室の背骨になる。</div>
+      
+      
+      
+      
+      
+      <div class="cmeta"><span><b>¥199,800【コンセプト】</b></span><span>SCORE <b>3.18</b></span></div>
+    </div></main>
+  
+  <footer class="ft">
+    <span>AI Design Studio — Product Design Proposal</span>
+    <span class="ev">根拠: research.md（v2）結論1〜6・§6 不満・§7 購入理由・§16 空白C／03-design-v2-c2.md 自己レビュー（加重平均）</span>
+    <span>01 / 11</span>
+  </footer>
+</section>
+
+<section class="board" style="--accent:#8A7758">
+  
+  <header class="hd">
+    <div class="no">C2-01</div>
+    <div class="title">
+      <div class="type"><b>Market Fit</b> — 王道・市場適合型</div>
+      <div class="name">KIGAE<small>きがえ</small></div>
+    </div>
+    <div class="tagline">まずはホテルの顔。飽きたら着替える。</div>
+    <div class="meta">GOKUMIN Flagship Bed v2 — ② 自分仕様に育つベッド（着せ替えヘッドボード HEAD DOCK）<br>2026.09.30<br>v2</div>
+  </header>
+  <main class="bd">
+    <div class="cell main">
+      <div class="img "><img src="../../../designs/v2/c2/C2-01-three-quarter.png" alt="KIGAE"></div>
+      <div class="spec"><span>SIZE <b>W1030 × L2115 × H850 mm（HB込み）</b></span><span>PRICE <b>S ¥99,800</b></span></div>
+    </div>
+
+    <div class="cell story">
+      <div class="concept"><div class="lbl"><span class="n">01</span><span class="en">Concept</span><span class="ja">コンセプト</span></div><p>10万円帯で最も売れている布張りのもたれられるHBを標準の顔にし、その裏に HEAD DOCK を隠した。買った日は王道のホテルベッド、後から竹・ニッチ・季節の布に着替えられる。</p></div>
+      <div><div class="lbl"><span class="n">02</span><span class="en">Background</span><span class="ja">開発背景</span></div><p class="muted">購入理由「デザイン（ホテル）」35.7%・「もたれられるHB」21.4%。一方で不満は「HBのぐらつき」14.3%と「布が洗えない」。10万円帯に洗える・替えられるHBの国内品はない。</p></div>
+      <div><div class="lbl"><span class="n">03</span><span class="en">User Issues</span><span class="ja">ユーザー課題</span></div><ol><li>HB込みの組立が重く、2人・半日がかりになる</li><li>後付けのHBがぐらつく・きしむ</li><li>布のHBが汚れても洗えず、飽きても替えられない</li></ol></div>
+    </div>
+
+    <div class="cell side">
+      <div class="cell scene"><div class="lbl"><span class="n">04</span><span class="en">Scene</span><span class="ja">想定使用シーン</span></div><div class="img cover"><img src="img/C2-01-scene.png" alt="使用シーン"></div><p class="cap">同棲2年目の寝室。買った日はオートの布、秋にはクレイの顔に着替える。</p></div>
+      <div class="cell adv"><div class="lbl"><span class="n">05</span><span class="en">Advantage</span><span class="ja">競合優位性</span></div>
+        <table><tr><td class="vs">コアラ</td><td>（99,900円）「2人推奨・寝返りで音」に対し、同価格で1人・工具0。布も洗える</td></tr><tr><td class="vs">Floyd 後付けHB</td><td>「クランプが緩む」に対し、床に立つ支柱とくさび2点で緩まない</td></tr><tr><td class="vs">布張りHB</td><td>顔を替えられない。KIGAE は替えカバー9,800円・別の顔14,800円〜</td></tr></table>
+      </div>
+    </div>
+
+    <div class="cell feat"><div class="lbl"><span class="n">06</span><span class="en">Function</span><span class="ja">機能</span></div>
+      <ul><li><b>差すだけ 4動作・約8分</b><span>工具0・ネジ0・部品3点・1人。顔の付け替えは2動作・約1分</span></li><li><b>縦チャネル布HB 床から850mm</b><span>7本の畝の布の顔。カバーは外して洗える。もたれ6度</span></li><li><b>床に立つ HEAD DOCK</b><span>支柱2本＋床梁の1ユニット。くさび2点が荷重で締まる</span></li><li><b>すのこに見えない縁</b><span>縁84mm＋立ち上がり36mm。台座は110mm奥で浮く</span></li></ul>
+    </div>
+
+    <div class="cell struct"><div class="lbl"><span class="n">07</span><span class="en">Structure</span><span class="ja">構造</span></div><div class="img "><img src="../../../designs/v2/c2/C2-01-structure.png" alt="構造図"></div><p class="cap">左: 支柱だけ＋顔を真上に持ち上げた状態（落とし込む前）／中: 竹フラットの顔／右: ニッチ棚の顔。同じ支柱で顔が替わる</p></div>
+
+    <div class="cell mat"><div class="lbl"><span class="n">08</span><span class="en">Material / CMF</span><span class="ja">素材・CMF</span></div>
+      <table><tr><td>本体・縁</td><td>国産竹集成材<span class="muted">　芯は中空スチール</span></td></tr><tr><td>HEAD DOCK</td><td>竹集成材＋スチール芯<span class="muted">　床梁は黒スチール</span></td></tr><tr><td>顔</td><td>撥水布＋ウレタン＋竹合板<span class="muted">　カバーは洗える</span></td></tr><tr><td>掛け金具</td><td>樹脂くさび・フック<span class="muted">　金属どうしを当てない</span></td></tr></table>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#C89C66"></div>
+          <div class="nm">Natural Bamboo</div><div class="hx">#C89C66</div><div class="fn">本体 オイル調ウレタン 3分艶</div></div>
+        <div class="sw"><div class="chip" style="background:#CDBC9F"></div>
+          <div class="nm">Oat</div><div class="hx">#CDBC9F</div><div class="fn">顔の布（標準）微起毛の平織り</div></div>
+        <div class="sw"><div class="chip" style="background:#A8765A"></div>
+          <div class="nm">Clay</div><div class="hx">#A8765A</div><div class="fn">顔の布（替え）</div></div>
+        <div class="sw"><div class="chip" style="background:#55524E"></div>
+          <div class="nm">Charcoal</div><div class="hx">#55524E</div><div class="fn">顔の布（替え）</div></div>
+      </div>
+    </div>
+
+    <div class="cell detail"><div class="lbl"><span class="n">09</span><span class="en">Detail</span><span class="ja">ディテール</span></div>
+      <div class="pair"><div><div class="img cover"><img src="img/C2-01-detail-hb.png" alt="縦チャネル7本。支柱は裏に隠れる"></div><p class="cap">縦チャネル7本。支柱は裏に隠れる</p></div><div><div class="img cover"><img src="img/C2-01-detail-dock.png" alt="支柱の上に顔を落とし込む前の状態"></div><p class="cap">支柱の上に顔を落とし込む前の状態</p></div></div>
+    </div>
+  </main>
+  
+  <footer class="ft">
+    <span>AI Design Studio — Product Design Proposal</span>
+    <span class="ev">根拠: research.md 結論4・5・6、§6（ぐらつき 14.3%・布の汚れ）、§7（デザイン 35.7%・もたれ 21.4%）、§10 チャネル</span>
+    <span>02 / 11</span>
+  </footer>
+</section>
+
+<section class="board" style="--accent:#8E7048">
+  
+  <header class="hd">
+    <div class="no">C2-02</div>
+    <div class="title">
+      <div class="type"><b>Minimal</b> — ミニマル</div>
+      <div class="name">MONO<small>もの</small></div>
+    </div>
+    <div class="tagline">支柱も顔も、一枚の面に。</div>
+    <div class="meta">GOKUMIN Flagship Bed v2 — ② 自分仕様に育つベッド（着せ替えヘッドボード HEAD DOCK）<br>2026.09.30<br>v2</div>
+  </header>
+  <main class="bd">
+    <div class="cell main">
+      <div class="img "><img src="../../../designs/v2/c2/C2-02-three-quarter.png" alt="MONO"></div>
+      <div class="spec"><span>SIZE <b>W1000 × L2050 × H800 mm（HB込み）</b></span><span>PRICE <b>S ¥94,800</b></span></div>
+    </div>
+
+    <div class="cell story">
+      <div class="concept"><div class="lbl"><span class="n">01</span><span class="en">Concept</span><span class="ja">コンセプト</span></div><p>支柱と竹の顔を同じ厚み44mm・同じ面にそろえ、4mmの目地2本だけで規格を表す。部品を最小にし、規格があることを感じさせない静かな本体。</p></div>
+      <div><div class="lbl"><span class="n">02</span><span class="en">Background</span><span class="ja">開発背景</span></div><p class="muted">宮付きHBは全長が十数cm伸びる（寸法の不満 21.4%）。国内のHBで最も多い型は素材を見せるフラット（11商品）。重さの不満にも最軽量で応える。</p></div>
+      <div><div class="lbl"><span class="n">03</span><span class="en">User Issues</span><span class="ja">ユーザー課題</span></div><ol><li>HBを付けると全長が伸びて部屋に入らない</li><li>重くて1人では運べない・動かせない</li><li>線の多い家具で部屋が散らかって見える</li></ol></div>
+    </div>
+
+    <div class="cell side">
+      <div class="cell scene"><div class="lbl"><span class="n">04</span><span class="en">Scene</span><span class="ja">想定使用シーン</span></div><div class="img cover"><img src="img/C2-02-scene.png" alt="使用シーン"></div><p class="cap">線の少ない1LDK。低めの竹の顔が、部屋を広く静かに見せる。</p></div>
+      <div class="cell adv"><div class="lbl"><span class="n">05</span><span class="en">Advantage</span><span class="ja">競合優位性</span></div>
+        <table><tr><td class="vs">無印 HB付き</td><td>（46,900円）「脚がないとHBを付けられない」に対し、最初から付いて後で替えられる</td></tr><tr><td class="vs">シモンズ</td><td>（92,600円）業者設置が前提【推測】。MONO は届いた日に自分で7分</td></tr><tr><td class="vs">宮付きベッド</td><td>奥行きで全長が十数cm伸びる。MONO はHB込み2050mm</td></tr></table>
+      </div>
+    </div>
+
+    <div class="cell feat"><div class="lbl"><span class="n">06</span><span class="en">Function</span><span class="ja">機能</span></div>
+      <ul><li><b>差すだけ 4動作・約7分</b><span>工具0・ネジ0・部品3点・1人。HB箱は約11kg</span></li><li><b>竹フラットHB 床から800mm</b><span>厚み44mmの竹一枚板。標準より5cm低い。もたれ4度</span></li><li><b>面一の2トーン</b><span>淡色竹の顔×ナチュラル竹の支柱。目地の線だけで規格が読める</span></li><li><b>HB込み全長2050mm</b><span>HBの奥行きは5cm。宮付きのように全長が伸びない</span></li></ul>
+    </div>
+
+    <div class="cell struct"><div class="lbl"><span class="n">07</span><span class="en">Structure</span><span class="ja">構造</span></div><div class="img "><img src="../../../designs/v2/c2/C2-02-structure.png" alt="構造図"></div><p class="cap">左: 支柱だけ＋竹の顔を持ち上げた状態／中: 布クッションの顔／右: 簾の顔。静かな本体のまま、後から布や簾に替えられる</p></div>
+
+    <div class="cell mat"><div class="lbl"><span class="n">08</span><span class="en">Material / CMF</span><span class="ja">素材・CMF</span></div>
+      <table><tr><td>本体・顔</td><td>竹集成材（淡色の選別材）<span class="muted">　見える面すべて</span></td></tr><tr><td>支柱</td><td>竹集成材ナチュラル＋スチール芯<span class="muted">　延長キャップ100mm</span></td></tr><tr><td>床梁</td><td>スチール<span class="muted">　黒。外から見せない</span></td></tr><tr><td>掛け金具</td><td>樹脂くさび2点</td></tr></table>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#D6B584"></div>
+          <div class="nm">Light Bamboo</div><div class="hx">#D6B584</div><div class="fn">顔・デッキ 1分艶マットクリア</div></div>
+        <div class="sw"><div class="chip" style="background:#C89C66"></div>
+          <div class="nm">Natural Bamboo</div><div class="hx">#C89C66</div><div class="fn">支柱。目地を強調する2トーン</div></div>
+      </div>
+    </div>
+
+    <div class="cell detail"><div class="lbl"><span class="n">09</span><span class="en">Detail</span><span class="ja">ディテール</span></div>
+      <div class="pair"><div><div class="img cover"><img src="img/C2-02-detail-hb.png" alt="支柱と顔が面一。目地だけが見える"></div><p class="cap">支柱と顔が面一。目地だけが見える</p></div><div><div class="img cover"><img src="img/C2-02-detail-dock.png" alt="細い支柱と一枚板の顔。落とし込む前"></div><p class="cap">細い支柱と一枚板の顔。落とし込む前</p></div></div>
+    </div>
+  </main>
+  
+  <footer class="ft">
+    <span>AI Design Studio — Product Design Proposal</span>
+    <span class="ev">根拠: research.md 結論2-4・3、§6 寸法の不満 21.4%、§10 フラット型が最多（notes/v2-headboard-types.md）</span>
+    <span>03 / 11</span>
+  </footer>
+</section>
+
+<section class="board" style="--accent:#5B3D28">
+  
+  <header class="hd">
+    <div class="no">C2-03</div>
+    <div class="title">
+      <div class="type"><b>Premium</b> — プレミアム</div>
+      <div class="name">KASANE<small>かさね</small></div>
+    </div>
+    <div class="tagline">顔を重ねて、スイートに育てる。</div>
+    <div class="meta">GOKUMIN Flagship Bed v2 — ② 自分仕様に育つベッド（着せ替えヘッドボード HEAD DOCK）<br>2026.09.30<br>v2</div>
+  </header>
+  <main class="bd">
+    <div class="cell main">
+      <div class="img "><img src="../../../designs/v2/c2/C2-03-three-quarter.png" alt="KASANE"></div>
+      <div class="spec"><span>SIZE <b>W1070 × L2190 × H1050 mm（HB込み）</b></span><span>PRICE <b>S ¥129,800（2層セット）</b></span></div>
+    </div>
+
+    <div class="cell story">
+      <div class="concept"><div class="lbl"><span class="n">01</span><span class="en">Concept</span><span class="ja">コンセプト</span></div><p>HEAD DOCK の前後2つの掛け位置を両方使い、後ろに炭化竹の高い壁、前にブークレのスラブ2枚を重ねる。竹の壁だけから始め、クッションを重ねて“育つ”過程が上位モデルになる。</p></div>
+      <div><div class="lbl"><span class="n">02</span><span class="en">Background</span><span class="ja">開発背景</span></div><p class="muted">10万円帯の価値は素材・張り地・HBの存在感に出る。家具メーカー品は重く業者頼みで受注40〜60日、D2C は格が一段足りない。その間が空いている。</p></div>
+      <div><div class="lbl"><span class="n">03</span><span class="en">User Issues</span><span class="ja">ユーザー課題</span></div><ol><li>スイートのような格のHBは、重く業者設置になる</li><li>受注生産で届くまで40〜60日かかる</li><li>一度買うと、HBの格を後から上げられない</li></ol></div>
+    </div>
+
+    <div class="cell side">
+      <div class="cell scene"><div class="lbl"><span class="n">04</span><span class="en">Scene</span><span class="ja">想定使用シーン</span></div><div class="img cover"><img src="img/C2-03-scene.png" alt="使用シーン"></div><p class="cap">旅館やスイートの設えが好きな2人。まず竹の壁、記念日にスラブを重ねる。</p></div>
+      <div class="cell adv"><div class="lbl"><span class="n">05</span><span class="en">Advantage</span><span class="ja">競合優位性</span></div>
+        <table><tr><td class="vs">カリモク・飛騨</td><td>（13〜14万円）業者設置・受注40〜60日に対し、同等の格を即納・自分で10分</td></tr><tr><td class="vs">コアラ</td><td>竹の壁と2層の厚みで、布張り1枚のHBより一段上の格</td></tr><tr><td class="vs">ハイバックHB</td><td>高さは変えられない。KASANE は壁だけ→2層へ後から育てられる</td></tr></table>
+      </div>
+    </div>
+
+    <div class="cell feat"><div class="lbl"><span class="n">06</span><span class="en">Function</span><span class="ja">機能</span></div>
+      <ul><li><b>差すだけ 5動作・約10分</b><span>工具0・ネジ0・部品4点・1人。後層→前層の順に掛ける。3箱</span></li><li><b>2層HB 床から1050mm</b><span>炭化竹の壁の前にブークレのスラブ2枚。もたれ8度</span></li><li><b>段階的に買い足せる</b><span>竹の壁だけ99,800円に、スラブ2枚29,800円を重ねる</span></li><li><b>家具らしい厚み</b><span>縁110mm＋立ち上がり30mm、影のプリンスは60mm奥</span></li></ul>
+    </div>
+
+    <div class="cell struct"><div class="lbl"><span class="n">07</span><span class="en">Structure</span><span class="ja">構造</span></div><div class="img "><img src="../../../designs/v2/c2/C2-03-structure.png" alt="構造図"></div><p class="cap">左: 支柱だけ＋2層の顔を持ち上げた状態／中: 後ろの竹の壁だけ／右: 前層をモカのチャネルに替えた状態。重ねて育つ</p></div>
+
+    <div class="cell mat"><div class="lbl"><span class="n">08</span><span class="en">Material / CMF</span><span class="ja">素材・CMF</span></div>
+      <table><tr><td>本体・後層</td><td>炭化竹集成材<span class="muted">　笠木の小口を研ぎ出し</span></td></tr><tr><td>スラブ</td><td>ブークレ＋高密度ウレタン<span class="muted">　1枚ずつ外して洗える</span></td></tr><tr><td>支柱</td><td>炭化竹＋スチール芯<span class="muted">　後ろ溝と前フック</span></td></tr><tr><td>掛け金具</td><td>樹脂くさび・フック</td></tr></table>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#5B3D28"></div>
+          <div class="nm">Carbonized Bamboo</div><div class="hx">#5B3D28</div><div class="fn">本体・支柱・後層 2分艶</div></div>
+        <div class="sw"><div class="chip" style="background:#D3C2A6"></div>
+          <div class="nm">Boucle Latte</div><div class="hx">#D3C2A6</div><div class="fn">スラブ（標準）</div></div>
+        <div class="sw"><div class="chip" style="background:#E4DCCD"></div>
+          <div class="nm">Boucle Ivory</div><div class="hx">#E4DCCD</div><div class="fn">スラブ（替え）</div></div>
+      </div>
+    </div>
+
+    <div class="cell detail"><div class="lbl"><span class="n">09</span><span class="en">Detail</span><span class="ja">ディテール</span></div>
+      <div class="pair"><div><div class="img cover"><img src="img/C2-03-detail-hb.png" alt="炭化竹の笠木とブークレのスラブ"></div><p class="cap">炭化竹の笠木とブークレのスラブ</p></div><div><div class="img cover"><img src="img/C2-03-detail-dock.png" alt="2層の顔を支柱の上に落とし込む前"></div><p class="cap">2層の顔を支柱の上に落とし込む前</p></div></div>
+    </div>
+  </main>
+  
+  <footer class="ft">
+    <span>AI Design Studio — Product Design Proposal</span>
+    <span class="ev">根拠: research.md 結論3・6 切り口7、§7 仕立て [S42]、§8 ブークレ [S29]、§1 飛騨 受注40〜60日 [S9]</span>
+    <span>04 / 11</span>
+  </footer>
+</section>
+
+<section class="board" style="--accent:#A8765A">
+  
+  <header class="hd">
+    <div class="no">C2-04</div>
+    <div class="title">
+      <div class="type"><b>Trend</b> — トレンド</div>
+      <div class="name">KUMO<small>くも</small></div>
+    </div>
+    <div class="tagline">雲のかたちに、もたれる。</div>
+    <div class="meta">GOKUMIN Flagship Bed v2 — ② 自分仕様に育つベッド（着せ替えヘッドボード HEAD DOCK）<br>2026.09.30<br>v2</div>
+  </header>
+  <main class="bd">
+    <div class="cell main">
+      <div class="img "><img src="../../../designs/v2/c2/C2-04-three-quarter.png" alt="KUMO"></div>
+      <div class="spec"><span>SIZE <b>W1030 × L2120 × H900 mm（HB頂部）</b></span><span>PRICE <b>S ¥104,800</b></span></div>
+    </div>
+
+    <div class="cell story">
+      <div class="concept"><div class="lbl"><span class="n">01</span><span class="en">Concept</span><span class="ja">コンセプト</span></div><p>上端が4つの丸い山になった雲形のクッション。2026年の曲線・丸み・くすみ色を、顔だけで取り入れる。流行が変われば顔だけ替えればよい、が②の強み。</p></div>
+      <div><div class="lbl"><span class="n">02</span><span class="en">Background</span><span class="ja">開発背景</span></div><p class="muted">購入理由「デザイン」35.7%。2026年のHBは曲線・アーチ・角丸と、クレイなど自然に近い色が流れ。ただし流行の形は飽きる・買い替えが高いという不安がある【推測】。</p></div>
+      <div><div class="lbl"><span class="n">03</span><span class="en">User Issues</span><span class="ja">ユーザー課題</span></div><ol><li>流行の形のベッドは、数年で飽きてしまいそう</li><li>曲線のHBは海外品か高価で、替えられない</li><li>SNSで見るホテルのような寝室にしたい</li></ol></div>
+    </div>
+
+    <div class="cell side">
+      <div class="cell scene"><div class="lbl"><span class="n">04</span><span class="en">Scene</span><span class="ja">想定使用シーン</span></div><div class="img cover"><img src="img/C2-04-scene.png" alt="使用シーン"></div><p class="cap">RoomClip を保存している2人の寝室。雲にもたれて、週末は映画を1本。</p></div>
+      <div class="cell adv"><div class="lbl"><span class="n">05</span><span class="en">Advantage</span><span class="ja">競合優位性</span></div>
+        <table><tr><td class="vs">Castlery</td><td>（約18万円）海外品で顔は替えられない。KUMO は約半額で着せ替えられる</td></tr><tr><td class="vs">国内の曲線HB</td><td>形が固定。KUMO は同じ支柱で直線の顔に戻せる（14,800円〜）</td></tr><tr><td class="vs">LED 浮き型</td><td>古びやすい照明に頼らず、形と色でトレンドを取り入れる</td></tr></table>
+      </div>
+    </div>
+
+    <div class="cell feat"><div class="lbl"><span class="n">06</span><span class="en">Function</span><span class="ja">機能</span></div>
+      <ul><li><b>差すだけ 4動作・約8分</b><span>工具0・ネジ0・部品3点・1人。顔の付け替えは2動作・約1分</span></li><li><b>雲形HB 床から900mm</b><span>4つの丸い山の布の顔。谷は床から771mm。もたれ6度</span></li><li><b>洗えるカバー</b><span>撥水布クレイ（標準）。セージ・オフホワイトに着替えられる</span></li><li><b>やわらかい縁</b><span>縁90mm・角R34。影のプリンスで本体を浮かせる</span></li></ul>
+    </div>
+
+    <div class="cell struct"><div class="lbl"><span class="n">07</span><span class="en">Structure</span><span class="ja">構造</span></div><div class="img "><img src="../../../designs/v2/c2/C2-04-structure.png" alt="構造図"></div><p class="cap">左: 支柱だけ＋雲形の顔を持ち上げた状態／中: 2つ山のセージ／右: オフホワイトのチャネル。流行が変われば直線に戻せる</p></div>
+
+    <div class="cell mat"><div class="lbl"><span class="n">08</span><span class="en">Material / CMF</span><span class="ja">素材・CMF</span></div>
+      <table><tr><td>本体</td><td>竹集成材<span class="muted">　3分艶</span></td></tr><tr><td>顔の芯</td><td>竹合板（CNCで曲線を切り出し）<span class="muted">　中身はウレタン</span></td></tr><tr><td>顔の布</td><td>撥水布<span class="muted">　カバーは洗える</span></td></tr><tr><td>HEAD DOCK</td><td>竹集成材＋スチール芯<span class="muted">　顔の裏に隠れる</span></td></tr></table>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#C89C66"></div>
+          <div class="nm">Natural Bamboo</div><div class="hx">#C89C66</div><div class="fn">本体 3分艶</div></div>
+        <div class="sw"><div class="chip" style="background:#A8765A"></div>
+          <div class="nm">Clay</div><div class="hx">#A8765A</div><div class="fn">顔の布（標準）微起毛</div></div>
+        <div class="sw"><div class="chip" style="background:#A4AD96"></div>
+          <div class="nm">Sage</div><div class="hx">#A4AD96</div><div class="fn">顔の布（替え）</div></div>
+        <div class="sw"><div class="chip" style="background:#ECE6DB"></div>
+          <div class="nm">Off White</div><div class="hx">#ECE6DB</div><div class="fn">顔の布（替え）</div></div>
+      </div>
+    </div>
+
+    <div class="cell detail"><div class="lbl"><span class="n">09</span><span class="en">Detail</span><span class="ja">ディテール</span></div>
+      <div class="pair"><div><div class="img cover"><img src="img/C2-04-detail-hb.png" alt="一続きになった4つの丸い山"></div><p class="cap">一続きになった4つの丸い山</p></div><div><div class="img cover"><img src="img/C2-04-detail-dock.png" alt="雲形の顔を支柱に落とし込む前"></div><p class="cap">雲形の顔を支柱に落とし込む前</p></div></div>
+    </div>
+  </main>
+  
+  <footer class="ft">
+    <span>AI Design Studio — Product Design Proposal</span>
+    <span class="ev">根拠: research.md §7 デザイン 35.7%、§9 クレイ [S51]、§10 曲線・アーチ [S28][S29]、§11 LED [S54]</span>
+    <span>05 / 11</span>
+  </footer>
+</section>
+
+<section class="board" style="--accent:#55524E">
+  
+  <header class="hd">
+    <div class="no">C2-05</div>
+    <div class="title">
+      <div class="type"><b>Function</b> — 機能特化</div>
+      <div class="name">HUB<small>はぶ</small></div>
+    </div>
+    <div class="tagline">支柱が、寝室の電源になる。</div>
+    <div class="meta">GOKUMIN Flagship Bed v2 — ② 自分仕様に育つベッド（着せ替えヘッドボード HEAD DOCK）<br>2026.09.30<br>v2</div>
+  </header>
+  <main class="bd">
+    <div class="cell main">
+      <div class="img "><img src="../../../designs/v2/c2/C2-05-three-quarter.png" alt="HUB"></div>
+      <div class="spec"><span>SIZE <b>W1510（ポッド込み） × L2115 × H934 mm</b></span><span>PRICE <b>S ¥114,800（モジュール込み）</b></span></div>
+    </div>
+
+    <div class="cell story">
+      <div class="concept"><div class="lbl"><span class="n">01</span><span class="en">Concept</span><span class="ja">コンセプト</span></div><p>配線を通した支柱を主役として見せ、上端に読書灯、外側にワイヤレス充電のサイドポッド、前面にUSB-Cを差し込む。家電は支柱に集め、顔は布のまま静かに保つ。</p></div>
+      <div><div class="lbl"><span class="n">02</span><span class="en">Background</span><span class="ja">開発背景</span></div><p class="muted">宮棚・コンセントはECの標準装備だが、深い宮棚は全長が伸びホコリがたまる。電源と照明は家電として早く古くなる。差し替えられるモジュールが答え。</p></div>
+      <div><div class="lbl"><span class="n">03</span><span class="en">User Issues</span><span class="ja">ユーザー課題</span></div><ol><li>枕元に電源とスマホの置き場が足りない</li><li>宮棚付きは全長が伸び、安っぽく見える</li><li>照明や充電器は数年で古くなる</li></ol></div>
+    </div>
+
+    <div class="cell side">
+      <div class="cell scene"><div class="lbl"><span class="n">04</span><span class="en">Scene</span><span class="ja">想定使用シーン</span></div><div class="img cover"><img src="img/C2-05-scene.png" alt="使用シーン"></div><p class="cap">在宅勤務の2人。寝る前は読書灯を落とし、スマホはポッドに置くだけ。</p></div>
+      <div class="cell adv"><div class="lbl"><span class="n">05</span><span class="en">Advantage</span><span class="ja">競合優位性</span></div>
+        <table><tr><td class="vs">ニトリ等の宮棚</td><td>（1〜5万円）「全長が伸びる・安っぽい」に対し、全長+0で10万円の質感</td></tr><tr><td class="vs">家電一体型</td><td>壊れたら丸ごと古くなる。HUB は家電部分だけ数年ごとに交換できる</td></tr><tr><td class="vs">別売りの台</td><td>別売りで寸法・色がずれる。HUB は支柱に差すだけで一体に見える</td></tr></table>
+      </div>
+    </div>
+
+    <div class="cell feat"><div class="lbl"><span class="n">06</span><span class="en">Function</span><span class="ja">機能</span></div>
+      <ul><li><b>差すだけ 6動作・約10分</b><span>工具0・ネジ0・部品5点・1人。モジュールを差す2動作を追加</span></li><li><b>布HB 床から820mm</b><span>支柱の間にチャコールのクッション＋竹の笠木。もたれ5度</span></li><li><b>支柱の電源モジュール</b><span>読書灯・USB-C・無線充電を各2。電源は壁へ1本</span></li><li><b>全長を伸ばさない</b><span>サイドポッドは横に張り出す。宮棚と違い全長+0</span></li></ul>
+    </div>
+
+    <div class="cell struct"><div class="lbl"><span class="n">07</span><span class="en">Structure</span><span class="ja">構造</span></div><div class="img "><img src="../../../designs/v2/c2/C2-05-structure.png" alt="構造図"></div><p class="cap">左: 支柱とモジュールだけ＋顔を持ち上げた状態／中: ニッチ棚の顔／右: クレイのチャネル。家電は支柱、顔は自由に替える</p></div>
+
+    <div class="cell mat"><div class="lbl"><span class="n">08</span><span class="en">Material / CMF</span><span class="ja">素材・CMF</span></div>
+      <table><tr><td>支柱</td><td>竹集成材（中空・配線内蔵）<span class="muted">　2つ割りで溝を掘る</span></td></tr><tr><td>モジュール</td><td>アルミダイカスト＋竹<span class="muted">　マットブラック</span></td></tr><tr><td>顔</td><td>撥水布＋竹の笠木</td></tr><tr><td>電装</td><td>読書灯2700K・USB-C<span class="muted">　PSE 取得が必要</span></td></tr></table>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#C89C66"></div>
+          <div class="nm">Natural Bamboo</div><div class="hx">#C89C66</div><div class="fn">本体・支柱 3分艶</div></div>
+        <div class="sw"><div class="chip" style="background:#232323"></div>
+          <div class="nm">Matte Black</div><div class="hx">#232323</div><div class="fn">電源モジュール</div></div>
+        <div class="sw"><div class="chip" style="background:#55524E"></div>
+          <div class="nm">Charcoal</div><div class="hx">#55524E</div><div class="fn">顔の布（標準）</div></div>
+      </div>
+    </div>
+
+    <div class="cell detail"><div class="lbl"><span class="n">09</span><span class="en">Detail</span><span class="ja">ディテール</span></div>
+      <div class="pair"><div><div class="img cover"><img src="img/C2-05-detail-hb.png" alt="支柱上端の読書灯と充電ポッド"></div><p class="cap">支柱上端の読書灯と充電ポッド</p></div><div><div class="img cover"><img src="img/C2-05-detail-dock.png" alt="電源付きの支柱と、落とし込む前の顔"></div><p class="cap">電源付きの支柱と、落とし込む前の顔</p></div></div>
+    </div>
+  </main>
+  
+  <footer class="ft">
+    <span>AI Design Studio — Product Design Proposal</span>
+    <span class="ev">根拠: research.md 結論2・5（差し替えモジュール）、§11 電源・照明、[S44][S46]、結論6 切り口5</span>
+    <span>06 / 11</span>
+  </footer>
+</section>
+
+<section class="board" style="--accent:#8A6240">
+  
+  <header class="hd">
+    <div class="no">C2-06</div>
+    <div class="title">
+      <div class="type"><b>Material</b> — 素材特化</div>
+      <div class="name">SUDARE<small>すだれ</small></div>
+    </div>
+    <div class="tagline">丸竹と簾。裏返せば、洗えるリネン。</div>
+    <div class="meta">GOKUMIN Flagship Bed v2 — ② 自分仕様に育つベッド（着せ替えヘッドボード HEAD DOCK）<br>2026.09.30<br>v2</div>
+  </header>
+  <main class="bd">
+    <div class="cell main">
+      <div class="img "><img src="../../../designs/v2/c2/C2-06-three-quarter.png" alt="SUDARE"></div>
+      <div class="spec"><span>SIZE <b>W1044 × L2106 × H900 mm（HB込み）</b></span><span>PRICE <b>S ¥109,800</b></span></div>
+    </div>
+
+    <div class="cell story">
+      <div class="concept"><div class="lbl"><span class="n">01</span><span class="en">Concept</span><span class="ja">コンセプト</span></div><p>支柱は節のある丸竹、顔は燻し竹のひごを横に並べた簾。顔はリバーシブルで、裏は洗えるリネン。竹そのものを寝室の顔にする。</p></div>
+      <div><div class="lbl"><span class="n">02</span><span class="en">Background</span><span class="ja">開発背景</span></div><p class="muted">購入理由「無垢・天然素材の質感」35.7%。2026年は竹など触感のある天然素材が注目。一方で布は汚れる、竹は冷たく硬いという両立の悩みがある【推測】。</p></div>
+      <div><div class="lbl"><span class="n">03</span><span class="en">User Issues</span><span class="ja">ユーザー課題</span></div><ol><li>天然素材のベッドがほしいが、竹は冷たく硬そう</li><li>布のHBは汚れる・洗えない</li><li>国産素材の物語を感じられる家具が少ない</li></ol></div>
+    </div>
+
+    <div class="cell side">
+      <div class="cell scene"><div class="lbl"><span class="n">04</span><span class="en">Scene</span><span class="ja">想定使用シーン</span></div><div class="img cover"><img src="img/C2-06-scene.png" alt="使用シーン"></div><p class="cap">旅館の設えが好きな夫婦。夏は簾の涼しさ、冬は裏返してリネンに。</p></div>
+      <div class="cell adv"><div class="lbl"><span class="n">05</span><span class="en">Advantage</span><span class="ja">競合優位性</span></div>
+        <table><tr><td class="vs">Nectar</td><td>竹×木組みで日本未展開。丸竹・簾という日本の竹文化の表現で先に取る</td></tr><tr><td class="vs">飛騨 月光</td><td>（14万円〜）無垢の格。SUDARE はより安く、素材の物語が強い</td></tr><tr><td class="vs">布張りHB</td><td>洗えない。SUDARE は簾の面と洗える布の面を季節で替えられる</td></tr></table>
+      </div>
+    </div>
+
+    <div class="cell feat"><div class="lbl"><span class="n">06</span><span class="en">Function</span><span class="ja">機能</span></div>
+      <ul><li><b>差すだけ 4動作・約8分</b><span>工具0・ネジ0・部品3点・1人。表裏の入れ替えは2動作</span></li><li><b>簾HB 床から860mm</b><span>燻し竹のひご約24本に淡竹を混ぜた簾の顔。もたれ4度</span></li><li><b>リバーシブルの顔</b><span>夏は簾、冬は裏のリネン。布面は外して洗える</span></li><li><b>丸竹の支柱</b><span>直径84mm、節3か所。支柱そのものを見せる</span></li></ul>
+    </div>
+
+    <div class="cell struct"><div class="lbl"><span class="n">07</span><span class="en">Structure</span><span class="ja">構造</span></div><div class="img "><img src="../../../designs/v2/c2/C2-06-structure.png" alt="構造図"></div><p class="cap">左: 丸竹の支柱だけ＋簾を持ち上げた状態／中: 裏返したセージのリネン面／右: 燻し竹のフラット。季節で表裏を替える</p></div>
+
+    <div class="cell mat"><div class="lbl"><span class="n">08</span><span class="en">Material / CMF</span><span class="ja">素材・CMF</span></div>
+      <table><tr><td>支柱</td><td>丸竹（真竹）＋スチール芯<span class="muted">　量産は竹集成材の丸削り</span></td></tr><tr><td>顔</td><td>燻し竹のひご＋框<span class="muted">　国内の簾工場に外注【推測】</span></td></tr><tr><td>顔の裏</td><td>リネン混の撥水布<span class="muted">　外して洗える</span></td></tr><tr><td>本体</td><td>燻し竹集成材<span class="muted">　拭き漆風マット</span></td></tr></table>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#8A6240"></div>
+          <div class="nm">Smoked Bamboo</div><div class="hx">#8A6240</div><div class="fn">本体・ひご 拭き漆風マット</div></div>
+        <div class="sw"><div class="chip" style="background:#5E412B"></div>
+          <div class="nm">Node</div><div class="hx">#5E412B</div><div class="fn">丸竹の節</div></div>
+        <div class="sw"><div class="chip" style="background:#D6B584"></div>
+          <div class="nm">Light Bamboo</div><div class="hx">#D6B584</div><div class="fn">ひごに6本に1本混ぜる</div></div>
+        <div class="sw"><div class="chip" style="background:#A4AD96"></div>
+          <div class="nm">Sage Linen</div><div class="hx">#A4AD96</div><div class="fn">裏の布</div></div>
+      </div>
+    </div>
+
+    <div class="cell detail"><div class="lbl"><span class="n">09</span><span class="en">Detail</span><span class="ja">ディテール</span></div>
+      <div class="pair"><div><div class="img cover"><img src="img/C2-06-detail-hb.png" alt="丸竹の節と燻し竹のひごの陰影"></div><p class="cap">丸竹の節と燻し竹のひごの陰影</p></div><div><div class="img cover"><img src="img/C2-06-detail-dock.png" alt="丸竹の支柱と、落とし込む前の簾"></div><p class="cap">丸竹の支柱と、落とし込む前の簾</p></div></div>
+    </div>
+  </main>
+  
+  <footer class="ft">
+    <span>AI Design Studio — Product Design Proposal</span>
+    <span class="ev">根拠: research.md §7 天然素材 35.7%、§8 竹 [S28]、§12 Nectar [S25]、結論6 切り口7、[S4]</span>
+    <span>07 / 11</span>
+  </footer>
+</section>
+
+<section class="board" style="--accent:#806350">
+  
+  <header class="hd">
+    <div class="no">C2-07</div>
+    <div class="title">
+      <div class="type"><b>UX</b> — UX改善</div>
+      <div class="name">KAKERU<small>かける</small></div>
+    </div>
+    <div class="tagline">バーを掛けるだけ。1動作で着替える。</div>
+    <div class="meta">GOKUMIN Flagship Bed v2 — ② 自分仕様に育つベッド（着せ替えヘッドボード HEAD DOCK）<br>2026.09.30<br>v2</div>
+  </header>
+  <main class="bd">
+    <div class="cell main">
+      <div class="img "><img src="../../../designs/v2/c2/C2-07-three-quarter.png" alt="KAKERU"></div>
+      <div class="spec"><span>SIZE <b>W1110（バー） × L2100 × H852 mm</b></span><span>PRICE <b>S ¥99,800</b></span></div>
+    </div>
+
+    <div class="cell story">
+      <div class="concept"><div class="lbl"><span class="n">01</span><span class="en">Concept</span><span class="ja">コンセプト</span></div><p>顔は竹の丸バーに吊られたクッション。バーを支柱上端の受けに掛ければ完成、持ち上げれば外れる。付け替えを1動作に減らし、説明なしで分かる形にした。</p></div>
+      <div><div class="lbl"><span class="n">02</span><span class="en">Background</span><span class="ja">開発背景</span></div><p class="muted">購入理由1位「工具不要・短時間」57.1%、不満1位「組立が重い・2人必要」28.6%。HBのぐらつき14.3%、布が洗えない不満もある。すべてに1台で答える。</p></div>
+      <div><div class="lbl"><span class="n">03</span><span class="en">User Issues</span><span class="ja">ユーザー課題</span></div><ol><li>HB込みの組立が重く、2人・長時間かかる</li><li>後付けのHBがぐらつく・外れそうで不安</li><li>布のHBが汚れても洗えない</li></ol></div>
+    </div>
+
+    <div class="cell side">
+      <div class="cell scene"><div class="lbl"><span class="n">04</span><span class="en">Scene</span><span class="ja">想定使用シーン</span></div><div class="img cover"><img src="img/C2-07-scene.png" alt="使用シーン"></div><p class="cap">共働きの2人。季節や来客の前に、バーを持ち上げて掛け替えるだけ。</p></div>
+      <div class="cell adv"><div class="lbl"><span class="n">05</span><span class="en">Advantage</span><span class="ja">競合優位性</span></div>
+        <table><tr><td class="vs">Thuma</td><td>交換部品の値上げ不満に対し、顔ごと替えられて価格を公開（9,800円）</td></tr><tr><td class="vs">Floyd 後付けHB</td><td>「クランプが緩む」に対し、自重で締まる受け＋溝の2点で外れない</td></tr><tr><td class="vs">コアラ</td><td>（99,900円）「2人推奨」に対し、同価格で1人・約6分。布も洗える</td></tr></table>
+      </div>
+    </div>
+
+    <div class="cell feat"><div class="lbl"><span class="n">06</span><span class="en">Function</span><span class="ja">機能</span></div>
+      <ul><li><b>差すだけ 4動作・約6分</b><span>工具0・ネジ0・部品3点・1人。10案で最短。顔は1動作</span></li><li><b>吊るクッションHB 床から852mm</b><span>竹の丸バー（直径52mm）にモカの布。もたれ3度</span></li><li><b>自重で2点ロック＋目印</b><span>バーを受けに、下端を支柱の溝に。ロックすると上端の目印が緑に</span></li><li><b>洗えて替えられる</b><span>カバーはバーから抜いて洗濯機へ。替えクッション9,800円</span></li></ul>
+    </div>
+
+    <div class="cell struct"><div class="lbl"><span class="n">07</span><span class="en">Structure</span><span class="ja">構造</span></div><div class="img "><img src="../../../designs/v2/c2/C2-07-structure.png" alt="構造図"></div><p class="cap">左: 支柱だけ＋バーごと持ち上げた顔／中: オフホワイトのクッション／右: セージのチャネル。掛けるだけで着替える</p></div>
+
+    <div class="cell mat"><div class="lbl"><span class="n">08</span><span class="en">Material / CMF</span><span class="ja">素材・CMF</span></div>
+      <table><tr><td>支柱・バー</td><td>竹集成材<span class="muted">　バーはスチール芯入り</span></td></tr><tr><td>クッション</td><td>撥水布＋ウレタン<span class="muted">　袖でバーを包む</span></td></tr><tr><td>脚</td><td>竹集成材ブロック×6<span class="muted">　90角・R20</span></td></tr><tr><td>受け・目印</td><td>樹脂ライナー／緑の目印</td></tr></table>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#C89C66"></div>
+          <div class="nm">Natural Bamboo</div><div class="hx">#C89C66</div><div class="fn">本体・支柱・バー 3分艶</div></div>
+        <div class="sw"><div class="chip" style="background:#806350"></div>
+          <div class="nm">Mocha</div><div class="hx">#806350</div><div class="fn">クッション（標準）洗いざらし</div></div>
+        <div class="sw"><div class="chip" style="background:#4F8A5B"></div>
+          <div class="nm">Lock Green</div><div class="hx">#4F8A5B</div><div class="fn">ロックの目印</div></div>
+      </div>
+    </div>
+
+    <div class="cell detail"><div class="lbl"><span class="n">09</span><span class="en">Detail</span><span class="ja">ディテール</span></div>
+      <div class="pair"><div><div class="img cover"><img src="img/C2-07-detail-hb.png" alt="丸バーの受けと緑のロック目印"></div><p class="cap">丸バーの受けと緑のロック目印</p></div><div><div class="img cover"><img src="img/C2-07-detail-dock.png" alt="丸い支柱と、バーごと持ち上げた顔"></div><p class="cap">丸い支柱と、バーごと持ち上げた顔</p></div></div>
+    </div>
+  </main>
+  
+  <footer class="ft">
+    <span>AI Design Studio — Product Design Proposal</span>
+    <span class="ev">根拠: research.md 結論5・6 切り口4、§6（組立 28.6%・ぐらつき 14.3%）、§7 工具不要 57.1%、[S20][S23]</span>
+    <span>08 / 11</span>
+  </footer>
+</section>
+
+<section class="board" style="--accent:#857A66">
+  
+  <header class="hd">
+    <div class="no">C2-08</div>
+    <div class="title">
+      <div class="type"><b>Structure</b> — 構造革新</div>
+      <div class="name">NOBIRU<small>のびる</small></div>
+    </div>
+    <div class="tagline">床梁が伸びて、ワイドのホテルヘッドに。</div>
+    <div class="meta">GOKUMIN Flagship Bed v2 — ② 自分仕様に育つベッド（着せ替えヘッドボード HEAD DOCK）<br>2026.09.30<br>v2</div>
+  </header>
+  <main class="bd">
+    <div class="cell main">
+      <div class="img "><img src="../../../designs/v2/c2/C2-08-three-quarter.png" alt="NOBIRU"></div>
+      <div class="spec"><span>SIZE <b>W2070 × L2100 × H820 mm（ワイド時）</b></span><span>PRICE <b>S ¥129,800（ワイドセット）</b></span></div>
+    </div>
+
+    <div class="cell story">
+      <div class="concept"><div class="lbl"><span class="n">01</span><span class="en">Concept</span><span class="ja">コンセプト</span></div><p>HEAD DOCK の床梁を伸縮式にし、支柱の間隔を940mmから1900mmまで広げる。同じ本体のまま、ナイトトレー一体のワイドな顔に育てられる。</p></div>
+      <div><div class="lbl"><span class="n">02</span><span class="en">Background</span><span class="ja">開発背景</span></div><p class="muted">2026年のHBは壁一面の wall-to-wall が流れ。ただしワイドは上位モジュールにとどめるのが現実的。購入理由「長く使える」28.6%に、住み替えで育つ形で答える。</p></div>
+      <div><div class="lbl"><span class="n">03</span><span class="en">User Issues</span><span class="ja">ユーザー課題</span></div><ol><li>住み替えで部屋が広くなっても、ベッドは変えられない</li><li>サイドテーブルを別に買うと寸法・色が合わない</li><li>ホテルの壁一面のHBは高く、業者施工になる</li></ol></div>
+    </div>
+
+    <div class="cell side">
+      <div class="cell scene"><div class="lbl"><span class="n">04</span><span class="en">Scene</span><span class="ja">想定使用シーン</span></div><div class="img cover"><img src="img/C2-08-scene.png" alt="使用シーン"></div><p class="cap">住み替えで広い寝室に。ベッドはそのまま、ホテルのような横長の顔に育てる。</p></div>
+      <div class="cell adv"><div class="lbl"><span class="n">05</span><span class="en">Advantage</span><span class="ja">競合優位性</span></div>
+        <table><tr><td class="vs">壁面HB家具</td><td>（20万円〜）業者設置【推測】に対し、ワイドの顔を後から29,800円で追加</td></tr><tr><td class="vs">一般のベッド</td><td>幅は変えられない。NOBIRU は同じ本体のまま支柱の間隔を広げられる</td></tr><tr><td class="vs">別売りの台</td><td>寸法と色がずれる。トレーは顔と一体でそろう</td></tr></table>
+      </div>
+    </div>
+
+    <div class="cell feat"><div class="lbl"><span class="n">06</span><span class="en">Function</span><span class="ja">機能</span></div>
+      <ul><li><b>差すだけ ワイド時6動作・約12分</b><span>工具0・ネジ0・部品5点・1人。S幅なら標準の4動作</span></li><li><b>ワイドHB 床から820mm</b><span>幅1990mmの5面パネル（中央で2分割）。布リネン</span></li><li><b>伸びる床梁</b><span>ロックピンを抜き、支柱の間隔を940→1900mmに</span></li><li><b>片持ちのナイトトレー</b><span>両脇に竹トレー400×330mm。床から560mm</span></li></ul>
+    </div>
+
+    <div class="cell struct"><div class="lbl"><span class="n">07</span><span class="en">Structure</span><span class="ja">構造</span></div><div class="img "><img src="../../../designs/v2/c2/C2-08-structure.png" alt="構造図"></div><p class="cap">左: 伸ばした支柱だけ＋ワイドの顔を持ち上げた状態／中: 床梁を縮めたS幅＋チャネルの顔／右: ワイドのクレイ</p></div>
+
+    <div class="cell mat"><div class="lbl"><span class="n">08</span><span class="en">Material / CMF</span><span class="ja">素材・CMF</span></div>
+      <table><tr><td>床梁</td><td>スチール角パイプの二重管<span class="muted">　黒で影に沈める</span></td></tr><tr><td>支柱</td><td>竹集成材</td></tr><tr><td>顔</td><td>撥水布＋竹合板の芯<span class="muted">　中央で2分割</span></td></tr><tr><td>トレー</td><td>竹集成材<span class="muted">　スチールブラケットで固定</span></td></tr></table>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#C89C66"></div>
+          <div class="nm">Natural Bamboo</div><div class="hx">#C89C66</div><div class="fn">本体・支柱・トレー 3分艶</div></div>
+        <div class="sw"><div class="chip" style="background:#D9D0C0"></div>
+          <div class="nm">Linen</div><div class="hx">#D9D0C0</div><div class="fn">ワイドの顔（標準）</div></div>
+        <div class="sw"><div class="chip" style="background:#A8765A"></div>
+          <div class="nm">Clay</div><div class="hx">#A8765A</div><div class="fn">顔の布（替え）</div></div>
+        <div class="sw"><div class="chip" style="background:#232323"></div>
+          <div class="nm">Black</div><div class="hx">#232323</div><div class="fn">床梁</div></div>
+      </div>
+    </div>
+
+    <div class="cell detail"><div class="lbl"><span class="n">09</span><span class="en">Detail</span><span class="ja">ディテール</span></div>
+      <div class="pair"><div><div class="img cover"><img src="img/C2-08-detail-hb.png" alt="ワイドの顔と片持ちの竹トレー"></div><p class="cap">ワイドの顔と片持ちの竹トレー</p></div><div><div class="img cover"><img src="img/C2-08-detail-dock.png" alt="伸ばした床梁。黒で影に沈む"></div><p class="cap">伸ばした床梁。黒で影に沈む</p></div></div>
+    </div>
+  </main>
+  
+  <footer class="ft">
+    <span>AI Design Studio — Product Design Proposal</span>
+    <span class="ev">根拠: research.md §7 長く使える 28.6%、§10 wall-to-wall [S28]・ワイドは上位（推測）、[S44]</span>
+    <span>09 / 11</span>
+  </footer>
+</section>
+
+<section class="board" style="--accent:#6F7A62">
+  
+  <header class="hd">
+    <div class="no">C2-09</div>
+    <div class="title">
+      <div class="type"><b>Challenge</b> — 少し挑戦的</div>
+      <div class="name">TILE<small>たいる</small></div>
+    </div>
+    <div class="tagline">6枚のクッションを、好きな色で並べる。</div>
+    <div class="meta">GOKUMIN Flagship Bed v2 — ② 自分仕様に育つベッド（着せ替えヘッドボード HEAD DOCK）<br>2026.09.30<br>v2</div>
+  </header>
+  <main class="bd">
+    <div class="cell main">
+      <div class="img "><img src="../../../designs/v2/c2/C2-09-three-quarter.png" alt="TILE"></div>
+      <div class="spec"><span>SIZE <b>W1040 × L2106 × H930 mm（HB込み）</b></span><span>PRICE <b>S ¥109,800（タイル6枚込み）</b></span></div>
+    </div>
+
+    <div class="cell story">
+      <div class="concept"><div class="lbl"><span class="n">01</span><span class="en">Concept</span><span class="ja">コンセプト</span></div><p>炭化竹の支柱と格子の額縁に、四角いクッションタイル6枚を1枚ずつ付ける。「HBは1枚の面」という常識を崩し、顔を服のように編集させる。</p></div>
+      <div><div class="lbl"><span class="n">02</span><span class="en">Background</span><span class="ja">開発背景</span></div><p class="muted">「HBを変えたい」需要は大きい（楽天「ヘッドボード 後付け」2,924件、RoomClip の DIY 実例）。ただし DIY は手間で、HBを丸ごと買い替えるのは高い。</p></div>
+      <div><div class="lbl"><span class="n">03</span><span class="en">User Issues</span><span class="ja">ユーザー課題</span></div><ol><li>HBを変えたいが、DIY は手間で失敗しそう</li><li>HBを丸ごと買い替えるのは高い</li><li>服のように寝室の色を少しずつ変えたい</li></ol></div>
+    </div>
+
+    <div class="cell side">
+      <div class="cell scene"><div class="lbl"><span class="n">04</span><span class="en">Scene</span><span class="ja">想定使用シーン</span></div><div class="img cover"><img src="img/C2-09-scene.png" alt="使用シーン"></div><p class="cap">インテリアを発信する2人。季節ごとにタイルを2枚替えて、前後を投稿する。</p></div>
+      <div class="cell adv"><div class="lbl"><span class="n">05</span><span class="en">Advantage</span><span class="ja">競合優位性</span></div>
+        <table><tr><td class="vs">国内外のHB</td><td>タイルを組み替えるHBは調査範囲では見当たらない（research §16）</td></tr><tr><td class="vs">Thuma</td><td>色替えのみ。TILE は配置と色の組み合わせまで編集できる</td></tr><tr><td class="vs">HBの DIY</td><td>工具と手間がいる。TILE はスナップで1枚ずつ差し替えるだけ</td></tr></table>
+      </div>
+    </div>
+
+    <div class="cell feat"><div class="lbl"><span class="n">06</span><span class="en">Function</span><span class="ja">機能</span></div>
+      <ul><li><b>差すだけ 4動作・約8分</b><span>工具0・ネジ0・部品3点・1人。タイル6枚は装着済みで届く</span></li><li><b>タイルHB 床から910mm</b><span>炭化竹の額縁にタイル3列×2段（各約28cm角）。もたれ3度</span></li><li><b>1枚ずつ付け替え</b><span>スナップ2点で差す。洗える。替え1枚2,980円【推測】</span></li><li><b>落ち着いた推奨配色</b><span>ミックス／モカ×クレイ／オフホワイト×チャコールの3セット</span></li></ul>
+    </div>
+
+    <div class="cell struct"><div class="lbl"><span class="n">07</span><span class="en">Structure</span><span class="ja">構造</span></div><div class="img "><img src="../../../designs/v2/c2/C2-09-structure.png" alt="構造図"></div><p class="cap">左: 支柱だけ＋タイルの顔を持ち上げた状態／中: モカ×クレイの市松／右: オフホワイト×チャコールの市松</p></div>
+
+    <div class="cell mat"><div class="lbl"><span class="n">08</span><span class="en">Material / CMF</span><span class="ja">素材・CMF</span></div>
+      <table><tr><td>支柱・背板</td><td>炭化竹集成材<span class="muted">　額縁として見せる</span></td></tr><tr><td>タイル</td><td>撥水布＋ウレタン＋樹脂板<span class="muted">　スナップ付き・洗える</span></td></tr><tr><td>本体</td><td>炭化竹集成材<span class="muted">　2分艶</span></td></tr><tr><td>掛け金具</td><td>樹脂くさび2点</td></tr></table>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#5B3D28"></div>
+          <div class="nm">Carbonized Bamboo</div><div class="hx">#5B3D28</div><div class="fn">支柱・背板・本体 2分艶</div></div>
+        <div class="sw"><div class="chip" style="background:#A4AD96"></div>
+          <div class="nm">Sage</div><div class="hx">#A4AD96</div><div class="fn">タイル（6色から）</div></div>
+        <div class="sw"><div class="chip" style="background:#A8765A"></div>
+          <div class="nm">Clay</div><div class="hx">#A8765A</div><div class="fn">タイル（6色から）</div></div>
+        <div class="sw"><div class="chip" style="background:#55524E"></div>
+          <div class="nm">Charcoal</div><div class="hx">#55524E</div><div class="fn">タイル（ほか3色）</div></div>
+      </div>
+    </div>
+
+    <div class="cell detail"><div class="lbl"><span class="n">09</span><span class="en">Detail</span><span class="ja">ディテール</span></div>
+      <div class="pair"><div><div class="img cover"><img src="img/C2-09-detail-hb.png" alt="6色のタイルと炭化竹の額縁"></div><p class="cap">6色のタイルと炭化竹の額縁</p></div><div><div class="img cover"><img src="img/C2-09-detail-dock.png" alt="支柱と、落とし込む前のタイルの顔"></div><p class="cap">支柱と、落とし込む前のタイルの顔</p></div></div>
+    </div>
+  </main>
+  
+  <footer class="ft">
+    <span>AI Design Studio — Product Design Proposal</span>
+    <span class="ev">根拠: research.md 結論6 切り口2、§13 着せ替え前後の短尺動画、§16 空白C、[S21][S53][S70]</span>
+    <span>10 / 11</span>
+  </footer>
+</section>
+
+<section class="board" style="--accent:#9A7243">
+  
+  <header class="hd">
+    <div class="no">C2-10</div>
+    <div class="title">
+      <div class="type"><b>Concept</b> — コンセプトモデル</div>
+      <div class="name">HASHIRA<small>はしら</small></div>
+    </div>
+    <div class="tagline">ベッドの柱が、寝室の背骨になる。</div>
+    <div class="meta">GOKUMIN Flagship Bed v2 — ② 自分仕様に育つベッド（着せ替えヘッドボード HEAD DOCK）<br>2026.09.30<br>v2</div>
+  </header>
+  <main class="bd">
+    <div class="cell main">
+      <div class="img "><img src="../../../designs/v2/c2/C2-10-three-quarter.png" alt="HASHIRA"></div>
+      <div class="spec"><span>SIZE <b>W2250 × L2115 × H2000 mm</b></span><span>PRICE <b>¥199,800【コンセプト】</b></span></div>
+    </div>
+
+    <div class="cell story">
+      <div class="concept"><div class="lbl"><span class="n">01</span><span class="en">Concept</span><span class="ja">コンセプト</span></div><p>HEAD DOCK の支柱を床から2000mmまで伸ばし、上梁・棚・灯り・デスクを抱える軸組にする。ベッドを中心に、寝室全体を“編集”する数年先の姿。</p></div>
+      <div><div class="lbl"><span class="n">02</span><span class="en">Background</span><span class="ja">開発背景</span></div><p class="muted">狭い部屋でベッド・棚・デスクを別々に買うと寸法と色がそろわない【推測】。購入理由「後付け・拡張」28.6%。HEAD DOCK という1つの規格で家具を増やす。</p></div>
+      <div><div class="lbl"><span class="n">03</span><span class="en">User Issues</span><span class="ja">ユーザー課題</span></div><ol><li>寝室と仕事場を兼ねる部屋で、家具がそろわない</li><li>壁面収納一体のベッドは据え付け・業者施工</li><li>引越しのたびに家具を買い替えることになる</li></ol></div>
+    </div>
+
+    <div class="cell side">
+      <div class="cell scene"><div class="lbl"><span class="n">04</span><span class="en">Scene</span><span class="ja">想定使用シーン</span></div><div class="img cover"><img src="img/C2-10-scene.png" alt="使用シーン"></div><p class="cap">寝室と仕事場を兼ねるワンルーム。柱の棚に本を並べ、隣のデスクで仕事。</p></div>
+      <div class="cell adv"><div class="lbl"><span class="n">05</span><span class="en">Advantage</span><span class="ja">競合優位性</span></div>
+        <table><tr><td class="vs">壁面収納ベッド</td><td>据え付け・業者施工【推測】に対し、工具なしで差し継ぎ、引越しで分解できる</td></tr><tr><td class="vs">別々の家具</td><td>寸法と色がずれる。1つの規格で柱・棚・デスクがそろう</td></tr><tr><td class="vs">一般のベッド</td><td>ベッドだけで完結する。HASHIRA は寝室全体に広がる規格の旗</td></tr></table>
+      </div>
+    </div>
+
+    <div class="cell feat"><div class="lbl"><span class="n">06</span><span class="en">Function</span><span class="ja">機能</span></div>
+      <ul><li><b>差し継ぎ 12動作以上・約40分</b><span>工具0・ネジ0・2人推奨・5箱【推測】。まず棚キットから</span></li><li><b>クッションHB 床から900mm</b><span>標準規格のモカの顔をインセット。柱は2000mm。もたれ5度</span></li><li><b>柱と梁の軸組</b><span>延長柱を差し継ぎ、上梁で連結。くさびとほぞで工具なし</span></li><li><b>棚・灯り・デスク</b><span>床から1350mmの棚、読書灯、デスク680×480mm</span></li></ul>
+    </div>
+
+    <div class="cell struct"><div class="lbl"><span class="n">07</span><span class="en">Structure</span><span class="ja">構造</span></div><div class="img "><img src="../../../designs/v2/c2/C2-10-structure.png" alt="構造図"></div><p class="cap">左: 支柱と棚だけ＋顔を持ち上げた状態／中: クレイのチャネル／右: ニッチ棚の顔。顔は標準の規格のまま替えられる</p></div>
+
+    <div class="cell mat"><div class="lbl"><span class="n">08</span><span class="en">Material / CMF</span><span class="ja">素材・CMF</span></div>
+      <table><tr><td>柱・梁・棚</td><td>竹集成材<span class="muted">　柱は2分割</span></td></tr><tr><td>継ぎ手</td><td>スチール芯＋くさび<span class="muted">　上梁はほぞ</span></td></tr><tr><td>顔</td><td>撥水布＋ウレタン<span class="muted">　標準の HEAD DOCK 規格</span></td></tr><tr><td>デスク</td><td>竹集成材<span class="muted">　床から720mm</span></td></tr></table>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#C89C66"></div>
+          <div class="nm">Natural Bamboo</div><div class="hx">#C89C66</div><div class="fn">柱・梁・棚 3分艶</div></div>
+        <div class="sw"><div class="chip" style="background:#806350"></div>
+          <div class="nm">Mocha</div><div class="hx">#806350</div><div class="fn">顔の布</div></div>
+      </div>
+    </div>
+
+    <div class="cell detail"><div class="lbl"><span class="n">09</span><span class="en">Detail</span><span class="ja">ディテール</span></div>
+      <div class="pair"><div><div class="img cover"><img src="img/C2-10-detail-hb.png" alt="柱の間に収まるモカの顔と棚"></div><p class="cap">柱の間に収まるモカの顔と棚</p></div><div><div class="img cover"><img src="img/C2-10-detail-dock.png" alt="軸組と、落とし込む前の顔"></div><p class="cap">軸組と、落とし込む前の顔</p></div></div>
+    </div>
+  </main>
+  
+  <footer class="ft">
+    <span>AI Design Studio — Product Design Proposal</span>
+    <span class="ev">根拠: research.md 結論6 切り口6、§7 後付け・拡張 28.6%、02-planning-v2 4-2 #10</span>
+    <span>11 / 11</span>
+  </footer>
+</section></body></html>
