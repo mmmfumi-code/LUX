@@ -1,0 +1,718 @@
+{
+ "canvas": {
+  "width": 1600,
+  "height": 1200
+ },
+ "background": "#e6e3de",
+ "camera": {
+  "fov": 24,
+  "margin": 0.8,
+  "zoom": 1.2
+ },
+ "lighting": {
+  "key": 2.2,
+  "fill": 0.7,
+  "rim": 0.6,
+  "hemi": 0.65
+ },
+ "shadowOpacity": 0.2,
+ "materials": {
+  "bamboo": {
+   "type": "bamboo",
+   "color": "#c89c66"
+  },
+  "bamboo_z": {
+   "type": "bamboo",
+   "color": "#c89c66",
+   "grain": "z"
+  },
+  "pale": {
+   "type": "bamboo",
+   "color": "#d6b584"
+  },
+  "pale_z": {
+   "type": "bamboo",
+   "color": "#d6b584",
+   "grain": "z"
+  },
+  "carbon": {
+   "type": "bamboo",
+   "color": "#5b3d28",
+   "roughness": 0.5
+  },
+  "carbon_z": {
+   "type": "bamboo",
+   "color": "#5b3d28",
+   "grain": "z",
+   "roughness": 0.5
+  },
+  "carbon_w": {
+   "type": "wood",
+   "color": "#4f3524",
+   "roughness": 0.5
+  },
+  "carbon_wz": {
+   "type": "wood",
+   "color": "#4f3524",
+   "grain": "z",
+   "roughness": 0.5
+  },
+  "steel": {
+   "type": "metal",
+   "color": "#232323",
+   "roughness": 0.5
+  },
+  "shadow": {
+   "type": "matte",
+   "color": "#2d2a27",
+   "roughness": 0.9
+  },
+  "recess": {
+   "type": "matte",
+   "color": "#3a3531",
+   "roughness": 0.9
+  },
+  "glass": {
+   "type": "glass",
+   "color": "#d8dcdc"
+  },
+  "cream": {
+   "type": "matte",
+   "color": "#efe9df",
+   "roughness": 0.8
+  },
+  "f_offwhite": {
+   "type": "fabric",
+   "color": "#ece6db"
+  },
+  "f_boucle": {
+   "type": "fabric",
+   "color": "#e2d8c6",
+   "seed": 5
+  },
+  "f_oat": {
+   "type": "fabric",
+   "color": "#cdbc9f"
+  },
+  "f_clay": {
+   "type": "fabric",
+   "color": "#a8765a"
+  },
+  "f_mocha": {
+   "type": "fabric",
+   "color": "#806350"
+  },
+  "f_charcoal": {
+   "type": "fabric",
+   "color": "#55524e"
+  },
+  "f_sage": {
+   "type": "fabric",
+   "color": "#a4ad96"
+  },
+  "f_linen": {
+   "type": "fabric",
+   "color": "#d9d0c0",
+   "seed": 3
+  },
+  "f_greige": {
+   "type": "fabric",
+   "color": "#cfc5b5",
+   "seed": 7
+  },
+  "tatami": {
+   "type": "fabric",
+   "color": "#bdb383",
+   "seed": 21
+  },
+  "heri": {
+   "type": "fabric",
+   "color": "#3b3a36",
+   "seed": 4
+  },
+  "mattress": {
+   "type": "mattress",
+   "color": "#f3f1ec"
+  },
+  "sheet": {
+   "type": "mattress",
+   "color": "#f8f7f3",
+   "seed": 13
+  },
+  "pillow": {
+   "type": "fabric",
+   "color": "#faf8f4",
+   "seed": 9
+  },
+  "led": {
+   "type": "emissive",
+   "color": "#ffd9a0",
+   "intensity": 1.6
+  },
+  "mark": {
+   "type": "matte",
+   "color": "#4f8a5b"
+  },
+  "robot": {
+   "type": "matte",
+   "color": "#2b2b2d",
+   "roughness": 0.6
+  },
+  "robot_top": {
+   "type": "glossy",
+   "color": "#3c3c40"
+  }
+ },
+ "parts": [
+  {
+   "type": "group",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "parts": [
+    {
+     "type": "rbox",
+     "size": [
+      1010,
+      130,
+      659.3333333333334
+     ],
+     "position": [
+      0,
+      215,
+      -663.3333333333333
+     ],
+     "material": "carbon_wz",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1010,
+      130,
+      659.3333333333334
+     ],
+     "position": [
+      0,
+      215,
+      0
+     ],
+     "material": "carbon_wz",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1010,
+      130,
+      659.3333333333334
+     ],
+     "position": [
+      0,
+      215,
+      663.3333333333335
+     ],
+     "material": "carbon_wz",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      962,
+      6,
+      1942
+     ],
+     "position": [
+      0,
+      148,
+      0
+     ],
+     "material": "recess",
+     "radius": 2
+    },
+    {
+     "type": "rbox",
+     "size": [
+      710,
+      8,
+      20
+     ],
+     "position": [
+      0,
+      142,
+      825
+     ],
+     "material": "led",
+     "radius": 3
+    },
+    {
+     "type": "rbox",
+     "size": [
+      440,
+      144,
+      700
+     ],
+     "position": [
+      0,
+      72,
+      395
+     ],
+     "material": "shadow",
+     "radius": 10
+    },
+    {
+     "type": "group",
+     "position": [
+      0,
+      430,
+      -1025
+     ],
+     "parts": [
+      {
+       "type": "rbox",
+       "size": [
+        1500,
+        360,
+        130
+       ],
+       "position": [
+        0,
+        180,
+        -65
+       ],
+       "material": "f_oat",
+       "radius": 60
+      }
+     ],
+     "rotation": [
+      -6,
+      0,
+      0
+     ]
+    },
+    {
+     "type": "cylinder",
+     "radius": 11,
+     "height": 450,
+     "position": [
+      -680,
+      225,
+      -1100
+     ],
+     "material": "steel",
+     "radialSegments": 24
+    },
+    {
+     "type": "cylinder",
+     "radius": 11,
+     "height": 450,
+     "position": [
+      -520,
+      225,
+      -1100
+     ],
+     "material": "steel",
+     "radialSegments": 24
+    },
+    {
+     "type": "cylinder",
+     "radius": 11,
+     "height": 450,
+     "position": [
+      520,
+      225,
+      -1100
+     ],
+     "material": "steel",
+     "radialSegments": 24
+    },
+    {
+     "type": "cylinder",
+     "radius": 11,
+     "height": 450,
+     "position": [
+      680,
+      225,
+      -1100
+     ],
+     "material": "steel",
+     "radialSegments": 24
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1400,
+      20,
+      20
+     ],
+     "position": [
+      0,
+      420,
+      -1100
+     ],
+     "material": "steel",
+     "radius": 4
+    },
+    {
+     "type": "rbox",
+     "size": [
+      70,
+      26,
+      205
+     ],
+     "position": [
+      -440,
+      135,
+      -947.5
+     ],
+     "material": "steel",
+     "radius": 5
+    },
+    {
+     "type": "rbox",
+     "size": [
+      70,
+      26,
+      205
+     ],
+     "position": [
+      440,
+      135,
+      -947.5
+     ],
+     "material": "steel",
+     "radius": 5
+    },
+    {
+     "type": "rbox",
+     "size": [
+      60,
+      10,
+      280
+     ],
+     "position": [
+      -600,
+      5,
+      -990
+     ],
+     "material": "steel",
+     "radius": 4
+    },
+    {
+     "type": "rbox",
+     "size": [
+      60,
+      10,
+      280
+     ],
+     "position": [
+      600,
+      5,
+      -990
+     ],
+     "material": "steel",
+     "radius": 4
+    },
+    {
+     "type": "rbox",
+     "size": [
+      970,
+      220,
+      1950
+     ],
+     "position": [
+      0,
+      360,
+      0
+     ],
+     "material": "mattress",
+     "radius": 40
+    },
+    {
+     "type": "rbox",
+     "size": [
+      960,
+      64,
+      1940
+     ],
+     "position": [
+      0,
+      498,
+      0
+     ],
+     "material": "mattress",
+     "radius": 30
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1060,
+      70,
+      1470
+     ],
+     "position": [
+      0,
+      560,
+      280
+     ],
+     "material": "sheet",
+     "radius": 30
+    },
+    {
+     "type": "rbox",
+     "size": [
+      34,
+      250,
+      1450
+     ],
+     "position": [
+      -513,
+      440,
+      280
+     ],
+     "material": "sheet",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      34,
+      250,
+      1450
+     ],
+     "position": [
+      513,
+      440,
+      280
+     ],
+     "material": "sheet",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1040,
+      250,
+      34
+     ],
+     "position": [
+      0,
+      440,
+      998
+     ],
+     "material": "sheet",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1064,
+      90,
+      230
+     ],
+     "position": [
+      0,
+      574,
+      -345
+     ],
+     "material": "sheet",
+     "radius": 40
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1100,
+      86,
+      440
+     ],
+     "position": [
+      0,
+      600,
+      645
+     ],
+     "material": "f_oat",
+     "radius": 30
+    },
+    {
+     "type": "rbox",
+     "size": [
+      30,
+      300,
+      440
+     ],
+     "position": [
+      -542,
+      450,
+      645
+     ],
+     "material": "f_oat",
+     "radius": 14
+    },
+    {
+     "type": "rbox",
+     "size": [
+      30,
+      300,
+      440
+     ],
+     "position": [
+      542,
+      450,
+      645
+     ],
+     "material": "f_oat",
+     "radius": 14
+    },
+    {
+     "type": "rbox",
+     "size": [
+      580,
+      320,
+      140
+     ],
+     "position": [
+      0,
+      670,
+      -850
+     ],
+     "material": "pillow",
+     "radius": 64,
+     "rotation": [
+      -26,
+      0,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      580,
+      130,
+      400
+     ],
+     "position": [
+      0,
+      592,
+      -615
+     ],
+     "material": "f_offwhite",
+     "radius": 62,
+     "rotation": [
+      -10,
+      0,
+      0
+     ]
+    },
+    {
+     "type": "cylinder",
+     "radius": 170,
+     "height": 80,
+     "position": [
+      -250,
+      48,
+      -380
+     ],
+     "material": "robot",
+     "radialSegments": 64
+    },
+    {
+     "type": "cylinder",
+     "radius": 160,
+     "height": 6,
+     "position": [
+      -250,
+      90,
+      -380
+     ],
+     "material": "robot_top",
+     "radialSegments": 64
+    },
+    {
+     "type": "cylinder",
+     "radius": 40,
+     "height": 8,
+     "position": [
+      -250,
+      96,
+      -440
+     ],
+     "material": "robot",
+     "radialSegments": 32
+    },
+    {
+     "type": "rbox",
+     "size": [
+      200,
+      30,
+      20
+     ],
+     "position": [
+      -250,
+      40,
+      -218
+     ],
+     "material": "recess",
+     "radius": 6
+    },
+    {
+     "type": "cylinder",
+     "radius": 170,
+     "height": 80,
+     "position": [
+      -565,
+      48,
+      380
+     ],
+     "material": "robot",
+     "radialSegments": 64
+    },
+    {
+     "type": "cylinder",
+     "radius": 160,
+     "height": 6,
+     "position": [
+      -565,
+      90,
+      380
+     ],
+     "material": "robot_top",
+     "radialSegments": 64
+    },
+    {
+     "type": "cylinder",
+     "radius": 40,
+     "height": 8,
+     "position": [
+      -565,
+      96,
+      320
+     ],
+     "material": "robot",
+     "radialSegments": 32
+    },
+    {
+     "type": "rbox",
+     "size": [
+      200,
+      30,
+      20
+     ],
+     "position": [
+      -565,
+      40,
+      542
+     ],
+     "material": "recess",
+     "radius": 6
+    }
+   ],
+   "rotation": [
+    0,
+    52,
+    0
+   ]
+  }
+ ]
+}

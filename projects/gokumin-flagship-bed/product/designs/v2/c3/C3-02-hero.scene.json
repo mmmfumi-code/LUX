@@ -1,0 +1,1158 @@
+{
+ "canvas": {
+  "width": 1600,
+  "height": 1200
+ },
+ "background": "#e6e3de",
+ "camera": {
+  "fov": 28,
+  "margin": 0.8,
+  "zoom": 1.15
+ },
+ "lighting": {
+  "key": 2.2,
+  "fill": 0.7,
+  "rim": 0.6,
+  "hemi": 0.65
+ },
+ "shadowOpacity": 0.2,
+ "materials": {
+  "bamboo": {
+   "type": "bamboo",
+   "color": "#c89c66"
+  },
+  "bamboo_z": {
+   "type": "bamboo",
+   "color": "#c89c66",
+   "grain": "z"
+  },
+  "pale": {
+   "type": "bamboo",
+   "color": "#d6b584"
+  },
+  "pale_z": {
+   "type": "bamboo",
+   "color": "#d6b584",
+   "grain": "z"
+  },
+  "carbon": {
+   "type": "bamboo",
+   "color": "#5b3d28",
+   "roughness": 0.5
+  },
+  "carbon_z": {
+   "type": "bamboo",
+   "color": "#5b3d28",
+   "grain": "z",
+   "roughness": 0.5
+  },
+  "carbon_w": {
+   "type": "wood",
+   "color": "#4f3524",
+   "roughness": 0.5
+  },
+  "carbon_wz": {
+   "type": "wood",
+   "color": "#4f3524",
+   "grain": "z",
+   "roughness": 0.5
+  },
+  "steel": {
+   "type": "metal",
+   "color": "#232323",
+   "roughness": 0.5
+  },
+  "shadow": {
+   "type": "matte",
+   "color": "#2d2a27",
+   "roughness": 0.9
+  },
+  "recess": {
+   "type": "matte",
+   "color": "#3a3531",
+   "roughness": 0.9
+  },
+  "glass": {
+   "type": "glass",
+   "color": "#d8dcdc"
+  },
+  "cream": {
+   "type": "matte",
+   "color": "#efe9df",
+   "roughness": 0.8
+  },
+  "f_offwhite": {
+   "type": "fabric",
+   "color": "#ece6db"
+  },
+  "f_boucle": {
+   "type": "fabric",
+   "color": "#e2d8c6",
+   "seed": 5
+  },
+  "f_oat": {
+   "type": "fabric",
+   "color": "#cdbc9f"
+  },
+  "f_clay": {
+   "type": "fabric",
+   "color": "#a8765a"
+  },
+  "f_mocha": {
+   "type": "fabric",
+   "color": "#806350"
+  },
+  "f_charcoal": {
+   "type": "fabric",
+   "color": "#55524e"
+  },
+  "f_sage": {
+   "type": "fabric",
+   "color": "#a4ad96"
+  },
+  "f_linen": {
+   "type": "fabric",
+   "color": "#d9d0c0",
+   "seed": 3
+  },
+  "f_greige": {
+   "type": "fabric",
+   "color": "#cfc5b5",
+   "seed": 7
+  },
+  "tatami": {
+   "type": "fabric",
+   "color": "#bdb383",
+   "seed": 21
+  },
+  "heri": {
+   "type": "fabric",
+   "color": "#3b3a36",
+   "seed": 4
+  },
+  "mattress": {
+   "type": "mattress",
+   "color": "#f3f1ec"
+  },
+  "sheet": {
+   "type": "mattress",
+   "color": "#f8f7f3",
+   "seed": 13
+  },
+  "pillow": {
+   "type": "fabric",
+   "color": "#faf8f4",
+   "seed": 9
+  },
+  "led": {
+   "type": "emissive",
+   "color": "#ffd9a0",
+   "intensity": 1.6
+  },
+  "mark": {
+   "type": "matte",
+   "color": "#4f8a5b"
+  },
+  "robot": {
+   "type": "matte",
+   "color": "#2b2b2d",
+   "roughness": 0.6
+  },
+  "robot_top": {
+   "type": "glossy",
+   "color": "#3c3c40"
+  }
+ },
+ "parts": [
+  {
+   "type": "group",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "parts": [
+    {
+     "type": "rbox",
+     "size": [
+      1010,
+      100,
+      659.3333333333334
+     ],
+     "position": [
+      0,
+      190,
+      -663.3333333333333
+     ],
+     "material": "bamboo_z",
+     "radius": 12
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1010,
+      100,
+      659.3333333333334
+     ],
+     "position": [
+      0,
+      190,
+      0
+     ],
+     "material": "bamboo_z",
+     "radius": 12
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1010,
+      100,
+      659.3333333333334
+     ],
+     "position": [
+      0,
+      190,
+      663.3333333333335
+     ],
+     "material": "bamboo_z",
+     "radius": 12
+    },
+    {
+     "type": "rbox",
+     "size": [
+      962,
+      6,
+      1942
+     ],
+     "position": [
+      0,
+      138,
+      0
+     ],
+     "material": "recess",
+     "radius": 2
+    },
+    {
+     "type": "rbox",
+     "size": [
+      420,
+      134,
+      700
+     ],
+     "position": [
+      0,
+      67,
+      395
+     ],
+     "material": "shadow",
+     "radius": 10
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      -509.5830333106514,
+      490,
+      -1073.4059530955683
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      11.30276543744428,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      -476.00956081510833,
+      490,
+      -1079.8869903654759
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      10.549247741614659,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      -442.3537596564743,
+      490,
+      -1085.9259429131785
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      9.795730045785042,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      -408.62145080420606,
+      490,
+      -1091.521766266189
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      9.042212349955424,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      -374.81846846021756,
+      490,
+      -1096.6734925938304
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      8.288694654125806,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      -340.95065904982033,
+      490,
+      -1101.3802308746276
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      7.535176958296186,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      -307.0238802105496,
+      490,
+      -1105.6411670504135
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      6.781659262466568,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      -273.0439997790515,
+      490,
+      -1109.4555641671286
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      6.02814156663695,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      -239.01689477620573,
+      490,
+      -1112.8227625022769
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      5.274623870807329,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      -204.94845039066067,
+      490,
+      -1115.7421796790327
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      4.521106174977712,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      -170.84455896095469,
+      490,
+      -1118.2133107669633
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      3.7675884791480936,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      -136.71111895640163,
+      490,
+      -1120.2357283693623
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      3.014070783318474,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      -102.554033956916,
+      490,
+      -1121.8090826971684
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      2.260553087488856,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      -68.37921163195355,
+      490,
+      -1122.933101629464
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      1.5070353916592378,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      -34.19256271874511,
+      490,
+      -1123.6075907605405
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      0.7535176958296181,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      0,
+      490,
+      -1123.832433433522
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      34.19256271874518,
+      490,
+      -1123.6075907605405
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      -0.7535176958296197,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      68.37921163195348,
+      490,
+      -1122.933101629464
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      -1.5070353916592363,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      102.554033956916,
+      490,
+      -1121.8090826971684
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      -2.260553087488856,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      136.71111895640172,
+      490,
+      -1120.2357283693623
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      -3.0140707833184757,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      170.84455896095469,
+      490,
+      -1118.2133107669633
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      -3.7675884791480936,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      204.94845039066067,
+      490,
+      -1115.7421796790327
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      -4.521106174977712,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      239.01689477620573,
+      490,
+      -1112.8227625022769
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      -5.274623870807329,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      273.04399977905155,
+      490,
+      -1109.4555641671286
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      -6.028141566636951,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      307.0238802105495,
+      490,
+      -1105.6411670504135
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      -6.781659262466566,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      340.9506590498202,
+      490,
+      -1101.3802308746276
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      -7.5351769582961845,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      374.81846846021756,
+      490,
+      -1096.6734925938304
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      -8.288694654125806,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      408.62145080420606,
+      490,
+      -1091.521766266189
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      -9.042212349955424,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      442.3537596564743,
+      490,
+      -1085.9259429131785
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      -9.795730045785042,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      476.00956081510833,
+      490,
+      -1079.8869903654759
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      -10.549247741614659,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      37.193548387096776,
+      620,
+      30
+     ],
+     "position": [
+      509.5830333106513,
+      490,
+      -1073.4059530955683
+     ],
+     "material": "pale",
+     "radius": 2,
+     "rotation": [
+      0,
+      -11.302765437444279,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      12,
+      560,
+      90
+     ],
+     "position": [
+      -380,
+      280,
+      -1170
+     ],
+     "material": "steel",
+     "radius": 4
+    },
+    {
+     "type": "rbox",
+     "size": [
+      12,
+      560,
+      90
+     ],
+     "position": [
+      380,
+      280,
+      -1170
+     ],
+     "material": "steel",
+     "radius": 4
+    },
+    {
+     "type": "rbox",
+     "size": [
+      70,
+      26,
+      280
+     ],
+     "position": [
+      -380,
+      125,
+      -985
+     ],
+     "material": "steel",
+     "radius": 5
+    },
+    {
+     "type": "rbox",
+     "size": [
+      70,
+      26,
+      280
+     ],
+     "position": [
+      380,
+      125,
+      -985
+     ],
+     "material": "steel",
+     "radius": 5
+    },
+    {
+     "type": "rbox",
+     "size": [
+      60,
+      10,
+      330
+     ],
+     "position": [
+      -380,
+      5,
+      -1050
+     ],
+     "material": "steel",
+     "radius": 4
+    },
+    {
+     "type": "rbox",
+     "size": [
+      60,
+      10,
+      330
+     ],
+     "position": [
+      380,
+      5,
+      -1050
+     ],
+     "material": "steel",
+     "radius": 4
+    },
+    {
+     "type": "rbox",
+     "size": [
+      970,
+      220,
+      1950
+     ],
+     "position": [
+      0,
+      330,
+      0
+     ],
+     "material": "mattress",
+     "radius": 40
+    },
+    {
+     "type": "rbox",
+     "size": [
+      960,
+      64,
+      1940
+     ],
+     "position": [
+      0,
+      468,
+      0
+     ],
+     "material": "mattress",
+     "radius": 30
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1060,
+      70,
+      1470
+     ],
+     "position": [
+      0,
+      530,
+      280
+     ],
+     "material": "sheet",
+     "radius": 30
+    },
+    {
+     "type": "rbox",
+     "size": [
+      34,
+      250,
+      1450
+     ],
+     "position": [
+      -513,
+      410,
+      280
+     ],
+     "material": "sheet",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      34,
+      250,
+      1450
+     ],
+     "position": [
+      513,
+      410,
+      280
+     ],
+     "material": "sheet",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1040,
+      250,
+      34
+     ],
+     "position": [
+      0,
+      410,
+      998
+     ],
+     "material": "sheet",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1064,
+      90,
+      230
+     ],
+     "position": [
+      0,
+      544,
+      -345
+     ],
+     "material": "sheet",
+     "radius": 40
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1100,
+      86,
+      440
+     ],
+     "position": [
+      0,
+      570,
+      645
+     ],
+     "material": "f_oat",
+     "radius": 30
+    },
+    {
+     "type": "rbox",
+     "size": [
+      30,
+      300,
+      440
+     ],
+     "position": [
+      -542,
+      420,
+      645
+     ],
+     "material": "f_oat",
+     "radius": 14
+    },
+    {
+     "type": "rbox",
+     "size": [
+      30,
+      300,
+      440
+     ],
+     "position": [
+      542,
+      420,
+      645
+     ],
+     "material": "f_oat",
+     "radius": 14
+    },
+    {
+     "type": "rbox",
+     "size": [
+      580,
+      320,
+      140
+     ],
+     "position": [
+      0,
+      640,
+      -850
+     ],
+     "material": "pillow",
+     "radius": 64,
+     "rotation": [
+      -26,
+      0,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      580,
+      130,
+      400
+     ],
+     "position": [
+      0,
+      562,
+      -615
+     ],
+     "material": "f_oat",
+     "radius": 62,
+     "rotation": [
+      -10,
+      0,
+      0
+     ]
+    }
+   ],
+   "rotation": [
+    0,
+    14,
+    0
+   ]
+  }
+ ]
+}
