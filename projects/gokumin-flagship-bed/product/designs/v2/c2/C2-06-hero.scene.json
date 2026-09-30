@@ -1,0 +1,1043 @@
+{
+ "canvas": {
+  "width": 1600,
+  "height": 1200
+ },
+ "background": "#e6e3de",
+ "camera": {
+  "fov": 28,
+  "margin": 0.8,
+  "zoom": 1.15
+ },
+ "lighting": {
+  "key": 2.2,
+  "fill": 0.7,
+  "rim": 0.6,
+  "hemi": 0.65
+ },
+ "shadowOpacity": 0.2,
+ "materials": {
+  "bamboo": {
+   "type": "bamboo",
+   "color": "#c89c66"
+  },
+  "bamboo_z": {
+   "type": "bamboo",
+   "color": "#c89c66",
+   "grain": "z"
+  },
+  "pale": {
+   "type": "bamboo",
+   "color": "#d6b584"
+  },
+  "pale_z": {
+   "type": "bamboo",
+   "color": "#d6b584",
+   "grain": "z"
+  },
+  "carbon": {
+   "type": "bamboo",
+   "color": "#5b3d28",
+   "roughness": 0.5
+  },
+  "carbon_z": {
+   "type": "bamboo",
+   "color": "#5b3d28",
+   "grain": "z",
+   "roughness": 0.5
+  },
+  "carbon_w": {
+   "type": "wood",
+   "color": "#4f3524",
+   "roughness": 0.5
+  },
+  "carbon_wz": {
+   "type": "wood",
+   "color": "#4f3524",
+   "grain": "z",
+   "roughness": 0.5
+  },
+  "smoked": {
+   "type": "bamboo",
+   "color": "#8a6240"
+  },
+  "smoked_z": {
+   "type": "bamboo",
+   "color": "#8a6240",
+   "grain": "z"
+  },
+  "node": {
+   "type": "matte",
+   "color": "#5e412b",
+   "roughness": 0.7
+  },
+  "steel": {
+   "type": "metal",
+   "color": "#232323",
+   "roughness": 0.5
+  },
+  "shadow": {
+   "type": "matte",
+   "color": "#2d2a27",
+   "roughness": 0.9
+  },
+  "recess": {
+   "type": "matte",
+   "color": "#3a3531",
+   "roughness": 0.9
+  },
+  "cream": {
+   "type": "matte",
+   "color": "#efe9df",
+   "roughness": 0.8
+  },
+  "f_offwhite": {
+   "type": "fabric",
+   "color": "#ece6db"
+  },
+  "f_ivory_boucle": {
+   "type": "fabric",
+   "color": "#e4dccd",
+   "seed": 5
+  },
+  "f_boucle": {
+   "type": "fabric",
+   "color": "#d3c2a6",
+   "seed": 5
+  },
+  "f_oat": {
+   "type": "fabric",
+   "color": "#cdbc9f"
+  },
+  "f_clay": {
+   "type": "fabric",
+   "color": "#a8765a"
+  },
+  "f_mocha": {
+   "type": "fabric",
+   "color": "#806350"
+  },
+  "f_charcoal": {
+   "type": "fabric",
+   "color": "#55524e"
+  },
+  "f_sage": {
+   "type": "fabric",
+   "color": "#a4ad96"
+  },
+  "f_terracotta": {
+   "type": "fabric",
+   "color": "#8f5440"
+  },
+  "f_linen": {
+   "type": "fabric",
+   "color": "#d9d0c0",
+   "seed": 3
+  },
+  "mattress": {
+   "type": "mattress",
+   "color": "#f3f1ec"
+  },
+  "sheet": {
+   "type": "mattress",
+   "color": "#f8f7f3",
+   "seed": 13
+  },
+  "pillow": {
+   "type": "fabric",
+   "color": "#faf8f4",
+   "seed": 9
+  },
+  "led": {
+   "type": "emissive",
+   "color": "#ffd9a0",
+   "intensity": 1.6
+  },
+  "mark": {
+   "type": "matte",
+   "color": "#4f8a5b"
+  }
+ },
+ "parts": [
+  {
+   "type": "group",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "parts": [
+    {
+     "type": "rbox",
+     "size": [
+      1010,
+      126,
+      659.3333333333334
+     ],
+     "position": [
+      0,
+      203,
+      -663.3333333333333
+     ],
+     "material": "smoked_z",
+     "radius": 14
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1010,
+      126,
+      659.3333333333334
+     ],
+     "position": [
+      0,
+      203,
+      0
+     ],
+     "material": "smoked_z",
+     "radius": 14
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1010,
+      126,
+      659.3333333333334
+     ],
+     "position": [
+      0,
+      203,
+      663.3333333333335
+     ],
+     "material": "smoked_z",
+     "radius": 14
+    },
+    {
+     "type": "box",
+     "size": [
+      870,
+      140,
+      1850
+     ],
+     "position": [
+      0,
+      70,
+      0
+     ],
+     "material": "shadow"
+    },
+    {
+     "type": "cylinder",
+     "radius": 42,
+     "height": 900,
+     "position": [
+      -480,
+      450,
+      -1045
+     ],
+     "material": "smoked",
+     "radialSegments": 48
+    },
+    {
+     "type": "cylinder",
+     "radius": 45,
+     "height": 9,
+     "position": [
+      -480,
+      180,
+      -1045
+     ],
+     "material": "node",
+     "radialSegments": 48
+    },
+    {
+     "type": "cylinder",
+     "radius": 45,
+     "height": 9,
+     "position": [
+      -480,
+      460,
+      -1045
+     ],
+     "material": "node",
+     "radialSegments": 48
+    },
+    {
+     "type": "cylinder",
+     "radius": 45,
+     "height": 9,
+     "position": [
+      -480,
+      740,
+      -1045
+     ],
+     "material": "node",
+     "radialSegments": 48
+    },
+    {
+     "type": "cylinder",
+     "radius": 38,
+     "height": 6,
+     "position": [
+      -480,
+      903,
+      -1045
+     ],
+     "material": "node",
+     "radialSegments": 48
+    },
+    {
+     "type": "cylinder",
+     "radius": 42,
+     "height": 900,
+     "position": [
+      480,
+      450,
+      -1045
+     ],
+     "material": "smoked",
+     "radialSegments": 48
+    },
+    {
+     "type": "cylinder",
+     "radius": 45,
+     "height": 9,
+     "position": [
+      480,
+      180,
+      -1045
+     ],
+     "material": "node",
+     "radialSegments": 48
+    },
+    {
+     "type": "cylinder",
+     "radius": 45,
+     "height": 9,
+     "position": [
+      480,
+      460,
+      -1045
+     ],
+     "material": "node",
+     "radialSegments": 48
+    },
+    {
+     "type": "cylinder",
+     "radius": 45,
+     "height": 9,
+     "position": [
+      480,
+      740,
+      -1045
+     ],
+     "material": "node",
+     "radialSegments": 48
+    },
+    {
+     "type": "cylinder",
+     "radius": 38,
+     "height": 6,
+     "position": [
+      480,
+      903,
+      -1045
+     ],
+     "material": "node",
+     "radialSegments": 48
+    },
+    {
+     "type": "rbox",
+     "size": [
+      960,
+      46,
+      60
+     ],
+     "position": [
+      0,
+      33,
+      -1045
+     ],
+     "material": "shadow",
+     "radius": 8
+    },
+    {
+     "type": "rbox",
+     "size": [
+      60,
+      40,
+      160
+     ],
+     "position": [
+      -360,
+      110,
+      -935
+     ],
+     "material": "shadow",
+     "radius": 6
+    },
+    {
+     "type": "rbox",
+     "size": [
+      60,
+      40,
+      160
+     ],
+     "position": [
+      360,
+      110,
+      -935
+     ],
+     "material": "shadow",
+     "radius": 6
+    },
+    {
+     "type": "group",
+     "position": [
+      0,
+      246,
+      -1020
+     ],
+     "parts": [
+      {
+       "type": "rbox",
+       "size": [
+        860,
+        34,
+        50
+       ],
+       "position": [
+        0,
+        17,
+        -25
+       ],
+       "material": "smoked",
+       "radius": 10
+      },
+      {
+       "type": "rbox",
+       "size": [
+        860,
+        34,
+        50
+       ],
+       "position": [
+        0,
+        597,
+        -25
+       ],
+       "material": "smoked",
+       "radius": 10
+      },
+      {
+       "type": "rbox",
+       "size": [
+        850,
+        564,
+        14
+       ],
+       "position": [
+        0,
+        307,
+        -43
+       ],
+       "material": "f_linen",
+       "radius": 6
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        54,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        77,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        100,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        123,
+        -19
+       ],
+       "material": "pale",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        146,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        169,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        192,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        215,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        238,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        261,
+        -19
+       ],
+       "material": "pale",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        284,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        307,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        330,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        353,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        376,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        399,
+        -19
+       ],
+       "material": "pale",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        422,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        445,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        468,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        491,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        514,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        537,
+        -19
+       ],
+       "material": "pale",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      },
+      {
+       "type": "cylinder",
+       "radius": 10,
+       "height": 836,
+       "position": [
+        0,
+        560,
+        -19
+       ],
+       "material": "smoked",
+       "radialSegments": 20,
+       "rotation": [
+        0,
+        0,
+        90
+       ]
+      }
+     ],
+     "rotation": [
+      -4,
+      0,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      970,
+      220,
+      1950
+     ],
+     "position": [
+      0,
+      346,
+      0
+     ],
+     "material": "mattress",
+     "radius": 40
+    },
+    {
+     "type": "rbox",
+     "size": [
+      960,
+      64,
+      1940
+     ],
+     "position": [
+      0,
+      484,
+      0
+     ],
+     "material": "mattress",
+     "radius": 30
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1060,
+      70,
+      1470
+     ],
+     "position": [
+      0,
+      546,
+      280
+     ],
+     "material": "sheet",
+     "radius": 30
+    },
+    {
+     "type": "rbox",
+     "size": [
+      34,
+      250,
+      1450
+     ],
+     "position": [
+      -513,
+      426,
+      280
+     ],
+     "material": "sheet",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      34,
+      250,
+      1450
+     ],
+     "position": [
+      513,
+      426,
+      280
+     ],
+     "material": "sheet",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1040,
+      250,
+      34
+     ],
+     "position": [
+      0,
+      426,
+      998
+     ],
+     "material": "sheet",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1064,
+      90,
+      230
+     ],
+     "position": [
+      0,
+      560,
+      -345
+     ],
+     "material": "sheet",
+     "radius": 40
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1100,
+      86,
+      440
+     ],
+     "position": [
+      0,
+      586,
+      645
+     ],
+     "material": "f_sage",
+     "radius": 30
+    },
+    {
+     "type": "rbox",
+     "size": [
+      30,
+      300,
+      440
+     ],
+     "position": [
+      -542,
+      436,
+      645
+     ],
+     "material": "f_sage",
+     "radius": 14
+    },
+    {
+     "type": "rbox",
+     "size": [
+      30,
+      300,
+      440
+     ],
+     "position": [
+      542,
+      436,
+      645
+     ],
+     "material": "f_sage",
+     "radius": 14
+    },
+    {
+     "type": "rbox",
+     "size": [
+      580,
+      320,
+      140
+     ],
+     "position": [
+      0,
+      656,
+      -850
+     ],
+     "material": "pillow",
+     "radius": 64,
+     "rotation": [
+      -26,
+      0,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      580,
+      130,
+      400
+     ],
+     "position": [
+      0,
+      578,
+      -615
+     ],
+     "material": "f_linen",
+     "radius": 62,
+     "rotation": [
+      -10,
+      0,
+      0
+     ]
+    }
+   ],
+   "rotation": [
+    0,
+    14,
+    0
+   ]
+  }
+ ]
+}

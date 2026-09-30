@@ -1,0 +1,752 @@
+{
+ "canvas": {
+  "width": 1600,
+  "height": 1200
+ },
+ "background": "#e6e3de",
+ "camera": {
+  "fov": 28,
+  "margin": 0.8,
+  "zoom": 1.15
+ },
+ "lighting": {
+  "key": 2.2,
+  "fill": 0.7,
+  "rim": 0.6,
+  "hemi": 0.65
+ },
+ "shadowOpacity": 0.2,
+ "materials": {
+  "bamboo": {
+   "type": "bamboo",
+   "color": "#c89c66"
+  },
+  "bamboo_z": {
+   "type": "bamboo",
+   "color": "#c89c66",
+   "grain": "z"
+  },
+  "pale": {
+   "type": "bamboo",
+   "color": "#d6b584"
+  },
+  "pale_z": {
+   "type": "bamboo",
+   "color": "#d6b584",
+   "grain": "z"
+  },
+  "carbon": {
+   "type": "bamboo",
+   "color": "#5b3d28",
+   "roughness": 0.5
+  },
+  "carbon_z": {
+   "type": "bamboo",
+   "color": "#5b3d28",
+   "grain": "z",
+   "roughness": 0.5
+  },
+  "carbon_w": {
+   "type": "wood",
+   "color": "#4f3524",
+   "roughness": 0.5
+  },
+  "carbon_wz": {
+   "type": "wood",
+   "color": "#4f3524",
+   "grain": "z",
+   "roughness": 0.5
+  },
+  "smoked": {
+   "type": "bamboo",
+   "color": "#8a6240"
+  },
+  "smoked_z": {
+   "type": "bamboo",
+   "color": "#8a6240",
+   "grain": "z"
+  },
+  "node": {
+   "type": "matte",
+   "color": "#5e412b",
+   "roughness": 0.7
+  },
+  "steel": {
+   "type": "metal",
+   "color": "#232323",
+   "roughness": 0.5
+  },
+  "shadow": {
+   "type": "matte",
+   "color": "#2d2a27",
+   "roughness": 0.9
+  },
+  "recess": {
+   "type": "matte",
+   "color": "#3a3531",
+   "roughness": 0.9
+  },
+  "cream": {
+   "type": "matte",
+   "color": "#efe9df",
+   "roughness": 0.8
+  },
+  "f_offwhite": {
+   "type": "fabric",
+   "color": "#ece6db"
+  },
+  "f_ivory_boucle": {
+   "type": "fabric",
+   "color": "#e4dccd",
+   "seed": 5
+  },
+  "f_boucle": {
+   "type": "fabric",
+   "color": "#d3c2a6",
+   "seed": 5
+  },
+  "f_oat": {
+   "type": "fabric",
+   "color": "#cdbc9f"
+  },
+  "f_clay": {
+   "type": "fabric",
+   "color": "#a8765a"
+  },
+  "f_mocha": {
+   "type": "fabric",
+   "color": "#806350"
+  },
+  "f_charcoal": {
+   "type": "fabric",
+   "color": "#55524e"
+  },
+  "f_sage": {
+   "type": "fabric",
+   "color": "#a4ad96"
+  },
+  "f_terracotta": {
+   "type": "fabric",
+   "color": "#8f5440"
+  },
+  "f_linen": {
+   "type": "fabric",
+   "color": "#d9d0c0",
+   "seed": 3
+  },
+  "mattress": {
+   "type": "mattress",
+   "color": "#f3f1ec"
+  },
+  "sheet": {
+   "type": "mattress",
+   "color": "#f8f7f3",
+   "seed": 13
+  },
+  "pillow": {
+   "type": "fabric",
+   "color": "#faf8f4",
+   "seed": 9
+  },
+  "led": {
+   "type": "emissive",
+   "color": "#ffd9a0",
+   "intensity": 1.6
+  },
+  "mark": {
+   "type": "matte",
+   "color": "#4f8a5b"
+  }
+ },
+ "parts": [
+  {
+   "type": "group",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "parts": [
+    {
+     "type": "rbox",
+     "size": [
+      1010,
+      120,
+      659.3333333333334
+     ],
+     "position": [
+      0,
+      220,
+      -663.3333333333333
+     ],
+     "material": "bamboo_z",
+     "radius": 14
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1010,
+      120,
+      659.3333333333334
+     ],
+     "position": [
+      0,
+      220,
+      0
+     ],
+     "material": "bamboo_z",
+     "radius": 14
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1010,
+      120,
+      659.3333333333334
+     ],
+     "position": [
+      0,
+      220,
+      663.3333333333335
+     ],
+     "material": "bamboo_z",
+     "radius": 14
+    },
+    {
+     "type": "rbox",
+     "size": [
+      790,
+      156,
+      1730
+     ],
+     "position": [
+      0,
+      82,
+      0
+     ],
+     "material": "shadow",
+     "radius": 6
+    },
+    {
+     "type": "rbox",
+     "size": [
+      80,
+      900,
+      110
+     ],
+     "position": [
+      -505,
+      450,
+      -1056
+     ],
+     "material": "bamboo",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      80,
+      900,
+      110
+     ],
+     "position": [
+      505,
+      450,
+      -1056
+     ],
+     "material": "bamboo",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1010,
+      46,
+      60
+     ],
+     "position": [
+      0,
+      33,
+      -1056
+     ],
+     "material": "shadow",
+     "radius": 8
+    },
+    {
+     "type": "rbox",
+     "size": [
+      60,
+      40,
+      160
+     ],
+     "position": [
+      -385,
+      130,
+      -935
+     ],
+     "material": "shadow",
+     "radius": 6
+    },
+    {
+     "type": "rbox",
+     "size": [
+      60,
+      40,
+      160
+     ],
+     "position": [
+      385,
+      130,
+      -935
+     ],
+     "material": "shadow",
+     "radius": 6
+    },
+    {
+     "type": "rbox",
+     "size": [
+      70,
+      34,
+      200
+     ],
+     "position": [
+      -495,
+      917,
+      -1006
+     ],
+     "material": "steel",
+     "radius": 12
+    },
+    {
+     "type": "rbox",
+     "size": [
+      50,
+      6,
+      110
+     ],
+     "position": [
+      -495,
+      899,
+      -966
+     ],
+     "material": "led",
+     "radius": 2
+    },
+    {
+     "type": "rbox",
+     "size": [
+      14,
+      6,
+      4
+     ],
+     "position": [
+      -505,
+      560,
+      -1000
+     ],
+     "material": "recess",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      14,
+      6,
+      4
+     ],
+     "position": [
+      -505,
+      590,
+      -1000
+     ],
+     "material": "recess",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      250,
+      26,
+      250
+     ],
+     "position": [
+      -670,
+      600,
+      -986
+     ],
+     "material": "bamboo",
+     "radius": 10
+    },
+    {
+     "type": "rbox",
+     "size": [
+      240,
+      60,
+      16
+     ],
+     "position": [
+      -670,
+      560,
+      -1096
+     ],
+     "material": "bamboo",
+     "radius": 6
+    },
+    {
+     "type": "cylinder",
+     "radius": 48,
+     "height": 5,
+     "position": [
+      -670,
+      616,
+      -976
+     ],
+     "material": "cream",
+     "radialSegments": 48
+    },
+    {
+     "type": "rbox",
+     "size": [
+      70,
+      34,
+      200
+     ],
+     "position": [
+      495,
+      917,
+      -1006
+     ],
+     "material": "steel",
+     "radius": 12
+    },
+    {
+     "type": "rbox",
+     "size": [
+      50,
+      6,
+      110
+     ],
+     "position": [
+      495,
+      899,
+      -966
+     ],
+     "material": "led",
+     "radius": 2
+    },
+    {
+     "type": "rbox",
+     "size": [
+      14,
+      6,
+      4
+     ],
+     "position": [
+      505,
+      560,
+      -1000
+     ],
+     "material": "recess",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      14,
+      6,
+      4
+     ],
+     "position": [
+      505,
+      590,
+      -1000
+     ],
+     "material": "recess",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      250,
+      26,
+      250
+     ],
+     "position": [
+      670,
+      600,
+      -986
+     ],
+     "material": "bamboo",
+     "radius": 10
+    },
+    {
+     "type": "rbox",
+     "size": [
+      240,
+      60,
+      16
+     ],
+     "position": [
+      670,
+      560,
+      -1096
+     ],
+     "material": "bamboo",
+     "radius": 6
+    },
+    {
+     "type": "cylinder",
+     "radius": 48,
+     "height": 5,
+     "position": [
+      670,
+      616,
+      -976
+     ],
+     "material": "cream",
+     "radialSegments": 48
+    },
+    {
+     "type": "group",
+     "position": [
+      0,
+      254,
+      -995
+     ],
+     "parts": [
+      {
+       "type": "rbox",
+       "size": [
+        920,
+        516,
+        96
+       ],
+       "position": [
+        0,
+        258,
+        -48
+       ],
+       "material": "f_charcoal",
+       "radius": 40
+      }
+     ],
+     "rotation": [
+      -5,
+      0,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      920,
+      40,
+      90
+     ],
+     "position": [
+      0,
+      800,
+      -1056
+     ],
+     "material": "bamboo",
+     "radius": 12
+    },
+    {
+     "type": "rbox",
+     "size": [
+      970,
+      220,
+      1950
+     ],
+     "position": [
+      0,
+      354,
+      0
+     ],
+     "material": "mattress",
+     "radius": 40
+    },
+    {
+     "type": "rbox",
+     "size": [
+      960,
+      64,
+      1940
+     ],
+     "position": [
+      0,
+      492,
+      0
+     ],
+     "material": "mattress",
+     "radius": 30
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1060,
+      70,
+      1470
+     ],
+     "position": [
+      0,
+      554,
+      280
+     ],
+     "material": "sheet",
+     "radius": 30
+    },
+    {
+     "type": "rbox",
+     "size": [
+      34,
+      250,
+      1450
+     ],
+     "position": [
+      -513,
+      434,
+      280
+     ],
+     "material": "sheet",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      34,
+      250,
+      1450
+     ],
+     "position": [
+      513,
+      434,
+      280
+     ],
+     "material": "sheet",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1040,
+      250,
+      34
+     ],
+     "position": [
+      0,
+      434,
+      998
+     ],
+     "material": "sheet",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1064,
+      90,
+      230
+     ],
+     "position": [
+      0,
+      568,
+      -345
+     ],
+     "material": "sheet",
+     "radius": 40
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1100,
+      86,
+      440
+     ],
+     "position": [
+      0,
+      594,
+      645
+     ],
+     "material": "f_charcoal",
+     "radius": 30
+    },
+    {
+     "type": "rbox",
+     "size": [
+      30,
+      300,
+      440
+     ],
+     "position": [
+      -542,
+      444,
+      645
+     ],
+     "material": "f_charcoal",
+     "radius": 14
+    },
+    {
+     "type": "rbox",
+     "size": [
+      30,
+      300,
+      440
+     ],
+     "position": [
+      542,
+      444,
+      645
+     ],
+     "material": "f_charcoal",
+     "radius": 14
+    },
+    {
+     "type": "rbox",
+     "size": [
+      580,
+      320,
+      140
+     ],
+     "position": [
+      0,
+      664,
+      -850
+     ],
+     "material": "pillow",
+     "radius": 64,
+     "rotation": [
+      -26,
+      0,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      580,
+      130,
+      400
+     ],
+     "position": [
+      0,
+      586,
+      -615
+     ],
+     "material": "f_offwhite",
+     "radius": 62,
+     "rotation": [
+      -10,
+      0,
+      0
+     ]
+    }
+   ],
+   "rotation": [
+    0,
+    14,
+    0
+   ]
+  }
+ ]
+}
