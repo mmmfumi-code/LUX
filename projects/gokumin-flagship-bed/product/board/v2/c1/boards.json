@@ -1,0 +1,1120 @@
+{
+  "project": "GOKUMIN Flagship Bed v2 — ① 完全組立不要ベッド（起こすだけヘッドボード）",
+  "studio": "AI Design Studio",
+  "date": "2026.09.30",
+  "version": "v2",
+  "overview": true,
+  "overview_title": "Raise-Up Headboard — 10 Proposals",
+  "overview_tagline": "ひらいて、起こす。それだけで、ホテルの寝室。",
+  "overview_evidence": "research.md（v2）結論1〜6・§6 不満・§7 購入理由／03-design-v2-c1.md 自己レビュー（加重平均）",
+  "boards": [
+    {
+      "no": "C1-01",
+      "type": "王道・市場適合型",
+      "type_en": "Market Fit",
+      "name": "OKOSU",
+      "name_ja": "おこす",
+      "tagline": "ひらいて、起こす。竹の一枚板のホテルベッド。",
+      "accent": "#9A7243",
+      "main_visual": "../../../designs/v2/c1/C1-01-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c1/C1-01-frame.png",
+      "size": "W1040 × L2100 × H850 mm（HB込み）",
+      "price": "S ¥99,800",
+      "concept": "売れている10万円帯の条件（フラットな木のHB・床から約85cm・もたれられる・厚い縁）をすべて満たし、組立だけを「起こす」に変えた最も確実な案。",
+      "background": "10万円帯の購入理由1位は「工具不要・短時間」57.1%、不満1位は「組立が重い・2人必要」28.6%。国内に1人・工具なし・HB込みの10万円前後の品はない。",
+      "problems": [
+        "HB込みの組立が重く、2人・半日がかりになる",
+        "後付けのHBがぐらつく・きしむ",
+        "10万円なのに「すのこ」「簡易ベッド」に見える"
+      ],
+      "features": [
+        {
+          "title": "起こすだけ 4動作・約4分",
+          "text": "工具0・ネジ0・部品1点・1人。HBは届いた日から付いている"
+        },
+        {
+          "title": "フラット竹HB 床から850mm",
+          "text": "厚み52mmの竹一枚板に積層を見せる笠木。もたれ角7度"
+        },
+        {
+          "title": "床着地＋くさびロック",
+          "text": "起こすと脚フラップが床に着き、くさびで噛み合う。音と色でロック確認"
+        },
+        {
+          "title": "厚い縁と影の台座",
+          "text": "縁76mm＋立ち上がり40mm。台座は110mm奥で浮いて見える"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c1/C1-01-structure.png",
+        "text": "左: たたんだ状態（HBはデッキに伏せて収まる）／右: 開いてHBを起こす途中。1箱3辺200cm・約27.5kg【推測】"
+      },
+      "materials": [
+        {
+          "part": "本体・HB",
+          "material": "国産竹集成材",
+          "note": "見える面すべて"
+        },
+        {
+          "part": "芯",
+          "material": "中空スチール角パイプ"
+        },
+        {
+          "part": "台座・脚",
+          "material": "スチール",
+          "note": "マットブラック粉体塗装"
+        },
+        {
+          "part": "床・ヒンジ部",
+          "material": "フェルト／樹脂ブッシュ"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "オイル調ウレタン 3分艶（標準）"
+        },
+        {
+          "name": "Carbonized Bamboo",
+          "hex": "#5B3D28",
+          "finish": "オイル調ウレタン 3分艶"
+        },
+        {
+          "name": "Hardware",
+          "hex": "#232323",
+          "finish": "マット。見えるのはロック目印のみ"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "コアラ ファブリック",
+          "point": "（99,900円）「パーツが重く2人推奨・寝返りで音」に対し、同価格で部品1点・1人・4分"
+        },
+        {
+          "vs": "シモンズ・カリモク",
+          "point": "（9.3〜13万円）業者頼みの設置に対し、届いた日に自分で完成する"
+        },
+        {
+          "vs": "後付けHBの D2C",
+          "point": "HBは床着地で本体と一体。クランプで留めないので緩まない"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C1-01-detail-hb.png",
+          "caption": "竹一枚板のHBと積層を見せる笠木"
+        },
+        {
+          "image": "img/C1-01-detail-edge.png",
+          "caption": "縁76mmと110mm奥の影の台座"
+        }
+      ],
+      "scene": {
+        "image": "img/C1-01-scene.png",
+        "text": "同棲を始める週末、届いたその日に起こして完成。夜はHBにもたれて。"
+      },
+      "evidence": "research.md 結論1・4・6、§6 不満（組立 28.6%）、§7 購入理由（工具不要 57.1%）、§10 HB高 80〜87cm",
+      "recommended": false,
+      "score": "4.30"
+    },
+    {
+      "no": "C1-02",
+      "type": "ミニマル",
+      "type_en": "Minimal",
+      "name": "HIRA",
+      "name_ja": "ひら",
+      "tagline": "一枚の板を、折り返しただけ。",
+      "accent": "#8E7048",
+      "main_visual": "../../../designs/v2/c1/C1-02-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c1/C1-02-frame.png",
+      "size": "W1010 × L2054 × H780 mm（HB込み）",
+      "price": "S ¥89,800",
+      "concept": "HBとデッキの縁を同じ見付けと角Rでそろえ、ベッド全体を一枚の竹板の折り返しとして見せる。ヒンジと折り目は細い1本の目地に整理した。",
+      "background": "宮付きHBは全長が十数cm伸びる不満がある（寸法の不満 21.4%）。国内HBで最も多い型は「素材を見せるフラット」。重さへの不満にも最軽量で応える。",
+      "problems": [
+        "HBを付けると全長が伸びて部屋に入らない",
+        "重くて1人では動かせない",
+        "線の多い家具で部屋が散らかって見える"
+      ],
+      "features": [
+        {
+          "title": "起こすだけ 4動作・約4分",
+          "text": "工具0・ネジ0・部品1点・1人。10案で最軽量の約23.5kg"
+        },
+        {
+          "title": "薄板竹HB 床から780mm",
+          "text": "厚み36mm・角R10の一枚板。低めで圧迫感が少ない"
+        },
+        {
+          "title": "HB込み全長2054mm",
+          "text": "HBの奥行きは8.4cmだけ。宮付きのように全長が十数cm伸びない"
+        },
+        {
+          "title": "浮いて見える台座",
+          "text": "台座を外周から150mm奥へ。脚フラップは正面から見えない"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c1/C1-02-structure.png",
+        "text": "左: たたんだ状態／右: 開いてHBを起こす途中。笠木なしの一枚板をヒンジで起こす。1箱195cm・約23.5kg【推測】"
+      },
+      "materials": [
+        {
+          "part": "本体・HB",
+          "material": "竹集成材",
+          "note": "淡色の選別材"
+        },
+        {
+          "part": "芯",
+          "material": "中空スチール"
+        },
+        {
+          "part": "脚・台座",
+          "material": "スチール",
+          "note": "黒"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Pale Bamboo",
+          "hex": "#D6B584",
+          "finish": "マットクリア 1分艶（標準）"
+        },
+        {
+          "name": "Carbonized Bamboo",
+          "hex": "#5B3D28",
+          "finish": "マットクリア 1分艶"
+        },
+        {
+          "name": "Hardware",
+          "hex": "#232323",
+          "finish": "外から見せない"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "無印 オーク＋HB",
+          "point": "（46,900円）「脚を付けないとHBを付けられない」に対し、HBは最初から一体"
+        },
+        {
+          "vs": "エマ ファブリック",
+          "point": "（56,000円）付属工具で組む手間に対し、工具0で起こすだけ"
+        },
+        {
+          "vs": "宮付きベッド",
+          "point": "全長が十数cm伸びるのに対し、HB込みで2054mmに収まる"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C1-02-detail-hb.png",
+          "caption": "厚み36mmの一枚板HBと細い目地"
+        },
+        {
+          "image": "img/C1-02-detail-edge.png",
+          "caption": "縁60mmと150mm奥に引いた台座"
+        }
+      ],
+      "scene": {
+        "image": "img/C1-02-scene.png",
+        "text": "白い1LDKの寝室。線の少ないベッドが部屋を広く見せる。"
+      },
+      "evidence": "research.md 結論2・3・4、§6 寸法の不満 21.4%、§10 フラット型（notes/v2-headboard-types.md）",
+      "recommended": false,
+      "score": "4.24"
+    },
+    {
+      "no": "C1-03",
+      "type": "プレミアム",
+      "type_en": "Premium",
+      "name": "SUMI",
+      "name_ja": "すみ",
+      "tagline": "炭化竹の畝が、寝室の格を決める。",
+      "accent": "#5B3D28",
+      "main_visual": "../../../designs/v2/c1/C1-03-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c1/C1-03-frame.png",
+      "size": "W1030 × L2130 × H900 mm（HB込み）",
+      "price": "S ¥119,800",
+      "concept": "炭化竹の縦の畝をHBに並べ、厚い笠木と110mmの縁、影で浮かせた台座で“家具の仕立て”を見せる。飛騨・カリモク級の格を、起こすだけで出す和モダンの最上位。",
+      "background": "高級ベッドの価格差は素材・接合部・塗装・HBの存在感に出る。家具メーカー品は重く業者頼み、D2Cは格が一段足りない。ブラウンは2026年の最重要色。",
+      "problems": [
+        "格のあるベッドは重く、設置を業者に頼むしかない",
+        "受注生産で届くまで40〜60日かかる",
+        "竹が「アジアン・安い」素材に見られがち"
+      ],
+      "features": [
+        {
+          "title": "起こすだけ 4動作・約5分",
+          "text": "工具0・ネジ0・部品1点・1人。エプロンは連動で下りる"
+        },
+        {
+          "title": "縦の畝HB 床から900mm",
+          "text": "炭化竹の畝17本と張り出した笠木。もたれ角8度"
+        },
+        {
+          "title": "エプロン連動の厚い縁",
+          "text": "開くと50mmのエプロンが下り、縁が110mmに見える"
+        },
+        {
+          "title": "影のすき間の台座",
+          "text": "台座を60mm奥へ引き、本体を床から浮かせて見せる"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c1/C1-03-structure.png",
+        "text": "左: たたんだ状態（エプロンは内側に収まる）／右: 開いてHBを起こす途中。1箱200cm・約29.5kg【推測】"
+      },
+      "materials": [
+        {
+          "part": "本体・HB",
+          "material": "炭化竹集成材"
+        },
+        {
+          "part": "畝",
+          "material": "炭化竹の無垢ひご材"
+        },
+        {
+          "part": "芯・台座",
+          "material": "中空スチール／スチール黒"
+        },
+        {
+          "part": "エプロン",
+          "material": "炭化竹",
+          "note": "ヒンジで内側にたたむ"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Carbonized Bamboo",
+          "hex": "#5B3D28",
+          "finish": "マットウレタン 2分艶。畝の先だけ艶"
+        },
+        {
+          "name": "Hardware",
+          "hex": "#232323",
+          "finish": "マットブラック"
+        },
+        {
+          "name": "Bedding: Charcoal",
+          "hex": "#55524E",
+          "finish": "寝具の合わせ色"
+        },
+        {
+          "name": "Bedding: Mocha",
+          "hex": "#806350",
+          "finish": "寝具の合わせ色"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "飛騨産業 月光",
+          "point": "（14万円〜）受注生産40〜60日に対し、2万円安く即納、自分で約5分"
+        },
+        {
+          "vs": "カリモク NW49",
+          "point": "（132,110円）業者設置が前提なのに対し、工具0・1人で完成"
+        },
+        {
+          "vs": "国内 D2C（コアラ等）",
+          "point": "格が一段足りない見た目に対し、畝・厚い縁・影の台座で家具の仕立て"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C1-03-detail-hb.png",
+          "caption": "炭化竹の畝17本と張り出した笠木"
+        },
+        {
+          "image": "img/C1-03-detail-edge.png",
+          "caption": "縁110mm（デッキ＋エプロン）と影"
+        }
+      ],
+      "scene": {
+        "image": "img/C1-03-scene.png",
+        "text": "旅館のような寝室。チャコールの寝具で“見せる部屋”に。"
+      },
+      "evidence": "research.md 結論6 切り口7、§7（仕立て [S42]）、§9 ブラウン [S50]、§10 チャネル",
+      "recommended": true,
+      "score": "4.02"
+    },
+    {
+      "no": "C1-04",
+      "type": "トレンド",
+      "type_en": "Trend",
+      "name": "MARU",
+      "name_ja": "まる",
+      "tagline": "竹のアーチに、ブークレをまとう。",
+      "accent": "#9A8565",
+      "main_visual": "../../../designs/v2/c1/C1-04-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c1/C1-04-frame.png",
+      "size": "W1010 × L2150 × H950 mm（HB頂部）",
+      "price": "S ¥109,800",
+      "concept": "2026年の曲線・アーチ・ブークレを、竹の細いアーチ枠と洗えるブークレのクッションで表現。角R30の縁と丸い竹の脚で、全体をやわらかくまとめた。",
+      "background": "曲線・アーチ・角丸は2026年の流れで、プレミアム帯の布はブークレ。布張りHBには「汚れ・洗えない」不満がある。デザインで選ぶ層は35.7%。",
+      "problems": [
+        "布張りHBが汚れても洗えない",
+        "布張りHBは重く、1人で扱えない",
+        "写真映えする曲線のベッドは海外の高価格品ばかり"
+      ],
+      "features": [
+        {
+          "title": "起こして載せる 5動作・約6分",
+          "text": "工具0・ネジ0・部品2点（本体＋クッション）・1人"
+        },
+        {
+          "title": "アーチHB 床から950mm",
+          "text": "竹の曲げ積層アーチ＋ブークレ。肩の位置は約650mm"
+        },
+        {
+          "title": "落とし込み・洗えるカバー",
+          "text": "クッションは枠のフックに落とすだけ。カバーはジッパーで外して洗える"
+        },
+        {
+          "title": "替えカバー 4色",
+          "text": "ラテ／オフホワイト／クレイ／チャコール。替え9,800円【推測】"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c1/C1-04-structure.png",
+        "text": "左: たたんだ状態／右: 開いてアーチ枠を起こす途中。本体箱26kg＋クッション小箱3kgの2箱【推測】"
+      },
+      "materials": [
+        {
+          "part": "本体・枠",
+          "material": "竹集成材",
+          "note": "アーチは曲げ積層"
+        },
+        {
+          "part": "クッション",
+          "material": "ウレタン＋ブークレ調ポリエステル",
+          "note": "撥水・防汚"
+        },
+        {
+          "part": "脚",
+          "material": "竹無垢の丸棒",
+          "note": "φ60→φ47 テーパー"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "マットクリア"
+        },
+        {
+          "name": "Boucle Latte",
+          "hex": "#D3C2A6",
+          "finish": "ループ糸の凹凸（標準）"
+        },
+        {
+          "name": "Cover: Clay",
+          "hex": "#A8765A",
+          "finish": "替えカバー"
+        },
+        {
+          "name": "Cover: Charcoal",
+          "hex": "#55524E",
+          "finish": "替えカバー"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "コアラ ファブリック",
+          "point": "（99,900円）洗えない・重い布張りHBに対し、カバーを外して洗え、クッションは約2kg"
+        },
+        {
+          "vs": "Castlery 曲線HB",
+          "point": "（約18万円）海外の曲線HBを、10万円帯・工具なしで"
+        },
+        {
+          "vs": "LED付きの映えベッド",
+          "point": "光るだけの装飾に頼らず、竹とブークレの素材で映える"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C1-04-detail-hb.png",
+          "caption": "竹のアーチ枠とブークレのクッション"
+        },
+        {
+          "image": "img/C1-04-detail-edge.png",
+          "caption": "角R30の縁とテーパーの竹丸脚"
+        }
+      ],
+      "scene": {
+        "image": "img/C1-04-scene.png",
+        "text": "同棲カップルの寝室。季節ごとにカバーの色を替えて楽しむ。"
+      },
+      "evidence": "research.md §8 ブークレ [S29]、§10 曲線・アーチ [S28]、§6 布の汚れ、結論6 切り口4",
+      "recommended": false,
+      "score": "3.62"
+    },
+    {
+      "no": "C1-05",
+      "type": "機能特化",
+      "type_en": "Function",
+      "name": "NICHE",
+      "name_ja": "ニッチ",
+      "tagline": "起こすと、枕元の棚と灯りが現れる。",
+      "accent": "#55524E",
+      "main_visual": "../../../designs/v2/c1/C1-05-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c1/C1-05-frame.png",
+      "size": "W1010 × L2060 × H950 mm（HB込み）",
+      "price": "S ¥109,800（モジュール込み）",
+      "concept": "HBを起こすと、上端にたたまれた天板が水平に下り、奥行き8cmの薄型ニッチになる。読書灯と USB-C が枕元にそろい、全長は9cmしか伸びない。",
+      "background": "宮棚・コンセントはECの当たり前だが、深い宮棚は全長が十数cm伸びホコリがたまる。research は奥行き8〜10cmのニッチと差し替えモジュールを推す。",
+      "problems": [
+        "宮棚付きは全長が伸びて部屋に置けない",
+        "宮棚付きは安っぽく、ホコリがたまる",
+        "枕元の充電・読書灯がすぐ古くなる"
+      ],
+      "features": [
+        {
+          "title": "起こして差す 5動作・約5分",
+          "text": "工具0・ネジ0・部品2点（本体＋電源モジュール）・1人"
+        },
+        {
+          "title": "ニッチHB 床から950mm",
+          "text": "竹のニッチ＋撥水布のくさび形クッション。背当て7度"
+        },
+        {
+          "title": "自重で下りる天板",
+          "text": "起こすと天板が水平に下り奥行き8cm。たたむと厚み45mmに戻る"
+        },
+        {
+          "title": "差し替え電源モジュール",
+          "text": "USB-C×2・調光読書灯×2。家電部分だけ交換できる"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c1/C1-05-structure.png",
+        "text": "左: たたんだ状態（天板はHBと平らに重なる）／右: 開いてHBを起こす途中。1箱200cm・約29kg【推測】"
+      },
+      "materials": [
+        {
+          "part": "本体・HB",
+          "material": "竹集成材",
+          "note": "ニッチも"
+        },
+        {
+          "part": "クッション",
+          "material": "ウレタン＋撥水ファブリック",
+          "note": "ジッパーで外せる"
+        },
+        {
+          "part": "モジュール",
+          "material": "難燃 PC/ABS",
+          "note": "マット黒のシボ"
+        },
+        {
+          "part": "読書灯",
+          "material": "LED＋乳白拡散板",
+          "note": "電球色・調光"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "マットクリア（標準）"
+        },
+        {
+          "name": "Charcoal",
+          "hex": "#55524E",
+          "finish": "撥水・防汚ファブリック（標準）"
+        },
+        {
+          "name": "Module Black",
+          "hex": "#232323",
+          "finish": "シボ加工のマット"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "シモンズ キャビネット",
+          "point": "（102,500円）宮棚で全長が伸びるのに対し、全長+9cm・工具0で起こすだけ"
+        },
+        {
+          "vs": "ニトリ 棚ライト",
+          "point": "（49,990円）作り込みの電装に対し、家電部分だけを差し替えて長く使える"
+        },
+        {
+          "vs": "宮棚付きEC品",
+          "point": "安っぽい深い棚に対し、薄いニッチと竹で10万円の質感"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C1-05-detail-hb.png",
+          "caption": "薄型ニッチと差し替え電源モジュール"
+        },
+        {
+          "image": "img/C1-05-detail-edge.png",
+          "caption": "縁80mmと奥に引いた台座"
+        }
+      ],
+      "scene": {
+        "image": "img/C1-05-scene.png",
+        "text": "寝る前のスマホと本。ニッチで充電し、読書灯で眠る。"
+      },
+      "evidence": "research.md 結論2-4・結論5（薄型ニッチ・差し替えモジュール）、§11 [S54][S44]、結論6 切り口5",
+      "recommended": false,
+      "score": "3.58"
+    },
+    {
+      "no": "C1-06",
+      "type": "素材特化",
+      "type_en": "Material",
+      "name": "AJIRO",
+      "name_ja": "あじろ",
+      "tagline": "竹を編んだ面を、寝室の顔に。",
+      "accent": "#8A6240",
+      "main_visual": "../../../designs/v2/c1/C1-06-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c1/C1-06-frame.png",
+      "size": "W1010 × L2095 × H860 mm（HB込み）",
+      "price": "S ¥109,800",
+      "concept": "日本の竹工芸の網代編みを、燻し竹と淡竹の2色でHBの面に。竹を“安い素材”ではなく、“編む・燻す”手仕事の高級素材として見せる。",
+      "background": "購入理由「無垢・天然素材の質感」は35.7%。2026年のHBでは竹・ラタンなど触感のある素材が注目され、竹×日本式木組みは米国でも評価されている。",
+      "problems": [
+        "竹は「アジアン・安い」素材に見られがち",
+        "天然素材の上質なベッドは重く、組立が大変",
+        "HBの表情が合板やプリントで味気ない"
+      ],
+      "features": [
+        {
+          "title": "起こすだけ 4動作・約4分",
+          "text": "工具0・ネジ0・部品1点・1人。HBは届いた日から付いている"
+        },
+        {
+          "title": "網代HB 床から860mm",
+          "text": "燻し竹の額に7×4マスの市松網代。もたれ角7度"
+        },
+        {
+          "title": "燻し竹の本体",
+          "text": "縁90mmの燻し竹と、70mm奥に引いた影の台座"
+        },
+        {
+          "title": "別売の布ピロー",
+          "text": "もたれる時は別売の布ピロー（6,800円【推測】）"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c1/C1-06-structure.png",
+        "text": "左: たたんだ状態（HBはデッキに伏せて収まる）／右: 開いてHBを起こす途中。1箱199cm・約28kg【推測】"
+      },
+      "materials": [
+        {
+          "part": "本体",
+          "material": "燻し竹集成材"
+        },
+        {
+          "part": "HBの面",
+          "material": "竹単板の網代シート＋合板芯",
+          "note": "機械編み"
+        },
+        {
+          "part": "芯",
+          "material": "中空スチール"
+        },
+        {
+          "part": "台座",
+          "material": "スチール",
+          "note": "黒"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Smoked Bamboo",
+          "hex": "#8A6240",
+          "finish": "マットウレタン（本体）"
+        },
+        {
+          "name": "Pale Bamboo",
+          "hex": "#D6B584",
+          "finish": "網代はオイル仕上げ"
+        },
+        {
+          "name": "Bedding: Sage",
+          "hex": "#A4AD96",
+          "finish": "寝具の合わせ色"
+        },
+        {
+          "name": "Bedding: Oat",
+          "hex": "#CDBC9F",
+          "finish": "寝具の合わせ色"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "Nectar Bamboo",
+          "point": "（約9〜10.5万円）竹×木組みの海外品に対し、日本製の網代で「本家の竹」を名乗れる"
+        },
+        {
+          "vs": "飛騨産業 月光",
+          "point": "（14万円〜）無垢材の格に、別の天然素材で並び、HB込みで約4分"
+        },
+        {
+          "vs": "布張りHBの10万円帯",
+          "point": "張り地では出せない竹工芸の素材の物語で、選ばれる理由をつくる"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C1-06-detail-hb.png",
+          "caption": "燻し竹×淡竹の市松網代と燻し竹の額"
+        },
+        {
+          "image": "img/C1-06-detail-edge.png",
+          "caption": "縁90mmの燻し竹と影の台座"
+        }
+      ],
+      "scene": {
+        "image": "img/C1-06-scene.png",
+        "text": "和モダンの寝室。セージの寝具で網代の編み目を引き立てる。"
+      },
+      "evidence": "research.md §7 天然素材 35.7%、§8 竹・ラタン [S28]、§12 竹×木組み [S25]、結論6 切り口7",
+      "recommended": false,
+      "score": "3.94"
+    },
+    {
+      "no": "C1-07",
+      "type": "UX改善",
+      "type_en": "UX",
+      "name": "ICHIDO",
+      "name_ja": "いちど",
+      "tagline": "一度起こせば、全部ロック。",
+      "accent": "#A8765A",
+      "main_visual": "../../../designs/v2/c1/C1-07-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c1/C1-07-frame.png",
+      "size": "W1010 × L2125 × H880 mm（HB込み）",
+      "price": "S ¥99,800",
+      "concept": "HB上端の握り溝を持って起こすと、HBの脚・2か所の折り目・連動脚が一挙動でロック。引き出す・開く・起こすの3動作。HBは竹の額縁に洗える布クッション。",
+      "background": "購入理由1位「工具不要・短時間」57.1%、不満1位「組立が重い・2人必要」28.6%。布HBには「洗えない」不満。ロックが見て分かることも research の要件。",
+      "problems": [
+        "組立が重く、2人・長時間かかる",
+        "ちゃんとロックできたか分からず不安",
+        "布のHBが皮脂で汚れても洗えない"
+      ],
+      "features": [
+        {
+          "title": "起こすだけ 3動作・約3分",
+          "text": "工具0・ネジ0・部品1点・女性1人。10案で最短"
+        },
+        {
+          "title": "額縁クッションHB 880mm",
+          "text": "竹の額縁に洗えるクレイの布。握り溝つき、もたれ角7度"
+        },
+        {
+          "title": "一挙動ロック＋目印",
+          "text": "HBを起こすとリンクで全部ロック。朱の目印が隠れたら完了"
+        },
+        {
+          "title": "引き出すくぼみ",
+          "text": "足元の縁に指4本のくぼみ。箱から持ち上げずに出せる"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c1/C1-07-structure.png",
+        "text": "左: たたんだ状態／右: 開いてHBを起こす途中。HBの軸のリンクが折り目のロックも押す。1箱200cm・約28.5kg【推測】"
+      },
+      "materials": [
+        {
+          "part": "本体・額縁",
+          "material": "竹集成材"
+        },
+        {
+          "part": "クッション",
+          "material": "ウレタン＋撥水ファブリック",
+          "note": "ジッパーで外して洗える"
+        },
+        {
+          "part": "リンクロッド",
+          "material": "スチール",
+          "note": "樹脂ブッシュ"
+        },
+        {
+          "part": "目印",
+          "material": "アルミ",
+          "note": "朱のアルマイト"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "マットクリア（標準）。握り溝の内側は黒の拭き漆調"
+        },
+        {
+          "name": "Clay",
+          "hex": "#A8765A",
+          "finish": "撥水・防汚ファブリック（標準）"
+        },
+        {
+          "name": "Carbonized Bamboo",
+          "hex": "#5B3D28",
+          "finish": "本体の選択色"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "Thuma",
+          "point": "（平均6分42秒）工具不要の代表格より速い、HB込み約3分"
+        },
+        {
+          "vs": "Floyd 後付けHB",
+          "point": "「クランプが緩むとHBが外れる」に対し、床着地＋ロックで外れない"
+        },
+        {
+          "vs": "コアラ ファブリック",
+          "point": "（99,900円）「2人推奨」に対し、同価格で1人。布カバーも洗える"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C1-07-detail-hb.png",
+          "caption": "竹の額縁・握り溝・洗える布"
+        },
+        {
+          "image": "img/C1-07-detail-edge.png",
+          "caption": "足元の縁の引き出し用くぼみ"
+        }
+      ],
+      "scene": {
+        "image": "img/C1-07-scene.png",
+        "text": "女性1人で受け取り、説明書なしで3分。その夜から眠れる。"
+      },
+      "evidence": "research.md §6 不満（組立 28.6%）、§7 購入理由（工具不要 57.1%）、結論5（ロックの見える化）、結論6 切り口4",
+      "recommended": true,
+      "score": "4.38"
+    },
+    {
+      "no": "C1-08",
+      "type": "構造革新",
+      "type_en": "Structure",
+      "name": "SEBONE",
+      "name_ja": "せぼね",
+      "tagline": "ヘッドボードが、ベッドの背骨になる。",
+      "accent": "#806350",
+      "main_visual": "../../../designs/v2/c1/C1-08-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c1/C1-08-frame.png",
+      "size": "W1120 × L2060 × H870 mm（HB込み）",
+      "price": "S ¥104,800",
+      "concept": "床に立つ2本の竹の柱と梁でできた門型のHBが、頭側の脚を兼ねる。HBがあるほど強く、外すと立たない構造で、ヘッドレスという選択肢そのものをなくした。",
+      "background": "後付けHBはクランプの緩みで外れる・もたれると不安という不満がある。research は「HBの脚を必ず床に着地させ、クランプ1点で持たせない」ことを求める。",
+      "problems": [
+        "後付けHBがぐらつき、外れることがある",
+        "背の高い人がもたれると不安",
+        "脚が多く、頭側の床を掃除しにくい"
+      ],
+      "features": [
+        {
+          "title": "起こすだけ 4動作・約4分",
+          "text": "工具0・ネジ0・部品1点・1人。柱の上部だけを起こす"
+        },
+        {
+          "title": "門型HB 床から870mm",
+          "text": "70×90mmの竹の柱と梁、モカの布クッション。背当て6度"
+        },
+        {
+          "title": "背骨構造",
+          "text": "柱が頭側の脚を兼ね、継ぎ目のくさびが自重で締まる"
+        },
+        {
+          "title": "浮くマットレス",
+          "text": "デッキ幅830mm。マットレスが左右に70mm張り出す"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c1/C1-08-structure.png",
+        "text": "左: たたんだ状態／右: 開いて柱の上部を起こす途中。柱はデッキ上面で上下に分かれる。1箱200cm・約26kg【推測】"
+      },
+      "materials": [
+        {
+          "part": "柱・梁",
+          "material": "竹集成材",
+          "note": "デッキも。柱の芯にスチール"
+        },
+        {
+          "part": "クッション",
+          "material": "ウレタン＋撥水ファブリック"
+        },
+        {
+          "part": "ソリ脚",
+          "material": "スチール",
+          "note": "黒"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "角Rを研ぎ出したマットクリア"
+        },
+        {
+          "name": "Mocha",
+          "hex": "#806350",
+          "finish": "撥水ファブリック（標準）"
+        },
+        {
+          "name": "Joint Line",
+          "hex": "#232323",
+          "finish": "柱の継ぎ目の細い目地"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "Floyd 後付けHB",
+          "point": "クランプの緩みで外れるのに対し、HBが構造そのもので外れようがない"
+        },
+        {
+          "vs": "Nectar",
+          "point": "背の高い人がもたれた時の安定性に対し、柱が床に立って受ける"
+        },
+        {
+          "vs": "脚の多いフレーム",
+          "point": "脚はソリ2本だけ。頭側の床にもロボット掃除機が入れる"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C1-08-detail-hb.png",
+          "caption": "竹の柱・梁と、くさびで締まる継ぎ目"
+        },
+        {
+          "image": "img/C1-08-detail-edge.png",
+          "caption": "幅830mmのデッキ。脚は奥のソリだけ"
+        }
+      ],
+      "scene": {
+        "image": "img/C1-08-scene.png",
+        "text": "建築好きの夫婦の寝室。柱と梁の軸組がHBの主役になる。"
+      },
+      "evidence": "research.md 結論5-4（床着地・クランプ不可）、§6 HBのぐらつき [S23][S25]、企画 1-3・4-1",
+      "recommended": true,
+      "score": "3.92"
+    },
+    {
+      "no": "C1-09",
+      "type": "少し挑戦的",
+      "type_en": "Challenge",
+      "name": "TAKA",
+      "name_ja": "たか",
+      "tagline": "110cmの背もたれに、包まれて眠る。",
+      "accent": "#55524E",
+      "main_visual": "../../../designs/v2/c1/C1-09-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c1/C1-09-frame.png",
+      "size": "W1150 × L2170 × H1100 mm（HB込み）",
+      "price": "S ¥129,800",
+      "concept": "「国内のHBは床から80〜87cm」という常識を一つだけ崩し、110cmのハイバックと内へ回り込む両袖で、ホテルスイートの存在感を持ち込む。本体も布張り。",
+      "background": "もたれられるHBは購入理由の21.4%。海外ではウィングバック・wall-to-wall が流れで、米国プレミアム帯の布張りシェアは約20%→30〜35%に伸びている。",
+      "problems": [
+        "ベッドで動画・読書をすると背中と頭が落ち着かない",
+        "スイートのような存在感のHBは20万円超",
+        "背の高いHBは重く、2人でないと付けられない"
+      ],
+      "features": [
+        {
+          "title": "差して起こす 6動作・約8分",
+          "text": "工具0・ネジ0・部品2点（本体＋HB）・1人。10分以内"
+        },
+        {
+          "title": "ハイバックHB 床から1100mm",
+          "text": "横のチャネル6段・厚み110mm。袖は内へ22度"
+        },
+        {
+          "title": "くさびで差すヒンジ受け",
+          "text": "上から差すと自重で締まり、起こすと床に着いてロック"
+        },
+        {
+          "title": "洗えるカバー",
+          "text": "HB・縁のカバーは面ファスナーで外して洗える"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c1/C1-09-structure.png",
+        "text": "左: 本体とHBを重ねた状態（出荷時はHBを二つ折りで別箱）／右: 起こす途中。本体24kg＋HB14kgの2箱【推測】"
+      },
+      "materials": [
+        {
+          "part": "HB・縁",
+          "material": "竹集成材の芯＋ウレタン＋撥水布",
+          "note": "カバーは外せる"
+        },
+        {
+          "part": "デッキ",
+          "material": "竹集成材"
+        },
+        {
+          "part": "台座",
+          "material": "スチール",
+          "note": "黒"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Charcoal",
+          "hex": "#55524E",
+          "finish": "撥水・防汚ファブリック（標準）"
+        },
+        {
+          "name": "Mocha",
+          "hex": "#806350",
+          "finish": "替え色"
+        },
+        {
+          "name": "Off White",
+          "hex": "#ECE6DB",
+          "finish": "替え色"
+        },
+        {
+          "name": "Bedding: Terracotta",
+          "hex": "#8F5440",
+          "finish": "寝具の合わせ色"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "テンピュール レア",
+          "point": "（D 26.4万円〜）ウィングバックの存在感を、S 129,800円・自分で約8分で"
+        },
+        {
+          "vs": "海外の wall-to-wall",
+          "point": "壁一面のHBの存在感を、国内の部屋幅に収まる W1150 で出す"
+        },
+        {
+          "vs": "国内の標準HB",
+          "point": "床から80〜87cmが標準。110cmの背もたれで頭まで包み、読書・動画が楽"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C1-09-detail-hb.png",
+          "caption": "横のチャネルと内へ回り込む袖"
+        },
+        {
+          "image": "img/C1-09-detail-edge.png",
+          "caption": "ウレタンを巻いた布張りの縁R40"
+        }
+      ],
+      "scene": {
+        "image": "img/C1-09-scene.png",
+        "text": "1LDKでも寝室はスイートに。背もたれに包まれて映画を観る。"
+      },
+      "evidence": "research.md §7 もたれられるHB 21.4%、§10 ウィングバック [S28][S29]、§12 布張りシェア [S30]",
+      "recommended": false,
+      "score": "2.98"
+    },
+    {
+      "no": "C1-10",
+      "type": "コンセプトモデル",
+      "type_en": "Concept",
+      "name": "HAKO",
+      "name_ja": "はこ",
+      "tagline": "たたむとベッドが、箱になる。",
+      "accent": "#4F3524",
+      "main_visual": "../../../designs/v2/c1/C1-10-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c1/C1-10-frame.png",
+      "size": "W1850 × L2340 × H800 mm（使用時）",
+      "price": "S ¥149,800【コンセプト】",
+      "concept": "段ボールではなく炭化竹の箱そのものが届く。開くと蓋と側板が幅1850mmのHBの壁と両脇のナイトボックスに、底がデッキになる。引越しの日はまた箱に戻す。",
+      "background": "購入理由「分解・引越し・長く使える」は28.6%。research の切り口6「分解して同じ箱に戻せる10万円家具」と、ワイドHB（wall-to-wall）の流れを1台にまとめた。",
+      "problems": [
+        "引越しのたびに分解・再梱包が大変",
+        "届いた日に大量の梱包ごみが出る",
+        "ワイドHBとナイトテーブルをそろえると組立が増える"
+      ],
+      "features": [
+        {
+          "title": "開いて起こす 4動作・約5分",
+          "text": "工具0・ネジ0。ただし重量約45kgのため2人で開く【推測】"
+        },
+        {
+          "title": "ワイドHB 床から800mm",
+          "text": "幅1850mmの炭化竹の壁。内面はクリームに細い間接光"
+        },
+        {
+          "title": "両脇のナイトボックス",
+          "text": "側板が回ってW420×H440の収納に。前面は開口"
+        },
+        {
+          "title": "箱に戻る",
+          "text": "たたむと約105×70×45cmの炭化竹の箱に戻る"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c1/C1-10-structure.png",
+        "text": "左: たたんだ“箱”の状態／右: 開いて壁を起こす途中。約45kg・3辺220cmで大型家具便【推測】"
+      },
+      "materials": [
+        {
+          "part": "箱・壁",
+          "material": "炭化竹集成材",
+          "note": "ナイトボックスも"
+        },
+        {
+          "part": "内面",
+          "material": "クリームの塗装面"
+        },
+        {
+          "part": "芯",
+          "material": "アルミ押出材",
+          "note": "軽量化"
+        },
+        {
+          "part": "光",
+          "material": "LED",
+          "note": "調光のみ"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Carbonized Bamboo",
+          "hex": "#4F3524",
+          "finish": "外面 オイル調マット"
+        },
+        {
+          "name": "Cream",
+          "hex": "#EFE9DF",
+          "finish": "内面 半艶塗装"
+        },
+        {
+          "name": "Opening",
+          "hex": "#3A3531",
+          "finish": "ナイトボックスの開口"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "市場の10万円帯ベッド",
+          "point": "家具そのものが梱包になるベッドは、市場に確認できない"
+        },
+        {
+          "vs": "カリモク・飛騨",
+          "point": "「分解・再組立しても緩まない」を、分解すら不要に"
+        },
+        {
+          "vs": "一般の組立式ベッド",
+          "point": "ワイドHBと両脇の収納を、組立なしで一度にそろえられる"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C1-10-detail-hb.png",
+          "caption": "ワイドHBの壁とナイトボックス"
+        },
+        {
+          "image": "img/C1-10-detail-edge.png",
+          "caption": "縁180mm（箱の側板の厚み）"
+        }
+      ],
+      "scene": {
+        "image": "img/C1-10-scene.png",
+        "text": "ポップアップ展示。箱から寝室が現れる体験をブランドの象徴に。"
+      },
+      "evidence": "research.md 結論6 切り口6、§7 分解・引越し 28.6%、§10 ワイド [S28]",
+      "recommended": false,
+      "score": "2.88"
+    }
+  ]
+}

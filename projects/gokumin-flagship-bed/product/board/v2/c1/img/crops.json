@@ -1,0 +1,242 @@
+[
+ {
+  "src": "../../../../designs/v2/c1/C1-10-frame.png",
+  "out": "C1-10-detail-hb.png",
+  "x": 1100,
+  "y": 250,
+  "w": 360,
+  "h": 580
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-10-frame.png",
+  "out": "C1-10-detail-edge.png",
+  "x": 350,
+  "y": 660,
+  "w": 335,
+  "h": 540
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-01-frame.png",
+  "out": "C1-01-detail-hb.png",
+  "x": 940,
+  "y": 200,
+  "w": 360,
+  "h": 580
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-01-frame.png",
+  "out": "C1-01-detail-edge.png",
+  "x": 220,
+  "y": 660,
+  "w": 335,
+  "h": 540
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-02-frame.png",
+  "out": "C1-02-detail-hb.png",
+  "x": 900,
+  "y": 150,
+  "w": 360,
+  "h": 580
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-02-frame.png",
+  "out": "C1-02-detail-edge.png",
+  "x": 220,
+  "y": 660,
+  "w": 335,
+  "h": 540
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-03-frame.png",
+  "out": "C1-03-detail-hb.png",
+  "x": 940,
+  "y": 200,
+  "w": 360,
+  "h": 580
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-03-frame.png",
+  "out": "C1-03-detail-edge.png",
+  "x": 220,
+  "y": 660,
+  "w": 335,
+  "h": 540
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-04-frame.png",
+  "out": "C1-04-detail-hb.png",
+  "x": 940,
+  "y": 150,
+  "w": 360,
+  "h": 580
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-04-frame.png",
+  "out": "C1-04-detail-edge.png",
+  "x": 250,
+  "y": 660,
+  "w": 335,
+  "h": 540
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-05-frame.png",
+  "out": "C1-05-detail-hb.png",
+  "x": 800,
+  "y": 190,
+  "w": 360,
+  "h": 580
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-05-frame.png",
+  "out": "C1-05-detail-edge.png",
+  "x": 220,
+  "y": 660,
+  "w": 335,
+  "h": 540
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-06-frame.png",
+  "out": "C1-06-detail-hb.png",
+  "x": 940,
+  "y": 200,
+  "w": 360,
+  "h": 580
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-06-frame.png",
+  "out": "C1-06-detail-edge.png",
+  "x": 220,
+  "y": 660,
+  "w": 335,
+  "h": 540
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-07-frame.png",
+  "out": "C1-07-detail-hb.png",
+  "x": 900,
+  "y": 220,
+  "w": 360,
+  "h": 580
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-07-frame.png",
+  "out": "C1-07-detail-edge.png",
+  "x": 300,
+  "y": 660,
+  "w": 335,
+  "h": 540
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-08-frame.png",
+  "out": "C1-08-detail-hb.png",
+  "x": 960,
+  "y": 210,
+  "w": 360,
+  "h": 580
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-08-frame.png",
+  "out": "C1-08-detail-edge.png",
+  "x": 290,
+  "y": 660,
+  "w": 335,
+  "h": 540
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-09-frame.png",
+  "out": "C1-09-detail-hb.png",
+  "x": 950,
+  "y": 180,
+  "w": 360,
+  "h": 580
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-09-frame.png",
+  "out": "C1-09-detail-edge.png",
+  "x": 270,
+  "y": 660,
+  "w": 335,
+  "h": 540
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-01-front.png",
+  "out": "C1-01-scene.png",
+  "x": 150,
+  "y": 220,
+  "w": 1300,
+  "h": 840
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-02-front.png",
+  "out": "C1-02-scene.png",
+  "x": 150,
+  "y": 220,
+  "w": 1300,
+  "h": 840
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-03-front.png",
+  "out": "C1-03-scene.png",
+  "x": 150,
+  "y": 220,
+  "w": 1300,
+  "h": 840
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-04-front.png",
+  "out": "C1-04-scene.png",
+  "x": 150,
+  "y": 220,
+  "w": 1300,
+  "h": 840
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-05-front.png",
+  "out": "C1-05-scene.png",
+  "x": 150,
+  "y": 220,
+  "w": 1300,
+  "h": 840
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-06-front.png",
+  "out": "C1-06-scene.png",
+  "x": 150,
+  "y": 220,
+  "w": 1300,
+  "h": 840
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-07-front.png",
+  "out": "C1-07-scene.png",
+  "x": 150,
+  "y": 220,
+  "w": 1300,
+  "h": 840
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-08-front.png",
+  "out": "C1-08-scene.png",
+  "x": 150,
+  "y": 220,
+  "w": 1300,
+  "h": 840
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-09-front.png",
+  "out": "C1-09-scene.png",
+  "x": 150,
+  "y": 220,
+  "w": 1300,
+  "h": 840
+ },
+ {
+  "src": "../../../../designs/v2/c1/C1-10-front.png",
+  "out": "C1-10-scene.png",
+  "x": 150,
+  "y": 220,
+  "w": 1300,
+  "h": 840
+ }
+]
