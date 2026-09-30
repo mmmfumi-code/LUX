@@ -2,7 +2,8 @@
 
 ## 現在地
 - v2 やり直し中（2026-09-30 ユーザー指示: 全案ヘッドレス不可、10万円程度の売れ筋を分析しヘッドボード込みで再検討）
-- STEP 1 v2 完了（research/research.md。v1 は research/versions/research-v1.md）→ STEP 2 商品企画 v2 へ
+- STEP 1〜4 v2 完了。🔒 STEP 5 USER APPROVAL 待ち（product/04-board-v2.md、board/v2/cX/boards-all.pdf）
+- v2 成果物: 企画 product/02-planning-v2.md、30案 product/03-design-v2(-c1/-c2/-c3).md、画像 product/designs/v2/、ボード product/board/v2/
 - v1 の企画・デザイン30案・ボードは product/*-v1* に残っている（参考のみ。ヘッドレスのため不採用）
 
 ## これまでの決定事項（要約）

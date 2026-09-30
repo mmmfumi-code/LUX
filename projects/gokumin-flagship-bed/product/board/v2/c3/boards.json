@@ -1,0 +1,1182 @@
+{
+  "project": "GOKUMIN Flagship Bed v2 — ③ 掃除が楽になるベッド（ヘッドボードが脚になるフローティング）",
+  "studio": "AI Design Studio",
+  "date": "2026.09.30",
+  "version": "v2",
+  "overview": true,
+  "overview_title": "Head Stand Float — 10 Proposals",
+  "overview_tagline": "床まで、ホテルの品格。",
+  "overview_evidence": "research.md（v2）結論1〜6・§6 不満・§7 購入理由・§11 床下・§16 空白D／03-design-v2-c3.md 自己レビュー（加重平均）",
+  "boards": [
+    {
+      "no": "C3-01",
+      "type": "王道・市場適合型",
+      "type_en": "Market Fit",
+      "name": "TAYUTA",
+      "name_ja": "たゆた",
+      "tagline": "竹の台に、ホテルの布パネル。",
+      "accent": "#8C806C",
+      "main_visual": "../../../designs/v2/c3/C3-01-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c3/C3-01-frame.png",
+      "size": "W1030 × L2180 × H850 mm（HB込み）",
+      "price": "S ¥99,800",
+      "concept": "10万円帯で最も売れている、もたれられる布張りHBを標準にし、竹の台（2本脚＋敷居）に載せた。台の脚がベッドの頭側の脚を兼ね、床には壁際の2本と足元の台座しかない。",
+      "background": "購入理由「デザイン（ホテル）」35.7%・「もたれられるHB」21.4%。一方で布は洗えず、脚が床下をふさぐ。HBで格を出し床下を空ける国内品はない（空白D）。",
+      "problems": [
+        "ベッド下にロボット掃除機が入らず、ホコリがたまる",
+        "布張りのHBが汚れても洗えない",
+        "HB込みの組立が重く、2人がかりになる"
+      ],
+      "features": [
+        {
+          "title": "差すだけ 4動作・約9分",
+          "text": "工具0・ネジ0・部品3点・1人。本体は裏返さない【推測】"
+        },
+        {
+          "title": "布パネルHB 床から850mm",
+          "text": "竹の台に載るペデスタル型。もたれ7度、カバーは洗える"
+        },
+        {
+          "title": "床下130mm・脚は壁際だけ",
+          "text": "足元の台座は外周から250mm以上内側。掃除機が全面を通る"
+        },
+        {
+          "title": "顔を替えられる",
+          "text": "布パネルは敷居の溝に落とし込む。別の顔にも替えられる"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c3/C3-01-structure.png",
+        "text": "左: HBユニット（脚を起こして自立）／右: 持ち上げた本体と足元台座。本体の頭側をHBの受け2点に落とし込む"
+      },
+      "materials": [
+        {
+          "part": "本体・縁",
+          "material": "国産竹集成材",
+          "note": "芯は中空スチール"
+        },
+        {
+          "part": "HBの台",
+          "material": "竹集成材",
+          "note": "脚は折りたたみ式"
+        },
+        {
+          "part": "布パネル",
+          "material": "撥水布＋ウレタン＋竹合板",
+          "note": "カバーは洗える"
+        },
+        {
+          "part": "台座・金物",
+          "material": "スチール（黒）",
+          "note": "粉体塗装・マット"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "本体 3分艶"
+        },
+        {
+          "name": "Greige",
+          "hex": "#CFC5B5",
+          "finish": "布（標準）微起毛の平織り"
+        },
+        {
+          "name": "Clay",
+          "hex": "#A8765A",
+          "finish": "布（替え）"
+        },
+        {
+          "name": "Charcoal",
+          "hex": "#55524E",
+          "finish": "布（替え）"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "コアラ",
+          "point": "（99,900円）「脚が長い・2人推奨」に対し、同価格で1人・工具0。床下も全面空く"
+        },
+        {
+          "vs": "LED浮遊ベッド",
+          "point": "光るだけの安価品に対し、布HBと厚い竹の縁で10万円帯の格を出す"
+        },
+        {
+          "vs": "布張りHB",
+          "point": "洗えない布に対し、ジッパーで外して洗えるカバー。替え 9,800円"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C3-01-detail-hb.png",
+          "caption": "布パネルのHB。竹の台と脚で自立"
+        },
+        {
+          "image": "img/C3-01-detail-joint.png",
+          "caption": "HBの脚に本体の頭側が載る"
+        }
+      ],
+      "scene": {
+        "image": "img/C3-01-scene.png",
+        "text": "毎朝ロボット掃除機が出発。ベッド下も壁際の脚の間も、止まらずに抜けていく。"
+      },
+      "evidence": "research.md 結論4・5・6、§6（組立 28.6%・布の汚れ）、§7（デザイン 35.7%・もたれ 21.4%）、§11・§16 空白D",
+      "recommended": true,
+      "score": "4.24"
+    },
+    {
+      "no": "C3-02",
+      "type": "ミニマル",
+      "type_en": "Minimal",
+      "name": "SORI",
+      "name_ja": "反り",
+      "tagline": "一枚の竹が、浮いて反る。",
+      "accent": "#8E7048",
+      "main_visual": "../../../designs/v2/c3/C3-02-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c3/C3-02-frame.png",
+      "size": "W1063 × L2208 × H800 mm（HB込み）",
+      "price": "S ¥94,800",
+      "concept": "HBは曲げ積層の竹の一枚板だけ。ベッド側へ緩く反らせ、脚は板の裏の薄いスチールのブレードに隠す。板もベッドも宙に浮く、要素の最も少ない案。",
+      "background": "宮付きHBは全長が十数cm伸びる（寸法の不満 21.4%）。不満1位は重さ・組立 28.6%。国内のHBで最も多いフラット型の中で、反りと浮きで差をつける。",
+      "problems": [
+        "HBを付けると全長が伸び、重くなる",
+        "板のHBは安っぽく、単調に見える",
+        "線の多い家具で部屋が散らかって見える"
+      ],
+      "features": [
+        {
+          "title": "差すだけ 4動作・約8分",
+          "text": "工具0・ネジ0・部品3点・1人。HB箱は約8kg【推測】"
+        },
+        {
+          "title": "反った竹の一枚板 床から800mm",
+          "text": "反りR2600で背中を受ける。もたれ4度、拭くだけの手入れ"
+        },
+        {
+          "title": "床下140mm・脚は見せない",
+          "text": "黒いブレード脚は板の裏。前から見ると板だけが浮く"
+        },
+        {
+          "title": "部品が最も少ない",
+          "text": "工場での部品 約40点。曲げ型1面でつくる"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c3/C3-02-structure.png",
+        "text": "左: HBユニット（脚を起こして自立）／右: 持ち上げた本体と足元台座。本体の頭側をHBの受け2点に落とし込む"
+      },
+      "materials": [
+        {
+          "part": "本体・縁",
+          "material": "国産竹集成材",
+          "note": "芯は中空スチール"
+        },
+        {
+          "part": "HB",
+          "material": "竹単板の曲げ積層",
+          "note": "プレス成形 13枚"
+        },
+        {
+          "part": "脚",
+          "material": "スチールブレード",
+          "note": "板の裏に隠す"
+        },
+        {
+          "part": "台座・金物",
+          "material": "スチール（黒）",
+          "note": "粉体塗装・マット"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Light Bamboo",
+          "hex": "#D6B584",
+          "finish": "HB 1分艶マット"
+        },
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "本体 3分艶"
+        },
+        {
+          "name": "Carbonized",
+          "hex": "#5B3D28",
+          "finish": "本体（選択）"
+        },
+        {
+          "name": "Matte Black",
+          "hex": "#2B2A28",
+          "finish": "金物（隠す）"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "無印 HB付き",
+          "point": "（46,900円）「脚がないとHBを付けられない」に対し、HBが脚そのもの"
+        },
+        {
+          "vs": "フラット型HB",
+          "point": "国内で最多の平らな板に対し、平面の反りと浮きで一枚板の単調さを消す"
+        },
+        {
+          "vs": "宮付きHB",
+          "point": "重い宮付きに対し、厚み40mmの一枚板"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C3-02-detail-hb.png",
+          "caption": "反った竹の一枚板。脚は裏のブレード"
+        },
+        {
+          "image": "img/C3-02-detail-joint.png",
+          "caption": "脚は板の裏。前からは見えない"
+        }
+      ],
+      "scene": {
+        "image": "img/C3-02-scene.png",
+        "text": "線の少ない1LDK。浮いた竹の板だけが、壁際に静かに立つ。"
+      },
+      "evidence": "research.md 結論2-4・3、§6（組立 28.6%・寸法 21.4%）、§10 フラット型が最多（notes/v2-headboard-types.md）",
+      "recommended": false,
+      "score": "4.10"
+    },
+    {
+      "no": "C3-03",
+      "type": "プレミアム",
+      "type_en": "Premium",
+      "name": "TAWARA",
+      "name_ja": "俵",
+      "tagline": "俵のロールに、深くもたれる。",
+      "accent": "#5B3D28",
+      "main_visual": "../../../designs/v2/c3/C3-03-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c3/C3-03-frame.png",
+      "size": "W1184 × L2254 × H1006 mm（HB込み）",
+      "price": "S ¥129,800",
+      "concept": "炭化竹の太い2本の柱の間に、ブークレの俵形ロールを3段重ね、段ごとに後退させてもたれ角8度をつくる。柱がベッドの頭側の脚になり、スイートの格と床下の清潔を両立する。",
+      "background": "10万円帯の価値は素材・張り地・HBの存在感。家具メーカー品は重く業者頼み、D2Cは格が一段足りない（結論3）。飛騨は受注40〜60日待ち。",
+      "problems": [
+        "上質なベッドほど重く、業者の設置が必要",
+        "D2Cのベッドは格が一段足りない",
+        "高級ベッドは床下が低く、掃除しにくい"
+      ],
+      "features": [
+        {
+          "title": "5動作・約11分・1人",
+          "text": "基本4動作＋ロール3本を落とし込む。工具0・ネジ0【推測】"
+        },
+        {
+          "title": "俵ロール3段 床から1000mm",
+          "text": "ブークレのロールが段ごとに後退。もたれ8度、カバーは洗える"
+        },
+        {
+          "title": "柱が脚・床下130mm",
+          "text": "炭化竹の柱が頭側を受け、足元は内側の台座1つだけ"
+        },
+        {
+          "title": "ロールは1本ずつ外せる",
+          "text": "柱の内側の溝に上から落とすだけ。洗濯も交換も1本ずつ"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c3/C3-03-structure.png",
+        "text": "左: HBの柱と俵ロール（柱が脚）／右: 持ち上げた本体と足元台座。本体の頭側を柱の受け2点に落とし込む"
+      },
+      "materials": [
+        {
+          "part": "本体・柱",
+          "material": "炭化竹集成材",
+          "note": "柱は太物の接着積層"
+        },
+        {
+          "part": "ロール",
+          "material": "ブークレ＋高密度ウレタン",
+          "note": "カバーは洗える"
+        },
+        {
+          "part": "笠木・横木",
+          "material": "炭化竹集成材",
+          "note": "5分艶"
+        },
+        {
+          "part": "台座・金物",
+          "material": "スチール（黒）",
+          "note": "粉体塗装・マット"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Carbonized",
+          "hex": "#5B3D28",
+          "finish": "本体・柱 5分艶"
+        },
+        {
+          "name": "Latte Bouclé",
+          "hex": "#D6C6AB",
+          "finish": "ロール（標準）"
+        },
+        {
+          "name": "Ivory",
+          "hex": "#E8E1D3",
+          "finish": "ロール（選択）"
+        },
+        {
+          "name": "Mocha",
+          "hex": "#806350",
+          "finish": "ロール（選択）"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "飛騨 月光",
+          "point": "（14万円〜、受注40〜60日）に対し、即納・自分で約11分。価格も下"
+        },
+        {
+          "vs": "カリモク",
+          "point": "業者設置の重い無垢ベッドに対し、1人で組めて床下まで掃除できる"
+        },
+        {
+          "vs": "コアラ",
+          "point": "（布張りHB）より一段上の格。炭化竹の柱とブークレのハイバック"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C3-03-detail-hb.png",
+          "caption": "俵ロール3段と炭化竹の柱"
+        },
+        {
+          "image": "img/C3-03-detail-joint.png",
+          "caption": "柱がそのまま頭側の脚になる"
+        }
+      ],
+      "scene": {
+        "image": "img/C3-03-scene.png",
+        "text": "旅館のような寝室。深くもたれて読書、床下は掃除機が毎日きれいにする。"
+      },
+      "evidence": "research.md 結論3・5、§8 プレミアム帯の布はブークレ、§14、§16 空白D、切り口7 炭化竹×和モダン",
+      "recommended": true,
+      "score": "3.86"
+    },
+    {
+      "no": "C3-04",
+      "type": "トレンド",
+      "type_en": "Trend",
+      "name": "MAYU",
+      "name_ja": "繭",
+      "tagline": "繭のかたちが、宙に浮く。",
+      "accent": "#A8765A",
+      "main_visual": "../../../designs/v2/c3/C3-04-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c3/C3-04-frame.png",
+      "size": "W1060 × L2173 × H883 mm（HB込み）",
+      "price": "S ¥104,800",
+      "concept": "両端がまるいカプセル形の横長クッションを、竹の細い丸脚2本で持ち上げる。本体も角R40のやわらかい縁で、ベッド全体が床から浮いた“丸いもの”に見える。",
+      "background": "2026年は曲線・角丸とクレイ系の色が伸びる。浮くベッドはSNSでLED付きの安価品が主流で、形で浮遊感を出す10万円帯の国内品は確認できない。",
+      "problems": [
+        "浮くベッドはLEDの安価品に見えてしまう",
+        "SNSで映える寝室にしたいが、形の選択肢が少ない",
+        "布のHBが汚れても洗えない"
+      ],
+      "features": [
+        {
+          "title": "差すだけ 4動作・約9分",
+          "text": "工具0・ネジ0・部品3点・1人【推測】"
+        },
+        {
+          "title": "カプセルHB 床から880mm",
+          "text": "両端R270の繭形クッション。もたれ6度、カバーは洗える"
+        },
+        {
+          "title": "床下130mm・細い丸脚",
+          "text": "竹の丸脚2本がHBを持ち上げ、HBの下にも空間が見える"
+        },
+        {
+          "title": "角R40の本体",
+          "text": "縁までやわらかい曲線。光ではなく形で浮かせる"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c3/C3-04-structure.png",
+        "text": "左: HBユニット（脚を起こして自立）／右: 持ち上げた本体と足元台座。本体の頭側をHBの受け2点に落とし込む"
+      },
+      "materials": [
+        {
+          "part": "本体・縁",
+          "material": "国産竹集成材",
+          "note": "角R40"
+        },
+        {
+          "part": "HB",
+          "material": "布＋モールドウレタン＋竹合板",
+          "note": "カバーは洗える"
+        },
+        {
+          "part": "脚",
+          "material": "竹丸棒＋スチール芯",
+          "note": "下すぼまり φ52〜38"
+        },
+        {
+          "part": "台座・金物",
+          "material": "スチール（黒）",
+          "note": "粉体塗装・マット"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Clay",
+          "hex": "#A8765A",
+          "finish": "布（標準）微起毛"
+        },
+        {
+          "name": "Mocha",
+          "hex": "#806350",
+          "finish": "布（選択）"
+        },
+        {
+          "name": "Off White",
+          "hex": "#ECE6DB",
+          "finish": "布（選択）"
+        },
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "本体 3分艶"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "LED浮遊ベッド",
+          "point": "（TikTokの安価品）に対し、光ではなく形とHBで浮遊感を出す"
+        },
+        {
+          "vs": "曲線HB",
+          "point": "国内10万円帯に、曲線HBのフローティングは確認できない【推測】"
+        },
+        {
+          "vs": "布張りHB",
+          "point": "洗えない布に対し、ジッパーで外して洗えるカバー"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C3-04-detail-hb.png",
+          "caption": "繭形のHBを細い丸脚で浮かせる"
+        },
+        {
+          "image": "img/C3-04-detail-joint.png",
+          "caption": "カプセルの端部と竹の丸脚"
+        }
+      ],
+      "scene": {
+        "image": "img/C3-04-scene.png",
+        "text": "同棲1年目の寝室。クレイの繭が、白い壁に浮いて写る。"
+      },
+      "evidence": "research.md §9 カラー（clay）、§10 曲線トレンド、§13 SNS、§11 LED の過剰、§16 空白D",
+      "recommended": false,
+      "score": "3.64"
+    },
+    {
+      "no": "C3-05",
+      "type": "機能特化",
+      "type_en": "Function",
+      "name": "KIYORA",
+      "name_ja": "清ら",
+      "tagline": "ホコリが積もらない形。",
+      "accent": "#55524E",
+      "main_visual": "../../../designs/v2/c3/C3-05-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c3/C3-05-frame.png",
+      "size": "W1040 × L2168 × H880 mm（HB込み）",
+      "price": "S ¥104,800",
+      "concept": "清掃性を数値と形で突き抜けさせた案。床下180mmでスティック掃除機も奥まで入る。HBは天端に平らな面がないくさび形で、背板と布の間にも溝がない。",
+      "background": "床下12cm以上ならほぼ全機種のロボット掃除機が入る。一方、深い宮棚はホコリがたまり、布は汚れる。床下とHBの両方で掃除を楽にした国内品はない。",
+      "problems": [
+        "HBの天端や宮棚にホコリが積もる",
+        "床下が低く、スティック掃除機が奥まで届かない",
+        "HBの下・壁際が掃除できない"
+      ],
+      "features": [
+        {
+          "title": "差すだけ 4動作・約9分",
+          "text": "工具0・ネジ0・部品3点・1人【推測】"
+        },
+        {
+          "title": "くさび形HB 床から880mm",
+          "text": "天端は丸い竹の鼻だけ。もたれ約12度、布は外して洗える"
+        },
+        {
+          "title": "床下180mm",
+          "text": "ロボット掃除機もスティックのヘッドも、床下の奥まで入る"
+        },
+        {
+          "title": "HBの下端が床から300mm",
+          "text": "壁際まで掃除機が届く。台座の角もR10でコードが絡まない"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c3/C3-05-structure.png",
+        "text": "左: HBユニット（脚を起こして自立）／右: 持ち上げた本体と足元台座。本体の頭側をHBの受け2点に落とし込む"
+      },
+      "materials": [
+        {
+          "part": "本体・縁",
+          "material": "国産竹集成材",
+          "note": "芯は中空スチール"
+        },
+        {
+          "part": "背板・鼻・脚",
+          "material": "竹集成材",
+          "note": "拭きやすい3分艶"
+        },
+        {
+          "part": "布パネル",
+          "material": "撥水布＋ウレタン",
+          "note": "面ファスナーで外す"
+        },
+        {
+          "part": "台座",
+          "material": "スチール（黒）",
+          "note": "高さ174mm・角R10"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Charcoal",
+          "hex": "#55524E",
+          "finish": "布（標準）"
+        },
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "本体・背板 3分艶"
+        },
+        {
+          "name": "Off White",
+          "hex": "#ECE6DB",
+          "finish": "布（選択）"
+        },
+        {
+          "name": "Mocha",
+          "hex": "#806350",
+          "finish": "布（選択）"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "Nectar Bamboo",
+          "point": "（床下約25cm）はHB別売・日本未展開。KIYORAはHB込みで国内で買える"
+        },
+        {
+          "vs": "中央台座の浮遊",
+          "point": "一般的なフローティングに対し、HBの下・壁際まで掃除できる"
+        },
+        {
+          "vs": "宮付きHB",
+          "point": "ホコリがたまる宮棚に対し、平らな面のないくさび形のHB"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C3-05-detail-hb.png",
+          "caption": "くさび形のHB。天端は竹の鼻だけ"
+        },
+        {
+          "image": "img/C3-05-detail-joint.png",
+          "caption": "丸い竹の鼻。ホコリの面がない"
+        }
+      ],
+      "scene": {
+        "image": "img/C3-05-scene.png",
+        "text": "子どもとペットのいる家。掃除機がベッド下から壁際まで、毎日止まらずに通る。"
+      },
+      "evidence": "research.md 結論2-4、§6（布の汚れ）、§11 床下12cm以上でほぼ全機種 [S57]、§16 空白D",
+      "recommended": true,
+      "score": "4.18"
+    },
+    {
+      "no": "C3-06",
+      "type": "素材特化",
+      "type_en": "Material",
+      "name": "TATAMI",
+      "name_ja": "畳",
+      "tagline": "畳を、枕元に立てる。",
+      "accent": "#7A7340",
+      "main_visual": "../../../designs/v2/c3/C3-06-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c3/C3-06-frame.png",
+      "size": "W1030 × L2148 × H858 mm（HB込み）",
+      "price": "S ¥109,800",
+      "concept": "厚み60mmの“畳一枚”を立てたHB。表は樹脂コートの和紙畳表で、拭けてカビ・ダニが出にくい【推測】。上下にだけ黒い畳縁を通し、炭化竹の本体と合わせて旅館の設えにする。",
+      "background": "購入理由「無垢・天然素材」35.7%。布張りHBは汚れ・湿気が不満。国内10万円帯のHBは無垢材と布が中心で、畳表のHBは確認できない。",
+      "problems": [
+        "布張りのHBは汚れ・湿気が気になる",
+        "賃貸には畳がなく、和の手触りがない",
+        "天然素材の格と手入れのしやすさが両立しない"
+      ],
+      "features": [
+        {
+          "title": "差すだけ 4動作・約9分",
+          "text": "工具0・ネジ0・部品3点・1人【推測】"
+        },
+        {
+          "title": "畳一枚のHB 床から860mm",
+          "text": "和紙畳表＋上下の畳縁。拭ける・カビにくい。もたれ5度"
+        },
+        {
+          "title": "床下130mm・脚は隠す",
+          "text": "炭化竹の脚は畳の裏。畳が宙に立って見える"
+        },
+        {
+          "title": "畳表は張り替えられる",
+          "text": "脚の上端のフックに掛けるだけ。パネルごと交換できる"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c3/C3-06-structure.png",
+        "text": "左: HBユニット（脚を起こして自立）／右: 持ち上げた本体と足元台座。本体の頭側をHBの受け2点に落とし込む"
+      },
+      "materials": [
+        {
+          "part": "本体・脚",
+          "material": "炭化竹集成材",
+          "note": "5分艶"
+        },
+        {
+          "part": "畳パネル",
+          "material": "和紙畳表（樹脂コート）",
+          "note": "芯は発泡ボード＋竹合板"
+        },
+        {
+          "part": "畳縁",
+          "material": "ポリエステル",
+          "note": "上下の2本だけ"
+        },
+        {
+          "part": "台座・金物",
+          "material": "スチール（黒）",
+          "note": "粉体塗装・マット"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Wakakusa",
+          "hex": "#BDB383",
+          "finish": "畳表（標準）"
+        },
+        {
+          "name": "Sumi",
+          "hex": "#3B3A36",
+          "finish": "畳縁"
+        },
+        {
+          "name": "Carbonized",
+          "hex": "#5B3D28",
+          "finish": "本体・脚 5分艶"
+        },
+        {
+          "name": "Shiracha",
+          "hex": "#D2C4A0",
+          "finish": "畳表（限定）"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "無垢材HB",
+          "point": "国内10万円帯は無垢材・布が中心。畳表のHBは確認できない"
+        },
+        {
+          "vs": "飛騨・カリモク",
+          "point": "無垢材に対し、竹＋畳で日本発の素材の物語"
+        },
+        {
+          "vs": "布張りHB",
+          "point": "汚れ・湿気に弱い布に対し、拭ける和紙畳表。張り替えもできる"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C3-06-detail-hb.png",
+          "caption": "畳一枚のHB。上下に畳縁"
+        },
+        {
+          "image": "img/C3-06-detail-joint.png",
+          "caption": "畳縁の線と炭化竹の本体"
+        }
+      ],
+      "scene": {
+        "image": "img/C3-06-scene.png",
+        "text": "畳のない賃貸の寝室。枕元の一枚の畳が、旅館の夜をつくる。"
+      },
+      "evidence": "research.md §6（布の汚れ）、§7（無垢・天然素材 35.7%）、§8 素材トレンド、切り口7 竹×和モダン",
+      "recommended": false,
+      "score": "3.78"
+    },
+    {
+      "no": "C3-07",
+      "type": "UX改善",
+      "type_en": "UX",
+      "name": "SUTTO",
+      "name_ja": "すっと",
+      "tagline": "立てる、掛ける、それだけ。",
+      "accent": "#806350",
+      "main_visual": "../../../designs/v2/c3/C3-07-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c3/C3-07-frame.png",
+      "size": "W1012 × L2235 × H830 mm（HB込み）",
+      "price": "S ¥99,800",
+      "concept": "HBユニットは後ろのスタンドを開くとイーゼルのように単体で自立する。立てたHBに本体を掛ける手順が形から分かる。布は左右2枚で、片側ずつ外して洗える。",
+      "background": "不満1位は組立が重い・2人必要（28.6%）、購入理由1位は工具不要・短時間（57.1%）。HBは一番重く、一番ぐらつく部品になっている（空白B）。",
+      "problems": [
+        "組立が重く、2人・半日がかりになる",
+        "組立中にHBが倒れそうで怖い",
+        "説明書を読まないと手順が分からない"
+      ],
+      "features": [
+        {
+          "title": "4動作・約7分・1人",
+          "text": "工具0・ネジ0・部品3点。本体を持ち上げるのは最大25cm【推測】"
+        },
+        {
+          "title": "イーゼルHB 床から830mm",
+          "text": "竹の枠に左右2枚の布。もたれ5度、1枚ずつ外して洗える"
+        },
+        {
+          "title": "床下130mm・スタンドで自立",
+          "text": "組立中もHBが倒れない。壁から少し離れ、壁際も掃除できる"
+        },
+        {
+          "title": "緑の目印で迷わない",
+          "text": "スタンド・本体・くさびのロックが、すべて緑で分かる"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c3/C3-07-structure.png",
+        "text": "左: スタンドで自立したHBユニット／右: 持ち上げた本体と足元台座。本体の頭側を前脚の受け2点に“すっと”落とす"
+      },
+      "materials": [
+        {
+          "part": "本体・枠",
+          "material": "国産竹集成材",
+          "note": "ほぞ組み（工場で接着）"
+        },
+        {
+          "part": "布パネル×2",
+          "material": "撥水布＋ウレタン＋竹合板",
+          "note": "1枚ずつ洗える"
+        },
+        {
+          "part": "スタンド",
+          "material": "竹＋樹脂ブッシュ",
+          "note": "開くとロック（緑）"
+        },
+        {
+          "part": "台座・金物",
+          "material": "スチール（黒）",
+          "note": "粉体塗装・マット"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Mocha",
+          "hex": "#806350",
+          "finish": "布（標準）微起毛"
+        },
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "本体・枠 3分艶"
+        },
+        {
+          "name": "Clay",
+          "hex": "#A8765A",
+          "finish": "布（選択）"
+        },
+        {
+          "name": "Off White",
+          "hex": "#ECE6DB",
+          "finish": "布（選択）"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "コアラ・エマ",
+          "point": "付属工具・2人推奨に対し、工具0・1人・約7分"
+        },
+        {
+          "vs": "Thuma",
+          "point": "（約6分42秒）と同等の速さを、HB込み・国内で"
+        },
+        {
+          "vs": "後付けHB",
+          "point": "組立中に倒れるHBに対し、スタンドで自立。手順が形で分かる"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C3-07-detail-hb.png",
+          "caption": "左右2枚の布。スタンドで自立"
+        },
+        {
+          "image": "img/C3-07-detail-joint.png",
+          "caption": "スタンドの軸に緑の目印"
+        }
+      ],
+      "scene": {
+        "image": "img/C3-07-scene.png",
+        "text": "初めて自分で組むベッド。HBを立てて、本体を掛けたら、7分で眠れる。"
+      },
+      "evidence": "research.md 結論5-3、§6（組立 28.6%）、§7（工具不要 57.1%）、§16 空白B・D",
+      "recommended": false,
+      "score": "3.98"
+    },
+    {
+      "no": "C3-08",
+      "type": "構造革新",
+      "type_en": "Structure",
+      "name": "MITSU",
+      "name_ja": "三つ",
+      "tagline": "三つの足で、浮かせる。",
+      "accent": "#9A7243",
+      "main_visual": "../../../designs/v2/c3/C3-08-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c3/C3-08-frame.png",
+      "size": "W1056 × L2248 × H900 mm（HB込み）",
+      "price": "S ¥104,800",
+      "concept": "HBの脚は横から見るとA字で、HBユニットが前後にも倒れない。本体はA字のHB2点と幅500mmの台座1つの三角形で支える。竹の角材を4段積み、最下段が本体の受け梁を兼ねる。",
+      "background": "HBのぐらつき・もたれる強度への不安は14.3%。中央台座のフローティングには剛性・転倒のリスクがある（小まとめ③）。構造で安心を見せる。",
+      "problems": [
+        "後付けのHBがぐらつく・外れる",
+        "浮くベッドは端に座ると傾きそうで不安",
+        "組立の部品と金具が多い"
+      ],
+      "features": [
+        {
+          "title": "5動作・約10分・1人",
+          "text": "基本4動作＋上段の角材を差す。工具0・部品4点【推測】"
+        },
+        {
+          "title": "積み角材HB 床から900mm",
+          "text": "竹の角材4段が段ごとに後退。もたれ約4度、小口の積層を見せる"
+        },
+        {
+          "title": "床下140mm・三角形で支える",
+          "text": "A字のHB2点＋幅500mmの台座1つ。端に座っても傾きにくい"
+        },
+        {
+          "title": "ブラケットをなくした",
+          "text": "最下段の角材が受け梁。本体を面で受ける"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c3/C3-08-structure.png",
+        "text": "左: A字脚のHBユニット（最下段が受け梁）／右: 持ち上げた本体と幅500の台座。本体の頭側を最下段に載せる"
+      },
+      "materials": [
+        {
+          "part": "本体・縁",
+          "material": "国産竹集成材",
+          "note": "芯は中空スチール"
+        },
+        {
+          "part": "角材・A字脚",
+          "material": "竹集成材の太物",
+          "note": "ほぞ組み（工場で接着）"
+        },
+        {
+          "part": "受けの舌",
+          "material": "スチール（黒）",
+          "note": "面で受ける"
+        },
+        {
+          "part": "台座",
+          "material": "スチール（黒）",
+          "note": "W500×D640"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Light Bamboo",
+          "hex": "#D6B584",
+          "finish": "角材（2トーン）"
+        },
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "本体・角材 3分艶"
+        },
+        {
+          "name": "Carbonized",
+          "hex": "#5B3D28",
+          "finish": "選択"
+        },
+        {
+          "name": "Matte Black",
+          "hex": "#2B2A28",
+          "finish": "台座・金物"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "Floyd",
+          "point": "「クランプが緩むとHBが外れる」に対し、HB自体がA字で自立し面で受ける"
+        },
+        {
+          "vs": "中央台座の浮遊",
+          "point": "転倒の不安に、HB2点＋台座の三角形で答える"
+        },
+        {
+          "vs": "金具の多いHB",
+          "point": "ブラケットをなくし、工場の部品も約38点"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C3-08-detail-hb.png",
+          "caption": "積み角材4段とA字の脚"
+        },
+        {
+          "image": "img/C3-08-detail-joint.png",
+          "caption": "段ごとに後退する角材の小口"
+        }
+      ],
+      "scene": {
+        "image": "img/C3-08-scene.png",
+        "text": "構造に納得して選ぶ夫婦の寝室。竹の木組みが、そのまま部屋の顔になる。"
+      },
+      "evidence": "research.md 結論5-4、§6（ぐらつき 14.3%）、§14・§15 Floyd、小まとめ③（中央台座の剛性・転倒）",
+      "recommended": false,
+      "score": "3.58"
+    },
+    {
+      "no": "C3-09",
+      "type": "少し挑戦的",
+      "type_en": "Challenge",
+      "name": "OBI",
+      "name_ja": "帯",
+      "tagline": "壁に帯を一本、ベッドを浮かべる。",
+      "accent": "#8A7758",
+      "main_visual": "../../../designs/v2/c3/C3-09-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c3/C3-09-frame.png",
+      "size": "W1500 × L2253 × H790 mm（HB込み）",
+      "price": "S ¥114,800",
+      "concept": "幅1500mmの横長の布の帯を、黒い細い脚で床から430mmに浮かせる。ベッドも浮き、部屋に“浮いた水平線”が2本だけある。床下には電球色の足元灯を控えめに入れる。",
+      "background": "海外では壁一面のHBが伸びている。浮くベッドはLEDの“光るだけ”が安っぽいとされる（結論2-6）。光ではなく線で浮かせる国内品はない【推測】。",
+      "problems": [
+        "浮くベッドはLEDで安っぽく見える",
+        "ナイトテーブルを置く場所がない",
+        "HBはベッドと同じ幅で、壁が単調になる"
+      ],
+      "features": [
+        {
+          "title": "5動作・約11分・1人",
+          "text": "基本4動作＋帯を中央で連結。工具0・部品4点【推測】"
+        },
+        {
+          "title": "幅1500の帯HB 床から790mm",
+          "text": "布の帯が床から430mmで浮く。もたれ6度、両端はスマホ置き"
+        },
+        {
+          "title": "床下150mm・足元灯",
+          "text": "電球色2700K・人感センサー。色は変えない"
+        },
+        {
+          "title": "細い脚が主役",
+          "text": "φ22の黒いスチール脚。受け梁は掃除機の上を通る"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c3/C3-09-structure.png",
+        "text": "左: 帯と細い脚のHBユニット（受け梁は床から112mm以上）／右: 持ち上げた本体と台座。頭側を受け梁に落とし込む"
+      },
+      "materials": [
+        {
+          "part": "本体・縁",
+          "material": "炭化竹集成材",
+          "note": "芯は中空スチール"
+        },
+        {
+          "part": "帯",
+          "material": "布＋ウレタン＋竹合板",
+          "note": "中央で2分割"
+        },
+        {
+          "part": "脚・梁",
+          "material": "スチール（黒）",
+          "note": "φ22 粉体塗装"
+        },
+        {
+          "part": "足元灯",
+          "material": "LED 電球色",
+          "note": "PSE対応の既製品"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Oat",
+          "hex": "#CDBC9F",
+          "finish": "帯の布（標準）"
+        },
+        {
+          "name": "Carbonized",
+          "hex": "#5B3D28",
+          "finish": "本体 5分艶"
+        },
+        {
+          "name": "Matte Black",
+          "hex": "#2B2A28",
+          "finish": "脚・梁"
+        },
+        {
+          "name": "Charcoal",
+          "hex": "#55524E",
+          "finish": "帯の布（選択）"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "LED浮遊ベッド",
+          "point": "「安っぽい・古びる」光に対し、光を主役にせず線で浮かせる"
+        },
+        {
+          "vs": "壁一面のHB",
+          "point": "海外の壁一面の流れを、国内の部屋に置ける幅1500mmに縮めた"
+        },
+        {
+          "vs": "パネル型HB",
+          "point": "ベッド幅の板に対し、両端がスマホ置きになる帯"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C3-09-detail-hb.png",
+          "caption": "幅1500の帯と黒い細い脚"
+        },
+        {
+          "image": "img/C3-09-detail-joint.png",
+          "caption": "帯の端はスマホ置きの幅"
+        }
+      ],
+      "scene": {
+        "image": "img/C3-09-scene.png",
+        "text": "ギャラリーのような部屋。夜は床下の足元灯だけが、帯とベッドを浮かべる。"
+      },
+      "evidence": "research.md 結論2-6、§10 壁一面のHB [S28]、§11 LED の過剰 [S54]、§16 空白D",
+      "recommended": false,
+      "score": "3.32"
+    },
+    {
+      "no": "C3-10",
+      "type": "コンセプトモデル",
+      "type_en": "Concept",
+      "name": "HISASHI",
+      "name_ja": "庇",
+      "tagline": "ヘッドボードだけで、ベッドを支える。",
+      "accent": "#9A7243",
+      "main_visual": "../../../designs/v2/c3/C3-10-three-quarter.png",
+      "overview_visual": "../../../designs/v2/c3/C3-10-frame.png",
+      "size": "W1090 × L2138 × H1122 mm（HB込み）",
+      "price": "S ¥179,800【コンセプト】",
+      "concept": "床から1100mmのHBの上端が、庇のように枕元へ400mmせり出し、下に読書灯を仕込む。袖は床まで降りる竹のブレードで頭側を受け、足元はガラス台座でほぼ見えない。",
+      "background": "電源・照明は家電として古くなるため、本体でなくHBのモジュールにする（§11）。「浮くベッド」の象徴を、展示・ホテル協業・上位ラインの旗にする。",
+      "problems": [
+        "浮くベッドの理想像を示す象徴がない",
+        "照明・電源を本体に作り込むと古くなる",
+        "宮棚は物とホコリがたまる"
+      ],
+      "features": [
+        {
+          "title": "6動作・2人・約20分",
+          "text": "大型便で届く展示・上位向け。工具0【推測】"
+        },
+        {
+          "title": "庇つきHB 床から1100mm",
+          "text": "庇が枕元へ400mmせり出す。布は外して洗える。もたれ4度"
+        },
+        {
+          "title": "床下150mm・見えない台座",
+          "text": "足元はガラスの台座。HBだけが支えて見える"
+        },
+        {
+          "title": "庇の下に読書灯と電源",
+          "text": "調光の読書灯、背板裏にUSB-C。庇の上面は6度傾け物を置かない"
+        }
+      ],
+      "structure": {
+        "image": "../../../designs/v2/c3/C3-10-structure.png",
+        "text": "左: 庇つきHBユニット（袖が脚）／右: 持ち上げた本体とガラス台座（ほぼ見えない）。頭側を袖の受け2点に落とし込む"
+      },
+      "materials": [
+        {
+          "part": "袖・背板・庇",
+          "material": "竹集成材の大判",
+          "note": "CNC"
+        },
+        {
+          "part": "内側の布",
+          "material": "撥水・防汚ファブリック",
+          "note": "外して洗える"
+        },
+        {
+          "part": "台座",
+          "material": "強化ガラス",
+          "note": "接着ブロック"
+        },
+        {
+          "part": "電装",
+          "material": "LED読書灯・USB-C",
+          "note": "PSE・電安法対応"
+        }
+      ],
+      "cmf": [
+        {
+          "name": "Natural Bamboo",
+          "hex": "#C89C66",
+          "finish": "袖・庇 3分艶"
+        },
+        {
+          "name": "Oat",
+          "hex": "#CDBC9F",
+          "finish": "内側の布"
+        },
+        {
+          "name": "Warm Light",
+          "hex": "#F2D9A6",
+          "finish": "電球色の読書灯"
+        },
+        {
+          "name": "Clear Glass",
+          "hex": "#DDE3E0",
+          "finish": "足元の台座"
+        }
+      ],
+      "advantages": [
+        {
+          "vs": "浮遊ベッド全般",
+          "point": "国内外の10万円帯に、HB一体の照明を持つフローティングはない【推測】"
+        },
+        {
+          "vs": "宮付きHB",
+          "point": "ホコリがたまる棚に対し、傾けた庇で面を作らない"
+        },
+        {
+          "vs": "ハイバックHB",
+          "point": "高いだけのHBに対し、庇の造形と光でブランドの“浮き”を語る"
+        }
+      ],
+      "details": [
+        {
+          "image": "img/C3-10-detail-hb.png",
+          "caption": "庇つきのHB。袖が床まで降りる"
+        },
+        {
+          "image": "img/C3-10-detail-joint.png",
+          "caption": "庇と袖の角。袖が頭側を受ける"
+        }
+      ],
+      "scene": {
+        "image": "img/C3-10-scene.png",
+        "text": "ホテルとの協業ルーム。庇の光の下で本を読み、ベッドは床から浮いている。"
+      },
+      "evidence": "research.md §11 電源・照明はHBのモジュールに、切り口5、§16 空白D／将来の上位ライン",
+      "recommended": false,
+      "score": "3.30"
+    }
+  ]
+}
