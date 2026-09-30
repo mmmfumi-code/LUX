@@ -3,7 +3,7 @@
   "title": "GOKUMIN フラッグシップベッド（3コンセプト）",
   "workflow": "product",
   "created": "2026-09-27 17:34",
-  "updated": "2026-09-30 13:31",
+  "updated": "2026-09-30 13:37",
   "stages": {
     "01-research": {
       "status": "done",
@@ -23,16 +23,17 @@
       ]
     },
     "02-planning": {
-      "status": "in_progress",
+      "status": "done",
       "versions": [
-        "projects/gokumin-flagship-bed/product/02-planning-v1.md"
+        "projects/gokumin-flagship-bed/product/02-planning-v1.md",
+        "projects/gokumin-flagship-bed/product/02-planning-v2.md"
       ],
       "adopted": null,
       "approved_at": null,
       "feedback": []
     },
     "03-design": {
-      "status": "pending",
+      "status": "in_progress",
       "versions": [
         "projects/gokumin-flagship-bed/product/03-design-v1.md"
       ],
