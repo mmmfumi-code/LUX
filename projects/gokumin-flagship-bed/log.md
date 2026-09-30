@@ -18,3 +18,5 @@
 - 2026-09-30 13:31 02-planning 開始
 - 2026-09-30 13:37 02-planning 提出: projects/gokumin-flagship-bed/product/02-planning-v2.md（自動進行工程のため完了）
 - 2026-09-30 13:37 03-design 開始
+- 2026-09-30 16:50 03-design 提出: projects/gokumin-flagship-bed/product/03-design-v2.md（自動進行工程のため完了）
+- 2026-09-30 16:50 04-board 開始

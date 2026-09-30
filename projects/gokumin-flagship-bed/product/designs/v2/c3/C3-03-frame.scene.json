@@ -87,7 +87,7 @@
   },
   "f_boucle": {
    "type": "fabric",
-   "color": "#e2d8c6",
+   "color": "#d6c6ab",
    "seed": 5
   },
   "f_oat": {
@@ -129,6 +129,11 @@
    "type": "fabric",
    "color": "#3b3a36",
    "seed": 4
+  },
+  "tatami_line": {
+   "type": "matte",
+   "color": "#a39a6c",
+   "roughness": 0.9
   },
   "mattress": {
    "type": "mattress",
@@ -325,7 +330,7 @@
     {
      "type": "cylinder",
      "radius": 118,
-     "height": 990,
+     "height": 860,
      "position": [
       0,
       428,
@@ -343,7 +348,7 @@
      "type": "sphere",
      "radius": 115.64,
      "position": [
-      -436,
+      -371,
       428,
       -1075
      ],
@@ -353,7 +358,7 @@
      "type": "sphere",
      "radius": 115.64,
      "position": [
-      436,
+      371,
       428,
       -1075
      ],
@@ -362,7 +367,7 @@
     {
      "type": "cylinder",
      "radius": 118,
-     "height": 990,
+     "height": 860,
      "position": [
       0,
       658,
@@ -380,7 +385,7 @@
      "type": "sphere",
      "radius": 115.64,
      "position": [
-      -436,
+      -371,
       658,
       -1109
      ],
@@ -390,7 +395,7 @@
      "type": "sphere",
      "radius": 115.64,
      "position": [
-      436,
+      371,
       658,
       -1109
      ],
@@ -399,7 +404,7 @@
     {
      "type": "cylinder",
      "radius": 118,
-     "height": 990,
+     "height": 860,
      "position": [
       0,
       888,
@@ -417,7 +422,7 @@
      "type": "sphere",
      "radius": 115.64,
      "position": [
-      -436,
+      -371,
       888,
       -1143
      ],
@@ -427,7 +432,7 @@
      "type": "sphere",
      "radius": 115.64,
      "position": [
-      436,
+      371,
       888,
       -1143
      ],
@@ -468,12 +473,12 @@
      "size": [
       60,
       10,
-      280
+      200
      ],
      "position": [
       -540,
       5,
-      -1065
+      -1105
      ],
      "material": "steel",
      "radius": 4
@@ -483,12 +488,12 @@
      "size": [
       60,
       10,
-      280
+      200
      ],
      "position": [
       540,
       5,
-      -1065
+      -1105
      ],
      "material": "steel",
      "radius": 4

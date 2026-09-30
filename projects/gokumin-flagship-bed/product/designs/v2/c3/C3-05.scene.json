@@ -130,6 +130,11 @@
    "color": "#3b3a36",
    "seed": 4
   },
+  "tatami_line": {
+   "type": "matte",
+   "color": "#a39a6c",
+   "roughness": 0.9
+  },
   "mattress": {
    "type": "mattress",
    "color": "#f3f1ec"

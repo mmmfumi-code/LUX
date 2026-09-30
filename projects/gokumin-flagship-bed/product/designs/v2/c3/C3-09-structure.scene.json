@@ -87,7 +87,7 @@
   },
   "f_boucle": {
    "type": "fabric",
-   "color": "#e2d8c6",
+   "color": "#d6c6ab",
    "seed": 5
   },
   "f_oat": {
@@ -129,6 +129,11 @@
    "type": "fabric",
    "color": "#3b3a36",
    "seed": 4
+  },
+  "tatami_line": {
+   "type": "matte",
+   "color": "#a39a6c",
+   "roughness": 0.9
   },
   "mattress": {
    "type": "mattress",
@@ -215,7 +220,7 @@
        "radius": 11,
        "height": 450,
        "position": [
-        -680,
+        -620,
         225,
         -1100
        ],
@@ -227,33 +232,9 @@
        "radius": 11,
        "height": 450,
        "position": [
-        -520,
+        -620,
         225,
-        -1100
-       ],
-       "material": "steel",
-       "radialSegments": 24
-      },
-      {
-       "type": "cylinder",
-       "radius": 11,
-       "height": 450,
-       "position": [
-        520,
-        225,
-        -1100
-       ],
-       "material": "steel",
-       "radialSegments": 24
-      },
-      {
-       "type": "cylinder",
-       "radius": 11,
-       "height": 450,
-       "position": [
-        680,
-        225,
-        -1100
+        -1240
        ],
        "material": "steel",
        "radialSegments": 24
@@ -261,7 +242,61 @@
       {
        "type": "rbox",
        "size": [
-        1400,
+        22,
+        10,
+        180
+       ],
+       "position": [
+        -620,
+        5,
+        -1170
+       ],
+       "material": "steel",
+       "radius": 4
+      },
+      {
+       "type": "cylinder",
+       "radius": 11,
+       "height": 450,
+       "position": [
+        620,
+        225,
+        -1100
+       ],
+       "material": "steel",
+       "radialSegments": 24
+      },
+      {
+       "type": "cylinder",
+       "radius": 11,
+       "height": 450,
+       "position": [
+        620,
+        225,
+        -1240
+       ],
+       "material": "steel",
+       "radialSegments": 24
+      },
+      {
+       "type": "rbox",
+       "size": [
+        22,
+        10,
+        180
+       ],
+       "position": [
+        620,
+        5,
+        -1170
+       ],
+       "material": "steel",
+       "radius": 4
+      },
+      {
+       "type": "rbox",
+       "size": [
+        1240,
         20,
         20
        ],
@@ -276,14 +311,29 @@
       {
        "type": "rbox",
        "size": [
+        1240,
+        24,
+        30
+       ],
+       "position": [
+        0,
+        124,
+        -1100
+       ],
+       "material": "steel",
+       "radius": 4
+      },
+      {
+       "type": "rbox",
+       "size": [
         70,
         26,
-        205
+        240
        ],
        "position": [
         -440,
         135,
-        -947.5
+        -965
        ],
        "material": "steel",
        "radius": 5
@@ -293,45 +343,15 @@
        "size": [
         70,
         26,
-        205
+        240
        ],
        "position": [
         440,
         135,
-        -947.5
+        -965
        ],
        "material": "steel",
        "radius": 5
-      },
-      {
-       "type": "rbox",
-       "size": [
-        60,
-        10,
-        280
-       ],
-       "position": [
-        -600,
-        5,
-        -990
-       ],
-       "material": "steel",
-       "radius": 4
-      },
-      {
-       "type": "rbox",
-       "size": [
-        60,
-        10,
-        280
-       ],
-       "position": [
-        600,
-        5,
-        -990
-       ],
-       "material": "steel",
-       "radius": 4
       }
      ]
     },

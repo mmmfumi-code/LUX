@@ -87,7 +87,7 @@
   },
   "f_boucle": {
    "type": "fabric",
-   "color": "#e2d8c6",
+   "color": "#d6c6ab",
    "seed": 5
   },
   "f_oat": {
@@ -129,6 +129,11 @@
    "type": "fabric",
    "color": "#3b3a36",
    "seed": 4
+  },
+  "tatami_line": {
+   "type": "matte",
+   "color": "#a39a6c",
+   "roughness": 0.9
   },
   "mattress": {
    "type": "mattress",
@@ -204,13 +209,13 @@
        ],
        "position": [
         -500,
-        430,
-        -1195
+        440,
+        -1135
        ],
        "material": "bamboo",
        "radius": 12,
        "rotation": [
-        -19,
+        12.2,
         0,
         0
        ]
@@ -219,13 +224,13 @@
        "type": "rbox",
        "size": [
         50,
-        50,
-        300
+        44,
+        200
        ],
        "position": [
         -500,
-        110,
-        -1165
+        120,
+        -1130
        ],
        "material": "bamboo",
        "radius": 10
@@ -254,13 +259,13 @@
        ],
        "position": [
         500,
-        430,
-        -1195
+        440,
+        -1135
        ],
        "material": "bamboo",
        "radius": 12,
        "rotation": [
-        -19,
+        12.2,
         0,
         0
        ]
@@ -269,13 +274,13 @@
        "type": "rbox",
        "size": [
         50,
-        50,
-        300
+        44,
+        200
        ],
        "position": [
         500,
-        110,
-        -1165
+        120,
+        -1130
        ],
        "material": "bamboo",
        "radius": 10
@@ -284,91 +289,61 @@
        "type": "rbox",
        "size": [
         944,
-        96,
-        74
+        138,
+        84
        ],
        "position": [
         0,
-        300,
-        -1042
+        377,
+        -1047
        ],
        "material": "pale",
-       "radius": 14
+       "radius": 22
       },
       {
        "type": "rbox",
        "size": [
         944,
-        96,
-        74
+        138,
+        84
        ],
        "position": [
         0,
-        408,
-        -1050
+        525,
+        -1057
        ],
        "material": "bamboo",
-       "radius": 14
+       "radius": 22
       },
       {
        "type": "rbox",
        "size": [
         944,
-        96,
-        74
+        138,
+        84
        ],
        "position": [
         0,
-        516,
-        -1058
+        673,
+        -1067
        ],
        "material": "pale",
-       "radius": 14
+       "radius": 22
       },
       {
        "type": "rbox",
        "size": [
         944,
-        96,
-        74
+        138,
+        84
        ],
        "position": [
         0,
-        624,
-        -1066
+        821,
+        -1077
        ],
        "material": "bamboo",
-       "radius": 14
-      },
-      {
-       "type": "rbox",
-       "size": [
-        944,
-        96,
-        74
-       ],
-       "position": [
-        0,
-        732,
-        -1074
-       ],
-       "material": "pale",
-       "radius": 14
-      },
-      {
-       "type": "rbox",
-       "size": [
-        944,
-        96,
-        74
-       ],
-       "position": [
-        0,
-        840,
-        -1082
-       ],
-       "material": "bamboo",
-       "radius": 14
+       "radius": 22
       },
       {
        "type": "rbox",

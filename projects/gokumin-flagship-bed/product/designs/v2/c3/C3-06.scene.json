@@ -6,8 +6,8 @@
  "background": "#e6e3de",
  "camera": {
   "fov": 28,
-  "margin": 0.8,
-  "zoom": 1.15
+  "margin": 0.86,
+  "zoom": 1
  },
  "lighting": {
   "key": 2.2,
@@ -87,7 +87,7 @@
   },
   "f_boucle": {
    "type": "fabric",
-   "color": "#e2d8c6",
+   "color": "#d6c6ab",
    "seed": 5
   },
   "f_oat": {
@@ -129,6 +129,11 @@
    "type": "fabric",
    "color": "#3b3a36",
    "seed": 4
+  },
+  "tatami_line": {
+   "type": "matte",
+   "color": "#a39a6c",
+   "roughness": 0.9
   },
   "mattress": {
    "type": "mattress",
@@ -242,14 +247,14 @@
   {
    "type": "rbox",
    "size": [
-    80,
-    860,
-    80
+    70,
+    700,
+    70
    ],
    "position": [
-    -455,
-    430,
-    -1055
+    -400,
+    350,
+    -1120
    ],
    "material": "carbon",
    "radius": 12
@@ -257,14 +262,14 @@
   {
    "type": "rbox",
    "size": [
-    80,
-    860,
-    80
+    70,
+    700,
+    70
    ],
    "position": [
-    455,
-    430,
-    -1055
+    400,
+    350,
+    -1120
    ],
    "material": "carbon",
    "radius": 12
@@ -273,218 +278,608 @@
    "type": "group",
    "position": [
     0,
-    250,
-    -1025
+    240,
+    -1015
    ],
    "parts": [
     {
      "type": "rbox",
      "size": [
-      870,
-      630,
+      1030,
+      536,
       60
      ],
      "position": [
       0,
-      295,
+      310,
       -30
      ],
-     "material": "heri",
-     "radius": 14
+     "material": "tatami",
+     "radius": 8
     },
     {
      "type": "rbox",
      "size": [
-      830,
-      590,
+      1030,
+      44,
       64
      ],
      "position": [
       0,
-      295,
-      -31
+      22,
+      -30
      ],
-     "material": "tatami",
-     "radius": 6
+     "material": "heri",
+     "radius": 10
     },
     {
      "type": "rbox",
      "size": [
-      824,
-      3,
-      2
+      1030,
+      44,
+      64
      ],
      "position": [
       0,
-      30,
-      1.5
+      598,
+      -30
      ],
      "material": "heri",
+     "radius": 10
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      56,
+      0.8
+     ],
+     "material": "tatami_line",
      "radius": 1
     },
     {
      "type": "rbox",
      "size": [
-      824,
-      3,
-      2
+      1022,
+      2,
+      1.5
      ],
      "position": [
       0,
-      78,
-      1.5
+      70,
+      0.8
      ],
-     "material": "heri",
+     "material": "tatami_line",
      "radius": 1
     },
     {
      "type": "rbox",
      "size": [
-      824,
-      3,
-      2
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      84,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      98,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      112,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
      ],
      "position": [
       0,
       126,
-      1.5
+      0.8
      ],
-     "material": "heri",
+     "material": "tatami_line",
      "radius": 1
     },
     {
      "type": "rbox",
      "size": [
-      824,
-      3,
-      2
+      1022,
+      2,
+      1.5
      ],
      "position": [
       0,
-      174,
-      1.5
+      140,
+      0.8
      ],
-     "material": "heri",
+     "material": "tatami_line",
      "radius": 1
     },
     {
      "type": "rbox",
      "size": [
-      824,
-      3,
-      2
+      1022,
+      2,
+      1.5
      ],
      "position": [
       0,
-      222,
-      1.5
+      154,
+      0.8
      ],
-     "material": "heri",
+     "material": "tatami_line",
      "radius": 1
     },
     {
      "type": "rbox",
      "size": [
-      824,
-      3,
-      2
+      1022,
+      2,
+      1.5
      ],
      "position": [
       0,
-      270,
-      1.5
+      168,
+      0.8
      ],
-     "material": "heri",
+     "material": "tatami_line",
      "radius": 1
     },
     {
      "type": "rbox",
      "size": [
-      824,
-      3,
-      2
+      1022,
+      2,
+      1.5
      ],
      "position": [
       0,
-      318,
-      1.5
+      182,
+      0.8
      ],
-     "material": "heri",
+     "material": "tatami_line",
      "radius": 1
     },
     {
      "type": "rbox",
      "size": [
-      824,
-      3,
-      2
+      1022,
+      2,
+      1.5
      ],
      "position": [
       0,
-      366,
-      1.5
+      196,
+      0.8
      ],
-     "material": "heri",
+     "material": "tatami_line",
      "radius": 1
     },
     {
      "type": "rbox",
      "size": [
-      824,
-      3,
-      2
+      1022,
+      2,
+      1.5
      ],
      "position": [
       0,
-      414,
-      1.5
+      210,
+      0.8
      ],
-     "material": "heri",
+     "material": "tatami_line",
      "radius": 1
     },
     {
      "type": "rbox",
      "size": [
-      824,
-      3,
-      2
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      224,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      238,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      252,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      266,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      280,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      294,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      308,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      322,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      336,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      350,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      364,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      378,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      392,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      406,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      420,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      434,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      448,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
      ],
      "position": [
       0,
       462,
-      1.5
+      0.8
      ],
-     "material": "heri",
+     "material": "tatami_line",
      "radius": 1
     },
     {
      "type": "rbox",
      "size": [
-      824,
-      3,
-      2
+      1022,
+      2,
+      1.5
      ],
      "position": [
       0,
-      510,
-      1.5
+      476,
+      0.8
      ],
-     "material": "heri",
+     "material": "tatami_line",
      "radius": 1
     },
     {
      "type": "rbox",
      "size": [
-      824,
-      3,
-      2
+      1022,
+      2,
+      1.5
      ],
      "position": [
       0,
-      558,
+      490,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
       1.5
      ],
-     "material": "heri",
+     "position": [
+      0,
+      504,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      518,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      532,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      546,
+      0.8
+     ],
+     "material": "tatami_line",
+     "radius": 1
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1022,
+      2,
+      1.5
+     ],
+     "position": [
+      0,
+      560,
+      0.8
+     ],
+     "material": "tatami_line",
      "radius": 1
     }
    ],
@@ -497,29 +892,14 @@
   {
    "type": "rbox",
    "size": [
-    990,
-    40,
-    70
-   ],
-   "position": [
-    0,
-    850,
-    -1055
-   ],
-   "material": "carbon",
-   "radius": 12
-  },
-  {
-   "type": "rbox",
-   "size": [
     70,
     26,
-    170
+    240
    ],
    "position": [
-    -455,
+    -400,
     115,
-    -930
+    -965
    ],
    "material": "steel",
    "radius": 5
@@ -529,12 +909,12 @@
    "size": [
     70,
     26,
-    170
+    240
    ],
    "position": [
-    455,
+    400,
     115,
-    -930
+    -965
    ],
    "material": "steel",
    "radius": 5
@@ -547,9 +927,9 @@
     280
    ],
    "position": [
-    -455,
+    -400,
     5,
-    -955
+    -1015
    ],
    "material": "steel",
    "radius": 4
@@ -562,9 +942,9 @@
     280
    ],
    "position": [
-    455,
+    400,
     5,
-    -955
+    -1015
    ],
    "material": "steel",
    "radius": 4

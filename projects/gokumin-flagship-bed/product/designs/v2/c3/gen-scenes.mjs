@@ -39,6 +39,7 @@ const MATS = {
   f_greige: { type: "fabric", color: "#cfc5b5", seed: 7 },
   tatami: { type: "fabric", color: "#bdb383", seed: 21 },
   heri: { type: "fabric", color: "#3b3a36", seed: 4 },
+  tatami_line: { type: "matte", color: "#a39a6c", roughness: 0.9 },
   mattress: { type: "mattress", color: "#f3f1ec" },
   sheet: { type: "mattress", color: "#f8f7f3", seed: 13 },
   pillow: { type: "fabric", color: "#faf8f4", seed: 9 },
@@ -270,17 +271,19 @@ D["C3-06"] = {
   bed: { throwMat: "f_sage", pillowFront: "f_linen" },
   hb(f) {
     const p = [];
-    const xs = [-455, 455], legD = 80, zc = f.zEnd - 20 - legD / 2;
-    for (const x of xs) p.push(rb([80, 860, legD], [x, 430, zc], "carbon", 12));
-    const y0 = 250, h = 860 - 20 - y0, w = 830;
+    const xs = [-400, 400], legD = 70, zc = f.zEnd - 90 - legD / 2;
+    // 脚（炭化竹）: 床から畳パネルの裏まで。前からは畳の下に2本だけ見える
+    for (const x of xs) p.push(rb([70, 700, legD], [x, 350, zc], "carbon", 12));
+    // 畳パネル: 厚み 60 の“畳一枚”を立てた形。長手（上下）にだけ黒い畳縁
+    const y0 = 240, h = 860 - y0, w = 1030, t = 60, heri = 44;
     const panel = [
-      rb([w + 40, h + 40, 60], [0, h / 2, -30], "heri", 14), // 畳縁（外周）
-      rb([w, h, 64], [0, h / 2, -32 + 1], "tatami", 6),
+      rb([w, h - 2 * heri + 4, t], [0, h / 2, -t / 2], "tatami", 8),
+      rb([w, heri, t + 4], [0, heri / 2, -t / 2], "heri", 10),
+      rb([w, heri, t + 4], [0, h - heri / 2, -t / 2], "heri", 10),
     ];
-    // 畳表の目（横の細い筋）
-    for (let y = 30; y < h - 10; y += 48) panel.push(rb([w - 6, 3, 2], [0, y, 1.5], "heri", 1));
-    p.push(place(panel, { y0: y0 - 20 + 20, z: zc + 30, lean: 5 }));
-    p.push(rb([990, 40, 70], [0, 870 - 20, zc], "carbon", 12)); // 笠木（上端の縁取り）
+    // 畳表の目（細い横筋）
+    for (let y = heri + 12; y < h - heri - 6; y += 14) panel.push(rb([w - 8, 2, 1.5], [0, y, 0.8], "tatami_line", 0.5));
+    p.push(place(panel, { y0, z: zc + legD / 2 + t + 10, lean: 5 }));
     p.push(...brackets(f, xs, zc + legD / 2), ...feet(f, xs, zc - legD / 2, 280));
     return p;
   },
@@ -297,8 +300,8 @@ D["C3-07"] = {
     for (const x of xs) {
       p.push(rb([60, 830, 70], [x, 415, zc], "bamboo", 14)); // 前脚（床から830）
       // 後ろ脚（キックスタンド）: 上端のピボットから床へ斜めに
-      p.push(rb([50, 720, 44], [x, 360, zc - 150], "bamboo", 12, [-16, 0, 0]));
-      p.push(cyl(9, 70, [x, 700, zc - 44], "mark", [0, 0, 90])); // ロックの目印
+      p.push(rb([50, 712, 44], [x, 350, zc - 35 - 65], "bamboo", 12, [10.5, 0, 0]));
+      p.push(cyl(9, 72, [x, 700, zc - 44], "mark", [0, 0, 90])); // ロックの目印（ピボット）
     }
     p.push(rb([1000, 50, 80], [0, 830 - 25, zc], "bamboo", 14)); // 笠木
     p.push(rb([1000, 44, 70], [0, 250, zc], "bamboo", 12)); // 下の横木
@@ -322,14 +325,14 @@ D["C3-08"] = {
     const xs = [-500, 500], zf = f.zEnd - 10;
     for (const x of xs) {
       p.push(rb([56, 900, 70], [x, 450, zf - 35], "bamboo", 12)); // 前脚（垂直）
-      p.push(rb([50, 900, 50], [x, 430, zf - 190], "bamboo", 12, [-19, 0, 0])); // 後ろ脚（A字）
-      p.push(rb([50, 50, 300], [x, 110, zf - 160], "bamboo", 10)); // 下のつなぎ
+      p.push(rb([50, 900, 50], [x, 440, zf - 35 - 95], "bamboo", 12, [12.2, 0, 0])); // 後ろ脚（A字）
+      p.push(rb([50, 44, 200], [x, 120, zf - 35 - 90], "bamboo", 10)); // 下のつなぎ
     }
     // 積んだ竹の角材（6段、段ごとに小口を見せる）
-    const n = 6, bh = 96, gap = 12, y0 = 900 - n * (bh + gap);
+    const n = 4, bh = 138, gap = 10, y0 = 900 - n * (bh + gap);
     for (let i = 0; i < n; i++) {
       const y = y0 + bh / 2 + i * (bh + gap);
-      p.push(rb([944, bh, 74], [0, y, zf - 37 - i * 8], i % 2 ? "bamboo" : "pale", 14));
+      p.push(rb([944, bh, 84], [0, y, zf - 42 - i * 10], i % 2 ? "bamboo" : "pale", 22));
     }
     // 最下段の受け梁の舌（デッキの下へ）
     p.push(rb([700, 30, 150], [0, f.clear - 16, f.zEnd + 60], "steel", 6));
@@ -341,15 +344,19 @@ D["C3-08"] = {
 D["C3-09"] = {
   name: "OBI",
   deck: { railH: 100, lip: 30, clear: 150, radius: 16, mat: "carbon_wz", footLight: true, pedW: 440 },
-  bed: { throwMat: "f_oat", pillowFront: "f_offwhite" },
+  bed: { throwMat: "f_charcoal", pillowFront: "f_offwhite" },
   hb(f) {
     const p = [];
     const W = 1500, H = 360, top = 790, zc = f.zEnd - 30 - 65;
     p.push(place([rb([W, H, 130], [0, H / 2, -65], "f_oat", 60)], { y0: top - H, z: zc + 65, lean: 6 }));
-    const xs = [-680, -520, 520, 680];
-    for (const x of xs) p.push(cyl(11, top - H + 20, [x, (top - H + 20) / 2, zc - 10], "steel", null, { radialSegments: 24 }));
-    p.push(rb([1400, 20, 20], [0, top - H - 10, zc - 10], "steel", 4));
-    p.push(...brackets(f, [-440, 440], zc + 40), ...feet(f, [-600, 600], zc - 40, 280));
+    // 脚: 左右それぞれ前後2本の細い黒い丸棒（床で細いソリにつなぐ）
+    for (const x of [-620, 620]) {
+      for (const dz of [0, -140]) p.push(cyl(11, top - H + 20, [x, (top - H + 20) / 2, zc - 10 + dz], "steel", null, { radialSegments: 24 }));
+      p.push(rb([22, 10, 180], [x, 5, zc - 80], "steel", 4));
+    }
+    p.push(rb([1240, 20, 20], [0, top - H - 10, zc - 10], "steel", 4));
+    p.push(rb([1240, 24, 30], [0, 124, zc - 10], "steel", 4)); // 受け梁（床から 112 以上。ロボットの上を通る）
+    p.push(...brackets(f, [-440, 440], zc + 5));
     return p;
   },
 };
@@ -369,7 +376,7 @@ D["C3-10"] = {
     p.push(rb([W - 100, 1100 - 240, 40], [0, 240 + (1100 - 240) / 2, zb + 20], "bamboo", 10)); // 背板
     // 庇（上端で前へ 380 せり出す）
     p.push(rb([W, 60, 420], [0, 1100 - 30, zb + 210], "bamboo", 24, [-6, 0, 0]));
-    p.push(rb([W - 140, 8, 30], [0, 1100 - 70, zb + 360], "led", 3));
+    p.push(rb([W - 160, 6, 24], [0, 1046, zb + 330], "led", 3));
     // 内側の布（オート）
     p.push(place([rb([W - 120, 640, 70], [0, 320, -35], "f_oat", 34)], { y0: 280, z: zb + 40 + 70, lean: 4 }));
     p.push(...brackets(f, [-460, 460], zb + 110), ...feet(f, [-(W / 2 - 25), W / 2 - 25], zb - 40, 300));

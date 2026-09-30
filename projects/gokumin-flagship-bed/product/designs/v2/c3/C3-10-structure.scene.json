@@ -87,7 +87,7 @@
   },
   "f_boucle": {
    "type": "fabric",
-   "color": "#e2d8c6",
+   "color": "#d6c6ab",
    "seed": 5
   },
   "f_oat": {
@@ -129,6 +129,11 @@
    "type": "fabric",
    "color": "#3b3a36",
    "seed": 4
+  },
+  "tatami_line": {
+   "type": "matte",
+   "color": "#a39a6c",
+   "roughness": 0.9
   },
   "mattress": {
    "type": "mattress",
@@ -248,17 +253,17 @@
       {
        "type": "rbox",
        "size": [
-        940,
-        8,
-        30
+        920,
+        6,
+        24
        ],
        "position": [
         0,
-        1030,
-        -745
+        1046,
+        -775
        ],
        "material": "led",
-       "radius": 3
+       "radius": 2
       },
       {
        "type": "group",

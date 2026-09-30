@@ -6,8 +6,8 @@
  "background": "#e6e3de",
  "camera": {
   "fov": 28,
-  "margin": 0.8,
-  "zoom": 1.15
+  "margin": 0.86,
+  "zoom": 1
  },
  "lighting": {
   "key": 2.2,
@@ -129,6 +129,11 @@
    "type": "fabric",
    "color": "#3b3a36",
    "seed": 4
+  },
+  "tatami_line": {
+   "type": "matte",
+   "color": "#a39a6c",
+   "roughness": 0.9
   },
   "mattress": {
    "type": "mattress",

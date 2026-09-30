@@ -87,7 +87,7 @@
   },
   "f_boucle": {
    "type": "fabric",
-   "color": "#e2d8c6",
+   "color": "#d6c6ab",
    "seed": 5
   },
   "f_oat": {
@@ -129,6 +129,11 @@
    "type": "fabric",
    "color": "#3b3a36",
    "seed": 4
+  },
+  "tatami_line": {
+   "type": "matte",
+   "color": "#a39a6c",
+   "roughness": 0.9
   },
   "mattress": {
    "type": "mattress",
@@ -199,18 +204,18 @@
        "type": "rbox",
        "size": [
         50,
-        720,
+        712,
         44
        ],
        "position": [
         -470,
-        360,
-        -1205
+        350,
+        -1155
        ],
        "material": "bamboo",
        "radius": 12,
        "rotation": [
-        -16,
+        10.5,
         0,
         0
        ]
@@ -218,7 +223,7 @@
       {
        "type": "cylinder",
        "radius": 9,
-       "height": 70,
+       "height": 72,
        "position": [
         -470,
         700,
@@ -250,18 +255,18 @@
        "type": "rbox",
        "size": [
         50,
-        720,
+        712,
         44
        ],
        "position": [
         470,
-        360,
-        -1205
+        350,
+        -1155
        ],
        "material": "bamboo",
        "radius": 12,
        "rotation": [
-        -16,
+        10.5,
         0,
         0
        ]
@@ -269,7 +274,7 @@
       {
        "type": "cylinder",
        "radius": 9,
-       "height": 70,
+       "height": 72,
        "position": [
         470,
         700,
