@@ -3,10 +3,10 @@
   "title": "GOKUMIN フラッグシップベッド（3コンセプト）",
   "workflow": "product",
   "created": "2026-09-27 17:34",
-  "updated": "2026-09-30 13:15",
+  "updated": "2026-09-30 13:16",
   "stages": {
     "01-research": {
-      "status": "revision",
+      "status": "in_progress",
       "versions": [
         "projects/gokumin-flagship-bed/research/versions/research-v1.md",
         "projects/gokumin-flagship-bed/research/positioning-map.png"
