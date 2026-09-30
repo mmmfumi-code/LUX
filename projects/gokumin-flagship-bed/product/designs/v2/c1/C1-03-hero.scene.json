@@ -1,0 +1,501 @@
+{
+ "canvas": {
+  "width": 1600,
+  "height": 1200
+ },
+ "background": "#e6e3de",
+ "camera": {
+  "fov": 28,
+  "margin": 0.8,
+  "zoom": 1.15
+ },
+ "lighting": {
+  "key": 2.2,
+  "fill": 0.7,
+  "rim": 0.6,
+  "hemi": 0.65
+ },
+ "shadowOpacity": 0.2,
+ "materials": {
+  "bamboo": {
+   "type": "bamboo",
+   "color": "#c89c66"
+  },
+  "bamboo_z": {
+   "type": "bamboo",
+   "color": "#c89c66",
+   "grain": "z"
+  },
+  "bamboo_y": {
+   "type": "bamboo",
+   "color": "#c89c66",
+   "grain": "z"
+  },
+  "pale": {
+   "type": "bamboo",
+   "color": "#d6b584"
+  },
+  "pale_z": {
+   "type": "bamboo",
+   "color": "#d6b584",
+   "grain": "z"
+  },
+  "carbon": {
+   "type": "bamboo",
+   "color": "#5b3d28",
+   "roughness": 0.5
+  },
+  "carbon_z": {
+   "type": "bamboo",
+   "color": "#5b3d28",
+   "grain": "z",
+   "roughness": 0.5
+  },
+  "smoked": {
+   "type": "bamboo",
+   "color": "#8a6240"
+  },
+  "smoked_z": {
+   "type": "bamboo",
+   "color": "#8a6240",
+   "grain": "z"
+  },
+  "carbon_w": {
+   "type": "wood",
+   "color": "#4f3524",
+   "roughness": 0.5
+  },
+  "carbon_wz": {
+   "type": "wood",
+   "color": "#4f3524",
+   "grain": "z",
+   "roughness": 0.5
+  },
+  "steel": {
+   "type": "metal",
+   "color": "#232323",
+   "roughness": 0.5
+  },
+  "shadow": {
+   "type": "matte",
+   "color": "#2d2a27",
+   "roughness": 0.9
+  },
+  "recess": {
+   "type": "matte",
+   "color": "#3a3531",
+   "roughness": 0.9
+  },
+  "cream": {
+   "type": "matte",
+   "color": "#efe9df",
+   "roughness": 0.8
+  },
+  "f_offwhite": {
+   "type": "fabric",
+   "color": "#ece6db"
+  },
+  "f_boucle": {
+   "type": "fabric",
+   "color": "#d3c2a6",
+   "seed": 5
+  },
+  "f_oat": {
+   "type": "fabric",
+   "color": "#cdbc9f"
+  },
+  "f_clay": {
+   "type": "fabric",
+   "color": "#a8765a"
+  },
+  "f_mocha": {
+   "type": "fabric",
+   "color": "#806350"
+  },
+  "f_charcoal": {
+   "type": "fabric",
+   "color": "#55524e"
+  },
+  "f_sage": {
+   "type": "fabric",
+   "color": "#a4ad96"
+  },
+  "f_terracotta": {
+   "type": "fabric",
+   "color": "#8f5440"
+  },
+  "mattress": {
+   "type": "mattress",
+   "color": "#f3f1ec"
+  },
+  "sheet": {
+   "type": "mattress",
+   "color": "#f8f7f3",
+   "seed": 13
+  },
+  "pillow": {
+   "type": "fabric",
+   "color": "#faf8f4",
+   "seed": 9
+  },
+  "led": {
+   "type": "emissive",
+   "color": "#ffd9a0",
+   "intensity": 1.6
+  },
+  "mark": {
+   "type": "matte",
+   "color": "#c4563a"
+  }
+ },
+ "parts": [
+  {
+   "type": "group",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "parts": [
+    {
+     "type": "rbox",
+     "size": [
+      1010,
+      110,
+      650.6666666666666
+     ],
+     "position": [
+      0,
+      175,
+      -656.6666666666667
+     ],
+     "material": "carbon_wz",
+     "radius": 18
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1010,
+      110,
+      650.6666666666666
+     ],
+     "position": [
+      0,
+      175,
+      0
+     ],
+     "material": "carbon_wz",
+     "radius": 18
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1010,
+      110,
+      650.6666666666666
+     ],
+     "position": [
+      0,
+      175,
+      656.6666666666665
+     ],
+     "material": "carbon_wz",
+     "radius": 18
+    },
+    {
+     "type": "box",
+     "size": [
+      890,
+      120,
+      1850
+     ],
+     "position": [
+      0,
+      60,
+      0
+     ],
+     "material": "shadow"
+    },
+    {
+     "type": "group",
+     "position": [
+      0,
+      230,
+      -985
+     ],
+     "parts": [
+      {
+       "type": "rbox",
+       "size": [
+        1030,
+        670,
+        42
+       ],
+       "position": [
+        0,
+        335,
+        -43
+       ],
+       "material": "carbon",
+       "radius": 20
+      },
+      {
+       "type": "array",
+       "count": 17,
+       "step": [
+        57.05882352941177,
+        0,
+        0
+       ],
+       "of": {
+        "type": "rbox",
+        "size": [
+         45.05882352941177,
+         600,
+         26
+        ],
+        "position": [
+         -456.47058823529414,
+         330,
+         -8
+        ],
+        "material": "carbon",
+        "radius": 12
+       }
+      },
+      {
+       "type": "rbox",
+       "size": [
+        1046,
+        46,
+        88
+       ],
+       "position": [
+        0,
+        647,
+        -38
+       ],
+       "material": "carbon",
+       "radius": 18
+      }
+     ],
+     "rotation": [
+      -8,
+      0,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1030,
+      224,
+      64
+     ],
+     "position": [
+      0,
+      118,
+      -1017
+     ],
+     "material": "carbon",
+     "radius": 14
+    },
+    {
+     "type": "rbox",
+     "size": [
+      970,
+      220,
+      1950
+     ],
+     "position": [
+      0,
+      340,
+      0
+     ],
+     "material": "mattress",
+     "radius": 40
+    },
+    {
+     "type": "rbox",
+     "size": [
+      960,
+      64,
+      1940
+     ],
+     "position": [
+      0,
+      478,
+      0
+     ],
+     "material": "mattress",
+     "radius": 30
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1060,
+      70,
+      1470
+     ],
+     "position": [
+      0,
+      540,
+      280
+     ],
+     "material": "sheet",
+     "radius": 30
+    },
+    {
+     "type": "rbox",
+     "size": [
+      34,
+      250,
+      1450
+     ],
+     "position": [
+      -513,
+      420,
+      280
+     ],
+     "material": "sheet",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      34,
+      250,
+      1450
+     ],
+     "position": [
+      513,
+      420,
+      280
+     ],
+     "material": "sheet",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1040,
+      250,
+      34
+     ],
+     "position": [
+      0,
+      420,
+      998
+     ],
+     "material": "sheet",
+     "radius": 16
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1064,
+      90,
+      230
+     ],
+     "position": [
+      0,
+      554,
+      -345
+     ],
+     "material": "sheet",
+     "radius": 40
+    },
+    {
+     "type": "rbox",
+     "size": [
+      1100,
+      86,
+      440
+     ],
+     "position": [
+      0,
+      580,
+      645
+     ],
+     "material": "f_charcoal",
+     "radius": 30
+    },
+    {
+     "type": "rbox",
+     "size": [
+      30,
+      300,
+      440
+     ],
+     "position": [
+      -542,
+      430,
+      645
+     ],
+     "material": "f_charcoal",
+     "radius": 14
+    },
+    {
+     "type": "rbox",
+     "size": [
+      30,
+      300,
+      440
+     ],
+     "position": [
+      542,
+      430,
+      645
+     ],
+     "material": "f_charcoal",
+     "radius": 14
+    },
+    {
+     "type": "rbox",
+     "size": [
+      580,
+      320,
+      140
+     ],
+     "position": [
+      0,
+      650,
+      -850
+     ],
+     "material": "pillow",
+     "radius": 64,
+     "rotation": [
+      -26,
+      0,
+      0
+     ]
+    },
+    {
+     "type": "rbox",
+     "size": [
+      580,
+      130,
+      400
+     ],
+     "position": [
+      0,
+      572,
+      -615
+     ],
+     "material": "f_mocha",
+     "radius": 62,
+     "rotation": [
+      -10,
+      0,
+      0
+     ]
+    }
+   ],
+   "rotation": [
+    0,
+    14,
+    0
+   ]
+  }
+ ]
+}
