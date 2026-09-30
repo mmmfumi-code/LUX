@@ -1,7 +1,8 @@
 # 引き継ぎメモ: GOKUMIN フラッグシップベッド（3コンセプト）
 
 ## 現在地
-- STEP 1 市場リサーチ 完了（research/research.md）→ STEP 2 商品企画へ
+- STEP 1〜4 完了。🔒 STEP 5 USER APPROVAL 待ち（product/04-board-v1.md、各コンセプトの board/v1/cX/boards-all.pdf）
+- 成果物: 企画 product/02-planning-v1.md、デザイン30案 product/03-design-v1(-c1/-c2/-c3).md、画像 product/designs/v1/、ボード product/board/v1/
 
 ## これまでの決定事項（要約）
 - 承認済みの決定はまだない（STEP 5 が最初の承認）

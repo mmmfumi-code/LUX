@@ -8,3 +8,4 @@
 - 2026-09-28 12:07 03-design 開始
 - 2026-09-28 19:04 03-design 提出: projects/gokumin-flagship-bed/product/03-design-v1.md（自動進行工程のため完了）
 - 2026-09-28 19:04 04-board 開始
+- 2026-09-30 11:48 04-board 提出: projects/gokumin-flagship-bed/product/04-board-v1.md（承認待ち）
