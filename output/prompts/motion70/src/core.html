@@ -1,0 +1,376 @@
+<title>文字モーション70選</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=DotGothic16&family=JetBrains+Mono:wght@400;700&family=Mochiy+Pop+One&family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho+B1:wght@800&family=Yuji+Syuku&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap">
+<style>
+/* Layout: 編集室のモニター。左に16:9プレビュー（タイムコード付き）、右にプロンプト台本。1モーション=1ページ */
+:root{
+  --ink:#0d0e11; --panel:#16181d; --panel2:#1d2027; --line:#2a2e37;
+  --fg:#eeeae2; --mute:#8d929c; --dim:#5b606b;
+  --c-impact:#ff4b3e; --c-flow:#f5c518; --c-depth:#2ee6c9; --c-switch:#a78bfa;
+  --c-texture:#ff7ac6; --c-play:#7cd95b; --c-design:#5aa9ff;
+  --display:'Dela Gothic One','Noto Sans JP',sans-serif;
+  --body:'Zen Kaku Gothic New','Noto Sans JP',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--ink);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ink)}
+button,select,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ink);display:flex;align-items:center;gap:12px;
+  padding-block:12px;border-bottom:1px solid var(--line);margin-inline:auto;max-width:1320px;flex-wrap:wrap}
+.brand{font-family:var(--display);font-size:18px;letter-spacing:.02em;cursor:pointer;background:none;border:0;padding:0;white-space:nowrap}
+.brand b{color:var(--c-impact);font-weight:400}
+.chap{display:flex;gap:4px;flex-wrap:wrap;flex:1;min-width:0}
+.chap button{background:none;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--mute);cursor:pointer;display:flex;align-items:center;gap:6px}
+.chap button i{width:7px;height:7px;border-radius:50%;background:var(--k)}
+.chap button[aria-current="true"]{color:var(--fg);border-color:var(--k)}
+.navbtns{display:flex;gap:6px;align-items:center}
+@media (max-width:760px){.chap{display:none}.bar{justify-content:space-between}}
+.nb{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:13px;white-space:nowrap}
+.nb:hover{border-color:var(--mute)}
+.count{font-family:var(--mono);font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums;min-width:58px;text-align:center}
+
+main{max-width:1320px;margin-inline:auto;padding-top:24px}
+.page{display:none}.page.on{display:block}
+
+/* motion page */
+.mhead{display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:18px}
+.mno{font-family:var(--display);font-size:clamp(56px,9vw,104px);line-height:.85;color:var(--k);font-variant-numeric:tabular-nums}
+.mtitle{min-width:0;flex:1}
+.meta{display:flex;gap:8px;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--mute);text-transform:uppercase;flex-wrap:wrap}
+.chip{border:1px solid var(--k);color:var(--k);border-radius:4px;padding:1px 7px}
+.mtitle h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,44px);line-height:1.15;margin:6px 0 2px;text-wrap:balance}
+.mtitle p{margin:0;color:var(--mute)}
+.mgrid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:980px){.mgrid{grid-template-columns:minmax(0,1fr)}}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--mute);text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.label::before{content:"";width:14px;height:2px;background:var(--k,var(--fg))}
+
+.monitor{background:#000;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.screen{position:relative;width:100%;max-width:100%;aspect-ratio:16/9;overflow:hidden;background:#000}
+.stage{position:absolute;left:0;top:0;width:1600px;height:900px;transform-origin:0 0;overflow:hidden;color:#fff;font-family:'Noto Sans JP',sans-serif}
+.mbar{display:flex;align-items:center;gap:10px;padding:8px 12px;border-top:1px solid var(--line);background:var(--panel);flex-wrap:wrap}
+.tc{font-family:var(--mono);font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums}
+.tc b{color:var(--fg);font-weight:400}
+.rec{width:8px;height:8px;border-radius:50%;background:var(--c-impact);animation:rec 1.2s steps(2) infinite}
+@keyframes rec{50%{opacity:.2}}
+.mbar .sp{flex:1}
+.mini{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:3px 10px;font-size:12px;cursor:pointer}
+.mini:hover{border-color:var(--mute)}
+.txtrow{display:flex;gap:8px;margin-top:12px;align-items:center;flex-wrap:wrap}
+.txtrow label{font-size:12px;color:var(--mute)}
+.txtrow input{flex:1;min-width:160px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:15px}
+.hint{font-size:12px;color:var(--dim);margin-top:6px}
+
+.side{display:flex;flex-direction:column;gap:20px;min-width:0}
+.prompt{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.ptools{display:flex;gap:8px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.ptools select{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:4px 8px;font-size:12px}
+.copy{margin-left:auto;background:var(--k);color:#111;border:0;border-radius:6px;padding:6px 14px;font-weight:700;font-size:13px;cursor:pointer}
+.copy.done{background:var(--fg)}
+.ptext{margin:0;padding:14px 16px;font-family:var(--mono);font-size:12.5px;line-height:1.75;white-space:pre-wrap;word-break:break-word;max-height:440px;overflow:auto;color:#d9d5cc}
+.ptext .ph{color:var(--k);font-weight:700}
+.base-toggle{font-size:12px;color:var(--mute);display:flex;align-items:center;gap:6px;cursor:pointer}
+.use,.tips{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.tips li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14px}
+.tips li::before{content:"＋";color:var(--k);font-weight:700}
+.usebox{font-size:14px}
+.usebox b{color:var(--k);font-weight:700}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:36px;padding-top:16px;border-top:1px solid var(--line)}
+.pager button{background:none;border:0;cursor:pointer;text-align:left;padding:0;max-width:48%}
+.pager button:last-child{text-align:right}
+.pager small{display:block;font-family:var(--mono);font-size:11px;color:var(--mute);letter-spacing:.1em}
+.pager span{font-family:var(--display);font-size:18px}
+
+/* cover */
+.cover{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px;align-items:center;padding-block:24px}
+@media (max-width:980px){.cover{grid-template-columns:minmax(0,1fr)}}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--mute)}
+.cover h1{font-family:var(--display);font-weight:400;font-size:clamp(38px,5.2vw,74px);line-height:1.02;margin:10px 0 16px;text-wrap:balance}
+.cover h1 em{font-style:normal;color:var(--c-impact)}
+.cover p{max-width:34em;color:#cfcbc2;margin:0 0 12px}
+.catrow{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:20px}
+.catcard{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--k);border-radius:6px;padding:8px 12px;cursor:pointer;text-align:left}
+.catcard b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--k)}
+.catcard span{font-size:13px}
+.cta{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.cta .nb{padding:10px 18px;font-size:14px}
+.cta .nb.pri{background:var(--fg);color:var(--ink);border-color:var(--fg);font-weight:700}
+
+/* how to */
+.doc{max-width:860px}
+.doc h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,40px);margin:0 0 8px}
+.doc h3{font-size:18px;margin:28px 0 8px}
+.doc p,.doc li{color:#d6d2c9}
+.steps{counter-reset:s;list-style:none;padding:0;display:grid;gap:10px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:40px 1fr;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);color:var(--c-flow);font-weight:700}
+.doc pre{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-family:var(--mono);font-size:12.5px;white-space:pre-wrap;overflow:auto}
+.tbl{overflow-x:auto}
+.tbl table{border-collapse:collapse;width:100%;font-size:14px}
+.tbl th,.tbl td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.tbl th{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--mute);font-weight:400}
+
+/* index */
+.idxcat{margin-bottom:28px}
+.idxcat h3{display:flex;align-items:baseline;gap:12px;font-family:var(--display);font-weight:400;font-size:24px;margin:0 0 10px;color:var(--k)}
+.idxcat h3 small{font-family:var(--body);font-size:13px;color:var(--mute)}
+.idxgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
+.idx{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px;cursor:pointer;text-align:left}
+.idx:hover{border-color:var(--k)}
+.idx b{font-family:var(--display);font-weight:400;font-size:22px;color:var(--k);font-variant-numeric:tabular-nums}
+.idx span{display:block;font-weight:700;font-size:14px;line-height:1.3}
+.idx small{display:block;color:var(--mute);font-size:12px;line-height:1.4}
+@media (prefers-reduced-motion:reduce){.rec{animation:none}}
+</style>
+
+<header class="bar">
+  <button class="brand" id="brand" type="button">文字モーション<b>70</b></button>
+  <nav class="chap" id="chap" aria-label="カテゴリ"></nav>
+  <div class="navbtns">
+    <button class="nb" id="prev" type="button" aria-label="前のページ">←</button>
+    <span class="count" id="count">表紙</span>
+    <button class="nb" id="next" type="button" aria-label="次のページ">→</button>
+    <button class="nb" id="toIndex" type="button">目次</button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page" id="p-cover">
+    <div class="cover">
+      <div>
+        <div class="eyebrow">KINETIC TYPE PROMPT BOOK — 70 MOTIONS</div>
+        <h1>AIに貼るだけ。<br><em>文字が動く</em>70の台本</h1>
+        <p>テロップ、サムネ動画、リール冒頭、YouTubeのタイトルコール。文字が動くだけで、動画の「見てもらえる確率」は大きく変わります。</p>
+        <p>この本は、その文字演出を<b>Claude・ChatGPT・Gemini に貼るだけで作れるプロンプト</b>にした70本です。1ページに1モーション。左のモニターが「そのプロンプトで実際にできる動き」、右がコピーして使うプロンプトです。</p>
+        <div class="cta">
+          <button class="nb pri" type="button" data-go="howto">使い方を読む</button>
+          <button class="nb" type="button" data-go="m01">No.01 から見る</button>
+          <button class="nb" type="button" data-go="index">目次（70本）</button>
+        </div>
+        <div class="catrow" id="catrow"></div>
+      </div>
+      <div>
+        <div class="monitor" style="--k:var(--c-impact)">
+          <div class="screen" id="coverScreen"><div class="stage" id="coverStage"></div></div>
+          <div class="mbar"><span class="rec"></span><span class="tc" id="coverTc">PREVIEW</span><span class="sp"></span><span class="tc" id="coverName"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page doc" id="p-howto">
+    <div class="eyebrow">HOW TO USE</div>
+    <h2>使い方：3分で1本目が動く</h2>
+    <p>どのページも「共通仕様」と「モーション指示」の2段構えです。コピーボタンを押すと、両方が1つにまとまった完成プロンプトがコピーされます。</p>
+    <ol class="steps">
+      <li><div><b>ページを選んで、プレビューの文字を自分の言葉に変える</b><br>モニター下の入力欄に文字を入れると、プレビューもプロンプトも同時に書き換わります。</div></li>
+      <li><div><b>画面比率を選んで「プロンプトをコピー」</b><br>16:9（YouTube）、9:16（リール・ショート・TikTok）、1:1（フィード）から選べます。</div></li>
+      <li><div><b>AIに貼って送信する</b><br>Claude ならアーティファクトとしてその場で再生されます。ChatGPT・Gemini では出てきたコードを <code>motion.html</code> として保存し、ブラウザで開きます。</div></li>
+      <li><div><b>画面録画して、動画編集ソフトに読み込む</b><br>Mac は Cmd+Shift+5、Windows は Win+Alt+R（Xbox Game Bar）。CapCut・Premiere・DaVinci に読み込めば、そのままテロップ素材になります。</div></li>
+    </ol>
+    <h3>共通仕様（すべてのコピーに自動で入ります）</h3>
+    <pre id="basePre"></pre>
+    <h3>思いどおりに動かないときの「追い指示」</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>症状</th><th>AIにそのまま送る一言</th></tr></thead>
+      <tbody>
+        <tr><td>動きが安っぽい・機械的</td><td>「イージングを cubic-bezier(.16,1,.3,1) に統一して、全体を1.3倍ゆっくりにして」</td></tr>
+        <tr><td>迫力が足りない</td><td>「登場の瞬間だけ、ブラー12px→0とスケール1.4→1を同時にかけて、画面を0.2秒だけ揺らして」</td></tr>
+        <tr><td>文字が読めない</td><td>「動きが止まってから最低1.2秒は静止させて。文字サイズを1.3倍に」</td></tr>
+        <tr><td>ループの継ぎ目が気になる</td><td>「最初と最後の状態を完全に一致させて、継ぎ目のないループにして」</td></tr>
+        <tr><td>背景を透明にして重ねたい</td><td>「背景をグリーン(#00FF00)一色にして。クロマキーで抜きたい」</td></tr>
+        <tr><td>動画ファイルで欲しい</td><td>「CanvasとMediaRecorderで録画して、1ループ分をWebMで保存するボタンを付けて」</td></tr>
+        <tr><td>日本語が豆腐（□）になる</td><td>「Google Fonts の読み込みを document.fonts.ready で待ってから再生して」</td></tr>
+      </tbody>
+    </table></div>
+    <h3>この本のプロンプトが「通る」理由</h3>
+    <p>動きを「かっこよく」と書いてもAIは平均点の動きしか返しません。この本では、すべてのモーションを<b>秒数・イージング・数値（拡大率、角度、ずらし幅）</b>で指示しています。プレビューの動きはその数値どおりに組んだものなので、同じ値で指示すれば近い動きが返ってきます。返ってきた動きが違うときは、数値を1つずつ動かして寄せてください。</p>
+    <div class="cta"><button class="nb pri" type="button" data-go="m01">No.01 へ進む</button><button class="nb" type="button" data-go="index">目次を見る</button></div>
+  </section>
+
+  <section class="page" id="p-index">
+    <div class="doc" style="margin-bottom:20px"><div class="eyebrow">CONTENTS</div><h2>目次：7カテゴリ × 10本</h2><p>迷ったら「何を伝えたいか」でカテゴリを選んでください。各カテゴリの1本目が、いちばん汎用的に使える型です。</p></div>
+    <div id="idxWrap"></div>
+  </section>
+
+  <section class="page" id="p-motion"></section>
+</main>
+
+<script>
+/* ===== 共通 ===== */
+const CAT={
+  IMPACT:{ja:'衝撃',k:'--c-impact',d:'一撃で目を止める',use:'冒頭0.5秒・決め台詞'},
+  FLOW:{ja:'流れ',k:'--c-flow',d:'流し続けて空気をつくる',use:'背景・BGMパート'},
+  DEPTH:{ja:'奥行き',k:'--c-depth',d:'3Dで吸い込む',use:'タイトルコール・場面転換'},
+  SWITCH:{ja:'切替',k:'--c-switch',d:'言葉を入れ替えて見せる',use:'結論発表・比較'},
+  TEXTURE:{ja:'質感',k:'--c-texture',d:'素材感で世界観を出す',use:'ブランド・MV・世界観'},
+  PLAY:{ja:'遊び',k:'--c-play',d:'クスッとさせて止める',use:'バラエティ・Vlog・子ども向け'},
+  DESIGN:{ja:'構成',k:'--c-design',d:'情報をきれいに組む',use:'解説・テロップ・資料動画'}
+};
+const CATS=Object.keys(CAT);
+const E={out:'cubic-bezier(.16,1,.3,1)',back:'cubic-bezier(.34,1.56,.64,1)',in:'cubic-bezier(.7,0,.84,0)',io:'cubic-bezier(.87,0,.13,1)',lin:'linear',soft:'cubic-bezier(.4,0,.2,1)'};
+const F={heavy:"'Dela Gothic One','Noto Sans JP',sans-serif",sans:"'Noto Sans JP',sans-serif",min:"'Shippori Mincho B1','Noto Serif JP',serif",dot:"'DotGothic16',monospace",brush:"'Yuji Syuku',serif",pop:"'Mochiy Pop One','Noto Sans JP',sans-serif",mono:"'JetBrains Mono',monospace"};
+const M=[];
+function def(o){M.push(o)}
+const rnd=(a,b)=>a+Math.random()*(b-a);
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const POOL='アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン0123456789';
+
+function mkH(S){
+  const timers=[],rafs=[];
+  const H={S,
+    el(tag,css,parent,text){const e=document.createElement(tag||'div');if(css)Object.assign(e.style,css);(parent||S).appendChild(e);if(text!=null)e.textContent=text;return e},
+    box(css,parent){return H.el('div',Object.assign({position:'absolute',inset:'0',display:'flex',alignItems:'center',justifyContent:'center'},css||{}),parent)},
+    abs(css,parent,text){return H.el('div',Object.assign({position:'absolute'},css||{}),parent,text)},
+    chars(str,parent,css){return [...str].map(ch=>H.el('span',Object.assign({display:'inline-block',whiteSpace:'pre'},css||{}),parent,ch))},
+    a(el,kf,o){o=o||{};return el.animate(kf,{duration:o.d??600,delay:o.dl??0,easing:o.e??E.out,fill:o.f??'both',iterations:o.i??1,direction:o.dir??'normal'})},
+    wait(ms,fn){timers.push(setTimeout(fn,ms))},
+    raf(fn){const r={id:0};const t0=performance.now();const tick=now=>{fn((now-t0)/1000);r.id=requestAnimationFrame(tick)};r.id=requestAnimationFrame(tick);rafs.push(r)},
+    svg(w,h,parent,css){const s=document.createElementNS('http://www.w3.org/2000/svg','svg');s.setAttribute('viewBox',`0 0 ${w} ${h}`);s.setAttribute('width',w);s.setAttribute('height',h);Object.assign(s.style,{position:'absolute',left:'0',top:'0'},css||{});(parent||S).appendChild(s);return s},
+    sv(tag,attrs,parent){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const k in attrs)e.setAttribute(k,attrs[k]);parent.appendChild(e);return e},
+    canvas(){const c=H.el('canvas',{position:'absolute',left:'0',top:'0',width:'1600px',height:'900px'});c.width=1600;c.height=900;return c},
+    shake(el,dl,amp,d){amp=amp||14;const k=[];for(let i=0;i<8;i++)k.push({transform:`translate(${rnd(-amp,amp)}px,${rnd(-amp,amp)}px)`});k.push({transform:'translate(0,0)'});return H.a(el||S.firstChild,k,{d:d||320,dl:dl||0,e:E.lin,f:'none'})},
+    clear(){timers.forEach(clearTimeout);timers.length=0;rafs.forEach(r=>cancelAnimationFrame(r.id));rafs.length=0;S.getAnimations({subtree:true}).forEach(a=>a.cancel());S.innerHTML=''}
+  };
+  return H;
+}
+const words=t=>t.split(/[\s　／\/]+/).filter(Boolean);
+
+class Player{
+  constructor(stage,screen){this.S=stage;this.screen=screen;this.H=mkH(stage);this.t0=0;
+    const fit=()=>{const w=screen.clientWidth;stage.style.transform=`scale(${w/1600})`};
+    new ResizeObserver(fit).observe(screen);fit();}
+  play(m,txt,once){this.stop();this.m=m;this.L=m.loopFn?m.loopFn(words(txt)):m.loop;const H=this.H,S=this.S;
+    const cyc=()=>{H.clear();S.style.background=m.bg||'#0b0b0d';S.style.color='#fff';this.t0=performance.now();
+      try{m.run(H,txt,words(txt))}catch(e){console.error(m.no,e)}
+      if(!once)this.loopT=setTimeout(cyc,this.L)};
+    const go=()=>{cyc()};
+    (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(go);}
+  stop(){clearTimeout(this.loopT);this.H.clear()}
+  time(){return this.m?((performance.now()-this.t0)%this.L)/1000:0}
+}
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const tcode=s=>{const f=Math.floor((s%1)*30);const sec=Math.floor(s);return `00:00:${String(sec).padStart(2,'0')}:${String(f).padStart(2,'0')}`};
+</script>
+<script>
+/*MOTIONS*/
+</script>
+<script>
+/* ===== アプリ ===== */
+const BASE=(ar)=>{const size={'16:9':'1920×1080（16:9・横）','9:16':'1080×1920（9:16・縦）','1:1':'1080×1080（1:1・正方形）'}[ar];
+return `あなたはモーショングラフィックデザイナー兼フロントエンドエンジニアです。
+次の【モーション指示】どおりに動く「文字アニメーション」を、HTML・CSS・JavaScript の1ファイルで作ってください。
+
+【共通仕様】
+・画面：${size}。ブラウザ中央に比率を保ったまま拡大縮小して表示し、余白は背景と同じ色で塗る
+・フォント：指定の Google Fonts を読み込み、document.fonts.ready を待ってから再生する
+・再生：読み込み後に自動再生し、指定の尺でループする（最後の状態から最初へ自然につなぐ）
+・動き：等速は使わず、指定のイージングで緩急をつける。指定がない動きは cubic-bezier(.16,1,.3,1)
+・素材：画像は使わず、CSS・SVG・Canvas だけで描く。ライブラリは必要なら GSAP のみ CDN で可
+・差し替え：文字はコード冒頭の const TEXT にまとめ、そこを書き換えるだけで全体が変わるようにする
+・キーボードの R で最初から再生し直せるようにする
+・回答の最後に「調整すると印象が変わるパラメータ」を3つ、変数名つきで教える`};
+const $=s=>document.querySelector(s);
+let ar='16:9';try{ar=localStorage.getItem('m70-ar')||'16:9'}catch(e){}
+const custom={};
+const pages=['cover','howto','index',...M.map(m=>'m'+m.no)];
+let curPage='cover';
+const player=new Player($('#coverStage'),$('#coverScreen'));
+let mplayer=null;
+
+function fillPrompt(m,txt){return m.p.replaceAll('{T}',txt)}
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+
+function buildChrome(){
+  $('#chap').innerHTML=CATS.map(c=>`<button type="button" data-cat="${c}" style="--k:var(${CAT[c].k})"><i></i>${c}</button>`).join('');
+  $('#catrow').innerHTML=CATS.map((c,i)=>`<button class="catcard" type="button" data-cat="${c}" style="--k:var(${CAT[c].k})"><b>${String(i*10+1).padStart(2,'0')}–${String(i*10+10).padStart(2,'0')} ${c}</b><span>${CAT[c].ja}｜${CAT[c].d}</span></button>`).join('');
+  $('#idxWrap').innerHTML=CATS.map(c=>`<div class="idxcat" style="--k:var(${CAT[c].k})"><h3>${c}<small>${CAT[c].ja}｜${CAT[c].d}・向いている場面：${CAT[c].use}</small></h3><div class="idxgrid">${M.filter(m=>m.cat===c).map(m=>`<button class="idx" type="button" data-go="m${m.no}"><b>${m.no}</b><div><span>${m.name}</span><small>${m.lead}</small></div></button>`).join('')}</div></div>`).join('');
+  $('#basePre').textContent=BASE(ar);
+  document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g){go(g.dataset.go);return}
+    const c=e.target.closest('[data-cat]');if(c){go('m'+M.find(m=>m.cat===c.dataset.cat).no)}});
+  $('#brand').onclick=()=>go('cover');$('#toIndex').onclick=()=>go('index');
+  $('#prev').onclick=()=>step(-1);$('#next').onclick=()=>step(1);
+  document.addEventListener('keydown',e=>{if(e.target.matches('input,select,textarea'))return;if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1)});
+}
+function step(d){const i=pages.indexOf(curPage);const n=Math.min(pages.length-1,Math.max(0,i+d));go(pages[n])}
+
+function renderMotion(m){
+  const k=`var(${CAT[m.cat].k})`;const txt=custom[m.no]??m.text;
+  const i=M.indexOf(m);const pv=M[i-1],nx=M[i+1];
+  const P=$('#p-motion');P.style.setProperty('--k',k);
+  P.innerHTML=`
+  <div class="mhead"><div class="mno">${m.no}</div><div class="mtitle">
+    <div class="meta"><span class="chip">${m.cat}｜${CAT[m.cat].ja}</span><span>${m.en}</span><span>LOOP ${(m.loop/1000).toFixed(1)}s</span></div>
+    <h2>${m.name}</h2><p>${m.lead}</p></div></div>
+  <div class="mgrid">
+    <div>
+      <div class="label">このプロンプトで、こうなる</div>
+      <div class="monitor"><div class="screen" id="mScreen"><div class="stage" id="mStage"></div></div>
+        <div class="mbar"><span class="rec"></span><span class="tc" id="mTc">00:00:00:00</span><span class="sp"></span><span class="tc">1920×1080 PREVIEW</span><button class="mini" id="replay" type="button">最初から再生</button></div></div>
+      <div class="txtrow"><label for="mText">プレビューの文字</label><input id="mText" value="${esc(txt)}" maxlength="40"><button class="mini" id="resetText" type="button">元に戻す</button></div>
+      <div class="hint">${m.multi?'スペースか「／」で区切ると、言葉ごとに切り替わります。':'入力するとプレビューと右のプロンプトが同時に変わります。'}</div>
+      <div style="margin-top:22px" class="usebox"><div class="label">使いどころ</div>${m.use}</div>
+    </div>
+    <div class="side">
+      <div><div class="label">プロンプト</div>
+        <div class="prompt"><div class="ptools">
+          <label class="base-toggle" for="arSel">画面比率</label>
+          <select id="arSel"><option>16:9</option><option>9:16</option><option>1:1</option></select>
+          <button class="copy" id="copyBtn" type="button">プロンプトをコピー</button></div>
+          <pre class="ptext" id="ptext"></pre></div>
+        <div class="hint">コピーされるのは「共通仕様」＋この「モーション指示」の完成版です。表示はモーション指示のみ。</div></div>
+      <div><div class="label">アレンジのコツ</div><ul class="tips">${m.tips.map(t=>`<li><span>${t}</span></li>`).join('')}</ul></div>
+    </div>
+  </div>
+  <nav class="pager">
+    <button type="button" data-go="${pv?'m'+pv.no:'index'}"><small>← ${pv?'PREV '+pv.no:'目次'}</small><span>${pv?pv.name:'目次へ'}</span></button>
+    <button type="button" data-go="${nx?'m'+nx.no:'index'}"><small>${nx?'NEXT '+nx.no:'目次'} →</small><span>${nx?nx.name:'目次へ戻る'}</span></button>
+  </nav>`;
+  const sel=$('#arSel');sel.value=ar;
+  const showP=()=>{const t=$('#mText').value.trim()||m.text;$('#ptext').innerHTML=esc(fillPrompt(m,t)).replaceAll(esc(t),`<span class="ph">${esc(t)}</span>`)};
+  showP();
+  mplayer&&mplayer.stop();
+  mplayer=new Player($('#mStage'),$('#mScreen'));
+  const start=()=>mplayer.play(m,$('#mText').value.trim()||m.text,reduce);
+  start();
+  let deb;$('#mText').addEventListener('input',()=>{custom[m.no]=$('#mText').value;showP();clearTimeout(deb);deb=setTimeout(start,350)});
+  $('#resetText').onclick=()=>{delete custom[m.no];$('#mText').value=m.text;showP();start()};
+  $('#replay').onclick=start;
+  sel.onchange=()=>{ar=sel.value;try{localStorage.setItem('m70-ar',ar)}catch(e){}$('#basePre').textContent=BASE(ar)};
+  $('#copyBtn').onclick=()=>{const t=$('#mText').value.trim()||m.text;const full=BASE(ar)+'\n\n【モーション指示】\n'+fillPrompt(m,t);const b=$('#copyBtn');
+    const ok=()=>{b.textContent='コピーしました';b.classList.add('done');setTimeout(()=>{b.textContent='プロンプトをコピー';b.classList.remove('done')},1600)};
+    try{navigator.clipboard.writeText(full).then(ok,()=>{fallback(full);ok()})}catch(e){fallback(full);ok()}};
+}
+function fallback(full){const p=$('#ptext');p.textContent=full;const r=document.createRange();r.selectNodeContents(p);const s=getSelection();s.removeAllRanges();s.addRange(r)}
+
+let tcRaf;
+function tickTc(){const el=$('#mTc');if(el&&mplayer)el.textContent=tcode(mplayer.time());const ct=$('#coverTc');if(ct&&curPage==='cover')ct.textContent=tcode(player.time());tcRaf=requestAnimationFrame(tickTc)}
+
+let coverI=0,coverT;
+function coverLoop(){const picks=['01','05','21','31','35','41','48','56','62','70'].map(n=>M.find(m=>m.no===n)).filter(Boolean);
+  const m=picks[coverI%picks.length];coverI++;player.play(m,m.text,true);$('#coverName').textContent=`No.${m.no} ${m.name}`;coverT=setTimeout(coverLoop,m.loop)}
+
+function go(id){
+  if(!pages.includes(id))id='cover';curPage=id;
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  clearTimeout(coverT);player.stop();
+  if(id.startsWith('m')){const m=M.find(x=>'m'+x.no===id);$('#p-motion').classList.add('on');renderMotion(m);$('#count').textContent=`${m.no} / 70`;
+    document.querySelectorAll('#chap button').forEach(b=>b.setAttribute('aria-current',b.dataset.cat===m.cat))}
+  else{mplayer&&mplayer.stop();$('#p-'+id).classList.add('on');$('#count').textContent={cover:'表紙',howto:'使い方',index:'目次'}[id];
+    document.querySelectorAll('#chap button').forEach(b=>b.setAttribute('aria-current','false'));
+    if(id==='cover'&&!reduce)coverLoop()}
+  try{history.replaceState(null,'','#'+id)}catch(e){}
+  window.scrollTo(0,0);
+}
+buildChrome();
+go((location.hash||'#cover').slice(1));
+tickTc();
+</script>

@@ -1,0 +1,1885 @@
+<title>文字モーション70選</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=DotGothic16&family=JetBrains+Mono:wght@400;700&family=Mochiy+Pop+One&family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho+B1:wght@800&family=Yuji+Syuku&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap">
+<style>
+/* Layout: 編集室のモニター。左に16:9プレビュー（タイムコード付き）、右にプロンプト台本。1モーション=1ページ */
+:root{
+  --ink:#0d0e11; --panel:#16181d; --panel2:#1d2027; --line:#2a2e37;
+  --fg:#eeeae2; --mute:#8d929c; --dim:#5b606b;
+  --c-impact:#ff4b3e; --c-flow:#f5c518; --c-depth:#2ee6c9; --c-switch:#a78bfa;
+  --c-texture:#ff7ac6; --c-play:#7cd95b; --c-design:#5aa9ff;
+  --display:'Dela Gothic One','Noto Sans JP',sans-serif;
+  --body:'Zen Kaku Gothic New','Noto Sans JP',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--ink);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ink)}
+button,select,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ink);display:flex;align-items:center;gap:12px;
+  padding-block:12px;border-bottom:1px solid var(--line);margin-inline:auto;max-width:1320px;flex-wrap:wrap}
+.brand{font-family:var(--display);font-size:18px;letter-spacing:.02em;cursor:pointer;background:none;border:0;padding:0;white-space:nowrap}
+.brand b{color:var(--c-impact);font-weight:400}
+.chap{display:flex;gap:4px;flex-wrap:wrap;flex:1;min-width:0}
+.chap button{background:none;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--mute);cursor:pointer;display:flex;align-items:center;gap:6px}
+.chap button i{width:7px;height:7px;border-radius:50%;background:var(--k)}
+.chap button[aria-current="true"]{color:var(--fg);border-color:var(--k)}
+.navbtns{display:flex;gap:6px;align-items:center}
+@media (max-width:760px){.chap{display:none}.bar{justify-content:space-between}}
+.nb{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:13px;white-space:nowrap}
+.nb:hover{border-color:var(--mute)}
+.count{font-family:var(--mono);font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums;min-width:58px;text-align:center}
+
+main{max-width:1320px;margin-inline:auto;padding-top:24px}
+.page{display:none}.page.on{display:block}
+
+/* motion page */
+.mhead{display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:18px}
+.mno{font-family:var(--display);font-size:clamp(56px,9vw,104px);line-height:.85;color:var(--k);font-variant-numeric:tabular-nums}
+.mtitle{min-width:0;flex:1}
+.meta{display:flex;gap:8px;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--mute);text-transform:uppercase;flex-wrap:wrap}
+.chip{border:1px solid var(--k);color:var(--k);border-radius:4px;padding:1px 7px}
+.mtitle h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,44px);line-height:1.15;margin:6px 0 2px;text-wrap:balance}
+.mtitle p{margin:0;color:var(--mute)}
+.mgrid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:980px){.mgrid{grid-template-columns:minmax(0,1fr)}}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--mute);text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.label::before{content:"";width:14px;height:2px;background:var(--k,var(--fg))}
+
+.monitor{background:#000;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.screen{position:relative;width:100%;max-width:100%;aspect-ratio:16/9;overflow:hidden;background:#000}
+.stage{position:absolute;left:0;top:0;width:1600px;height:900px;transform-origin:0 0;overflow:hidden;color:#fff;font-family:'Noto Sans JP',sans-serif}
+.mbar{display:flex;align-items:center;gap:10px;padding:8px 12px;border-top:1px solid var(--line);background:var(--panel);flex-wrap:wrap}
+.tc{font-family:var(--mono);font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums}
+.tc b{color:var(--fg);font-weight:400}
+.rec{width:8px;height:8px;border-radius:50%;background:var(--c-impact);animation:rec 1.2s steps(2) infinite}
+@keyframes rec{50%{opacity:.2}}
+.mbar .sp{flex:1}
+.mini{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:3px 10px;font-size:12px;cursor:pointer}
+.mini:hover{border-color:var(--mute)}
+.txtrow{display:flex;gap:8px;margin-top:12px;align-items:center;flex-wrap:wrap}
+.txtrow label{font-size:12px;color:var(--mute)}
+.txtrow input{flex:1;min-width:160px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:15px}
+.hint{font-size:12px;color:var(--dim);margin-top:6px}
+
+.side{display:flex;flex-direction:column;gap:20px;min-width:0}
+.prompt{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.ptools{display:flex;gap:8px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.ptools select{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:4px 8px;font-size:12px}
+.copy{margin-left:auto;background:var(--k);color:#111;border:0;border-radius:6px;padding:6px 14px;font-weight:700;font-size:13px;cursor:pointer}
+.copy.done{background:var(--fg)}
+.ptext{margin:0;padding:14px 16px;font-family:var(--mono);font-size:12.5px;line-height:1.75;white-space:pre-wrap;word-break:break-word;max-height:440px;overflow:auto;color:#d9d5cc}
+.ptext .ph{color:var(--k);font-weight:700}
+.base-toggle{font-size:12px;color:var(--mute);display:flex;align-items:center;gap:6px;cursor:pointer}
+.use,.tips{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.tips li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:14px}
+.tips li::before{content:"＋";color:var(--k);font-weight:700}
+.usebox{font-size:14px}
+.usebox b{color:var(--k);font-weight:700}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:36px;padding-top:16px;border-top:1px solid var(--line)}
+.pager button{background:none;border:0;cursor:pointer;text-align:left;padding:0;max-width:48%}
+.pager button:last-child{text-align:right}
+.pager small{display:block;font-family:var(--mono);font-size:11px;color:var(--mute);letter-spacing:.1em}
+.pager span{font-family:var(--display);font-size:18px}
+
+/* cover */
+.cover{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px;align-items:center;padding-block:24px}
+@media (max-width:980px){.cover{grid-template-columns:minmax(0,1fr)}}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--mute)}
+.cover h1{font-family:var(--display);font-weight:400;font-size:clamp(38px,5.2vw,74px);line-height:1.02;margin:10px 0 16px;text-wrap:balance}
+.cover h1 em{font-style:normal;color:var(--c-impact)}
+.cover p{max-width:34em;color:#cfcbc2;margin:0 0 12px}
+.catrow{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:20px}
+.catcard{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--k);border-radius:6px;padding:8px 12px;cursor:pointer;text-align:left}
+.catcard b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--k)}
+.catcard span{font-size:13px}
+.cta{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.cta .nb{padding:10px 18px;font-size:14px}
+.cta .nb.pri{background:var(--fg);color:var(--ink);border-color:var(--fg);font-weight:700}
+
+/* how to */
+.doc{max-width:860px}
+.doc h2{font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,40px);margin:0 0 8px}
+.doc h3{font-size:18px;margin:28px 0 8px}
+.doc p,.doc li{color:#d6d2c9}
+.steps{counter-reset:s;list-style:none;padding:0;display:grid;gap:10px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:40px 1fr;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);color:var(--c-flow);font-weight:700}
+.doc pre{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-family:var(--mono);font-size:12.5px;white-space:pre-wrap;overflow:auto}
+.tbl{overflow-x:auto}
+.tbl table{border-collapse:collapse;width:100%;font-size:14px}
+.tbl th,.tbl td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.tbl th{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--mute);font-weight:400}
+
+/* index */
+.idxcat{margin-bottom:28px}
+.idxcat h3{display:flex;align-items:baseline;gap:12px;font-family:var(--display);font-weight:400;font-size:24px;margin:0 0 10px;color:var(--k)}
+.idxcat h3 small{font-family:var(--body);font-size:13px;color:var(--mute)}
+.idxgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
+.idx{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px;cursor:pointer;text-align:left}
+.idx:hover{border-color:var(--k)}
+.idx b{font-family:var(--display);font-weight:400;font-size:22px;color:var(--k);font-variant-numeric:tabular-nums}
+.idx span{display:block;font-weight:700;font-size:14px;line-height:1.3}
+.idx small{display:block;color:var(--mute);font-size:12px;line-height:1.4}
+@media (prefers-reduced-motion:reduce){.rec{animation:none}}
+</style>
+
+<header class="bar">
+  <button class="brand" id="brand" type="button">文字モーション<b>70</b></button>
+  <nav class="chap" id="chap" aria-label="カテゴリ"></nav>
+  <div class="navbtns">
+    <button class="nb" id="prev" type="button" aria-label="前のページ">←</button>
+    <span class="count" id="count">表紙</span>
+    <button class="nb" id="next" type="button" aria-label="次のページ">→</button>
+    <button class="nb" id="toIndex" type="button">目次</button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page" id="p-cover">
+    <div class="cover">
+      <div>
+        <div class="eyebrow">KINETIC TYPE PROMPT BOOK — 70 MOTIONS</div>
+        <h1>AIに貼るだけ。<br><em>文字が動く</em>70の台本</h1>
+        <p>テロップ、サムネ動画、リール冒頭、YouTubeのタイトルコール。文字が動くだけで、動画の「見てもらえる確率」は大きく変わります。</p>
+        <p>この本は、その文字演出を<b>Claude・ChatGPT・Gemini に貼るだけで作れるプロンプト</b>にした70本です。1ページに1モーション。左のモニターが「そのプロンプトで実際にできる動き」、右がコピーして使うプロンプトです。</p>
+        <div class="cta">
+          <button class="nb pri" type="button" data-go="howto">使い方を読む</button>
+          <button class="nb" type="button" data-go="m01">No.01 から見る</button>
+          <button class="nb" type="button" data-go="index">目次（70本）</button>
+        </div>
+        <div class="catrow" id="catrow"></div>
+      </div>
+      <div>
+        <div class="monitor" style="--k:var(--c-impact)">
+          <div class="screen" id="coverScreen"><div class="stage" id="coverStage"></div></div>
+          <div class="mbar"><span class="rec"></span><span class="tc" id="coverTc">PREVIEW</span><span class="sp"></span><span class="tc" id="coverName"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page doc" id="p-howto">
+    <div class="eyebrow">HOW TO USE</div>
+    <h2>使い方：3分で1本目が動く</h2>
+    <p>どのページも「共通仕様」と「モーション指示」の2段構えです。コピーボタンを押すと、両方が1つにまとまった完成プロンプトがコピーされます。</p>
+    <ol class="steps">
+      <li><div><b>ページを選んで、プレビューの文字を自分の言葉に変える</b><br>モニター下の入力欄に文字を入れると、プレビューもプロンプトも同時に書き換わります。</div></li>
+      <li><div><b>画面比率を選んで「プロンプトをコピー」</b><br>16:9（YouTube）、9:16（リール・ショート・TikTok）、1:1（フィード）から選べます。</div></li>
+      <li><div><b>AIに貼って送信する</b><br>Claude ならアーティファクトとしてその場で再生されます。ChatGPT・Gemini では出てきたコードを <code>motion.html</code> として保存し、ブラウザで開きます。</div></li>
+      <li><div><b>画面録画して、動画編集ソフトに読み込む</b><br>Mac は Cmd+Shift+5、Windows は Win+Alt+R（Xbox Game Bar）。CapCut・Premiere・DaVinci に読み込めば、そのままテロップ素材になります。</div></li>
+    </ol>
+    <h3>共通仕様（すべてのコピーに自動で入ります）</h3>
+    <pre id="basePre"></pre>
+    <h3>思いどおりに動かないときの「追い指示」</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>症状</th><th>AIにそのまま送る一言</th></tr></thead>
+      <tbody>
+        <tr><td>動きが安っぽい・機械的</td><td>「イージングを cubic-bezier(.16,1,.3,1) に統一して、全体を1.3倍ゆっくりにして」</td></tr>
+        <tr><td>迫力が足りない</td><td>「登場の瞬間だけ、ブラー12px→0とスケール1.4→1を同時にかけて、画面を0.2秒だけ揺らして」</td></tr>
+        <tr><td>文字が読めない</td><td>「動きが止まってから最低1.2秒は静止させて。文字サイズを1.3倍に」</td></tr>
+        <tr><td>ループの継ぎ目が気になる</td><td>「最初と最後の状態を完全に一致させて、継ぎ目のないループにして」</td></tr>
+        <tr><td>背景を透明にして重ねたい</td><td>「背景をグリーン(#00FF00)一色にして。クロマキーで抜きたい」</td></tr>
+        <tr><td>動画ファイルで欲しい</td><td>「CanvasとMediaRecorderで録画して、1ループ分をWebMで保存するボタンを付けて」</td></tr>
+        <tr><td>日本語が豆腐（□）になる</td><td>「Google Fonts の読み込みを document.fonts.ready で待ってから再生して」</td></tr>
+      </tbody>
+    </table></div>
+    <h3>この本のプロンプトが「通る」理由</h3>
+    <p>動きを「かっこよく」と書いてもAIは平均点の動きしか返しません。この本では、すべてのモーションを<b>秒数・イージング・数値（拡大率、角度、ずらし幅）</b>で指示しています。プレビューの動きはその数値どおりに組んだものなので、同じ値で指示すれば近い動きが返ってきます。返ってきた動きが違うときは、数値を1つずつ動かして寄せてください。</p>
+    <div class="cta"><button class="nb pri" type="button" data-go="m01">No.01 へ進む</button><button class="nb" type="button" data-go="index">目次を見る</button></div>
+  </section>
+
+  <section class="page" id="p-index">
+    <div class="doc" style="margin-bottom:20px"><div class="eyebrow">CONTENTS</div><h2>目次：7カテゴリ × 10本</h2><p>迷ったら「何を伝えたいか」でカテゴリを選んでください。各カテゴリの1本目が、いちばん汎用的に使える型です。</p></div>
+    <div id="idxWrap"></div>
+  </section>
+
+  <section class="page" id="p-motion"></section>
+</main>
+
+<script>
+/* ===== 共通 ===== */
+const CAT={
+  IMPACT:{ja:'衝撃',k:'--c-impact',d:'一撃で目を止める',use:'冒頭0.5秒・決め台詞'},
+  FLOW:{ja:'流れ',k:'--c-flow',d:'流し続けて空気をつくる',use:'背景・BGMパート'},
+  DEPTH:{ja:'奥行き',k:'--c-depth',d:'3Dで吸い込む',use:'タイトルコール・場面転換'},
+  SWITCH:{ja:'切替',k:'--c-switch',d:'言葉を入れ替えて見せる',use:'結論発表・比較'},
+  TEXTURE:{ja:'質感',k:'--c-texture',d:'素材感で世界観を出す',use:'ブランド・MV・世界観'},
+  PLAY:{ja:'遊び',k:'--c-play',d:'クスッとさせて止める',use:'バラエティ・Vlog・子ども向け'},
+  DESIGN:{ja:'構成',k:'--c-design',d:'情報をきれいに組む',use:'解説・テロップ・資料動画'}
+};
+const CATS=Object.keys(CAT);
+const E={out:'cubic-bezier(.16,1,.3,1)',back:'cubic-bezier(.34,1.56,.64,1)',in:'cubic-bezier(.7,0,.84,0)',io:'cubic-bezier(.87,0,.13,1)',lin:'linear',soft:'cubic-bezier(.4,0,.2,1)'};
+const F={heavy:"'Dela Gothic One','Noto Sans JP',sans-serif",sans:"'Noto Sans JP',sans-serif",min:"'Shippori Mincho B1','Noto Serif JP',serif",dot:"'DotGothic16',monospace",brush:"'Yuji Syuku',serif",pop:"'Mochiy Pop One','Noto Sans JP',sans-serif",mono:"'JetBrains Mono',monospace"};
+const M=[];
+function def(o){M.push(o)}
+const rnd=(a,b)=>a+Math.random()*(b-a);
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const POOL='アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン0123456789';
+
+function mkH(S){
+  const timers=[],rafs=[];
+  const H={S,
+    el(tag,css,parent,text){const e=document.createElement(tag||'div');if(css)Object.assign(e.style,css);(parent||S).appendChild(e);if(text!=null)e.textContent=text;return e},
+    box(css,parent){return H.el('div',Object.assign({position:'absolute',inset:'0',display:'flex',alignItems:'center',justifyContent:'center'},css||{}),parent)},
+    abs(css,parent,text){return H.el('div',Object.assign({position:'absolute'},css||{}),parent,text)},
+    chars(str,parent,css){return [...str].map(ch=>H.el('span',Object.assign({display:'inline-block',whiteSpace:'pre'},css||{}),parent,ch))},
+    a(el,kf,o){o=o||{};return el.animate(kf,{duration:o.d??600,delay:o.dl??0,easing:o.e??E.out,fill:o.f??'both',iterations:o.i??1,direction:o.dir??'normal'})},
+    wait(ms,fn){timers.push(setTimeout(fn,ms))},
+    raf(fn){const r={id:0};const t0=performance.now();const tick=now=>{fn((now-t0)/1000);r.id=requestAnimationFrame(tick)};r.id=requestAnimationFrame(tick);rafs.push(r)},
+    svg(w,h,parent,css){const s=document.createElementNS('http://www.w3.org/2000/svg','svg');s.setAttribute('viewBox',`0 0 ${w} ${h}`);s.setAttribute('width',w);s.setAttribute('height',h);Object.assign(s.style,{position:'absolute',left:'0',top:'0'},css||{});(parent||S).appendChild(s);return s},
+    sv(tag,attrs,parent){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const k in attrs)e.setAttribute(k,attrs[k]);parent.appendChild(e);return e},
+    canvas(){const c=H.el('canvas',{position:'absolute',left:'0',top:'0',width:'1600px',height:'900px'});c.width=1600;c.height=900;return c},
+    shake(el,dl,amp,d){amp=amp||14;const k=[];for(let i=0;i<8;i++)k.push({transform:`translate(${rnd(-amp,amp)}px,${rnd(-amp,amp)}px)`});k.push({transform:'translate(0,0)'});return H.a(el||S.firstChild,k,{d:d||320,dl:dl||0,e:E.lin,f:'none'})},
+    clear(){timers.forEach(clearTimeout);timers.length=0;rafs.forEach(r=>cancelAnimationFrame(r.id));rafs.length=0;S.getAnimations({subtree:true}).forEach(a=>a.cancel());S.innerHTML=''}
+  };
+  return H;
+}
+const words=t=>t.split(/[\s　／\/]+/).filter(Boolean);
+
+class Player{
+  constructor(stage,screen){this.S=stage;this.screen=screen;this.H=mkH(stage);this.t0=0;
+    const fit=()=>{const w=screen.clientWidth;stage.style.transform=`scale(${w/1600})`};
+    new ResizeObserver(fit).observe(screen);fit();}
+  play(m,txt,once){this.stop();this.m=m;this.L=m.loopFn?m.loopFn(words(txt)):m.loop;const H=this.H,S=this.S;
+    const cyc=()=>{H.clear();S.style.background=m.bg||'#0b0b0d';S.style.color='#fff';this.t0=performance.now();
+      try{m.run(H,txt,words(txt))}catch(e){console.error(m.no,e)}
+      if(!once)this.loopT=setTimeout(cyc,this.L)};
+    const go=()=>{cyc()};
+    (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(go);}
+  stop(){clearTimeout(this.loopT);this.H.clear()}
+  time(){return this.m?((performance.now()-this.t0)%this.L)/1000:0}
+}
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const tcode=s=>{const f=Math.floor((s%1)*30);const sec=Math.floor(s);return `00:00:${String(sec).padStart(2,'0')}:${String(f).padStart(2,'0')}`};
+</script>
+<script>
+/* ===== IMPACT 01-10 ===== */
+const fs=(t,max,w)=>Math.round(Math.min(max,w/Math.max(1,[...t].length)));
+const BIG=(H,t,css,parent)=>H.el('div',Object.assign({fontFamily:F.heavy,fontSize:fs(t,260,1300)+'px',lineHeight:'1.05',whiteSpace:'nowrap'},css||{}),parent,t);
+
+def({no:'01',cat:'IMPACT',name:'ショックウェーブ',en:'Shock Wave',lead:'叩きつけて、光って、揺れる。冒頭の1語に。',
+text:'限界突破',loop:3200,bg:'#0b0b0d',
+use:'動画の<b>最初の0.5秒</b>。サムネと同じ言葉を叩きつけると、スクロールの指が止まります。決め台詞・章タイトルにも。',
+tips:['着地の瞬間（0.38秒）に効果音「ドン」を合わせると迫力が倍になります','光の色を白→ブランドカラーに変えるだけで印象が変わります','言葉は4〜6文字が最も映えます。長い場合は2行に分けて'],
+p:`画面中央に「{T}」を1語だけ置き、"叩きつける"ように登場させてください。
+・背景：#0B0B0D の単色。文字：白、フォント Dela Gothic One、画面幅の約80%の大きさ
+・0.00〜0.38秒：文字を scale 3.2／blur 24px／透明 → scale 1／blur 0／不透明 へ。イージング cubic-bezier(.7,0,.84,0)（加速しながら叩きつける）
+・0.38秒（着地の瞬間）に3つ同時に起こす
+　① 画面全体を白で一瞬光らせる（不透明度0.9→0、0.25秒）
+　② 文字の中心から白い線の円（線幅10px）が6倍まで広がりながら消える（0.7秒）
+　③ 画面全体を上下左右ランダムに最大14px、0.32秒揺らす
+・2.4秒から：文字を scale 1.15 へ拡大しつつ blur 16px で0.5秒かけて消す
+・尺：3.2秒でループ`,
+run(H,t){const B=H.box();const w=BIG(H,t,{},B);
+  H.a(w,[{transform:'scale(3.2)',filter:'blur(24px)',opacity:0},{transform:'scale(1)',filter:'blur(0)',opacity:1}],{d:380,e:E.in});
+  const r=H.abs({width:'300px',height:'300px',left:'650px',top:'300px',border:'10px solid #fff',borderRadius:'50%',opacity:0});
+  H.a(r,[{transform:'scale(.2)',opacity:1},{transform:'scale(6)',opacity:0}],{d:700,dl:380});
+  const fl=H.abs({inset:'0',background:'#fff',opacity:0});H.a(fl,[{opacity:.9},{opacity:0}],{d:250,dl:380,f:'none'});
+  H.shake(B,380,14,320);
+  H.a(w,[{transform:'scale(1)',filter:'blur(0)',opacity:1},{transform:'scale(1.15)',filter:'blur(16px)',opacity:0}],{d:500,dl:2400,e:E.in,f:'forwards'});
+}});
+
+def({no:'02',cat:'IMPACT',name:'スタンプ連打',en:'Stamp Rush',lead:'判子を3回押す。結論や評価をリズムで決める。',
+text:'決定 完売 採用',multi:true,loop:3600,bg:'#efebe3',
+use:'レビュー動画の<b>評価発表</b>、「結論」「完売」「合格」など断定したい場面。紙の背景なので、ビジネス系・書類系の動画と相性が良いです。',
+tips:['角度は±12°の範囲でバラすと「手で押した感」が出ます','3つ目だけ少し大きく押すと締まります','インクのかすれは「SVGのfeTurbulenceでかすれを足して」と追い指示'],
+p:`紙のような背景に、朱色のハンコで言葉を3回「ポン、ポン、ポン」と押していく演出を作ってください。
+・背景：#EFEBE3（生成りの紙）。ハンコ色：#E0352B
+・押す言葉：「{T}」（スペース区切りで3語。1語ずつ順に押す）
+・ハンコの形：角丸6pxの四角い枠（線幅12px）の中に、Dela Gothic One の文字。枠も文字も同じ朱色
+・押す位置：画面中央を基準に、左上・中央・右下へずらして重ねる。角度は −12°〜+12° でランダム
+・1語の押し方（0.16秒）：scale 2.6／透明 → scale 1／不透明。イージング cubic-bezier(.7,0,.84,0)。着地の瞬間に画面を最大8px・0.25秒揺らす
+・押すタイミング：0.0秒／0.7秒／1.4秒。3つ目だけ1.2倍の大きさ
+・3.0秒で全体を0.4秒フェードアウトし、尺3.6秒でループ`,
+run(H,t,w){w=w.slice(0,3);while(w.length<3)w.push(w[0]||t);const B=H.box();
+  const pos=[[-330,-150,-9],[30,0,7],[330,150,-4]];
+  w.forEach((s,i)=>{const sc=i===2?1.2:1;const st=H.abs({left:'50%',top:'50%',transform:`translate(-50%,-50%) translate(${pos[i][0]}px,${pos[i][1]}px) rotate(${pos[i][2]}deg) scale(${sc})`},B);
+    const inner=H.el('div',{border:'12px solid #e0352b',borderRadius:'6px',color:'#e0352b',fontFamily:F.heavy,fontSize:fs(s,150,700)+'px',lineHeight:'1',padding:'18px 30px',whiteSpace:'nowrap',mixBlendMode:'multiply'},st,s);
+    H.a(inner,[{transform:'scale(2.6)',opacity:0},{transform:'scale(1)',opacity:1}],{d:160,dl:i*700,e:E.in});
+    H.shake(B,i*700+160,8,250)});
+  H.a(B,[{opacity:1},{opacity:0}],{d:400,dl:3000,f:'forwards'});
+}});
+
+def({no:'03',cat:'IMPACT',name:'パンチイン',en:'Punch Through',lead:'言葉がこちらへ飛び込み、突き抜けて次へ。',
+text:'今日から 本気で 変わる',multi:true,loop:3400,bg:'#0b0b0d',
+use:'3語のキャッチコピーを<b>テンポよく畳みかける</b>とき。モチベーション系、セミナー告知、商品のベネフィット3連発に。',
+tips:['語の切り替え間隔0.8秒はBPM150の曲と相性が良いです','背景色を語ごとに反転させると、カット割りしたような勢いが出ます','最後の語だけ長く止めると「結論」として残ります'],
+p:`「{T}」をスペースで区切った語を1つずつ、画面の奥から手前へ飛び込ませ、そのままカメラを突き抜けて次の語に切り替える演出を作ってください。
+・フォント：Dela Gothic One、画面幅の約75%の大きさ
+・背景色を語ごとに切り替える：1語目 #0B0B0D（文字白）→ 2語目 #FF4B3E（文字黒）→ 3語目 #0B0B0D（文字白）
+・各語の登場（0.24秒）：scale 0.2／透明 → scale 1。イージング cubic-bezier(.34,1.56,.64,1)（少し行き過ぎて戻る）
+・各語の退場（0.24秒）：登場から0.56秒後に scale 1 → 7／透明 へ。イージング cubic-bezier(.7,0,.84,0)
+・語の間隔：0.8秒。最後の語だけ退場させずに1.2秒止める
+・尺：3.4秒でループ`,
+run(H,t,w){if(!w.length)w=[t];const B=H.box();const bgs=['#0b0b0d','#ff4b3e','#0b0b0d'],fg=['#fff','#111','#fff'];
+  w.forEach((s,i)=>{H.wait(i*800,()=>{H.S.style.background=bgs[i%3]});
+    const el=BIG(H,s,{position:'absolute',color:fg[i%3],fontSize:fs(s,280,1200)+'px'},B);
+    H.a(el,[{transform:'scale(.2)',opacity:0},{transform:'scale(1)',opacity:1}],{d:240,dl:i*800,e:E.back});
+    if(i<w.length-1)H.a(el,[{transform:'scale(1)',opacity:1},{transform:'scale(7)',opacity:0}],{d:240,dl:i*800+560,e:E.in,f:'forwards'});
+    else H.a(el,[{opacity:1},{opacity:0}],{d:300,dl:i*800+1800,f:'forwards'});});
+}});
+
+def({no:'04',cat:'IMPACT',name:'スラッシュカット',en:'Slash Cut',lead:'一閃で文字が斜めに斬れて、ずれて、戻る。',
+text:'一刀両断',loop:3000,bg:'#101012',
+use:'「論破」「バッサリ解説」「NG集」など<b>切る・断つ</b>ニュアンスの言葉に。時代劇・ゲーム実況のタイトルにも。',
+tips:['斬る線の角度は6°前後が自然。大きくすると派手に、小さくすると上品に','ずれた瞬間に上下で色を変える（上=白、下=赤）と劇的になります','効果音「シャキン」は斬線が走り終わった瞬間に'],
+p:`中央の文字「{T}」が、一筋の光で斜めに斬られ、上下にずれてから元に戻る演出を作ってください。
+・背景：#101012。文字：白、Dela Gothic One、幅1400px・高さ300pxの枠の中央に配置
+・文字は同じものを2枚重ね、clip-path で上半分 polygon(0 0,100% 0,100% 25%,0 75%) と下半分 polygon(0 75%,100% 25%,100% 100%,0 100%) に分ける（斜めの切れ目）
+・0.0〜0.3秒：文字全体をフェードイン
+・0.5秒：切れ目に沿って、白く光る線（高さ6px、角度 −6°）が左から右へ0.2秒で走る（scaleX 0→1、影で発光）
+・0.7秒：上半分を左上へ(−40px,−24px)、下半分を右下へ(40px,24px)、0.3秒でずらす。下半分の文字色を #FF4B3E に変える
+・1.9秒：0.4秒で元の位置・元の色に戻す（イージング cubic-bezier(.87,0,.13,1)）
+・2.6秒からフェードアウト、尺3.0秒でループ`,
+run(H,t){const B=H.box();const wrap=H.abs({width:'1400px',height:'300px',left:'100px',top:'300px'},B);
+  const mk=(clip)=>{const h=H.box({clipPath:clip},wrap);BIG(H,t,{fontSize:fs(t,260,1300)+'px',color:'#fff'},h);return h};
+  const top=mk('polygon(0 0,100% 0,100% 25%,0 75%)'),bot=mk('polygon(0 75%,100% 25%,100% 100%,0 100%)');
+  H.a(wrap,[{opacity:0},{opacity:1}],{d:300});
+  const ln=H.abs({left:'0',top:'147px',width:'1400px',height:'6px',background:'#fff',boxShadow:'0 0 18px #fff,0 0 40px #ff4b3e',transform:'rotate(-6.1deg)'},wrap);
+  H.a(ln,[{transform:'rotate(-6.1deg) scaleX(0)',transformOrigin:'0 50%',opacity:1},{transform:'rotate(-6.1deg) scaleX(1)',transformOrigin:'0 50%',opacity:1,offset:.7},{transform:'rotate(-6.1deg) scaleX(1)',transformOrigin:'0 50%',opacity:0}],{d:320,dl:500,e:E.out});
+  H.a(top,[{transform:'translate(0,0)'},{transform:'translate(-40px,-24px)'}],{d:300,dl:700});
+  H.a(bot,[{transform:'translate(0,0)',color:'#fff'},{transform:'translate(40px,24px)'}],{d:300,dl:700});
+  H.wait(700,()=>{bot.firstChild.style.color='#ff4b3e'});H.wait(1900,()=>{bot.firstChild.style.transition='color .4s';bot.firstChild.style.color='#fff'});
+  H.a(top,[{transform:'translate(-40px,-24px)'},{transform:'translate(0,0)'}],{d:400,dl:1900,e:E.io,f:'forwards'});
+  H.a(bot,[{transform:'translate(40px,24px)'},{transform:'translate(0,0)'}],{d:400,dl:1900,e:E.io,f:'forwards'});
+  H.a(wrap,[{opacity:1},{opacity:0}],{d:300,dl:2600,f:'forwards'});
+}});
+
+def({no:'05',cat:'IMPACT',name:'ワードバースト',en:'Word Burst',lead:'1語が弾けて、文字と火花が四方へ散る。',
+text:'大爆笑',loop:2800,bg:'#141414',
+use:'<b>オチ・爆笑・炎上</b>など「弾ける」瞬間に。リアクション動画のテロップ、ランキングの1位発表直後にも。',
+tips:['散る距離を±600px→±1000pxにすると画面外まで飛んで豪快に','火花の色を文字色と変えると、爆発の中心がはっきりします','文字数が多いほど華やか。2文字だと寂しいので4文字以上推奨'],
+p:`中央に「{T}」がポンと出て、0.7秒後に文字が1文字ずつバラバラに弾け飛ぶ演出を作ってください。
+・背景：#141414。文字：#FFE14D（黄色）、Dela Gothic One、画面幅の約60%
+・0.0〜0.3秒：全体を scale 0 → 1 で登場。イージング cubic-bezier(.34,1.56,.64,1)
+・1.0秒：爆発。各文字を中心から外へ、x方向 −600〜600px・y方向 −400〜400px のランダムな位置へ、回転 −180〜180°、scale 0.3、透明にしながら0.6秒で飛ばす（イージング cubic-bezier(.16,1,.3,1)）
+・同時に中心から白い火花を16本、放射状に飛ばす（幅120px×高さ6pxの線が外へ伸びながら消える、0.5秒）
+・爆発の瞬間に画面を10px・0.25秒揺らす
+・尺：2.8秒でループ`,
+run(H,t){const B=H.box();const w=BIG(H,t,{color:'#ffe14d',fontSize:fs(t,240,1000)+'px'},B);w.textContent='';const cs=H.chars(t,w);
+  H.a(w,[{transform:'scale(0)'},{transform:'scale(1)'}],{d:300,e:E.back});
+  cs.forEach(c=>H.a(c,[{transform:'translate(0,0) rotate(0) scale(1)',opacity:1},{transform:`translate(${rnd(-600,600)}px,${rnd(-400,400)}px) rotate(${rnd(-180,180)}deg) scale(.3)`,opacity:0}],{d:600,dl:1000}));
+  for(let i=0;i<16;i++){const a=i/16*360;const s=H.abs({left:'800px',top:'447px',width:'120px',height:'6px',background:'#fff',borderRadius:'3px',transformOrigin:'0 50%',opacity:0});
+    H.a(s,[{transform:`rotate(${a}deg) translateX(40px) scaleX(.2)`,opacity:1},{transform:`rotate(${a}deg) translateX(420px) scaleX(1)`,opacity:0}],{d:500,dl:1000})}
+  H.shake(B,1000,10,250);
+}});
+
+def({no:'06',cat:'IMPACT',name:'ゴムストレッチ',en:'Rubber Stretch',lead:'縦に引き伸ばされた文字が、ゴムのように縮んで止まる。',
+text:'伸びしろ',loop:2800,bg:'#ff4b3e',
+use:'「伸びる」「成長」「ストレッチ」など<b>伸び縮み</b>を連想させる言葉に。フィットネス、成長記録、数字が伸びた報告に。',
+tips:['伸び率3.5倍→5倍にするとコミカル、2倍にすると上品','文字の下端を基準（transform-origin: bottom）にするのが「床から生える」感のコツ','背景と文字を補色にすると、伸びた瞬間の残像が映えます'],
+p:`「{T}」の各文字が、縦にビヨーンと伸びた状態から、ゴムのように縮んで止まる演出を作ってください。
+・背景：#FF4B3E。文字：#111、Dela Gothic One、画面幅の約70%
+・各文字は文字の下端を基準に縦方向だけ変形させる（transform-origin: 50% 100%）
+・1文字の動き（0.9秒）：scaleY 3.5 → 0.7 → 1.15 → 0.95 → 1（キーフレームの位置は 0 / 40 / 65 / 85 / 100%）。同時に scaleX は 0.6 → 1.15 → 0.95 → 1 → 1
+・文字ごとに0.07秒ずつ遅らせて左から順に動かす
+・2.3秒：全文字を scaleY 0（上から潰れる）へ0.35秒で退場。イージング cubic-bezier(.7,0,.84,0)
+・尺：2.8秒でループ`,
+run(H,t){const B=H.box();const w=BIG(H,t,{color:'#111',fontSize:fs(t,280,1200)+'px'},B);w.textContent='';const cs=H.chars(t,w,{transformOrigin:'50% 100%'});
+  cs.forEach((c,i)=>{H.a(c,[{transform:'scale(.6,3.5)',offset:0},{transform:'scale(1.15,.7)',offset:.4},{transform:'scale(.95,1.15)',offset:.65},{transform:'scale(1,.95)',offset:.85},{transform:'scale(1,1)',offset:1}],{d:900,dl:i*70,e:E.soft});
+    H.a(c,[{transform:'scale(1,1)'},{transform:'scale(1.1,0)'}],{d:350,dl:2300,e:E.in,f:'forwards'})});
+}});
+
+def({no:'07',cat:'IMPACT',name:'ヘビードロップ',en:'Heavy Drop',lead:'重たい文字が1つずつ落ちてきて、ズシンと着地。',
+text:'重大発表',loop:3400,bg:'#151515',
+use:'<b>重大発表・ご報告・お知らせ</b>の頭に。「重さ」が出るので、ニュース性のある内容や真面目な告知に向きます。',
+tips:['落下は必ず「加速する」イージング（ease-in）にするのが重さのコツ','着地の潰れ（scaleY 0.75）を強くするほど柔らかく、弱くするほど硬い素材に見えます','土ぼこりの粒の色を床の色に合わせるとなじみます'],
+p:`「{T}」の文字が1文字ずつ画面の上から落ちてきて、床に「ズシン」と着地する演出を作ってください。
+・背景：#151515。文字：白、Dela Gothic One、画面幅の約70%。文字の下に細い床の線（#444、幅1400px、高さ4px）
+・1文字の落下（0.38秒）：translateY −900px → 0。イージング cubic-bezier(.7,0,.84,0)（加速して落ちる）
+・着地（0.3秒）：scale(1.25, 0.75) → scale(0.95, 1.05) → scale(1,1)。transform-origin は文字の下端
+・着地の瞬間：①画面全体を6px・0.2秒揺らす ②文字の足元から灰色(#888)の小さな丸（直径6〜14px）を左右に6個ずつ飛ばし、0.5秒で消す（土ぼこり）
+・文字ごとに0.11秒ずつ遅らせる
+・2.9秒でフェードアウト、尺3.4秒でループ`,
+run(H,t){const B=H.box({flexDirection:'column'});const w=BIG(H,t,{fontSize:fs(t,260,1300)+'px'},B);w.textContent='';const cs=H.chars(t,w,{transformOrigin:'50% 100%'});
+  H.el('div',{width:'1400px',height:'4px',background:'#444',marginTop:'8px'},B);
+  cs.forEach((c,i)=>{const dl=i*110;H.a(c,[{transform:'translateY(-900px)'},{transform:'translateY(0)'}],{d:380,dl,e:E.in});
+    H.a(c,[{transform:'scale(1.25,.75)'},{transform:'scale(.95,1.05)'},{transform:'scale(1,1)'}],{d:300,dl:dl+380,e:E.out,f:'none'});
+    H.shake(B,dl+380,6,200);
+    H.wait(dl+380,()=>{const r=c.getBoundingClientRect(),sr=H.S.getBoundingClientRect(),k=1600/sr.width;const cx=(r.left+r.width/2-sr.left)*k,cy=(r.bottom-sr.top)*k;
+      for(let j=0;j<12;j++){const sz=rnd(6,14);const d=H.abs({left:cx+'px',top:cy-sz+'px',width:sz+'px',height:sz+'px',borderRadius:'50%',background:'#888'});const dir=j<6?-1:1;
+        H.a(d,[{transform:'translate(0,0)',opacity:.9},{transform:`translate(${dir*rnd(40,140)}px,${-rnd(10,60)}px)`,opacity:0}],{d:500})}})});
+  H.a(B,[{opacity:1},{opacity:0}],{d:400,dl:2900,f:'forwards'});
+}});
+
+def({no:'08',cat:'IMPACT',name:'フラッシュカット',en:'Flash Cut',lead:'0.16秒ごとに言葉と色が切り替わる、サブリミナル級の速さ。',
+text:'見逃す な 今夜 20時',multi:true,loop:3000,bg:'#000',
+use:'<b>告知・カウントダウン・ライブ配信の予告</b>に。短い語を高速で切り替えると、情報量のわりに一瞬で目に入ります。',
+tips:['1語0.16秒は「読める限界」の速さ。読ませたい語は最後に置いて止める','白・黒・赤の3色ローテーションが最も強い。ブランド色を1色混ぜても可','光の点滅が苦手な人もいるので、0.1秒より速くはしないのがマナーです'],
+p:`「{T}」をスペースで区切った語を、0.16秒ごとに画面いっぱいの文字で高速に切り替える演出を作ってください。
+・フォント：Dela Gothic One、画面の高さの約40%の大きさ
+・背景と文字色の組み合わせを1語ごとに順番に切り替える：①背景#000・文字白 ②背景#FF4B3E・文字#000 ③背景#FFF・文字#000
+・切り替えはフェードなしのハードカット。語ごとに文字の大きさを 0.9〜1.1倍、角度を −3〜3° でランダムに変えて、躍動感を出す
+・全語を2周したら、最後の語だけ背景#000・文字#FF4B3E で1.2秒止め、scale 1 → 1.06 へゆっくり拡大
+・尺：3.0秒でループ（点滅が速すぎないよう、切り替えは0.1秒より速くしない）`,
+run(H,t,w){if(!w.length)w=[t];const B=H.box();const el=BIG(H,'',{},B);const sch=[['#000','#fff'],['#ff4b3e','#000'],['#fff','#000']];
+  const seq=[...w,...w];seq.forEach((s,i)=>H.wait(i*160,()=>{const c=sch[i%3];H.S.style.background=c[0];el.style.color=c[1];el.textContent=s;el.style.fontSize=fs(s,360,1400)+'px';el.style.transform=`scale(${rnd(.9,1.1)}) rotate(${rnd(-3,3)}deg)`}));
+  const end=seq.length*160;H.wait(end,()=>{const s=w[w.length-1];H.S.style.background='#000';el.style.color='#ff4b3e';el.textContent=s;el.style.fontSize=fs(s,360,1400)+'px';el.style.transform='none';
+    H.a(el,[{transform:'scale(1)'},{transform:'scale(1.06)'}],{d:1200,e:E.soft})});
+}});
+
+def({no:'09',cat:'IMPACT',name:'集中線ズーム',en:'Speed Lines',lead:'漫画の集中線がチカチカ走り、中央の言葉に視線を集める。',
+text:'ここが核心',loop:2600,bg:'#f4f2ee',
+use:'<b>「ここ重要」</b>を伝える場面。解説動画のポイント、ゲーム実況の決定的瞬間、漫画風の演出に。',
+tips:['線の本数90本前後が漫画らしさの目安。多いほど緊迫感が出ます','毎フレーム線を描き直すと、手描きアニメのチラつきが出ます','文字に白い太フチを付けると、線と重なっても読めます'],
+p:`漫画の「集中線」が毎フレーム描き直されてチラつく背景の中央に、「{T}」がズームインする演出を作ってください。
+・背景：#F4F2EE。集中線：#111
+・集中線は Canvas で描く。毎フレーム、ランダムな角度に90本の細長い三角形を描く。三角形は画面外（半径1200px）から、中心から半径300〜380pxの位置まで伸び、根元の太さは2〜10pxでランダム
+・中央の文字：Dela Gothic One、色 #FF4B3E、白い太フチ（14px）＋黒の細フチ（2px）
+・0.0〜0.35秒：文字を scale 0.3 → 1。イージング cubic-bezier(.34,1.56,.64,1)
+・0.35秒以降：文字を scale 1 → 1.08 へ2秒かけてゆっくり拡大し続ける
+・尺：2.6秒でループ`,
+run(H,t){const c=H.canvas();const x=c.getContext('2d');
+  H.raf(()=>{x.fillStyle='#f4f2ee';x.fillRect(0,0,1600,900);x.fillStyle='#111';for(let i=0;i<90;i++){const a=Math.random()*Math.PI*2,r0=rnd(300,380),w=rnd(.002,.012);
+    x.beginPath();x.moveTo(800+Math.cos(a-w)*1200,450+Math.sin(a-w)*1200);x.lineTo(800+Math.cos(a)*r0,450+Math.sin(a)*r0);x.lineTo(800+Math.cos(a+w)*1200,450+Math.sin(a+w)*1200);x.fill()}});
+  const B=H.box();const el=BIG(H,t,{color:'#ff4b3e',fontSize:fs(t,220,1100)+'px',WebkitTextStroke:'2px #111',textShadow:'0 0 0 #fff,-7px -7px 0 #fff,7px -7px 0 #fff,-7px 7px 0 #fff,7px 7px 0 #fff,0 9px 0 #fff,0 -9px 0 #fff,9px 0 0 #fff,-9px 0 0 #fff'},B);
+  H.a(el,[{transform:'scale(.3)'},{transform:'scale(1)'}],{d:350,e:E.back});
+  H.a(el,[{transform:'scale(1)'},{transform:'scale(1.08)'}],{d:2000,dl:350,e:E.soft,f:'none'});
+}});
+
+def({no:'10',cat:'IMPACT',name:'ガラスクラッシュ',en:'Glass Shatter',lead:'文字にヒビが入り、ガラスのように割れて崩れ落ちる。',
+text:'常識を壊せ',loop:3200,bg:'#0e1116',
+use:'<b>「常識を壊す」「ぶっ壊す」「固定観念」</b>など、破壊がテーマの言葉に。ビフォーアフターの「ビフォー」を壊して次へ繋ぐ転換にも。',
+tips:['破片は8〜12枚が見やすい。多すぎると何が割れたか分からなくなります','落下を加速（ease-in）＋回転させると重力感が出ます','割れた後に、次の言葉を同じ位置にフェードインさせると場面転換に使えます'],
+p:`中央の「{T}」にヒビが入り、ガラスのように割れて破片が下に崩れ落ちる演出を作ってください。
+・背景：#0E1116。文字：白、Dela Gothic One、画面幅の約70%
+・0.0〜0.4秒：文字をフェードイン
+・0.9秒：画面中央を起点に、白いヒビの線（SVG、線幅3px）を放射状に10本、0.15秒で一気に描く
+・1.2秒：文字を割る。文字のレイヤーを10枚複製し、それぞれ clip-path: polygon で中心から放射状の三角形（36°ずつ）に切り抜く
+・各破片は 0〜0.2秒のランダムな遅れで、下方向へ 900〜1100px 落下（x方向 −200〜200px、回転 −90〜90°）。0.9秒、イージング cubic-bezier(.7,0,.84,0)
+・割れる瞬間に画面を12px・0.3秒揺らし、白を一瞬(0.15秒)光らせる
+・尺：3.2秒でループ`,
+run(H,t){const N=10,pieces=[];const W=H.box();const svg=H.svg(1600,900,W);
+  for(let i=0;i<N;i++){const a0=i/N*Math.PI*2,a1=(i+1)/N*Math.PI*2;const p=[`50% 50%`,`${50+300*Math.cos(a0)}% ${50+300*Math.sin(a0)}%`,`${50+300*Math.cos((a0+a1)/2)}% ${50+300*Math.sin((a0+a1)/2)}%`,`${50+300*Math.cos(a1)}% ${50+300*Math.sin(a1)}%`];
+    const b=H.box({clipPath:`polygon(${p.join(',')})`},W);BIG(H,t,{fontSize:fs(t,250,1150)+'px'},b);pieces.push(b);
+    const len=rnd(250,700);const l=H.sv('line',{x1:800,y1:450,x2:800+Math.cos(a0)*len,y2:450+Math.sin(a0)*len,stroke:'#fff','stroke-width':3,'stroke-dasharray':len,'stroke-dashoffset':len,opacity:.9},svg);
+    H.a(l,[{strokeDashoffset:len,opacity:1},{strokeDashoffset:0,opacity:1}],{d:150,dl:900});H.a(l,[{opacity:1},{opacity:0}],{d:100,dl:1200,f:'forwards'})}
+  W.appendChild(svg);
+  pieces.forEach(b=>{H.a(b,[{opacity:0},{opacity:1}],{d:400});H.a(b,[{transform:'translate(0,0) rotate(0)'},{transform:`translate(${rnd(-200,200)}px,${rnd(900,1100)}px) rotate(${rnd(-90,90)}deg)`}],{d:900,dl:1200+rnd(0,200),e:E.in,f:'forwards'})});
+  const fl=H.abs({inset:'0',background:'#fff',opacity:0});H.a(fl,[{opacity:.7},{opacity:0}],{d:150,dl:1200,f:'none'});
+  H.shake(W,1200,12,300);
+}});
+
+/* ===== FLOW 11-20 ===== */
+const track=(H,parent,unit,n,css)=>{const tr=H.el('div',Object.assign({display:'flex',whiteSpace:'nowrap',width:'max-content'},css||{}),parent);for(let i=0;i<n;i++)H.el('span',{paddingRight:'.4em'},tr,unit);return tr};
+
+def({no:'11',cat:'FLOW',name:'無限マーキー',en:'Infinite Marquee',lead:'巨大な文字の帯が、斜めに・交互に流れ続ける。',
+text:'NEW ARRIVAL 新作入荷',loop:6000,bg:'#f5c518',
+use:'<b>ショップ告知・新商品・セール</b>の背景に。上に商品写真を重ねるだけで、ファッション広告のような画になります。',
+tips:['塗り文字とフチだけの文字を交互にすると、単調にならずリズムが出ます','帯を −8° 傾けるのが今っぽさのポイント','速度は行ごとに倍・半分の関係にすると、継ぎ目なくループします'],
+p:`画面いっぱいに「{T}」の巨大な文字の帯を5段並べ、段ごとに逆方向へ無限に流す演出を作ってください。
+・背景：#F5C518。文字色：#111。フォント：Dela Gothic One、1段の高さ180px
+・段の中身：「{T}」を4回くり返して横に並べ、もう1組を後ろにつなげて継ぎ目のないループにする
+・段のスタイル：奇数段は塗りつぶし、偶数段は塗りなしで #111 の4pxフチだけ（-webkit-text-stroke）
+・流れる方向：奇数段は左へ、偶数段は右へ。速度は 1段目・3段目・5段目が6秒で1組分、2段目・4段目が6秒で2組分（倍速）。等速（linear）
+・5段まとめた全体を −8° 傾け、画面からはみ出すくらい大きく配置する
+・尺：6秒で完全ループ`,
+run(H,t){const G=H.abs({left:'-300px',top:'-260px',width:'2200px',transform:'rotate(-8deg)',display:'flex',flexDirection:'column',gap:'10px'});
+  for(let i=0;i<6;i++){const row=H.el('div',{overflow:'visible'},G);const odd=i%2===0;
+    const tr=track(H,row,t,8,{fontFamily:F.heavy,fontSize:'180px',lineHeight:'1.05',color:odd?'#111':'transparent',WebkitTextStroke:odd?'0':'4px #111'});
+    const dist=odd?'-25%':'-50%';H.a(tr,odd?[{transform:'translateX(0)'},{transform:`translateX(${dist})`}]:[{transform:`translateX(${dist})`},{transform:'translateX(0)'}],{d:6000,e:E.lin,i:Infinity})}
+}});
+
+def({no:'12',cat:'FLOW',name:'クロステープ',en:'Caution Tape',lead:'警告テープ2本がX字に交差し、逆向きに流れる。',
+text:'工事中 COMING SOON',loop:8000,bg:'#1a1a1a',
+use:'<b>準備中・近日公開・注意喚起</b>に。チャンネルのリニューアル告知、「ここから先ネタバレ」の注意テロップにも。',
+tips:['テープの角度は12°と−9°のように「わずかに非対称」にすると自然','テープの縁に黒黄のしま模様を入れると一気に工事現場らしくなります','テープ色を赤×白にすると「立入禁止（事件）」の雰囲気に'],
+p:`黄色い警告テープ2本がX字に交差し、それぞれ逆方向に文字を流し続ける演出を作ってください。
+・背景：#1A1A1A
+・テープ：高さ130px、色 #F5C518。上下の縁に、黒と黄の45°のしま模様（幅24px）を高さ14pxで入れる
+・テープの文字：「{T}」＋「 ／ 」を8回くり返す。#111、Dela Gothic One、高さ70px
+・テープ1は +12°、テープ2は −9° に傾け、画面中央で交差させる（テープ2を手前に、影 0 10px 30px rgba(0,0,0,.5)）
+・登場：0.0〜0.7秒でテープ1が左から、0.2〜0.9秒でテープ2が右から、画面外からスライドイン（イージング cubic-bezier(.16,1,.3,1)）
+・流れ：テープ1の文字は左へ、テープ2の文字は右へ、4秒で1組分を等速で無限ループ
+・尺：8秒でループ`,
+run(H,t){const stripe='repeating-linear-gradient(45deg,#111 0 12px,#f5c518 12px 24px)';
+  [[12,-1,0],[-9,1,200]].forEach(([deg,dir,dl],i)=>{const tape=H.abs({left:'-300px',top:'385px',width:'2200px',height:'130px',background:'#f5c518',transform:`rotate(${deg}deg)`,boxShadow:i?'0 10px 30px rgba(0,0,0,.5)':'none',overflow:'hidden',display:'flex',alignItems:'center'});
+    H.abs({left:0,right:0,top:0,height:'14px',background:stripe},tape);H.abs({left:0,right:0,bottom:0,height:'14px',background:stripe},tape);
+    const tr=track(H,tape,t+' ／',8,{fontFamily:F.heavy,fontSize:'70px',color:'#111'});
+    H.a(tape,[{transform:`rotate(${deg}deg) translateX(${dir*2200}px)`},{transform:`rotate(${deg}deg) translateX(0)`}],{d:700,dl});
+    H.a(tr,dir<0?[{transform:'translateX(0)'},{transform:'translateX(-25%)'}]:[{transform:'translateX(-25%)'},{transform:'translateX(0)'}],{d:4000,e:E.lin,i:Infinity})});
+}});
+
+def({no:'13',cat:'FLOW',name:'ウェーブ',en:'Sine Wave',lead:'文字がひとつずつ波打ち、ゆらゆら揺れ続ける。',
+text:'ゆるっと夏休み',loop:4800,bg:'#11131c',
+use:'<b>ゆるい・楽しい・リラックス</b>した雰囲気づくりに。Vlogのタイトル、夏・海・音楽系のテロップに。',
+tips:['波の高さ60pxは大きめ。上品にしたいなら20〜30pxに','文字ごとに色相を少しずつずらすと、虹色の波になります','影も一緒に動かす代わりに、影だけ縮めると「跳ねている」感が出ます'],
+p:`「{T}」の文字が1文字ずつ、波のように上下にゆらゆら揺れ続ける演出を作ってください。
+・背景：#11131C。文字：#F5C518、Mochiy Pop One、画面幅の約70%
+・各文字：translateY 0 → −60px → 0 を1.2秒で無限ループ。イージング ease-in-out
+・文字ごとに0.1秒ずつ位相をずらす（animation-delay をマイナス値で指定して、最初から波の形にする）
+・同時に、各文字の真下に楕円の影（幅は文字の80%、高さ16px、rgba(0,0,0,.5)、ぼかし6px）を置き、文字が上がるほど影を scale 0.6 まで小さく薄くする
+・尺：4.8秒（1.2秒の4周）で継ぎ目なくループ`,
+run(H,t){const B=H.box();const w=H.el('div',{fontFamily:F.pop,fontSize:fs(t,200,1150)+'px',color:'#f5c518',display:'flex'},B);
+  [...t].forEach((ch,i)=>{const col=H.el('div',{display:'flex',flexDirection:'column',alignItems:'center'},w);const c=H.el('span',{display:'inline-block',whiteSpace:'pre'},col,ch);
+    const sh=H.el('div',{width:'80%',height:'16px',borderRadius:'50%',background:'rgba(0,0,0,.6)',filter:'blur(6px)',marginTop:'10px'},col);
+    const o={d:1200,e:'ease-in-out',i:Infinity,dl:-i*100};H.a(c,[{transform:'translateY(0)'},{transform:'translateY(-60px)'},{transform:'translateY(0)'}],o);
+    H.a(sh,[{transform:'scale(1)',opacity:1},{transform:'scale(.6)',opacity:.4},{transform:'scale(1)',opacity:1}],o)});
+}});
+
+def({no:'14',cat:'FLOW',name:'うねるリボン',en:'Ribbon Path',lead:'波打つ帯の上を、文字が途切れず流れていく。',
+text:'夜を越えて、また明日',loop:6000,bg:'#0f0f12',
+use:'<b>MV・エンディング・エモい場面</b>に。歌詞や名言を1行で流すと、それだけで映像作品のような質感になります。',
+tips:['帯の振幅（上下の幅）を大きくするほどダイナミックに','帯を2本にして色違い・逆方向にすると、より複雑で華やか','文字は明朝体にすると一気に叙情的になります'],
+p:`画面を横切る1本の太いリボン（帯）が波のようにうねり、その上を「{T}」が途切れずに流れていく演出を作ってください。
+・背景：#0F0F12
+・リボン：SVGのパス。太さ130px、色 #F5C518、線端は丸く。y = 450 + 140·sin(x·0.005 + 時間·1.6) の波形を毎フレーム計算し直して、うねらせる
+・文字：同じパスに沿って textPath で配置。「{T}」＋「　」をくり返して帯を埋める。色 #111、Shippori Mincho B1 の太字、大きさ64px、帯の中心に沿うよう dominant-baseline: middle
+・文字の流れ：startOffset を毎秒140pxずつ減らして左へ流し、1組分ずれたら元に戻して継ぎ目なくループ
+・尺：6秒でループ（うねりも文字も途切れず続く）`,
+run(H,t){const svg=H.svg(1600,900);const id='rb'+Math.floor(Math.random()*1e6);
+  const band=H.sv('path',{fill:'none',stroke:'#f5c518','stroke-width':130,'stroke-linecap':'round'},svg);
+  const guide=H.sv('path',{id,fill:'none'},svg);
+  const tx=H.sv('text',{fill:'#111','font-size':64,'font-family':"Shippori Mincho B1, serif",'font-weight':800,'dominant-baseline':'middle'},svg);
+  const tp=H.sv('textPath',{href:'#'+id},tx);tp.textContent=(t+'　').repeat(12);
+  const unit=H.sv('text',{'font-size':64,'font-family':"Shippori Mincho B1, serif",'font-weight':800,opacity:0},svg);unit.textContent=t+'　';let U=0;
+  H.raf(s=>{if(!U)U=unit.getComputedTextLength()||600;let d='';for(let x=-100;x<=1700;x+=20){const y=450+140*Math.sin(x*.005+s*1.6);d+=(x===-100?'M':'L')+x+' '+y.toFixed(1)}
+    band.setAttribute('d',d);guide.setAttribute('d',d);tp.setAttribute('startOffset',(-((s*140)%U)).toFixed(1))});
+}});
+
+def({no:'15',cat:'FLOW',name:'縦書き潮流',en:'Vertical Current',lead:'縦書きの列が、上へ下へと交互に流れる和の表現。',
+text:'温故知新',loop:6000,bg:'#f3efe6',
+use:'<b>和風・旅館・日本酒・伝統工芸</b>の紹介に。歴史解説や、京都・奈良などの旅動画のオープニングに。',
+tips:['中央の1列だけ朱色にすると、視線がそこに集まります','流れる速さを列ごとに少しずつ変えると、川の流れのような揺らぎが出ます','背景に薄い和紙の繊維を足すと高級感が増します'],
+p:`縦書きの文字列が7列並び、列ごとに上下交互に流れ続ける和風の演出を作ってください。
+・背景：#F3EFE6（和紙色）。文字：#1A1A1A、Shippori Mincho B1（太さ800）、縦書き（writing-mode: vertical-rl）
+・各列の中身：「{T}」＋「・」を8回くり返し、もう1組を後ろにつなげて継ぎ目のないループにする
+・列の配置：画面幅いっぱいに等間隔で7列。中央の列だけ文字を1.6倍・色 #C8102E（朱）
+・流れ：奇数列は上へ、偶数列は下へ。6秒で1組分（中央列だけ6秒で半組分＝ゆっくり）、等速で無限ループ
+・画面の上下端に、背景色から透明へのグラデーション（高さ120px）をかけて、文字が霧の中から現れて消えるようにする
+・尺：6秒で完全ループ`,
+run(H,t){const R=H.abs({inset:'0',display:'flex',justifyContent:'space-evenly',alignItems:'flex-start',overflow:'hidden'});
+  for(let i=0;i<7;i++){const mid=i===3;const col=H.el('div',{writingMode:'vertical-rl',fontFamily:F.min,fontWeight:'800',fontSize:(mid?110:68)+'px',color:mid?'#c8102e':'#1a1a1a',whiteSpace:'nowrap',lineHeight:'1'},R);
+    col.textContent=(t+'・').repeat(16);const up=i%2===0;const dist=mid?'-25%':'-50%';
+    H.a(col,up?[{transform:'translateY(0)'},{transform:`translateY(${dist})`}]:[{transform:`translateY(${dist})`},{transform:'translateY(0)'}],{d:6000,e:E.lin,i:Infinity})}
+  H.abs({left:0,right:0,top:0,height:'120px',background:'linear-gradient(#f3efe6,rgba(243,239,230,0))'});H.abs({left:0,right:0,bottom:0,height:'120px',background:'linear-gradient(rgba(243,239,230,0),#f3efe6)'});
+}});
+
+def({no:'16',cat:'FLOW',name:'回転バッジ',en:'Spinning Badge',lead:'円に沿って文字が回り続ける、ステッカー風の丸ロゴ。',
+text:'FOLLOW ME',loop:12000,bg:'#1b1b1f',
+use:'<b>フォロー誘導・SALEシール・ロゴ演出</b>に。画面の隅に小さく置くだけで、ずっと動く「目印」になります。',
+tips:['外側と内側を逆回転にすると、目が離せない立体感が出ます','文字の総量を円周にぴったり合わせる（textLength）と継ぎ目が消えます','中央にアイコンやロゴを置けば、そのままチャンネルの透かしに'],
+p:`円に沿って「{T}」が回り続ける、ステッカーのような丸いバッジを作ってください。
+・背景：#1B1B1F
+・外側のリング：半径300pxの円周に沿って、「{T} ✦ 」を3回くり返した文字を textPath で配置。文字は #F5C518、Dela Gothic One、56px。textLength を円周に合わせて、継ぎ目なく1周させる
+・内側のリング：半径190pxの円周に、同じ文字を2回。#FFFFFF、32px、文字間を広めに
+・中央：直径240pxの #F5C518 の円。中に「{T}」の最初の1語を #111、Dela Gothic One で
+・回転：外側は12秒で時計回りに1周、内側は12秒で反時計回りに1周（どちらも linear・無限）
+・中央の円は 2秒周期で scale 1 → 1.06 → 1 と鼓動させる
+・尺：12秒で完全ループ`,
+run(H,t,w){const svg=H.svg(1600,900);const id='c'+Math.floor(Math.random()*1e6);
+  const ring=(r,str,size,fill,dir,ls)=>{const g=H.sv('g',{},svg);g.style.transformOrigin='800px 450px';const pid=id+r;
+    H.sv('path',{id:pid,d:`M ${800-r} 450 a ${r} ${r} 0 1 1 ${2*r} 0 a ${r} ${r} 0 1 1 ${-2*r} 0`,fill:'none'},g);
+    const tx=H.sv('text',{fill,'font-size':size,'font-family':"Dela Gothic One, sans-serif",'letter-spacing':ls||0},g);const tp=H.sv('textPath',{href:'#'+pid,textLength:(2*Math.PI*r-6).toFixed(0),lengthAdjust:'spacing'},tx);tp.textContent=str;
+    H.a(g,[{transform:'rotate(0deg)'},{transform:`rotate(${dir*360}deg)`}],{d:12000,e:E.lin,i:Infinity});};
+  ring(300,(t+' ✦ ').repeat(3),56,'#f5c518',1);ring(190,(t+' ✦ ').repeat(2),32,'#fff',-1,4);
+  const c=H.abs({left:'680px',top:'330px',width:'240px',height:'240px',borderRadius:'50%',background:'#f5c518',display:'flex',alignItems:'center',justifyContent:'center',color:'#111',fontFamily:F.heavy,fontSize:fs(w[0]||t,64,200)+'px'},null,w[0]||t);
+  H.a(c,[{transform:'scale(1)'},{transform:'scale(1.06)'},{transform:'scale(1)'}],{d:2000,e:'ease-in-out',i:Infinity});
+}});
+
+def({no:'17',cat:'FLOW',name:'スパイラル',en:'Spiral Drain',lead:'渦巻きに沿って、文字が中心へ吸い込まれていく。',
+text:'沼にハマる',loop:8000,bg:'#050505',
+use:'<b>「沼る」「ハマる」「抜け出せない」</b>系の言葉に。催眠・ミステリー・中毒性のある商品紹介にも。',
+tips:['渦の巻き数を増やすほど「吸い込まれ感」が強くなります','文字色を外側から内側へグラデーションにすると奥行きが出ます','逆再生（外へ流す）にすると「広がる・拡散」の表現になります'],
+p:`渦巻き（スパイラル）の線に沿って「{T}」がくり返し並び、ゆっくり中心へ吸い込まれていく演出を作ってください。
+・背景：#050505
+・渦巻き：中心(画面中央)から外へ、半径 r = 30 + 13·θ（θはラジアン、0〜6回転分）のアルキメデス螺旋をSVGパスで作る（外側が始点、中心が終点）
+・文字：パスに沿って textPath で「{T}」＋「・」をパスの全長が埋まるまでくり返す（パスの長さ÷1組の長さ＋2回）。Dela Gothic One、44px
+・文字色：外側 #F5C518 → 中心 #FF4B3E のグラデーション（SVGの radialGradient を fill に指定）
+・流れ：startOffset を毎秒90pxずつ増やして中心へ流し、1組分で戻して継ぎ目なくループ
+・全体を 8秒で1周、時計回りにゆっくり回転させる
+・尺：8秒でループ`,
+run(H,t){const svg=H.svg(1600,900);const id='sp'+Math.floor(Math.random()*1e6);
+  const defs=H.sv('defs',{},svg);const g=H.sv('radialGradient',{id:id+'g',cx:800,cy:450,r:520,gradientUnits:'userSpaceOnUse'},defs);H.sv('stop',{offset:'0','stop-color':'#ff4b3e'},g);H.sv('stop',{offset:'1','stop-color':'#f5c518'},g);
+  let d='';const TT=Math.PI*2*6;for(let th=TT;th>=0;th-=.05){const r=30+13*th;d+=(th===TT?'M':'L')+(800+r*Math.cos(th)).toFixed(1)+' '+(450+r*Math.sin(th)).toFixed(1)}
+  const G=H.sv('g',{},svg);G.style.transformOrigin='800px 450px';H.sv('path',{id,d,fill:'none'},G);
+  const tx=H.sv('text',{fill:`url(#${id}g)`,'font-size':44,'font-family':"Dela Gothic One, sans-serif"},G);const tp=H.sv('textPath',{href:'#'+id},tx);const u=H.sv('text',{'font-size':44,'font-family':"Dela Gothic One, sans-serif",opacity:0},svg);u.textContent=t+'・';let U=0;
+  const PL=G.querySelector('path').getTotalLength();tp.textContent=(t+'・').repeat(Math.ceil(PL/Math.max(60,u.getComputedTextLength()||200))+2);
+  H.raf(s=>{if(!U)U=u.getComputedTextLength()||300;tp.setAttribute('startOffset',(((s*90)%U)-U).toFixed(1))});
+  H.a(G,[{transform:'rotate(0deg)'},{transform:'rotate(360deg)'}],{d:8000,e:E.lin,i:Infinity});
+}});
+
+def({no:'18',cat:'FLOW',name:'はためく旗',en:'Waving Flag',lead:'布の旗に書かれた文字が、風を受けてはためく。',
+text:'開幕',loop:4000,bg:'#2f6fc4',
+use:'<b>開幕・大会・お祭り・選挙</b>など旗が似合う場面に。運動会や地域イベントの告知動画にも。',
+tips:['ゆがみの強さ（displacement scale）30前後が布らしさの目安','風の速さはSVGアニメーションの周期で調整。4秒周期だと穏やかな風','旗の色を国旗や企業カラーにすれば、そのまま式典用に'],
+p:`布の旗に「{T}」と書かれていて、風を受けてはためいているように見える演出を作ってください。
+・背景：上 #2F6FC4 → 下 #8EC5FF の空のグラデーション
+・旗：幅900px×高さ480pxの #C8102E の長方形。左端に灰色の旗竿（幅18px、高さ800px）
+・旗の文字：「{T}」、白、Shippori Mincho B1（太さ800）、旗の高さの約55%
+・はためき：旗と文字をまとめて1つのグループにし、SVGフィルター（feTurbulence type=turbulence＋feDisplacementMap scale=34）をかける。feTurbulence の baseFrequency を「0.004 0.012 → 0.008 0.02 → 0.004 0.012」と4秒周期で変化させ続ける（SVGの <animate> を使用）
+・さらにグループ全体に skewY を 0 → −2° → 0 で4秒周期の揺れを足す
+・光沢：旗の上に、白の半透明の帯（幅200px）が左から右へ4秒周期で通り過ぎ、布の陰影に見えるようにする
+・尺：4秒でループ`,
+run(H,t){const svg=H.svg(1600,900);const id='fl'+Math.floor(Math.random()*1e6);
+  const defs=H.sv('defs',{},svg);const f=H.sv('filter',{id,x:'-10%',y:'-10%',width:'120%',height:'120%'},defs);
+  const tb=H.sv('feTurbulence',{type:'turbulence',baseFrequency:'0.004 0.012',numOctaves:2,result:'n'},f);H.sv('animate',{attributeName:'baseFrequency',dur:'4s',values:'0.004 0.012;0.008 0.02;0.004 0.012',repeatCount:'indefinite'},tb);
+  H.sv('feDisplacementMap',{in:'SourceGraphic',in2:'n',scale:34},f);
+  const sky=H.sv('linearGradient',{id:id+'s',x1:0,y1:0,x2:0,y2:1},defs);H.sv('stop',{offset:0,'stop-color':'#2f6fc4'},sky);H.sv('stop',{offset:1,'stop-color':'#8ec5ff'},sky);
+  H.sv('rect',{width:1600,height:900,fill:`url(#${id}s)`},svg);H.sv('rect',{x:322,y:80,width:18,height:800,fill:'#9aa0a8',rx:9},svg);
+  const g=H.sv('g',{filter:`url(#${id})`},svg);g.style.transformOrigin='340px 450px';
+  H.sv('rect',{x:340,y:150,width:900,height:480,fill:'#c8102e'},g);
+  const tx=H.sv('text',{x:790,y:400,fill:'#fff','font-size':Math.min(264,820/Math.max(1,[...t].length)),'font-family':"Shippori Mincho B1, serif",'font-weight':800,'text-anchor':'middle','dominant-baseline':'middle'},g);tx.textContent=t;
+  const sh=H.sv('rect',{x:340,y:150,width:200,height:480,fill:'#fff',opacity:.16},g);
+  H.a(sh,[{transform:'translateX(-200px)'},{transform:'translateX(900px)'}],{d:4000,e:'ease-in-out',i:Infinity});
+  H.a(g,[{transform:'skewY(0deg)'},{transform:'skewY(-2deg)'},{transform:'skewY(0deg)'}],{d:4000,e:'ease-in-out',i:Infinity});
+}});
+
+def({no:'19',cat:'FLOW',name:'エスカレーター',en:'Diagonal Cascade',lead:'階段状に並んだ文字の段が、斜め上へ流れ続ける。',
+text:'まだまだ上がる',loop:5600,bg:'#141414',
+use:'<b>上昇・成長・ランクアップ</b>の表現に。売上報告、レベルアップ、「右肩上がり」を視覚化したいときに。',
+tips:['段ごとに右へずらす量（80px）を大きくすると急な階段に','流れを逆（下へ）にすると「下落」「転落」の表現に','左端と右端をフェードさせると、無限に続いて見えます'],
+p:`「{T}」を階段状に何段も並べ、全体が斜め上へ流れ続ける演出を作ってください。
+・背景：#141414。フォント：Dela Gothic One、1段の高さ110px（文字96px）
+・段の並び：「{T}」を12段、縦に並べる。各段は1つ上の段より右へ80pxずらす（右下がりの階段）
+・段の色を3種類でくり返す：#F5C518 の塗り → 白の塗り → 塗りなしの白フチ3px
+・流れ：段の並び全体を、1.4秒で「上へ330px・左へ240px」（3段分）等速で動かし、無限にくり返す（3段ごとに色が一巡するので継ぎ目が出ない）
+・画面の上下端に背景色へのグラデーション（高さ160px）をかけ、段が闇から現れて闇へ消えるようにする
+・尺：5.6秒でループ`,
+run(H,t){const G=H.abs({left:'120px',top:'-200px',display:'flex',flexDirection:'column'});
+  const sty=[{color:'#f5c518'},{color:'#fff'},{color:'transparent',WebkitTextStroke:'3px #fff'}];
+  for(let i=0;i<15;i++)H.el('div',Object.assign({height:'110px',fontFamily:F.heavy,fontSize:'96px',lineHeight:'110px',whiteSpace:'nowrap',marginLeft:i*80+'px'},sty[i%3]),G,t);
+  H.a(G,[{transform:'translate(0,0)'},{transform:'translate(-240px,-330px)'}],{d:1400,e:E.lin,i:Infinity});
+  H.abs({left:0,right:0,top:0,height:'160px',background:'linear-gradient(#141414,rgba(20,20,20,0))'});H.abs({left:0,right:0,bottom:0,height:'160px',background:'linear-gradient(rgba(20,20,20,0),#141414)'});
+}});
+
+def({no:'20',cat:'FLOW',name:'ニュースティッカー',en:'News Ticker',lead:'速報ラベル＋見出し＋流れる字幕。報道番組の画面下。',
+text:'新サービスが本日スタート',loop:8000,bg:'#22262e',
+use:'<b>お知らせ・速報風の告知・ニュース解説</b>に。真面目な内容を「ニュースっぽく」見せると信頼感が出ます。',
+tips:['ラベルの「速報」を「LIVE」「NEWS」「独占」に変えるだけで性格が変わります','見出しは止め、下段だけ流すのが読みやすさのコツ','時計を右上に置くと一気に生放送っぽくなります'],
+p:`報道番組の画面下にあるような「速報テロップ」を作ってください。
+・背景：#22262E（映像の代わり）。右上に白い時計の表示「LIVE 20:00」（JetBrains Mono、赤い●が1秒ごとに点滅）
+・下段の構成（画面下から）：
+　① 流れる帯：高さ64px、#0B1F44（紺）。白文字で「{T}」＋「　◆　」をくり返し、左へ等速で流す（6秒で1組分）
+　② 見出しの帯：高さ120px、白。左端に #C8102E の四角いラベル「速報」（白文字・Noto Sans JP 900）、右に「{T}」を #111・Noto Sans JP 900・64pxで表示
+・登場：0.0〜0.5秒で見出しの帯が左から伸びる（scaleX 0→1、左基準）。0.3秒後にラベル、0.5秒後に見出し文字が下から0.4秒でせり上がる
+・退場：7.3秒で帯全体を下へ0.5秒でスライドアウト
+・尺：8秒でループ`,
+run(H,t){const clk=H.abs({right:'60px',top:'50px',fontFamily:F.mono,fontSize:'34px',color:'#fff',display:'flex',alignItems:'center',gap:'14px'});const dot=H.el('span',{width:'18px',height:'18px',borderRadius:'50%',background:'#ff3b30'},clk);H.el('span',{},clk,'LIVE 20:00');
+  H.a(dot,[{opacity:1},{opacity:.15}],{d:1000,e:'steps(2)',i:Infinity});
+  const W=H.abs({left:'60px',right:'60px',bottom:'60px'});
+  const head=H.el('div',{height:'120px',background:'#fff',display:'flex',alignItems:'center',gap:'28px',overflow:'hidden'},W);
+  const lab=H.el('div',{background:'#c8102e',color:'#fff',fontFamily:F.sans,fontWeight:'900',fontSize:'52px',height:'120px',display:'flex',alignItems:'center',padding:'0 34px'},head,'速報');
+  const hm=H.el('div',{overflow:'hidden',height:'90px'},head);const ht=H.el('div',{color:'#111',fontFamily:F.sans,fontWeight:'900',fontSize:'64px',lineHeight:'90px',whiteSpace:'nowrap'},hm,t);
+  const tk=H.el('div',{height:'64px',background:'#0b1f44',overflow:'hidden',display:'flex',alignItems:'center'},W);
+  const tr=track(H,tk,t+'　◆　',8,{color:'#fff',fontFamily:F.sans,fontWeight:'700',fontSize:'34px'});
+  H.a(head,[{transform:'scaleX(0)',transformOrigin:'0 50%'},{transform:'scaleX(1)',transformOrigin:'0 50%'}],{d:500});
+  H.a(lab,[{opacity:0},{opacity:1}],{d:200,dl:300});H.a(ht,[{transform:'translateY(100%)'},{transform:'translateY(0)'}],{d:400,dl:500});
+  H.a(tk,[{opacity:0},{opacity:1}],{d:300,dl:600});H.a(tr,[{transform:'translateX(0)'},{transform:'translateX(-25%)'}],{d:6000,e:E.lin,i:Infinity});
+  H.a(W,[{transform:'translateY(0)'},{transform:'translateY(320px)'}],{d:500,dl:7300,e:E.in,f:'forwards'});
+}});
+
+/* ===== DEPTH 21-30 ===== */
+const TEAL='#2ee6c9';
+
+def({no:'21',cat:'DEPTH',name:'テキストトンネル',en:'Text Tunnel',lead:'奥から次々に文字が飛んでくる、終わらないトンネル。',
+text:'未来へ',loop:4000,bg:'#031413',
+use:'<b>オープニング・タイトルコール・ワープ</b>の表現に。「〇〇の世界へ」「次のステージへ」など、入り込む系の言葉に。',
+tips:['層の数を8→14に増やすと密度が上がって吸い込まれ感が強くなります','奥ほど暗く、手前ほど明るくするのが遠近感のコツ','中心を少し上にずらすと「上り坂を進む」感覚になります'],
+p:`画面の奥から「{T}」と四角い枠が次々に飛んできて、カメラの横を通り過ぎていく「文字のトンネル」を作ってください。
+・背景：#031413
+・1つの層：幅1400px×高さ780pxの四角い枠（線幅6px）と、その中央の「{T}」（Dela Gothic One、180px）のセット
+・層の色は交互に #2EE6C9 と #FFFFFF。文字は #2EE6C9 の層にだけ入れ、白の層は枠だけにする（重なっても読みやすくするため）
+・各層の動き（4秒・無限ループ・等速）：scale 0.05／透明 → scale 0.3 で不透明 → scale 1.6・不透明度0.8 → scale 5／透明（キーフレーム 0 / 15 / 60 / 100%）。イージングは cubic-bezier(.55,0,1,.45)（奥はゆっくり、手前で一気に）
+・層は8枚。それぞれ 0.5秒ずつ再生開始をずらし、最初から途切れずに奥から湧いてくるようにする（animation-delay をマイナス値に）
+・尺：4秒で完全ループ`,
+run(H,t){for(let i=0;i<8;i++){const c=i%2?'#fff':TEAL;const L=H.abs({left:'100px',top:'60px',width:'1400px',height:'780px',border:`6px solid ${c}`,display:'flex',alignItems:'center',justifyContent:'center',boxSizing:'border-box'});
+    if(i%2===0)BIG(H,t,{color:c,fontSize:fs(t,180,1000)+'px'},L);
+    H.a(L,[{transform:'scale(.05)',opacity:0,offset:0},{transform:'scale(.3)',opacity:1,offset:.15},{transform:'scale(1.6)',opacity:.8,offset:.6},{transform:'scale(5)',opacity:0,offset:1}],{d:4000,e:'cubic-bezier(.55,0,1,.45)',i:Infinity,dl:-i*500,f:'none'})}
+}});
+
+def({no:'22',cat:'DEPTH',name:'回転シリンダー',en:'Cylinder Spin',lead:'円柱の表面に貼った文字が、3段で逆回転する。',
+text:'回る世界',loop:8000,bg:'#081a1c',
+use:'<b>ループ素材・場面のつなぎ・音楽系の背景</b>に。グルグル回ることで「繰り返し」「循環」「時間」を表現できます。',
+tips:['段ごとに回転方向を変えるのが単調にしないコツ','裏側を見せない（backface-visibility: hidden）とスッキリ、見せると透明な筒のように','傾き（rotateX）を−12°にすると、上から覗き込む構図になります'],
+p:`「{T}」の文字を円柱の表面にぐるりと貼り付け、その円柱を3段重ねて段ごとに逆方向へ回転させる演出を作ってください。
+・背景：#081A1C。CSS 3D（perspective: 1600px、transform-style: preserve-3d）を使う
+・1段の作り方：「{T}」を1文字ずつに分け、円周を12等分した位置に置く（文字が12個に満たなければくり返す）。各文字は rotateY(30°×番号) translateZ(520px)。文字は Dela Gothic One、140px
+・裏側に回った文字は見えないようにする（backface-visibility: hidden）
+・3段を縦に並べ（段の間隔170px）、色を上から #2EE6C9 → 白 → #2EE6C9
+・回転：1段目と3段目は8秒で rotateY 0→−360°、2段目は8秒で 0→+360°（linear・無限）
+・円柱全体を rotateX(−12°) で少し上から見下ろす角度にする
+・尺：8秒で完全ループ`,
+run(H,t){const P=H.box({perspective:'1600px'});const R=H.el('div',{position:'relative',width:'0',height:'0',transformStyle:'preserve-3d',transform:'rotateX(-12deg)'},P);
+  let s=[...t];while(s.length<12)s=s.concat([...t]);s=s.slice(0,12);
+  [-170,0,170].forEach((y,ri)=>{const ring=H.el('div',{position:'absolute',left:'0',top:y+'px',transformStyle:'preserve-3d'},R);
+    s.forEach((ch,i)=>H.abs({left:'-70px',top:'-70px',width:'140px',height:'140px',textAlign:'center',lineHeight:'140px',fontFamily:F.heavy,fontSize:'130px',color:ri===1?'#fff':TEAL,transform:`rotateY(${i*30}deg) translateZ(520px)`,backfaceVisibility:'hidden'},ring,ch));
+    const d=ri===1?360:-360;H.a(ring,[{transform:'rotateY(0deg)'},{transform:`rotateY(${d}deg)`}],{d:8000,e:E.lin,i:Infinity})});
+}});
+
+def({no:'23',cat:'DEPTH',name:'キューブローテート',en:'Cube Rotate',lead:'立方体がカチッと回るたびに、面の言葉が切り替わる。',
+text:'見る 知る 試す 続ける',multi:true,loop:4000,bg:'#0a0d10',
+use:'<b>手順・ステップ・4つのポイント</b>の紹介に。「〇〇の4ステップ」の章扉や、サービスの特徴紹介に。',
+tips:['回転0.4秒＋静止0.6秒のリズムが「カチッ」と気持ちいい比率','面ごとに色を変えると、どの面か一目で分かります','縦回転（rotateX）にするとスロットのような印象に'],
+p:`立方体が90°ずつ「カチッ」と回転し、そのたびに正面の言葉が切り替わる演出を作ってください。
+・背景：#0A0D10。CSS 3D（perspective: 2000px、transform-style: preserve-3d）
+・立方体：1辺500px。前・右・後・左の4面に「{T}」をスペースで区切った語を1語ずつ配置
+・面のデザイン：1・3面目は背景 #2EE6C9・文字 #0A0D10、2・4面目は背景 #10282A・文字 #2EE6C9。文字は Dela Gothic One、面に収まる最大サイズ
+・回転：0.6秒止まる → 0.4秒で rotateY −90°（イージング cubic-bezier(.87,0,.13,1)）をくり返し、4回で1周
+・回転中だけ立方体を scale 0.9 に縮めて、止まると1に戻す（重さが出る）
+・立方体全体を rotateX(−18°) で少し上から見る角度に
+・尺：4秒で完全ループ`,
+run(H,t,w){w=w.slice(0,4);while(w.length<4)w.push(w[w.length-1]||t);const P=H.box({perspective:'2000px'});
+  const C=H.el('div',{position:'relative',width:'500px',height:'500px',transformStyle:'preserve-3d'},P);
+  w.forEach((s,i)=>{const alt=i%2;H.abs({inset:'0',display:'flex',alignItems:'center',justifyContent:'center',background:alt?'#10282a':TEAL,color:alt?TEAL:'#0a0d10',fontFamily:F.heavy,fontSize:fs(s,200,430)+'px',transform:`rotateY(${i*90}deg) translateZ(250px)`,backfaceVisibility:'hidden'},C,s)});
+  const k=[];for(let i=0;i<4;i++){k.push({transform:`rotateX(-18deg) rotateY(${-90*i}deg) scale(1)`,offset:i/4},{transform:`rotateX(-18deg) rotateY(${-90*i}deg) scale(1)`,offset:i/4+.15},{transform:`rotateX(-18deg) rotateY(${-90*i-45}deg) scale(.9)`,offset:i/4+.2})}
+  k.push({transform:'rotateX(-18deg) rotateY(-360deg) scale(1)',offset:1});
+  H.a(C,k,{d:4000,e:E.lin,i:Infinity});
+}});
+
+def({no:'24',cat:'DEPTH',name:'押し出し3D',en:'Extrude Swing',lead:'厚みのある立体文字が、首振りして側面を見せる。',
+text:'立体感',loop:4000,bg:'#0c1a1b',
+use:'<b>ロゴ・タイトル・チャンネル名</b>に。ゲーム、おもちゃ、ポップな商品紹介。「厚み」があるだけで高級感と存在感が出ます。',
+tips:['層の数24で厚み約30px。増やすほど分厚い看板に','側面の色は正面の色を暗くしたものにすると自然な立体に','振れ幅±25°以上にすると、文字の厚みが不自然に見えるので注意'],
+p:`厚み（奥行き）のある立体文字「{T}」が、左右にゆっくり首を振って側面を見せる演出を作ってください。
+・背景：#0C1A1B
+・文字：Dela Gothic One、画面幅の約60%、正面の色 #2EE6C9
+・厚み：text-shadow を24層重ねて押し出す。n層目は x方向 −sin(角度)×1.3×n px、y方向 1.2×n px の位置に、#0F6E63 から #06302B へ徐々に暗くなる色で置く（ぼかし0）
+・首振り：角度 = 25° × sin(時間×2π/4秒)。毎フレーム、文字に perspective(1200px) rotateY(角度) をかけ、同時に上の text-shadow の x方向も角度に合わせて計算し直す（側面が回転方向に見える）
+・最後の層の下に、ぼかし30pxの黒い影を落とす
+・尺：4秒でループ`,
+run(H,t){const B=H.box({perspective:'1200px'});const el=BIG(H,t,{color:TEAL,fontSize:fs(t,240,1000)+'px'},B);
+  const cols=[];for(let i=1;i<=24;i++){const k=i/24;const r=Math.round(15-9*k),g=Math.round(110-62*k),b=Math.round(99-56*k);cols.push(`rgb(${r},${g},${b})`)}
+  H.raf(s=>{const a=25*Math.sin(s*Math.PI*2/4);const dx=-Math.sin(a*Math.PI/180)*1.3*3;const sh=cols.map((c,i)=>`${(dx*(i+1)/3).toFixed(1)}px ${(1.2*(i+1)).toFixed(1)}px 0 ${c}`);sh.push(`${(dx*8).toFixed(1)}px 40px 30px rgba(0,0,0,.7)`);
+    el.style.textShadow=sh.join(',');el.style.transform=`rotateY(${a.toFixed(2)}deg)`});
+}});
+
+def({no:'25',cat:'DEPTH',name:'遠近クロール',en:'Perspective Crawl',lead:'床に書かれた文章が、遠くの地平線へ流れていく。',
+text:'第一章 すべては ここから 始まった',multi:true,loop:12000,bg:'#020608',
+use:'<b>あらすじ・前回までのあらすじ・プロローグ</b>に。シリーズ動画の冒頭や、プロジェクトの経緯説明に。',
+tips:['傾き（rotateX）58°が「床」に見える目安。大きくするほど寝かせた感じに','行間を広くとると、遠くでも読みやすさが保てます','奥へのフェードを強めると、宇宙空間のような余韻が出ます'],
+p:`床に書かれた文章が、画面の手前から奥の地平線へ向かって流れていく「遠近クロール」を作ってください。
+・背景：#020608。星（白い点、直径1〜3px）を200個ランダムに散らし、ゆっくり瞬かせる
+・文章：「{T}」をスペースで区切り、1語＝1行として中央揃えで並べる。1行目だけ見出しとして大きく（120px）、残りは84px。Noto Sans JP 900、色 #2EE6C9、行間1.6
+・遠近：文章のブロックを幅1100pxにし、親要素に perspective: 500px、ブロックに rotateX(58°)（下端を手前に倒す）
+・流れ：ブロックを translateY 900px → −1600px へ12秒で等速移動させ、手前から奥へ流す
+・奥へ行くほど消えるよう、画面上部40%に背景色へのグラデーションのマスクをかける
+・尺：12秒でループ`,
+run(H,t,w){if(!w.length)w=[t];const c=H.canvas();const x=c.getContext('2d');const st=[...Array(200)].map(()=>[rnd(0,1600),rnd(0,900),rnd(.5,1.5),rnd(0,6)]);
+  H.raf(s=>{x.clearRect(0,0,1600,900);st.forEach(p=>{x.globalAlpha=.4+.6*Math.abs(Math.sin(s+p[3]));x.fillStyle='#fff';x.beginPath();x.arc(p[0],p[1],p[2],0,7);x.fill()})});
+  const P=H.abs({inset:'0',perspective:'500px',overflow:'hidden',WebkitMaskImage:'linear-gradient(transparent 0%,#000 42%)',maskImage:'linear-gradient(transparent 0%,#000 42%)'});
+  const blk=H.abs({left:'250px',width:'1100px',top:'0',textAlign:'center',fontFamily:F.sans,fontWeight:'900',color:TEAL,lineHeight:'1.6',transformOrigin:'50% 100%'},P);
+  w.forEach((s,i)=>H.el('div',{fontSize:(i?84:120)+'px'},blk,s));
+  H.a(blk,[{transform:'rotateX(58deg) translateY(900px)'},{transform:'rotateX(58deg) translateY(-1600px)'}],{d:12000,e:E.lin});
+}});
+
+def({no:'26',cat:'DEPTH',name:'リングオービット',en:'Orbit Ring',lead:'中央の言葉のまわりを、文字の輪が衛星のように公転。',
+text:'GLOBAL',loop:6000,bg:'#05121a',
+use:'<b>グローバル・宇宙・テクノロジー</b>系のタイトルに。会社紹介、カンファレンス、IT系のオープニングに。',
+tips:['手前の文字は大きく明るく、奥の文字は小さく暗くするのが立体感の正体','輪の傾き（縦のつぶれ率0.28）を大きくすると真横から見た土星のように','2本の輪を逆回転させると原子モデルのような表現に'],
+p:`中央の「{T}」のまわりを、文字の輪が斜めに傾いた軌道で公転する演出を作ってください。
+・背景：#05121A。中央に「{T}」（Dela Gothic One、画面幅の45%、白）
+・輪の文字：「{T} ・ 」を3回くり返した文字列を1文字ずつ分け、円周上に均等に並べる
+・軌道の計算（毎フレーム）：角度θの文字は x = 中心 + 620·cos θ、y = 中心 + 620·0.28·sin θ（横長の楕円）。θは6秒で1周増やす
+・奥行き：sin θ が正（手前側）のときは scale 1.25・不透明度1・z-index を中央の文字より上、負（奥側）のときは scale 0.6・不透明度0.35・z-index を下にする（sin θ に応じて連続的に変化）
+・輪の文字色 #2EE6C9、Dela Gothic One、48px
+・中央の文字には、ぼかし40pxの #2EE6C9 の光を不透明度0.35でにじませる
+・尺：6秒で完全ループ`,
+run(H,t){const ch=[...(t+' ・ ').repeat(3)];const n=ch.length;const ctr=H.box({zIndex:'50'});BIG(H,t,{color:'#fff',fontSize:fs(t,240,720)+'px',textShadow:'0 0 40px rgba(46,230,201,.35)'},ctr);
+  const els=ch.map(c=>H.abs({left:'0',top:'0',fontFamily:F.heavy,fontSize:'48px',color:TEAL,whiteSpace:'pre'},null,c));
+  H.raf(s=>{const b=s/6*Math.PI*2;els.forEach((e,i)=>{const th=b+i/n*Math.PI*2;const z=Math.sin(th);const x=800+620*Math.cos(th),y=450+620*.28*z;const sc=.6+(z+1)/2*.65;
+    e.style.transform=`translate(${x-20}px,${y-30}px) scale(${sc.toFixed(3)})`;e.style.opacity=(.35+(z+1)/2*.65).toFixed(2);e.style.zIndex=z>0?100:1})});
+}});
+
+def({no:'27',cat:'DEPTH',name:'Zフライスルー',en:'Z Fly-through',lead:'奥に並んだ言葉の間を、カメラが前進して突き抜ける。',
+text:'過去 現在 未来',multi:true,loop:6000,bg:'#020a0b',
+use:'<b>時系列・ストーリー・ロードマップ</b>に。「昔→今→これから」のように、順番に進む話の導入に。',
+tips:['言葉の間隔（1200px）を詰めると速く、広げるとゆったり進みます','各言葉に枠を付けると「ゲートをくぐる」感覚が強まります','最後の言葉の手前でカメラを止めると、そこが結論として残ります'],
+p:`奥行き方向に並んだ言葉の間を、カメラがまっすぐ前進して1語ずつ突き抜けていく演出を作ってください。
+・背景：#020A0B。CSS 3D（perspective: 1000px、transform-style: preserve-3d）
+・言葉：「{T}」をスペースで区切り、1語目を translateZ(−800px)、2語目を −2000px、3語目を −3200px…と1200pxずつ奥に置く
+・各語のデザイン：Dela Gothic One、260px。色は #2EE6C9 と白を交互に。それぞれ幅1300px×高さ620pxの細い枠（線幅4px、同じ色、不透明度0.5）で囲む
+・カメラ移動：すべての語を入れた親要素を translateZ 0 → (語数×1200 + 400)px へ、6秒かけて前進させる。イージング cubic-bezier(.65,0,.35,1)
+・語がカメラを通り過ぎる直前（距離300px以内）で不透明度を0にして、ちらつきを防ぐ
+・尺：6秒でループ`,
+run(H,t,w){if(!w.length)w=[t];const P=H.box({perspective:'1000px'});const G=H.el('div',{position:'relative',width:'0',height:'0',transformStyle:'preserve-3d'},P);
+  const items=w.map((s,i)=>{const c=i%2?'#fff':TEAL;const z=-800-i*1200;const it=H.abs({left:'-650px',top:'-310px',width:'1300px',height:'620px',display:'flex',alignItems:'center',justifyContent:'center',transform:`translateZ(${z}px)`,border:`4px solid ${c}80`,boxSizing:'border-box'},G);
+    BIG(H,s,{color:c,fontSize:fs(s,260,1150)+'px'},it);return [it,z]});
+  const total=w.length*1200+400;
+  H.raf(s=>{const p=Math.min(1,s/6);const e=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;const cz=e*total;G.style.transform=`translateZ(${cz}px)`;
+    items.forEach(([it,z])=>{const dist=-(z+cz);it.style.opacity=dist<300?Math.max(0,dist/300):1})});
+}});
+
+def({no:'28',cat:'DEPTH',name:'三つ折りパンフ',en:'Tri-fold Open',lead:'折りたたまれた紙がパタン、パタンと開いて文字が現れる。',
+text:'OPEN 新装開店',loop:4200,bg:'#0d1416',
+use:'<b>オープン告知・招待状・中身の公開</b>に。「開ける」動きなので、新商品のお披露目やプレゼント企画に合います。',
+tips:['開く途中のパネルを暗くする（brightness 0.6）と紙の陰影が出ます','開く順番を左→右→下と増やせば地図のような折り方に','開き切った瞬間に小さく scale 1.03 で弾ませると気持ちいい'],
+p:`3枚に折りたたまれたパンフレットが左右に開き、1枚の横長パネルに書かれた「{T}」が現れる演出を作ってください。
+・背景：#0D1416。CSS 3D（perspective: 1800px）
+・パネル全体：幅1350px×高さ380px、背景 #2EE6C9、文字「{T}」#0A0D10、Dela Gothic One、パネル内で最大サイズ
+・パネルを横に3等分（各450px）。各パートは overflow: hidden で、中の文字はパネル全体の位置からずらして表示し、並べると1枚の絵としてつながるようにする
+・開き方：最初は左右のパートが中央パートの上に折り重なった状態（左は rotateY(180°)・回転軸は右端、右は rotateY(−180°)・回転軸は左端）
+・0.3〜0.9秒：左パートが rotateY 180°→0° で開く。0.7〜1.3秒：右パートが −180°→0° で開く。イージング cubic-bezier(.65,0,.35,1)
+・開いている途中は brightness 0.55 → 1 で陰影をつける。裏側は #10282A で塗る
+・開き切ったら scale 1 → 1.03 → 1 で軽く弾ませ、2.9秒から逆の順番で閉じる
+・尺：4.2秒でループ`,
+run(H,t){const P=H.box({perspective:'1800px'});const W=H.el('div',{position:'relative',width:'1350px',height:'380px',transformStyle:'preserve-3d'},P);
+  const mk=(i)=>{const p=H.abs({left:i*450+'px',top:'0',width:'450px',height:'380px',transformStyle:'preserve-3d'},W);
+    const f=H.abs({inset:'0',overflow:'hidden',background:TEAL,backfaceVisibility:'hidden'},p);
+    H.abs({left:-i*450+'px',top:'0',width:'1350px',height:'380px',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:F.heavy,fontSize:fs(t,250,1250)+'px',color:'#0a0d10',whiteSpace:'nowrap'},f,t);
+    H.abs({inset:'0',background:'#10282a',transform:'rotateY(180deg)',backfaceVisibility:'hidden'},p);return p};
+  mk(1);const L=mk(0),R=mk(2);L.style.transformOrigin='100% 50%';R.style.transformOrigin='0 50%';
+  const ease=E.io;const open=(el,from,dl)=>{H.a(el,[{transform:`rotateY(${from}deg)`,filter:'brightness(.55)'},{transform:'rotateY(0deg)',filter:'brightness(1)'}],{d:600,dl,e:'cubic-bezier(.65,0,.35,1)'});
+    H.a(el,[{transform:'rotateY(0deg)',filter:'brightness(1)'},{transform:`rotateY(${from}deg)`,filter:'brightness(.55)'}],{d:600,dl:dl===300?3500:2900,e:'cubic-bezier(.65,0,.35,1)',f:'forwards'})};
+  open(L,180,300);open(R,-180,700);
+  H.a(W,[{transform:'scale(1)'},{transform:'scale(1.03)'},{transform:'scale(1)'}],{d:400,dl:1300,f:'none'});
+}});
+
+def({no:'29',cat:'DEPTH',name:'パララックス',en:'Parallax Layers',lead:'遠・中・近の3層が違う速さで流れ、空間が生まれる。',
+text:'旅に出よう',loop:6000,bg:'#071416',
+use:'<b>旅・移動・ドライブ・電車</b>の動画に。車窓のように流れるので、移動中のVlogや旅行記のタイトルにぴったり。',
+tips:['奥の層ほど「小さく・遅く・ぼかす・暗く」の4点セットで距離が出ます','手前の層をフチ文字にすると、奥が透けて見えて奥行きが増します','流れを止めて手前の層だけ止める、という緩急も効果的'],
+p:`「{T}」の文字で作った3つの層（遠景・中景・近景）が、それぞれ違う速さで横に流れて奥行きが生まれる演出を作ってください。
+・背景：#071416
+・遠景：「{T}」を小さく（60px）、#2EE6C9・不透明度0.35・ぼかし3px で画面上部に3行。6秒で文字2個分、左へ等速
+・中景：中サイズ（150px）、白、ぼかしなし。画面中央に1行。6秒で文字2個分、左へ等速（文字が大きい分、遠景より速く見える）
+・近景：巨大（380px）、塗りなし・#2EE6C9の5pxフチ。画面下部にはみ出すように1行。6秒で文字2個分、左へ等速（最も速く見える）
+・各層は「{T}」＋全角スペースを8回くり返し、継ぎ目のないループにする。フォントはすべて Dela Gothic One
+・尺：6秒で完全ループ`,
+run(H,t){const lay=(top,size,css,n)=>{const r=H.abs({left:'0',top:top+'px',whiteSpace:'nowrap'});const tr=track(H,r,t+'　',8,Object.assign({fontFamily:F.heavy,fontSize:size+'px',lineHeight:'1.1'},css));H.a(tr,[{transform:'translateX(0)'},{transform:'translateX(-25%)'}],{d:6000,e:E.lin,i:Infinity})};
+  [40,120,200].forEach((y,i)=>{const r=H.abs({left:-i*140+'px',top:y+'px'});const tr=track(H,r,t+'　',8,{fontFamily:F.heavy,fontSize:'60px',color:TEAL,opacity:'.35',filter:'blur(3px)'});H.a(tr,[{transform:'translateX(0)'},{transform:'translateX(-25%)'}],{d:6000,e:E.lin,i:Infinity})});
+  lay(330,150,{color:'#fff'});lay(560,380,{color:'transparent',WebkitTextStroke:'5px '+TEAL});
+}});
+
+def({no:'30',cat:'DEPTH',name:'フリップカード',en:'Flip Card',lead:'カードがくるっと裏返り、表と裏で言葉が変わる。',
+text:'Before After',multi:true,loop:3600,bg:'#0a1112',
+use:'<b>ビフォーアフター・問題と答え・表と裏</b>に。クイズの正解発表、「実は…」の種明かしにも使えます。',
+tips:['回転に少し行き過ぎ（overshoot）を入れると、カードの重さが出ます','裏返る瞬間にカードを少し持ち上げる（scale 1.1）と立体感アップ','横回転（rotateY）は「切り替え」、縦回転（rotateX）は「めくる」印象'],
+p:`1枚のカードがくるっと裏返り、表面と裏面で違う言葉が見える演出を作ってください。
+・背景：#0A1112。CSS 3D（perspective: 1800px）
+・カード：幅1000px×高さ540px、角丸28px、影 0 40px 80px rgba(0,0,0,.6)
+・表面：背景 #18282A、文字は「{T}」の1語目（白、Dela Gothic One）。左上に小さく「FRONT」（JetBrains Mono、#2EE6C9）
+・裏面：背景 #2EE6C9、文字は2語目（#0A1112、Dela Gothic One）。左上に小さく「BACK」。rotateY(180°) で配置し、backface-visibility: hidden
+・0.8秒：0.9秒かけて rotateY 0 → 180°。キーフレームで 0% → 60%:190° → 80%:175° → 100%:180° と行き過ぎて戻る。回転の中盤だけ scale 1.1 に持ち上げる
+・2.6秒：0.9秒かけて 180° → 360° で表に戻る（同じく行き過ぎあり）
+・尺：3.6秒でループ`,
+run(H,t,w){const a=w[0]||t,b=w[1]||t;const P=H.box({perspective:'1800px'});const C=H.el('div',{position:'relative',width:'1000px',height:'540px',transformStyle:'preserve-3d'},P);
+  const face=(s,bg,fg,lab,back)=>{const f=H.abs({inset:'0',borderRadius:'28px',background:bg,display:'flex',alignItems:'center',justifyContent:'center',backfaceVisibility:'hidden',boxShadow:'0 40px 80px rgba(0,0,0,.6)',transform:back?'rotateY(180deg)':'none'},C);
+    H.abs({left:'36px',top:'28px',fontFamily:F.mono,fontSize:'26px',color:back?'#0a1112':TEAL,letterSpacing:'.2em'},f,lab);BIG(H,s,{color:fg,fontSize:fs(s,220,880)+'px'},f)};
+  face(a,'#18282a','#fff','FRONT',0);face(b,TEAL,'#0a1112','BACK',1);
+  const fl=(f,to,dl)=>H.a(C,[{transform:`rotateY(${f}deg) scale(1)`},{transform:`rotateY(${f+95}deg) scale(1.1)`,offset:.35},{transform:`rotateY(${to+10}deg) scale(1.02)`,offset:.6},{transform:`rotateY(${to-5}deg) scale(1)`,offset:.8},{transform:`rotateY(${to}deg) scale(1)`}],{d:900,dl,e:E.soft,f:'forwards'});
+  fl(0,180,800);H.wait(2600,()=>fl(180,360,0));
+}});
+
+/* ===== SWITCH 31-40 ===== */
+const VIO='#a78bfa';
+
+def({no:'31',cat:'SWITCH',name:'フラップボード',en:'Split-flap Board',lead:'駅の発車標のように、パタパタと文字がめくれて揃う。',
+text:'東京行き',loop:4200,bg:'#121016',
+use:'<b>行き先・目的地・発表</b>に。旅行動画のタイトル、「次の目的地は…」、空港・駅が舞台の動画に。',
+tips:['めくれる回数を文字ごとに増やす（左から順に揃う）のが本物らしさのコツ','パタパタ音の効果音を1枚ごとに鳴らすと臨場感が段違い','板の上下で色を少し変える（上が明るい）と立体に見えます'],
+p:`駅や空港の「パタパタ式発車標」のように、各文字の板がめくれながらランダムな文字を経て「{T}」に揃う演出を作ってください。
+・背景：#121016
+・文字板：1文字ごとに幅180px×高さ240pxの板。背景は上半分 #2A2632、下半分 #221F29、中央に横一本の黒い切れ目（2px）。角丸10px。板どうしの間隔14px
+・文字：白、Noto Sans JP 900、170px
+・めくれ方：板の上半分がパタンと下へ倒れる動き（rotateX 0 → −90°、回転軸は板の中央、0.08秒）を1回とし、そのたびに文字を「アイウエオ…0〜9」からランダムに入れ替える
+・左から n 番目の板は 8 + n×3 回めくれてから正しい文字で止まる（左から順に揃っていく）
+・全部揃ったら、板全体の下に #A78BFA の細い線（高さ6px）が左から右へ0.4秒で伸びる
+・3.6秒で全体をフェードアウト、尺4.2秒でループ`,
+run(H,t){const B=H.box({gap:'14px'});const cs=[...t];const n=cs.length;const W=Math.min(180,1400/n-14),Hh=W*4/3;
+  const boards=cs.map(()=>{const b=H.el('div',{position:'relative',width:W+'px',height:Hh+'px',borderRadius:'10px',overflow:'hidden',background:'linear-gradient(#2a2632 50%,#221f29 50%)',perspective:'600px'},B);
+    const ch=H.abs({inset:'0',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:F.sans,fontWeight:'900',fontSize:W*.94+'px',color:'#fff'},b,' ');
+    const flap=H.abs({left:0,right:0,top:0,height:'50%',background:'#2a2632',transformOrigin:'50% 100%',opacity:0},b);
+    H.abs({left:0,right:0,top:'calc(50% - 1px)',height:'2px',background:'#000'},b);return{ch,flap}});
+  boards.forEach((b,i)=>{const flips=8+i*3;for(let k=0;k<=flips;k++)H.wait(k*80,()=>{b.ch.textContent=k===flips?cs[i]:pick([...POOL]);if(k<flips)H.a(b.flap,[{transform:'rotateX(0)',opacity:1},{transform:'rotateX(-90deg)',opacity:1}],{d:80,e:E.in,f:'none'})})});
+  const done=(8+(n-1)*3)*80+100;const ln=H.abs({left:'50%',top:`calc(50% + ${Hh/2+30}px)`,width:Math.min(1400,n*(W+14))+'px',height:'6px',background:VIO,transform:'translateX(-50%) scaleX(0)'});
+  H.a(ln,[{transform:'translateX(-50%) scaleX(0)'},{transform:'translateX(-50%) scaleX(1)'}],{d:400,dl:done});
+  H.a(B,[{opacity:1},{opacity:0}],{d:500,dl:3600,f:'forwards'});H.a(ln,[{opacity:1},{opacity:0}],{d:500,dl:3600,f:'forwards'});
+}});
+
+def({no:'32',cat:'SWITCH',name:'スロットリール',en:'Slot Reel',lead:'リールが高速回転し、左から順にガシャンと止まる。',
+text:'大当たり',loop:4000,bg:'#17121f',
+use:'<b>抽選・ガチャ・運試し・結果発表</b>に。プレゼント企画の当選発表、「今日の運勢」、ランダム企画の決定に。',
+tips:['止まる瞬間に少し行き過ぎて戻る（back）と「ガシャン」感が出ます','回転中は縦方向にモーションブラー（blur）をかけるとスピード感が増します','最後に全リールが揃ったら、背景をフラッシュさせると当たり感が出ます'],
+p:`スロットマシンのリールのように、各文字が縦に高速回転して、左から順に止まって「{T}」が揃う演出を作ってください。
+・背景：#17121F。リール枠：1文字ごとに幅200px×高さ260px、背景 #FFFFFF、角丸16px、内側に上下から影（inset 0 30px 30px −20px rgba(0,0,0,.35)）
+・リールの中身：ランダムな文字を20個縦に並べ、最後に正解の文字を置いた縦長の帯。文字は #17121F、Dela Gothic One、180px
+・回転：帯を translateY で上から下へ流し、最後の正解文字が枠の中央に来た位置で止める
+・止まるタイミング：1つ目のリールは1.2秒、以降0.3秒ずつ遅らせる。イージング cubic-bezier(.34,1.3,.64,1)（少し行き過ぎて戻る）
+・回転中は帯に filter: blur(縦方向に強く見えるよう 4px)、止まったら blur 0
+・全リールが止まった瞬間：枠の外側に #A78BFA の光（box-shadow 0 0 60px）を0.6秒点滅させる
+・尺：4秒でループ`,
+run(H,t){const B=H.box({gap:'18px'});const cs=[...t];const n=cs.length;const W=Math.min(200,1400/n-18),Hh=W*1.3;
+  cs.forEach((c,i)=>{const fr=H.el('div',{position:'relative',width:W+'px',height:Hh+'px',background:'#fff',borderRadius:'16px',overflow:'hidden'},B);
+    const strip=H.abs({left:0,top:0,width:'100%'},fr);const N=20;for(let k=0;k<=N;k++)H.el('div',{height:Hh+'px',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:F.heavy,fontSize:W*.88+'px',color:'#17121f'},strip,k===N?c:pick([...POOL]));
+    H.abs({inset:'0',boxShadow:'inset 0 30px 30px -20px rgba(0,0,0,.35),inset 0 -30px 30px -20px rgba(0,0,0,.35)',pointerEvents:'none'},fr);
+    const d=1200+i*300;H.a(strip,[{transform:'translateY(0)',filter:'blur(4px)'},{transform:`translateY(${-N*Hh}px)`,filter:'blur(0)'}],{d,e:'cubic-bezier(.34,1.3,.64,1)'});
+    H.a(fr,[{boxShadow:'0 0 0 rgba(167,139,250,0)'},{boxShadow:'0 0 60px '+VIO},{boxShadow:'0 0 0 rgba(167,139,250,0)'}],{d:600,dl:1200+(n-1)*300,f:'none'})});
+}});
+
+def({no:'33',cat:'SWITCH',name:'タイプ＆修正',en:'Type & Correct',lead:'打って、消して、打ち直す。本音と建前のタイプライター。',
+text:'がんばります 休みたい',multi:true,loop:6000,bg:'#f2f0f7',
+use:'<b>本音と建前・言い直し・ツッコミ</b>に。1語目を消して2語目に打ち直すだけで、笑いや共感が生まれます。',
+tips:['消す速さは打つ速さの2倍にすると「慌てて消した」感じに','打ち直す前に0.5秒ためると、本音が強調されます','1語目と2語目の色を変えると、言い直しが一目で分かります'],
+p:`タイプライターのように文字を1文字ずつ打ち、一度消してから別の言葉に打ち直す演出を作ってください。
+・背景：#F2F0F7。文字：#1A1625、Noto Sans JP 900、96px。中央左寄せ
+・文字の後ろに、点滅するカーソル（幅8px×高さ100px、#A78BFA、0.5秒ごとに表示・非表示）
+・流れ：
+　① 0.4秒から：「{T}」の1語目を1文字0.12秒で打つ
+　② 打ち終わって0.7秒待つ
+　③ 1文字0.06秒で後ろから全部消す（バックスペース）
+　④ 0.5秒ためる
+　⑤ 2語目を1文字0.12秒で打つ。2語目の文字色は #7C3AED
+　⑥ 打ち終わったら、2語目の下に #A78BFA の下線（高さ10px）を左から0.3秒で引く
+・打つたびに、その文字を translateY 6px → 0 で小さく弾ませる
+・尺：6秒でループ`,
+run(H,t,w){const a=w[0]||t,b=w[1]||t;const B=H.box();const line=H.el('div',{position:'relative',display:'flex',alignItems:'center',fontFamily:F.sans,fontWeight:'900',fontSize:fs(a.length>b.length?a:b,96,1300)+'px',color:'#1a1625',minHeight:'130px'},B);
+  const txt=H.el('span',{display:'inline-flex'},line);const cur=H.el('span',{width:'8px',height:'100px',background:VIO,marginLeft:'8px'},line);H.a(cur,[{opacity:1},{opacity:0}],{d:1000,e:'steps(2,jump-none)',i:Infinity});
+  let tm=400;const type=(s,col)=>{[...s].forEach(ch=>{H.wait(tm,()=>{const c=H.el('span',{display:'inline-block',color:col,whiteSpace:'pre'},txt,ch);H.a(c,[{transform:'translateY(6px)'},{transform:'translateY(0)'}],{d:120})});tm+=120})};
+  type(a,'#1a1625');tm+=700;[...a].forEach(()=>{H.wait(tm,()=>{txt.lastChild&&txt.lastChild.remove()});tm+=60});tm+=500;type(b,'#7c3aed');
+  H.wait(tm,()=>{const u=H.abs({left:'0',bottom:'-6px',height:'10px',background:VIO,width:txt.offsetWidth+'px',transformOrigin:'0 50%'},line);H.a(u,[{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{d:300})});
+}});
+
+def({no:'34',cat:'SWITCH',name:'オドメーター',en:'Odometer Count',lead:'数字の各桁がくるくる回り、目標の数字でピタッと止まる。',
+text:'1,000,000',loop:4400,bg:'#100d17',
+use:'<b>実績・登録者数・売上・記録</b>の発表に。「〇万人突破」「累計〇件」など数字で語る場面の定番。',
+tips:['下の桁ほど多く回るようにすると、本物のメーターのように見えます','止まった瞬間に単位（人・円・件）をポンと出すと伝わりやすい','カンマは回さず固定するのが読みやすさのコツ'],
+p:`車の走行距離メーターのように、数字の各桁が縦に回転して「{T}」でピタッと止まる演出を作ってください。
+・背景：#100D17。数字：白、JetBrains Mono の太字、220px、等幅
+・各桁：0〜9を縦に並べた帯を、高さ1桁分の窓（overflow: hidden）からのぞかせる。カンマや記号は回さずに固定表示
+・回転量：右端（一の位）ほど多く回す。左から n 番目の桁は「(全桁数 − n) + 1」周してから目標の数字で止まる
+・止まり方：2.2秒、イージング cubic-bezier(.16,1,.3,1)（最初速く、最後はゆっくり）。各桁の開始を左から0.06秒ずつ遅らせる
+・窓の上下に背景色へのグラデーション（高さ40px）をかけて、回る数字が上下で溶けるように
+・止まった直後：数字全体の下に #A78BFA の文字で「達成」を、translateY 30px → 0 でフェードイン
+・尺：4.4秒でループ`,
+run(H,t){const B=H.box({flexDirection:'column',gap:'30px'});const row=H.el('div',{display:'flex',fontFamily:F.mono,fontWeight:'700',fontSize:fs(t,220,1400/0.62)+'px',color:'#fff',lineHeight:'1'},B);
+  const sz=parseFloat(row.style.fontSize);const cs=[...t];const digs=cs.filter(c=>/\d/.test(c)).length;let di=0;
+  cs.forEach((c,i)=>{if(!/\d/.test(c)){H.el('span',{},row,c);return}const n=di++;const win=H.el('div',{height:sz+'px',overflow:'hidden',position:'relative'},row);
+    const strip=H.el('div',{},win);const loops=digs-n+1;const total=loops*10+ +c;for(let k=0;k<=total;k++)H.el('div',{height:sz+'px'},strip,String(k%10));
+    H.abs({left:0,right:0,top:0,height:'40px',background:'linear-gradient(#100d17,rgba(16,13,23,0))'},win);H.abs({left:0,right:0,bottom:0,height:'40px',background:'linear-gradient(rgba(16,13,23,0),#100d17)'},win);
+    H.a(strip,[{transform:'translateY(0)'},{transform:`translateY(${-total*sz}px)`}],{d:2200,dl:n*60,e:E.out})});
+  const lab=H.el('div',{fontFamily:F.heavy,fontSize:'72px',color:VIO},B,'達成');H.a(lab,[{transform:'translateY(30px)',opacity:0},{transform:'translateY(0)',opacity:1}],{d:500,dl:2200+digs*60});
+}});
+
+def({no:'35',cat:'SWITCH',name:'デコード',en:'Scramble Decode',lead:'ランダムな記号が左から順に解読され、言葉になる。',
+text:'ACCESS GRANTED',loop:4200,bg:'#07060b',
+use:'<b>ハッカー・暗号・謎解き・テクノロジー</b>系に。「正体は…」の種明かしや、新機能の発表にも。',
+tips:['解読された文字と未解読の文字で色を変えると、進み具合が見えて気持ちいい','記号のプールを「01」だけにすると2進数風、カタカナにするとマトリックス風','1文字あたりの揺らぎ時間を長くすると、より「解読してる感」が出ます'],
+p:`ランダムな記号がめまぐるしく変わりながら、左から順に正しい文字に確定して「{T}」になる「デコード（解読）」演出を作ってください。
+・背景：#07060B。文字：JetBrains Mono の太字、画面幅いっぱいの大きさ
+・確定前の文字：「!<>-_\\/[]{}=+*^?#ｱｲｳｴｵ」からランダムに選んだ記号を、0.04秒ごとに入れ替え続ける。色 #5B4B8A
+・確定した文字：白。確定の瞬間だけ #A78BFA に光って（text-shadow 0 0 20px）0.2秒で白に戻る
+・タイミング：0.3秒から開始。左から n 番目の文字は 0.3 + n×0.08 秒で確定（最初の0.3秒は全部が記号で揺れている）
+・全部確定したら、文字の下に「[ OK ]」を #A78BFA で小さく点滅させる（0.25秒ごと、3回）
+・3.6秒で全体を0.4秒フェードアウト、尺4.2秒でループ`,
+run(H,t){const B=H.box({flexDirection:'column',gap:'40px'});const row=H.el('div',{fontFamily:F.mono,fontWeight:'700',fontSize:fs(t,170,1450/0.62)+'px',whiteSpace:'pre',display:'flex'},B);
+  const sym=[...'!<>-_\\/[]{}=+*^?#ｱｲｳｴｵ'];const cs=[...t];const spans=cs.map(c=>H.el('span',{color:'#5b4b8a'},row,c===' '?' ':pick(sym)));
+  const fix=cs.map((c,i)=>300+300+i*80);const ok=H.el('div',{fontFamily:F.mono,fontSize:'40px',color:VIO,opacity:0},B,'[ OK ]');
+  H.raf(s=>{const ms=s*1000;spans.forEach((sp,i)=>{if(cs[i]===' ')return;if(ms<fix[i]){if(Math.floor(ms/40)!==sp._k){sp._k=Math.floor(ms/40);sp.textContent=pick(sym)}}else if(!sp._d){sp._d=1;sp.textContent=cs[i];sp.style.color='#fff';H.a(sp,[{color:VIO,textShadow:'0 0 20px '+VIO},{color:'#fff',textShadow:'0 0 0 transparent'}],{d:200})}})});
+  const end=fix[fix.length-1];H.a(ok,[{opacity:0},{opacity:1},{opacity:0}],{d:500,dl:end+100,i:3,e:'steps(2,jump-none)',f:'none'});
+  H.a(B,[{opacity:1},{opacity:0}],{d:400,dl:3600,f:'forwards'});
+}});
+
+def({no:'36',cat:'SWITCH',name:'上下スプリット',en:'Split Reveal',lead:'言葉が上下に割れて開き、裏から次の言葉が現れる。',
+text:'昨日まで 今日から',multi:true,loop:4000,bg:'#14111b',
+use:'<b>転換・決意・Before→After</b>に。「〇〇は終わり。これからは〇〇」のように、気持ちを切り替える瞬間に。',
+tips:['割れる幅（±120px）を大きくすると、裏の言葉がドンと現れます','上下で色を変えたまま割ると、ポスターのようなグラフィックに','割れた半分を画面外まで飛ばすと、より劇的な場面転換に'],
+p:`1つ目の言葉が上下半分に割れて開き、その隙間から2つ目の言葉が現れる演出を作ってください。
+・背景：#14111B。フォント：Dela Gothic One、画面幅の約65%
+・1つ目の言葉：「{T}」の1語目、白。同じものを2枚重ね、上半分（clip-path: inset(0 0 50% 0)）と下半分（inset(50% 0 0 0)）に分ける
+・2つ目の言葉：2語目、#A78BFA。1つ目の後ろに、scale 0.85・不透明度0で待機
+・0.0〜0.4秒：1つ目の言葉をフェードイン
+・1.2秒：上半分を translateY −120px、下半分を +120px へ0.5秒で開く（イージング cubic-bezier(.87,0,.13,1)）。同時に上下とも不透明度を0.25に
+・1.3秒：2つ目の言葉を scale 0.85→1・不透明度0→1 で0.5秒、cubic-bezier(.34,1.56,.64,1)
+・割れ目に沿って #A78BFA の細い光の線（高さ3px）を0.3秒だけ横に走らせる
+・3.4秒で全体をフェードアウト、尺4秒でループ`,
+run(H,t,w){const a=w[0]||t,b=w[1]||t;const B=H.box();const sz=fs(a.length>b.length?a:b,250,1100);
+  const back=BIG(H,b,{position:'absolute',color:VIO,fontSize:sz+'px'},B);
+  const top=H.box({clipPath:'inset(0 0 50% 0)'},B),bot=H.box({clipPath:'inset(50% 0 0 0)'},B);BIG(H,a,{fontSize:sz+'px'},top);BIG(H,a,{fontSize:sz+'px'},bot);
+  [top,bot].forEach((h,i)=>{H.a(h,[{opacity:0},{opacity:1}],{d:400});H.a(h,[{transform:'translateY(0)',opacity:1},{transform:`translateY(${i?120:-120}px)`,opacity:.25}],{d:500,dl:1200,e:E.io})});
+  H.a(back,[{transform:'scale(.85)',opacity:0},{transform:'scale(1)',opacity:1}],{d:500,dl:1300,e:E.back});
+  const ln=H.abs({left:'0',top:'449px',width:'1600px',height:'3px',background:VIO,boxShadow:'0 0 16px '+VIO,opacity:0});H.a(ln,[{transform:'scaleX(0)',opacity:1},{transform:'scaleX(1)',opacity:0}],{d:300,dl:1200,f:'none'});
+  H.a(B,[{opacity:1},{opacity:0}],{d:500,dl:3400,f:'forwards'});
+}});
+
+def({no:'37',cat:'SWITCH',name:'ワイプ置換',en:'Bar Wipe Swap',lead:'色の帯が横切った瞬間、言葉がすり替わっている。',
+text:'検討中 決定',multi:true,loop:3600,bg:'#f1eef8',
+use:'<b>見出しの更新・ステータス変更・結論</b>に。「検討中→決定」「赤字→黒字」など、状態の変化を見せたいときに。',
+tips:['帯が文字を完全に隠した瞬間に入れ替えるのがコツ（ここがズレると安っぽくなる）','帯を2色重ねて少しずらすと、雑誌の見出しのようなリズムが出ます','帯の速さは0.5秒前後が「シュッ」と気持ちいい'],
+p:`紫の帯が左から右へ文字を横切り、通り過ぎると言葉がすり替わっている「ワイプ置換」を作ってください。
+・背景：#F1EEF8。文字：#1A1625、Noto Sans JP 900、画面幅の約55%
+・1つ目の言葉：「{T}」の1語目。0.0〜0.4秒で translateY 40px → 0 でフェードイン
+・1.0秒：文字の高さより少し大きい帯を2本、左から右へ通過させる。1本目 #A78BFA、0.08秒遅れて2本目 #1A1625。帯の動きは「左端から伸びて文字全体を覆う（scaleX 0→1、左基準、0.3秒）→ 右端へ縮んで消える（scaleX 1→0、右基準、0.3秒）」
+・2本目の帯が文字を完全に覆った瞬間（1.38秒）に、文字を2語目に入れ替え、色を #7C3AED にする
+・2語目の左上に小さなラベル「UPDATE」（JetBrains Mono、#A78BFA）をポンと出す
+・3.0秒でフェードアウト、尺3.6秒でループ`,
+run(H,t,w){const a=w[0]||t,b=w[1]||t;const B=H.box();const wrap=H.el('div',{position:'relative',padding:'10px 30px'},B);
+  const el=H.el('div',{fontFamily:F.sans,fontWeight:'900',fontSize:fs(a.length>b.length?a:b,230,900)+'px',color:'#1a1625',lineHeight:'1.15',whiteSpace:'nowrap'},wrap,a);
+  H.a(el,[{transform:'translateY(40px)',opacity:0},{transform:'translateY(0)',opacity:1}],{d:400});
+  [[VIO,1000],['#1a1625',1080]].forEach(([c,dl])=>{const bar=H.abs({inset:'0',background:c,transform:'scaleX(0)'},wrap);
+    H.a(bar,[{transform:'scaleX(0)',transformOrigin:'0 50%'},{transform:'scaleX(1)',transformOrigin:'0 50%'}],{d:300,dl,e:E.io,f:'none'});
+    H.a(bar,[{transform:'scaleX(1)',transformOrigin:'100% 50%'},{transform:'scaleX(0)',transformOrigin:'100% 50%'}],{d:300,dl:dl+300,e:E.io,f:'none'})});
+  H.wait(1380,()=>{el.textContent=b;el.style.color='#7c3aed'});
+  const lab=H.abs({left:'30px',top:'-40px',fontFamily:F.mono,fontSize:'30px',color:VIO,letterSpacing:'.15em'},wrap,'UPDATE');H.a(lab,[{transform:'scale(0)'},{transform:'scale(1)'}],{d:300,dl:1700,e:E.back});
+  H.a(B,[{opacity:1},{opacity:0}],{d:500,dl:3000,f:'forwards'});
+}});
+
+def({no:'38',cat:'SWITCH',name:'リキッドモーフ',en:'Liquid Morph',lead:'文字が溶けてくっつき、別の言葉へとろりと変わる。',
+text:'夢 目標 現実',multi:true,loop:4500,loopFn:w=>Math.max(1,w.length)*1500,bg:'#000',
+use:'<b>変化・成長・変身</b>の表現に。「夢→目標→現実」のように段階的に変わっていく話や、ブランドの世界観づくりに。',
+tips:['ぼかし（blur）とコントラスト（contrast）の組み合わせが「溶ける」効果の正体','背景は必ず黒か白の単色に（グラデーションだと効果が崩れます）','溶ける時間を長くすると、より液体っぽく粘ります'],
+p:`文字が液体のように溶けてくっつき合いながら、次の言葉へとろりと変化する「リキッドモーフ」を作ってください。
+・背景：#000（単色であることが必須）
+・仕組み：文字を入れた親要素に filter: contrast(28) をかけ、背景 #000 を指定する。中の各言葉に blur をかけると、輪郭がくっつき合う液体のように見える
+・言葉：「{T}」をスペースで区切った語を順番に表示。Dela Gothic One、画面幅の約50%、色 #A78BFA
+・1語の流れ（1.5秒）：
+　登場 0.5秒：blur 40px・不透明度0 → blur 0・不透明度1
+　静止 0.5秒
+　退場 0.5秒：blur 0 → blur 40px・不透明度0（次の語の登場と同時に重ねる）
+・語が切り替わるとき、前の語と次の語が同時にぼけて混ざり合うように、登場と退場を完全に重ねる
+・尺：語数 × 1.5秒でループ`,
+run(H,t,w){if(!w.length)w=[t];const B=H.box({filter:'contrast(28)',background:'#000'});
+  w.forEach((s,i)=>{const el=BIG(H,s,{position:'absolute',color:VIO,fontSize:fs(s,280,850)+'px'},B);const st=i*1500;
+    H.a(el,[{filter:'blur(40px)',opacity:0},{filter:'blur(0px)',opacity:1}],{d:500,dl:i?st-500:0,e:E.soft});
+    H.a(el,[{filter:'blur(0px)',opacity:1},{filter:'blur(40px)',opacity:0}],{d:500,dl:st+1000,e:E.soft,f:'forwards'})});
+}});
+
+def({no:'39',cat:'SWITCH',name:'ブラインド',en:'Venetian Blind',lead:'ブラインドの羽根が一斉に回転して、言葉が入れ替わる。',
+text:'OFF ON',multi:true,loop:4000,bg:'#1a1622',
+use:'<b>オンオフ・昼夜・モード切替</b>に。「仕事モード→休日モード」や、場面の時間帯が変わる転換に。',
+tips:['羽根の枚数は10〜14枚がきれい。多いほど細やかで上品に','上から順に0.04秒ずつ遅らせると、波打つように回ります','表と裏で背景色も変えると、場面ごと切り替わった印象に'],
+p:`窓のブラインドの羽根が一斉に回転し、表の言葉から裏の言葉へ切り替わる演出を作ってください。
+・背景：#1A1622。CSS 3D（perspective: 1400px）
+・パネル：幅1300px×高さ520px を、横長の羽根12枚（各高さ約43px）に分割
+・各羽根の表面：背景 #1A1622、文字は「{T}」の1語目（白、Dela Gothic One、パネル全体に1つの大きな文字）。羽根ごとに、その高さの部分だけを表示する（文字を羽根の位置ぶん上にずらし、overflow: hidden）
+・各羽根の裏面：背景 #A78BFA、文字は2語目（#1A1622）。同じ方法で分割し、rotateX(180°)・backface-visibility: hidden
+・1.0秒：上の羽根から0.04秒ずつ遅らせて、各羽根を rotateX 0 → 180° へ0.6秒で回転（イージング cubic-bezier(.65,0,.35,1)）
+・2.6秒：同じ順番で 180° → 360° へ戻す
+・尺：4秒でループ`,
+run(H,t,w){const a=w[0]||t,b=w[1]||t;const P=H.box({perspective:'1400px'});const W=H.el('div',{position:'relative',width:'1300px',height:'520px'},P);
+  const N=12,h=520/N;const sz=fs(a.length>b.length?a:b,360,1200);
+  for(let i=0;i<N;i++){const s=H.abs({left:'0',top:i*h+'px',width:'1300px',height:h+'px',transformStyle:'preserve-3d'},W);
+    const face=(txt,bg,fg,back)=>{const f=H.abs({inset:'0',overflow:'hidden',background:bg,backfaceVisibility:'hidden',transform:back?'rotateX(180deg)':'none'},s);
+      H.abs({left:'0',top:-i*h+'px',width:'1300px',height:'520px',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:F.heavy,fontSize:sz+'px',color:fg,whiteSpace:'nowrap'},f,txt)};
+    face(a,'#1a1622','#fff',0);face(b,VIO,'#1a1622',1);
+    H.a(s,[{transform:'rotateX(0deg)'},{transform:'rotateX(180deg)'}],{d:600,dl:1000+i*40,e:'cubic-bezier(.65,0,.35,1)'});
+    H.a(s,[{transform:'rotateX(180deg)'},{transform:'rotateX(360deg)'}],{d:600,dl:2600+i*40,e:'cubic-bezier(.65,0,.35,1)',f:'forwards'})}
+}});
+
+def({no:'40',cat:'SWITCH',name:'ルーレット選択',en:'Roulette Pick',lead:'候補の言葉が縦にぐるぐる流れ、減速して1つに決まる。',
+text:'カレー ラーメン 寿司 焼肉 パスタ',multi:true,loop:5000,bg:'#0f0c15',
+use:'<b>今日の〇〇・ランダム決定・くじ引き</b>に。「今日のランチは…」「次の挑戦は…」のような企画もの全般に。',
+tips:['候補は5〜8個がちょうどいい。少ないと回っている感じが出ません','止まる直前に1つ手前で一瞬止めてから進める「じらし」を入れると盛り上がります','決定した瞬間、枠を光らせて紙吹雪を少し散らすと完成度が上がります'],
+p:`候補の言葉が縦にぐるぐる流れ、だんだん減速して1つに止まる「ルーレット選択」の演出を作ってください。
+・背景：#0F0C15
+・候補：「{T}」をスペースで区切った語。最後の語を「当選」とする
+・表示枠：画面中央に幅1000px×高さ180pxの枠（線 4px #A78BFA、角丸20px）。枠の上下に、前後の候補が小さく薄く見えるように並べる（上下は scale 0.7・不透明度0.3）
+・候補の帯：候補を何周もくり返した縦長のリスト（1項目の高さ180px、Noto Sans JP 900、110px、白）
+・回転：帯を translateY で上方向へ3.0秒動かし、最後の語が枠の中央でちょうど止まるようにする。イージング cubic-bezier(.12,.8,.2,1)（最初は高速、最後はじわじわ止まる）
+・止まった瞬間：枠の中を #A78BFA で塗りつぶし、文字を #0F0C15 に。枠を scale 1 → 1.08 → 1 で弾ませ、枠の左右から紫の小さな四角（12px）を10個ずつ飛ばす
+・尺：5秒でループ`,
+run(H,t,w){if(w.length<2)w=[t,t];const B=H.box();const view=H.abs({left:'300px',top:'90px',width:'1000px',height:'720px',overflow:'hidden',WebkitMaskImage:'linear-gradient(transparent,#000 30%,#000 70%,transparent)',maskImage:'linear-gradient(transparent,#000 30%,#000 70%,transparent)'});
+  const IH=180;const strip=H.abs({left:'0',top:'0',width:'100%'},view);const loops=6;const list=[];for(let l=0;l<loops;l++)w.forEach(s=>list.push(s));
+  list.forEach(s=>H.el('div',{height:IH+'px',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:F.sans,fontWeight:'900',fontSize:fs(s,110,900)+'px',color:'#fff'},strip,s));
+  const target=list.length-1;const y=-(target*IH)+270;
+  H.a(strip,[{transform:`translateY(${270-w.length*IH}px)`},{transform:`translateY(${y}px)`}],{d:3000,e:'cubic-bezier(.12,.8,.2,1)'});
+  const fr=H.abs({left:'300px',top:'360px',width:'1000px',height:'180px',border:'4px solid '+VIO,borderRadius:'20px',boxSizing:'border-box',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:F.sans,fontWeight:'900',fontSize:fs(w[w.length-1],110,900)+'px',color:'#0f0c15'});
+  H.wait(3000,()=>{fr.style.background=VIO;fr.textContent=w[w.length-1];H.a(fr,[{transform:'scale(1)'},{transform:'scale(1.08)'},{transform:'scale(1)'}],{d:400,e:E.back,f:'none'});
+    for(let i=0;i<20;i++){const side=i<10?-1:1;const q=H.abs({left:(side<0?300:1300)+'px',top:'444px',width:'12px',height:'12px',background:VIO});H.a(q,[{transform:'translate(0,0) rotate(0)',opacity:1},{transform:`translate(${side*rnd(60,260)}px,${rnd(-220,220)}px) rotate(${rnd(-200,200)}deg)`,opacity:0}],{d:800})}});
+}});
+
+/* ===== TEXTURE 41-50 ===== */
+const PINK='#ff7ac6';
+const sample=(t,font,size,step,W,Hh)=>{const c=document.createElement('canvas');c.width=W;c.height=Hh;const x=c.getContext('2d');x.fillStyle='#fff';x.font=`${size}px ${font}`;x.textAlign='center';x.textBaseline='middle';x.fillText(t,W/2,Hh/2);
+  const d=x.getImageData(0,0,W,Hh).data;const pts=[];for(let y=0;y<Hh;y+=step)for(let xx=0;xx<W;xx+=step){if(d[(y*W+xx)*4+3]>128)pts.push([xx,y])}return pts};
+const fitPx=(t,font,max,width)=>{const c=document.createElement('canvas').getContext('2d');let s=max;c.font=`${s}px ${font}`;const w=c.measureText(t).width;return w>width?Math.floor(s*width/w):s};
+
+def({no:'41',cat:'TEXTURE',name:'グリッチ',en:'RGB Glitch',lead:'赤と青の色ズレ、横に裂けるノイズ。デジタルの故障感。',
+text:'SYSTEM ERROR',loop:3000,bg:'#0a0a0c',
+use:'<b>エラー・バグ・ゲーム・サイバー</b>系に。「炎上」「ヤバい」「異常事態」などのテロップや、場面転換のノイズにも。',
+tips:['常に揺らさず「0.1〜0.3秒の発作」をランダムに起こすのが本物っぽさのコツ','色ズレは赤（#ff2a6d）と青緑（#05d9e8）の組み合わせが定番','走査線を重ねると、モニター越しの質感になります'],
+p:`「{T}」の文字が、デジタル機器の故障のように不規則に乱れる「グリッチ」演出を作ってください。
+・背景：#0A0A0C。文字：白、Dela Gothic One、画面幅の約75%
+・文字を3枚重ねる：①赤 #FF2A6D ②青緑 #05D9E8 ③白（一番上）。①②は mix-blend-mode: screen
+・グリッチの発作：0.1〜0.3秒の長さの発作を、0.15〜0.6秒のランダムな間隔で起こす。発作中は毎フレーム
+　・赤の層を x方向 −25〜25px、青緑の層をその逆方向へずらす
+　・白の層を clip-path: inset() で横の帯（高さ20〜120px）だけに切り抜き、x方向に −60〜60px ずらしたコピーを2〜3本重ねる
+　・まれに（20%の確率で）文字全体を skewX 10〜20° にゆがめる
+・発作がないときは、すべての層を元の位置にぴったり重ねる
+・画面全体に走査線（高さ2pxの黒い線を4px間隔、不透明度0.25）を重ね、ゆっくり下へ流す
+・尺：3秒でループ`,
+run(H,t){const B=H.box();const sz=fs(t,220,1300);const mk=(c,bl)=>BIG(H,t,{position:'absolute',color:c,fontSize:sz+'px',mixBlendMode:bl||'normal'},B);
+  const r=mk('#ff2a6d','screen'),c=mk('#05d9e8','screen'),w=mk('#fff');const sl=[0,1,2].map(()=>{const e=mk('#fff');e.style.opacity=0;return e});
+  const scan=H.abs({inset:'-8px 0 0 0',background:'repeating-linear-gradient(rgba(0,0,0,.25) 0 2px,transparent 2px 4px)'});H.a(scan,[{transform:'translateY(0)'},{transform:'translateY(8px)'}],{d:400,e:E.lin,i:Infinity});
+  let until=0,next=300;H.raf(s=>{const ms=s*1000;if(ms>next){until=ms+rnd(100,300);next=until+rnd(150,600)}
+    if(ms<until){const d=rnd(-25,25);r.style.transform=`translateX(${d}px)`;c.style.transform=`translateX(${-d}px)`;const sk=Math.random()<.2?`skewX(${rnd(10,20)}deg)`:'';w.style.transform=sk;
+      sl.forEach(e=>{if(Math.random()<.7){const top=rnd(0,90);e.style.clipPath=`inset(${top}% 0 ${Math.max(0,100-top-rnd(8,30))}% 0)`;e.style.transform=`translateX(${rnd(-60,60)}px)`;e.style.opacity=1}else e.style.opacity=0})}
+    else{r.style.transform=c.style.transform=w.style.transform='none';sl.forEach(e=>e.style.opacity=0)}});
+}});
+
+def({no:'42',cat:'TEXTURE',name:'ネオン点灯',en:'Neon Sign',lead:'パチ、パチッ…と瞬いて灯るネオン管。1文字だけ調子が悪い。',
+text:'OPEN 24H',loop:4400,bg:'#160d14',
+use:'<b>夜・バー・ナイトライフ・レトロ</b>な場面に。深夜配信のタイトル、お店の紹介、エモい夜景Vlogに。',
+tips:['光は text-shadow を4〜5層、半径を倍々に重ねると本物のネオンに','1文字だけ遅れて点く「接触不良」が、リアルさと愛嬌を両立させます','背景にレンガの目地を薄く描くと、看板っぽさが増します'],
+p:`ネオン管の看板が「パチ、パチッ」と瞬いてから灯り、1文字だけ接触不良でチカチカする演出を作ってください。
+・背景：#160D14 に、目地の線（rgba(255,255,255,.04)、横120px×縦60pxのレンガ模様）を薄く描く
+・文字：「{T}」、Noto Sans JP の400（細め）を使い、文字色 #FFE6F4。画面幅の約60%
+・点灯時の光：text-shadow を5層重ねる（0 0 6px #FFF, 0 0 14px #FF7AC6, 0 0 30px #FF7AC6, 0 0 60px #FF2A9D, 0 0 110px #FF2A9D）
+・消灯時：文字色 #3A2333、光なし
+・点灯の流れ：0.4秒で一瞬点く(0.06秒)→消える→0.7秒で点く(0.1秒)→消える→0.95秒から点きっぱなし
+・接触不良：右から2番目の文字だけ、2.0秒から 0.05〜0.15秒の不規則な間隔で6回ほど消灯・点灯をくり返してから安定
+・点いている間、全体の明るさを 0.96〜1.0 でごくわずかに揺らし続ける（電気のゆらぎ）
+・尺：4.4秒でループ`,
+run(H,t){H.abs({inset:'0',backgroundImage:'linear-gradient(rgba(255,255,255,.04) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.04) 2px,transparent 2px)',backgroundSize:'120px 60px'});
+  const B=H.box();const w=H.el('div',{fontFamily:F.sans,fontWeight:'400',fontSize:fs(t,240,1100)+'px',whiteSpace:'nowrap'},B);const cs=H.chars(t,w);
+  const ON={color:'#ffe6f4',textShadow:'0 0 6px #fff,0 0 14px #ff7ac6,0 0 30px #ff7ac6,0 0 60px #ff2a9d,0 0 110px #ff2a9d'},OFF={color:'#3a2333',textShadow:'none'};
+  const set=(e,on)=>Object.assign(e.style,on?ON:OFF);cs.forEach(e=>set(e,0));
+  [[400,1],[460,0],[700,1],[800,0],[950,1]].forEach(([ms,on])=>H.wait(ms,()=>cs.forEach(e=>set(e,on))));
+  const bad=cs[Math.max(0,cs.length-2)];let tm=2000;for(let i=0;i<12;i++){tm+=rnd(50,150);const on=i%2===1||i===11;H.wait(tm,()=>set(bad,on))}
+  H.raf(()=>{w.style.filter=`brightness(${rnd(.96,1).toFixed(3)})`});
+}});
+
+def({no:'43',cat:'TEXTURE',name:'筆書き',en:'Brush Ink',lead:'墨がにじみながら、縦書きの文字が一画ずつ書かれていく。',
+text:'一期一会',loop:4800,bg:'#f4efe4',
+use:'<b>和風・書道・季節の挨拶・座右の銘</b>に。年賀動画、日本文化の紹介、「今年の抱負」などに。',
+tips:['上から下へのマスク＋ぼかしを組み合わせると、筆で書いた感じが出ます','最後に朱色の落款（ハンコ）を押すと作品として締まります','背景に薄い和紙の繊維ノイズを足すと、より本物らしく'],
+p:`縦書きの「{T}」が、墨のにじみとともに上から一文字ずつ書かれていく演出を作ってください。
+・背景：#F4EFE4（和紙）。SVGの feTurbulence で薄い繊維のノイズ（不透明度0.08）を重ねる
+・文字：Yuji Syuku（毛筆風）、色 #1A1A1A、縦書き（writing-mode: vertical-rl）、画面の高さの約80%に収まる大きさ
+・1文字の書き方（0.55秒）：clip-path: inset(0 0 100% 0) → inset(0 0 0 0)（上から下へ現れる）。同時に filter: blur(6px)→blur(0)、不透明度 0.4→1（墨がにじんで定着する）
+・文字ごとに0.45秒ずつ遅らせる
+・書き終わったら0.3秒後、文字の左下に朱色 #C8102E の四角い落款（90px角、角丸6px、中に白で「印」）を scale 1.6→1 でポンと押す
+・4.2秒でフェードアウト、尺4.8秒でループ`,
+run(H,t){const svg=H.svg(1600,900,null,{opacity:.08});const id='wn'+Math.floor(Math.random()*1e6);const f=H.sv('filter',{id},H.sv('defs',{},svg));H.sv('feTurbulence',{type:'fractalNoise',baseFrequency:'.8 .05',numOctaves:3},f);H.sv('rect',{width:1600,height:900,filter:`url(#${id})`},svg);
+  const B=H.box();const n=[...t].length;const sz=Math.min(200,720/n);const col=H.el('div',{writingMode:'vertical-rl',fontFamily:F.brush,fontSize:sz+'px',color:'#1a1a1a',lineHeight:'1.1',position:'relative'},B);
+  const cs=H.chars(t,col);cs.forEach((c,i)=>H.a(c,[{clipPath:'inset(0 0 100% 0)',filter:'blur(6px)',opacity:.4},{clipPath:'inset(0 0 0 0)',filter:'blur(0px)',opacity:1}],{d:550,dl:i*450,e:E.soft}));
+  const st=H.abs({left:'-130px',bottom:'0',width:'90px',height:'90px',background:'#c8102e',borderRadius:'6px',color:'#fff',fontFamily:F.min,fontSize:'52px',display:'flex',alignItems:'center',justifyContent:'center',writingMode:'horizontal-tb'},col,'印');
+  H.a(st,[{transform:'scale(1.6)',opacity:0},{transform:'scale(1)',opacity:1}],{d:200,dl:(n-1)*450+850,e:E.in});
+  H.a(B,[{opacity:1},{opacity:0}],{d:500,dl:4200,f:'forwards'});
+}});
+
+def({no:'44',cat:'TEXTURE',name:'ヒート',en:'Heat & Embers',lead:'文字が熱を帯びて揺らめき、火の粉が舞い上がる。',
+text:'激アツ',loop:4000,bg:'#120804',
+use:'<b>熱い・情熱・激辛・ゲームの熱戦</b>に。「激アツ展開」「本気の勝負」など、テンションを上げたい場面に。',
+tips:['光の層を毎フレーム少しずつ揺らすと、炎のゆらめきになります','火の粉は左右にふらつかせながら上昇させるとリアル','文字色を白に近い黄色にすると「高温」に見えます'],
+p:`「{T}」の文字が炎の熱を帯びて揺らめき、まわりから火の粉が舞い上がる演出を作ってください。
+・背景：#120804、画面下から上へ #3A1206 → 透明 のグラデーションで熱気を表現
+・文字：Dela Gothic One、画面幅の約60%、色 #FFF2D0
+・炎の光：text-shadow を4層（黄 #FFD34D、橙 #FF8A1F、赤 #FF3D00、暗赤 #8A1200）、上方向へ伸ばす。各層の y方向のずれ（−4〜−40px）とぼかし（10〜60px）を、毎フレーム ±20% の範囲でランダムに揺らす
+・陽炎：文字に SVGフィルター（feTurbulence＋feDisplacementMap scale 8）をかけ、ノイズを毎フレーム上へずらして揺らめかせる
+・火の粉：Canvasで60個。画面下から上へ毎秒 80〜200px で上昇、左右に sin 波でふらつき、上るほど小さく暗くなって消えたら下から再出現。色 #FFB347、直径2〜5px、光（shadowBlur 12）
+・尺：4秒でループ（火の粉は途切れず続く）`,
+run(H,t){H.abs({inset:'0',background:'linear-gradient(0deg,#3a1206,rgba(58,18,6,0) 70%)'});
+  const c=H.canvas();const x=c.getContext('2d');const P=[...Array(60)].map(()=>({x:rnd(0,1600),y:rnd(0,900),v:rnd(80,200),r:rnd(2,5),p:rnd(0,6)}));let last=0;
+  const svg=H.svg(1,1,null,{position:'absolute'});const id='ht'+Math.floor(Math.random()*1e6);const f=H.sv('filter',{id},H.sv('defs',{},svg));const tb=H.sv('feTurbulence',{type:'fractalNoise',baseFrequency:'0.02 0.06',numOctaves:2,seed:3},f);H.sv('feDisplacementMap',{in:'SourceGraphic',scale:8},f);
+  const B=H.box();const el=BIG(H,t,{color:'#fff2d0',fontSize:fs(t,240,1000)+'px',filter:`url(#${id})`},B);
+  H.raf(s=>{const dt=Math.min(.05,s-last);last=s;const j=()=>rnd(.8,1.2);el.style.textShadow=`0 ${-4*j()}px ${10*j()}px #ffd34d,0 ${-12*j()}px ${24*j()}px #ff8a1f,0 ${-24*j()}px ${40*j()}px #ff3d00,0 ${-40*j()}px ${60*j()}px #8a1200`;
+    tb.setAttribute('seed',Math.floor(s*12)%50);
+    x.clearRect(0,0,1600,900);P.forEach(p=>{p.y-=p.v*dt;if(p.y<-10){p.y=910;p.x=rnd(0,1600)}const k=p.y/900;x.globalAlpha=Math.max(0,k);x.fillStyle='#ffb347';x.shadowColor='#ff8a1f';x.shadowBlur=12;x.beginPath();x.arc(p.x+Math.sin(s*2+p.p)*20,p.y,p.r*(.4+k*.6),0,7);x.fill()})});
+}});
+
+def({no:'45',cat:'TEXTURE',name:'クロームシャイン',en:'Chrome Shine',lead:'鏡面仕上げの金属文字に、光がキラッと走る。',
+text:'PREMIUM',loop:3600,bg:'#08080b',
+use:'<b>高級感・プレミアム・限定</b>の表現に。商品のお披露目、会員限定のお知らせ、Y2K・平成レトロなデザインにも。',
+tips:['金属のグラデーションは「明→暗→明→暗」と細かく反射を入れるのがコツ','光の帯を斜め（110°）にすると、キラッとした反射に見えます','金色にしたいときは、灰色の部分を #F7E7A1 → #B8860B に置き換え'],
+p:`鏡面のクローム（金属）でできた「{T}」の文字に、光の反射がキラッと横切る演出を作ってください。
+・背景：#08080B。床に反射させるため、文字の真下に上下反転したコピー（不透明度0.25、下へ行くほど透明になるマスク）を置く
+・文字：Dela Gothic One、画面幅の約70%
+・金属の質感：文字の塗りを linear-gradient(180deg, #FFFFFF 0%, #C9CED6 30%, #6B7280 48%, #F3F4F6 52%, #9CA3AF 75%, #E5E7EB 100%) にし、background-clip: text で文字だけに適用
+・光の反射：文字の上に、透明 → rgba(255,255,255,.95) → 透明 の帯（幅18%、角度110°）を同じく background-clip: text で重ね、background-position を左外から右外へ0.9秒で動かす
+・登場：0.0〜0.8秒、文字を perspective(900px) rotateX(70°)・不透明度0 → rotateX(0) に起こす（イージング cubic-bezier(.16,1,.3,1)）
+・1.0秒と2.4秒に、光の反射を走らせる
+・尺：3.6秒でループ`,
+run(H,t){const B=H.box({flexDirection:'column'});const sz=fs(t,240,1200);const metal='linear-gradient(180deg,#fff 0%,#c9ced6 30%,#6b7280 48%,#f3f4f6 52%,#9ca3af 75%,#e5e7eb 100%)';
+  const mk=(css)=>{const w=H.el('div',Object.assign({position:'relative'},css),B);const a=BIG(H,t,{fontSize:sz+'px',backgroundImage:metal,WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'},w);
+    const s=BIG(H,t,{position:'absolute',left:'0',top:'0',fontSize:sz+'px',backgroundImage:'linear-gradient(110deg,transparent 41%,rgba(255,255,255,.95) 50%,transparent 59%)',backgroundSize:'250% 100%',backgroundRepeat:'no-repeat',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'},w);return [w,s]};
+  const [top,sh]=mk({});const [ref,sh2]=mk({transform:'scaleY(-1)',opacity:.25,WebkitMaskImage:'linear-gradient(transparent 40%,#000)',maskImage:'linear-gradient(transparent 40%,#000)',marginTop:'-10px'});
+  H.a(top,[{transform:'perspective(900px) rotateX(70deg)',opacity:0},{transform:'perspective(900px) rotateX(0)',opacity:1}],{d:800});H.a(ref,[{opacity:0},{opacity:.25}],{d:800});
+  [1000,2400].forEach(dl=>[sh,sh2].forEach(e=>H.a(e,[{backgroundPosition:'150% 0'},{backgroundPosition:'-50% 0'}],{d:900,dl,e:E.soft,f:'none'})));
+  [sh,sh2].forEach(e=>e.style.backgroundPosition='150% 0');
+}});
+
+def({no:'46',cat:'TEXTURE',name:'ホログラム',en:'Hologram',lead:'虹色に揺らぐ半透明の文字。ちらつく走査線で未来感。',
+text:'NEXT ERA',loop:4000,bg:'#05070f',
+use:'<b>未来・テクノロジー・SF・メタバース</b>系に。新サービス発表、AI関連の動画、近未来的なブランドに。',
+tips:['虹色はパステル寄り（彩度を下げる）にすると上品なホログラムに','時々0.05秒だけ消える「ちらつき」を入れると投影っぽさが増します','下に光の台座（楕円の光）を置くと「投影されている」感が出ます'],
+p:`空中に投影されたホログラムのような、虹色に揺らぐ半透明の文字「{T}」を作ってください。
+・背景：#05070F。文字の真下に、#7DF9FF の楕円の光（幅900px×高さ60px、ぼかし30px、不透明度0.5）の台座
+・文字：Dela Gothic One、画面幅の約60%
+・虹色：文字の塗りに linear-gradient(100deg, #FF9FF3, #A0E7FF, #B9FBC0, #FDFFB6, #FF9FF3) を background-size 300% で指定し、background-clip: text。background-position を4秒で端から端へ動かして虹色を流す
+・半透明：文字全体の不透明度0.85、mix-blend-mode: screen。0 0 30px rgba(125,249,255,.6) の光
+・走査線：文字にだけ横線（2px間隔）のマスクをかけ、マスクを毎秒60pxで下へ流す
+・ちらつき：0.8〜2秒の不規則な間隔で、0.05秒だけ不透明度0.3・x方向に 6px ずらす
+・全体をゆっくり上下に浮遊（translateY 0 → −12px → 0、4秒）
+・尺：4秒でループ`,
+run(H,t){H.abs({left:'350px',top:'640px',width:'900px',height:'60px',borderRadius:'50%',background:'#7df9ff',filter:'blur(30px)',opacity:.5});
+  const B=H.box();const sz=fs(t,240,1000);const el=BIG(H,t,{fontSize:sz+'px',backgroundImage:'linear-gradient(100deg,#ff9ff3,#a0e7ff,#b9fbc0,#fdffb6,#ff9ff3)',backgroundSize:'300% 100%',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent',opacity:.85,filter:'drop-shadow(0 0 30px rgba(125,249,255,.6))',
+    WebkitMaskImage:'repeating-linear-gradient(#000 0 2px,rgba(0,0,0,.35) 2px 4px)',maskImage:'repeating-linear-gradient(#000 0 2px,rgba(0,0,0,.35) 2px 4px)',WebkitMaskSize:'100% 4px',maskSize:'100% 4px'},B);
+  H.a(el,[{backgroundPosition:'0% 0'},{backgroundPosition:'100% 0'}],{d:4000,e:E.lin,i:Infinity});
+  H.a(B,[{transform:'translateY(0)'},{transform:'translateY(-12px)'},{transform:'translateY(0)'}],{d:4000,e:'ease-in-out',i:Infinity});
+  let next=800,off=0;H.raf(s=>{const ms=s*1000;el.style.webkitMaskPosition=el.style.maskPosition=`0 ${(s*60)%4}px`;if(ms>next){off=ms+50;next=ms+rnd(800,2000)}
+    if(ms<off){el.style.opacity=.3;el.style.translate='6px 0'}else{el.style.opacity=.85;el.style.translate='0 0'}});
+}});
+
+def({no:'47',cat:'TEXTURE',name:'LEDサイネージ',en:'LED Dot Matrix',lead:'電光掲示板のドット1粒1粒が光り、文字が流れていく。',
+text:'本日のおすすめ 唐揚げ定食 680円',loop:8000,bg:'#050505',
+use:'<b>お店の告知・メニュー・案内表示</b>に。商店街・駅・工場などの「現場感」を出したいとき、レトロゲーム風の演出にも。',
+tips:['ドットの間隔（15px）を広げるとレトロに、詰めるとくっきり見えます','消えているドットも薄く見せるのが「本物の掲示板」らしさのポイント','色をオレンジから緑（#39FF14）に変えると古い計器や駅の雰囲気に'],
+p:`電光掲示板のように、丸いLEDのドットで描かれた「{T}」が右から左へ流れていく演出を作ってください。
+・背景：#050505。掲示板の枠：幅1500px×高さ300px、#111、角丸18px、内側の影
+・LEDの仕組み：Canvasを使う。まず見えないキャンバスに「{T}」を DotGothic16 の16pxで描き、その1ピクセルを1つのLEDとして扱う（縦16ドット）
+・LEDの描画：ドットの間隔15px、直径11pxの円。点灯ドットは #FFB43A に光（shadowBlur 10、#FF8A00）、消灯ドットは #2A1E10
+・流れ：文字列を1秒に24ドットずつ左へスクロールさせ、右端から入って左端へ抜けたら、また右端から流す
+・枠の左上に小さく「INFORMATION」（JetBrains Mono、#FFB43A、不透明度0.6）
+・尺：8秒でループ（スクロールは途切れず続く）`,
+run(H,t){const fr=H.abs({left:'50px',top:'300px',width:'1500px',height:'300px',background:'#111',borderRadius:'18px',boxShadow:'inset 0 0 40px #000'});H.abs({left:'70px',top:'250px',fontFamily:F.mono,fontSize:'26px',color:'#ffb43a',opacity:.6,letterSpacing:'.2em'},null,'INFORMATION');
+  const c=H.el('canvas',{position:'absolute',left:'50px',top:'300px',width:'1500px',height:'300px'});c.width=1500;c.height=300;const x=c.getContext('2d');
+  const off=document.createElement('canvas');const ox=off.getContext('2d');ox.font="16px 'DotGothic16'";const tw=Math.ceil(ox.measureText(t).width)+4;off.width=tw;off.height=16;ox.font="16px 'DotGothic16'";ox.fillStyle='#fff';ox.textBaseline='top';ox.fillText(t,0,0);
+  const d=ox.getImageData(0,0,tw,16).data;const cols=98,rows=16,P=15,x0=(1500-cols*P)/2+P/2,y0=(300-rows*P)/2+P/2;
+  H.raf(s=>{const sc=Math.floor(s*24)%(tw+cols);x.clearRect(0,0,1500,300);for(let cc=0;cc<cols;cc++){const sx=cc-cols+sc;for(let r=0;r<rows;r++){const on=sx>=0&&sx<tw&&d[(r*tw+sx)*4+3]>110;
+    x.fillStyle=on?'#ffb43a':'#2a1e10';x.shadowBlur=on?10:0;x.shadowColor='#ff8a00';x.beginPath();x.arc(x0+cc*P,y0+r*P,5.5,0,7);x.fill()}}});
+}});
+
+def({no:'48',cat:'TEXTURE',name:'パーティクル集合',en:'Particle Assemble',lead:'散らばった光の粒が集まって文字になり、また弾けて散る。',
+text:'START',loop:4400,bg:'#08060c',
+use:'<b>オープニング・ロゴ出し・魔法・誕生</b>の瞬間に。新チャンネルの第1回、新商品の誕生、「はじまり」を表現したいときに。',
+tips:['粒の数は2000〜3000個がきれい。多すぎると重くなるので注意','集まるときに少し回転（渦）させると、魔法のような軌跡になります','マウスを近づけると粒が逃げるインタラクションを足すと、Webでも映えます'],
+p:`画面中に散らばった光の粒が渦を巻きながら集まって「{T}」の形になり、しばらくして弾けて散る演出を作ってください。
+・背景：#08060C。Canvasで描く
+・粒の目標位置：見えないキャンバスに「{T}」を Dela Gothic One で画面幅の75%の大きさに描き、5pxおきに文字の上にあるピクセルを取り出して、それぞれを粒の目標位置にする
+・粒：3.4px角、色は #FF7AC6 と白をランダムに混ぜ、lighter（加算）合成で光らせる
+・0.0〜1.6秒：粒がランダムな位置から目標位置へ移動。イージング cubic-bezier(.16,1,.3,1)。移動中は中心まわりに最大90°の渦を描くように回転させる
+・1.6〜2.8秒：文字の形で静止し、各粒が ±1px でかすかに震える
+・2.8〜3.8秒：粒が中心から外側へ、ランダムな速さで弾け飛んで消える
+・尺：4.4秒でループ`,
+run(H,t){const c=H.canvas();const x=c.getContext('2d');const sz=fitPx(t,"'Dela Gothic One'",300,1200);const pts=sample(t,"'Dela Gothic One'",sz,5,1600,900);
+  const P=pts.map(p=>({tx:p[0],ty:p[1],sx:rnd(0,1600),sy:rnd(0,900),c:Math.random()<.5?'#ff7ac6':'#fff',v:rnd(400,1400),a:Math.atan2(p[1]-450,p[0]-800)+rnd(-.4,.4)}));
+  const ease=k=>1-Math.pow(1-k,4);
+  H.raf(s=>{x.globalCompositeOperation='source-over';x.fillStyle='#08060c';x.fillRect(0,0,1600,900);x.globalCompositeOperation='lighter';
+    P.forEach(p=>{let X,Y,al=1;if(s<1.6){const k=ease(s/1.6);const rot=(1-k)*Math.PI/2;const ix=p.sx+(p.tx-p.sx)*k-800,iy=p.sy+(p.ty-p.sy)*k-450;X=800+ix*Math.cos(rot)-iy*Math.sin(rot);Y=450+ix*Math.sin(rot)+iy*Math.cos(rot)}
+      else if(s<2.8){X=p.tx+rnd(-1,1);Y=p.ty+rnd(-1,1)}else{const k=s-2.8;X=p.tx+Math.cos(p.a)*p.v*k;Y=p.ty+Math.sin(p.a)*p.v*k;al=Math.max(0,1-k)}
+      x.globalAlpha=al;x.fillStyle=p.c;x.fillRect(X,Y,3.4,3.4)})});
+}});
+
+def({no:'49',cat:'TEXTURE',name:'風化',en:'Sand Dissolve',lead:'文字が右端から砂になって、さらさらと風に飛ばされる。',
+text:'さよなら',loop:4600,bg:'#0b0a0d',
+use:'<b>別れ・消失・儚さ・終わり</b>の表現に。エンディング、「〇〇は卒業します」、黒歴史を消す…などのネタにも。',
+tips:['崩れ始めを文字の端からずらすのが「風化」らしさのポイント','粒を上方向にも少し流すと、灰が舞い上がるような質感に','崩れた後に同じ場所へ次の言葉を出すと、きれいな場面転換に'],
+p:`中央の「{T}」が、右端から順に細かい砂粒になって、風に吹かれてさらさらと崩れ去る演出を作ってください。
+・背景：#0B0A0D。Canvasで描く
+・文字：Dela Gothic One、画面幅の約70%、色 #F2EDE4。見えないキャンバスに描き、3pxおきのピクセルを1粒（3px角の四角）として取り出す
+・0.0〜0.4秒：全体をフェードイン
+・1.2秒から崩壊：各粒の崩れ始める時刻を「1.2秒 ＋ (右端からの距離 ÷ 文字幅) × 1.4秒 ＋ 0〜0.25秒のランダム」にする（右から左へ崩れる）
+・崩れた粒の動き：右上へ風に流される。x方向 毎秒 120〜360px、y方向 毎秒 −40〜−140px、さらに sin 波で小さく揺れる。1.2秒かけて不透明度0へ。色は #F2EDE4 → #C9A27A（砂色）に変化
+・尺：4.6秒でループ`,
+run(H,t){const c=H.canvas();const x=c.getContext('2d');const sz=fitPx(t,"'Dela Gothic One'",280,1150);const pts=sample(t,"'Dela Gothic One'",sz,3,1600,900);
+  let minX=1600,maxX=0;pts.forEach(p=>{minX=Math.min(minX,p[0]);maxX=Math.max(maxX,p[0])});const Wd=Math.max(1,maxX-minX);
+  const P=pts.map(p=>({x:p[0],y:p[1],t0:1.2+(maxX-p[0])/Wd*1.4+rnd(0,.25),vx:rnd(120,360),vy:rnd(-140,-40),ph:rnd(0,6)}));
+  H.raf(s=>{x.clearRect(0,0,1600,900);const fade=Math.min(1,s/.4);x.fillStyle='#f2ede4';x.globalAlpha=fade;
+    P.forEach(p=>{if(s<p.t0){x.fillRect(p.x,p.y,3,3)}});
+    x.fillStyle='#c9a27a';P.forEach(p=>{const k=s-p.t0;if(k>=0&&k<1.2){x.globalAlpha=1-k/1.2;x.fillRect(p.x+p.vx*k,p.y+p.vy*k+Math.sin(k*8+p.ph)*6,2.5,2.5)}})});
+}});
+
+def({no:'50',cat:'TEXTURE',name:'ブラウン管',en:'CRT Power',lead:'ブツッと点く古いテレビ。走査線と色にじみ、そしてプツン。',
+text:'昭和レトロ',loop:4400,bg:'#000',
+use:'<b>レトロ・懐かし・昭和/平成</b>の演出に。「あの頃」を振り返る動画、古いゲーム・アニメの話題、場面の開始と終了に。',
+tips:['点灯は「横線→縦に開く」、消灯は「縦に潰れる→点になる」の順が本物らしい','赤と青の色にじみを1〜2pxずらすだけで、ブラウン管の質感になります','画面の四隅を暗くする（ビネット）と、テレビの丸みが出ます'],
+p:`古いブラウン管テレビの電源が入って「{T}」が映り、最後にプツンと消える演出を作ってください。
+・背景：#000。テレビ画面：幅1400px×高さ800px、角丸40px、背景 #11161A
+・画面の中身：「{T}」（Dela Gothic One、白、画面幅の60%）。赤 #FF0040 と青 #00E5FF のコピーを左右に2pxずらして重ね（mix-blend-mode: screen）、色にじみを出す
+・画面の質感：走査線（横線3px間隔・不透明度0.3）、四隅を暗くするビネット（radial-gradient）、0.1秒ごとにわずかに明るさが変わるちらつき（brightness 0.92〜1.05）
+・点灯（0.0〜0.6秒）：画面を scaleX 0・scaleY 0.006 → scaleX 1（0.2秒、白い横線が広がる）→ scaleY 1（0.25秒、縦に開く）。開く瞬間に brightness 3 → 1 で白く光る
+・映っている間：文字をごく小さく上下に揺らす（±2px）
+・消灯（3.4〜3.9秒）：scaleY 1 → 0.006（0.2秒）→ scaleX 0（0.15秒、点になる）→ 中央の白い点が0.15秒で消える
+・尺：4.4秒でループ`,
+run(H,t){const tv=H.abs({left:'100px',top:'50px',width:'1400px',height:'800px',borderRadius:'40px',background:'#11161a',overflow:'hidden'});
+  const B=H.box({},tv);const sz=fs(t,240,840);BIG(H,t,{position:'absolute',color:'#ff0040',fontSize:sz+'px',transform:'translateX(-2px)',mixBlendMode:'screen'},B);BIG(H,t,{position:'absolute',color:'#00e5ff',fontSize:sz+'px',transform:'translateX(2px)',mixBlendMode:'screen'},B);BIG(H,t,{position:'absolute',color:'#fff',fontSize:sz+'px',mixBlendMode:'screen',opacity:.85},B);
+  H.a(B,[{transform:'translateY(-2px)'},{transform:'translateY(2px)'}],{d:120,e:E.lin,i:Infinity,dir:'alternate'});
+  H.abs({inset:'0',background:'repeating-linear-gradient(rgba(0,0,0,.3) 0 1px,transparent 1px 3px)'},tv);H.abs({inset:'0',background:'radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.75))'},tv);
+  let k=0;H.raf(s=>{const q=Math.floor(s*10);if(q!==k){k=q;tv.style.filter=s>.6&&s<3.4?`brightness(${rnd(.92,1.05).toFixed(2)})`:''}});
+  H.a(tv,[{transform:'scale(0,.006)',filter:'brightness(3)',offset:0},{transform:'scale(1,.006)',filter:'brightness(3)',offset:.35},{transform:'scale(1,1)',filter:'brightness(3)',offset:.75},{transform:'scale(1,1)',filter:'brightness(1)',offset:1}],{d:600,e:E.soft,f:'backwards'});
+  H.a(tv,[{transform:'scale(1,1)',offset:0},{transform:'scale(1,.006)',offset:.4},{transform:'scale(0,.006)',offset:.7,opacity:1},{transform:'scale(0,.006)',offset:1,opacity:0}],{d:500,dl:3400,e:E.in,f:'forwards'});
+  const dot=H.abs({left:'790px',top:'440px',width:'20px',height:'20px',borderRadius:'50%',background:'#fff',boxShadow:'0 0 30px #fff',opacity:0});H.a(dot,[{opacity:1},{opacity:0}],{d:200,dl:3750,f:'none'});
+}});
+
+/* ===== PLAY 51-60 ===== */
+const CANDY=['#ff5d8f','#ffb703','#3ab0ff','#7cd95b','#a78bfa','#ff8c42'];
+const rel=(H,el)=>{const r=el.getBoundingClientRect(),s=H.S.getBoundingClientRect(),k=1600/s.width;return{x:(r.left-s.left)*k,y:(r.top-s.top)*k,w:r.width*k,h:r.height*k}};
+
+def({no:'51',cat:'PLAY',name:'ゼリー',en:'Jelly Wobble',lead:'落ちてきた文字がぷるるんと震える。つつくとまた揺れる。',
+text:'ぷるぷる新食感',loop:3800,bg:'#fdf6e9',
+use:'<b>食べ物・スイーツ・かわいい系</b>に。グルメ動画の商品名、子ども向けコンテンツ、「やわらかい」を伝えたいときに。',
+tips:['揺れは「横に広がる→縦に伸びる」を3回くり返し、徐々に小さくするのがゼリーらしさ','文字ごとに色を変えるとお菓子のようなポップさが出ます','揺れの基準点を文字の下端にすると、床に置いたゼリーのように'],
+p:`カラフルな「{T}」の文字が上から落ちてきて、ゼリーのように「ぷるるん」と震える演出を作ってください。
+・背景：#FDF6E9。文字：Mochiy Pop One、画面幅の約70%
+・文字色：1文字ずつ #FF5D8F → #FFB703 → #3AB0FF → #7CD95B → #A78BFA → #FF8C42 の順でくり返す。下に同じ色を暗くした影（0 10px 0）
+・落下（0.35秒）：translateY −500px → 0、イージング cubic-bezier(.7,0,.84,0)。文字ごとに0.08秒ずつ遅らせる
+・着地後のぷるぷる（0.8秒）：transform-origin は文字の下端。scale を (1.3, 0.7) → (0.8, 1.2) → (1.12, 0.9) → (0.95, 1.05) → (1, 1) と変化させる
+・2.2秒：左から順に（0.06秒ずつ）もう一度ぷるぷるさせる（つつかれた感じ。強さは半分）
+・3.3秒でフェードアウト、尺3.8秒でループ`,
+run(H,t){const B=H.box();const w=H.el('div',{fontFamily:F.pop,fontSize:fs(t,200,1150)+'px',whiteSpace:'nowrap'},B);
+  const cs=H.chars(t,w,{transformOrigin:'50% 100%'});const jel=(c,dl,k)=>H.a(c,[{transform:'scale(1,1)'},{transform:`scale(${1+.3*k},${1-.3*k})`},{transform:`scale(${1-.2*k},${1+.2*k})`},{transform:`scale(${1+.12*k},${1-.1*k})`},{transform:`scale(${1-.05*k},${1+.05*k})`},{transform:'scale(1,1)'}],{d:800,dl,e:E.soft,f:'none'});
+  cs.forEach((c,i)=>{const col=CANDY[i%CANDY.length];c.style.color=col;c.style.textShadow=`0 10px 0 color-mix(in srgb, ${col} 60%, #000)`;
+    const wr=document.createElement('span');wr.style.display='inline-block';c.replaceWith(wr);wr.appendChild(c);
+    H.a(wr,[{transform:'translateY(-500px)'},{transform:'translateY(0)'}],{d:350,dl:i*80,e:E.in});jel(c,i*80+350,1);jel(c,2200+i*60,.5)});
+  H.a(B,[{opacity:1},{opacity:0}],{d:500,dl:3300,f:'forwards'});
+}});
+
+def({no:'52',cat:'PLAY',name:'ドミノ倒し',en:'Domino Fall',lead:'文字のタイルが、パタパタパタと連鎖して倒れていく。',
+text:'連鎖反応',loop:3800,bg:'#1d2a1a',
+use:'<b>連鎖・波及・バズ・口コミ</b>の表現に。「1つの行動が次々に…」という話の導入や、テンポのいいオチに。',
+tips:['倒れる角度は隣のタイルに当たる角度（約70°）で止め、最後の1枚だけ90°まで倒すとリアル','倒れる速さを加速（ease-in）にすると重力を感じます','最初の1枚を押す「指」や「ボール」を足すと物語になります'],
+p:`「{T}」の1文字ずつが白いタイルに書かれて並び、左から順にドミノ倒しのように連鎖して倒れていく演出を作ってください。
+・背景：#1D2A1A。床の線（#3E5A37、高さ6px）
+・タイル：1文字ごとに幅150px×高さ240px、背景 #FFFFFF、角丸12px、影 6px 6px 0 #0E150D。文字は #1D2A1A、Dela Gothic One、120px。タイルの間隔60px
+・0.0〜0.5秒：タイルが下から順に起き上がる（scaleY 0→1、下基準、0.06秒ずつ遅らせる）
+・0.9秒：1枚目が右下の角を軸に右へ倒れ始める。各タイルは rotate 0 → 68°（最後の1枚だけ 90°）へ0.32秒、イージング cubic-bezier(.55,0,1,.45)
+・次のタイルは前のタイルが当たる瞬間（0.12秒後）に倒れ始める
+・最後のタイルが倒れた瞬間、#7CD95B で「完了！」を右上にポンと出す（scale 0→1、cubic-bezier(.34,1.56,.64,1)）
+・3.2秒で全体をフェードアウト、尺3.8秒でループ`,
+run(H,t){const B=H.box({flexDirection:'column'});const row=H.el('div',{display:'flex',gap:'60px',alignItems:'flex-end',position:'relative'},B);const n=[...t].length;const W=Math.min(150,(1300-60*(n-1))/n);
+  H.el('div',{width:Math.min(1500,n*(W+60)+200)+'px',height:'6px',background:'#3e5a37'},B);
+  const tiles=[...t].map((ch,i)=>{const tl=H.el('div',{width:W+'px',height:W*1.6+'px',background:'#fff',borderRadius:'12px',boxShadow:'6px 6px 0 #0e150d',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:F.heavy,fontSize:W*.8+'px',color:'#1d2a1a',transformOrigin:'100% 100%'},row,ch);
+    H.a(tl,[{transform:'scaleY(0)'},{transform:'scaleY(1)'}],{d:300,dl:i*60,e:E.back});return tl});
+  tiles.forEach((tl,i)=>H.a(tl,[{transform:'rotate(0deg)'},{transform:`rotate(${i===n-1?90:68}deg)`}],{d:320,dl:900+i*120,e:'cubic-bezier(.55,0,1,.45)',f:'forwards'}));
+  const done=H.abs({right:'-40px',top:'-150px',fontFamily:F.pop,fontSize:'72px',color:'#7cd95b'},row,'完了！');H.a(done,[{transform:'scale(0)'},{transform:'scale(1)'}],{d:400,dl:900+(n-1)*120+320,e:E.back});
+  H.a(B,[{opacity:1},{opacity:0}],{d:500,dl:3200,f:'forwards'});
+}});
+
+def({no:'53',cat:'PLAY',name:'マグネット',en:'Magnet Snap',lead:'散らばった文字がカチッと吸い寄せられ、反発してまた散る。',
+text:'引き寄せる力',loop:4200,bg:'#f2f7ee',
+use:'<b>集客・魅力・引き寄せ・チームワーク</b>に。「ファンを引き寄せる〇〇」「バラバラが1つに」という話に。',
+tips:['吸い寄せは少し行き過ぎて戻る（back）ことで「カチッ」と磁力を感じます','散らばり時に文字を回転させておくと、整列したときの気持ちよさが増します','反発の瞬間に画面を少し揺らすと迫力が出ます'],
+p:`バラバラに散らばった「{T}」の文字が、磁石に吸い寄せられるように一列にカチッと整列し、その後反発して再び散る演出を作ってください。
+・背景：#F2F7EE。文字：#1D2A1A、Dela Gothic One、画面幅の約70%。整列したとき文字の下に #7CD95B のバー（高さ14px）
+・初期状態：各文字を画面内のランダムな位置（中心から x ±650px、y ±320px）、ランダムな角度（−120〜120°）、大きさ0.6〜1.2倍に置き、不透明度0.5
+・0.3秒：一斉に整列位置へ吸い寄せる。0.6秒、イージング cubic-bezier(.34,1.56,.64,1)（少し行き過ぎて戻る）。文字ごとに 0〜0.12秒のランダムな遅れ
+・整列した瞬間（0.9秒）：#7CD95B のバーが中央から左右に伸び、画面を6px揺らす
+・2.6秒：中心から外へ反発。各文字を中心からの方向に 500〜900px、回転 ±180°、不透明度0 へ0.7秒（cubic-bezier(.16,1,.3,1)）
+・尺：4.2秒でループ`,
+run(H,t){const B=H.box({flexDirection:'column',gap:'20px'});const w=H.el('div',{fontFamily:F.heavy,fontSize:fs(t,220,1150)+'px',color:'#1d2a1a',whiteSpace:'nowrap'},B);const cs=H.chars(t,w);
+  const bar=H.el('div',{width:'1000px',height:'14px',background:'#7cd95b',borderRadius:'7px'},B);H.a(bar,[{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{d:400,dl:900,e:E.out});H.a(bar,[{opacity:1},{opacity:0}],{d:300,dl:2600,f:'forwards'});
+  cs.forEach((c,i)=>{const from=`translate(${rnd(-650,650)}px,${rnd(-320,320)}px) rotate(${rnd(-120,120)}deg) scale(${rnd(.6,1.2)})`;const a=rnd(0,Math.PI*2);
+    H.a(c,[{transform:from,opacity:.5},{transform:'translate(0,0) rotate(0) scale(1)',opacity:1}],{d:600,dl:300+rnd(0,120),e:E.back});
+    H.a(c,[{transform:'translate(0,0) rotate(0)',opacity:1},{transform:`translate(${Math.cos(a)*rnd(500,900)}px,${Math.sin(a)*rnd(300,600)}px) rotate(${rnd(-180,180)}deg)`,opacity:0}],{d:700,dl:2600,f:'forwards'})});
+  H.shake(B,900,6,250);
+}});
+
+def({no:'54',cat:'PLAY',name:'風船',en:'Balloon Float',lead:'風船に乗った文字がふわふわ浮かび、最後の1個がパンッ！',
+text:'おめでとう',loop:5200,bg:'#bfe6ff',
+use:'<b>お祝い・誕生日・記念日・達成</b>に。「〇周年」「誕生日おめでとう」、ちょっとしたオチをつけたいときに。',
+tips:['風船ごとに揺れの周期を少しずつ変えると、自然にふわふわして見えます','割れる瞬間に紙吹雪と「パン！」の文字を出すとさらに楽しい','風船の色はパステルより原色寄りの方が画面映えします'],
+p:`「{T}」の1文字ずつが色とりどりの風船に書かれていて、画面下からふわふわ浮かんできて、最後に1つだけ割れる演出を作ってください。
+・背景：#BFE6FF（空色）。白い雲（角丸の白い楕円の組み合わせ）を2つ、ゆっくり横に流す
+・風船：1文字ごとに幅170px×高さ200pxの楕円（border-radius: 50%）。色は #FF5D8F, #FFB703, #3AB0FF, #7CD95B, #A78BFA を順に。左上に白いハイライト（不透明度0.35）。下に小さな三角の結び目と、長さ220pxの細いひも（#666、1.5px）
+・風船の文字：白、Mochiy Pop One、110px
+・0.0〜1.6秒：各風船が画面下（+700px）から目標の高さまで上昇。イージング cubic-bezier(.16,1,.3,1)、風船ごとに0.12秒ずつ遅らせる
+・上昇後：各風船を translateY ±14px・rotate ±4° で揺らし続ける（周期は 2.2〜3.0秒で風船ごとに変える）
+・3.6秒：最後の風船を scale 1 → 1.25（0.15秒）→ 0（0.06秒）で割り、その位置に「パン！」の文字と、8枚の紙吹雪を飛ばす。割れた風船の文字は下へ落ちる
+・尺：5.2秒でループ`,
+run(H,t){[[200,140,26000],[1100,90,32000]].forEach(([x0,y,d])=>{const cl=H.abs({left:x0+'px',top:y+'px',width:'260px',height:'80px',background:'#fff',borderRadius:'60px',boxShadow:'60px -30px 0 10px #fff, 130px 0 0 0 #fff'});H.a(cl,[{transform:'translateX(0)'},{transform:'translateX(-300px)'}],{d,e:E.lin})});
+  const B=H.box();const row=H.el('div',{display:'flex',gap:'26px'},B);const cs=[...t];const n=cs.length;const W=Math.min(170,(1400-26*(n-1))/n);
+  const bl=cs.map((ch,i)=>{const col=CANDY[i%5];const g=H.el('div',{position:'relative',display:'flex',flexDirection:'column',alignItems:'center'},row);
+    const b=H.el('div',{width:W+'px',height:W*1.18+'px',borderRadius:'50%',background:col,position:'relative',display:'flex',alignItems:'center',justifyContent:'center',color:'#fff',fontFamily:F.pop,fontSize:W*.65+'px'},g);
+    H.abs({left:'18%',top:'14%',width:'22%',height:'26%',borderRadius:'50%',background:'#fff',opacity:.35},b);const tx=H.el('span',{},b,ch);
+    H.el('div',{width:'0',height:'0',borderLeft:'10px solid transparent',borderRight:'10px solid transparent',borderBottom:`14px solid ${col}`,marginTop:'-4px'},g);
+    const str=H.el('div',{width:'1.5px',height:'220px',background:'#666'},g);
+    H.a(g,[{transform:'translateY(700px)'},{transform:'translateY(0)'}],{d:1600,dl:i*120,e:E.out});
+    H.a(b,[{transform:'translateY(0) rotate(0)'},{transform:`translateY(-14px) rotate(${i%2?4:-4}deg)`},{transform:'translateY(0) rotate(0)'}],{d:2200+i*160,e:'ease-in-out',i:Infinity,dl:1600});
+    return{g,b,tx,str}});
+  const L=bl[n-1];H.wait(3600,()=>{L.b.getAnimations().forEach(a=>a.cancel());H.a(L.b,[{transform:'scale(1)'},{transform:'scale(1.25)',offset:.7},{transform:'scale(0)'}],{d:210,e:E.in,f:'forwards'});
+    H.a(L.str,[{opacity:1},{opacity:0}],{d:300,dl:200,f:'forwards'});
+    const p=rel(H,L.b);const pan=H.abs({left:p.x-40+'px',top:p.y-30+'px',fontFamily:F.pop,fontSize:'90px',color:'#ff5d8f',WebkitTextStroke:'4px #fff'},null,'パン！');H.a(pan,[{transform:'scale(0) rotate(-10deg)'},{transform:'scale(1) rotate(-10deg)'}],{d:300,dl:200,e:E.back});
+    const ft=H.abs({left:p.x+p.w/2-30+'px',top:p.y+p.h/2-60+'px',fontFamily:F.pop,fontSize:W*.65+'px',color:CANDY[(n-1)%5]},null,cs[n-1]);H.a(ft,[{transform:'translateY(0) rotate(0)'},{transform:'translateY(700px) rotate(200deg)'}],{d:1100,dl:200,e:E.in,f:'forwards'});
+    for(let k=0;k<8;k++){const q=H.abs({left:p.x+p.w/2+'px',top:p.y+p.h/2+'px',width:'16px',height:'10px',background:CANDY[k%6]});H.a(q,[{transform:'translate(0,0) rotate(0)',opacity:1},{transform:`translate(${rnd(-200,200)}px,${rnd(-200,120)}px) rotate(${rnd(-300,300)}deg)`,opacity:0}],{d:900,dl:200})}});
+}});
+
+def({no:'55',cat:'PLAY',name:'てくてく行進',en:'Walking Letters',lead:'文字たちが、ぴょこぴょこ歩いて画面に入ってくる。',
+text:'おさんぽ日和',loop:4400,bg:'#fff8e7',
+use:'<b>Vlog・散歩・お出かけ・ゆるい日常</b>に。ほのぼのした動画のタイトルや、キャラクター感を出したいときに。',
+tips:['歩くたびに左右に傾ける（±8°）と、てくてく感が一気に出ます','1文字ずつ0.15秒遅らせると、行列に並んで歩いて見えます','止まった後に全員でぴょんと跳ねると、かわいい締めになります'],
+p:`「{T}」の文字たちが、1文字ずつぴょこぴょこ歩いて画面の右から入ってきて、整列したら全員でぴょんと跳ねる演出を作ってください。
+・背景：#FFF8E7。地面の線（#E8D9B5、高さ8px、角丸）
+・文字：#2B2B2B、Mochiy Pop One、画面幅の約60%。各文字の足元に小さな楕円の影
+・歩き方：各文字を translateX +1500px → 0 へ1.8秒で移動（ほぼ等速、最後だけ減速：cubic-bezier(.3,0,.4,1)）。文字ごとに0.15秒ずつ遅らせる
+・歩いている間（0.3秒周期のくり返し）：translateY 0 → −36px → 0（ぴょこっ）＋ rotate −8° と +8° を1歩ごとに交互に
+・到着したら傾きと上下を0に戻す
+・全員そろった0.3秒後：全員同時に translateY −80px のジャンプ（0.45秒、着地で scale(1.15,0.85) に潰れて戻る）
+・3.8秒でフェードアウト、尺4.4秒でループ`,
+run(H,t){const B=H.box({flexDirection:'column'});const row=H.el('div',{display:'flex',fontFamily:F.pop,fontSize:fs(t,190,1000)+'px',color:'#2b2b2b'},B);H.el('div',{width:'1300px',height:'8px',borderRadius:'4px',background:'#e8d9b5',marginTop:'6px'},B);
+  const n=[...t].length;[...t].forEach((ch,i)=>{const mv=H.el('div',{display:'inline-block'},row);const hop=H.el('div',{display:'inline-block',transformOrigin:'50% 100%'},mv);H.el('span',{whiteSpace:'pre'},hop,ch);
+    const dl=i*150;H.a(mv,[{transform:'translateX(1500px)'},{transform:'translateX(0)'}],{d:1800,dl,e:'cubic-bezier(.3,0,.4,1)'});
+    const steps=6;const k=[];for(let s=0;s<steps;s++){const r=s%2?8:-8;k.push({transform:`translateY(0) rotate(${r}deg)`,offset:s/steps},{transform:`translateY(-36px) rotate(${r}deg)`,offset:(s+.5)/steps})}k.push({transform:'translateY(0) rotate(0)',offset:1});
+    H.a(hop,k,{d:1800,dl,e:E.lin,f:'none'});const jt=1800+(n-1)*150+300;
+    H.a(hop,[{transform:'translateY(0) scale(1)'},{transform:'translateY(-80px) scale(1)',offset:.45},{transform:'translateY(0) scale(1.15,.85)',offset:.8},{transform:'translateY(0) scale(1)'}],{d:450,dl:jt,e:E.soft,f:'none'})});
+  H.a(B,[{opacity:1},{opacity:0}],{d:500,dl:3800,f:'forwards'});
+}});
+
+def({no:'56',cat:'PLAY',name:'ボヨヨン',en:'Spring Drop',lead:'天井から吊られた文字が落ちてきて、バネでボヨヨンと弾む。',
+text:'お知らせ',loop:3400,bg:'#ffe066',
+use:'<b>お知らせ・注目・ちょっと聞いて</b>に。真面目な告知をやわらかく見せたいとき、子ども向け・ファミリー向けの動画に。',
+tips:['跳ね返りの高さを毎回およそ半分にしていくと、自然なバネの減衰になります','一番下に来た瞬間だけ文字を横に潰すと、弾力が強調されます','吊りひもをジグザグのバネにすると、さらにおもちゃっぽく'],
+p:`天井からひもで吊られた「{T}」の看板が落ちてきて、バネのようにボヨヨンと上下に弾んで止まる演出を作ってください。
+・背景：#FFE066
+・看板：白い角丸（24px）の板、太い黒フチ（8px #222）、影 0 14px 0 #222。中に「{T}」（#222、Mochiy Pop One、画面幅の約45%）
+・ひも：看板の上端の左右2か所から、画面の上端まで伸びる黒い線（#222、6px）。看板と一緒に動く（看板の上に十分長い線を付けておく）
+・落下とバネ：translateY を −900px → 40 → −60 → 26 → −16 → 8 → −3 → 0（キーフレームの位置 0 / 28 / 44 / 58 / 70 / 81 / 91 / 100%）で1.6秒。各区間は ease-in-out
+・一番下に来た瞬間（28%・58%の位置）だけ、看板を scale(1.12, 0.88) に潰す
+・止まった後、1.0秒かけて rotate −2° → 2° → 0 でゆらっと揺れる
+・2.9秒で上へ引き上げて退場（translateY → −900px、0.4秒、cubic-bezier(.7,0,.84,0)）
+・尺：3.4秒でループ`,
+run(H,t){const B=H.box();const sign=H.el('div',{position:'relative',background:'#fff',border:'8px solid #222',borderRadius:'24px',boxShadow:'0 14px 0 #222',padding:'30px 70px',fontFamily:F.pop,fontSize:fs(t,170,700)+'px',color:'#222',whiteSpace:'nowrap'},B,t);
+  ['18%','78%'].forEach(l=>H.abs({left:l,bottom:'100%',width:'6px',height:'900px',background:'#222'},sign));
+  H.a(sign,[{transform:'translateY(-900px) scale(1)',offset:0},{transform:'translateY(40px) scale(1.12,.88)',offset:.28},{transform:'translateY(-60px) scale(1)',offset:.44},{transform:'translateY(26px) scale(1.06,.94)',offset:.58},{transform:'translateY(-16px)',offset:.7},{transform:'translateY(8px)',offset:.81},{transform:'translateY(-3px)',offset:.91},{transform:'translateY(0)',offset:1}],{d:1600,e:'ease-in-out'});
+  H.a(B,[{transform:'rotate(0)'},{transform:'rotate(-2deg)'},{transform:'rotate(2deg)'},{transform:'rotate(0)'}],{d:1000,dl:1600,e:'ease-in-out',f:'none'});
+  H.a(sign,[{transform:'translateY(0)'},{transform:'translateY(-900px)'}],{d:400,dl:2900,e:E.in,f:'forwards'});
+}});
+
+def({no:'57',cat:'PLAY',name:'らくがき強調',en:'Doodle Marks',lead:'赤ペンでぐるっと囲んで、二重線、ビックリマーク。',
+text:'ここテストに出る',loop:4200,bg:'#fbfaf6',
+use:'<b>勉強・解説・要点のまとめ</b>に。教育系、ノート風の動画、「ここ大事！」を手書き感で伝えたいときに。',
+tips:['丸の線はわざと始点と終点をずらして重ねると、手書きらしくなります','線を描く速さは0.5秒前後が「さっと書いた」感じ','方眼ノートの背景にすると、勉強系の雰囲気が一気に出ます'],
+p:`ノートに書いた「{T}」を、赤ペンで手書き風にぐるっと囲み、下に二重線、横にビックリマークを書き足していく演出を作ってください。
+・背景：#FBFAF6 に、薄い水色（#DCEBF5）の方眼（40px間隔）
+・文字：#222、Zen Kaku Gothic New の太字、画面幅の約55%。0.0〜0.3秒でフェードイン
+・赤ペン：色 #E5383B、線幅9px、線端は丸く。すべて SVG のパスを stroke-dasharray / stroke-dashoffset で「描く」
+　① 0.5秒〜1.1秒：文字全体を囲む楕円。手書き風に、始点と終点が少し重なってはみ出す形（1周＋20°）。線を少しゆらがせる
+　② 1.2秒〜1.5秒：文字の下に横線を1本、1.5〜1.8秒にもう1本（少し短く、少し傾ける）
+　③ 1.9秒〜2.2秒：右上にビックリマーク「!!」を2本の線と点で描く
+　④ 2.3秒：左上に小さな星 ☆ を描いて、scale 0→1.2→1 で弾ませる
+・3.6秒でフェードアウト、尺4.2秒でループ`,
+run(H,t){H.abs({inset:'0',backgroundImage:'linear-gradient(#dcebf5 1px,transparent 1px),linear-gradient(90deg,#dcebf5 1px,transparent 1px)',backgroundSize:'40px 40px'});
+  const sz=fs(t,170,900);const B=H.box();const el=H.el('div',{fontFamily:"'Zen Kaku Gothic New',sans-serif",fontWeight:'700',fontSize:sz+'px',color:'#222',whiteSpace:'nowrap'},B,t);H.a(el,[{opacity:0},{opacity:1}],{d:300});
+  const svg=H.svg(1600,900);const pen={fill:'none',stroke:'#e5383b','stroke-width':9,'stroke-linecap':'round','stroke-linejoin':'round'};
+  const draw=(d,dl,dur)=>{const p=H.sv('path',Object.assign({d},pen),svg);const L=p.getTotalLength();p.setAttribute('stroke-dasharray',L);p.setAttribute('stroke-dashoffset',L);H.a(p,[{strokeDashoffset:L},{strokeDashoffset:0}],{d:dur,dl,e:E.soft});return p};
+  H.wait(20,()=>{const r=rel(H,el);const cx=r.x+r.w/2,cy=r.y+r.h/2,rx=r.w/2+70,ry=r.h/2+50;let d='';for(let a=0;a<=Math.PI*2+.35;a+=.08){const j=Math.sin(a*5)*6;const x=cx+(rx+j)*Math.cos(a-Math.PI*.9),y=cy+(ry+j)*Math.sin(a-Math.PI*.9);d+=(d?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)}
+    draw(d,500,600);const y1=r.y+r.h+80;draw(`M ${r.x-10} ${y1} Q ${cx} ${y1+10} ${r.x+r.w+20} ${y1-6}`,1200,300);draw(`M ${r.x+40} ${y1+28} Q ${cx} ${y1+36} ${r.x+r.w-40} ${y1+18}`,1500,300);
+    const ex=r.x+r.w+rx-r.w/2+20,ey=r.y-40;draw(`M ${ex} ${ey} L ${ex-8} ${ey+80}`,1900,150);draw(`M ${ex+34} ${ey-4} L ${ex+26} ${ey+76}`,2000,150);draw(`M ${ex-11} ${ey+104} l 1 1`,2100,60);draw(`M ${ex+23} ${ey+100} l 1 1`,2150,60);
+    const sx=r.x-rx+r.w/2-10,sy=r.y-50;const st=H.sv('g',{},svg);st.style.transformOrigin=`${sx}px ${sy}px`;let sp='';for(let k=0;k<11;k++){const a=-Math.PI/2+k*Math.PI/5;const rr=k%2?14:34;sp+=(k?'L':'M')+(sx+rr*Math.cos(a)).toFixed(1)+' '+(sy+rr*Math.sin(a)).toFixed(1)}
+    H.sv('path',Object.assign({d:sp},pen,{'stroke-width':6}),st);H.a(st,[{transform:'scale(0)'},{transform:'scale(1.2)',offset:.7},{transform:'scale(1)'}],{d:400,dl:2300,e:E.back})});
+  H.wait(3600,()=>{[B,svg].forEach(e=>H.a(e,[{opacity:1},{opacity:0}],{d:500,f:'forwards'}))});
+}});
+
+def({no:'58',cat:'PLAY',name:'吹き出しポップ',en:'Speech Bubbles',lead:'漫画の吹き出しが、ポン、ポン、ポンと次々に湧き出す。',
+text:'え？ マジで！？ 神すぎる',multi:true,loop:4200,bg:'#ffd6e8',
+use:'<b>リアクション・口コミ・みんなの声</b>に。商品レビューの感想、コメント紹介、ツッコミ・ボケのテロップに。',
+tips:['吹き出しの角度を±8°でバラすと、ワイワイしたにぎやかさが出ます','最後の吹き出しだけトゲトゲ（叫び）の形にすると、オチが強調されます','ポップ音（効果音）を1つずつ合わせると楽しさが倍増'],
+p:`漫画の吹き出しが画面のあちこちから次々にポンと湧き出し、それぞれにセリフが入る演出を作ってください。
+・背景：#FFD6E8 に、白い水玉（直径14px、60px間隔、不透明度0.5）
+・セリフ：「{T}」をスペースで区切った語を、1つの吹き出しに1語ずつ
+・吹き出し：白い楕円（黒フチ6px #222）＋ 話し手の方向を指す三角のしっぽ。文字は #222、Mochiy Pop One、80〜110px。最後の吹き出しだけ、黄色 #FFE14D のトゲトゲの「叫び」形（clip-path の星形ポリゴン）で、文字を大きく
+・配置：左上・右中・中央下…と重なりすぎないようにずらし、角度は −8〜8° でランダム
+・出方：0.45秒ごとに1つずつ。scale 0 → 1.15 → 1（0.35秒、cubic-bezier(.34,1.56,.64,1)）。出た瞬間に吹き出しを小さく揺らす
+・全部出たら0.5秒後、全吹き出しが同時にぷるっと震える（scale 1→1.05→1）
+・3.6秒でフェードアウト、尺4.2秒でループ`,
+run(H,t,w){if(!w.length)w=[t];H.abs({inset:'0',backgroundImage:'radial-gradient(rgba(255,255,255,.5) 7px,transparent 8px)',backgroundSize:'60px 60px'});
+  const pos=[[330,230,-7],[1180,330,6],[760,640,-3],[420,620,5],[1250,690,-6]];const n=w.length;const items=[];
+  w.forEach((s,i)=>{const last=i===n-1&&n>1;const [x,y,r]=pos[i%5];const g=H.abs({left:x+'px',top:y+'px',transform:`translate(-50%,-50%) rotate(${r}deg)`});
+    const fz=last?120:fs(s,100,560);let b;
+    if(last){b=H.el('div',{background:'#222',clipPath:'polygon(50% 0,60% 18%,78% 6%,76% 28%,98% 24%,86% 44%,100% 60%,80% 66%,88% 88%,66% 80%,56% 100%,46% 82%,26% 96%,26% 74%,4% 78%,14% 58%,0 40%,20% 34%,12% 12%,34% 20%)',padding:'90px 120px'},g);
+      H.abs({inset:'8px',background:'#ffe14d',clipPath:'inherit'},b);H.el('div',{position:'relative',fontFamily:F.pop,fontSize:fs(s,120,520)+'px',color:'#222',whiteSpace:'nowrap'},b,s)}
+    else{b=H.el('div',{position:'relative',background:'#fff',border:'6px solid #222',borderRadius:'50%',padding:'50px 70px',fontFamily:F.pop,fontSize:fz+'px',color:'#222',whiteSpace:'nowrap'},g,s);
+      H.abs({left:'22%',bottom:'-34px',width:'0',height:'0',borderLeft:'18px solid transparent',borderRight:'18px solid transparent',borderTop:'40px solid #222'},b);H.abs({left:'calc(22% + 7px)',bottom:'-22px',width:'0',height:'0',borderLeft:'11px solid transparent',borderRight:'11px solid transparent',borderTop:'26px solid #fff'},b)}
+    H.a(b,[{transform:'scale(0)'},{transform:'scale(1.15)',offset:.7},{transform:'scale(1)'}],{d:350,dl:i*450,e:E.back});items.push(b)});
+  const all=(n-1)*450+350+500;items.forEach(b=>H.a(b,[{transform:'scale(1)'},{transform:'scale(1.05)'},{transform:'scale(1)'}],{d:300,dl:all,f:'none'}));
+  H.wait(3600,()=>items.forEach(b=>H.a(b.parentNode,[{opacity:1},{opacity:0}],{d:500,f:'forwards'})));
+}});
+
+def({no:'59',cat:'PLAY',name:'ころころ',en:'Rolling In',lead:'タイヤのように転がってきた文字が、ちょうどの位置で止まる。',
+text:'ころがる毎日',loop:3800,bg:'#e9f7e3',
+use:'<b>日常・継続・コツコツ</b>の表現に。「毎日続ける」系の企画、ゆるいトーク動画、雑談配信のタイトルに。',
+tips:['転がる距離と回転量を合わせる（移動距離÷文字の円周）と、滑らずに転がって見えます','止まる直前に少し揺り戻すと、重さのある物体に見えます','文字ごとに違う色の丸い台紙を付けると、ボールが転がるように'],
+p:`「{T}」の各文字が丸い台紙に乗って、タイヤのように左から転がってきて、ちょうどの位置で止まる演出を作ってください。
+・背景：#E9F7E3。床の線（#B5D9A6、高さ6px）
+・各文字：直径170pxの円の台紙（#FFFFFF、フチ6px #2F5D24）の中央に文字（#2F5D24、Dela Gothic One、100px）
+・転がり方：translateX を −1700px → 0、rotate を −720° → 0 に同時に変化（滑らずに転がるよう、回転量 = 移動距離 ÷ 円周 × 360°）。1.4秒、イージング cubic-bezier(.22,1,.36,1)
+・文字ごとに0.1秒ずつ遅らせる。左の文字ほど遠くまで転がるよう、移動距離に「文字の位置 × 200px」を足す
+・止まる直前に少し揺り戻す：最後に rotate +8° → 0 の揺れを0.3秒
+・止まった文字の下に、小さな砂ぼこり（灰緑の丸3つ）をふわっと出す
+・3.2秒でフェードアウト、尺3.8秒でループ`,
+run(H,t){const B=H.box({flexDirection:'column'});const row=H.el('div',{display:'flex',gap:'16px'},B);const n=[...t].length;const D=Math.min(170,(1450-16*(n-1))/n);H.el('div',{width:'1450px',height:'6px',background:'#b5d9a6',marginTop:'8px'},B);
+  [...t].forEach((ch,i)=>{const c=H.el('div',{width:D+'px',height:D+'px',borderRadius:'50%',background:'#fff',border:'6px solid #2f5d24',boxSizing:'border-box',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:F.heavy,fontSize:D*.58+'px',color:'#2f5d24'},row,ch);
+    const dist=1700+(n-1-i)*200;const rot=-(dist/(Math.PI*D))*360;
+    H.a(c,[{transform:`translateX(${-dist}px) rotate(${rot}deg)`},{transform:'translateX(0) rotate(0deg)',offset:.82},{transform:'translateX(0) rotate(8deg)',offset:.9},{transform:'translateX(0) rotate(0deg)'}],{d:1700,dl:i*100,e:'cubic-bezier(.22,1,.36,1)'});
+    H.wait(1500+i*100,()=>{const p=rel(H,c);for(let k=0;k<3;k++){const d=H.abs({left:p.x+p.w/2+(k-1)*30+'px',top:p.y+p.h-10+'px',width:'14px',height:'14px',borderRadius:'50%',background:'#9bbf8d'});H.a(d,[{transform:'translate(0,0) scale(.5)',opacity:.9},{transform:`translate(${(k-1)*30}px,-30px) scale(1.2)`,opacity:0}],{d:600})}})});
+  H.a(B,[{opacity:1},{opacity:0}],{d:500,dl:3200,f:'forwards'});
+}});
+
+def({no:'60',cat:'PLAY',name:'カラオケ字幕',en:'Karaoke Lyric',lead:'歌詞の色が左から塗り替わり、ボールが文字の上を跳ねる。',
+text:'君と見た夏の空 いつまでも忘れない',multi:true,loop:7000,bg:'#1b1033',
+use:'<b>歌ってみた・歌詞動画・名言の読み上げ</b>に。読み上げに合わせて色が変わるので、ナレーションの字幕にも使えます。',
+tips:['塗り替えの速さを、読み上げや歌の速さ（1文字0.18秒前後）に合わせるのが基本','跳ねるボールは文字1つにつき1回弾ませると、リズムが分かりやすい','2行目は1行目が終わってから塗り始めると、カラオケらしくなります'],
+p:`カラオケの字幕のように、歌詞の文字色が左から順に塗り替わり、その上を小さなボールが跳ねていく演出を作ってください。
+・背景：#1B1033（夜の紫）。下から #3B1F6E のグラデーション
+・歌詞：「{T}」をスペースで区切り、1行目・2行目として2行に表示（2行目は右寄せで少し下げる）。Noto Sans JP 900、96px、文字色は白、黒の太フチ（6px）
+・塗り替え：同じ文字のコピーを重ね、色 #FF7AC6（フチは白）にして、clip-path: inset(0 100% 0 0) → inset(0 0 0 0) で左から塗る。速さは1文字0.18秒の等速。1行目が終わったら2行目を塗る
+・ボール：直径26pxの #FFE14D の丸。常に「塗り替えの先端」の真上にいて、文字1つ進むごとに1回、高さ50pxで弾む（|sin| の動き）
+・各行は0.3秒前に下から translateY 30px → 0 でフェードイン
+・全部塗り終わったら1秒止めて、0.5秒でフェードアウト
+・尺：7秒でループ`,
+run(H,t,w){const l1=w[0]||t,l2=w[1]||'';const B=H.abs({left:'0',right:'0',top:'0',bottom:'0',background:'linear-gradient(transparent 40%,#3b1f6e)'});
+  const box=H.abs({left:'150px',right:'150px',top:'470px',display:'flex',flexDirection:'column',gap:'40px'});const CH=0.18;
+  const mkLine=(s,align)=>{const wr=H.el('div',{position:'relative',alignSelf:align,fontFamily:F.sans,fontWeight:'900',fontSize:fs(s,96,1300)+'px',whiteSpace:'nowrap',lineHeight:'1.2'},box);
+    H.el('div',{color:'#fff',WebkitTextStroke:'6px #000',paintOrder:'stroke fill'},wr,s);const fill=H.abs({left:'0',top:'0',color:'#ff7ac6',WebkitTextStroke:'6px #fff',paintOrder:'stroke fill',clipPath:'inset(0 100% 0 0)'},wr,s);return{wr,fill,n:[...s].length}};
+  const L=[mkLine(l1,'flex-start')];if(l2)L.push(mkLine(l2,'flex-end'));
+  const ball=H.abs({left:'0',top:'0',width:'26px',height:'26px',borderRadius:'50%',background:'#ffe14d',boxShadow:'0 0 14px #ffe14d',opacity:0});
+  let st=400;L.forEach(l=>{l.st=st;H.a(l.wr,[{transform:'translateY(30px)',opacity:0},{transform:'translateY(0)',opacity:1}],{d:300,dl:Math.max(0,st-300)});H.a(l.fill,[{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0 0 0)'}],{d:l.n*CH*1000,dl:st,e:E.lin});st+=l.n*CH*1000});
+  const end=st;H.a(box,[{opacity:1},{opacity:0}],{d:500,dl:end+1000,f:'forwards'});
+  H.raf(s=>{const ms=s*1000;const l=L.find(q=>ms>=q.st&&ms<q.st+q.n*CH*1000);if(!l){ball.style.opacity=0;return}const r=rel(H,l.wr);const k=(ms-l.st)/(l.n*CH*1000);const ph=(ms-l.st)/(CH*1000);
+    ball.style.opacity=1;ball.style.transform=`translate(${r.x+r.w*k-13}px,${r.y-40-50*Math.abs(Math.sin(ph*Math.PI))}px)`});
+}});
+
+/* ===== DESIGN 61-70 ===== */
+const BLU='#5aa9ff';
+
+def({no:'61',cat:'DESIGN',name:'マスクリビール',en:'Line Mask Reveal',lead:'見えない枠の下から、行ごとにスッとせり上がる。',
+text:'伝わる 動画は 文字で決まる',multi:true,loop:4200,bg:'#f3f6fa',
+use:'<b>キャッチコピー・結論・見出し</b>に。最も汎用的な「品のいい」文字出し。企業PR、解説動画のまとめ、どんなジャンルにも馴染みます。',
+tips:['イージング cubic-bezier(.16,1,.3,1) が「上質さ」の正体。これだけは変えない','行の遅れは0.12〜0.18秒。速すぎると一塊に、遅すぎると間延びします','最後の行だけ色を変えると、結論が自然に目に入ります'],
+p:`複数行のコピーが、行ごとに「見えない枠」の下からスッとせり上がって現れる、上品なマスクリビールを作ってください。
+・背景：#F3F6FA。文字：#0F1B2D、Noto Sans JP 900、1行の高さ150px（文字120px）、左揃え。画面の左から200pxの位置
+・「{T}」をスペースで区切り、1語＝1行にする。最後の行だけ色 #2B7BE4
+・コピーの上に小さな見出しラベル「KEY MESSAGE」（JetBrains Mono、28px、#5AA9FF、文字間0.2em）。左に長さ40pxの線
+・仕組み：各行を overflow: hidden の枠に入れ、中の文字を translateY 110% → 0 へ動かす
+・出方：0.2秒から、行ごとに0.15秒ずつ遅らせて0.8秒。イージング cubic-bezier(.16,1,.3,1)
+・ラベルは最初に、左の線が scaleX 0→1、文字が不透明度0→1
+・3.2秒から、同じ順番で translateY 0 → −110% へ0.6秒で抜ける（cubic-bezier(.7,0,.84,0)）
+・尺：4.2秒でループ`,
+run(H,t,w){if(!w.length)w=[t];const box=H.abs({left:'200px',top:'50%',transform:'translateY(-50%)',display:'flex',flexDirection:'column'});
+  const lab=H.el('div',{display:'flex',alignItems:'center',gap:'16px',fontFamily:F.mono,fontSize:'28px',color:BLU,letterSpacing:'.2em',marginBottom:'24px'},box);const ln=H.el('span',{width:'40px',height:'3px',background:BLU,transformOrigin:'0 50%'},lab);const lt=H.el('span',{},lab,'KEY MESSAGE');
+  H.a(ln,[{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{d:500});H.a(lt,[{opacity:0},{opacity:1}],{d:500,dl:150});
+  w.forEach((s,i)=>{const m=H.el('div',{overflow:'hidden',height:'150px'},box);const el=H.el('div',{fontFamily:F.sans,fontWeight:'900',fontSize:fs(s,120,1250)+'px',lineHeight:'150px',color:i===w.length-1?'#2b7be4':'#0f1b2d',whiteSpace:'nowrap'},m,s);
+    H.a(el,[{transform:'translateY(110%)'},{transform:'translateY(0)'}],{d:800,dl:200+i*150});H.a(el,[{transform:'translateY(0)'},{transform:'translateY(-110%)'}],{d:600,dl:3200+i*100,e:E.in,f:'forwards'})});
+  H.a(lab,[{opacity:1},{opacity:0}],{d:400,dl:3200,f:'forwards'});
+}});
+
+def({no:'62',cat:'DESIGN',name:'蛍光マーカー',en:'Highlighter Sweep',lead:'大事な言葉に、蛍光ペンがシュッと引かれる。',
+text:'作業時間が 半分 になる',multi:true,loop:4000,bg:'#ffffff',
+use:'<b>解説・ビジネス・教育</b>動画の要点に。文章の中の「ここだけ覚えて」を1語だけ光らせると、記憶に残ります。',
+tips:['マーカーは文字の下半分〜2/3だけに引くと、本物の蛍光ペンに見えます','わずかに傾ける（−1.5°）と手で引いた感じになります','強調語だけ少し大きくする（1.1倍）と、マーカーとの相乗効果が出ます'],
+p:`文章の中の大事な1語に、蛍光ペンのマーカーがシュッと引かれて強調される演出を作ってください。
+・背景：#FFFFFF。文字：#1F2937、Noto Sans JP 900、画面幅いっぱいに1行で
+・文章：「{T}」をスペースで区切り、つなげて1行に表示する。2番目の語を「強調語」にする
+・0.0〜0.5秒：文章全体を translateY 24px → 0 でフェードイン
+・0.8秒：強調語の後ろに、黄色 #FFE14D のマーカー（文字の高さの下60%、角を少し丸く、−1.5°傾ける）を左から右へ scaleX 0→1 で0.45秒（cubic-bezier(.65,0,.35,1)）。マーカーの端は少しかすれさせる（右端を透明にするグラデーション）
+・1.3秒：強調語を scale 1 → 1.1、色を #111 に（0.3秒、cubic-bezier(.34,1.56,.64,1)）
+・強調語の上に小さく「POINT」のラベル（JetBrains Mono、#5AA9FF）を下からポンと出す
+・3.4秒でフェードアウト、尺4秒でループ`,
+run(H,t,w){if(w.length<2)w=['',t,''];const B=H.box();const line=H.el('div',{fontFamily:F.sans,fontWeight:'900',fontSize:fs(w.join(''),120,1350)+'px',color:'#1f2937',whiteSpace:'nowrap',display:'flex',alignItems:'baseline'},B);
+  H.a(line,[{transform:'translateY(24px)',opacity:0},{transform:'translateY(0)',opacity:1}],{d:500});
+  w.forEach((s,i)=>{if(i!==1){H.el('span',{},line,s);return}const k=H.el('span',{position:'relative',display:'inline-block',margin:'0 .1em'},line);
+    const mk=H.abs({left:'-.08em',right:'-.08em',bottom:'.02em',height:'60%',background:'linear-gradient(90deg,#ffe14d 92%,rgba(255,225,77,.4))',borderRadius:'.12em',transform:'rotate(-1.5deg) scaleX(0)',transformOrigin:'0 50%'},k);
+    const tx=H.el('span',{position:'relative',display:'inline-block'},k,s);const lab=H.abs({left:'50%',top:'-.55em',fontFamily:F.mono,fontWeight:'700',fontSize:'.26em',color:BLU,letterSpacing:'.15em',transform:'translateX(-50%)'},k,'POINT');
+    H.a(mk,[{transform:'rotate(-1.5deg) scaleX(0)'},{transform:'rotate(-1.5deg) scaleX(1)'}],{d:450,dl:800,e:'cubic-bezier(.65,0,.35,1)'});
+    H.a(tx,[{transform:'scale(1)',color:'#1f2937'},{transform:'scale(1.1)',color:'#111'}],{d:300,dl:1300,e:E.back});
+    H.a(lab,[{transform:'translate(-50%,20px)',opacity:0},{transform:'translate(-50%,0)',opacity:1}],{d:300,dl:1400,e:E.back})});
+  H.a(B,[{opacity:1},{opacity:0}],{d:500,dl:3400,f:'forwards'});
+}});
+
+def({no:'63',cat:'DESIGN',name:'ブロックリビール',en:'Block Reveal',lead:'色の板が走り抜けた跡に、文字が残っている。',
+text:'CHAPTER 01 はじめに',multi:true,loop:3800,bg:'#0e1a2b',
+use:'<b>章タイトル・目次・セクションの区切り</b>に。長い解説動画の章立てに使うと、視聴者が「今どこか」を見失いません。',
+tips:['板が文字を覆いきった瞬間に文字を出すのが、きれいに見える唯一のコツ','2行目の板を別の色にして0.15秒遅らせると、リズムが生まれます','板の動きは「伸びる0.4秒＋縮む0.4秒」が基本'],
+p:`色の板が左から伸びて文字の場所を覆い、右へ縮んで抜けると、その跡に文字が現れている「ブロックリビール」を作ってください。
+・背景：#0E1A2B。画面左寄せ（左から200px）で2行
+・1行目：「{T}」の最初の語（またはスペース区切りの1・2語目）を、JetBrains Mono の太字、60px、#5AA9FF
+・2行目：残りの語を、Noto Sans JP 900、170px、白
+・各行の板：その行の文字と同じ幅・高さの長方形。1行目は #5AA9FF、2行目は白
+・板の動き：①左端を基準に scaleX 0 → 1（0.4秒）②右端を基準に scaleX 1 → 0（0.4秒）。どちらもイージング cubic-bezier(.87,0,.13,1)
+・板が完全に覆った瞬間（0.4秒の時点）に、その行の文字を表示する（それまでは不透明度0）
+・1行目は0.2秒、2行目は0.35秒から開始
+・3.0秒から、同じ板の動きで今度は文字を隠して消す
+・尺：3.8秒でループ`,
+run(H,t,w){if(!w.length)w=[t];let a,b;if(w.length>=3){a=w.slice(0,2).join(' ');b=w.slice(2).join(' ')}else{a=w.length>1?w[0]:'';b=w[w.length-1]}
+  const box=H.abs({left:'200px',top:'50%',transform:'translateY(-50%)',display:'flex',flexDirection:'column',alignItems:'flex-start',gap:'18px'});
+  const row=(s,css,col,dl)=>{const r=H.el('div',{position:'relative'},box);const tx=H.el('div',Object.assign({whiteSpace:'nowrap',opacity:0},css),r,s);const bl=H.abs({inset:'0',background:col,transform:'scaleX(0)'},r);
+    const sweep=(d0,show)=>{H.a(bl,[{transform:'scaleX(0)',transformOrigin:'0 50%'},{transform:'scaleX(1)',transformOrigin:'0 50%'}],{d:400,dl:d0,e:E.io,f:'none'});H.a(bl,[{transform:'scaleX(1)',transformOrigin:'100% 50%'},{transform:'scaleX(0)',transformOrigin:'100% 50%'}],{d:400,dl:d0+400,e:E.io,f:'none'});H.wait(d0+400,()=>{tx.style.opacity=show?1:0})};
+    sweep(dl,1);sweep(3000+dl-200,0)};
+  if(a)row(a,{fontFamily:F.mono,fontWeight:'700',fontSize:'60px',color:BLU,letterSpacing:'.08em'},BLU,200);row(b,{fontFamily:F.sans,fontWeight:'900',fontSize:fs(b,170,1250)+'px',color:'#fff',lineHeight:'1.15'},'#fff',350);
+}});
+
+def({no:'64',cat:'DESIGN',name:'タイル組み上げ',en:'Tile Assemble',lead:'バラバラのタイルが飛んできて、1枚のタイトルに組み上がる。',
+text:'PROJECT',loop:4200,bg:'#0d1b2a',
+use:'<b>プロジェクト名・チーム紹介・完成発表</b>に。「みんなで作り上げた」ストーリーや、ロゴ・タイトルの組み上がりに。',
+tips:['タイルの数は横6×縦3が見やすい。細かくするほど「パズル」っぽく','飛んでくる順番をランダムにすると、組み上がる瞬間の気持ちよさが増します','最後に光の帯を1回走らせると「完成」の合図になります'],
+p:`横長のタイトル「{T}」を、6列×3行のタイルに分割し、バラバラの位置から飛んできたタイルが組み上がって1枚になる演出を作ってください。
+・背景：#0D1B2A
+・タイトル板：幅1400px×高さ420px、背景 #5AA9FF、文字 #0D1B2A（Dela Gothic One、板に収まる最大サイズ）
+・分割：板を6×3＝18枚のタイルに分け、各タイルは overflow: hidden で、中に板全体を「タイルの位置ぶんずらして」置く（並べると1枚の絵になる）
+・初期状態：各タイルを、元の位置から x ±900px・y ±500px・translateZ −800px のランダムな位置、rotateX/rotateY ±180°、不透明度0 に置く（親に perspective: 1600px）
+・0.2〜1.4秒：各タイルを元の位置へ0.9秒で戻す（cubic-bezier(.16,1,.3,1)）。開始は0〜0.5秒のランダムな遅れ
+・組み上がったら（1.6秒）：板の上を白い光の帯（幅15%、角度110°、不透明度0.6）が左から右へ0.6秒で通過
+・3.0秒：タイルが逆の動きで、ランダムな方向へ飛び散る（0.7秒、cubic-bezier(.7,0,.84,0)）
+・尺：4.2秒でループ`,
+run(H,t){const P=H.box({perspective:'1600px'});const W=H.el('div',{position:'relative',width:'1400px',height:'420px',transformStyle:'preserve-3d'},P);const C=6,R=3,tw=1400/C,th=420/R;const sz=fs(t,330,1300);
+  for(let r=0;r<R;r++)for(let c=0;c<C;c++){const tl=H.abs({left:c*tw+'px',top:r*th+'px',width:tw+'px',height:th+'px',overflow:'hidden'},W);
+    H.abs({left:-c*tw+'px',top:-r*th+'px',width:'1400px',height:'420px',background:BLU,display:'flex',alignItems:'center',justifyContent:'center',fontFamily:F.heavy,fontSize:sz+'px',color:'#0d1b2a',whiteSpace:'nowrap'},tl,t);
+    const from=`translate3d(${rnd(-900,900)}px,${rnd(-500,500)}px,-800px) rotateX(${rnd(-180,180)}deg) rotateY(${rnd(-180,180)}deg)`;const to=`translate3d(${rnd(-900,900)}px,${rnd(-500,500)}px,-800px) rotateX(${rnd(-180,180)}deg) rotateY(${rnd(-180,180)}deg)`;
+    H.a(tl,[{transform:from,opacity:0},{transform:'none',opacity:1}],{d:900,dl:200+rnd(0,500)});H.a(tl,[{transform:'none',opacity:1},{transform:to,opacity:0}],{d:700,dl:3000+rnd(0,200),e:E.in,f:'forwards'})}
+  const sh=H.abs({inset:'0',background:'linear-gradient(110deg,transparent 42%,rgba(255,255,255,.6) 50%,transparent 58%)',backgroundSize:'250% 100%',backgroundPosition:'150% 0',pointerEvents:'none'},W);
+  H.a(sh,[{backgroundPosition:'150% 0'},{backgroundPosition:'-50% 0'}],{d:600,dl:1600,e:E.soft,f:'none'});
+}});
+
+def({no:'65',cat:'DESIGN',name:'スプリットVS',en:'Split Versus',lead:'画面が左右に割れて2つの言葉が対決、中央にVSが落ちる。',
+text:'理想 現実',multi:true,loop:4200,bg:'#0b1220',
+use:'<b>比較・対決・AとBの違い</b>に。「理想と現実」「初心者とプロ」「iPhone vs Android」など、比べる系の動画の定番。',
+tips:['左右の色は「冷たい色×暖かい色」の対比にすると、対立がはっきりします','境界線を斜め（約8°）にすると、ゲームの対戦画面のような勢いが出ます','VSが落ちた瞬間に画面を揺らすと迫力が出ます'],
+p:`画面が斜めの境界線で左右に分かれ、2つの言葉が向かい合い、中央に「VS」が落ちてくる対決画面を作ってください。
+・背景：#0B1220
+・左パネル：#1E3A5F、clip-path: polygon(0 0, 54% 0, 46% 100%, 0 100%)。「{T}」の1語目を白、Dela Gothic One、左パネル中央に
+・右パネル：#5AA9FF、clip-path: polygon(54% 0, 100% 0, 100% 100%, 46% 100%)。2語目を #0B1220、Dela Gothic One、右パネル中央に
+・0.0〜0.5秒：左パネルは左外から、右パネルは右外からスライドイン（cubic-bezier(.16,1,.3,1)）
+・0.5〜0.8秒：各語を scale 1.4・不透明度0 → scale 1 でドンと出す
+・0.9秒：中央に「VS」（白、Dela Gothic One、200px、黒フチ10px、−8°傾き）を上から scale 3→1 で落とし、画面を12px・0.3秒揺らす。境界線に沿って白い光の線を走らせる
+・3.4秒：左右パネルがそれぞれ外へスライドアウト、VSは scale 0 で消える
+・尺：4.2秒でループ`,
+run(H,t,w){const a=w[0]||t,b=w[1]||t;const W=H.box();
+  const L=H.abs({inset:'0',background:'#1e3a5f',clipPath:'polygon(0 0,54% 0,46% 100%,0 100%)'},W),R=H.abs({inset:'0',background:BLU,clipPath:'polygon(54% 0,100% 0,100% 100%,46% 100%)'},W);
+  const la=BIG(H,a,{position:'absolute',left:'0',width:'800px',top:'360px',textAlign:'center',color:'#fff',fontSize:fs(a,180,640)+'px'},L);const rb=BIG(H,b,{position:'absolute',left:'800px',width:'800px',top:'360px',textAlign:'center',color:'#0b1220',fontSize:fs(b,180,640)+'px'},R);
+  H.a(L,[{transform:'translateX(-100%)'},{transform:'translateX(0)'}],{d:500});H.a(R,[{transform:'translateX(100%)'},{transform:'translateX(0)'}],{d:500});
+  [la,rb].forEach(e=>H.a(e,[{transform:'scale(1.4)',opacity:0},{transform:'scale(1)',opacity:1}],{d:300,dl:500,e:E.in}));
+  const ln=H.svg(1600,900,W);const l=H.sv('line',{x1:864,y1:0,x2:736,y2:900,stroke:'#fff','stroke-width':8,'stroke-dasharray':910,'stroke-dashoffset':910},ln);H.a(l,[{strokeDashoffset:910,opacity:1},{strokeDashoffset:0,opacity:1},{strokeDashoffset:0,opacity:0}],{d:500,dl:900});
+  const vs=H.abs({left:'0',right:'0',top:'0',bottom:'0',display:'flex',alignItems:'center',justifyContent:'center'},W);const v=H.el('div',{fontFamily:F.heavy,fontSize:'200px',color:'#fff',WebkitTextStroke:'10px #000',paintOrder:'stroke fill',transform:'rotate(-8deg)'},vs,'VS');
+  H.a(v,[{transform:'rotate(-8deg) scale(3)',opacity:0},{transform:'rotate(-8deg) scale(1)',opacity:1}],{d:250,dl:900,e:E.in});H.shake(W,1150,12,300);
+  H.a(L,[{transform:'translateX(0)'},{transform:'translateX(-100%)'}],{d:500,dl:3400,e:E.in,f:'forwards'});H.a(R,[{transform:'translateX(0)'},{transform:'translateX(100%)'}],{d:500,dl:3400,e:E.in,f:'forwards'});H.a(v,[{transform:'rotate(-8deg) scale(1)'},{transform:'rotate(-8deg) scale(0)'}],{d:300,dl:3400,e:E.in,f:'forwards'});
+}});
+
+def({no:'66',cat:'DESIGN',name:'線画から塗り',en:'Stroke to Fill',lead:'輪郭線が描かれ、下から色が満ちていく。',
+text:'DESIGN',loop:4200,bg:'#0b1320',
+use:'<b>ロゴ出し・ブランド名・作品タイトル</b>に。「描く→完成する」の2段階で、制作・クリエイティブ系の動画と好相性。',
+tips:['線を描く時間と、塗りが満ちる時間を同じくらいにするとバランスが良い','塗りの上端を波打たせる（SVGで波形のマスク）と液体が満ちるように','線の色と塗りの色を変えると、版画のような味わいが出ます'],
+p:`巨大な「{T}」の輪郭線がペンで描かれるように現れ、その後、下から色が満ちて塗りつぶされる演出を作ってください。
+・背景：#0B1320
+・文字：SVG の <text>、Dela Gothic One、画面幅の約80%
+・線画：塗りなし、線 #5AA9FF・線幅3px。stroke-dasharray を十分長く（例：1600）し、stroke-dashoffset 1600 → 0 で1.4秒かけて描く（cubic-bezier(.65,0,.35,1)）。文字ごとに0.1秒ずつ遅らせると、より手描き感が出る
+・塗り：同じ位置に塗りつぶしの文字（#5AA9FF）を重ね、clip-path: inset(100% 0 0 0) → inset(0 0 0 0) で、1.4秒から1.0秒かけて下から満たす（cubic-bezier(.16,1,.3,1)）
+・塗りの上端に、白い細い光の線（高さ4px、不透明度0.8）を一緒に上昇させる
+・満ち終わったら、文字全体を scale 1 → 1.03 へゆっくり拡大し、文字の下に小さく「— since 2026 —」（JetBrains Mono、#5AA9FF）をフェードイン
+・3.6秒でフェードアウト、尺4.2秒でループ`,
+run(H,t){const svg=H.svg(1600,900);const sz=fitPx(t,"'Dela Gothic One'",330,1300);const G=H.sv('g',{},svg);G.style.transformOrigin='800px 450px';
+  const mk=a=>{const e=H.sv('text',Object.assign({x:800,y:450,'text-anchor':'middle','dominant-baseline':'central','font-family':"Dela Gothic One, sans-serif",'font-size':sz},a),G);e.textContent=t;return e};
+  const top=450-sz*.55,bot=450+sz*.55;const cid='cf'+Math.floor(Math.random()*1e6);const cp=H.sv('clipPath',{id:cid},H.sv('defs',{},svg));const cr=H.sv('rect',{x:0,y:bot,width:1600,height:0},cp);
+  const o=mk({fill:'none',stroke:BLU,'stroke-width':3,'stroke-dasharray':1600,'stroke-dashoffset':1600});const f=mk({fill:BLU,'clip-path':`url(#${cid})`});
+  H.a(o,[{strokeDashoffset:1600},{strokeDashoffset:0}],{d:1400,e:'cubic-bezier(.65,0,.35,1)'});
+  H.raf(s=>{const k=Math.max(0,Math.min(1,(s-1.4)/1));const e=1-Math.pow(1-k,4);const h=(bot-top)*e;cr.setAttribute('y',bot-h);cr.setAttribute('height',h)});const ln=H.abs({left:'150px',width:'1300px',height:'4px',background:'#fff',opacity:0,top:bot+'px'});
+  H.a(ln,[{top:bot+'px',opacity:.8},{top:top+'px',opacity:.8,offset:.95},{top:top+'px',opacity:0}],{d:1000,dl:1400,f:'none'});
+  H.a(G,[{transform:'scale(1)'},{transform:'scale(1.03)'}],{d:1400,dl:2400,e:E.soft,f:'forwards'});
+  const cap=H.abs({left:'0',right:'0',top:bot+40+'px',textAlign:'center',fontFamily:F.mono,fontSize:'34px',color:BLU,letterSpacing:'.2em'},null,'— since 2026 —');H.a(cap,[{opacity:0},{opacity:1}],{d:600,dl:2500});
+  H.wait(3600,()=>[svg,cap].forEach(e=>H.a(e,[{opacity:1},{opacity:0}],{d:500,f:'forwards'})));
+}});
+
+def({no:'67',cat:'DESIGN',name:'雑誌の表紙組み',en:'Editorial Grid',lead:'罫線と大小の文字が、拍に合わせて雑誌の表紙のように組まれる。',
+text:'新しい 働き方 特集',multi:true,loop:5200,bg:'#eef1f5',
+use:'<b>特集・まとめ・企画もの</b>のタイトルに。「〇〇特集」「2026年版まとめ」など、雑誌のように見せたい解説動画に。',
+tips:['文字の大きさに極端な差（ジャンプ率）をつけると、一気に雑誌らしくなります','罫線を先に引いてから文字を置くと「組版している」感が出ます','号数・日付・ページ番号などの小さな情報が、本物っぽさを支えます'],
+p:`雑誌の表紙のように、罫線と大小の文字が拍に合わせて次々に組まれていく演出を作ってください。
+・背景：#EEF1F5。文字色：#0F1B2D。アクセント：#2B7BE4
+・グリッド：画面の上下左右に80pxの余白をとり、上から140pxの位置と下から140pxの位置に横罫線（2px）、左から1/3の位置に縦罫線（2px）
+・罫線は0.0〜0.6秒で、横線は左から、縦線は上から scale 0→1 で引く（cubic-bezier(.65,0,.35,1)）
+・文字の配置（「{T}」をスペースで区切った語を使う）：
+　・上段左：「VOL.26 — 2026 AUTUMN」（JetBrains Mono、28px）
+　・右側の大きな領域：1語目を Noto Sans JP 900・130px、2語目を Dela Gothic One・260px（アクセント色）で縦に積む
+　・左の細い列：3語目を縦書き（writing-mode: vertical-rl）、Shippori Mincho B1・90px
+　・下段：「P.001 / 特別号 / 永久保存版」（JetBrains Mono、24px）を左・中・右に
+・拍：0.8秒から0.32秒ごとに1要素ずつ表示。各要素は clip-path: inset(0 100% 0 0) → inset(0) で左から現れる（0.4秒、cubic-bezier(.16,1,.3,1)）
+・4.6秒でフェードアウト、尺5.2秒でループ`,
+run(H,t,w){const a=w[0]||t,b=w[1]||'',c=w[2]||'';const W=H.abs({inset:'0'});const ink='#0f1b2d',ac='#2b7be4';
+  const rule=(css,dl,ori)=>{const r=H.abs(Object.assign({background:ink},css),W);H.a(r,[{transform:ori==='v'?'scaleY(0)':'scaleX(0)'},{transform:'none'}],{d:600,dl,e:'cubic-bezier(.65,0,.35,1)'})};
+  rule({left:'80px',right:'80px',top:'140px',height:'2px',transformOrigin:'0 50%'},0);rule({left:'80px',right:'80px',bottom:'140px',height:'2px',transformOrigin:'0 50%'},100);rule({left:'560px',top:'140px',bottom:'140px',width:'2px',transformOrigin:'50% 0'},200,'v');
+  const items=[];const it=(css,txt)=>{const e=H.abs(Object.assign({color:ink,whiteSpace:'nowrap'},css),W,txt);items.push(e);return e};
+  it({left:'80px',top:'90px',fontFamily:F.mono,fontSize:'28px',letterSpacing:'.12em'},'VOL.26 — 2026 AUTUMN');
+  it({left:'620px',top:'190px',fontFamily:F.sans,fontWeight:'900',fontSize:fs(a,130,880)+'px'},a);
+  if(b)it({left:'610px',top:'360px',fontFamily:F.heavy,fontSize:fs(b,260,900)+'px',color:ac,lineHeight:'1.1'},b);
+  if(c)it({left:'200px',top:'190px',writingMode:'vertical-rl',fontFamily:F.min,fontWeight:'800',fontSize:Math.min(90,520/[...c].length)+'px'},c);
+  it({left:'80px',bottom:'90px',fontFamily:F.mono,fontSize:'24px',letterSpacing:'.12em'},'P.001');it({left:'0',right:'0',textAlign:'center',bottom:'90px',fontFamily:F.mono,fontSize:'24px',letterSpacing:'.12em'},'特別号');it({right:'80px',bottom:'90px',fontFamily:F.mono,fontSize:'24px',letterSpacing:'.12em'},'永久保存版');
+  items.forEach((e,i)=>H.a(e,[{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0 0 0)'}],{d:400,dl:800+i*320}));
+  H.a(W,[{opacity:1},{opacity:0}],{d:500,dl:4600,f:'forwards'});
+}});
+
+def({no:'68',cat:'DESIGN',name:'名前テロップ',en:'Lower Third',lead:'画面左下に、名前と肩書きがスマートに出て、スッと消える。',
+text:'山田 花子／AIコンサルタント',multi:true,loop:5400,bg:'#2a3442',
+use:'<b>インタビュー・登場人物紹介・対談</b>に。人が話す動画には必ず要る実用テロップ。肩書きの代わりにSNSアカウント名を入れても。',
+tips:['名前と肩書きは「／」で区切って入力すると、2段に分かれます','色の縦棒を先に出すと、視線が自然にテロップへ向きます','出ている時間は「名前を2回読める」3秒前後が目安'],
+p:`インタビュー動画で使う、画面左下の「名前テロップ（ローワーサード）」を作ってください。
+・背景：映像の代わりに、#2A3442 にぼかした色の円（#5AA9FF と #FF7AC6、直径600px、ぼかし120px、不透明度0.35）を2つ置き、ゆっくり動かす
+・テロップの位置：画面の左から120px、下から140px
+・構成：「{T}」を「／」で区切り、前を名前、後ろを肩書きにする
+　① 縦の色棒：幅10px×高さ170px、#5AA9FF
+　② 名前の帯：白、高さ100px。名前は #0F1B2D、Noto Sans JP 900、64px、左右の余白36px
+　③ 肩書きの帯：#0F1B2D、高さ58px。肩書きは白、Noto Sans JP 700、32px、文字間0.06em
+・出方：
+　0.3秒：色棒が scaleY 0 → 1（下基準、0.3秒）
+　0.5秒：名前の帯が左から scaleX 0 → 1（0.45秒、cubic-bezier(.16,1,.3,1)）、0.15秒遅れて名前の文字が translateX −30px → 0 でフェードイン
+　0.7秒：肩書きの帯と文字が同様に
+・消え方：4.2秒から、帯が右基準で scaleX 1 → 0（肩書き→名前の順、0.35秒、cubic-bezier(.7,0,.84,0)）、最後に色棒が上へ縮んで消える
+・尺：5.4秒でループ`,
+run(H,t,w){const parts=t.split(/[／\/]/);const name=(parts[0]||t).trim(),role=(parts[1]||'').trim();
+  [[300,200,BLU,[200,-80]],[1100,400,'#ff7ac6',[-160,60]]].forEach(([x,y,c,[dx,dy]])=>{const b=H.abs({left:x+'px',top:y+'px',width:'600px',height:'600px',borderRadius:'50%',background:c,filter:'blur(120px)',opacity:.35});H.a(b,[{transform:'translate(0,0)'},{transform:`translate(${dx}px,${dy}px)`}],{d:5400,e:'ease-in-out'})});
+  const box=H.abs({left:'120px',bottom:'140px',display:'flex',gap:'0'});const bar=H.el('div',{width:'10px',height:role?'170px':'100px',background:BLU,transformOrigin:'50% 100%'},box);const col=H.el('div',{display:'flex',flexDirection:'column',alignItems:'flex-start',gap:'12px'},box);
+  const band=(txt,bg,css,dl)=>{const bd=H.el('div',{background:bg,display:'flex',alignItems:'center',padding:'0 36px',transformOrigin:'0 50%',overflow:'hidden',height:css.h},col);const tx=H.el('div',Object.assign({whiteSpace:'nowrap'},css.s),bd,txt);
+    H.a(bd,[{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{d:450,dl});H.a(tx,[{transform:'translateX(-30px)',opacity:0},{transform:'translateX(0)',opacity:1}],{d:400,dl:dl+150});return bd};
+  H.a(bar,[{transform:'scaleY(0)'},{transform:'scaleY(1)'}],{d:300,dl:300});
+  const nb=band(name,'#fff',{h:'100px',s:{color:'#0f1b2d',fontFamily:F.sans,fontWeight:'900',fontSize:'64px'}},500);let rb=null;if(role)rb=band(role,'#0f1b2d',{h:'58px',s:{color:'#fff',fontFamily:F.sans,fontWeight:'700',fontSize:'32px',letterSpacing:'.06em'}},700);
+  const out=(el,dl)=>H.a(el,[{transform:'scaleX(1)',transformOrigin:'100% 50%'},{transform:'scaleX(0)',transformOrigin:'100% 50%'}],{d:350,dl,e:E.in,f:'forwards'});
+  if(rb)out(rb,4200);out(nb,4350);H.a(bar,[{transform:'scaleY(1)',transformOrigin:'50% 0'},{transform:'scaleY(0)',transformOrigin:'50% 0'}],{d:300,dl:4600,e:E.in,f:'forwards'});
+}});
+
+def({no:'69',cat:'DESIGN',name:'データ見出し',en:'Stat Callout',lead:'リングが描かれながら、数字が目標値までカウントアップ。',
+text:'87% 満足度',multi:true,loop:4600,bg:'#0d1626',
+use:'<b>実績・アンケート結果・達成率</b>に。「満足度87%」「リピート率92%」など、数字で信頼を伝える場面に。',
+tips:['リングと数字のカウントを同じイージングにすると、ぴったり連動して見えます','数字は等幅フォントにすると、カウント中に横幅がガタつきません','数字の出典（例：2026年 当社調べ n=300）を小さく添えると信頼感が上がります'],
+p:`円形のリングが描かれていくのに合わせて、中央の数字が0から目標値までカウントアップする「データ見出し」を作ってください。
+・背景：#0D1626
+・入力：「{T}」をスペースで区切り、1語目を数字（%付きでも可）、2語目をラベルにする
+・リング：直径520px、線幅30px、線端は丸く。下地の円 #1E2C44、進捗の円 #5AA9FF。12時の位置から時計回りに、目標値（%）まで stroke-dashoffset で描く。1.8秒、cubic-bezier(.16,1,.3,1)、0.3秒から開始
+・中央の数字：JetBrains Mono の太字、180px、白。リングと同じ時間・同じイージングで 0 → 目標値 までカウントアップ（整数で表示し、% は少し小さく横に）
+・ラベル：数字の下に、#8FB8E8、Noto Sans JP 700、44px
+・リングの右側に、補足を3行：「回答者 300名」「2026年10月 調査」「※サンプルの数値です」（JetBrains Mono、26px、#8FB8E8）を、0.15秒ずつ遅らせて左からフェードイン
+・描き終わった瞬間、リングの先端に白い光の点（直径30px）をパッと光らせる
+・4.0秒でフェードアウト、尺4.6秒でループ`,
+run(H,t,w){const num=parseFloat((w[0]||t).replace(/[^\d.]/g,''))||0;const pct=Math.min(100,num);const unit=(w[0]||'').replace(/[\d.,\s]/g,'')||'%';const label=w[1]||'';
+  const svg=H.svg(1600,900);const cx=620,cy=450,r=260,C=2*Math.PI*r;H.sv('circle',{cx,cy,r,fill:'none',stroke:'#1e2c44','stroke-width':30},svg);
+  const pr=H.sv('circle',{cx,cy,r,fill:'none',stroke:BLU,'stroke-width':30,'stroke-linecap':'round','stroke-dasharray':C,'stroke-dashoffset':C,transform:`rotate(-90 ${cx} ${cy})`},svg);
+  H.a(pr,[{strokeDashoffset:C},{strokeDashoffset:C*(1-pct/100)}],{d:1800,dl:300});
+  const mid=H.abs({left:cx-260+'px',top:cy-130+'px',width:'520px',textAlign:'center'});const n=H.el('div',{fontFamily:F.mono,fontWeight:'700',fontSize:'180px',color:'#fff',lineHeight:'1',fontVariantNumeric:'tabular-nums'},mid);const nv=H.el('span',{},n,'0');H.el('span',{fontSize:'80px'},n,unit);
+  H.el('div',{fontFamily:F.sans,fontWeight:'700',fontSize:'44px',color:'#8fb8e8',marginTop:'10px'},mid,label);
+  const notes=H.abs({left:'1000px',top:'340px',display:'flex',flexDirection:'column',gap:'18px',fontFamily:F.mono,fontSize:'26px',color:'#8fb8e8'});['回答者 300名','2026年10月 調査','※サンプルの数値です'].forEach((s,i)=>{const e=H.el('div',{},notes,s);H.a(e,[{transform:'translateX(-30px)',opacity:0},{transform:'translateX(0)',opacity:1}],{d:500,dl:900+i*150})});
+  const ease=k=>1-Math.pow(1-k,4);H.raf(s=>{const k=Math.max(0,Math.min(1,(s-.3)/1.8));nv.textContent=Math.round(num*ease(k))});
+  const ang=(-90+360*pct/100)*Math.PI/180;const dot=H.abs({left:cx+r*Math.cos(ang)-15+'px',top:cy+r*Math.sin(ang)-15+'px',width:'30px',height:'30px',borderRadius:'50%',background:'#fff',boxShadow:'0 0 30px #fff',opacity:0});H.a(dot,[{opacity:1,transform:'scale(1.6)'},{opacity:0,transform:'scale(.6)'}],{d:600,dl:2100,f:'none'});
+  H.wait(4000,()=>[svg,mid,notes].forEach(e=>H.a(e,[{opacity:1},{opacity:0}],{d:500,f:'forwards'})));
+}});
+
+def({no:'70',cat:'DESIGN',name:'シネマタイトル',en:'Cinematic Tracking',lead:'広がった文字間が静かに締まり、映画のタイトルが浮かび上がる。',
+text:'はじまりの物語',loop:5400,bg:'#05070b',
+use:'<b>エンディング・作品タイトル・ドキュメンタリー</b>に。この本の締めくくりにふさわしい、静かで格のある型。動画の最初か最後に1回だけ使うのが効果的です。',
+tips:['文字間の締まり（トラッキングイン）は4秒以上かけると「映画」の品格になります','明朝体にすると文学的、ゴシックにするとドキュメンタリー寄りに','効果音は使わず、低いドローン音（持続音）だけを合わせるのがおすすめ'],
+p:`映画のオープニングのように、大きく広がった文字間が静かに締まりながら「{T}」が浮かび上がる、品のあるタイトル演出を作ってください。
+・背景：#05070B。画面の上下に黒い帯（高さ各110px、シネマスコープ比率の黒帯）
+・文字：Shippori Mincho B1（太さ800）、#F2F2F0、画面幅の約55%
+・トラッキングイン：letter-spacing を 1.2em → 0.12em へ4.2秒かけて締める（cubic-bezier(.16,1,.3,1)）。同時に filter: blur(18px) → blur(0)、不透明度 0 → 1（最初の1.6秒で）
+・文字の左右に、細い線（高さ1px、#F2F2F0、不透明度0.5、長さ160px）を1.2秒から中央から外へ伸ばす
+・文字の下に小さく「A FILM BY YOU — 2026」（JetBrains Mono、24px、文字間0.4em、#8A8F98）を1.8秒からフェードイン
+・全体をゆっくり scale 1 → 1.04 へ5秒かけてズーム（カメラが寄る）
+・4.6秒から0.8秒かけて全体をフェードアウト
+・尺：5.4秒でループ`,
+run(H,t){H.abs({left:0,right:0,top:0,height:'110px',background:'#000',zIndex:'5'});H.abs({left:0,right:0,bottom:0,height:'110px',background:'#000',zIndex:'5'});
+  const B=H.box({flexDirection:'column',gap:'36px'});const row=H.el('div',{display:'flex',alignItems:'center',gap:'40px'},B);
+  const lnL=H.el('div',{width:'160px',height:'1px',background:'#f2f2f0',opacity:.5,transformOrigin:'100% 50%'},row);
+  const el=H.el('div',{fontFamily:F.min,fontWeight:'800',fontSize:Math.min(150,900/[...t].length)+'px',color:'#f2f2f0',whiteSpace:'nowrap'},row,t);
+  const lnR=H.el('div',{width:'160px',height:'1px',background:'#f2f2f0',opacity:.5,transformOrigin:'0 50%'},row);
+  const sub=H.el('div',{fontFamily:F.mono,fontSize:'24px',letterSpacing:'.4em',color:'#8a8f98'},B,'A FILM BY YOU — 2026');
+  H.a(el,[{letterSpacing:'1.2em'},{letterSpacing:'.12em'}],{d:4200});H.a(el,[{filter:'blur(18px)',opacity:0},{filter:'blur(0px)',opacity:1}],{d:1600,e:E.soft});
+  [lnL,lnR].forEach(l=>H.a(l,[{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{d:1200,dl:1200}));H.a(sub,[{opacity:0},{opacity:1}],{d:900,dl:1800});
+  H.a(B,[{transform:'scale(1)'},{transform:'scale(1.04)'}],{d:5000,e:E.lin});H.a(B,[{opacity:1},{opacity:0}],{d:800,dl:4600,f:'forwards'});
+}});
+
+</script>
+<script>
+/* ===== アプリ ===== */
+const BASE=(ar)=>{const size={'16:9':'1920×1080（16:9・横）','9:16':'1080×1920（9:16・縦）','1:1':'1080×1080（1:1・正方形）'}[ar];
+return `あなたはモーショングラフィックデザイナー兼フロントエンドエンジニアです。
+次の【モーション指示】どおりに動く「文字アニメーション」を、HTML・CSS・JavaScript の1ファイルで作ってください。
+
+【共通仕様】
+・画面：${size}。ブラウザ中央に比率を保ったまま拡大縮小して表示し、余白は背景と同じ色で塗る
+・フォント：指定の Google Fonts を読み込み、document.fonts.ready を待ってから再生する
+・再生：読み込み後に自動再生し、指定の尺でループする（最後の状態から最初へ自然につなぐ）
+・動き：等速は使わず、指定のイージングで緩急をつける。指定がない動きは cubic-bezier(.16,1,.3,1)
+・素材：画像は使わず、CSS・SVG・Canvas だけで描く。ライブラリは必要なら GSAP のみ CDN で可
+・差し替え：文字はコード冒頭の const TEXT にまとめ、そこを書き換えるだけで全体が変わるようにする
+・キーボードの R で最初から再生し直せるようにする
+・回答の最後に「調整すると印象が変わるパラメータ」を3つ、変数名つきで教える`};
+const $=s=>document.querySelector(s);
+let ar='16:9';try{ar=localStorage.getItem('m70-ar')||'16:9'}catch(e){}
+const custom={};
+const pages=['cover','howto','index',...M.map(m=>'m'+m.no)];
+let curPage='cover';
+const player=new Player($('#coverStage'),$('#coverScreen'));
+let mplayer=null;
+
+function fillPrompt(m,txt){return m.p.replaceAll('{T}',txt)}
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+
+function buildChrome(){
+  $('#chap').innerHTML=CATS.map(c=>`<button type="button" data-cat="${c}" style="--k:var(${CAT[c].k})"><i></i>${c}</button>`).join('');
+  $('#catrow').innerHTML=CATS.map((c,i)=>`<button class="catcard" type="button" data-cat="${c}" style="--k:var(${CAT[c].k})"><b>${String(i*10+1).padStart(2,'0')}–${String(i*10+10).padStart(2,'0')} ${c}</b><span>${CAT[c].ja}｜${CAT[c].d}</span></button>`).join('');
+  $('#idxWrap').innerHTML=CATS.map(c=>`<div class="idxcat" style="--k:var(${CAT[c].k})"><h3>${c}<small>${CAT[c].ja}｜${CAT[c].d}・向いている場面：${CAT[c].use}</small></h3><div class="idxgrid">${M.filter(m=>m.cat===c).map(m=>`<button class="idx" type="button" data-go="m${m.no}"><b>${m.no}</b><div><span>${m.name}</span><small>${m.lead}</small></div></button>`).join('')}</div></div>`).join('');
+  $('#basePre').textContent=BASE(ar);
+  document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g){go(g.dataset.go);return}
+    const c=e.target.closest('[data-cat]');if(c){go('m'+M.find(m=>m.cat===c.dataset.cat).no)}});
+  $('#brand').onclick=()=>go('cover');$('#toIndex').onclick=()=>go('index');
+  $('#prev').onclick=()=>step(-1);$('#next').onclick=()=>step(1);
+  document.addEventListener('keydown',e=>{if(e.target.matches('input,select,textarea'))return;if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1)});
+}
+function step(d){const i=pages.indexOf(curPage);const n=Math.min(pages.length-1,Math.max(0,i+d));go(pages[n])}
+
+function renderMotion(m){
+  const k=`var(${CAT[m.cat].k})`;const txt=custom[m.no]??m.text;
+  const i=M.indexOf(m);const pv=M[i-1],nx=M[i+1];
+  const P=$('#p-motion');P.style.setProperty('--k',k);
+  P.innerHTML=`
+  <div class="mhead"><div class="mno">${m.no}</div><div class="mtitle">
+    <div class="meta"><span class="chip">${m.cat}｜${CAT[m.cat].ja}</span><span>${m.en}</span><span>LOOP ${(m.loop/1000).toFixed(1)}s</span></div>
+    <h2>${m.name}</h2><p>${m.lead}</p></div></div>
+  <div class="mgrid">
+    <div>
+      <div class="label">このプロンプトで、こうなる</div>
+      <div class="monitor"><div class="screen" id="mScreen"><div class="stage" id="mStage"></div></div>
+        <div class="mbar"><span class="rec"></span><span class="tc" id="mTc">00:00:00:00</span><span class="sp"></span><span class="tc">1920×1080 PREVIEW</span><button class="mini" id="replay" type="button">最初から再生</button></div></div>
+      <div class="txtrow"><label for="mText">プレビューの文字</label><input id="mText" value="${esc(txt)}" maxlength="40"><button class="mini" id="resetText" type="button">元に戻す</button></div>
+      <div class="hint">${m.multi?'スペースか「／」で区切ると、言葉ごとに切り替わります。':'入力するとプレビューと右のプロンプトが同時に変わります。'}</div>
+      <div style="margin-top:22px" class="usebox"><div class="label">使いどころ</div>${m.use}</div>
+    </div>
+    <div class="side">
+      <div><div class="label">プロンプト</div>
+        <div class="prompt"><div class="ptools">
+          <label class="base-toggle" for="arSel">画面比率</label>
+          <select id="arSel"><option>16:9</option><option>9:16</option><option>1:1</option></select>
+          <button class="copy" id="copyBtn" type="button">プロンプトをコピー</button></div>
+          <pre class="ptext" id="ptext"></pre></div>
+        <div class="hint">コピーされるのは「共通仕様」＋この「モーション指示」の完成版です。表示はモーション指示のみ。</div></div>
+      <div><div class="label">アレンジのコツ</div><ul class="tips">${m.tips.map(t=>`<li><span>${t}</span></li>`).join('')}</ul></div>
+    </div>
+  </div>
+  <nav class="pager">
+    <button type="button" data-go="${pv?'m'+pv.no:'index'}"><small>← ${pv?'PREV '+pv.no:'目次'}</small><span>${pv?pv.name:'目次へ'}</span></button>
+    <button type="button" data-go="${nx?'m'+nx.no:'index'}"><small>${nx?'NEXT '+nx.no:'目次'} →</small><span>${nx?nx.name:'目次へ戻る'}</span></button>
+  </nav>`;
+  const sel=$('#arSel');sel.value=ar;
+  const showP=()=>{const t=$('#mText').value.trim()||m.text;$('#ptext').innerHTML=esc(fillPrompt(m,t)).replaceAll(esc(t),`<span class="ph">${esc(t)}</span>`)};
+  showP();
+  mplayer&&mplayer.stop();
+  mplayer=new Player($('#mStage'),$('#mScreen'));
+  const start=()=>mplayer.play(m,$('#mText').value.trim()||m.text,reduce);
+  start();
+  let deb;$('#mText').addEventListener('input',()=>{custom[m.no]=$('#mText').value;showP();clearTimeout(deb);deb=setTimeout(start,350)});
+  $('#resetText').onclick=()=>{delete custom[m.no];$('#mText').value=m.text;showP();start()};
+  $('#replay').onclick=start;
+  sel.onchange=()=>{ar=sel.value;try{localStorage.setItem('m70-ar',ar)}catch(e){}$('#basePre').textContent=BASE(ar)};
+  $('#copyBtn').onclick=()=>{const t=$('#mText').value.trim()||m.text;const full=BASE(ar)+'\n\n【モーション指示】\n'+fillPrompt(m,t);const b=$('#copyBtn');
+    const ok=()=>{b.textContent='コピーしました';b.classList.add('done');setTimeout(()=>{b.textContent='プロンプトをコピー';b.classList.remove('done')},1600)};
+    try{navigator.clipboard.writeText(full).then(ok,()=>{fallback(full);ok()})}catch(e){fallback(full);ok()}};
+}
+function fallback(full){const p=$('#ptext');p.textContent=full;const r=document.createRange();r.selectNodeContents(p);const s=getSelection();s.removeAllRanges();s.addRange(r)}
+
+let tcRaf;
+function tickTc(){const el=$('#mTc');if(el&&mplayer)el.textContent=tcode(mplayer.time());const ct=$('#coverTc');if(ct&&curPage==='cover')ct.textContent=tcode(player.time());tcRaf=requestAnimationFrame(tickTc)}
+
+let coverI=0,coverT;
+function coverLoop(){const picks=['01','05','21','31','35','41','48','56','62','70'].map(n=>M.find(m=>m.no===n)).filter(Boolean);
+  const m=picks[coverI%picks.length];coverI++;player.play(m,m.text,true);$('#coverName').textContent=`No.${m.no} ${m.name}`;coverT=setTimeout(coverLoop,m.loop)}
+
+function go(id){
+  if(!pages.includes(id))id='cover';curPage=id;
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  clearTimeout(coverT);player.stop();
+  if(id.startsWith('m')){const m=M.find(x=>'m'+x.no===id);$('#p-motion').classList.add('on');renderMotion(m);$('#count').textContent=`${m.no} / 70`;
+    document.querySelectorAll('#chap button').forEach(b=>b.setAttribute('aria-current',b.dataset.cat===m.cat))}
+  else{mplayer&&mplayer.stop();$('#p-'+id).classList.add('on');$('#count').textContent={cover:'表紙',howto:'使い方',index:'目次'}[id];
+    document.querySelectorAll('#chap button').forEach(b=>b.setAttribute('aria-current','false'));
+    if(id==='cover'&&!reduce)coverLoop()}
+  try{history.replaceState(null,'','#'+id)}catch(e){}
+  window.scrollTo(0,0);
+}
+buildChrome();
+go((location.hash||'#cover').slice(1));
+tickTc();
+</script>
