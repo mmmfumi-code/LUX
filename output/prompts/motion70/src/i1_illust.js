@@ -1,7 +1,8 @@
 /* ===== ILLUST 01-30 ===== */
 CUR_SEC='i';
 const GPT='<b>◎</b> ChatGPT（画像生成）',GEM='<b>◎</b> Gemini',GPTo='ChatGPT（画像生成）',GEMo='Gemini',MJ='Midjourney（英語版）',FF='Adobe Firefly',CV='Canva AI';
-const defI=o=>{o.text='';o.loop=0;def(o)};
+const EXIMG=['01','02','03','04','05','06','07','08','09'];
+const defI=o=>{o.text='';o.loop=0;if(EXIMG.includes(o.no))o.img='img/i'+o.no+'.jpg';def(o)};
 
 /* BASIC */
 defI({no:'01',cat:'BASIC',name:'画風チェンジの基本形',en:'Style Transfer Template',lead:'どんな画風にも使える「型」。まずはこれで変換のコツをつかむ。',

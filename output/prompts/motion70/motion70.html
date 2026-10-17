@@ -113,6 +113,12 @@ main{max-width:1320px;margin-inline:auto;padding-top:24px}
 .pal{display:flex;gap:6px;padding:0 14px 14px;align-items:center;font-family:var(--mono);font-size:11px;color:var(--mute);flex-wrap:wrap}
 .pal i{width:22px;height:22px;border-radius:4px;border:1px solid rgba(255,255,255,.15)}
 .note{font-size:12px;color:var(--dim);padding:0 14px 14px}
+.exrow{display:grid;grid-template-columns:minmax(0,.8fr) auto minmax(0,1.2fr);gap:12px;align-items:center;padding:14px;background:var(--panel2)}
+.exrow figure{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0}
+.exrow img{width:100%;max-width:100%;height:auto;border-radius:6px;display:block;background:#222}
+.exrow figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--mute)}
+.exrow>i{font-style:normal;color:var(--k);font-weight:700;font-size:20px}
+.exnote{font-size:12px;color:var(--dim);padding:8px 14px 0}
 .tools{display:flex;flex-wrap:wrap;gap:6px}
 .tools span{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:2px 10px;font-size:12px}
 .tools span b{color:var(--k)}
@@ -325,7 +331,7 @@ function SECTIONS(){
 ・実在の作品名・作家名・キャラクターには寄せず、指定した画風の特徴だけで描く
 ・1枚目を出したら、似せ具合を「もっと似せる／もっとイラストらしく」で調整できるように一言添える`,
     fix:[['本人に似ていない','「顔のパーツの位置と形は写真のまま、塗りと線だけをイラストにして」'],['画風が弱い','「スタイルの特徴をもっと強く。線の太さと色数を指定どおりにはっきり出して」'],['背景が変わってしまう','「背景は元の写真の場所のまま、同じ画風で描いて」'],['手や指がおかしい','「手の指を5本に正しく描き直して。ほかの部分は変えないで」'],['肖像権が気になる','他人が写った写真は、本人の許可を取ってから使いましょう。販売物に使う場合は特に注意が必要です。']],
-    extra:`<h3>使う前に知っておきたいこと</h3><p>他人が写っている写真は、本人の許可を取ってから使ってください。また、特定のアニメ会社・作家・キャラクターの名前を出して「〇〇風」と指示するのは避け、この本のように<b>画風の特徴（線・塗り・色・質感）で指示する</b>のが安全で、しかも仕上がりのブレも少なくなります。</p>`}
+    extra:`<h3>作例に使った元の写真</h3><div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap"><img src="img/base.jpg" alt="公園に立つ架空の男の子の写真" style="width:200px;max-width:100%;border-radius:8px"><p style="flex:1;min-width:220px;margin:0">各ページの作例は、AIで生成した<b>架空の男の子</b>（実在しない人物）の写真をもとにしています。黒髪・黄色のパーカー・紺の短パン・赤い靴・青い帽子という特徴が、スタイルごとにどう描き変わるかを見比べてください。作例は Figma AI（画像生成）で、元写真と同じ特徴を指定して作った参考イメージです。実際の仕上がりは、使うAIや写真によって変わります。</p></div><h3>使う前に知っておきたいこと</h3><p>他人が写っている写真は、本人の許可を取ってから使ってください。また、特定のアニメ会社・作家・キャラクターの名前を出して「〇〇風」と指示するのは避け、この本のように<b>画風の特徴（線・塗り・色・質感）で指示する</b>のが安全で、しかも仕上がりのブレも少なくなります。</p>`}
   };
 }
 
@@ -2962,7 +2968,8 @@ run(H,t){const sv=H.svg(1600,900);const id='cr'+Math.floor(Math.random()*1e6);co
 /* ===== ILLUST 01-30 ===== */
 CUR_SEC='i';
 const GPT='<b>◎</b> ChatGPT（画像生成）',GEM='<b>◎</b> Gemini',GPTo='ChatGPT（画像生成）',GEMo='Gemini',MJ='Midjourney（英語版）',FF='Adobe Firefly',CV='Canva AI';
-const defI=o=>{o.text='';o.loop=0;def(o)};
+const EXIMG=['01','02','03','04','05','06','07','08','09'];
+const defI=o=>{o.text='';o.loop=0;if(EXIMG.includes(o.no))o.img='img/i'+o.no+'.jpg';def(o)};
 
 /* BASIC */
 defI({no:'01',cat:'BASIC',name:'画風チェンジの基本形',en:'Style Transfer Template',lead:'どんな画風にも使える「型」。まずはこれで変換のコツをつかむ。',
@@ -3953,14 +3960,15 @@ function fallback(full){const p=$('#ptext');p.textContent=full;const r=document.
 
 function illustCard(m){
   const pal=m.pal||['#222','#555','#888','#bbb','#eee'];
+  const ex=m.img?`<div class="exrow"><figure><img src="img/base.jpg" alt="作例の元写真：公園に立つ架空の男の子" loading="lazy"><figcaption>BEFORE｜元の写真</figcaption></figure><i>→</i><figure><img src="${m.img}" alt="${esc(m.name)}の作例" loading="lazy"><figcaption>AFTER｜${esc(m.name)}</figcaption></figure></div><div class="exnote">作例：AIで生成した架空の男の子の写真をもとに作成した参考イメージです。仕上がりはAIや写真によって変わります。</div>`:'';
   return `<div class="label">このプロンプトで、こうなる</div>
-  <div class="scard"><div class="sart"><div class="sw">${pal.map(c=>`<i style="background:${c}"></i>`).join('')}</div>
+  <div class="scard">${ex}<div class="sart" ${m.img?'hidden':''}><div class="sw">${pal.map(c=>`<i style="background:${c}"></i>`).join('')}</div>
     <div style="position:absolute;inset:0;background:${m.art||'linear-gradient(transparent,rgba(0,0,0,.55))'}"></div>
     <div class="ttl"><span>STYLE ${m.no} / ${m.en}</span><b>${m.name}</b></div></div>
     <div class="flow"><div><b>BEFORE｜元の写真</b>${m.before}</div><i>→</i><div><b>AFTER｜仕上がり</b>${m.after}</div></div>
     <div class="kw">${m.kw.map(k=>`<span>${k}</span>`).join('')}</div>
     <div class="pal">配色の目安 ${pal.map(c=>`<i style="background:${c}" title="${c}"></i>`).join('')}</div>
-    <div class="note">※作例画像は収録していません。仕上がりの特徴・配色・キーワードで表しています。お手持ちの写真で生成してお試しください。</div></div>
+    ${m.img?'':'<div class="note">※この変換の作例画像は準備中です。仕上がりの特徴・配色・キーワードで表しています。</div>'}</div>
   <div style="margin-top:18px"><div class="label">向いているAI</div><div class="tools">${m.tools.map(t=>`<span>${t}</span>`).join('')}</div></div>`;
 }
 

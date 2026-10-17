@@ -113,6 +113,12 @@ main{max-width:1320px;margin-inline:auto;padding-top:24px}
 .pal{display:flex;gap:6px;padding:0 14px 14px;align-items:center;font-family:var(--mono);font-size:11px;color:var(--mute);flex-wrap:wrap}
 .pal i{width:22px;height:22px;border-radius:4px;border:1px solid rgba(255,255,255,.15)}
 .note{font-size:12px;color:var(--dim);padding:0 14px 14px}
+.exrow{display:grid;grid-template-columns:minmax(0,.8fr) auto minmax(0,1.2fr);gap:12px;align-items:center;padding:14px;background:var(--panel2)}
+.exrow figure{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0}
+.exrow img{width:100%;max-width:100%;height:auto;border-radius:6px;display:block;background:#222}
+.exrow figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--mute)}
+.exrow>i{font-style:normal;color:var(--k);font-weight:700;font-size:20px}
+.exnote{font-size:12px;color:var(--dim);padding:8px 14px 0}
 .tools{display:flex;flex-wrap:wrap;gap:6px}
 .tools span{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:2px 10px;font-size:12px}
 .tools span b{color:var(--k)}
@@ -338,14 +344,15 @@ function fallback(full){const p=$('#ptext');p.textContent=full;const r=document.
 
 function illustCard(m){
   const pal=m.pal||['#222','#555','#888','#bbb','#eee'];
+  const ex=m.img?`<div class="exrow"><figure><img src="img/base.jpg" alt="作例の元写真：公園に立つ架空の男の子" loading="lazy"><figcaption>BEFORE｜元の写真</figcaption></figure><i>→</i><figure><img src="${m.img}" alt="${esc(m.name)}の作例" loading="lazy"><figcaption>AFTER｜${esc(m.name)}</figcaption></figure></div><div class="exnote">作例：AIで生成した架空の男の子の写真をもとに作成した参考イメージです。仕上がりはAIや写真によって変わります。</div>`:'';
   return `<div class="label">このプロンプトで、こうなる</div>
-  <div class="scard"><div class="sart"><div class="sw">${pal.map(c=>`<i style="background:${c}"></i>`).join('')}</div>
+  <div class="scard">${ex}<div class="sart" ${m.img?'hidden':''}><div class="sw">${pal.map(c=>`<i style="background:${c}"></i>`).join('')}</div>
     <div style="position:absolute;inset:0;background:${m.art||'linear-gradient(transparent,rgba(0,0,0,.55))'}"></div>
     <div class="ttl"><span>STYLE ${m.no} / ${m.en}</span><b>${m.name}</b></div></div>
     <div class="flow"><div><b>BEFORE｜元の写真</b>${m.before}</div><i>→</i><div><b>AFTER｜仕上がり</b>${m.after}</div></div>
     <div class="kw">${m.kw.map(k=>`<span>${k}</span>`).join('')}</div>
     <div class="pal">配色の目安 ${pal.map(c=>`<i style="background:${c}" title="${c}"></i>`).join('')}</div>
-    <div class="note">※作例画像は収録していません。仕上がりの特徴・配色・キーワードで表しています。お手持ちの写真で生成してお試しください。</div></div>
+    ${m.img?'':'<div class="note">※この変換の作例画像は準備中です。仕上がりの特徴・配色・キーワードで表しています。</div>'}</div>
   <div style="margin-top:18px"><div class="label">向いているAI</div><div class="tools">${m.tools.map(t=>`<span>${t}</span>`).join('')}</div></div>`;
 }
 
