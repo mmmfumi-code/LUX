@@ -1,0 +1,82 @@
+<title>ChatGPT作例キット</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: 1列のチェックリスト。上に手順と元写真、下に49本のコピー用カード */
+:root{--bg:#f5f5f7;--surface:#fff;--fill:rgba(0,0,0,.05);--fg:#1d1d1f;--fg2:#6e6e73;--fg3:#86868b;--line:rgba(0,0,0,.1);--accent:#0071e3;--ok:#34c759;--shadow:0 4px 24px rgba(0,0,0,.06);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",system-ui,sans-serif;--mono:"SF Mono",ui-monospace,Menlo,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--surface:#1c1c1e;--fill:rgba(255,255,255,.08);--fg:#f5f5f7;--fg2:#a1a1a6;--fg3:#8e8e93;--line:rgba(255,255,255,.14);--accent:#0a84ff;--ok:#30d158;--shadow:0 4px 24px rgba(0,0,0,.4);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#000;--surface:#1c1c1e;--fill:rgba(255,255,255,.08);--fg:#f5f5f7;--fg2:#a1a1a6;--fg3:#8e8e93;--line:rgba(255,255,255,.14);--accent:#0a84ff;--ok:#30d158;--shadow:0 4px 24px rgba(0,0,0,.4);color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 64px}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
+.wrap{max-width:820px;margin-inline:auto;display:flex;flex-direction:column;gap:20px}
+h1{font-size:clamp(30px,6vw,46px);line-height:1.1;letter-spacing:-.03em;margin:0;text-align:center;text-wrap:balance}
+.lead{color:var(--fg2);text-align:center;margin:0;text-wrap:balance}
+.card{background:var(--surface);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow)}
+.how{display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:start}
+.how img{width:100%;max-width:100%;border-radius:12px;display:block}
+.how ol{margin:0;padding-left:1.2em;display:grid;gap:6px;color:var(--fg2)}
+.how b{color:var(--fg)}
+@media (max-width:560px){.how{grid-template-columns:1fr}.how img{max-width:180px}}
+.prog{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--fg2)}
+.bar{flex:1;height:8px;border-radius:4px;background:var(--fill);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok);width:0;transition:width .3s}
+.item{display:flex;flex-direction:column;gap:10px}
+.item.done{opacity:.55}
+.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.no{font-weight:700;font-variant-numeric:tabular-nums;color:var(--fg3);min-width:44px}
+.nm{font-weight:600;flex:1;min-width:0}
+.cat{font-size:12px;color:var(--fg3)}
+.copy{background:var(--accent);color:#fff;border:0;border-radius:999px;padding:7px 16px;font-size:14px;font-weight:500}
+.copy.ok{background:var(--ok)}
+.chk{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--fg2);cursor:pointer}
+.chk input{width:18px;height:18px;accent-color:var(--ok)}
+.note{font-size:13px;color:#c2410c;background:color-mix(in srgb,#ff9500 12%,transparent);border-radius:10px;padding:8px 12px}
+details summary{cursor:pointer;font-size:13px;color:var(--accent)}
+pre{margin:8px 0 0;padding:12px 14px;border-radius:10px;background:var(--fill);font-family:var(--mono);font-size:12px;white-space:pre-wrap;word-break:break-word;max-height:300px;overflow:auto}
+</style>
+<div class="wrap">
+  <h1>ChatGPT作例キット</h1>
+  <p class="lead">イラスト変換の残り49本を、ChatGPTで作るためのコピペ用シートです。</p>
+  <div class="card how">
+    <img src="img/base.jpg" alt="元写真：公園に立つ架空の男の子">
+    <ol>
+      <li><b>左の写真を保存</b>（スマホは長押し、PCは右クリック →「画像を保存」）</li>
+      <li>ChatGPTで<b>新しいチャット</b>を開き、写真を添付する</li>
+      <li>下のカードの<b>「コピー」</b>を押して貼り付け、送信</li>
+      <li>できた画像を保存し、<b>番号と一緒に</b>Claudeのチャットに送る（例：「No.12」）。何枚かまとめても、順番がバラバラでもOK</li>
+      <li>送ったら「済み」にチェック（このブラウザに記録されます）</li>
+    </ol>
+  </div>
+  <div class="prog"><span id="cnt">0 / 49</span><div class="bar"><i id="barI"></i></div></div>
+  <div id="list" class="wrap" style="gap:12px"></div>
+</div>
+<script>
+const CAT={};const ITEMS={i:[]};let CUR_SEC='i';function def(o){o.sec=o.sec||CUR_SEC;o.id=o.sec+o.no;ITEMS[o.sec].push(o)}
+const F={};
+</script>
+<script>
+/*DATA*/
+</script>
+<script>
+const SEC=SECTIONS();const base=SEC.i.base('元の写真と同じ');
+const SPECIAL={
+ '57':{note:'この作例は写真を添付せずに作ります（元写真に動物がいないため、架空の柴犬で作ります）。',pre:'写真の添付は不要です。茶色と白の毛の、元気な架空の柴犬「こむぎ」をペットとして想定してください。\n\n'},
+ '58':{note:'写真の代わりに「男の子が描いたクレヨン画」を想定して作ります。添付した写真は「この子が描いた絵」という設定に使ってください。',pre:'添付した写真の男の子が、自分の姿をクレヨンで描いた子どもらしい絵（黄色いパーカー・紺の短パン・赤い靴・青い帽子）を想定し、その絵を立体化してください。\n\n'}
+};
+const done=new Set(['01','02','03','04','05','06','07','08','09','11','15']);
+let saved={};try{saved=JSON.parse(localStorage.getItem('kit-done')||'{}')}catch(e){}
+const list=document.getElementById('list');const todo=ITEMS.i.filter(m=>!done.has(m.no));
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+function text(m){const sp=SPECIAL[m.no];return (sp?sp.pre:'')+base+'\n\n【変換指示】\n'+m.p}
+todo.forEach(m=>{const c=document.createElement('div');c.className='card item';const sp=SPECIAL[m.no];
+  c.innerHTML=`<div class="row"><span class="no">No.${m.no}</span><span class="nm">${esc(m.name)}<br><span class="cat">${CAT[m.cat]?CAT[m.cat].ja:''}・${esc(m.en)}</span></span><button class="copy" type="button">コピー</button><label class="chk"><input type="checkbox" id="c${m.no}">済み</label></div>${sp?`<div class="note">${sp.note}</div>`:''}<details><summary>プロンプトを見る</summary><pre>${esc(text(m))}</pre></details>`;
+  const b=c.querySelector('.copy');b.onclick=()=>{const t=text(m);const ok=()=>{b.textContent='コピーしました';b.classList.add('ok');setTimeout(()=>{b.textContent='コピー';b.classList.remove('ok')},1500)};
+    try{navigator.clipboard.writeText(t).then(ok,()=>{c.querySelector('details').open=true;const r=document.createRange();r.selectNodeContents(c.querySelector('pre'));getSelection().removeAllRanges();getSelection().addRange(r)})}catch(e){c.querySelector('details').open=true}};
+  const cb=c.querySelector('input');cb.checked=!!saved[m.no];c.classList.toggle('done',cb.checked);
+  cb.onchange=()=>{saved[m.no]=cb.checked;c.classList.toggle('done',cb.checked);try{localStorage.setItem('kit-done',JSON.stringify(saved))}catch(e){}upd()};list.appendChild(c)});
+function upd(){const n=todo.filter(m=>saved[m.no]).length;document.getElementById('cnt').textContent=`${n} / ${todo.length}`;document.getElementById('barI').style.width=(n/todo.length*100)+'%'}
+upd();
+</script>

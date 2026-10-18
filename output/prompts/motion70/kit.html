@@ -1,0 +1,1068 @@
+<title>ChatGPT作例キット</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: 1列のチェックリスト。上に手順と元写真、下に49本のコピー用カード */
+:root{--bg:#f5f5f7;--surface:#fff;--fill:rgba(0,0,0,.05);--fg:#1d1d1f;--fg2:#6e6e73;--fg3:#86868b;--line:rgba(0,0,0,.1);--accent:#0071e3;--ok:#34c759;--shadow:0 4px 24px rgba(0,0,0,.06);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",system-ui,sans-serif;--mono:"SF Mono",ui-monospace,Menlo,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--surface:#1c1c1e;--fill:rgba(255,255,255,.08);--fg:#f5f5f7;--fg2:#a1a1a6;--fg3:#8e8e93;--line:rgba(255,255,255,.14);--accent:#0a84ff;--ok:#30d158;--shadow:0 4px 24px rgba(0,0,0,.4);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#000;--surface:#1c1c1e;--fill:rgba(255,255,255,.08);--fg:#f5f5f7;--fg2:#a1a1a6;--fg3:#8e8e93;--line:rgba(255,255,255,.14);--accent:#0a84ff;--ok:#30d158;--shadow:0 4px 24px rgba(0,0,0,.4);color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 64px}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
+.wrap{max-width:820px;margin-inline:auto;display:flex;flex-direction:column;gap:20px}
+h1{font-size:clamp(30px,6vw,46px);line-height:1.1;letter-spacing:-.03em;margin:0;text-align:center;text-wrap:balance}
+.lead{color:var(--fg2);text-align:center;margin:0;text-wrap:balance}
+.card{background:var(--surface);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow)}
+.how{display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:start}
+.how img{width:100%;max-width:100%;border-radius:12px;display:block}
+.how ol{margin:0;padding-left:1.2em;display:grid;gap:6px;color:var(--fg2)}
+.how b{color:var(--fg)}
+@media (max-width:560px){.how{grid-template-columns:1fr}.how img{max-width:180px}}
+.prog{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--fg2)}
+.bar{flex:1;height:8px;border-radius:4px;background:var(--fill);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok);width:0;transition:width .3s}
+.item{display:flex;flex-direction:column;gap:10px}
+.item.done{opacity:.55}
+.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.no{font-weight:700;font-variant-numeric:tabular-nums;color:var(--fg3);min-width:44px}
+.nm{font-weight:600;flex:1;min-width:0}
+.cat{font-size:12px;color:var(--fg3)}
+.copy{background:var(--accent);color:#fff;border:0;border-radius:999px;padding:7px 16px;font-size:14px;font-weight:500}
+.copy.ok{background:var(--ok)}
+.chk{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--fg2);cursor:pointer}
+.chk input{width:18px;height:18px;accent-color:var(--ok)}
+.note{font-size:13px;color:#c2410c;background:color-mix(in srgb,#ff9500 12%,transparent);border-radius:10px;padding:8px 12px}
+details summary{cursor:pointer;font-size:13px;color:var(--accent)}
+pre{margin:8px 0 0;padding:12px 14px;border-radius:10px;background:var(--fill);font-family:var(--mono);font-size:12px;white-space:pre-wrap;word-break:break-word;max-height:300px;overflow:auto}
+</style>
+<div class="wrap">
+  <h1>ChatGPT作例キット</h1>
+  <p class="lead">イラスト変換の残り49本を、ChatGPTで作るためのコピペ用シートです。</p>
+  <div class="card how">
+    <img src="img/base.jpg" alt="元写真：公園に立つ架空の男の子">
+    <ol>
+      <li><b>左の写真を保存</b>（スマホは長押し、PCは右クリック →「画像を保存」）</li>
+      <li>ChatGPTで<b>新しいチャット</b>を開き、写真を添付する</li>
+      <li>下のカードの<b>「コピー」</b>を押して貼り付け、送信</li>
+      <li>できた画像を保存し、<b>番号と一緒に</b>Claudeのチャットに送る（例：「No.12」）。何枚かまとめても、順番がバラバラでもOK</li>
+      <li>送ったら「済み」にチェック（このブラウザに記録されます）</li>
+    </ol>
+  </div>
+  <div class="prog"><span id="cnt">0 / 49</span><div class="bar"><i id="barI"></i></div></div>
+  <div id="list" class="wrap" style="gap:12px"></div>
+</div>
+<script>
+const CAT={};const ITEMS={i:[]};let CUR_SEC='i';function def(o){o.sec=o.sec||CUR_SEC;o.id=o.sec+o.no;ITEMS[o.sec].push(o)}
+const F={};
+</script>
+<script>
+/* ===== 棚（セクション）とカテゴリ ===== */
+Object.assign(CAT,{
+  IMPACT:{ja:'衝撃',k:'--c-impact',d:'一撃で目を止める'},FLOW:{ja:'流れ',k:'--c-flow',d:'流し続けて空気をつくる'},DEPTH:{ja:'奥行き',k:'--c-depth',d:'3Dで吸い込む'},
+  SWITCH:{ja:'切替',k:'--c-switch',d:'言葉を入れ替えて見せる'},TEXTURE:{ja:'質感',k:'--c-texture',d:'素材感で世界観を出す'},PLAY:{ja:'遊び',k:'--c-play',d:'クスッとさせて止める'},DESIGN:{ja:'構成',k:'--c-design',d:'情報をきれいに組む'},
+  CUT:{ja:'衝撃カット',k:'--c-cyan',d:'勢いで次の場面へ飛ぶ'},SLIDE:{ja:'スライド',k:'--c-lime',d:'押し出す・重ねる・めくる'},ZOOM:{ja:'ズーム＆ブラー',k:'--c-orange',d:'寄る・引く・ぼかす'},
+  LIGHT:{ja:'光とフィルム',k:'--c-switch',d:'光・暗転・フィルムの質感'},OBJECT:{ja:'物とFX',k:'--c-gold',d:'紙・ガラス・テレビなど物の動き'},
+  CORP:{ja:'企業・サービス',k:'--c-sky',d:'信頼と先進性を見せる'},CREATOR:{ja:'クリエイター',k:'--c-texture',d:'個性と作品で魅せる'},SHOP:{ja:'お店・商品',k:'--c-gold',d:'欲しくさせて買わせる'},LOCAL:{ja:'地域・暮らし',k:'--c-mint',d:'安心感で選ばれる'},
+  BASIC:{ja:'基礎の変換',k:'--c-sky',d:'まず覚える変換の型'},ANIME:{ja:'アニメ・漫画',k:'--c-rose',d:'いちばん人気の定番'},TOY:{ja:'3D・フィギュア',k:'--c-orange',d:'立体にしてSNS映え'},
+  ART:{ja:'絵画・アート',k:'--c-gold',d:'画材の質感で魅せる'},GRAPHIC:{ja:'グラフィック',k:'--c-mint',d:'デザイン素材として使える'},TREND:{ja:'SNSトレンド',k:'--c-texture',d:'今バズっている使い方'}
+});
+function SECTIONS(){
+  const size=a=>({'16:9':'1920×1080（16:9・横）','9:16':'1080×1920（9:16・縦）','1:1':'1080×1080（1:1・正方形）'}[a]||'1920×1080（16:9・横）');
+  return {
+  m:{name:'文字モーション',en:'KINETIC TYPE',k:'--c-impact',ui:'motion',unit:'モーション',lead:'テロップ・タイトルが動く。冒頭0.5秒で目を止める文字演出。',
+    showLabel:'このプロンプトで、こうなる',monLabel:'1920×1080 PREVIEW',inputLabel:'プレビューの文字',ars:['16:9','9:16','1:1'],get curAr(){return ar},set curAr(v){ar=v},
+    cats:{IMPACT:1,FLOW:1,DEPTH:1,SWITCH:1,TEXTURE:1,PLAY:1,DESIGN:1},
+    desc:'文字が動くだけで、動画の「見てもらえる確率」は大きく変わります。テロップ・サムネ動画・リール冒頭・タイトルコールに使える文字演出を、AIに貼るだけで作れるプロンプトにしました。',
+    steps:['<b>ページを選んで、プレビューの文字を自分の言葉に変える</b><br>入力欄に文字を入れると、プレビューもプロンプトも同時に書き換わります。','<b>画面比率を選んで「プロンプトをコピー」</b><br>16:9（YouTube）、9:16（リール・ショート）、1:1（フィード）。','<b>Claude・ChatGPT・Gemini に貼って送信</b><br>Claude はその場で再生。ほかのAIは出てきたコードを motion.html で保存してブラウザで開きます。','<b>画面録画して動画編集ソフトへ</b><br>Mac は Cmd+Shift+5、Windows は Win+Alt+R。CapCut・Premiere・DaVinci に読み込めます。'],
+    base:a=>`あなたはモーショングラフィックデザイナー兼フロントエンドエンジニアです。
+次の【モーション指示】どおりに動く「文字アニメーション」を、HTML・CSS・JavaScript の1ファイルで作ってください。
+
+【共通仕様】
+・画面：${size(a)}。ブラウザ中央に比率を保ったまま拡大縮小して表示し、余白は背景と同じ色で塗る
+・フォント：指定の Google Fonts を読み込み、document.fonts.ready を待ってから再生する
+・再生：読み込み後に自動再生し、指定の尺でループする（最後の状態から最初へ自然につなぐ）
+・動き：等速は使わず、指定のイージングで緩急をつける。指定がない動きは cubic-bezier(.16,1,.3,1)
+・素材：画像は使わず、CSS・SVG・Canvas だけで描く。ライブラリは必要なら GSAP のみ CDN で可
+・差し替え：文字はコード冒頭の const TEXT にまとめ、そこを書き換えるだけで全体が変わるようにする
+・キーボードの R で最初から再生し直せるようにする
+・回答の最後に「調整すると印象が変わるパラメータ」を3つ、変数名つきで教える`,
+    fix:[['動きが安っぽい・機械的','「イージングを cubic-bezier(.16,1,.3,1) に統一して、全体を1.3倍ゆっくりにして」'],['迫力が足りない','「登場の瞬間だけ、ブラー12px→0とスケール1.4→1を同時にかけて、画面を0.2秒だけ揺らして」'],['文字が読めない','「動きが止まってから最低1.2秒は静止させて。文字サイズを1.3倍に」'],['ループの継ぎ目が気になる','「最初と最後の状態を完全に一致させて、継ぎ目のないループにして」'],['背景を透明にして重ねたい','「背景をグリーン(#00FF00)一色にして。クロマキーで抜きたい」'],['動画ファイルで欲しい','「CanvasとMediaRecorderで録画して、1ループ分をWebMで保存するボタンを付けて」'],['日本語が豆腐（□）になる','「Google Fonts の読み込みを document.fonts.ready で待ってから再生して」']]},
+  t:{name:'トランジション',en:'SCENE TRANSITION',k:'--c-cyan',ui:'motion',unit:'トランジション',lead:'シーンAからBへ。カットのつなぎ目をかっこよくする画面切り替え。',
+    showLabel:'このプロンプトで、こうなる（A→B→A をくり返し再生）',monLabel:'SCENE A ⇄ SCENE B',inputLabel:'シーンの名前（A B）',ars:['16:9','9:16','1:1'],get curAr(){return ar},set curAr(v){ar=v},
+    cats:{CUT:1,SLIDE:1,ZOOM:1,LIGHT:1,OBJECT:1},
+    desc:'場面と場面のつなぎ目は、動画の「プロっぽさ」がいちばん出るところです。シーンA（今の画面）からシーンB（次の画面）へ切り替わる演出を、AIに貼るだけで作れるプロンプトにしました。シーンには自分の画像や動画を差し込めます。',
+    steps:['<b>プレビューでつなぎ方を選ぶ</b><br>モニターではシーンA→B→Aと、往復でくり返し再生されます。','<b>入力欄にシーンの名前を2つ入れる</b><br>「オープニング 本編」のようにスペースで区切ると、プロンプトの中のシーン名も変わります。','<b>画面比率を選んで「プロンプトをコピー」→ AIに貼る</b><br>出てきた HTML の const SCENE_A / SCENE_B に画像のURLを入れると、自分の素材で切り替わります。','<b>画面録画して、カットとカットの間に挟む</b><br>CapCut などでは「トランジション素材」として前後のクリップの間に置きます。'],
+    base:a=>`あなたはモーショングラフィックデザイナー兼フロントエンドエンジニアです。
+次の【トランジション指示】どおりに、シーンAからシーンBへ切り替わる「画面切り替えアニメーション」を、HTML・CSS・JavaScript の1ファイルで作ってください。
+
+【共通仕様】
+・画面：${size(a)}。ブラウザ中央に比率を保ったまま拡大縮小して表示する
+・シーンA：濃紺（#0F1C2E）の背景に、大きな白い文字でシーン名。シーンB：オレンジ（#FF9A3C）の背景に、濃紺の文字でシーン名。どちらも左上に小さく「SCENE A」「SCENE B」
+・差し替え：コード冒頭に const SCENE_A_IMAGE = '' / const SCENE_B_IMAGE = '' を用意し、画像のURLを入れたら背景がその画像に置き換わるようにする（object-fit: cover）
+・再生：Aを0.7秒見せる → 指定のトランジション → Bを0.7秒見せる → 同じトランジションでAへ戻る、を自動でくり返す
+・動き：指定のイージングを使う。指定がない動きは cubic-bezier(.65,0,.35,1)
+・素材：CSS・SVG・Canvas だけで描く。ライブラリは必要なら GSAP のみ CDN で可
+・スペースキーで一時停止、R で最初から再生
+・回答の最後に「切り替えの速さ・強さを変えるパラメータ」を3つ、変数名つきで教える`,
+    fix:[['切り替えがもたつく','「トランジション全体の時間を0.6秒に縮めて、真ん中で一番速くなる cubic-bezier(.87,0,.13,1) にして」'],['つなぎ目でチラつく','「切り替わる瞬間、AとBが1フレームも重ならない（または両方見えない）瞬間がないようにして」'],['自分の画像を使いたい','「SCENE_A_IMAGE と SCENE_B_IMAGE に入れた画像を、両方とも先に読み込んでから再生を始めて」'],['動画の素材を使いたい','「シーンを <video muted loop autoplay playsinline> にして、SCENE_A_VIDEO / SCENE_B_VIDEO にURLを入れられるようにして」'],['音を合わせたい','「切り替えの中心の時刻をコンソールに出して。そこに効果音を合わせたい」']]},
+  h:{name:'ホームページ',en:'WEBSITE',k:'--c-sky',ui:'motion',unit:'デザイン',lead:'かっこいいサイトを1ファイルで。業種別のファーストビューと全体構成。',
+    showLabel:'このプロンプトで、こうなる（ファーストビューの見本）',monLabel:'DESKTOP 1600 PREVIEW',inputLabel:'サイト名・屋号',
+    cats:{CORP:1,CREATOR:1,SHOP:1,LOCAL:1},
+    desc:'「AIにサイトを作らせたら、どこかで見たようなページになった」を防ぐためのプロンプトです。業種ごとに、配色・フォント・レイアウト・動きを具体的に指定しています。モニターはファーストビュー（最初に見える画面）の見本です。',
+    steps:['<b>業種や雰囲気が近いページを選ぶ</b><br>モニターでファーストビューの雰囲気を確認します。','<b>入力欄にサイト名・屋号を入れる</b><br>プロンプトの中の名前が置き換わります。業種や地名はコピー後に書き換えてください。','<b>「プロンプトをコピー」して Claude などに貼る</b><br>Claude ならその場でサイトが表示されます。気になる所は「〇〇をもっと大きく」と会話で直します。','<b>公開する</b><br>できた index.html は、Netlify Drop や GitHub Pages、STUDIO・ペライチのHTML埋め込みなどで公開できます。'],
+    base:()=>`あなたは受賞歴のあるWebデザイナー兼フロントエンドエンジニアです。
+次の【デザイン指示】どおりの1ページのWebサイトを、HTML・CSS・JavaScript の1ファイル（index.html）で作ってください。
+
+【共通仕様】
+・レスポンシブ：スマホ（375px）・タブレット・PC（1440px）のすべてで崩れないこと。スマホではメニューをハンバーガーにする
+・フォント：Google Fonts を使う。日本語は指定のフォント、英字見出しは指定の欧文フォント
+・画像：外部の写真は使わず、CSSのグラデーション・SVG・図形で「写真が入る枠」を美しく作る。差し替え用に <img> の src を1か所にまとめる
+・文章：日本語のコピー（見出し・本文・ボタン文言）もプロらしく自分で考えて入れる。ダミー文字（lorem ipsum）は使わない
+・動き：スクロールで要素がふわっと現れる（IntersectionObserver）。prefers-reduced-motion のときは動きを止める
+・品質：セマンティックなHTML、alt属性、十分な文字コントラスト、キーボードで操作できるボタン
+・回答の最後に「公開前に差し替えるべき箇所」を箇条書きで教える`,
+    fix:[['ありきたりな見た目になった','「よくあるテンプレートに見えない、記憶に残るデザインに作り直して。余白と文字のジャンプ率を極端にして」'],['スマホで崩れる','「375px幅でスクリーンショットを想定して、はみ出し・重なりを全部直して」'],['重い・カクつく','「アニメーションは transform と opacity だけで行い、will-change は動く要素だけに付けて」'],['文章が薄い','「各セクションのコピーを、ターゲットの悩み→解決→根拠の順で書き直して」'],['問い合わせを付けたい','「お問い合わせフォームを付けて。送信先は formspree などのサービスに後から差し替えられるように」']]},
+  i:{name:'イラスト変換',en:'PHOTO TO ILLUSTRATION',k:'--c-rose',ui:'illust',unit:'変換',lead:'写真1枚から、アニメ・3D・絵画・SNSで流行りのイラストへ。',
+    ars:['元の写真と同じ','1:1（正方形）','9:16（縦長）','16:9（横長）'],arLabel:'仕上がりの比率',curAr:'元の写真と同じ',
+    cats:{BASIC:1,ANIME:1,TOY:1,ART:1,GRAPHIC:1,TREND:1},
+    desc:'写真をアップロードして、このプロンプトを一緒に送るだけ。顔立ちや構図を保ったまま、別の画風に描き直してもらうためのプロンプト集です。まず「基礎の変換」で型を覚えてから、流行りのスタイルへ進むのがおすすめです。',
+    steps:['<b>画像生成ができるAIを開く</b><br>ChatGPT（画像生成）、Gemini、Claude以外の画像AIなど。各ページの「向いているAI」を参考に。','<b>変換したい写真をアップロードする</b><br>顔がはっきり写った、明るい写真ほどきれいに変換されます。','<b>仕上がりの比率を選んで「プロンプトをコピー」→ 写真と一緒に送信</b><br>Midjourney など英語が得意なツールには「英語版をコピー」を使います。','<b>気になる所を一言で直す</b><br>「目をもう少し大きく」「背景はそのままで」など、会話で追加の指示を出します。'],
+    base:a=>`添付した写真をもとに、次の【変換指示】のスタイルのイラストに描き直してください。
+
+【共通仕様】
+・写っている人物の特徴（顔の形、髪型、髪色、服装、ポーズ、表情）と、写真の構図はできるだけそのまま保つ
+・人数・左右の位置関係を変えない。手や指の本数を正しく描く
+・変換指示で文字を入れるよう書かれている場合を除き、画像の中に文字・ロゴ・透かしを入れない
+・仕上がりの比率：${a||'元の写真と同じ'}
+・実在の作品名・作家名・キャラクターには寄せず、指定した画風の特徴だけで描く
+・1枚目を出したら、似せ具合を「もっと似せる／もっとイラストらしく」で調整できるように一言添える`,
+    fix:[['本人に似ていない','「顔のパーツの位置と形は写真のまま、塗りと線だけをイラストにして」'],['画風が弱い','「スタイルの特徴をもっと強く。線の太さと色数を指定どおりにはっきり出して」'],['背景が変わってしまう','「背景は元の写真の場所のまま、同じ画風で描いて」'],['手や指がおかしい','「手の指を5本に正しく描き直して。ほかの部分は変えないで」'],['肖像権が気になる','他人が写った写真は、本人の許可を取ってから使いましょう。販売物に使う場合は特に注意が必要です。']],
+    extra:`<h3>作例に使った元の写真</h3><div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap"><img src="img/base.jpg" alt="公園に立つ架空の男の子の写真" style="width:200px;max-width:100%;border-radius:8px"><p style="flex:1;min-width:220px;margin:0">各ページの作例は、AIで生成した<b>架空の男の子</b>（実在しない人物）の写真をもとにしています。黒髪・黄色のパーカー・紺の短パン・赤い靴・青い帽子という特徴が、スタイルごとにどう描き変わるかを見比べてください。作例は Figma AI（画像生成）で、元写真と同じ特徴を指定して作った参考イメージです。実際の仕上がりは、使うAIや写真によって変わります。</p></div><h3>使う前に知っておきたいこと</h3><p>他人が写っている写真は、本人の許可を取ってから使ってください。また、特定のアニメ会社・作家・キャラクターの名前を出して「〇〇風」と指示するのは避け、この本のように<b>画風の特徴（線・塗り・色・質感）で指示する</b>のが安全で、しかも仕上がりのブレも少なくなります。</p>`}
+  };
+}
+
+/* ===== ILLUST 01-30 ===== */
+CUR_SEC='i';
+const GPT='<b>◎</b> ChatGPT（画像生成）',GEM='<b>◎</b> Gemini',GPTo='ChatGPT（画像生成）',GEMo='Gemini',MJ='Midjourney（英語版）',FF='Adobe Firefly',CV='Canva AI';
+const EXIMG=['01','02','03','04','05','06','07','08','09','11','15'];
+const defI=o=>{o.text='';o.loop=0;if(EXIMG.includes(o.no))o.img='img/i'+o.no+'.jpg';def(o)};
+
+/* BASIC */
+defI({no:'01',cat:'BASIC',name:'画風チェンジの基本形',en:'Style Transfer Template',lead:'どんな画風にも使える「型」。まずはこれで変換のコツをつかむ。',
+before:'人物が写ったスナップ写真',after:'構図と顔立ちはそのまま、指定した画風のイラスト',kw:['構図キープ','顔立ちキープ','線と塗りを指定','色数を指定'],pal:['#2b2d42','#8d99ae','#edf2f4','#ef233c','#ffd166'],tools:[GPT,GEM,FF],
+use:'<b>すべての変換の土台</b>です。【スタイル】の1行を書き換えるだけで、水彩にもアニメにもなります。迷ったらここから始めてください。',
+tips:['「線」「塗り」「色」「光」「背景」の5項目を指定すると、仕上がりのブレが一気に減ります','似なかったら「顔のパーツの位置と大きさは写真のまま」と追加で送る','最初は【スタイル】を短く、慣れたら細かく足していく'],
+p:`【スタイル】やわらかいタッチのイラスト（ここを好きな画風に書き換える）
+【描き方】
+・線：輪郭に細めの線を入れる（太さは均一、色は濃い茶色）
+・塗り：影は1段階だけのシンプルな塗り
+・色：写真の色を少し明るく、彩度を少し上げる
+・光：写真の光の向きを保つ
+・背景：写真と同じ場所を、同じ画風で簡略化して描く
+【必ず残すもの】顔の形とパーツの位置、髪型、服の形と色、ポーズ、写真の構図
+【避けるもの】写真のような質感、顔の形が変わること、余計な人物や物の追加`,
+enp:'Redraw the attached photo as a soft illustration. Keep the exact composition, pose, face shape, hairstyle and outfit. Thin uniform brown outlines, simple one-step cel shading, slightly brighter and more saturated colors, same lighting direction, simplified background in the same style. No photorealism, no extra people.'});
+
+defI({no:'02',cat:'BASIC',name:'背景だけイラストにする',en:'Illustrated Background Only',lead:'人物は写真のまま、背景だけを絵本のような世界に描き変える。',
+before:'街中・部屋など、ごちゃついた背景の写真',after:'人物は実写のまま、背景だけ手描きイラストの世界',kw:['人物はそのまま','背景だけ変換','合成感をなくす','光を合わせる'],pal:['#f4a261','#e9c46a','#2a9d8f','#264653','#fefae0'],tools:[GPT,GEM,FF],
+use:'<b>プロフィール写真・SNS投稿・サムネイル</b>に。人物はリアルなまま、背景を変えるだけで「おしゃれな写真」に変わります。',
+tips:['「人物の輪郭のまわりに不自然な縁を出さない」と入れると合成感が消えます','背景の色を、服の色の補色にすると人物が際立ちます','背景のテーマ（森・宇宙・海など）を一言で指定すると狙いどおりに'],
+p:`【スタイル】写っている人物は写真のまま一切変えず、背景だけを手描きの絵本のようなイラストに描き変える
+【描き方】
+・人物：顔・髪・服・肌の質感をすべて写真のまま残す（イラスト化しない）
+・背景：元の背景と同じ奥行きと配置を保ちつつ、水彩とクレヨンを混ぜたようなやさしいイラストに
+・色：背景はあたたかいパステル調（オレンジ・黄・緑）
+・光：人物にあたっている光の向きと色に、背景の光を合わせる
+・境目：人物の輪郭のまわりに白い縁やぼやけを出さず、自然になじませる
+【避けるもの】人物の顔や体の変化、合成したような不自然な境目`,
+enp:'Keep the person in the attached photo completely photorealistic and unchanged. Replace only the background with a warm hand-drawn storybook illustration (watercolor and crayon texture, pastel orange, yellow and green), keeping the same depth and layout. Match the lighting on the person. Seamless edges, no halo.'});
+
+defI({no:'03',cat:'BASIC',name:'人物だけイラストにする',en:'Illustrated Person Only',lead:'背景は写真のまま、人物だけをアニメ調のキャラクターに。',
+before:'旅行先・カフェなどで撮った人物写真',after:'実写の風景の中に、アニメ調のキャラになった本人',kw:['背景は実写','人物だけ変換','影を落とす','サイズ感キープ'],pal:['#ffb4a2','#e5989b','#b5838d','#6d6875','#ffcdb2'],tools:[GPT,GEM],
+use:'<b>旅行の記念写真・SNSのネタ投稿</b>に。「実写の世界にアニメのキャラがいる」違和感が面白く、バズりやすい表現です。',
+tips:['「人物の足元に、実写の影を落とす」と入れると、その場にいる感じが出ます','人物の大きさと位置が変わらないよう「写真と同じサイズ・位置で」と明記','キャラの画風は11〜20のアニメ系から選んで組み合わせても◎'],
+p:`【スタイル】背景は写真のまま一切変えず、写っている人物だけを日本のアニメ調のキャラクターに描き変える
+【描き方】
+・人物：顔立ち・髪型・服装・ポーズの特徴を残したまま、くっきりした線とアニメ塗り（影2段階）のキャラクターにする
+・大きさと位置：写真の人物とまったく同じ大きさ・同じ位置に描く
+・なじませ方：人物の足元や体の下に、写真の光に合った実写らしい影を落とす
+・背景：写真のまま（色・ピント・ボケ感を変えない）
+【避けるもの】背景のイラスト化、人物の大きさや向きの変化`,
+enp:'Keep the background of the attached photo photorealistic and unchanged. Turn only the person into a Japanese anime-style character with clean lineart and two-tone cel shading, keeping face features, hairstyle, outfit and pose. Same size and position as in the photo. Add a realistic cast shadow matching the scene lighting.'});
+
+defI({no:'04',cat:'BASIC',name:'塗り絵（線画）にする',en:'Coloring Page Lineart',lead:'写真をくっきりした黒い線だけの塗り絵に。子どもと遊べる。',
+before:'家族・ペット・お気に入りの景色の写真',after:'白い紙に黒い線だけの、塗りやすい塗り絵',kw:['白黒の線画','塗りやすい太さ','影なし','A4印刷向け'],pal:['#ffffff','#e5e5e5','#999999','#333333','#000000'],tools:[GPT,GEM,CV],
+use:'<b>子ども向けの塗り絵・お絵かきの下絵・ワークショップ</b>に。家族やペットの写真が、世界にひとつの塗り絵になります。',
+tips:['線の太さを「3〜4px相当」と指定すると、子どもでも塗りやすい','細かすぎる背景は「簡略化して」と入れると塗り絵として使いやすくなります','A4で印刷するなら比率を「縦長（3:4）」に'],
+p:`【スタイル】子どもが塗りやすい、白い紙に黒い線だけの「塗り絵（線画）」
+【描き方】
+・線：黒一色、太さは均一でやや太め（3〜4px相当）。線は途切れずに閉じた形にして、色を塗る範囲がはっきり分かるようにする
+・塗り：一切塗らない。影・グレー・ハッチング（斜線）も入れない
+・細部：髪の毛や服のしわは、主要な線だけに簡略化する
+・背景：主要な形だけを残して簡略化。細かい模様は省く
+・紙：真っ白な背景
+【避けるもの】色、グレーの影、細かすぎる線、ぼやけた線`,
+enp:'Convert the attached photo into a clean black and white coloring page. Bold uniform black outlines (3-4px), closed shapes, no shading, no gray, no hatching. Simplify hair, clothing folds and background details. Pure white background, printable.'});
+
+defI({no:'05',cat:'BASIC',name:'季節を変える',en:'Season Swap',lead:'同じ場所・同じ構図のまま、夏を冬に、春を秋に描き変える。',
+before:'夏に撮った公園・街・家の前の写真',after:'同じ構図のまま、雪が積もった冬のイラスト',kw:['構図キープ','季節の要素を追加','光の色を変える','服装も季節に'],pal:['#e0fbfc','#c2dfe3','#9db4c0','#5c6b73','#253237'],tools:[GPT,GEM,FF],
+use:'<b>季節のあいさつ・年賀状・お店の季節告知</b>に。同じ写真を4季節ぶん作ると、SNSのシリーズ投稿にもなります。',
+tips:['「光の色」まで変えるのがコツ（冬は青白く、秋は夕方のオレンジ）','人物がいる場合は「服装も季節に合わせて」と追加','4季節を1枚にまとめる（4分割）のも人気です'],
+p:`【スタイル】写真と同じ場所・同じ構図・同じアングルのまま、季節を「冬」に変えたイラスト（季節は書き換え可：春・夏・秋・冬）
+【描き方】
+・季節の要素：屋根や地面、木の枝に雪を積もらせ、空からやさしく雪を降らせる。吐く息を白く
+・光：冬の午後らしい、青白くやわらかい光
+・色：全体を寒色寄りに。窓や街灯だけ暖かいオレンジで灯す
+・人物：顔と体はそのまま、服装をコート・マフラーなど冬の装いに変える
+・画風：やわらかい水彩タッチのイラスト
+【避けるもの】建物や道の形・位置の変化、構図の変化`,
+enp:'Redraw the attached photo as the same place, same composition and camera angle, but in winter: snow on roofs, ground and branches, gentle snowfall, visible breath, pale blue soft afternoon light, cool palette with warm orange windows and street lamps. People keep their faces and poses but wear coats and scarves. Soft watercolor illustration.'});
+
+defI({no:'06',cat:'BASIC',name:'昼を夜のネオン街に',en:'Day to Neon Night',lead:'昼間の街の写真を、ネオンが光るエモい夜景イラストに。',
+before:'昼間の商店街・駅前・ビルの写真',after:'看板がネオンに光る、雨上がりの夜の街',kw:['夜景化','ネオン','濡れた路面の反射','シネマティック'],pal:['#0b0f2b','#3a0ca3','#f72585','#4cc9f0','#ffd166'],tools:[GPT,GEM,MJ],
+use:'<b>音楽・MVのサムネ、エモいSNS投稿、ゲームの背景素材</b>に。ありふれた街の写真が、映画のワンシーンに変わります。',
+tips:['「雨上がりで路面が濡れている」と入れると、ネオンの反射が映えて一気にエモくなります','ネオンの色はピンク×水色が定番、紫×オレンジでレトロに','看板の文字は崩れやすいので、文字は入れない指示が安全'],
+p:`【スタイル】写真の街並みを、ネオンが光る雨上がりの夜の街に描き変えたシネマティックなイラスト
+【描き方】
+・時間：深夜。空は深い紺〜紫のグラデーション
+・光：看板・窓・街灯をネオン（ピンク #F72585、水色 #4CC9F0、黄色）で光らせ、まわりに光のにじみ（グロー）を出す
+・路面：雨上がりで濡れていて、ネオンの光が反射して縦に伸びる
+・空気：うっすら霧がかかり、光の筋が見える
+・構図：建物の形・配置・遠近は写真のまま
+・看板の文字：読める文字は入れず、光る模様だけにする
+【避けるもの】昼間の光、建物の形の変化、読める文字`,
+enp:'Transform the attached daytime street photo into a cinematic rainy night scene. Deep navy-purple sky, neon signs and windows glowing pink (#F72585), cyan (#4CC9F0) and yellow with soft bloom, wet asphalt with long neon reflections, light fog and light rays. Keep buildings, layout and perspective identical. No readable text on signs.'});
+
+defI({no:'07',cat:'BASIC',name:'服装・髪型だけ変える',en:'Outfit Change',lead:'顔とポーズはそのまま、服や髪型だけを着せ替える。',
+before:'正面に近い人物の全身〜上半身の写真',after:'同じ顔・同じポーズで、別の衣装を着たイラスト',kw:['顔キープ','ポーズキープ','着せ替え','コスプレ風'],pal:['#22223b','#4a4e69','#9a8c98','#c9ada7','#f2e9e4'],tools:[GPT,GEM],
+use:'<b>コスプレの試着・制服や衣装のイメージ確認・キャラ作り</b>に。「この服を着たらどう見える？」をすぐに試せます。',
+tips:['衣装は「色・素材・形」の3点で指定すると思いどおりになりやすい','髪型も変えるなら「髪の長さと色」を具体的に','実写のまま着せ替えたいときは、【スタイル】を「写真のまま」に変える'],
+p:`【スタイル】顔・表情・体型・ポーズは写真のまま、服装と髪型だけを変えたイラスト
+【変更内容】（書き換えて使う）
+・服装：深い紺色のブレザーに、白いシャツと赤いネクタイの制服（素材はウール）
+・髪型：肩までの長さ、こげ茶色、ゆるいウェーブ
+【描き方】
+・顔：目・鼻・口の形と位置、肌の色を写真のまま残す
+・ポーズ：手足の位置・体の向きを写真のまま
+・画風：きれいな線と、やわらかい影のアニメ風イラスト
+・背景：写真の背景をそのまま同じ画風で
+【避けるもの】顔立ちの変化、体型の変化、ポーズの変化`,
+enp:'Keep the face, expression, body shape and pose of the person in the attached photo. Change only the outfit to a navy wool blazer school uniform with white shirt and red tie, and the hair to shoulder-length dark brown loose waves. Clean anime-style illustration with soft shading, same background redrawn in the same style.'});
+
+defI({no:'08',cat:'BASIC',name:'古い写真をカラーで蘇らせる',en:'Restore & Colorize',lead:'色あせたモノクロ写真を、鮮やかなカラーのイラストに描き起こす。',
+before:'昔のモノクロ写真・色あせた家族写真',after:'傷やシミが消え、当時の色を想像して塗られたイラスト',kw:['修復','カラー化','傷・シミ除去','当時の色'],pal:['#d4a373','#faedcd','#fefae0','#ccd5ae','#606c38'],tools:[GPT,GEM],
+use:'<b>家族の思い出・ご先祖の写真・地域の昔の写真</b>に。贈り物や、法事・記念日のスライドショーにも喜ばれます。',
+tips:['写真に写っている時代（昭和30年代など）を書くと、服や物の色が自然になります','「本人の顔は変えずに」を強めに入れるのが大切','イラストではなく写真のまま修復したいなら【スタイル】を「写真として修復」に'],
+p:`【スタイル】古いモノクロ写真を修復し、当時の色を想像してカラーで描き起こしたイラスト
+【描き方】
+・修復：写真の傷・折り目・シミ・ノイズをすべて消す
+・色：写っている時代（例：昭和30年代）にふさわしい、落ち着いた自然な色で塗る。肌は健康的な自然な色
+・画風：写真の質感を少し残した、やわらかい手描きの絵画調
+・光：写真の光の向きを保つ
+・顔：写っている人の顔立ちと表情を一切変えない
+【避けるもの】顔の変化、派手すぎる色、現代の物の追加`,
+enp:'Restore the attached old black-and-white photo: remove scratches, folds, stains and noise, then colorize it with natural, period-appropriate muted colors (1950s Japan) as a soft hand-painted illustration that keeps a hint of photographic texture. Preserve every face and expression exactly. No modern objects.'});
+
+defI({no:'09',cat:'BASIC',name:'ラフから完成イラストへ',en:'Sketch to Finished Art',lead:'手描きのラフや落書きを、プロが仕上げたような完成イラストに。',
+before:'紙に描いたラフ・落書き・棒人間の構図メモ',after:'ラフの構図どおりに清書・着色された完成イラスト',kw:['清書','着色','構図キープ','アイデアを形に'],pal:['#003049','#d62828','#f77f00','#fcbf49','#eae2b7'],tools:[GPT,GEM],
+use:'<b>絵が苦手な人のアイデアスケッチ・漫画のネーム・資料の挿絵</b>に。頭の中のイメージを、ラフ1枚から完成させられます。',
+tips:['ラフに「ここは空」「これは犬」など文字でメモを書いておくと、AIが正しく読み取ります','画風を指定しないと平均的な絵になるので、必ず【スタイル】を具体的に','気に入らない部分は「左の人物だけ描き直して」と部分指定で直せます'],
+p:`【スタイル】添付した手描きのラフ（落書き）を、プロが仕上げたような完成イラストにする
+【描き方】
+・構図：ラフの人物や物の位置・大きさ・向きをそのまま守る
+・読み取り：ラフに書かれたメモ（文字）は、描く内容の指示として読み取り、絵の中には描かない
+・線：きれいに清書した、強弱のある線
+・塗り：明るい色で、影と光をしっかり入れた丁寧な塗り
+・背景：ラフに描かれた場所を、奥行きのある背景として描き込む
+【避けるもの】ラフにない大きな要素の追加、構図の変更、メモ文字の描き込み`,
+enp:'Turn the attached rough hand-drawn sketch into a polished, professionally finished illustration. Keep the exact positions, sizes and directions of all figures and objects. Treat handwritten notes as instructions and do not draw them. Clean lineart with line weight variation, bright colors with full lighting and shading, detailed background with depth.'});
+
+defI({no:'10',cat:'BASIC',name:'写真からロゴ・アイコン素材',en:'Photo to Simple Icon',lead:'写真の被写体を、ロゴやアイコンに使えるシンプルな図形にする。',
+before:'お店の外観・商品・ペット・料理の写真',after:'少ない色と単純な形でできた、ロゴに使える図案',kw:['シンプル化','3色以内','単色背景','ベクター風'],pal:['#1d3557','#457b9d','#a8dadc','#f1faee','#e63946'],tools:[GPT,GEM,CV],
+use:'<b>お店のロゴ案・SNSアイコン・ショップカード・ステッカー</b>に。写真の特徴を残したまま、デザイン素材として使える形にします。',
+tips:['色数を「3色以内」と決めると、ロゴとして使いやすい図案になります','背景は単色にして、あとで切り抜きやすく','正式なロゴにする場合は、デザイナーにベクター化して整えてもらうと安心'],
+p:`【スタイル】写真の主役（人物・動物・建物・商品など）を、ロゴやアイコンに使えるシンプルな図案にする
+【描き方】
+・形：主役の特徴的なシルエットだけを残し、細部を大胆に省略した単純な形にする
+・色：3色以内（例：紺・水色・白）。グラデーションは使わない
+・線：線を使う場合は太さを均一に
+・構図：主役を中央に大きく、正方形の中にバランスよく収める
+・背景：無地の単色
+【避けるもの】写真のような質感、細かい模様、4色以上の色、文字`,
+enp:'Simplify the main subject of the attached photo into a minimal flat icon suitable for a logo: keep only the characteristic silhouette, bold simplified shapes, maximum 3 flat colors (navy, light blue, white), no gradients, uniform line weight, centered in a square, solid plain background, no text.'});
+
+/* ANIME */
+defI({no:'11',cat:'ANIME',name:'セル画アニメ風',en:'Cel Anime',lead:'くっきりした線と2段階の影。今のテレビアニメのような王道スタイル。',
+before:'自撮り・友達との写真・推し活の写真',after:'テレビアニメのワンシーンのような、くっきり塗りのキャラ',kw:['アニメ塗り','影2段階','ハイライト','大きな瞳'],pal:['#ffd6e0','#ffb3c6','#8ecae6','#219ebc','#023047'],tools:[GPT,GEM,MJ],
+use:'<b>SNSアイコン・推し活・友達へのプレゼント</b>に。いちばん人気で、誰が見ても「アニメになった！」と分かる定番の変換。',
+tips:['「影は2段階」「髪にハイライト」と入れると、アニメらしさが一気に増します','目を大きくしすぎると本人に似なくなるので「目は少しだけ大きく」が◎','背景は「背景美術のように」と指定すると、作品のワンシーン感が出ます'],
+p:`【スタイル】日本のテレビアニメのワンシーンのような、セル画風のアニメイラスト
+【描き方】
+・線：くっきりとした黒〜こげ茶の主線。輪郭はやや太く、内側の線は細く
+・塗り：アニメ塗り（ベタ塗り＋はっきりした影を2段階）。髪には帯状のツヤ（ハイライト）
+・顔：顔立ちの特徴は残しつつ、目は少しだけ大きく、瞳に光を2つ入れる
+・色：明るく鮮やか。肌は透明感のある色
+・背景：写真の場所を、アニメの背景美術のように描き込む（空はグラデーションと雲）
+【避けるもの】写真っぽい質感、顔立ちが別人になること`,
+enp:'Redraw the attached photo as a still from a modern Japanese TV anime: crisp dark brown lineart (thicker outer lines), flat cel shading with two hard shadow tones, glossy band highlights on hair, slightly larger eyes with two catchlights, bright saturated colors, background painted like anime background art with gradient sky and clouds. Keep facial features recognizable.'});
+
+defI({no:'12',cat:'ANIME',name:'90年代レトロアニメ風',en:'90s Retro Anime',lead:'少しくすんだ色、フィルムのざらつき。懐かしいビデオアニメの雰囲気。',
+before:'夕方の街・部屋・人物の写真',after:'90年代のビデオアニメのような、くすんだ色とざらつきのある絵',kw:['レトロ','くすみカラー','フィルムグレイン','セル画の質感'],pal:['#3d405b','#e07a5f','#f2cc8f','#81b29a','#f4f1de'],tools:[GPT,MJ,GEM],
+use:'<b>シティポップのMV・エモいSNS投稿・レトロ好きのアイコン</b>に。平成レトロブームで、若い世代にも人気のスタイル。',
+tips:['「フィルムのざらつき」「わずかな色ズレ」を入れると、ビデオ映像らしい懐かしさが出ます','夕方のオレンジ〜紫の空と相性が抜群','画面の比率を4:3にすると、さらに当時っぽくなります'],
+p:`【スタイル】1990年代のビデオアニメ（OVA）のような、懐かしいレトロアニメ調のイラスト
+【描き方】
+・線：やや太めで少しだけ揺らぎのある主線
+・塗り：セル画風のベタ塗りと影。影はやや青みがかった色
+・色：少しくすんだ（彩度を落とした）色。夕焼けのオレンジ・紫・ピンクを多めに
+・質感：フィルムのざらつき（グレイン）、わずかな色のにじみ、少しだけぼやけた輪郭
+・顔：顔立ちを残しつつ、当時のアニメらしい細めのあご・大きめの瞳
+・背景：写真の場所を、手描きの背景画のように
+【避けるもの】今どきのくっきりしたデジタル塗り、鮮やかすぎる色`,
+enp:'Redraw the attached photo as a frame from a 1990s Japanese OVA anime: slightly thick, subtly wobbly lineart, cel shading with bluish shadows, muted desaturated palette with sunset orange, purple and pink, film grain, slight chromatic bleed and softness, hand-painted background, retro character proportions. Keep the person recognizable. 4:3 framing.'});
+
+defI({no:'13',cat:'ANIME',name:'少女漫画風',en:'Shoujo Manga',lead:'キラキラの瞳、花と光のトーン。ときめく少女漫画の1コマに。',
+before:'カップル・友達・自撮りの写真',after:'花びらとキラキラに囲まれた、少女漫画の1ページ',kw:['キラキラの瞳','花のトーン','繊細な線','ときめき'],pal:['#ffe5ec','#ffc2d1','#ffb3c6','#fb6f92','#ffffff'],tools:[GPT,MJ,GEM],
+use:'<b>カップル写真・結婚式・記念日のプレゼント</b>に。ロマンチックな演出で、贈り物として特に喜ばれる変換です。',
+tips:['「背景に花びらとキラキラのトーン」で一気に少女漫画らしくなります','モノクロにすると漫画本のページらしく、カラーにすると表紙イラストらしくなります','瞳の描き込みを強調すると、ときめき度が上がります'],
+p:`【スタイル】昔ながらの少女漫画のような、繊細でロマンチックなイラスト
+【描き方】
+・線：細く繊細な線。まつ毛を長く、髪の毛は流れるような細い線で
+・瞳：大きく、星や光をたくさん描き込んだキラキラの瞳
+・塗り：淡いパステル調の水彩風の塗り
+・背景：写真の背景の代わりに、バラの花びら・光の玉・キラキラのトーンを散らす
+・表情：写真の表情を、少しだけやさしく
+・顔：顔立ちの特徴は残す
+【避けるもの】太い線、暗い色、写真の背景をそのまま残すこと`,
+enp:'Redraw the attached photo as a classic romantic shoujo manga illustration: delicate thin lines, long eyelashes, flowing fine hair strands, huge sparkling eyes full of stars and light, soft pastel watercolor coloring, background replaced with rose petals, light orbs and sparkle screentones. Keep facial features recognizable.'});
+
+defI({no:'14',cat:'ANIME',name:'少年漫画（白黒）',en:'Shounen Manga B&W',lead:'白黒の力強い線、スクリーントーン、集中線。熱いバトル漫画の1コマ。',
+before:'スポーツ・ガッツポーズ・真剣な表情の写真',after:'集中線とトーンで迫力が出た、白黒の漫画の1コマ',kw:['白黒','スクリーントーン','集中線','力強い線'],pal:['#000000','#333333','#777777','#bbbbbb','#ffffff'],tools:[GPT,GEM],
+use:'<b>スポーツの決定的瞬間・部活の思い出・ネタ画像</b>に。日常の写真が、熱い漫画のクライマックスに変わります。',
+tips:['「背景に集中線」で迫力が倍増。スピード線にすると動きが出ます','擬音（ドン！など）を入れたい場合は【避けるもの】から「文字」を外して、入れたい擬音を指定','トーンは「網点」と指定すると、より本物の漫画らしく'],
+p:`【スタイル】日本の少年漫画の1コマのような、白黒の迫力あるイラスト
+【描き方】
+・線：黒のインクで描いたような力強い線。強弱をはっきりつける
+・影：黒ベタと、網点のスクリーントーン（グレーの点の模様）で表現する
+・背景：写真の背景の代わりに、中心（人物）に向かう集中線を描く
+・表情：写真の表情を、少しだけ力強く・真剣に
+・顔：顔立ちの特徴は残す
+・色：白と黒とグレーのトーンだけ
+【避けるもの】カラー、やわらかい水彩、文字（擬音を入れたい場合はここを外す）`,
+enp:'Redraw the attached photo as a black and white shounen manga panel: bold inked lines with strong weight variation, solid black fills and halftone dot screentones for shading, intense radial speed lines in the background focused on the person, slightly more determined expression. Pure black, white and gray tones only. Keep features recognizable. No text.'});
+
+defI({no:'15',cat:'ANIME',name:'ちびキャラ',en:'Chibi Character',lead:'2〜3頭身のデフォルメキャラに。かわいさ全振りの人気スタイル。',
+before:'全身が写った人物・家族・ペットとの写真',after:'頭が大きく手足が短い、2〜3頭身のかわいいキャラ',kw:['2〜3頭身','デフォルメ','まるいシルエット','スタンプ向き'],pal:['#fff1e6','#fde2e4','#fad2e1','#bee1e6','#cddafd'],tools:[GPT,GEM,CV],
+use:'<b>LINEスタンプ・SNSアイコン・グッズ・名刺</b>に。家族全員をちびキャラにして並べるのも大人気です。',
+tips:['「2頭身」か「3頭身」かで印象が大きく変わります（2頭身＝赤ちゃんっぽく、3頭身＝少し大人っぽく）','服の色やメガネなど、本人の目印になる特徴を必ず残すよう指示','白背景にしておくと、あとで切り抜いてスタンプにしやすい'],
+p:`【スタイル】2.5頭身のかわいいデフォルメキャラクター（ちびキャラ）
+【描き方】
+・体型：頭を大きく、体と手足を短くした2.5頭身。全体のシルエットは丸く
+・顔：目は大きく丸く、鼻は小さな点か省略、ほっぺに薄いピンクの丸
+・特徴：髪型・髪色・服の色・メガネやアクセサリーなど、本人の目印になる特徴は必ず残す
+・線：やや太めで均一な、やわらかい色の線
+・塗り：明るいパステル調、影は1段階だけ
+・背景：白、または淡い単色
+【避けるもの】リアルな頭身、細かすぎる描き込み、本人の特徴が消えること`,
+enp:'Turn the person in the attached photo into a cute 2.5-head-tall chibi character: big round head, short body and limbs, round silhouette, big round eyes, tiny or no nose, pink cheek blush. Keep identifying features: hairstyle, hair color, outfit colors, glasses and accessories. Soft uniform outlines, bright pastel colors, single-step shading, plain white background.'});
+
+defI({no:'16',cat:'ANIME',name:'手描き背景のアニメ映画風',en:'Painterly Anime Film',lead:'空と雲、緑の描き込みが美しい。劇場アニメのような温かいワンシーン。',
+before:'田舎の風景・旅先・空が広い写真',after:'手描きの背景美術が美しい、劇場アニメのようなワンシーン',kw:['手描き背景','もくもくの雲','あたたかい光','ノスタルジー'],pal:['#8ecae6','#219ebc','#a7c957','#6a994e','#fefae0'],tools:[GPT,GEM,MJ],
+use:'<b>旅行写真・地元の風景・家族の思い出</b>に。特に空や自然が写った写真は、驚くほど美しい一枚に変わります。',
+tips:['特定のアニメ会社や監督の名前は出さず、「手描き背景」「もくもくの雲」など特徴で指示するのが安全で確実','夏の午後・夕方など「時間帯」を指定すると、光の色がぐっと良くなります','人物は小さめに描くと、背景の美しさが引き立ちます'],
+p:`【スタイル】劇場アニメ映画のワンシーンのような、手描きの背景美術が美しいイラスト
+【描き方】
+・背景：絵の具で手描きしたような背景美術。空は深い青のグラデーションに、立体的にもくもくと重なる白い入道雲
+・自然：草木の緑は、明るい緑と深い緑を細かく描き分け、葉の一枚一枚に光を当てる
+・光：夏の午後のあたたかい日差し。光と影のコントラストをはっきり
+・人物：やさしい線とシンプルなアニメ塗り。顔立ちの特徴は残す
+・空気感：少しノスタルジックで、どこか懐かしい雰囲気
+【避けるもの】実在のアニメ作品のキャラクターや場所に似せること、写真の質感`,
+enp:'Redraw the attached photo as a scene from a hand-painted Japanese animated feature film: lush painterly background art, deep blue gradient sky with towering layered cumulus clouds, richly detailed greenery with sunlit leaves, warm summer afternoon light with strong contrast, characters with gentle lines and simple anime shading, nostalgic atmosphere. Do not imitate any specific existing film.'});
+
+defI({no:'17',cat:'ANIME',name:'VTuber立ち絵風',en:'VTuber Standing Art',lead:'正面向きの上半身、華やかな衣装と小物。配信者の立ち絵のような一枚。',
+before:'正面に近い上半身の写真',after:'配信のアバターのような、華やかな衣装の立ち絵',kw:['立ち絵','正面','華やかな衣装','透過しやすい背景'],pal:['#cdb4db','#ffc8dd','#ffafcc','#bde0fe','#a2d2ff'],tools:[GPT,GEM],
+use:'<b>配信者のアバター案・SNSのプロフィール・自分のキャラクター作り</b>に。本格的に依頼する前のイメージ作りにも使えます。',
+tips:['「テーマ（例：宇宙・和風・魔法使い）」を1つ決めて衣装に反映させると、キャラが立ちます','背景を単色にすると、切り抜いて配信画面に置きやすくなります','左右対称に近いポーズにすると「立ち絵」らしくなります'],
+p:`【スタイル】VTuberの立ち絵のような、正面向き上半身のキャラクターイラスト
+【描き方】
+・ポーズ：正面〜やや斜め、腰から上。片手を軽く上げるなど、親しみのあるポーズ
+・衣装：テーマ（例：星と宇宙）に合わせた華やかなオリジナル衣装。リボンやアクセサリーなどの小物を足す
+・顔：写真の顔立ち・髪型・髪色の特徴を残し、アニメ調に整える。瞳は大きくキラキラに
+・塗り：グラデーションとハイライトを多用した、つややかで華やかな塗り
+・背景：無地の淡いグラデーション（切り抜きやすいように）
+【避けるもの】既存のキャラクターや有名な配信者に似せること、ごちゃついた背景`,
+enp:'Create a VTuber-style standing illustration (waist-up, facing forward) based on the person in the attached photo: keep face, hairstyle and hair color, anime styling with big sparkling eyes, friendly pose with one hand raised, original glamorous outfit themed on stars and space with ribbons and accessories, glossy gradient shading with highlights, plain soft gradient background for easy cutout. Do not resemble existing characters.'});
+
+defI({no:'18',cat:'ANIME',name:'4コマ漫画にする',en:'Four-panel Comic',lead:'1枚の写真から、起承転結のある4コマ漫画を作る。',
+before:'ペット・子ども・日常の1コマの写真',after:'写真の人物やペットが主人公の、オチのある4コマ漫画',kw:['起承転結','4コマ','オチ','フキダシ'],pal:['#ffffff','#f8edeb','#fec5bb','#fcd5ce','#333333'],tools:[GPT,GEM],
+use:'<b>ペットや子どもの日常・SNSの連載ネタ・社内報</b>に。写真1枚からストーリーを作れるので、投稿ネタに困りません。',
+tips:['ストーリーを自分で決めたいときは、【ストーリー】の4行を書き換える','文字（セリフ）は短く。長いと崩れやすいので1コマ10文字以内に','日本語の文字が崩れる場合は「フキダシは空白に」して、あとで文字を入れる'],
+p:`【スタイル】写真の人物（またはペット）が主人公の、縦に4コマ並んだほのぼの4コマ漫画
+※この変換では、フキダシの中に短い日本語のセリフを入れてOKです
+【ストーリー】（書き換えて使う。空欄ならAIが写真から考える）
+・1コマ目（起）：写真と同じ場面で、のんびりしている
+・2コマ目（承）：何かを見つけて興味しんしん
+・3コマ目（転）：思いがけないハプニングが起きる
+・4コマ目（結）：ほっこりするオチ
+【描き方】
+・画風：やわらかい線のシンプルな漫画。カラーは淡い色で控えめに
+・主人公：写真の特徴（顔・毛の色・服）を全コマで同じに保つ
+・セリフ：1コマ10文字以内の短いセリフをフキダシに入れる
+【避けるもの】コマごとに主人公の見た目が変わること、長いセリフ`,
+enp:'Create a vertical 4-panel comic strip starring the person or pet from the attached photo. Panel 1: relaxing in the same scene as the photo. Panel 2: notices something curious. Panel 3: an unexpected small mishap. Panel 4: a heartwarming punchline. Simple soft-line manga style with gentle muted colors, consistent character design in all panels, short speech bubbles (or leave bubbles empty).'});
+
+defI({no:'19',cat:'ANIME',name:'ファンタジーRPGキャラ化',en:'Fantasy RPG Hero',lead:'剣士・魔法使い・僧侶…。自分がRPGの主人公になったら。',
+before:'全身〜上半身の人物写真',after:'職業に合った装備をまとった、ファンタジーRPGのキャラ',kw:['ファンタジー','職業（ジョブ）','装備','かっこいいポーズ'],pal:['#14213d','#fca311','#e5e5e5','#6a4c93','#1982c4'],tools:[GPT,GEM,MJ],
+use:'<b>ゲーム好きの友達へのプレゼント・SNSのネタ・家族をパーティにする企画</b>に。職業を変えて何枚も作るのが楽しい変換です。',
+tips:['職業（剣士・魔法使い・弓使い・僧侶など）を1つ指定するだけで、装備が自動で決まります','家族や友達を1人ずつ違う職業にすると「パーティ」が組めます','背景を「ダンジョン」「草原」「城」などから選ぶと世界観が出ます'],
+p:`【スタイル】ファンタジーRPGのキャラクターイラスト
+【設定】（書き換えて使う）
+・職業：魔法使い
+・装備：深い紫のローブ、金の刺しゅう、先端に青い宝石の付いた杖
+・背景：古代の遺跡、魔法の光の粒が舞う
+【描き方】
+・顔：写真の顔立ち・髪型の特徴を残し、少しだけかっこよく（またはかわいく）整える
+・ポーズ：杖を構えて呪文を唱える、躍動感のあるポーズ
+・画風：ゲームのキャラクターアートのような、描き込みの多い厚塗り
+・光：魔法の青い光が顔と装備を照らす
+【避けるもの】既存のゲームのキャラクターに似せること、本人の特徴が消えること`,
+enp:'Transform the person in the attached photo into a fantasy RPG character: a mage in a deep purple robe with gold embroidery holding a staff topped with a glowing blue gem, casting a spell in a dynamic pose, ancient ruins background with floating magic particles, detailed painterly game character art, blue magical rim light. Keep the face and hairstyle recognizable. Original design.'});
+
+defI({no:'20',cat:'ANIME',name:'アニメ風SNSアイコン',en:'Anime Profile Icon',lead:'顔のアップを、丸く切り抜きやすいアニメ風アイコンに。',
+before:'顔がはっきり写った自撮り',after:'背景が単色の、丸く切り抜けるアニメ風アイコン',kw:['顔アップ','正方形','単色背景','丸く切り抜ける'],pal:['#a0c4ff','#bdb2ff','#ffc6ff','#fdffb6','#caffbf'],tools:[GPT,GEM,CV],
+use:'<b>X・Instagram・LINE・Discordのアイコン</b>に。顔を出さずに「自分らしさ」を出せるので、仕事用のアカウントにも人気です。',
+tips:['アイコンは小さく表示されるので、線をやや太く・色をはっきりさせるのがコツ','背景の色は、普段使うテーマカラーにすると統一感が出ます','顔が画面の中央60%に収まるように指定すると、丸く切り抜いても切れません'],
+p:`【スタイル】SNSのプロフィールアイコン用の、アニメ風の顔アップイラスト
+【描き方】
+・構図：正方形。顔と肩の上あたりまで。顔が画面の中央60%に収まるように（丸く切り抜いても切れない）
+・顔：写真の顔立ち・髪型・髪色・メガネなどの特徴を残し、アニメ調に。やさしい笑顔
+・線：小さく表示しても見えるよう、やや太めの線
+・色：はっきりした明るい色。影は1〜2段階
+・背景：無地の単色（例：淡い水色 #A0C4FF）。模様は入れない
+【避けるもの】細かすぎる描き込み、ごちゃついた背景、顔が端に寄ること`,
+enp:'Create a square anime-style social media profile icon from the attached selfie: head and shoulders, face centered within the middle 60% so it survives a circular crop, keep face features, hairstyle, hair color and glasses, gentle smile, slightly thick lines, clear bright colors with 1-2 shading tones, plain solid light blue (#A0C4FF) background.'});
+
+/* TOY / 3D */
+defI({no:'21',cat:'TOY',name:'3Dアニメ映画のキャラ風',en:'3D Animated Film',lead:'つやつやの肌、大きな瞳。海外の3Dアニメ映画の登場人物のように。',
+before:'家族・子ども・人物の写真',after:'3DCGアニメ映画に出てきそうな、表情豊かなキャラクター',kw:['3DCG','やわらかい質感','大きな瞳','映画のライティング'],pal:['#f4a261','#e76f51','#2a9d8f','#e9c46a','#264653'],tools:[GPT,GEM,MJ],
+use:'<b>家族写真・子どもの写真・年賀状</b>に。表情が豊かになり、写真よりも「その人らしさ」が伝わることも。',
+tips:['特定の映画会社名は出さず、「3DCGアニメ映画風」「やわらかいサブサーフェス」などの特徴で指示','「映画のポスターのようなライティング」と入れると完成度が上がります','子どもの写真と特に相性が良い変換です'],
+p:`【スタイル】海外の3DCGアニメ映画の登場人物のようなキャラクター
+【描き方】
+・造形：頭と目をやや大きく、表情豊かにデフォルメした3Dキャラクター。顔立ち・髪型・服装の特徴は残す
+・質感：肌はやわらかくつややか（光が少し透けるような質感）。髪は束感のある3Dの毛並み。服は布の質感
+・光：映画のような柔らかいキーライトと、輪郭を照らすリムライト
+・背景：写真の場所を、同じ3DCGの世界として描く。奥はやわらかくぼかす（被写界深度）
+・表情：写真の表情を、少しだけ生き生きと
+【避けるもの】実在の映画のキャラクターに似せること、リアルな人間の質感`,
+enp:'Transform the people in the attached photo into characters from a 3D animated feature film: stylized proportions with slightly larger heads and expressive eyes, keep facial features, hair and outfits, soft glossy skin with subsurface scattering, chunky 3D hair, fabric textures, cinematic soft key light and rim light, background as the same 3D world with shallow depth of field. Original, not resembling existing characters.'});
+
+defI({no:'22',cat:'TOY',name:'フィギュア＆パッケージ',en:'Action Figure Box',lead:'自分がフィギュアになって、透明パッケージに入って売られている。',
+before:'全身が写った人物写真',after:'本人そっくりのフィギュアが、小物と一緒に箱に入った商品写真',kw:['フィギュア化','ブリスターパック','付属の小物','商品写真風'],pal:['#e63946','#f1faee','#a8dadc','#457b9d','#1d3557'],tools:[GPT,GEM],
+use:'<b>SNSでバズった定番ネタ・自己紹介・退職や誕生日のプレゼント</b>に。付属の小物で「その人らしさ」を表現するのが楽しい。',
+tips:['付属の小物（ノートPC・コーヒー・猫など）は、その人の仕事や趣味から3〜4個選ぶ','パッケージの文字を入れたい場合は、名前を短く（英字が崩れにくい）','背景を「おもちゃ売り場の棚」にすると、商品っぽさが増します'],
+p:`【スタイル】写真の人物そっくりのアクションフィギュアが、透明なプラスチックのパッケージ（ブリスターパック）に入って売られている商品写真
+※この変換では、パッケージに短い文字を入れてOKです
+【描き方】
+・フィギュア：写真の人物の顔・髪型・服装を再現した、関節のあるプラスチックのフィギュア。つやのある塗装の質感
+・パッケージ：厚紙の台紙＋透明なプラスチックのカバー。台紙の上部に名前（例：「TARO」）と、キャッチコピー（例：「CAFE LOVER EDITION」）
+・付属の小物：フィギュアの横に、その人らしい小物を3〜4個（例：ノートパソコン、コーヒーカップ、スマホ、猫）をプラスチックの型に並べる
+・撮影：商品撮影のような明るい照明、正面から
+【避けるもの】顔が別人になること、長い文字`,
+enp:'Create a product photo of an action figure of the person in the attached photo, sealed in a blister pack: glossy painted plastic figure with visible joints, same face, hairstyle and outfit; cardboard backing with the name "TARO" and "CAFE LOVER EDITION" at the top; molded slots with 3-4 accessories (laptop, coffee cup, smartphone, cat). Bright studio product lighting, front view.'});
+
+defI({no:'23',cat:'TOY',name:'デフォルメ樹脂フィギュア',en:'Chibi Resin Figure',lead:'頭が大きい手のひらサイズのフィギュアに。机に飾りたくなる。',
+before:'全身が写った人物・ペットの写真',after:'丸い台座に立った、頭が大きい樹脂製のミニフィギュア',kw:['大頭身','樹脂の質感','丸い台座','デスク撮影'],pal:['#ffcad4','#f4acb7','#9d8189','#d8e2dc','#ffe5d9'],tools:[GPT,GEM],
+use:'<b>推し活・グッズ案・自分のアバター</b>に。机の上で撮ったような写真にすると、「本当に作ったの？」と言われる完成度に。',
+tips:['「机の上に置いて、スマホで撮ったような写真」と入れると、リアルさが増します','台座の色をテーマカラーにすると、シリーズで並べたときにかわいい','特定の商品名（商標）は使わず、「デフォルメ樹脂フィギュア」と表現するのが安全'],
+p:`【スタイル】写真の人物を、頭が大きい手のひらサイズのデフォルメ樹脂フィギュアにして、机の上で撮影したような写真
+【描き方】
+・造形：2.5頭身。頭が大きく、目は大きなつぶらな瞳。顔立ち・髪型・服装の特徴を残す
+・質感：つややかな樹脂（プラスチック）。髪は大きな束のかたまりで造形し、塗装のツヤを出す
+・台座：直径5cmほどの透明または淡い色の丸い台座の上に立たせる
+・撮影：木の机の上に置き、横からの自然光。背景はやわらかくぼかす
+・ポーズ：写真のポーズを、少しかわいく
+【避けるもの】実在の商品名やロゴ、リアルな頭身`,
+enp:'Make a photo of a palm-sized chibi resin figure of the person in the attached photo: 2.5-head-tall proportions, large head and big glossy eyes, sculpted chunky hair with painted gloss, keep facial features, hairstyle and outfit, standing on a small clear round base on a wooden desk, natural side window light, blurred background, cute version of the original pose. No brand names or logos.'});
+
+defI({no:'24',cat:'TOY',name:'粘土（クレイ）アニメ風',en:'Claymation',lead:'指のあとが残る粘土でつくった、コマ撮りアニメの人形に。',
+before:'人物・ペット・食べ物の写真',after:'粘土をこねて作ったような、指あとの残る人形とジオラマ',kw:['粘土','指のあと','コマ撮り','手づくり感'],pal:['#e9c46a','#f4a261','#e76f51','#8ab17d','#2a9d8f'],tools:[GPT,GEM,MJ],
+use:'<b>子ども向けコンテンツ・ほっこり投稿・ストップモーション動画の企画</b>に。手づくりのぬくもりが伝わる人気の画風です。',
+tips:['「指のあと」「わずかなでこぼこ」を入れるのが粘土らしさの決め手','背景も粘土のジオラマにすると、世界観が統一されます','目は黒い丸いビーズのようにすると、コマ撮りアニメっぽさが増します'],
+p:`【スタイル】粘土をこねて作った、コマ撮り（ストップモーション）アニメの人形とジオラマ
+【描き方】
+・人形：写真の人物の特徴（髪型・服の色・メガネなど）を残した、ずんぐりした粘土の人形
+・質感：粘土の表面に指のあとやわずかなでこぼこ、つやの少ないマットな質感
+・顔：目は小さな黒いビーズのよう、ほほは少し赤く
+・背景：写真の場所を、粘土と紙で作ったミニチュアのジオラマとして再現する
+・光：撮影スタジオのやわらかい照明。小さな影が落ちる
+【避けるもの】つるつるのCG質感、リアルな人間の肌`,
+enp:'Recreate the attached photo as a claymation stop-motion scene: chunky plasticine puppet of the person keeping hairstyle, outfit colors and glasses, visible fingerprints and slight lumps, matte clay texture, small black bead eyes, rosy cheeks, background rebuilt as a handmade clay and paper miniature diorama, soft studio lighting with small shadows.'});
+
+defI({no:'25',cat:'TOY',name:'ブロック玩具風',en:'Toy Brick Minifigure',lead:'組み立てブロックのおもちゃの人形と世界に。遊び心満点。',
+before:'人物・家族・街や建物の写真',after:'四角いブロックで組み立てた世界と、ミニ人形になった本人',kw:['ブロック','ミニ人形','プラスチック','組み立て'],pal:['#d00000','#ffba08','#3f88c5','#032b43','#136f63'],tools:[GPT,GEM,MJ],
+use:'<b>家族写真のネタ・子どもへのサプライズ・会社やお店の紹介</b>に。建物の写真をブロックの街にするのも楽しい使い方です。',
+tips:['特定のブランド名は出さず、「組み立てブロックのおもちゃ」と表現するのが安全','建物の写真は「ブロックで組み立てたミニチュア」にすると作品感が出ます','人物は「円筒形の頭と、四角い体のミニ人形」と形を指定すると安定します'],
+p:`【スタイル】組み立てブロックのおもちゃで作られた世界と、ミニ人形になった人物
+【描き方】
+・人物：円筒形の頭、四角い胴体、C字型の手を持つ、プラスチックのミニ人形。顔はシンプルなプリントの表情、髪型と服の色・柄は写真の特徴を再現
+・世界：写真の背景（建物・道・木など）を、凸のある四角いブロックを組み合わせて再現する
+・質感：つやのあるプラスチック。ブロックの凸の形がはっきり見える
+・撮影：おもちゃを接写したような、少しぼけた背景と明るい照明
+【避けるもの】実在のブランド名・ロゴ、リアルな人間の質感`,
+enp:'Rebuild the attached photo as a toy brick world: people become plastic minifigures with cylindrical heads, blocky torsos and C-shaped hands, simple printed faces, hair and outfit colors matching the photo; buildings, roads and trees built from studded interlocking bricks; glossy plastic, close-up toy photography with shallow depth of field and bright lighting. No brand names or logos.'});
+
+defI({no:'26',cat:'TOY',name:'ぬいぐるみ化',en:'Plush Toy',lead:'ふわふわの布とぬい目で、抱きしめたくなるぬいぐるみに。',
+before:'ペット・人物・好きなキャラの写真',after:'ふわふわの布でできた、ぬい目のあるぬいぐるみ',kw:['ぬいぐるみ','ふわふわ','ぬい目','フェルト'],pal:['#f6bd60','#f7ede2','#f5cac3','#84a59d','#f28482'],tools:[GPT,GEM],
+use:'<b>ペットの写真・推し活・グッズのアイデア</b>に。ペットをぬいぐるみにすると、飼い主さんへの最高のプレゼントになります。',
+tips:['「ぬい目」「タグ」を入れると、本物のぬいぐるみのリアルさが出ます','布の素材（ふわふわのボア、フェルト）を指定すると質感が変わります','ベッドやソファの上に置いた写真にすると、生活感があってかわいい'],
+p:`【スタイル】写真の人物（またはペット）を、ふわふわの布で作ったぬいぐるみにして撮影したような写真
+【描き方】
+・形：丸みのある、少しずんぐりしたぬいぐるみ。顔立ち・毛の色・模様・服の特徴を残す
+・素材：やわらかいボア生地の毛並み。目は刺しゅうかボタン、口は刺しゅうの糸
+・細部：ぬい目が見える。耳の後ろに小さな布のタグ
+・撮影：白いシーツのベッドの上に座らせ、窓からのやわらかい自然光
+【避けるもの】リアルな動物や人間の質感、プラスチックのようなつや`,
+enp:'Turn the person or pet in the attached photo into a soft plush toy and photograph it: rounded chubby shape, keep facial features, fur colors, markings and outfit, fluffy minky fabric, embroidered or button eyes and stitched mouth, visible seams, small fabric tag behind the ear, sitting on a white-sheeted bed in soft window light.'});
+
+defI({no:'27',cat:'TOY',name:'ミニチュアジオラマ',en:'Miniature Diorama',lead:'街の風景を、手のひらに乗るミニチュア模型のように見せる。',
+before:'高いところから撮った街・駅・お祭りの写真',after:'模型のように見える、ぼかしの強いミニチュアの世界',kw:['ミニチュア','チルトシフト','模型','俯瞰'],pal:['#ffbe0b','#fb5607','#ff006e','#8338ec','#3a86ff'],tools:[GPT,GEM,MJ],
+use:'<b>旅行写真・地元の紹介・観光PR</b>に。高い所から撮った写真ほど、本物の模型のように見えます。',
+tips:['「上と下を強くぼかす（チルトシフト）」が模型に見える最大のポイント','色を少し鮮やかにすると、プラスチックの模型らしくなります','人や車は「模型の人形」と書くと、よりおもちゃっぽさが出ます'],
+p:`【スタイル】写真の風景を、精巧なミニチュア模型（ジオラマ）を接写したように見せる
+【描き方】
+・ぼかし：画面の上と下を強くぼかし、中央の帯だけにピントを合わせる（チルトシフト効果）
+・質感：建物は樹脂や紙でできた模型の質感。木はスポンジ素材のミニチュアの木
+・人や車：小さな模型の人形とミニカーに見えるようにする
+・色：彩度とコントラストを少し上げ、おもちゃのような鮮やかさに
+・構図：写真の構図をそのまま保つ
+【避けるもの】構図の変化、実写の質感がそのまま残ること`,
+enp:'Make the attached cityscape photo look like a macro shot of a detailed miniature diorama: strong tilt-shift blur at top and bottom with a sharp middle band, buildings with resin and paper model textures, sponge model trees, people and cars as tiny figurines and toy cars, boosted saturation and contrast. Keep the original composition.'});
+
+defI({no:'28',cat:'TOY',name:'ボクセルアート',en:'Voxel Art',lead:'小さな立方体を積み上げてつくった、ゲームのような3Dの世界に。',
+before:'人物・ペット・部屋・建物の写真',after:'小さな立方体（ボクセル）で組み上げた3Dの世界',kw:['ボクセル','立方体','ゲーム風','アイソメトリック視点'],pal:['#7cb518','#5c8001','#fbb02d','#f3de2c','#3d348b'],tools:[GPT,MJ,GEM],
+use:'<b>ゲーム好き向けの投稿・部屋や家の記念・子どもとの遊び</b>に。自分の部屋をボクセルにするのも人気です。',
+tips:['立方体の大きさ（解像度）を「粗め」にするとレトロに、「細かめ」にすると精巧に','斜め上から見下ろす視点（アイソメトリック）と相性抜群','特定のゲームの名前は出さないのが安全'],
+p:`【スタイル】写真の内容を、小さな立方体（ボクセル）を積み上げて作った3Dの世界にする
+【描き方】
+・形：すべてを同じ大きさの立方体の組み合わせで表現する（人物・物・地面・背景すべて）
+・解像度：人物の高さが立方体30個分くらいの、ほどよい粗さ
+・色：写真の色を、少しだけ鮮やかな単色の立方体に置き換える（グラデーションなし）
+・視点：斜め上から見下ろす視点
+・光：やわらかい太陽の光と、立方体の面ごとのはっきりした明暗
+・背景：単色の空
+【避けるもの】なめらかな曲線、写真の質感、特定のゲームのロゴ`,
+enp:'Rebuild the attached photo as voxel art: everything made of equal-sized cubes (people, objects, ground, background), medium resolution (a person is about 30 voxels tall), flat slightly saturated colors per cube, elevated isometric-like view, soft sunlight with clear per-face shading, plain sky background. No smooth curves, no game logos.'});
+
+defI({no:'29',cat:'TOY',name:'カプセルトイ化',en:'Capsule Toy',lead:'ガチャのカプセルから出てきたミニフィギュアに。シリーズ化も◎。',
+before:'人物・ペット・好きな食べ物の写真',after:'半透明のカプセルと一緒に並んだ、ミニフィギュア',kw:['カプセル','ミニフィギュア','シリーズ','台紙'],pal:['#ff99c8','#fcf6bd','#d0f4de','#a9def9','#e4c1f9'],tools:[GPT,GEM],
+use:'<b>家族や友達の「シリーズ化」・ペットのグッズ案・推し活</b>に。何種類も作って並べると、本物のガチャのように楽しめます。',
+tips:['「全5種」のように、家族やペットをシリーズとして並べると楽しい','カプセルは半分開いた状態にすると「出てきた！」感が出ます','台紙の文字は入れない指示にして、あとで自分で入れるのが確実'],
+p:`【スタイル】写真の人物（またはペット）が、カプセルトイ（ガチャ）のミニフィギュアになって、開いたカプセルの横に置かれている写真
+【描き方】
+・フィギュア：高さ4cmくらいの、少しデフォルメされたミニフィギュア。顔・髪型・服装（または毛の色・模様）の特徴を残す
+・質感：つや消しのプラスチックに、塗装のムラが少しある質感
+・カプセル：半透明のパステルカラーのカプセル（上半分ピンク、下半分透明）が、半分開いた状態で横にある
+・撮影：白い机の上、真上に近い斜めの角度から、やわらかい照明
+【避けるもの】実在の商品名やロゴ、大きすぎるフィギュア`,
+enp:'Create a photo of a capsule-toy mini figure (about 4cm tall, slightly chibi) of the person or pet in the attached photo, keeping face, hair and outfit or fur markings, matte painted plastic with slight paint imperfections, next to a half-open translucent pastel capsule (pink top, clear bottom) on a white desk, high angle, soft lighting. No brand names.'});
+
+defI({no:'30',cat:'TOY',name:'3D絵文字アバター',en:'3D Emoji Avatar',lead:'つるんとした3Dの絵文字のような、まんまるアバターに。',
+before:'顔がはっきり写った自撮り',after:'つやつやの3Dアイコンのような、まんまるの顔アバター',kw:['3Dアイコン','つやつや','絵文字風','シンプル'],pal:['#ffd60a','#ffc300','#ff9f1c','#2ec4b6','#cbf3f0'],tools:[GPT,GEM,CV],
+use:'<b>ビジネスのプロフィール・社員紹介・Slackやチャットのアイコン</b>に。顔出しせずに親しみやすさを出せます。',
+tips:['顔のパーツを最小限（目・眉・口・髪）にすると、絵文字らしさが出ます','表情違い（笑顔・びっくり・ウインク）を何枚か作るとスタンプとしても使えます','背景は透明か単色に'],
+p:`【スタイル】写真の人物の顔を、つやつやした3Dの絵文字のようなアバターにする
+【描き方】
+・形：顔はまるく、頭と首から上だけ。パーツは最小限（目・眉・口・鼻は小さく）
+・特徴：髪型・髪色・メガネ・ひげ・アクセサリーなど、本人の目印は必ず残す
+・質感：つるんとしたやわらかいプラスチックのような3D。ほんのり光沢
+・表情：にっこり笑顔（書き換え可：ウインク・びっくり・考え中）
+・光：やわらかいスタジオ照明、下に小さな影
+・背景：無地の単色
+【避けるもの】リアルな肌の質感、細かすぎる描き込み`,
+enp:'Turn the face in the attached selfie into a glossy 3D emoji-style avatar: round head and neck only, minimal features (small eyes, brows, mouth, nose), keep hairstyle, hair color, glasses, facial hair and accessories, smooth soft plastic 3D material with subtle gloss, big friendly smile, soft studio lighting with a small shadow, plain solid background.'});
+
+/* ===== ILLUST 31-60 ===== */
+const artI=(o)=>defI(o);
+
+/* ART */
+artI({no:'31',cat:'ART',name:'透明水彩',en:'Transparent Watercolor',lead:'にじみと紙の白が美しい、やさしい透明水彩画に。',
+before:'風景・花・人物・ペットの写真',after:'紙の白が透ける、にじみのあるやわらかい水彩画',kw:['にじみ','紙の白','淡い色','水彩紙の質感'],pal:['#bde0fe','#a2d2ff','#ffc8dd','#cdb4db','#fefae0'],tools:[GPT,GEM,MJ],
+use:'<b>結婚式のウェルカムボード・年賀状・絵はがき・お店の看板</b>に。どんな写真でも上品でやさしい印象になります。',
+tips:['「紙の白を残す」と入れると、本物の透明水彩らしい抜け感が出ます','輪郭線を「なし」にすると、より絵画的な仕上がりに','色数を3〜4色にしぼると、統一感のある作品になります'],
+p:`【スタイル】水彩紙に描いた、やさしい透明水彩画
+【描き方】
+・線：輪郭線はほとんど描かず、色の境目で形を表す（必要な所だけ鉛筆の細い線をうっすら）
+・塗り：水を多く含んだ絵の具のにじみとぼかし。色が重なった所は少し濃くなる
+・余白：明るい部分は塗らずに、紙の白をそのまま残す
+・色：淡く透明感のある色を3〜4色で
+・質感：水彩紙のざらざらした凹凸と、絵の具がたまってできる縁の濃いライン
+・顔：顔立ちの特徴を残す
+【避けるもの】くっきりした黒い線、ベタ塗り、デジタルっぽいなめらかさ`,
+enp:'Repaint the attached photo as a delicate transparent watercolor on textured cold-press paper: almost no outlines (only faint pencil lines where needed), wet-in-wet blooms and soft gradients, darker edges where pigment pools, white paper left unpainted for highlights, light translucent palette of 3-4 colors. Keep faces recognizable.'});
+
+artI({no:'32',cat:'ART',name:'印象派の油絵',en:'Impressionist Oil',lead:'光のつぶを重ねたような筆のタッチ。美術館に飾られた油絵のように。',
+before:'公園・水辺・花畑・夕日の写真',after:'太い筆のタッチで光を描いた、印象派の油絵',kw:['油絵','筆のタッチ','光の表現','厚塗り'],pal:['#f4d35e','#ee964b','#f95738','#0d3b66','#a3c4bc'],tools:[GPT,MJ,GEM],
+use:'<b>風景写真・記念写真をアート作品に</b>。額に入れて飾ったり、贈り物にしたりするのに向いています。',
+tips:['光の当たる水辺や花畑の写真ほど、印象派らしさが引き立ちます','「キャンバスの布目」まで指定すると、本物の油絵らしくなります','画家の名前ではなく「短い筆のタッチ」「光のつぶ」など特徴で指示'],
+p:`【スタイル】19世紀の印象派の画家が描いたような、光あふれる油絵
+【描き方】
+・筆づかい：短く太い筆のタッチを、たくさん重ねて描く。筆の跡がはっきり残る
+・光：光の当たる部分に、黄色・オレンジ・白の明るい絵の具をのせ、きらめきを表現する
+・影：影は黒ではなく、青や紫で描く
+・輪郭：くっきりした輪郭線は描かず、色のかたまりで形を表す
+・質感：キャンバスの布目と、厚く盛り上がった絵の具
+・構図：写真の構図を保つ
+【避けるもの】なめらかなデジタル塗り、黒い輪郭線、特定の画家の名前`,
+enp:'Repaint the attached photo as a 19th-century impressionist oil painting: short thick visible brushstrokes layered densely, sparkling sunlight in yellow, orange and white dabs, shadows painted in blues and violets instead of black, no outlines, forms built from patches of color, canvas weave and impasto texture. Keep the original composition.'});
+
+artI({no:'33',cat:'ART',name:'浮世絵',en:'Ukiyo-e Woodblock',lead:'太い輪郭線、平らな色、木版のかすれ。江戸の浮世絵のように。',
+before:'人物・富士山などの景色・海や波の写真',after:'木版で刷ったような、江戸時代の浮世絵',kw:['木版画','藍色','平塗り','和紙'],pal:['#1d3557','#457b9d','#e9d8a6','#ee9b00','#9b2226'],tools:[GPT,MJ,GEM],
+use:'<b>外国人向けのおみやげ・和風のポスター・ユニークなプロフィール画像</b>に。海外の人にも喜ばれる日本らしい画風です。',
+tips:['藍色（ベロ藍）を多めに使うと、浮世絵らしさが一気に出ます','空は上が濃く下が薄い「ぼかし」にするのがポイント','人物は細い目・切れ長の眉に少し寄せると、時代の雰囲気が出ます'],
+p:`【スタイル】江戸時代の木版画・浮世絵
+【描き方】
+・線：墨の黒で、太さが一定のくっきりした輪郭線
+・色：平らなベタ塗り。藍色・朱色・黄土色・生成りを中心に、色数は少なく
+・空：上が濃い藍色、下に向かって薄くなる「ぼかし」のグラデーション
+・質感：木版で刷ったような、色のかすれとわずかなずれ。和紙の繊維の質感
+・人物：顔立ちの特徴を残しつつ、浮世絵らしい細い目と切れ長の眉に寄せる
+・波や雲：写真にあれば、浮世絵らしい様式化した形で描く
+【避けるもの】立体的な陰影、グラデーションの多用、現代的なものをそのまま描くこと`,
+enp:'Redraw the attached photo as an Edo-period Japanese ukiyo-e woodblock print: uniform bold sumi ink outlines, flat areas of limited color (Prussian indigo, vermilion, ochre, cream), bokashi sky gradient from deep indigo to pale, woodblock texture with slight misregistration and washi fibers, stylized waves and clouds, figures with narrow eyes and long brows. No 3D shading.'});
+
+artI({no:'34',cat:'ART',name:'水墨画',en:'Sumi-e Ink Wash',lead:'墨の濃淡とにじみ、たっぷりの余白。静かで凛とした墨絵に。',
+before:'山・木・花・動物・人物の横顔の写真',after:'墨の濃淡と余白で描いた、静かな水墨画',kw:['墨','濃淡','余白','にじみ'],pal:['#111111','#444444','#888888','#d9d4c7','#c1121f'],tools:[GPT,MJ,GEM],
+use:'<b>和風の作品・座右の銘と組み合わせた書画・お茶やお香のお店</b>に。モノトーンなので、どんなデザインにもなじみます。',
+tips:['「画面の半分以上を余白に」と入れると、水墨画らしい静けさが出ます','赤い落款（ハンコ）を1つだけ入れると作品として締まります','動物や植物の写真と特に相性が良い画風です'],
+p:`【スタイル】和紙に描いた水墨画（墨絵）
+【描き方】
+・墨：濃い墨・中くらいの墨・薄い墨の3段階の濃淡だけで描く
+・筆：太い筆で一気に描いたような、勢いのある線。かすれとにじみを残す
+・省略：主役だけを描き、背景はほとんど描かずに余白として残す（画面の半分以上を余白に）
+・紙：生成りの和紙。墨が和紙ににじむ質感
+・アクセント：右下に小さな朱色の落款（四角いハンコ）を1つ
+・色：墨の黒〜グレーと、落款の朱色だけ
+【避けるもの】カラー、細かい描き込み、背景を埋め尽くすこと`,
+enp:'Repaint the attached photo as a Japanese sumi-e ink wash painting on cream washi paper: only three ink tones (dark, mid, pale), bold confident brush strokes with dry-brush and bleeding edges, subject only with more than half of the canvas left as empty space, one small red square seal stamp in the lower right. Monochrome ink plus red seal only.'});
+
+artI({no:'35',cat:'ART',name:'色鉛筆画',en:'Colored Pencil',lead:'紙の目が見える、やさしい色鉛筆の手描きイラスト。',
+before:'子ども・ペット・食べ物・身近な風景の写真',after:'色鉛筆で丁寧に描いた、あたたかい手描きの絵',kw:['色鉛筆','紙の目','やさしい線','手描き'],pal:['#ffcdb2','#ffb4a2','#e5989b','#b5838d','#6d6875'],tools:[GPT,GEM,MJ],
+use:'<b>子どもやペットの記念・絵日記風の投稿・手紙やカード</b>に。手描きのぬくもりで、見る人をほっとさせます。',
+tips:['「紙の白が少し残る程度の塗り」にすると、色鉛筆らしさが出ます','線の方向をそろえた細かいストロークで塗ると、本物らしくなります','背景を描かず白のままにすると、絵本の挿絵のように'],
+p:`【スタイル】画用紙に色鉛筆で描いた、やさしい手描きのイラスト
+【描き方】
+・線：色鉛筆の細い線。輪郭は茶色やこげ茶の色鉛筆で、少しだけ揺らぎを残す
+・塗り：細かいストロークを同じ方向に重ねて塗る。強く塗る所と軽く塗る所の差を出す
+・質感：画用紙の凹凸（紙の目）が見え、紙の白が少し残る
+・色：あたたかく、やさしい中間色
+・背景：主役のまわりだけ軽く塗り、外側は紙の白のまま
+・顔：顔立ちの特徴を残す
+【避けるもの】ベタ塗り、デジタルの質感、黒い太い線`,
+enp:'Redraw the attached photo as a gentle colored pencil drawing on textured drawing paper: thin slightly wobbly brown outlines, fine directional pencil strokes layered with varying pressure, visible paper tooth with specks of white showing through, warm soft mid-tone palette, background lightly shaded only around the subject and fading to white paper. Keep faces recognizable.'});
+
+artI({no:'36',cat:'ART',name:'パステル画',en:'Soft Pastel',lead:'指でぼかしたような、ふんわりやわらかいパステル画。',
+before:'夕焼け・花・赤ちゃん・恋人の写真',after:'粉っぽい質感でふんわりぼかした、夢のようなパステル画',kw:['パステル','ぼかし','粉の質感','夢のよう'],pal:['#ffd6ff','#e7c6ff','#c8b6ff','#b8c0ff','#bbd0ff'],tools:[GPT,GEM,MJ],
+use:'<b>赤ちゃん・マタニティ・ウェディング・夕焼けの写真</b>に。やわらかく夢のような印象で、記念の一枚にぴったり。',
+tips:['「色紙（いろがみ）の上に描いた」とすると、紙の色が透けて味わいが出ます','空や光は指でぼかしたように、輪郭はチョークの線を残すとメリハリが出ます','淡いピンク〜紫の色紙が、パステルと相性抜群'],
+p:`【スタイル】淡い色紙（いろがみ）の上に、ソフトパステルで描いたやわらかい絵
+【描き方】
+・塗り：パステルを指でこすってぼかしたような、ふんわりしたグラデーション
+・線：ところどころにチョークのような粉っぽい線を残し、形を表す
+・質感：粉っぽいマットな質感と、色紙のざらざらした凹凸
+・色：やわらかいピンク・ラベンダー・水色を中心に
+・光：光のあたる部分は白いパステルでやさしく明るく
+・顔：顔立ちの特徴を残す
+【避けるもの】くっきりした線、つやのある質感、濃すぎる色`,
+enp:'Redraw the attached photo as a soft pastel drawing on light tinted paper: finger-blended dreamy gradients, a few chalky powdery strokes defining forms, matte dusty texture with visible paper grain, soft pink, lavender and sky blue palette, gentle white pastel highlights. Keep faces recognizable. No hard lines, no gloss.'});
+
+artI({no:'37',cat:'ART',name:'ポップアート',en:'Pop Art Halftone',lead:'あざやかな原色と網点のドット、太い黒線。アメコミのようなポップアート。',
+before:'人物の顔アップ・表情のある写真',after:'原色と網点で描かれた、60年代風のポップアート',kw:['網点','原色','太い黒線','アメコミ'],pal:['#ffd60a','#ff006e','#3a86ff','#000000','#ffffff'],tools:[GPT,MJ,GEM],
+use:'<b>インパクトのあるアイコン・ポスター・Tシャツのデザイン</b>に。4色違いを並べる「4分割」も人気です。',
+tips:['「4分割で、それぞれ背景色を変えて」と入れると、おなじみのポップアートの構成に','網点のドットを大きめにすると、印刷物らしさが強調されます','表情は少し大げさにすると、ポップアートらしくなります'],
+p:`【スタイル】1960年代のポップアートのような、原色と網点のイラスト
+【描き方】
+・線：太く黒い、くっきりした輪郭線
+・塗り：黄・ピンク・青・赤などの原色のベタ塗り。肌や影は大きめの網点（ドット）で表現
+・背景：原色1色のベタ、または大きなドット模様
+・構成：（任意）画面を4分割し、同じ顔をそれぞれ違う配色で並べる
+・顔：顔立ちの特徴を残し、表情を少しだけ大げさに
+【避けるもの】中間色、グラデーション、写真の質感、文字`,
+enp:'Redraw the attached portrait as 1960s pop art: bold black outlines, flat primary colors (yellow, magenta, blue, red), skin and shading rendered with large halftone dots, solid or big-dot background, optional 2x2 grid with the same face in four different color schemes, slightly exaggerated expression. No gradients, no text.'});
+
+artI({no:'38',cat:'ART',name:'ステンドグラス',en:'Stained Glass',lead:'鉛の黒い線で区切られた色ガラス。光が透ける教会の窓のように。',
+before:'人物・動物・花・風景の写真',after:'色ガラスの破片を鉛の線でつないだ、光が透けるステンドグラス',kw:['ステンドグラス','鉛の線','色ガラス','透過光'],pal:['#003049','#d62828','#f77f00','#fcbf49','#2a9d8f'],tools:[GPT,MJ,GEM],
+use:'<b>結婚式・記念日・アート作品・お店の装飾デザイン</b>に。光が透ける表現で、神聖で特別な一枚になります。',
+tips:['ガラスの1枚1枚を大きめにすると、本物のステンドグラスらしくなります','後ろから光が透けている設定にすると、色が宝石のように輝きます','アーチ型の窓の枠に収めると、教会の窓のような雰囲気に'],
+p:`【スタイル】教会の窓のようなステンドグラス
+【描き方】
+・形：写真の内容を、大きめの色ガラスの破片に分割して表現する
+・線：ガラスとガラスの間を、太さが一定の黒い鉛の線でつなぐ
+・色：深い青・赤・オレンジ・黄・緑など、宝石のように澄んだ色。ガラス1枚の中に少しだけ濃淡
+・光：後ろから太陽の光が透けて、色が輝いている。ガラスの気泡やゆがみも少し
+・枠：上が半円のアーチ型の窓枠に収める
+・顔：顔立ちの特徴が分かる程度に残す
+【避けるもの】細かすぎる分割、写真の質感、くすんだ色`,
+enp:'Recreate the attached photo as a stained glass window: the scene divided into fairly large pieces of colored glass joined by uniform black lead came lines, jewel-toned deep blue, red, orange, yellow and green with subtle variation inside each piece, backlit by sunlight so colors glow, slight bubbles and distortion in the glass, arched window frame. Keep faces recognizable.'});
+
+artI({no:'39',cat:'ART',name:'切り絵',en:'Layered Paper Cut',lead:'色紙を何層にも重ねて切り抜いた、立体的な切り絵アートに。',
+before:'風景・動物・人物のシルエットが分かる写真',after:'色紙を重ねて影ができた、奥行きのある切り絵',kw:['切り絵','紙の層','影','立体感'],pal:['#03045e','#0077b6','#00b4d8','#90e0ef','#caf0f8'],tools:[GPT,MJ,GEM],
+use:'<b>絵本の表紙・ポスター・季節のディスプレイ</b>に。紙の重なりと影で、手作りの温かさと立体感が出ます。',
+tips:['「6〜8層の紙」と層の数を指定すると、奥行きがコントロールできます','色は同じ系統（青なら青だけ）の濃淡でまとめると美しい','層と層の間に影を落とすのが、立体感の一番のポイント'],
+p:`【スタイル】色紙を何層にも重ねて切り抜いた、立体的なレイヤード切り絵（ペーパーカット）アート
+【描き方】
+・層：手前から奥へ、6〜8枚の紙の層で構成する。手前ほど濃い色、奥ほど淡い色
+・形：写真の主役や風景を、なめらかな曲線のシルエットに単純化して切り抜く
+・影：層と層の間にやわらかい影を落とし、紙が浮いているような奥行きを出す
+・質感：紙の繊維と、切り口のわずかな白い断面
+・色：同じ系統の色（例：深い青〜水色）の濃淡でまとめる
+【避けるもの】細かすぎる切り抜き、写真の質感、平面的な仕上がり`,
+enp:'Recreate the attached photo as a layered paper-cut artwork: 6-8 stacked layers of cut colored paper, darker in front and lighter toward the back, subjects simplified into smooth curved silhouettes, soft drop shadows between layers for depth, visible paper fiber and thin white cut edges, monochromatic palette from deep navy to pale cyan.'});
+
+artI({no:'40',cat:'ART',name:'鉛筆デッサン',en:'Graphite Sketch',lead:'鉛筆の濃淡だけで描いた、美術室のようなリアルなデッサン。',
+before:'人物の顔・手・静物の写真',after:'鉛筆の線と陰影で描いた、モノクロの写実的なデッサン',kw:['鉛筆','陰影','ハッチング','モノクロ'],pal:['#f8f9fa','#dee2e6','#adb5bd','#495057','#212529'],tools:[GPT,GEM,MJ],
+use:'<b>似顔絵のプレゼント・アートなプロフィール・思い出の記録</b>に。シンプルなモノクロで、時代を問わない品のある一枚に。',
+tips:['「仕上げきらず、端は線のまま残す」と入れると、作品らしい余韻が出ます','クロスハッチング（交差する線）で影をつけると、手描き感が増します','紙を少し黄ばんだクリーム色にすると、古いスケッチブックのように'],
+p:`【スタイル】スケッチブックに鉛筆で描いた、写実的なデッサン
+【描き方】
+・線：HB〜6Bの鉛筆の線。輪郭は軽く、影の部分はしっかり描き込む
+・陰影：線を重ねるハッチング・クロスハッチングと、指でこすったぼかしで立体感を出す
+・仕上げ：主役の顔（または中心）はしっかり描き、外側に向かってだんだん線だけのラフな状態になる
+・紙：少しクリーム色がかったスケッチブックの紙。消しゴムでつけたハイライトも少し
+・顔：顔立ち・表情を正確に残す
+・色：鉛筆のグレーだけ（モノクロ）
+【避けるもの】カラー、写真のような完全な仕上がり、デジタルっぽい線`,
+enp:'Redraw the attached photo as a realistic graphite pencil sketch in a sketchbook: HB to 6B pencil, light construction lines, hatching and cross-hatching with finger-blended smudges for volume, fully rendered center fading to loose unfinished lines at the edges, slightly cream paper with eraser highlights. Accurate facial features and expression. Monochrome graphite only.'});
+
+/* GRAPHIC */
+artI({no:'41',cat:'GRAPHIC',name:'フラットイラスト',en:'Flat Illustration',lead:'線なし・影少なめ・シンプルな形。Webや資料で使いやすい定番。',
+before:'仕事中・カフェ・街角などの人物写真',after:'シンプルな形と少ない色でできた、今っぽいフラットイラスト',kw:['フラット','線なし','少ない色','Web素材'],pal:['#264653','#2a9d8f','#e9c46a','#f4a261','#e76f51'],tools:[GPT,GEM,CV],
+use:'<b>Webサイト・プレゼン資料・ブログのアイキャッチ・SNSの図解</b>に。どんなデザインにもなじむ、いちばん実用的なスタイル。',
+tips:['「5色以内」と色を限定すると、資料に使ったときに統一感が出ます','顔は目と口だけ、または顔のパーツなしにすると、より今っぽくなります','ブランドカラーを指定すれば、自社専用の素材が作れます'],
+p:`【スタイル】Webサイトや資料で使える、シンプルなフラットイラスト
+【描き方】
+・形：人物も物も、丸・四角などの単純な形の組み合わせに簡略化する
+・線：輪郭線は使わない
+・塗り：ベタ塗り。影は同じ色の少し濃い色で1段階だけ
+・色：5色以内（例：深緑・青緑・黄・オレンジ・赤オレンジ）。背景は淡い単色
+・顔：目と口だけのシンプルな表情（または顔のパーツなし）。髪型と服の色で本人らしさを出す
+・小物：写真にある物（PC・コーヒーなど）も単純な形で描く
+【避けるもの】写真の質感、細かい描き込み、グラデーション`,
+enp:'Redraw the attached photo as a modern flat vector-style illustration: people and objects simplified into basic geometric shapes, no outlines, flat fills with one darker shade for shadows, max 5 colors (deep teal, teal, yellow, orange, coral) on a pale solid background, minimal faces (dots for eyes or no features), identity shown through hairstyle and clothing colors.'});
+
+artI({no:'42',cat:'GRAPHIC',name:'一筆書きライン',en:'Continuous Line Art',lead:'一本の線だけで描いたような、おしゃれなミニマル線画。',
+before:'横顔・人物・カップル・動物の写真',after:'途切れない一本の線で描かれた、ミニマルな線画',kw:['一本線','ミニマル','余白','おしゃれ'],pal:['#f5f0e8','#111111','#c9ada7','#9a8c98','#f2e9e4'],tools:[GPT,MJ,GEM],
+use:'<b>ロゴ・タトゥーのデザイン案・Tシャツ・インテリアのポスター</b>に。シンプルなので、どんな雰囲気のデザインにも合います。',
+tips:['横顔の写真がいちばんきれいに仕上がります','線の色を1色、背景を生成りにすると、北欧インテリアのポスターのように','「顔の一部に1色だけ丸い色面を置く」と、今っぽいアート感が出ます'],
+p:`【スタイル】途切れない一本の線だけで描いたような、ミニマルな線画（一筆書き風のラインアート）
+【描き方】
+・線：黒の細い線1本で、ペンを紙から離さずに描いたように、すべてがつながっている
+・省略：特徴的な輪郭（横顔のライン・髪の流れ・肩）だけを描き、細部は大胆に省く
+・色：線は黒1色。（任意）ほほの位置などに、淡いピンクの丸い色面を1つだけ置く
+・背景：生成り（#F5F0E8）の無地。たっぷりの余白
+・顔：横顔のラインや髪型など、本人らしさが分かる特徴を残す
+【避けるもの】塗りつぶし、影、線が途切れること、細かい描き込み`,
+enp:'Redraw the attached photo as a minimalist continuous single-line drawing: one thin unbroken black line that never lifts from the paper, capturing only defining contours (profile, hair flow, shoulders), bold omission of detail, optional single soft pink circular color shape on the cheek, plain cream (#F5F0E8) background with generous negative space.'});
+
+artI({no:'43',cat:'GRAPHIC',name:'昭和レトロポスター',en:'Showa Retro Poster',lead:'色あせたインク、ざらついた紙。昭和の観光ポスターのように。',
+before:'旅先の風景・人物・商品の写真',after:'色あせたインクとざらついた紙の、昭和の広告ポスター',kw:['昭和レトロ','色あせ','印刷のズレ','観光ポスター'],pal:['#e63946','#f1c27d','#2a9d8f','#264653','#f4ecd8'],tools:[GPT,MJ,GEM],
+use:'<b>地元のPR・お店の告知・旅行の思い出・レトロ好きのSNS</b>に。懐かしさと温かみで、世代を問わず目を引きます。',
+tips:['「色あせ」「印刷のズレ」「紙の折り目」を足すと、本物の古いポスターらしさが増します','文字を入れたい場合は短く。崩れたら文字なしで作って後から入れましょう','空を大きくとった構図にすると、観光ポスターらしくなります'],
+p:`【スタイル】昭和40年代の観光ポスター・広告のような、レトロなイラスト
+【描き方】
+・画風：単純化した形と、太めの輪郭の手描きイラスト
+・色：色あせた朱色・からし色・青緑・紺・生成りの5色ほど。ややくすんだ印刷インクの色
+・質感：ざらついた紙、インクのかすれ、色版のわずかなズレ、うっすら黄ばんだ紙
+・構図：空を大きくとり、主役を印象的に配置したポスターの構図
+・人物：顔立ちの特徴を残し、当時のイラストらしい明るい笑顔に
+【避けるもの】今っぽいデジタルの質感、鮮やかすぎる色、読める長い文字`,
+enp:'Redraw the attached photo as a 1960s-70s Japanese Showa-era travel poster illustration: simplified shapes with thick hand-drawn outlines, faded limited ink palette (vermilion, mustard, teal, navy, cream), rough paper grain, ink wear, slight color plate misregistration, yellowed paper, poster composition with a big sky, cheerful retro characters. No long readable text.'});
+
+artI({no:'44',cat:'GRAPHIC',name:'シティポップ',en:'80s City Pop',lead:'夏の夕暮れ、プール、ヤシの木。80年代のレコードジャケット風。',
+before:'海・街・車・夕焼けの写真',after:'パステルの夕暮れと単純な形の、80年代レコードジャケット風',kw:['80年代','夕暮れ','パステル','レコードジャケット'],pal:['#ff9f1c','#ffbf69','#cbf3f0','#2ec4b6','#ff70a6'],tools:[GPT,MJ,GEM],
+use:'<b>音楽の配信カバー・プレイリストの画像・夏のSNS投稿</b>に。日本のシティポップは海外でも人気が高いスタイルです。',
+tips:['正方形（1:1）で作ると、そのままレコードジャケットや音楽配信のカバーに使えます','空を「オレンジ→ピンク→水色」のグラデーションにするのが定番','影は青や紫の単色でくっきりと入れるのが80年代らしさ'],
+p:`【スタイル】1980年代の日本のシティポップのレコードジャケットのようなイラスト
+【描き方】
+・画風：単純化した形と、くっきりした輪郭。影は単色（青や紫）ではっきり入れる
+・色：夕暮れの空はオレンジ → ピンク → 水色のグラデーション。全体はパステル寄りで明るく
+・モチーフ：写真の場所に合わせて、ヤシの木、プール、海、車、ビルの窓の明かりなどを足す
+・光：沈む夕日のあたたかい光と、長い影
+・構図：正方形のジャケットのような、すっきりした構図
+・人物：顔立ちの特徴を残し、サングラスやリゾート風の服装などは任意
+【避けるもの】暗い色、細かい描き込み、写真の質感、文字`,
+enp:'Redraw the attached photo as a 1980s Japanese city pop album cover illustration: clean simplified shapes with crisp outlines, flat blue or purple cast shadows, sunset sky gradient orange to pink to aqua, bright pastel palette, add palm trees, pool, sea, cars or lit windows as fits the scene, warm low sun with long shadows, square composition. No text.'});
+
+artI({no:'45',cat:'GRAPHIC',name:'北欧イラスト',en:'Scandinavian Folk',lead:'ゆるい線と、草花の模様。北欧の雑貨のような、ほっこりしたイラスト。',
+before:'家・家族・ペット・森の写真',after:'草花の模様に囲まれた、北欧雑貨のようなほっこりイラスト',kw:['北欧','草花の模様','くすみカラー','手描き'],pal:['#f2e8cf','#a7c957','#6a994e','#bc4749','#386641'],tools:[GPT,GEM,MJ],
+use:'<b>インテリアのポスター・テキスタイルのデザイン案・カフェのメニュー</b>に。家族やペットを描くと、あたたかい記念品になります。',
+tips:['まわりに草花やドットの模様を散らすと、一気に北欧らしくなります','色は赤・緑・からし色など、少しくすんだ色を4色ほど','線はわざと少し揺らすと、手描きの味が出ます'],
+p:`【スタイル】北欧の雑貨やテキスタイルのような、ほっこりした手描きイラスト
+【描き方】
+・線：少し揺らぎのある、やわらかい手描きの線
+・形：人物・動物・家を、まるみのある素朴な形に単純化する
+・模様：まわりに草花・葉・小さなドット・鳥などの模様を散らして飾る
+・色：くすんだ赤・緑・からし色・紺など4色ほど＋生成りの背景
+・質感：紙に印刷したような、ほんの少しのかすれ
+・人物：髪型や服の色など、本人の目印を残す
+【避けるもの】リアルな陰影、鮮やかすぎる色、デジタルっぽいなめらかさ`,
+enp:'Redraw the attached photo as a cozy Scandinavian folk-style illustration: soft slightly wobbly hand-drawn lines, rounded naive shapes, surrounded by decorative flowers, leaves, small dots and birds, muted palette of brick red, sage green, mustard and navy on cream, slight printed texture. Keep identifying features like hairstyle and clothing colors.'});
+
+artI({no:'46',cat:'GRAPHIC',name:'リソグラフ印刷風',en:'Risograph Print',lead:'2色のインクが重なり、少しずれる。おしゃれなZINEのような印刷物に。',
+before:'人物・街・植物・日用品の写真',after:'2色のインクの重なりとズレがある、リソグラフ印刷のような絵',kw:['リソグラフ','2色刷り','ズレ','粒状感'],pal:['#ff48b0','#0078bf','#ffe800','#f7f3ea','#3a3a3a'],tools:[GPT,MJ,GEM],
+use:'<b>ZINE・フライヤー・ポスター・おしゃれなSNS投稿</b>に。デザイン好きに人気の、手刷り印刷のような質感です。',
+tips:['インクは「蛍光ピンク×青」が定番。「黄×青」にすると明るい印象に','版のズレ（2〜4px）があると、本物の印刷物らしくなります','網点や粒のざらつきを残すのがポイント'],
+p:`【スタイル】2色のインクで刷った、リソグラフ印刷のようなイラスト
+【描き方】
+・色：蛍光ピンク（#FF48B0）と青（#0078BF）の2色のインクだけ。2色が重なった所は紫っぽくなる
+・版のズレ：2色の版を、わずかに（2〜4px）ずらして重ねる
+・質感：インクの粒状感、網点、ところどころのかすれ。生成りの紙（#F7F3EA）
+・形：写真を、くっきりした形と網点の濃淡に単純化する
+・構図：写真の構図を保つ
+【避けるもの】3色以上の色、なめらかなグラデーション、写真の質感`,
+enp:'Redraw the attached photo as a two-color risograph print: only fluorescent pink (#FF48B0) and blue (#0078BF) inks, overlaps turning purple, slight 2-4px plate misregistration, grainy ink texture with halftone dots and uneven coverage, on cream paper (#F7F3EA), shapes simplified into bold forms and halftone tones. Keep the composition.'});
+
+artI({no:'47',cat:'GRAPHIC',name:'白フチステッカー',en:'Die-cut Sticker',lead:'白いフチで切り抜かれた、ノートやスマホに貼れるステッカーに。',
+before:'人物・ペット・好きな食べ物の写真',after:'白いフチどりで切り抜かれた、つやのあるステッカー',kw:['ステッカー','白フチ','切り抜き','グッズ向き'],pal:['#ffffff','#ffadad','#ffd6a5','#caffbf','#9bf6ff'],tools:[GPT,GEM,CV],
+use:'<b>LINEスタンプ・グッズ作り・SNSの素材・ノートのデコ</b>に。白フチがあると、どんな背景に置いても目立ちます。',
+tips:['白フチの太さを「均一に太め」と指定すると、ステッカーらしさが出ます','背景を単色（グレーなど）にすると、白フチが際立ち切り抜きやすくなります','表情違いを何枚か作れば、そのままスタンプセットに'],
+p:`【スタイル】白いフチどりで切り抜かれた、かわいいステッカー（ダイカットステッカー）
+【描き方】
+・絵：写真の人物（またはペット・食べ物）を、少しデフォルメしたかわいいイラストにする。顔や毛色の特徴を残す
+・線：やや太めの濃い色の輪郭線、明るいベタ塗り
+・フチ：イラストの外側に、太さが均一の白いフチ（太め）をつけ、そのまわりにうっすら影を落とす
+・質感：ステッカーの表面のつや（光の反射を1か所）
+・背景：単色の淡いグレー（切り抜きやすいように）
+【避けるもの】フチの太さのばらつき、ごちゃついた背景、写真の質感`,
+enp:'Turn the subject of the attached photo into a cute die-cut sticker: slightly chibi illustration keeping key features, bold dark outlines and bright flat colors, thick uniform white border around the shape with a subtle drop shadow, glossy vinyl sheen highlight, plain light gray background for easy cutout.'});
+
+artI({no:'48',cat:'GRAPHIC',name:'ドット絵',en:'Pixel Art',lead:'カクカクの四角い点で描いた、昔のゲーム画面のようなドット絵。',
+before:'人物・ペット・部屋・風景の写真',after:'少ない色とカクカクの点で描かれた、レトロゲーム風のドット絵',kw:['ドット絵','ピクセル','16色','レトロゲーム'],pal:['#1a1c2c','#5d275d','#b13e53','#ef7d57','#ffcd75'],tools:[GPT,GEM,MJ],
+use:'<b>ゲーム好き向けのアイコン・配信の素材・ちょっとしたネタ投稿</b>に。シンプルなのに本人らしさが出る、楽しい変換です。',
+tips:['「64×64ピクセル相当」など解像度を指定すると、ドットの細かさが安定します','色数を16色以内にすると、昔のゲームらしさが出ます','キャラだけなら「ゲームのキャラクターの歩くポーズ」にするのも楽しい'],
+p:`【スタイル】昔のゲーム機の画面のような、レトロなドット絵（ピクセルアート）
+【描き方】
+・解像度：横96×縦96ピクセル相当の粗さで描き、それを大きく拡大したように、四角いドットがはっきり見える
+・色：16色以内の限られた色（パレット）。グラデーションはドットの組み合わせで表現
+・線：輪郭は1ドットの暗い色の線
+・人物：髪型・服の色・メガネなど、本人の目印を残したキャラクターにする
+・背景：写真の場所を、ゲームの背景のように単純化して描く
+【避けるもの】なめらかな線、ぼかし、細かすぎる描き込み`,
+enp:'Redraw the attached photo as retro pixel art: about 96x96 pixel resolution upscaled with crisp hard-edged square pixels, limited 16-color palette, dithering instead of gradients, 1-pixel dark outlines, person as a game character keeping hairstyle, outfit colors and glasses, background simplified like a retro game stage. No smoothing or blur.'});
+
+artI({no:'49',cat:'GRAPHIC',name:'アイソメトリック',en:'Isometric Room',lead:'斜め上から見下ろした、箱庭のような立体イラスト。部屋や街に。',
+before:'自分の部屋・お店の中・オフィス・家の写真',after:'斜め上から見た、ミニチュアの箱庭のような立体イラスト',kw:['アイソメトリック','箱庭','斜め上の視点','切り取られた部屋'],pal:['#cdb4db','#ffc8dd','#bde0fe','#a2d2ff','#fefae0'],tools:[GPT,GEM,MJ],
+use:'<b>自分の部屋の紹介・お店の紹介・会社の「働く場所」の紹介</b>に。部屋の写真が、かわいい箱庭のようになります。',
+tips:['「床と壁2面だけを切り取った箱」にすると、きれいなアイソメトリックの部屋になります','家具は写真にある物をそのまま、少しデフォルメして配置','背景は単色にして、箱が浮いているように見せるのがおしゃれ'],
+p:`【スタイル】斜め上から見下ろした、箱庭のようなアイソメトリック（等角投影）の立体イラスト
+【描き方】
+・視点：真上から斜め45°の、奥行きの線が平行なアイソメトリックの視点
+・形：写真の部屋（または建物）を、床と壁2面だけを切り取った「箱」として描く
+・家具：写真にある家具や物を、同じ配置で、少しデフォルメして描く
+・色：やわらかいパステル調。面ごとに明・中・暗の3段階の色で立体感を出す
+・光：窓から差し込むやさしい光と、小さな影
+・背景：無地の単色。箱が宙に浮いているように
+【避けるもの】遠近法（奥が小さくなる描き方）、写真の質感`,
+enp:'Recreate the room or building in the attached photo as an isometric 3D illustration: true isometric view with parallel depth lines, a cutaway box showing the floor and two walls, the same furniture and objects in the same layout slightly stylized, soft pastel colors with three-tone face shading, gentle window light and small shadows, floating on a plain solid background. No perspective distortion.'});
+
+artI({no:'50',cat:'GRAPHIC',name:'ネオンサイン',en:'Neon Sign Line',lead:'夜の壁に光るネオン管のような線で描いた、エモいイラスト。',
+before:'人物の横顔・ポーズ・ペット・乗り物の写真',after:'暗いレンガの壁に、光るネオン管の線で描かれた絵',kw:['ネオン管','発光','暗い壁','エモい'],pal:['#0b0b14','#ff2a6d','#05d9e8','#d1f7ff','#7700a6'],tools:[GPT,MJ,GEM],
+use:'<b>バー・カフェの看板案・夜系のSNS投稿・音楽の配信カバー</b>に。写真の輪郭を光の線にするだけで、印象的なアートになります。',
+tips:['ネオンは2色（ピンクと水色）までにすると、看板らしくまとまります','背景をレンガの壁にすると、お店の看板のようなリアルさが出ます','線を少し途切れさせる（管のつなぎ目）と本物らしくなります'],
+p:`【スタイル】夜の暗いレンガの壁に取り付けられた、光るネオン管の線で描いたイラスト
+【描き方】
+・線：写真の主役の輪郭と特徴的な線だけを、太さが均一なネオン管で描く（ところどころ管のつなぎ目で途切れる）
+・色：ピンク（#FF2A6D）と水色（#05D9E8）の2色のネオン
+・光：ネオン管のまわりに強い光のにじみ（グロー）。壁にも光が反射する
+・背景：暗いレンガの壁。ネオン管を固定する小さな金具も少し描く
+・形：細部は省略し、ひと目で何か分かるシンプルな線に
+【避けるもの】塗りつぶし、3色以上のネオン、明るい背景`,
+enp:'Redraw the main subject of the attached photo as a neon sign mounted on a dark brick wall at night: only key contours drawn with uniform glowing neon tubes in pink (#FF2A6D) and cyan (#05D9E8), small gaps where tube segments join, strong bloom and light spill reflecting on the bricks, small mounting brackets, simplified recognizable lines. No fills.'});
+
+/* TREND */
+artI({no:'51',cat:'TREND',name:'自分のLINEスタンプ8種',en:'Sticker Set x8',lead:'写真1枚から、表情違いのスタンプ8種類を1枚にまとめて作る。',
+before:'顔がはっきり写った自撮り',after:'あいさつや返事に使える、表情違いのちびキャラ8種のセット',kw:['スタンプ','8種セット','表情違い','短い文字'],pal:['#ffffff','#ffd6a5','#fdffb6','#caffbf','#a0c4ff'],tools:[GPT,GEM],
+use:'<b>LINEスタンプ・Slack/Discordの絵文字・家族や友達へのプレゼント</b>に。写真1枚から一気に8種類作れる、大人気の使い方です。',
+tips:['すべてのキャラの見た目（髪・服・色）をそろえるよう、強めに指示するのがコツ','文字が崩れる場合は「文字なし」で作り、あとからアプリで文字を入れる','LINEスタンプとして申請する場合は、サイズや規約を公式ガイドで確認しましょう'],
+p:`【スタイル】写真の人物をちびキャラにした、LINEスタンプ風の8種類のセット
+※この変換では、スタンプに短い日本語の文字を入れてOKです
+【構成】
+・1枚の画像を横4×縦2の8マスに分け、それぞれに1種類ずつ描く
+・8種類の表情と文字：①笑顔で手を振る「おはよう」②OKサイン「了解！」③お辞儀「ありがとう」④涙目「ごめんね」⑤びっくり「えっ！？」⑥ガッツポーズ「がんばれ」⑦眠そう「おやすみ」⑧ハート「だいすき」
+【描き方】
+・キャラ：2.5頭身。8種類すべてで、髪型・髪色・服・メガネなどの特徴をまったく同じに保つ
+・線と色：やや太い輪郭線、明るいベタ塗り。各キャラのまわりに白いフチ
+・文字：太くて読みやすい丸ゴシック体の、短い文字
+・背景：白
+【避けるもの】キャラごとに見た目が変わること、長い文字、細かすぎる描き込み`,
+enp:'From the attached selfie, create a sticker sheet of 8 chibi stickers in a 4x2 grid with the same character (identical hairstyle, hair color, outfit, glasses in all 8): waving hello, OK sign, bowing thanks, teary sorry, surprised, fist pump cheering, sleepy good night, holding a heart. Bold outlines, bright flat colors, white die-cut border around each, white background. Short captions optional.'});
+
+artI({no:'52',cat:'TREND',name:'ビジネスアバター',en:'Professional Avatar',lead:'普段の写真から、仕事用のきちんとしたプロフィールイラストに。',
+before:'カジュアルな服装の自撮り・スナップ写真',after:'スーツやジャケット姿の、清潔感のあるプロフィールイラスト',kw:['ビジネス','プロフィール','清潔感','ジャケット'],pal:['#1b263b','#415a77','#778da9','#e0e1dd','#f4a261'],tools:[GPT,GEM,CV],
+use:'<b>名刺・会社のWebサイト・LinkedIn・登壇資料・note のプロフィール</b>に。顔写真を出さずに、信頼感のある印象を作れます。',
+tips:['背景色をコーポレートカラーにすると、社員全員分そろえたときに統一感が出ます','服装は「ネイビーのジャケット、白いシャツ」のように具体的に','少し斜めを向いた胸から上の構図が、プロフィール写真の定番'],
+p:`【スタイル】仕事用のプロフィールに使える、清潔感のあるビジネスアバターのイラスト
+【描き方】
+・構図：胸から上。体は少し斜め、顔は正面に近い向き。正方形
+・服装：ネイビーのジャケットに白いシャツ（書き換え可）。清潔感のある身だしなみ
+・顔：顔立ち・髪型・髪色・メガネの特徴を残し、髪は整えて、自然でやわらかい笑顔に
+・画風：なめらかなデジタルイラスト。陰影はやわらかく上品に
+・背景：無地の単色（例：淡いグレーブルー）、または会社のテーマカラー
+【避けるもの】カジュアルすぎる服、派手な色、本人と分からないほどの美化`,
+enp:'Create a professional profile avatar illustration from the attached casual photo: chest-up, body slightly angled, face near frontal, square format, navy blazer and white shirt, tidy grooming, keep face features, hairstyle, hair color and glasses, natural warm smile, smooth refined digital illustration with soft shading, plain solid light gray-blue background. Do not over-beautify.'});
+
+artI({no:'53',cat:'TREND',name:'似顔絵（カリカチュア）',en:'Caricature',lead:'特徴を楽しく大げさにした、イベント会場で描いてもらうような似顔絵。',
+before:'顔がはっきり写った正面〜斜めの写真',after:'顔の特徴をユーモラスに強調した、似顔絵（カリカチュア）',kw:['似顔絵','特徴の強調','ユーモア','マーカー画'],pal:['#ffbe0b','#fb5607','#ff006e','#8338ec','#3a86ff'],tools:[GPT,GEM],
+use:'<b>送別会・誕生日・ウェルカムボード・チームの紹介</b>に。笑いが生まれる、プレゼントにぴったりの変換です。',
+tips:['「失礼にならない程度に、愛される方向に強調」と入れると、ほどよい仕上がりに','趣味や仕事の小物（ギター・パソコンなど）を持たせると、その人らしさが出ます','頭を大きく体を小さくするのが、似顔絵らしいバランス'],
+p:`【スタイル】イベント会場で似顔絵師が描いてくれるような、楽しいカリカチュア（似顔絵）
+【描き方】
+・強調：顔のいちばんの特徴（笑顔・眉・髪型・メガネなど）を、ユーモラスに少し大げさにする。ただし失礼にならず、本人が見て笑顔になる方向に
+・バランス：頭を大きく、体を小さく描く
+・小物：その人の趣味や仕事を表す小物を1つ持たせる（例：ギター、ノートパソコン、カメラ）
+・画風：マーカーで描いたような、くっきりした線とあざやかな色
+・背景：白、またはシンプルな色のかたまり
+【避けるもの】本人が傷つくような誇張、リアルな写真の質感`,
+enp:'Draw a fun, flattering caricature of the person in the attached photo, like an event caricature artist: playfully exaggerate the most distinctive features (smile, brows, hairstyle, glasses) in an affectionate way, big head and small body, holding one hobby or work prop (guitar, laptop or camera), bold marker-style lines and vivid colors, white or simple color-block background.'});
+
+artI({no:'54',cat:'TREND',name:'雑誌の表紙',en:'Magazine Cover',lead:'自分が雑誌の表紙を飾ったら。タイトルロゴと見出し付きの1枚。',
+before:'上半身〜全身のおしゃれな写真',after:'タイトルロゴと見出しが入った、ファッション雑誌の表紙',kw:['雑誌の表紙','タイトルロゴ','見出し','ファッション'],pal:['#d00000','#ffffff','#000000','#f2e9e4','#ffba08'],tools:[GPT,GEM],
+use:'<b>誕生日・記念日のサプライズ・SNSのネタ・お店のスタッフ紹介</b>に。写真が一瞬で「特別な1枚」になります。',
+tips:['実在の雑誌名やロゴは使わず、オリジナルの雑誌名にするのがマナー','見出しの文字は短く3〜4個に。長いと崩れやすくなります','人物はイラストにしても、写真のままでもOK（【スタイル】で選ぶ）'],
+p:`【スタイル】写真の人物が表紙を飾る、ファッション雑誌の表紙
+※この変換では、雑誌のタイトルと見出しの文字を入れてOKです
+【構成】
+・雑誌名：上部に大きく「LUMIÈRE」（オリジナルの雑誌名。実在の雑誌に似せない）
+・見出し：左右に短い見出しを3〜4個（例：「秋の主役コーデ」「SPECIAL INTERVIEW」「2026 AUTUMN」）
+・号数とバーコード：右下に小さく
+【描き方】
+・人物：写真の人物を、表紙撮影のようにライティングされた姿で。顔立ちと服装は写真のまま（イラストにしたい場合は「おしゃれなイラストで」と追記）
+・背景：単色の明るい背景
+・デザイン：本物の雑誌のような文字組み。人物の頭が雑誌名に少し重なる
+【避けるもの】実在の雑誌名・ロゴ、長い文章`,
+enp:'Create a fashion magazine cover featuring the person in the attached photo with studio cover lighting, keeping face and outfit. Original masthead "LUMIÈRE" at the top (not resembling any real magazine), 3-4 short cover lines, small issue number and barcode bottom right, solid bright background, head slightly overlapping the masthead, authentic magazine typography.'});
+
+artI({no:'55',cat:'TREND',name:'トレーディングカード',en:'Trading Card',lead:'名前と能力値の入った、キラキラのトレーディングカードに。',
+before:'人物・ペット・子どもの写真',after:'ホログラムの枠と能力値が入った、トレーディングカード',kw:['トレカ','ホログラム','能力値','レア感'],pal:['#ffd700','#c0c0c0','#7b2cbf','#3c096c','#ff9e00'],tools:[GPT,GEM],
+use:'<b>子どもやペットの記念・チームメンバーの紹介・推し活</b>に。家族全員分を作ってコレクションするのも楽しい使い方です。',
+tips:['能力値の項目を、その人らしい内容（例：「やさしさ」「食いしん坊」）にすると盛り上がります','枠の色でレア度（金＝最高レア）を表現すると、ゲーム感が出ます','実在のカードゲームの名前やロゴは使わないこと'],
+p:`【スタイル】写真の人物（またはペット）が主役の、キラキラのトレーディングカード
+※この変換では、カードに短い文字と数字を入れてOKです
+【構成】
+・枠：金色のホログラム加工の枠（光の角度で虹色に輝く）
+・上部：名前（例：「ハル」）と、属性マーク
+・中央：写真の主役を、背景に光のエフェクトを足した迫力あるイラストに
+・下部：能力値を3つ（例：「やさしさ 99」「すばやさ 80」「食いしん坊 100」）と、短い説明文1行
+・右下：レア度の星マーク ★★★★★
+【描き方】
+・主役：顔立ち（毛色・模様）の特徴を残す
+・質感：カードの表面のつやと、ホログラムのきらめき
+【避けるもの】実在のカードゲームの名前・ロゴ・デザイン`,
+enp:'Design an original collectible trading card starring the person or pet in the attached photo: holographic gold foil frame shimmering with rainbow colors, name "HARU" and an element icon at the top, dramatic illustrated portrait with light effects in the center (keep features and markings), three stat bars (kindness 99, speed 80, appetite 100) and one line of flavor text at the bottom, five-star rarity mark. No real card game branding.'});
+
+artI({no:'56',cat:'TREND',name:'漫画の単行本表紙',en:'Manga Volume Cover',lead:'自分が主人公の漫画、第1巻の表紙。タイトルロゴ付き。',
+before:'ポーズを決めた人物の写真',after:'タイトルロゴと巻数が入った、漫画の単行本の表紙',kw:['単行本','表紙','タイトルロゴ','主人公'],pal:['#ef233c','#2b2d42','#edf2f4','#ffd166','#06d6a0'],tools:[GPT,GEM],
+use:'<b>誕生日のサプライズ・自分の人生を作品に・チームの記念</b>に。「〇〇の物語 第1巻」は、想像以上に喜ばれるプレゼントです。',
+tips:['タイトルはその人の趣味や仕事にちなんだ、短くインパクトのある言葉に','背景に、その人の物語の「仲間」や「舞台」を描き込むと物語感が出ます','巻数を「第1巻」にすると、これから始まる感じが出ます'],
+p:`【スタイル】写真の人物が主人公の、漫画の単行本（第1巻）の表紙
+※この変換では、タイトルロゴと巻数の文字を入れてOKです
+【構成】
+・タイトル：上部に大きな手描き風のロゴ（例：「コーヒーと僕」）。タイトルは短く
+・巻数：左上に「1」
+・主人公：写真の人物を、決めポーズのアニメ・漫画調イラストで中央に大きく
+・背景：その人の物語の舞台（例：街のカフェ）と、まわりに少し小さく描いた仲間や小物
+・下部：作者名の欄（例：「作・〇〇」）
+【描き方】
+・画風：少年漫画または少女漫画の表紙らしい、くっきりした線とあざやかな塗り
+・顔：顔立ち・髪型の特徴を残す
+【避けるもの】実在の漫画作品やキャラクター・出版社のロゴに似せること`,
+enp:'Create an original manga volume 1 cover starring the person from the attached photo: bold hand-lettered title logo at the top, volume number "1" in the top left, the hero in a dynamic pose drawn in vivid manga style at the center (keep face and hairstyle), background showing their story world with smaller side characters and props, author name area at the bottom. No resemblance to existing manga or publisher logos.'});
+
+artI({no:'57',cat:'TREND',name:'ペットの擬人化',en:'Pet as Human',lead:'うちの子が人間だったら？毛色や性格を引き継いだキャラクターに。',
+before:'ペット（犬・猫・うさぎなど）の写真',after:'毛色・模様・性格を引き継いだ、人間のキャラクター',kw:['擬人化','毛色を髪色に','性格を表情に','動物の耳'],pal:['#d4a373','#faedcd','#fefae0','#e9edc9','#ccd5ae'],tools:[GPT,GEM],
+use:'<b>ペットの記念日・飼い主さんへのプレゼント・SNSのペットアカウント</b>に。「うちの子が人間だったら」は、何度でも見たくなる人気企画です。',
+tips:['毛色を髪色に、模様を服の柄に置き換えるよう指示すると、ペットらしさが残ります','ペットの性格（のんびり・やんちゃ）を書くと、表情とポーズに反映されます','動物の耳としっぽを残すかどうかで、雰囲気が大きく変わります'],
+p:`【スタイル】写真のペットを、人間の姿に擬人化したアニメ調のキャラクター
+【設定】（書き換えて使う）
+・性格：のんびりしていて、食いしん坊
+・年齢の雰囲気：10代後半くらい
+【描き方】
+・髪：ペットの毛色を髪色にし、毛並みの模様を髪のメッシュや毛先の色に反映する
+・服：ペットの模様や首輪の色を、服の柄やアクセサリーに取り入れる
+・耳としっぽ：ペットと同じ形の動物の耳としっぽを残す
+・目：ペットと同じ目の色
+・表情とポーズ：性格が伝わる表情とポーズ
+・画風：やわらかい線とつややかなアニメ塗り
+・左下に、元のペットのちびキャラを小さく添える
+【避けるもの】ペットの特徴（色・模様）が消えること`,
+enp:'Create an anime-style human version of the pet in the attached photo: a late-teen character with a laid-back, foodie personality, hair color and streaks matching the fur and markings, clothing patterns and accessories inspired by markings and collar color, matching animal ears and tail, same eye color, expression and pose that reflect the personality, soft lines and glossy anime shading, a small chibi version of the original pet in the lower left.'});
+
+artI({no:'58',cat:'TREND',name:'子どもの絵を立体に',en:'Kids Drawing to 3D',lead:'子どもが描いた絵を、本当にいたら？という3Dのキャラクターに。',
+before:'子どもがクレヨンや色鉛筆で描いた絵（写真）',after:'絵の形と色をそのまま生かした、3Dのキャラクターや世界',kw:['子どもの絵','3D化','形を生かす','色を生かす'],pal:['#ff595e','#ffca3a','#8ac926','#1982c4','#6a4c93'],tools:[GPT,GEM],
+use:'<b>子どもの絵の記念・家族へのプレゼント・子どもとの遊び</b>に。自分の絵が立体になって、子どもが大喜びする人気の使い方です。',
+tips:['「形・色・バランスは子どもの絵のまま」を強めに入れるのが、いちばん大切なポイント','腕が1本多い・顔が大きいなども、そのまま生かすと味になります','元の絵を左下に小さく添えると、比べて楽しめます'],
+p:`【スタイル】添付した子どもの絵を、本当にいたらこうなる、という3Dのキャラクター（または世界）にする
+【描き方】
+・形：子どもの絵の形・バランス・数（目の数、手の本数、顔の大きさなど）を、そのまま忠実に生かす。勝手に「上手な形」に直さない
+・色：子どもの絵の色をそのまま使う
+・質感：やわらかいぬいぐるみ、または粘土のような、温かみのある3Dの質感
+・背景：絵に描かれた場所を、同じように3Dで。絵に背景がなければ、明るい単色
+・おまけ：画面の左下に、元の子どもの絵を小さく紙のまま添える
+【避けるもの】形を整えすぎること、こわい表情、リアルすぎる質感`,
+enp:'Bring the attached child\'s drawing to life as a 3D character or scene: faithfully preserve every proportion, quirk and count from the drawing (eye count, limb count, head size), do not correct it into a "better" shape, use the exact same colors, soft plush or clay-like warm 3D material, recreate any drawn setting in 3D (or bright solid background), and place the original paper drawing small in the lower left corner.'});
+
+artI({no:'59',cat:'TREND',name:'家族写真を絵本の1ページに',en:'Storybook Page',lead:'家族のいつもの写真を、やさしい絵本の見開きページのように。',
+before:'家族・子ども・ペットとのスナップ写真',after:'文章を入れる余白がある、やさしい絵本の1ページ',kw:['絵本','やさしいタッチ','文章の余白','家族の記念'],pal:['#f6bd60','#f7ede2','#f5cac3','#84a59d','#f28482'],tools:[GPT,GEM,MJ],
+use:'<b>子どもの誕生日・家族のアルバム・おじいちゃんおばあちゃんへの贈り物</b>に。何枚か作って、世界にひとつの絵本にするのもおすすめ。',
+tips:['文章を入れる余白（空や地面）を残すよう指示すると、あとから物語を書き込めます','季節や時間帯を「絵本らしく少し幻想的に」すると、物語の世界になります','同じ画風で何枚も作るときは、1枚目の画像を添えて「この画風で」と伝えるとそろいます'],
+p:`【スタイル】写真の家族（人物・ペット）が登場する、やさしい絵本の1ページ
+【描き方】
+・画風：水彩とクレヨンを合わせたような、あたたかく、やわらかいタッチの絵本のイラスト
+・人物：家族それぞれの顔立ち・髪型・服の特徴を残し、絵本らしくやさしくデフォルメする
+・場面：写真の場所を、少しだけ幻想的に（光の粒、やさしい色の空、ふくらんだ雲など）
+・余白：画面の上か下の1/3を、文章を入れられるように空や地面の広い余白として残す
+・色：やさしいパステル調。全体にあたたかい光
+・比率：横長（4:3）
+【避けるもの】写真の質感、暗い色、余白に文字を入れること`,
+enp:'Redraw the family snapshot in the attached photo as a page from a gentle children\'s picture book: warm watercolor and crayon texture, everyone softly stylized but recognizable (faces, hairstyles, outfits, pets), the setting made slightly magical (floating light specks, soft-colored sky, puffy clouds), leave the top or bottom third as open sky or ground for text, soft pastel palette, warm light, 4:3 landscape. No text.'});
+
+artI({no:'60',cat:'TREND',name:'キャラクターシート（三面図）',en:'Character Turnaround',lead:'正面・横・後ろの三面図に表情集つき。オリジナルキャラの設計図に。',
+before:'全身が写った人物の写真',after:'正面・横・後ろ姿と表情集が1枚にまとまった、キャラの設定資料',kw:['三面図','表情集','設定資料','キャラデザ'],pal:['#ffffff','#e9ecef','#adb5bd','#495057','#4361ee'],tools:[GPT,GEM],
+use:'<b>オリジナルキャラクター作り・漫画やアニメの企画・グッズ制作の依頼資料</b>に。この1枚があると、別の画像でも同じキャラを描かせやすくなります。',
+tips:['できたシートを次の画像生成に添えて「このキャラで」と頼むと、見た目がそろいやすくなります','色の見本（カラーパレット）も一緒に描かせると、イラストレーターへの依頼資料にもなります','全身・同じ服で3方向をそろえるよう、強めに指示するのがコツ'],
+p:`【スタイル】写真の人物をもとにした、オリジナルキャラクターの設定資料（キャラクターシート）
+【構成】（白い背景の横長1枚に並べる）
+・左側：全身の三面図（正面・真横・後ろ姿）。3体とも同じ大きさ・同じ服装・同じポーズ（気をつけの姿勢）で横に並べる
+・右上：表情集を4つ（笑顔・怒り・驚き・照れ）の顔アップ
+・右下：使っている色の見本（髪・肌・服の色の四角い色見本を5〜6色）
+【描き方】
+・キャラ：顔立ち・髪型・服装の特徴を残し、アニメ調のキャラクターとしてデザインする
+・画風：きれいな線と、影1段階のシンプルな塗り（設定資料らしく見やすく）
+・背景：白。区切りの細い線のみ
+【避けるもの】3方向で服や髪型が変わること、背景の描き込み`,
+enp:'Create a character design reference sheet based on the person in the attached photo: on the left, a full-body turnaround (front, side, back) at the same size, same outfit, neutral standing pose; top right, four facial expressions (smile, angry, surprised, shy); bottom right, color swatches for hair, skin and clothing (5-6 squares). Clean anime lineart with simple one-tone shading, white background with thin divider lines.'});
+
+</script>
+<script>
+const SEC=SECTIONS();const base=SEC.i.base('元の写真と同じ');
+const SPECIAL={
+ '57':{note:'この作例は写真を添付せずに作ります（元写真に動物がいないため、架空の柴犬で作ります）。',pre:'写真の添付は不要です。茶色と白の毛の、元気な架空の柴犬「こむぎ」をペットとして想定してください。\n\n'},
+ '58':{note:'写真の代わりに「男の子が描いたクレヨン画」を想定して作ります。添付した写真は「この子が描いた絵」という設定に使ってください。',pre:'添付した写真の男の子が、自分の姿をクレヨンで描いた子どもらしい絵（黄色いパーカー・紺の短パン・赤い靴・青い帽子）を想定し、その絵を立体化してください。\n\n'}
+};
+const done=new Set(['01','02','03','04','05','06','07','08','09','11','15']);
+let saved={};try{saved=JSON.parse(localStorage.getItem('kit-done')||'{}')}catch(e){}
+const list=document.getElementById('list');const todo=ITEMS.i.filter(m=>!done.has(m.no));
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+function text(m){const sp=SPECIAL[m.no];return (sp?sp.pre:'')+base+'\n\n【変換指示】\n'+m.p}
+todo.forEach(m=>{const c=document.createElement('div');c.className='card item';const sp=SPECIAL[m.no];
+  c.innerHTML=`<div class="row"><span class="no">No.${m.no}</span><span class="nm">${esc(m.name)}<br><span class="cat">${CAT[m.cat]?CAT[m.cat].ja:''}・${esc(m.en)}</span></span><button class="copy" type="button">コピー</button><label class="chk"><input type="checkbox" id="c${m.no}">済み</label></div>${sp?`<div class="note">${sp.note}</div>`:''}<details><summary>プロンプトを見る</summary><pre>${esc(text(m))}</pre></details>`;
+  const b=c.querySelector('.copy');b.onclick=()=>{const t=text(m);const ok=()=>{b.textContent='コピーしました';b.classList.add('ok');setTimeout(()=>{b.textContent='コピー';b.classList.remove('ok')},1500)};
+    try{navigator.clipboard.writeText(t).then(ok,()=>{c.querySelector('details').open=true;const r=document.createRange();r.selectNodeContents(c.querySelector('pre'));getSelection().removeAllRanges();getSelection().addRange(r)})}catch(e){c.querySelector('details').open=true}};
+  const cb=c.querySelector('input');cb.checked=!!saved[m.no];c.classList.toggle('done',cb.checked);
+  cb.onchange=()=>{saved[m.no]=cb.checked;c.classList.toggle('done',cb.checked);try{localStorage.setItem('kit-done',JSON.stringify(saved))}catch(e){}upd()};list.appendChild(c)});
+function upd(){const n=todo.filter(m=>saved[m.no]).length;document.getElementById('cnt').textContent=`${n} / ${todo.length}`;document.getElementById('barI').style.width=(n/todo.length*100)+'%'}
+upd();
+</script>
