@@ -10,7 +10,7 @@
 a 9-year-old Japanese boy with short black hair and a soft fringe, round face, big dark brown eyes and a cheerful open smile, wearing a mustard-yellow hoodie over a white t-shirt, navy blue shorts, white socks and red sneakers, holding a blue baseball cap in his right hand, standing full body on a paved path in a sunny park with green trees and a wooden bench
 
 ## 生成済み
-01〜09
+01〜09、11、15（10/18 に Figma AI の月の上限に達して停止。次のリセットは 2026-11-01）
 
 ## 未生成（10〜60）— 各ページの英語版プロンプト（enp）の「the attached photo / person」を SUBJ に置き換えて生成する
 - 10 正方形 / 20 正方形 / 30 正方形 / 47 正方形 / 51 横長 / 60 横長 / 18 縦長 / ほかは 768×1024
