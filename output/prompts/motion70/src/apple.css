@@ -146,6 +146,8 @@ main{max-width:1200px;margin-inline:auto;padding-top:40px}
 .tools{display:flex;flex-wrap:wrap;gap:6px}
 .tools span{background:var(--surface);border-radius:999px;padding:4px 12px;font-size:13px;box-shadow:var(--shadow)}
 .tools span b{color:var(--accent);font-weight:600}
+.gshot{border-radius:18px;padding:28px;background:radial-gradient(circle at 50% 35%,#eef0f3,#c9cdd4);display:flex;justify-content:center;box-shadow:var(--shadow)}
+.gshot img{display:block;max-width:100%;max-height:760px;height:auto;width:auto;box-shadow:0 18px 40px rgba(0,0,0,.22)}
 .exrow{display:grid;grid-template-columns:minmax(0,.8fr) auto minmax(0,1.2fr);gap:14px;align-items:center;padding:18px;background:var(--surface2)}
 .exrow figure{margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
 .exrow img{width:100%;max-width:100%;height:auto;border-radius:12px;display:block;background:var(--fill)}

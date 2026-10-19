@@ -4,7 +4,6 @@ const SQ=(H,css)=>{desk(H);return sheet(H,720,720,css)};
 const cards=(H,fc,bc)=>{desk(H);const f=sheet(H,600,363,Object.assign({borderRadius:'10px'},fc),130,250),b=sheet(H,600,363,Object.assign({borderRadius:'10px'},bc),870,250,350);
   [['表',430],['裏',1170]].forEach(q=>T(H,null,{left:q[1]-300+'px',width:'600px',top:'640px',textAlign:'center',fontFamily:F.sans,fontSize:'18px',letterSpacing:'.4em',color:'#7d828c'},q[0],600,'fade'));return [f,b]};
 const qr=(H,p,x,y,s,c,bg,dl)=>R(H,p,{left:x+'px',top:y+'px',width:s+'px',height:s+'px',background:`repeating-conic-gradient(${c} 0 25%,${bg} 0 50%) 0 0/${s/4}px ${s/4}px`,borderRadius:'4px',outline:`4px solid ${bg}`},dl,'pop');
-const NM='佐藤 信',NMEN='Shin Sato';
 
 /* POSTER：バナー */
 defG({no:'16',cat:'POSTER',name:'ECサイトのセールバナー',en:'EC Sale Banner',text:'nobu store',lead:'赤からピンクのグラデーションに「最大70%OFF」。クリックしたくなるセールバナー。',
@@ -29,7 +28,6 @@ run(H,t){const s=BN(H,{background:'linear-gradient(120deg,#ff1e56,#ff4fa3 55%,#f
   const big=T(H,s,{left:'56px',top:'170px',fontFamily:"'Anton',sans-serif",color:'#fff',lineHeight:'1',textShadow:'0 8px 0 rgba(0,0,0,.12)'},null,800,'pop');H.el('span',{fontFamily:F.sans,fontWeight:'900',fontSize:'48px',marginRight:'10px'},big,'最大');H.el('span',{fontSize:'260px'},big,'70');H.el('span',{fontSize:'110px'},big,'%OFF');
   T(H,s,{left:'60px',top:'470px',fontFamily:"'Anton',sans-serif",fontSize:'26px',color:'#fff',letterSpacing:'.06em'},'12.1 MON 0:00 — 12.3 WED 23:59',1300,'fade');
   const cd=T(H,s,{left:'60px',top:'514px',display:'flex',gap:'6px',alignItems:'center',fontFamily:F.sans,fontWeight:'900',fontSize:'18px',color:'#fff'},null,1500);H.el('span',{marginRight:'8px'},cd,'残り');const dg=[];'23:59:59'.split('').forEach(ch=>{if(ch===':'){H.el('span',{fontFamily:"'Anton',sans-serif",fontSize:'34px'},cd,':');return}dg.push(H.el('span',{background:'#fff',color:'#ff1e56',fontFamily:"'Anton',sans-serif",fontSize:'34px',width:'34px',textAlign:'center',borderRadius:'6px',padding:'2px 0'},cd,ch))});
-  let sec=59;const tick=()=>{sec=(sec+59)%60;dg[4].textContent=Math.floor(sec/10);dg[5].textContent=sec%10;H.wait(1000,tick)};H.wait(1500,tick);
   [[760,150,-10,'linear-gradient(135deg,#ffe0ec,#ff9cc2)'],[880,120,4,'linear-gradient(135deg,#fff3c4,#ffc65c)'],[990,170,12,'linear-gradient(135deg,#d8f2ff,#7cc8ff)']].forEach((q,i)=>{const c=R(H,s,{left:q[0]+'px',top:q[1]+'px',width:'180px',height:'230px',background:'#fff',borderRadius:'14px',padding:'12px',boxSizing:'border-box',boxShadow:'0 20px 40px rgba(0,0,0,.25)',rotate:q[2]+'deg'},1000+i*150,'pop');H.abs({left:'12px',top:'12px',right:'12px',height:'150px',borderRadius:'8px',background:q[3]},c);H.abs({left:'12px',top:'172px',width:'90px',height:'10px',borderRadius:'5px',background:'#eee'},c);H.el('div',{position:'absolute',left:'12px',top:'190px',fontFamily:"'Anton',sans-serif",fontSize:'22px',color:'#ff1e56'},c,['-70%','-50%','-30%'][i])});
   const bt=T(H,s,{left:'820px',top:'470px',padding:'20px 46px',borderRadius:'999px',background:'#ffe14d',color:'#111',fontFamily:F.sans,fontWeight:'900',fontSize:'28px',boxShadow:'0 10px 0 rgba(0,0,0,.15)'},'今すぐチェック →',1800,'pop');H.a(bt,[{scale:'1'},{scale:'1.06'},{scale:'1'}],{d:1000,dl:2500,i:Infinity,f:'none'})}});
 
@@ -80,7 +78,7 @@ run(H,t){const s=BN(H,{background:'linear-gradient(125deg,#6c3bff,#a64dff 50%,#f
   const ph=R(H,s,{left:'840px',top:'60px',width:'250px',height:'510px',borderRadius:'40px',background:'#111',padding:'12px',boxSizing:'border-box',rotate:'8deg',boxShadow:'0 40px 80px rgba(0,0,0,.35)'},900,'up');const sc=H.abs({left:'12px',top:'12px',right:'12px',bottom:'12px',borderRadius:'30px',background:'#f6f3ff',overflow:'hidden'},ph);H.abs({left:'76px',top:'0',width:'74px',height:'20px',borderRadius:'0 0 12px 12px',background:'#111'},sc);
   H.abs({left:'16px',top:'40px',right:'16px',height:'120px',borderRadius:'16px',background:'linear-gradient(125deg,#6c3bff,#ff5fa2)'},sc);H.el('div',{position:'absolute',left:'30px',top:'56px',color:'#fff',fontFamily:F.sans,fontSize:'12px'},sc,'保有ポイント');const pt=H.el('div',{position:'absolute',left:'30px',top:'80px',color:'#fff',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'40px'},sc,'0');
   for(let i=0;i<3;i++){H.abs({left:'16px',right:'16px',top:180+i*80+'px',height:'64px',borderRadius:'14px',background:'#fff',boxShadow:'0 4px 10px rgba(108,59,255,.1)'},sc);H.abs({left:'28px',top:192+i*80+'px',width:'40px',height:'40px',borderRadius:'10px',background:['#ffd84d','#ff5fa2','#6c3bff'][i]},sc);H.abs({left:'80px',top:200+i*80+'px',width:'90px',height:'10px',borderRadius:'5px',background:'#ddd'},sc);H.abs({left:'80px',top:218+i*80+'px',width:'60px',height:'8px',borderRadius:'4px',background:'#eee'},sc)}
-  H.wait(1400,()=>{const t0=performance.now();H.raf(()=>{const k=Math.min(1,(performance.now()-t0)/1200);pt.textContent=Math.round(500*k)+' pt'})});
+  pt.textContent='500 pt';
   H.a(ph,[{translate:'0 0'},{translate:'0 -14px'}],{d:1800,dl:1700,dir:'alternate',i:Infinity,f:'none',e:E.soft});
   const bd=T(H,s,{left:'640px',top:'330px',width:'170px',height:'170px',borderRadius:'50%',background:'#ffd84d',color:'#111',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',fontFamily:F.sans,fontWeight:'900',fontSize:'16px',lineHeight:'1.2',rotate:'-10deg',boxShadow:'0 10px 30px rgba(0,0,0,.2)'},null,1600,'pop');H.el('div',{},bd,'今なら 初回');H.el('div',{fontFamily:"'Montserrat',sans-serif",fontSize:'54px'},bd,'500');H.el('div',{},bd,'pt プレゼント');H.a(bd,[{scale:'1'},{scale:'1.07'},{scale:'1'}],{d:1100,dl:2300,i:Infinity,f:'none'})}});
 
@@ -133,25 +131,19 @@ run(H,t){const s=SQ(H,{background:'linear-gradient(160deg,#e9ded2,#d8c7b6)'});co
   T(H,s,{left:'60px',top:'640px',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'16px',letterSpacing:'.3em',color:C},t,2000,'fade')}});
 
 /* CARD：ショップカード */
-defG({no:'21',cat:'CARD',name:'美容室のモノトーンショップカード',en:'Salon Shop Card',text:'hair salon nobu',lead:'表は黒に白いロゴだけ、裏は白に情報。名刺サイズの、ミニマルなショップカード。',
-use:'<b>美容室・バーバー・ネイルサロン・アパレル</b>のショップカードに。レジ横に置いたり、お会計時に手渡ししたりする定番アイテムです。',
-tips:['表はロゴだけ、裏に情報。この「表と裏の役割分担」で一気に洗練されます','文字の大きさは最小でも7pt（画面では約9px）以上に。印刷すると思ったより小さく見えます','裏面の予約用QRコードは、右下にまとめると自然に目が行きます'],
-p:`美容室のショップカードを、名刺サイズ（91×55mm、横向き）の表・裏2面で、モノトーンのミニマルなデザインで作ってください。
-・店名：「{T}」
-・配色：表は黒 #111、裏は白 #FFF、文字は白／黒、グレー #8C8C8C
-・フォント：英字は Montserrat（300、字間広め）、日本語は Zen Kaku Gothic New（400）
-・表面：黒の中央に、店名を英字の細い文字で（字間 0.3em）。その下に、細い白線（幅30px）と小さく「HAIR & MAKE」
-・裏面（白）：左上に店名を小さく、その下に住所「〇〇市〇〇町0-0-0 〇〇ビル2F」、電話「000-000-0000」、営業時間「10:00 – 20:00（火曜定休）」
-・裏面の右下：予約用のQRコードの枠（20mm角）と「ご予約はこちら」
-・裏面の下部：Instagram の @ID とWebサイトのURL
-・印刷用：表と裏をそれぞれ1ページにして、@page で 91×55mm、塗り足し3mm、文字は端から3mm以上内側に
-・画面の確認用には、表と裏を横に並べて、少し影をつけて表示する`,
-run(H,t){const [f,b]=cards(H,{background:'#111'},{background:'#fff'});
-  T(H,f,{left:'0',width:'600px',top:'136px',textAlign:'center',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'38px',letterSpacing:'.3em',color:'#fff'},t,800,'fade');R(H,f,{left:'285px',top:'206px',width:'30px',height:'1px',background:'#fff',transformOrigin:'center'},1200,'grow');T(H,f,{left:'0',width:'600px',top:'222px',textAlign:'center',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'14px',letterSpacing:'.5em',color:'#8c8c8c'},'HAIR & MAKE',1400,'fade');
-  T(H,b,{left:'44px',top:'40px',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'22px',letterSpacing:'.25em',color:'#111'},t,1100,'fade');
-  ['〇〇市〇〇町0-0-0 〇〇ビル2F','TEL 000-000-0000','10:00 – 20:00（火曜定休）'].forEach((w,i)=>T(H,b,{left:'44px',top:110+i*32+'px',fontFamily:F.zen,fontSize:'16px',color:'#111'},w,1300+i*120,'left'));
-  R(H,b,{left:'44px',width:'512px',top:'250px',height:'1px',background:'#ddd'},1700);T(H,b,{left:'44px',top:'270px',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'14px',color:'#8c8c8c',lineHeight:'1.9',whiteSpace:'pre-line'},'Instagram @nobu_salon\nwww.example.com',1800,'fade');
-  qr(H,b,456,96,100,'#111','#fff',1600);T(H,b,{left:'436px',width:'140px',textAlign:'center',top:'206px',fontFamily:F.zen,fontSize:'12px',color:'#8c8c8c'},'ご予約はこちら',1700,'fade')}});
+defG({no:'21',cat:'CARD',name:'美容室のクラフト紙ショップカード',en:'Kraft Salon Card',text:'hair room nobu',lead:'クラフト紙に、透かしのようなはさみの線画。ナチュラルで大人っぽい美容室のカード。',
+use:'<b>美容室・バーバー・トリミングサロン・アトリエ</b>のショップカードに。紙の質感だけで「こだわりのあるお店」に見えます。',
+tips:['はさみなどの道具の線画を、薄い色で大きく敷くと「透かし」のような上品さが出ます','クラフト紙には、こげ茶1色の印刷がいちばん映えます','裏面に「次回のご予約」欄を入れると、予約カードとしても使えて捨てられにくくなります'],
+p:'',
+run(H,t){const kr={background:'#c9a77c',backgroundImage:'radial-gradient(rgba(62,42,30,.12) 1px,transparent 1.5px),radial-gradient(rgba(255,255,255,.12) 1px,transparent 1.5px)',backgroundSize:'5px 5px,7px 7px',backgroundPosition:'0 0,2px 3px'};const [f,b]=cards(H,kr,{background:'#fff'});const C='#4a3020';
+  const sc=R(H,f,{left:'260px',top:'40px',width:'330px',height:'200px'},700,'fade');const sv=H.svg(330,200,sc,{opacity:'.22'});H.sv('circle',{cx:260,cy:60,r:38,stroke:C,'stroke-width':6,fill:'none'},sv);H.sv('circle',{cx:260,cy:150,r:38,stroke:C,'stroke-width':6,fill:'none'},sv);H.sv('path',{d:'M225,78 L10,118 L222,132 M225,132 L40,96',stroke:C,'stroke-width':6,fill:'none','stroke-linecap':'round'},sv);
+  T(H,f,{left:'36px',top:'26px',fontFamily:"'Playfair Display',serif",fontWeight:'900',fontSize:'40px',lineHeight:'1',color:C},t,800,'fade');T(H,f,{left:'38px',top:'74px',fontFamily:F.zen,fontSize:'13px',color:C},'ヘアサロン',900,'fade');
+  T(H,f,{left:'40px',top:'206px',fontFamily:F.zen,fontSize:'14px',color:C},'スタイリスト',1000,'fade');T(H,f,{left:'38px',top:'228px',fontFamily:F.zen,fontWeight:'700',fontSize:'28px',letterSpacing:'.1em',color:C},'〇〇 〇〇',1100);
+  T(H,f,{right:'30px',top:'290px',textAlign:'right',fontFamily:F.zen,fontSize:'12px',lineHeight:'1.7',color:C,whiteSpace:'pre-line'},'TEL 000-000-0000\n〇〇市〇〇町0-0-0',1300,'fade');
+  T(H,b,{left:'40px',top:'34px',fontFamily:"'Playfair Display',serif",fontWeight:'900',fontSize:'22px',color:C},t,1000,'fade');
+  ['〇〇市〇〇町0-0-0','TEL 000-000-0000','10:00 – 20:00（火曜定休）'].forEach((w,i)=>T(H,b,{left:'40px',top:84+i*30+'px',fontFamily:F.zen,fontSize:'15px',color:'#333'},w,1100+i*100,'left'));
+  qr(H,b,470,80,90,'#333','#fff',1400);T(H,b,{left:'450px',width:'130px',textAlign:'center',top:'178px',fontFamily:F.zen,fontSize:'11px',color:'#777'},'ご予約はこちら',1500,'fade');
+  T(H,b,{left:'40px',top:'250px',width:'520px',border:'1px solid #c9a77c',padding:'14px 18px',fontFamily:F.zen,fontSize:'15px',color:C,boxSizing:'border-box'},'次回のご予約　　＿月　＿日（　）　＿時',1600,'fade')}});
 
 defG({no:'22',cat:'CARD',name:'ネイルサロンの金箔スタンプカード',en:'Gold Foil Stamp Card',text:'nail salon nobu',lead:'グレージュに金のグラデーション文字。裏がスタンプカードになった、サロンのカード。',
 use:'<b>ネイル・まつげ・エステ・リラクゼーションサロン</b>のショップカード兼スタンプカードに。リピートのきっかけになります。',
@@ -176,9 +168,9 @@ run(H,t){const [f,b]=cards(H,{background:'radial-gradient(circle at 20% 30%,rgba
     if(i<4)H.wait(2400+i*300,()=>{const st=H.el('div',{position:'absolute',inset:'8px',borderRadius:'50%',border:'3px solid #c97b84',color:'#c97b84',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Great Vibes',cursive",fontSize:'22px',rotate:'-15deg'},c,'nobu');H.a(st,[{opacity:0,transform:'scale(1.8)'},{opacity:1,transform:'scale(1)'}],{d:300,e:E.in})})}
   T(H,b,{left:'40px',top:'280px',fontFamily:F.min,fontSize:'14px',color:BR},'10個たまると、ハンドケア1回無料',2000,'fade');T(H,b,{left:'40px',top:'310px',fontFamily:F.min,fontSize:'11px',color:BR},'〇〇市〇〇町0-0-0 ／ TEL 000-000-0000',2100,'fade');qr(H,b,500,272,60,BR,'#faf6f1',2100)}});
 
-defG({no:'23',cat:'CARD',name:'カフェのクラフト紙カード',en:'Kraft Café Card',text:'Café nobu',lead:'クラフト紙に、こげ茶のハンコのようなロゴ。手作り感のあるカフェのカード。',
+defG({no:'23',cat:'CARD',name:'カフェの線画と地図のカード',en:'Line Art Café Card',text:'Café nobu',lead:'クラフト紙に、こげ茶のハンコのようなロゴ。手作り感のあるカフェのカード。',
 use:'<b>カフェ・コーヒースタンド・焼き菓子店・雑貨店</b>のショップカードに。紙袋やコーヒー豆の袋に添えても似合います。',
-tips:['クラフト紙は印刷所で選べます。画面では茶色の色＋細かい点の模様で再現','ロゴはハンコのように丸く囲むと、手作り感とお店らしさが出ます','地図は正確さより「駅からの道順」がわかるシンプルな線画で十分'],
+tips:['クラフト紙は印刷所で選べます。AIで作るときは「クラフト紙の質感」と書くだけで雰囲気が出ます','ロゴはハンコのように丸く囲むと、手作り感とお店らしさが出ます','地図は正確さより「駅からの道順」がわかるシンプルな線画で十分'],
 p:`カフェのショップカードを、名刺サイズ（91×55mm、横向き）の表・裏2面で、クラフト紙に印刷したような手作り感のあるデザインで作ってください。
 ・店名：「{T}」
 ・配色：背景はクラフト紙 #C9A77C（細かい点で紙の繊維を表現）、インクはこげ茶 #3E2A1E 1色だけ（実際の印刷でも1色刷りにできるように）
@@ -202,28 +194,18 @@ run(H,t){const kr={background:'#c9a77c',backgroundImage:'radial-gradient(rgba(62
   T(H,b,{left:'306px',top:'200px',fontFamily:"'Klee One',serif",fontSize:'12px',color:C},'コーヒー1杯ごとにスタンプ1つ',1900,'fade');
   for(let i=0;i<8;i++)R(H,b,{left:30+i*68+'px',top:'280px',width:'52px',height:'52px',borderRadius:'50%',border:'1.5px dashed '+C,boxSizing:'border-box'},2000+i*70,'pop')}});
 
-defG({no:'24',cat:'CARD',name:'居酒屋の和風ショップカード',en:'Izakaya Card',text:'酒処 のぶ',lead:'黒に縦書きの筆文字と朱色の落款。のれんをくぐりたくなる、和の飲食店カード。',
-use:'<b>居酒屋・焼き鳥・寿司・蕎麦・小料理屋・和菓子店</b>のショップカードに。お会計のときに手渡すと、再来店のきっかけになります。',
-tips:['店名は縦書きの筆文字で、カードの高さいっぱいに。和の店はこれだけで決まります','朱色の四角い判子（落款）を1つ添えると、一気に本格的に','裏面は白（生成り）にすると、文字が読みやすく上品'],
-p:`居酒屋のショップカードを、名刺サイズ（55×91mm、縦向き）の表・裏2面で、和の本格的なデザインで作ってください（画面確認用は横向きのカード2枚の中に縦書きで配置してもOK）。
-・店名：「{T}」
-・配色：表は墨色 #141414（うっすら和紙の質感）、文字は白、落款は朱色 #C8361F、裏は生成り #F5EFE3 に墨色の文字
-・フォント：店名は Yuji Syuku（筆文字）、本文は Shippori Mincho B1
-・表面：右寄りに、店名を縦書きの白い筆文字で大きく（カードの高さの70%）。その左下に朱色の四角い落款（中に白抜きで「のぶ」）
-・表面の左上：小さな縦書きで「旬の肴と、地酒」
-・表面の下：細い白線で波の模様（青海波）を、カードの下端に薄く
-・裏面：縦書きで、住所・電話・営業時間（17:00 – 24:00）・定休日（日曜）。右端に店名を小さく
-・裏面の左下：「ご予約承ります」と電話番号を大きめに、予約の QRコード
-・印刷用：表と裏をそれぞれ1ページ、@page 91×55mm、塗り足し3mm`,
-run(H,t){const [f,b]=cards(H,{background:'radial-gradient(circle at 30% 20%,#222,#141414 70%)'},{background:'#f5efe3'});const RD='#c8361f';
-  T(H,f,{right:'70px',top:'30px',writingMode:'vertical-rl',fontFamily:F.brush,fontSize:t.length>4?'64px':'78px',lineHeight:'1',color:'#fff',letterSpacing:'.05em'},t,800,'drop');
-  const lk=T(H,f,{left:'300px',top:'250px',width:'62px',height:'62px',background:RD,color:'#fff',borderRadius:'4px',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:F.brush,fontSize:'22px',writingMode:'vertical-rl'},'のぶ',1500,'pop');
-  T(H,f,{left:'60px',top:'40px',writingMode:'vertical-rl',fontFamily:F.min,fontSize:'18px',letterSpacing:'.4em',color:'rgba(255,255,255,.8)'},'旬の肴と、地酒',1200,'drop');
-  R(H,f,{left:'0',right:'0',bottom:'0',height:'50px',backgroundImage:'radial-gradient(circle at 50% 100%,transparent 14px,rgba(255,255,255,.15) 15px,rgba(255,255,255,.15) 16px,transparent 17px,transparent 22px,rgba(255,255,255,.15) 23px,rgba(255,255,255,.15) 24px,transparent 25px)',backgroundSize:'50px 25px'},1300,'fade');
-  T(H,b,{right:'40px',top:'30px',writingMode:'vertical-rl',fontFamily:F.brush,fontSize:'30px',color:'#141414'},t,1000,'drop');
-  ['〇〇市〇〇町0-0-0','電話 000-000-0000','営業 17:00 – 24:00','定休 日曜日'].forEach((w,i)=>T(H,b,{right:110+i*44+'px',top:'34px',writingMode:'vertical-rl',fontFamily:F.min,fontSize:'16px',color:'#141414',letterSpacing:'.1em'},w,1200+i*130,'drop'));
-  R(H,b,{left:'40px',top:'30px',width:'2px',height:'300px',background:RD,opacity:.6},1700);
-  T(H,b,{left:'64px',top:'40px',fontFamily:F.min,fontWeight:'800',fontSize:'16px',color:RD},'ご予約承ります',1800,'fade');T(H,b,{left:'64px',top:'70px',fontFamily:F.min,fontWeight:'800',fontSize:'20px',color:'#141414'},'000-000-0000',1900,'fade');qr(H,b,64,230,80,'#141414','#f5efe3',2000)}});
+defG({no:'24',cat:'CARD',name:'和食店の外観イラストカード',en:'Shopfront Illustration Card',text:'飯家 のぶ',lead:'和紙に、お店の外観の色鉛筆イラストと手描きの地図。思わず行きたくなる和食店のカード。',
+use:'<b>居酒屋・和食店・蕎麦屋・小料理屋・和菓子店・古民家カフェ</b>のショップカードに。外観のイラストがあると「このお店だ」と迷わず来てもらえます。',
+tips:['外観のイラストは、入口と看板がわかる正面からの絵がいちばん伝わります','地図は正確さより「駅の出口」と「目印のお店」。手描きの線のほうが親しみやすい','色は墨色＋イラストだけ。和紙の質感と合わせると一気に本格的に'],
+p:'',
+run(H,t){const wa={background:'#f2ebdc',backgroundImage:'radial-gradient(rgba(120,100,70,.08) 1px,transparent 1.5px)',backgroundSize:'6px 6px'};const [f,b]=cards(H,wa,wa);const K='#222';
+  T(H,f,{left:'0',width:'600px',top:'24px',textAlign:'center',fontFamily:F.brush,fontSize:'34px',color:K},t,700,'fade');
+  const sh=R(H,f,{left:'190px',top:'90px',width:'220px',height:'230px'},900,'up');H.abs({left:'0',top:'0',width:'220px',height:'34px',background:'#5c5c5c',borderRadius:'2px'},sh);H.abs({left:'60px',top:'8px',width:'100px',height:'18px',background:'#d9c9a8',fontSize:'11px',textAlign:'center',lineHeight:'18px',fontFamily:F.sans,fontWeight:'700',color:K},sh,'NOBU');H.abs({left:'10px',top:'34px',width:'200px',height:'170px',background:'#8a6a4c'},sh);H.abs({left:'110px',top:'48px',width:'80px',height:'156px',background:'repeating-linear-gradient(90deg,#3a3a3a 0 3px,#cfe0e8 3px 18px),#cfe0e8',backgroundBlendMode:'normal'},sh);H.abs({left:'110px',top:'48px',width:'80px',height:'156px',backgroundImage:'repeating-linear-gradient(#3a3a3a 0 3px,transparent 3px 26px)'},sh);H.abs({left:'24px',top:'60px',width:'72px',height:'70px',background:'#e9e2d0',border:'3px solid #5c4636',boxSizing:'border-box'},sh);H.abs({left:'0',top:'204px',width:'220px',height:'18px',background:'#6b4a33'},sh);H.abs({left:'40px',top:'150px',width:'30px',height:'40px',borderRadius:'50% 50% 4px 4px',background:'#5f7d5a'},sh);
+  const lg=R(H,b,{left:'40px',top:'50px',width:'110px',height:'110px',borderRadius:'50%',background:K},1000,'pop');for(let k=0;k<6;k++)H.abs({left:'45px',top:'14px',width:'20px',height:'40px',borderRadius:'50%',background:'#f2ebdc',transformOrigin:'50% 41px',rotate:k*60+'deg'},lg);
+  T(H,b,{left:'40px',top:'176px',fontFamily:F.brush,fontSize:'30px',color:K},t,1100,'fade');
+  const mp=R(H,b,{left:'260px',top:'24px',width:'316px',height:'210px'},1200,'fade');const ms=H.svg(316,210,mp);[['M10,60 H306',7],['M10,150 H306',5],['M90,0 V210',6],['M220,0 V210',5]].forEach((q,i)=>{const p=H.sv('path',{d:q[0],stroke:'#333','stroke-width':q[1],fill:'none','stroke-linecap':'round',opacity:.85},ms);const L=400;p.style.strokeDasharray=L;p.animate([{strokeDashoffset:L},{strokeDashoffset:0}],{duration:900,delay:1300+i*150,fill:'both'})});
+  [['〇〇駅 A4',20,40],['目印のコンビニ',110,120],['のぶ ★',230,96]].forEach(q=>{const e=H.sv('text',{x:q[1],y:q[2],fill:'#333','font-size':14,'font-family':'Klee One, serif'},ms);e.textContent=q[0]});
+  T(H,b,{left:'40px',top:'252px',fontFamily:F.min,fontSize:'14px',lineHeight:'1.7',color:K,whiteSpace:'pre-line'},'OPEN 17:00 – 25:00\nCLOSE 日・祝\nTEL 000-000-0000',1700,'fade');T(H,b,{left:'300px',top:'296px',fontFamily:F.min,fontSize:'12px',color:K},'〇〇市〇〇町0-0-0',1800,'fade');qr(H,b,510,262,64,K,'#f2ebdc',1900)}});
 
 defG({no:'25',cat:'CARD',name:'イタリアンのトリコロールカード',en:'Trattoria Card',text:'Trattoria nobu',lead:'クリーム色に緑・白・赤のライン。陽気でおいしそうな、イタリアンのカード。',
 use:'<b>イタリアン・ピッツェリア・ワインバー・パスタ専門店・ジェラート店</b>のショップカードに。',
@@ -317,26 +299,18 @@ run(H,t){const [f,b]=cards(H,{background:'#faf8f3'},{background:'#14274e'});cons
   mark(b,265,70,70,1100);T(H,b,{left:'0',width:'600px',top:'160px',textAlign:'center',fontFamily:F.min,fontWeight:'800',fontSize:'26px',letterSpacing:'.2em',color:GD},t,1300,'fade');T(H,b,{left:'0',width:'600px',top:'206px',textAlign:'center',fontFamily:F.serif,fontSize:'15px',letterSpacing:'.3em',color:'rgba(197,165,90,.8)'},'NOBU LAW OFFICE',1500,'fade');
   T(H,b,{left:'0',width:'600px',top:'282px',textAlign:'center',fontFamily:F.min,fontSize:'13px',letterSpacing:'.2em',color:GD},'企業法務 ｜ 相続 ｜ 不動産 ｜ 労務',1700,'fade')}});
 
-defG({no:'29',cat:'CARD',name:'クリエイターの個性派名刺',en:'Bold Creator Card',text:'nobu',lead:'大きな頭文字と、はっきりした色の面。一度見たら忘れない、クリエイターの名刺。',
-use:'<b>デザイナー・イラストレーター・カメラマン・映像クリエイター・ミュージシャン</b>の名刺に。作品の世界観ごと覚えてもらえます。',
-tips:['名前の頭文字1文字を、カードからはみ出すほど巨大に。それだけで個性が出ます','色は「主役の色1つ＋黒＋白」。主役の色は自分の作品に合わせて変えてOK','情報は小さく、端に寄せる。名刺というより「作品」として渡すイメージで'],
-p:`クリエイターの名刺を、名刺サイズ（91×55mm、横向き）の表・裏2面で、大胆で個性的な、一度見たら忘れないデザインで作ってください。
-・活動名：「{T}」
-・名前：「${NM}」（${NMEN}）、肩書き「Graphic Designer / Illustrator」
-・配色：主役の色はビビッドなオレンジ #FF5A1F、黒 #111、白、オフホワイト #F5F1EA
-・フォント：英字は Anton（極太）と Space Mono、日本語は Noto Sans JP 700
-・表面：オレンジ一面に、活動名の頭文字1文字を黒で巨大に（カードの高さの1.4倍、上下がはみ出して切れる）。右下に白で活動名、小さく肩書き
-・裏面：オフホワイトの背景を、黒い太い線で左右 2:1 に分割。左に名前と連絡先（メール・Instagram・Webサイト）を Space Mono で、右に作品集へ飛ぶ QRコードと「PORTFOLIO →」
-・裏面の左上に、オレンジの小さな丸（シール風）
-・遊び心：表面の頭文字の中に、うっすら作品のパターン（ストライプやドット）を入れる
-・印刷用：表と裏をそれぞれ1ページ、@page 91×55mm、塗り足し3mm（頭文字が裏まで切れても見栄えがいいように）`,
-run(H,t){const [f,b]=cards(H,{background:'#ff5a1f'},{background:'#f5f1ea'});const K='#111';const ini=(t.trim()[0]||'N').toUpperCase();
-  const L=T(H,f,{left:'20px',top:'-120px',fontFamily:"'Anton',sans-serif",fontSize:'560px',lineHeight:'1',color:K,background:'repeating-linear-gradient(45deg,#111 0 14px,#2a2a2a 14px 28px)',WebkitBackgroundClip:'text',backgroundClip:'text',WebkitTextFillColor:'transparent'},ini,700,'up');
-  T(H,f,{right:'30px',top:'262px',textAlign:'right',fontFamily:"'Anton',sans-serif",fontSize:'38px',letterSpacing:'.05em',color:'#fff'},t.toUpperCase(),1200,'left');T(H,f,{right:'30px',top:'312px',textAlign:'right',fontFamily:F.smono,fontSize:'12px',color:'#fff'},'Graphic Designer / Illustrator',1400,'fade');
-  R(H,b,{left:'396px',top:'0',width:'8px',height:'363px',background:K,transformOrigin:'top'},1000,'fade');R(H,b,{left:'30px',top:'30px',width:'34px',height:'34px',borderRadius:'50%',background:'#ff5a1f'},1100,'pop');
-  T(H,b,{left:'30px',top:'90px',fontFamily:F.sans,fontWeight:'700',fontSize:'32px',letterSpacing:'.12em',color:K},NM,1200);T(H,b,{left:'30px',top:'140px',fontFamily:F.smono,fontSize:'14px',color:K},NMEN,1300,'fade');
-  ['mail@example.com','IG  @nobu_works','www.example.com'].forEach((w,i)=>T(H,b,{left:'30px',top:212+i*34+'px',fontFamily:F.smono,fontSize:'14px',color:K},w,1400+i*120,'left'));
-  qr(H,b,446,90,110,K,'#f5f1ea',1600);T(H,b,{left:'420px',width:'160px',textAlign:'center',top:'230px',fontFamily:"'Anton',sans-serif",fontSize:'22px',letterSpacing:'.05em',color:K},'PORTFOLIO →',1800,'fade')}});
+defG({no:'29',cat:'CARD',name:'線画の似顔絵イラスト名刺',en:'Line Portrait Card',text:'nobu writing',lead:'黒い線1本で描いた似顔絵と、細い明朝体。余白たっぷりの、覚えてもらえる名刺。',
+use:'<b>ライター・デザイナー・カウンセラー・講師・個人事業主</b>の名刺に。似顔絵があると、交流会のあとでも顔と名前を思い出してもらえます。',
+tips:['似顔絵は「線1本＋服だけ黒く塗る」くらいシンプルにすると、名刺の小ささでもきれいに見えます','名前は細い明朝体で大きく。イラストと文字の間に余白をたっぷり','仕事をしている姿（パソコン・カメラ・本など）を描くと、職業がひと目で伝わります'],
+p:'',
+run(H,t){const [f,b]=cards(H,{background:'#fff'},{background:'#fff'});const K='#1a1a1a';
+  T(H,f,{left:'50px',top:'50px',fontFamily:F.min,fontSize:'14px',color:K},'ライター',700,'fade');T(H,f,{left:'48px',top:'74px',fontFamily:F.min,fontWeight:'500',fontSize:'42px',letterSpacing:'.12em',color:K},NM,800);
+  const il=R(H,f,{left:'350px',top:'70px',width:'220px',height:'240px'},1000,'fade');const sv=H.svg(220,240,il);
+  const ln=(d,dl)=>{const p=H.sv('path',{d,stroke:K,'stroke-width':3,fill:'none','stroke-linecap':'round','stroke-linejoin':'round'},sv);p.style.strokeDasharray=600;p.animate([{strokeDashoffset:600},{strokeDashoffset:0}],{duration:1200,delay:dl,fill:'both'})};
+  ln('M70,90 C60,40 140,30 140,80 C142,110 130,128 105,130 C82,130 70,115 70,90 Z',1100);ln('M68,82 C70,50 100,36 132,52 C120,60 95,62 70,80',1200);ln('M98,96 h2 M120,96 h2 M102,114 q8,5 14,0',1300);
+  H.sv('path',{d:'M40,240 C40,170 70,145 105,145 C140,145 165,170 170,200 L170,240 Z',fill:K},sv);H.sv('path',{d:'M120,170 L215,170 L200,215 L110,215 Z',fill:'#fff',stroke:K,'stroke-width':3},sv);
+  qr(H,f,50,250,64,K,'#fff',1500);T(H,f,{left:'130px',top:'252px',fontFamily:"'Montserrat',sans-serif",fontSize:'13px',lineHeight:'1.75',color:K,whiteSpace:'pre-line'},'☎ 000-000-0000\n✉ mail@example.com\n⌂ www.example.com',1600,'fade');
+  T(H,b,{left:'0',width:'600px',top:'130px',textAlign:'center',fontFamily:F.min,fontWeight:'500',fontSize:'32px',letterSpacing:'.15em',color:K},t,1100,'fade');T(H,b,{left:'0',width:'600px',top:'186px',textAlign:'center',fontFamily:F.min,fontSize:'15px',letterSpacing:'.15em',color:'#666'},'取材・インタビュー・Webコラム',1300,'fade');T(H,b,{left:'0',width:'600px',top:'290px',textAlign:'center',fontFamily:F.min,fontSize:'12px',color:'#888'},'お仕事のご相談はお気軽に',1500,'fade')}});
 
 defG({no:'30',cat:'CARD',name:'顔写真入りの営業名刺',en:'Sales Card with Photo',text:'nobu不動産',lead:'丸い顔写真とひとことメッセージ。「人」で選ばれる、営業・接客の名刺。',
 use:'<b>不動産・保険・車の販売・住宅メーカー・美容部員・地域密着のお店</b>など、「担当者の顔」で選ばれる仕事の名刺に。',

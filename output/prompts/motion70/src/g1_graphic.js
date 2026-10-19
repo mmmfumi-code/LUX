@@ -1,6 +1,6 @@
 /* ===== GRAPHIC 01-15 ===== */
 CUR_SEC='g';
-const defG=o=>{o.bg=o.bg||'#d5d8de';o.loop=o.loop||6500;def(o)};
+const defG=o=>{o.bg=o.bg||'#d5d8de';o.loop=o.loop||6500;if(GP[o.no])o.p=GP[o.no];if(GIMG.includes(o.no))o.img='img/g'+o.no+'.jpg';def(o)};
 const desk=(H,c)=>H.abs({inset:'0',background:c||'radial-gradient(circle at 50% 35%,#eef0f3,#c9cdd4)'});
 const sheet=(H,w,h,css,x,y,dl)=>{const s=H.abs(Object.assign({left:(x??(800-w/2))+'px',top:(y??(450-h/2))+'px',width:w+'px',height:h+'px',background:'#fff',overflow:'hidden',boxShadow:'0 30px 60px rgba(0,0,0,.22),0 6px 14px rgba(0,0,0,.12)'},css||{}));H.a(s,[{opacity:0,transform:'translateY(40px) scale(.96)'},{opacity:1,transform:'none'}],{d:700,dl:dl||0});return s};
 const A4=(H,css)=>{desk(H);return sheet(H,560,792,css)};
@@ -249,29 +249,22 @@ run(H,t){desk(H);const s=sheet(H,560,792,{background:'#f6e4e1'});const C='#5b4b4
   T(H,s,{left:'0',width:'560px',top:'712px',textAlign:'center',fontFamily:F.serif,fontWeight:'500',fontSize:'30px',letterSpacing:'.12em',color:C},t,2300,'fade');T(H,s,{left:'0',width:'560px',top:'756px',textAlign:'center',fontFamily:F.min,fontSize:'11px',color:C},'10:00 – 19:00 ／ 〇〇市〇〇町0-0-0 ／ TEL 000-000-0000',2400,'fade');
   for(let i=0;i<8;i++){const pt=H.abs({left:rnd(0,540)+'px',top:'-20px',width:'14px',height:'10px',borderRadius:'50% 0',background:pick(['#e8a6ae','#fff','#c97b84'])},s);H.a(pt,[{transform:'translate(0,0) rotate(0)'},{transform:`translate(${rnd(-80,80)}px,820px) rotate(${rnd(200,600)}deg)`}],{d:rnd(5000,8000),dl:rnd(0,4000),e:E.lin,i:Infinity})}}});
 
-defG({no:'10',cat:'FLYER',name:'ギャラリーの展示会',en:'Exhibition Typography',text:'nobu gallery',lead:'白地に黒の大きな文字だけ。美術館のポスターのような、文字組みで魅せる案内。',
-use:'<b>個展・写真展・ギャラリー・美術館・デザイン事務所のイベント</b>に。情報を「文字の組み方」だけで美しく見せる型です。',
-tips:['フォントは1〜2種類だけ。大きさの差（ジャンプ率）を極端にすると洗練されます','情報は左端や上端にそろえて、見えない格子（グリッド）に沿って並べる','作品の写真は1枚だけ、大胆に裁ち落とし（紙の端まで）で置くと美術館らしくなります'],
-p:`ギャラリーの展示会のフライヤーを、白地に黒の文字組みで魅せる、美術館のポスターのようなデザインで A4縦 に作ってください。
-・会場名：「{T}」
-・配色：白 #FFFFFF、黒 #111111、差し色に朱色 #E8442E を1か所だけ（小さな丸）
-・フォント：英字は Montserrat（300 と 800）、日本語は Noto Sans JP（400/700）
-・レイアウト：12分割のグリッドを想定し、すべての要素を左端と縦のラインにそろえる
-・上部：展覧会名を英字の極太で巨大に、2行で「SILENT / FORMS」（紙面の幅いっぱい、行間を詰めて）。下に日本語タイトル「静かなかたち」と作家名「〇〇 〇〇 個展」
-・中央右：作品写真の枠（モノクロのグラデーション）を、紙面の右端まで裁ち落としで大きく
-・中央左：縦に「2025.11.08 sat — 12.21 sun」「11:00 – 19:00（月曜休廊）」「入場無料」を、細い英字で小さく
-・下部：細い黒の横線を1本引き、その下に会場名・住所 〇〇市〇〇町0-0-0・Webサイトの URL
-・朱色の小さな丸（直径12px）を展覧会名の横に1つだけ
-・全体：飾りは一切なし。余白とそろえだけで美しく`,
-run(H,t){desk(H);const s=sheet(H,560,792,{background:'#fff'});const K='#111';
-  T(H,s,{left:'36px',top:'34px',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'13px',letterSpacing:'.3em',color:K},'EXHIBITION 2025',200,'fade');
-  T(H,s,{left:'30px',top:'60px',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'104px',lineHeight:'.92',letterSpacing:'-.03em',color:K,whiteSpace:'pre-line'},'SILENT\nFORMS',400,'up');
-  const dt=R(H,s,{left:'470px',top:'80px',width:'14px',height:'14px',borderRadius:'50%',background:'#e8442e'},1200,'pop');
-  T(H,s,{left:'36px',top:'270px',fontFamily:F.sans,fontWeight:'700',fontSize:'22px',color:K},'静かなかたち',800);T(H,s,{left:'36px',top:'304px',fontFamily:F.sans,fontSize:'13px',color:K},'〇〇 〇〇 個展',900,'fade');
-  const ph=R(H,s,{left:'240px',top:'350px',width:'320px',height:'300px',background:'linear-gradient(160deg,#e5e5e5,#8a8a8a 55%,#2c2c2c)',transformOrigin:'right'},1100,'grow');R(H,ph,{left:'90px',top:'70px',width:'130px',height:'160px',borderRadius:'50% 50% 6px 6px',background:'rgba(255,255,255,.85)'},1500,'fade');
-  [['2025.11.08 sat','300'],['— 12.21 sun','300'],['11:00 – 19:00','300'],['月曜休廊','400'],['入場無料','700']].forEach((q,i)=>T(H,s,{left:'36px',top:370+i*30+'px',fontFamily:/[一-龥]/.test(q[0])?F.sans:"'Montserrat',sans-serif",fontWeight:q[1],fontSize:'15px',color:K},q[0],1300+i*100,'left'));
-  R(H,s,{left:'36px',width:'488px',top:'690px',height:'1px',background:K,transformOrigin:'left'},1900,'grow');
-  T(H,s,{left:'36px',top:'706px',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'22px',color:K},t,2100);T(H,s,{left:'36px',top:'740px',fontFamily:F.sans,fontSize:'11px',color:K},'〇〇市〇〇町0-0-0 ／ www.example.com',2200,'fade')}});
+defG({no:'10',cat:'FLYER',name:'美容クリニックのキャンペーン',en:'Beauty Clinic Campaign',text:'nobu clinic',lead:'ベージュとくすみピンク、モデルの写真。美容雑誌の広告のような、上品なキャンペーンチラシ。',
+use:'<b>美容クリニック・アートメイク・エステ・脱毛・まつげサロン</b>のキャンペーンに。高級感と清潔感で「ここなら任せられる」と思ってもらえます。',
+tips:['モデル写真は紙面の上半分を大きく使い、文字は写真のない側にまとめます','ベージュ・グレージュ・くすみピンクの3色に、文字はこげ茶。真っ黒を使わないのが上品さのコツ','料金表は細い線だけで組み、キャンペーン価格だけをくすみピンクで目立たせます'],
+p:'',
+run(H,t){desk(H);const s=sheet(H,560,792,{background:'radial-gradient(circle at 70% 20%,#fbf7f2,#ece3d9 60%,#e2d6ca)'});const C='#5a463c',MV='#b88a8a';
+  T(H,s,{right:'-6px',top:'40px',writingMode:'vertical-rl',fontFamily:F.serif,fontWeight:'700',fontSize:'84px',letterSpacing:'.08em',color:'rgba(255,255,255,.75)'},'SPECIAL',200,'fade');
+  const ph=R(H,s,{left:'250px',top:'0',width:'250px',height:'400px',background:'linear-gradient(160deg,#efe6dd,#d9c7b8)',overflow:'hidden'},300,'fade');H.abs({left:'40px',top:'40px',width:'190px',height:'300px',borderRadius:'95px 95px 60px 60px',background:'linear-gradient(170deg,#8a5a3c,#5e3a26)'},ph);H.abs({left:'70px',top:'80px',width:'120px',height:'150px',borderRadius:'50% 50% 46% 46%',background:'linear-gradient(160deg,#f6e2d3,#e9c8b2)'},ph);H.abs({left:'50px',top:'290px',width:'170px',height:'140px',borderRadius:'80px 80px 0 0',background:'#f4ede6'},ph);H.abs({left:'60px',top:'190px',width:'40px',height:'90px',borderRadius:'20px',background:'#ecd2bf',rotate:'-20deg'},ph);
+  T(H,s,{left:'30px',top:'40px',fontFamily:"'Great Vibes',cursive",fontSize:'40px',color:C},'Medical Art Make',500,'fade');
+  T(H,s,{left:'30px',top:'96px',fontFamily:F.min,fontWeight:'800',fontSize:'40px',color:C},'アートメイク',600);T(H,s,{left:'32px',top:'148px',fontFamily:F.serif,fontWeight:'700',fontSize:'22px',letterSpacing:'.1em',color:C},'GUEST ARTIST',700,'fade');
+  T(H,s,{left:'32px',top:'190px',fontFamily:F.min,fontSize:'13px',color:C},'メイクに自信がない、時間がかかる…',800,'fade');T(H,s,{left:'32px',top:'214px',fontFamily:F.min,fontWeight:'800',fontSize:'22px',lineHeight:'1.4',color:C,whiteSpace:'pre-line'},'医療アートメイクで\n理想の自分に',900);
+  T(H,s,{left:'34px',top:'300px',width:'92px',height:'92px',borderRadius:'50%',background:MV,color:'#fff',display:'flex',alignItems:'center',justifyContent:'center',textAlign:'center',fontFamily:F.min,fontSize:'12px',lineHeight:'1.4',whiteSpace:'pre-line'},'症例件数\n1,500件\n以上',1000,'pop');
+  const cp=T(H,s,{left:'400px',top:'330px',width:'136px',height:'136px',borderRadius:'50%',background:'#c99a9a',color:'#fff',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',fontFamily:F.min,boxShadow:'0 6px 20px rgba(90,70,60,.2)'},null,1100,'pop');H.el('div',{fontFamily:"'Great Vibes',cursive",fontSize:'24px'},cp,'Campaign');H.el('div',{fontSize:'12px'},cp,'眉 アートメイク');H.el('div',{fontSize:'24px',fontWeight:'800'},cp,'¥44,000');
+  ['パウダー眉','毛並み眉','リップ','アイライン','ほくろ'].forEach((w,i)=>{R(H,s,{left:30+i*100+'px',top:'420px',width:'88px',height:'72px',background:'linear-gradient(135deg,#d8c3b4,#b79c8a)'},1200+i*80,'pop');T(H,s,{left:30+i*100+'px',width:'88px',textAlign:'center',top:'496px',fontFamily:F.min,fontSize:'10px',color:C},w,1250+i*80,'fade')});
+  T(H,s,{left:'30px',top:'528px',fontFamily:F.min,fontWeight:'800',fontSize:'16px',color:C},'＋ アートメイク料金表',1500,'fade');
+  [['眉（パウダー）','¥60,000','¥45,000'],['リップ','¥88,000','¥64,000'],['アイライン','¥55,000','¥40,000']].forEach((r,i)=>{const y=560+i*36;R(H,s,{left:'30px',width:'500px',top:y+30+'px',height:'1px',background:'rgba(90,70,60,.25)'},1600+i*100);T(H,s,{left:'34px',top:y+'px',fontFamily:F.min,fontSize:'15px',color:C},r[0],1600+i*100,'fade');T(H,s,{left:'250px',top:y+'px',fontFamily:F.min,fontSize:'14px',color:'#9a8a80',textDecoration:'line-through'},r[1],1650+i*100,'fade');T(H,s,{left:'360px',top:y-4+'px',fontFamily:F.min,fontWeight:'800',fontSize:'20px',color:MV},'→ '+r[2],1700+i*100,'fade')});
+  R(H,s,{left:'0',bottom:'0',width:'560px',height:'90px',background:'#a98383'},1900,'fade');T(H,s,{left:'0',width:'560px',textAlign:'center',top:'716px',fontFamily:F.serif,fontWeight:'700',fontSize:'26px',letterSpacing:'.2em',color:'#fff'},t,2000,'fade');T(H,s,{left:'0',width:'560px',textAlign:'center',top:'756px',fontFamily:F.min,fontSize:'12px',color:'#fff'},'ご予約・カウンセリングは LINE から',2100,'fade')}});
 
 /* POSTER */
 defG({no:'11',cat:'POSTER',name:'北欧家具ショップのポスター',en:'Nordic Furniture Poster',text:'nobu furniture',lead:'セージグリーンとオーク材の色。余白たっぷりの、暮らしを感じる家具ポスター。',
@@ -372,28 +365,24 @@ run(H,t){desk(H);const s=sheet(H,560,792,{background:'#fff8e7'});const C='#5c403
   [['園庭で毎日外あそび','#b5e48c'],['給食は手作り','#ffd97d'],['延長保育 19:00まで','#a0d8ef']].forEach((f,i)=>{T(H,s,{left:'110px',top:584+i*40+'px',fontFamily:MG,fontWeight:'500',fontSize:'18px',color:C,paddingLeft:'36px'},f[0],2200+i*120,'left');R(H,s,{left:'110px',top:588+i*40+'px',width:'24px',height:'24px',borderRadius:'50%',background:f[1]},2200+i*120,'pop')});
   R(H,s,{left:'30px',width:'500px',top:'712px',height:'64px',borderRadius:'32px',background:'#fff'},2500,'fade');T(H,s,{left:'60px',top:'718px',fontFamily:MG,fontWeight:'900',fontSize:'24px',color:C},t,2600);T(H,s,{left:'60px',top:'750px',fontFamily:MG,fontSize:'11px',color:C},'〇〇市〇〇町0-0-0 ／ TEL 000-000-0000',2650,'fade');R(H,s,{left:'464px',top:'718px',width:'52px',height:'52px',background:'repeating-conic-gradient(#5c4033 0 25%,#fff 0 50%) 0 0/13px 13px',borderRadius:'6px'},2700,'pop')}});
 
-defG({no:'15',cat:'POSTER',name:'ヨガスタジオの体験レッスン',en:'Yoga Studio',text:'yoga studio nobu',lead:'テラコッタと砂色のアーチ。夕暮れのような、心が落ち着くポスター。',
-use:'<b>ヨガ・ピラティススタジオ、整体、エステ、ウェルネス系のサロン</b>の体験会や新規募集に。',
-tips:['アーチ（上が半円の形）は今いちばん人気のモチーフ。写真の枠に使うだけでおしゃれに','アースカラー（テラコッタ・砂・オリーブ）は、グラデーションでつなぐとより自然','人物は線画やシルエットにすると、どんな人でも「自分ごと」として見られます'],
-p:`ヨガスタジオの「体験レッスン」ポスターを、テラコッタと砂色のアーチが印象的な、心が落ち着くデザインで A3縦（画面では縦横比を同じに）で作ってください。
-・スタジオ名：「{T}」
-・配色：砂色 #EFE3D3、テラコッタ #C8714E、オレンジ #E9A86B、オリーブ #8A8F6A、文字はこげ茶 #4A3428
-・フォント：英字は Montserrat（300）、日本語は Zen Kaku Gothic New（400/700）
-・中央：大きなアーチ型の枠（上が半円）に、夕日のグラデーション（オレンジ→テラコッタ）。中に太陽の半円と、ヨガのポーズ（木のポーズ）をとる人のシルエット
-・アーチの後ろに、少しずらした細い線のアーチを2重に重ねる
-・上部：英字の細い文字で「BREATHE & BALANCE」、日本語で「からだを、ゆるめる時間。」
-・下部：「はじめての方限定」「体験レッスン ¥1,000」を大きく。テラコッタの円の中に「60分」
-・レッスン情報：朝ヨガ 7:00 ／ 夜ヨガ 19:30 ／ 少人数制（最大8名）
-・最下部：スタジオ名（英字、字間広め）、住所 〇〇市〇〇町0-0-0、予約は Web から（QRコードの枠）
-・全体：角は丸く、線は細く、ゆっくり呼吸するような余白に`,
-run(H,t){desk(H);const s=sheet(H,560,792,{background:'#efe3d3'});const C='#4a3428';
-  T(H,s,{left:'0',width:'560px',top:'40px',textAlign:'center',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'16px',letterSpacing:'.45em',color:C},'BREATHE & BALANCE',200,'fade');T(H,s,{left:'0',width:'560px',top:'70px',textAlign:'center',fontFamily:F.zen,fontWeight:'700',fontSize:'26px',letterSpacing:'.15em',color:C},'からだを、ゆるめる時間。',500);
-  [[150,130],[140,120]].forEach((q,i)=>R(H,s,{left:q[0]-10+i*24+'px',top:q[1]-10+i*24+'px',width:'280px',height:'380px',borderRadius:'140px 140px 0 0',border:'1px solid #c8714e',boxSizing:'border-box'},700+i*150,'fade'));
-  const ar=R(H,s,{left:'140px',top:'140px',width:'280px',height:'380px',borderRadius:'140px 140px 0 0',background:'linear-gradient(#e9a86b,#c8714e)',overflow:'hidden'},900,'up');const sun=R(H,ar,{left:'60px',top:'230px',width:'160px',height:'160px',borderRadius:'50%',background:'#f6d3a6'},1100,'fade');H.a(sun,[{translate:'0 40px'},{translate:'0 0'}],{d:3000,dl:1100});
-  R(H,ar,{left:'0',bottom:'0',width:'280px',height:'70px',background:'#8a8f6a'},1200,'fade');
-  const p=R(H,ar,{left:'110px',top:'120px',width:'60px',height:'200px'},1500,'up');const K='#4a3428';H.abs({left:'18px',top:'0',width:'24px',height:'24px',borderRadius:'50%',background:K},p);H.abs({left:'22px',top:'26px',width:'16px',height:'80px',borderRadius:'8px',background:K},p);H.abs({left:'27px',top:'100px',width:'7px',height:'90px',borderRadius:'4px',background:K},p);H.abs({left:'14px',top:'100px',width:'7px',height:'50px',borderRadius:'4px',background:K,rotate:'50deg',transformOrigin:'50% 0'},p);[[-1],[1]].forEach(d=>H.abs({left:'27px',top:'-50px',width:'6px',height:'70px',borderRadius:'3px',background:K,rotate:d[0]*14+'deg',transformOrigin:'50% 100%'},p));
-  T(H,s,{left:'0',width:'560px',top:'548px',textAlign:'center',fontFamily:F.zen,fontSize:'15px',color:C,letterSpacing:'.1em'},'はじめての方限定',1800,'fade');
-  T(H,s,{left:'110px',top:'572px',fontFamily:F.zen,fontWeight:'700',fontSize:'40px',color:'#c8714e'},'体験レッスン ¥1,000',2000);T(H,s,{left:'34px',top:'566px',width:'64px',height:'64px',borderRadius:'50%',background:'#c8714e',color:'#fff',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:F.zen,fontWeight:'700',fontSize:'18px'},'60分',2100,'pop');
-  T(H,s,{left:'0',width:'560px',top:'640px',textAlign:'center',fontFamily:F.zen,fontSize:'15px',color:C},'朝ヨガ 7:00 ／ 夜ヨガ 19:30 ／ 少人数制（最大8名）',2300,'fade');
-  R(H,s,{left:'60px',width:'440px',top:'684px',height:'1px',background:C,opacity:.3},2300);
-  T(H,s,{left:'60px',top:'702px',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'22px',letterSpacing:'.3em',color:C},t,2500,'fade');T(H,s,{left:'60px',top:'742px',fontFamily:F.zen,fontSize:'11px',color:C},'〇〇市〇〇町0-0-0 ／ ご予約は Web から',2600,'fade');R(H,s,{left:'448px',top:'700px',width:'52px',height:'52px',borderRadius:'8px',background:'repeating-conic-gradient(#4a3428 0 25%,#efe3d3 0 50%) 0 0/13px 13px'},2700,'pop')}});
+defG({no:'15',cat:'POSTER',name:'セミナー告知のチラシ',en:'Seminar Flyer',text:'nobu株式会社',lead:'黄色と紺の2色に、雲形の吹き出しの大見出し。情報が多くてもスッと読める勉強会のチラシ。',
+use:'<b>セミナー・勉強会・説明会・講演会・商工会のイベント</b>の告知に。日時・場所・内容・講師と情報が多いチラシを、読みやすく整理できます。',
+tips:['色は黄色・紺・白の3色だけ。情報が多いチラシほど、色数をしぼると読みやすくなります','「日時」「場所」「内容」を紺の札（ラベル）にして左にそろえると、ひと目で探せます','講師の顔写真があると参加率が上がります。肩書きと一緒に右下へ'],
+p:'',
+run(H,t){desk(H);const s=sheet(H,560,792,{background:'#ffd23f'});const NV='#1d2a6b',MG="'Zen Maru Gothic',sans-serif";
+  T(H,s,{left:'0',width:'560px',top:'34px',textAlign:'center',fontFamily:MG,fontWeight:'900',fontSize:'18px',color:NV},'＼ 小規模事業者向け ／',200,'fade');
+  const cl=R(H,s,{left:'24px',top:'62px',width:'512px',height:'176px',background:'#fff',borderRadius:'90px 70px 80px 60px / 60px 80px 60px 80px'},300,'pop');
+  const h=T(H,cl,{left:'0',width:'512px',top:'16px',textAlign:'center',fontFamily:MG,fontWeight:'900',fontSize:'50px',lineHeight:'1.25',color:NV,whiteSpace:'pre-line'},'補助金 活用\n攻略セミナー',500,'pop');
+  T(H,s,{left:'0',width:'560px',top:'246px',textAlign:'center',fontFamily:MG,fontWeight:'900',fontSize:'15px',color:NV},'［ 第1回 経営者勉強会 ］',700,'fade');
+  T(H,s,{left:'448px',top:'200px',width:'96px',height:'96px',borderRadius:'50%',background:NV,color:'#fff',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',fontFamily:MG,fontWeight:'900',fontSize:'11px',lineHeight:'1.3'},null,900,'pop').innerHTML='初回開催記念<br><span style="font-size:30px">無料</span>';
+  T(H,s,{left:'24px',top:'290px',width:'250px',background:NV,color:'#fff',padding:'8px 12px',fontFamily:MG,fontWeight:'900',fontSize:'15px',lineHeight:'1.5',whiteSpace:'pre-line',boxSizing:'border-box'},'補助金を活用して、\nWebを使ったPR活動に',1000,'left');
+  T(H,s,{left:'24px',top:'352px',width:'250px',fontFamily:F.sans,fontSize:'11px',lineHeight:'1.7',color:NV,whiteSpace:'normal'},'HPやチラシで集客したい事業者向けに、補助金の概要・活用方法・申請のコツをやさしく解説します。',1100,'fade');
+  const ck=R(H,s,{left:'290px',top:'290px',width:'246px',height:'150px',background:'#fff',borderRadius:'26px'},1100,'pop');H.el('div',{position:'absolute',left:'0',right:'0',top:'12px',textAlign:'center',fontFamily:MG,fontWeight:'900',fontSize:'13px',color:NV},ck,'こんな悩みを持つ方におすすめ！');
+  ['販路開拓に悩んでいる','集客の時間・人手がない','HPやチラシを活用したい','補助金について知りたい'].forEach((w,i)=>H.el('div',{position:'absolute',left:'18px',top:40+i*25+'px',fontFamily:F.sans,fontSize:'12px',color:NV},ck,'☑ '+w));
+  [['日時',null],['場所','nobu株式会社 または Zoom'],['セミナー内容','① 補助金の概要と活用例\n② 申請書作成のポイント\n③ 採択のコツ']].forEach((r,i)=>{const y=[452,532,586][i];T(H,s,{left:'24px',top:y+'px',width:'96px',textAlign:'center',background:NV,color:'#fff',padding:'6px 0',fontFamily:MG,fontWeight:'900',fontSize:'13px'},r[0],1300+i*150,'left');
+    if(i===0){const d=T(H,s,{left:'132px',top:y-14+'px',fontFamily:MG,fontWeight:'900',color:NV,lineHeight:'1.1'},null,1350,'fade');d.innerHTML='<span style="font-size:18px">2026/</span><span style="font-size:52px">1/28</span><span style="font-size:16px"> 水</span><br><span style="font-size:16px">14:00 - 15:30</span>'}
+    else T(H,s,{left:'132px',top:y+(i===1?2:0)+'px',fontFamily:MG,fontWeight:'900',fontSize:i===1?'17px':'12px',lineHeight:'1.7',color:NV,whiteSpace:'pre-line'},i===1?t+' または Zoom':r[1],1350+i*150,'fade')});
+  T(H,s,{left:'330px',top:'552px',background:NV,color:'#fff',padding:'3px 12px',fontFamily:MG,fontWeight:'900',fontSize:'12px'},'講師紹介',1700,'fade');
+  [0,1].forEach(i=>{const b=R(H,s,{left:'330px',top:578+i*74+'px',width:'206px',height:'66px',background:'#fff'},1800+i*120,'pop');H.abs({left:'0',top:'0',width:'66px',height:'66px',background:'radial-gradient(circle at 50% 40%,#e9c9b0 0 22%,transparent 23%),radial-gradient(circle at 50% 110%,#2b3550 0 48%,transparent 49%),#dfe6f0'},b);H.el('div',{position:'absolute',left:'76px',top:'12px',fontFamily:F.sans,fontSize:'10px',color:NV},b,'中小企業診断士');H.el('div',{position:'absolute',left:'76px',top:'30px',fontFamily:MG,fontWeight:'900',fontSize:'16px',color:NV},b,'〇〇 〇〇')});
+  R(H,s,{left:'24px',top:'700px',width:'512px',height:'72px',background:'#fff',borderRadius:'16px'},2100,'fade');T(H,s,{left:'44px',top:'716px',fontFamily:MG,fontWeight:'900',fontSize:'13px',lineHeight:'1.6',color:NV,whiteSpace:'pre-line'},'お問い合わせはこちら\nまたはSNSで直接連絡をお願いします',2200,'fade');qr(H,s,400,710,52,NV,'#fff',2300);qr(H,s,466,710,52,NV,'#fff',2350)}});
+

@@ -57,7 +57,7 @@ function mkH(S){
     abs(css,parent,text){return H.el('div',Object.assign({position:'absolute'},css||{}),parent,text)},
     chars(str,parent,css){return [...str].map(ch=>H.el('span',Object.assign({display:'inline-block',whiteSpace:'pre'},css||{}),parent,ch))},
     a(el,kf,o){o=o||{};return el.animate(kf,{duration:o.d??600,delay:o.dl??0,easing:o.e??E.out,fill:o.f??'both',iterations:o.i??1,direction:o.dir??'normal'})},
-    wait(ms,fn){timers.push(setTimeout(fn,ms))},
+    wait(ms,fn){if(H.static){fn();return}timers.push(setTimeout(fn,ms))},
     raf(fn){const r={id:0};const t0=performance.now();const tick=now=>{fn((now-t0)/1000);r.id=requestAnimationFrame(tick)};r.id=requestAnimationFrame(tick);rafs.push(r)},
     svg(w,h,parent,css){const s=document.createElementNS('http://www.w3.org/2000/svg','svg');s.setAttribute('viewBox',`0 0 ${w} ${h}`);s.setAttribute('width',w);s.setAttribute('height',h);Object.assign(s.style,{position:'absolute',left:'0',top:'0'},css||{});(parent||S).appendChild(s);return s},
     sv(tag,attrs,parent){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const k in attrs)e.setAttribute(k,attrs[k]);parent.appendChild(e);return e},
@@ -74,7 +74,8 @@ class Player{
     new ResizeObserver(fit).observe(screen);fit();}
   play(m,txt,once){this.stop();this.m=m;this.L=m.loopFn?m.loopFn(words(txt)):m.loop;const H=this.H,S=this.S;
     const cyc=()=>{H.clear();S.style.background=m.bg||'#0b0b0d';S.style.color='#fff';this.t0=performance.now();
-      try{m.run(H,txt,words(txt))}catch(e){console.error(m.id,e)}
+      H.static=SEC[m.sec].ui==='graphic';try{m.run(H,txt,words(txt))}catch(e){console.error(m.id,e)}
+      if(H.static){S.getAnimations({subtree:true}).forEach(a=>{const it=a.effect&&a.effect.getTiming().iterations;if(it===Infinity)a.cancel();else a.finish()});return}
       if(!once)this.loopT=setTimeout(cyc,this.L)};
     (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(cyc);}
   stop(){clearTimeout(this.loopT);this.H.clear()}
@@ -146,7 +147,7 @@ function renderItem(m){
   const S=SEC[m.sec];const k=`var(${CAT[m.cat].k})`;const i=ITEMS[m.sec].indexOf(m);const pv=ITEMS[m.sec][i-1],nx=ITEMS[m.sec][i+1];
   const P=$('#p-item');P.style.setProperty('--k',k);
   const txt=custom[m.id]??m.text;
-  const left=S.ui==='illust'?illustCard(m):`
+  const left=S.ui==='illust'?illustCard(m):S.ui==='graphic'?graphicCard(m,txt,S):`
       <div class="label">${S.showLabel}</div>
       <div class="monitor"><div class="screen" id="mScreen"><div class="stage" id="mStage"></div></div>
         <div class="mbar"><span class="rec"></span><span class="tc" id="mTc">00:00:00:00</span><span class="sp"></span><span class="tc">${S.monLabel}</span><button class="mini" id="replay" type="button">最初から再生</button></div></div>
@@ -154,7 +155,7 @@ function renderItem(m){
       <div class="hint">${m.multi?'スペースか「／」で区切ると、言葉ごとに使い分けられます。':'入力するとプレビューと右のプロンプトが同時に変わります。'}</div>`;
   P.innerHTML=`
   <div class="mhead"><div class="mno">No.${m.no}</div><div class="mtitle">
-    <div class="meta"><span class="chip">${m.cat}｜${CAT[m.cat].ja}</span><span>${m.en||''}</span>${m.loop&&S.ui!=='illust'?`<span>LOOP ${(m.loopFn?m.loopFn(words(m.text)):m.loop)/1000}s</span>`:''}</div>
+    <div class="meta"><span class="chip">${m.cat}｜${CAT[m.cat].ja}</span><span>${m.en||''}</span>${m.loop&&S.ui!=='illust'&&S.ui!=='graphic'?`<span>LOOP ${(m.loopFn?m.loopFn(words(m.text)):m.loop)/1000}s</span>`:''}</div>
     <h2>${m.name}</h2><p>${m.lead}</p></div></div>
   <div class="mgrid">
     <div>${left}<div style="margin-top:22px" class="usebox"><div class="label">使いどころ</div>${m.use}</div></div>
@@ -171,9 +172,9 @@ function renderItem(m){
   const showP=()=>{const t=getT();let h=esc(fill(m.p,t));if(t)h=h.replaceAll(esc(t),`<span class="ph">${esc(t)}</span>`);$('#ptext').innerHTML=h};
   showP();
   if(mplayer)mplayer.stop();mplayer=null;
-  if(S.ui!=='illust'){mplayer=new Player($('#mStage'),$('#mScreen'));const start=()=>mplayer.play(m,getT(),reduce);start();
+  if(S.ui!=='illust'){const st=$('#mStage');if(st)mplayer=new Player(st,$('#mScreen'));const start=()=>{if(mplayer)mplayer.play(m,getT(),reduce)};start();
     let deb;$('#mText').addEventListener('input',()=>{custom[m.id]=$('#mText').value;showP();clearTimeout(deb);deb=setTimeout(start,350)});
-    $('#resetText').onclick=()=>{delete custom[m.id];$('#mText').value=m.text;showP();start()};$('#replay').onclick=start;}
+    $('#resetText').onclick=()=>{delete custom[m.id];$('#mText').value=m.text;showP();start()};const rp=$('#replay');if(rp)rp.onclick=start;}
   const copyTo=(btn,text,label)=>{const ok=()=>{btn.textContent='コピーしました';btn.classList.add('done');setTimeout(()=>{btn.textContent=label;btn.classList.remove('done')},1600)};
     try{navigator.clipboard.writeText(text).then(ok,()=>{fallback(text);ok()})}catch(e){fallback(text);ok()}};
   $('#copyBtn').onclick=()=>{const a=sel?sel.value:S.ars?S.ars[0]:'';copyTo($('#copyBtn'),S.base(a)+`\n\n【${S.unit}指示】\n`+fill(m.p,getT()),'プロンプトをコピー')};
@@ -181,6 +182,13 @@ function renderItem(m){
 }
 function fallback(full){const p=$('#ptext');p.textContent=full;const r=document.createRange();r.selectNodeContents(p);const s=getSelection();s.removeAllRanges();s.addRange(r)}
 
+function graphicCard(m,txt,S){
+  const shot=m.img?`<div class="gshot"><img src="${m.img}" alt="${esc(m.name)}の作例" loading="lazy"></div><div class="exnote">作例：このプロンプトを ChatGPT（画像生成）に送って作った参考イメージです。文字や写真の細部は、AIや生成のたびに変わります。</div>`
+    :`<div class="monitor"><div class="screen" id="mScreen"><div class="stage" id="mStage"></div></div></div><div class="exnote">※AIでの作例画像は準備中です。仕上がりのイメージを再現した見本を表示しています。</div>`;
+  return `<div class="label">${S.showLabel}</div>${shot}
+      <div class="txtrow"><label for="mText">${S.inputLabel}</label><input id="mText" value="${esc(txt)}" maxlength="40"><button class="mini" id="resetText" type="button">元に戻す</button></div>
+      <div class="hint">入力すると、右のプロンプトの中の${S.inputLabel}が置き換わります。</div>`;
+}
 function illustCard(m){
   const pal=m.pal||['#222','#555','#888','#bbb','#eee'];
   const ex=m.img?`<div class="exrow"><figure><img src="img/base.jpg" alt="作例の元写真：公園に立つ架空の男の子" loading="lazy"><figcaption>BEFORE｜元の写真</figcaption></figure><i>→</i><figure><img src="${m.img}" alt="${esc(m.name)}の作例" loading="lazy"><figcaption>AFTER｜${esc(m.name)}</figcaption></figure></div><div class="exnote">作例：AIで生成した架空の男の子の写真をもとに作成した参考イメージです。${m.exnote?esc(m.exnote)+' ':''}仕上がりはAIや写真によって変わります。</div>`:'';
@@ -196,7 +204,7 @@ function illustCard(m){
 }
 
 let coverI=0,coverT;
-function coverLoop(){const picks=['a01','m01','o03','t01','g01','a11','m35','o31','t18','a21','h02','g13'].map(findItem).filter(Boolean);
+function coverLoop(){const picks=['a01','m01','o03','t01','a16','a11','m35','o31','t18','a21','h02','a26'].map(findItem).filter(Boolean);
   const m=picks[coverI%picks.length];coverI++;player.play(m,m.text,true);$('#coverName').textContent=`${SEC[m.sec].name} No.${m.no} ${m.name}`;coverT=setTimeout(coverLoop,Math.min(m.loop,6000))}
 
 function go(id){

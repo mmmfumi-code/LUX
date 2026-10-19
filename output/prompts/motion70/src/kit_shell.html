@@ -1,4 +1,4 @@
-<title>ChatGPT作例キット</title>
+<title>グラフィック作例キット</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
 /* Layout: 1列のチェックリスト。上に手順と元写真、下に49本のコピー用カード */
@@ -38,14 +38,13 @@ details summary{cursor:pointer;font-size:13px;color:var(--accent)}
 pre{margin:8px 0 0;padding:12px 14px;border-radius:10px;background:var(--fill);font-family:var(--mono);font-size:12px;white-space:pre-wrap;word-break:break-word;max-height:300px;overflow:auto}
 </style>
 <div class="wrap">
-  <h1>ChatGPT作例キット</h1>
-  <p class="lead">イラスト変換の残りの作例を、ChatGPTで作るためのコピペ用シートです。</p>
-  <div class="card how">
-    <img src="img/base.jpg" alt="元写真：公園に立つ架空の男の子">
+  <h1>グラフィック作例キット</h1>
+  <p class="lead">グラフィック30本の作例画像を、ChatGPTで作るためのコピペ用シートです。</p>
+  <div class="card how" style="grid-template-columns:1fr">
     <ol>
-      <li><b>左の写真を保存</b>（スマホは長押し、PCは右クリック →「画像を保存」）</li>
-      <li>ChatGPTで<b>新しいチャット</b>を開き、写真を添付する</li>
+      <li>ChatGPTで<b>新しいチャット</b>を開く（写真の添付は不要です）</li>
       <li>下のカードの<b>「コピー」</b>を押して貼り付け、送信</li>
+      <li>文字が崩れていたら「〇〇の文字を正しく直して」と1回だけ直してもらう</li>
       <li>できた画像を保存し、<b>番号と一緒に</b>Claudeのチャットに送る（例：「No.12」）。何枚かまとめても、順番がバラバラでもOK</li>
       <li>送ったら「済み」にチェック（このブラウザに記録されます）</li>
     </ol>
@@ -54,29 +53,26 @@ pre{margin:8px 0 0;padding:12px 14px;border-radius:10px;background:var(--fill);f
   <div id="list" class="wrap" style="gap:12px"></div>
 </div>
 <script>
-const CAT={};const ITEMS={i:[]};let CUR_SEC='i';function def(o){o.sec=o.sec||CUR_SEC;o.id=o.sec+o.no;ITEMS[o.sec].push(o)}
+const CAT={};const ITEMS={g:[]};let CUR_SEC='g';function def(o){o.sec=o.sec||CUR_SEC;o.id=o.sec+o.no;ITEMS[o.sec].push(o)}
 const F={};
 </script>
 <script>
 /*DATA*/
 </script>
 <script>
-const SEC=SECTIONS();const base=SEC.i.base('元の写真と同じ');
-const SPECIAL={
- '57':{note:'この作例は写真を添付せずに作ります（元写真に動物がいないため、架空の柴犬で作ります）。',pre:'写真の添付は不要です。茶色と白の毛の、元気な架空の柴犬「こむぎ」をペットとして想定してください。\n\n'},
- '58':{note:'写真の代わりに「男の子が描いたクレヨン画」を想定して作ります。添付した写真は「この子が描いた絵」という設定に使ってください。',pre:'添付した写真の男の子が、自分の姿をクレヨンで描いた子どもらしい絵（黄色いパーカー・紺の短パン・赤い靴・青い帽子）を想定し、その絵を立体化してください。\n\n'}
-};
-const done=new Set(EXIMG);
-let saved={};try{saved=JSON.parse(localStorage.getItem('kit-done')||'{}')}catch(e){}
-const list=document.getElementById('list');const todo=ITEMS.i.filter(m=>!done.has(m.no));
+const SEC=SECTIONS();const base=SEC.g.base();
+const SPECIAL={};
+const done=new Set(GIMG);
+let saved={};try{saved=JSON.parse(localStorage.getItem('gkit-done')||'{}')}catch(e){}
+const list=document.getElementById('list');const todo=ITEMS.g.filter(m=>!done.has(m.no));
 const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-function text(m){const sp=SPECIAL[m.no];return (sp?sp.pre:'')+base+'\n\n【変換指示】\n'+m.p}
+function text(m){const sp=SPECIAL[m.no];return base+'\n\n【デザイン指示】\n'+m.p.replaceAll('{T}',m.text)}
 todo.forEach(m=>{const c=document.createElement('div');c.className='card item';const sp=SPECIAL[m.no];
   c.innerHTML=`<div class="row"><span class="no">No.${m.no}</span><span class="nm">${esc(m.name)}<br><span class="cat">${CAT[m.cat]?CAT[m.cat].ja:''}・${esc(m.en)}</span></span><button class="copy" type="button">コピー</button><label class="chk"><input type="checkbox" id="c${m.no}">済み</label></div>${sp?`<div class="note">${sp.note}</div>`:''}<details><summary>プロンプトを見る</summary><pre>${esc(text(m))}</pre></details>`;
   const b=c.querySelector('.copy');b.onclick=()=>{const t=text(m);const ok=()=>{b.textContent='コピーしました';b.classList.add('ok');setTimeout(()=>{b.textContent='コピー';b.classList.remove('ok')},1500)};
     try{navigator.clipboard.writeText(t).then(ok,()=>{c.querySelector('details').open=true;const r=document.createRange();r.selectNodeContents(c.querySelector('pre'));getSelection().removeAllRanges();getSelection().addRange(r)})}catch(e){c.querySelector('details').open=true}};
   const cb=c.querySelector('input');cb.checked=!!saved[m.no];c.classList.toggle('done',cb.checked);
-  cb.onchange=()=>{saved[m.no]=cb.checked;c.classList.toggle('done',cb.checked);try{localStorage.setItem('kit-done',JSON.stringify(saved))}catch(e){}upd()};list.appendChild(c)});
+  cb.onchange=()=>{saved[m.no]=cb.checked;c.classList.toggle('done',cb.checked);try{localStorage.setItem('gkit-done',JSON.stringify(saved))}catch(e){}upd()};list.appendChild(c)});
 function upd(){const n=todo.filter(m=>saved[m.no]).length;document.getElementById('cnt').textContent=`${n} / ${todo.length}`;document.getElementById('barI').style.width=(n/todo.length*100)+'%'}
 upd();
 </script>

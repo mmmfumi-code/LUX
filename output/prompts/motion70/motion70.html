@@ -152,6 +152,8 @@ main{max-width:1200px;margin-inline:auto;padding-top:40px}
 .tools{display:flex;flex-wrap:wrap;gap:6px}
 .tools span{background:var(--surface);border-radius:999px;padding:4px 12px;font-size:13px;box-shadow:var(--shadow)}
 .tools span b{color:var(--accent);font-weight:600}
+.gshot{border-radius:18px;padding:28px;background:radial-gradient(circle at 50% 35%,#eef0f3,#c9cdd4);display:flex;justify-content:center;box-shadow:var(--shadow)}
+.gshot img{display:block;max-width:100%;max-height:760px;height:auto;width:auto;box-shadow:0 18px 40px rgba(0,0,0,.22)}
 .exrow{display:grid;grid-template-columns:minmax(0,.8fr) auto minmax(0,1.2fr);gap:14px;align-items:center;padding:18px;background:var(--surface2)}
 .exrow figure{margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
 .exrow img{width:100%;max-width:100%;height:auto;border-radius:12px;display:block;background:var(--fill)}
@@ -269,7 +271,7 @@ function mkH(S){
     abs(css,parent,text){return H.el('div',Object.assign({position:'absolute'},css||{}),parent,text)},
     chars(str,parent,css){return [...str].map(ch=>H.el('span',Object.assign({display:'inline-block',whiteSpace:'pre'},css||{}),parent,ch))},
     a(el,kf,o){o=o||{};return el.animate(kf,{duration:o.d??600,delay:o.dl??0,easing:o.e??E.out,fill:o.f??'both',iterations:o.i??1,direction:o.dir??'normal'})},
-    wait(ms,fn){timers.push(setTimeout(fn,ms))},
+    wait(ms,fn){if(H.static){fn();return}timers.push(setTimeout(fn,ms))},
     raf(fn){const r={id:0};const t0=performance.now();const tick=now=>{fn((now-t0)/1000);r.id=requestAnimationFrame(tick)};r.id=requestAnimationFrame(tick);rafs.push(r)},
     svg(w,h,parent,css){const s=document.createElementNS('http://www.w3.org/2000/svg','svg');s.setAttribute('viewBox',`0 0 ${w} ${h}`);s.setAttribute('width',w);s.setAttribute('height',h);Object.assign(s.style,{position:'absolute',left:'0',top:'0'},css||{});(parent||S).appendChild(s);return s},
     sv(tag,attrs,parent){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const k in attrs)e.setAttribute(k,attrs[k]);parent.appendChild(e);return e},
@@ -286,7 +288,8 @@ class Player{
     new ResizeObserver(fit).observe(screen);fit();}
   play(m,txt,once){this.stop();this.m=m;this.L=m.loopFn?m.loopFn(words(txt)):m.loop;const H=this.H,S=this.S;
     const cyc=()=>{H.clear();S.style.background=m.bg||'#0b0b0d';S.style.color='#fff';this.t0=performance.now();
-      try{m.run(H,txt,words(txt))}catch(e){console.error(m.id,e)}
+      H.static=SEC[m.sec].ui==='graphic';try{m.run(H,txt,words(txt))}catch(e){console.error(m.id,e)}
+      if(H.static){S.getAnimations({subtree:true}).forEach(a=>{const it=a.effect&&a.effect.getTiming().iterations;if(it===Infinity)a.cancel();else a.finish()});return}
       if(!once)this.loopT=setTimeout(cyc,this.L)};
     (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(cyc);}
   stop(){clearTimeout(this.loopT);this.H.clear()}
@@ -400,22 +403,21 @@ function SECTIONS(){
 ・品質：セマンティックなHTML、alt属性、十分な文字コントラスト、キーボードで操作できるボタン
 ・回答の最後に「公開前に差し替えるべき箇所」を箇条書きで教える`,
     fix:[['ありきたりな見た目になった','「よくあるテンプレートに見えない、記憶に残るデザインに作り直して。余白と文字のジャンプ率を極端にして」'],['スマホで崩れる','「375px幅でスクリーンショットを想定して、はみ出し・重なりを全部直して」'],['重い・カクつく','「アニメーションは transform と opacity だけで行い、will-change は動く要素だけに付けて」'],['文章が薄い','「各セクションのコピーを、ターゲットの悩み→解決→根拠の順で書き直して」'],['問い合わせを付けたい','「お問い合わせフォームを付けて。送信先は formspree などのサービスに後から差し替えられるように」']]},
-  g:{name:'グラフィック',en:'PRINT & BANNER',k:'--c-gold',ui:'motion',unit:'デザイン',lead:'チラシ・ポスター・バナー・ショップカード・名刺。印刷できるデザインを1ファイルで。',
-    showLabel:'このプロンプトで、こうなる（デザインの見本）',monLabel:'DESIGN PREVIEW',inputLabel:'店名・名前',
+  g:{name:'グラフィック',en:'PRINT & BANNER',k:'--c-gold',ui:'graphic',unit:'デザイン',lead:'チラシ・ポスター・バナー・ショップカード・名刺。ChatGPTに送るだけで、デザイン画像が完成。',
+    showLabel:'このプロンプトで、こうなる',inputLabel:'店名・名前',
     cats:{FLYER:1,POSTER:1,CARD:1},
-    desc:'チラシ、ポスター、バナー、ショップカード、名刺のデザインを、AIに作ってもらうためのプロンプトです。画像生成AIは日本語の文字が崩れやすいので、このプロンプトでは<b>HTMLで組んで画像やPDFに書き出す</b>方法にしています。文字がくっきり正確に出て、あとから文字の修正もできます。',
-    steps:['<b>近いデザインを選ぶ</b><br>入力欄に店名や名前を入れると、プロンプトの中の名前が置き換わります。','<b>「プロンプトをコピー」して Claude などに貼る</b><br>価格や住所などは、コピーしたあとに自分の内容へ書き換えてください。','<b>ブラウザで開いて確認</b><br>気になる所は「タイトルをもっと大きく」など会話で直します。','<b>印刷・書き出し</b><br>ブラウザの「印刷」→「PDFに保存」で入稿用PDFに。SNS用はスクリーンショットで画像にできます。'],
-    base:()=>`あなたは経験豊富なグラフィックデザイナー兼フロントエンドエンジニアです。
-次の【デザイン指示】どおりの印刷物（またはWeb用の画像）のデザインを、HTML・CSS の1ファイルで作ってください。
+    desc:'チラシ、ポスター、バナー、ショップカード、名刺のデザインを、<b>画像生成AI（ChatGPTなど）に1枚の画像として作ってもらう</b>ためのプロンプトです。スーパーの特売チラシから美容クリニックの広告、イラスト入りの名刺まで、そのまま使える完成度を目指した指示にしています。',
+    steps:['<b>近いデザインを選ぶ</b><br>入力欄に店名や名前を入れると、プロンプトの中の名前が置き換わります。','<b>「プロンプトをコピー」して ChatGPT に送る</b><br>価格・日付・住所などは、送る前に自分の内容へ書き換えてください。','<b>気になる所を一言で直す</b><br>文字が崩れたら「〇〇の文字を正しく直して」と送ります。下の「追い指示」もどうぞ。','<b>印刷・投稿する</b><br>SNSやWebならそのまま使えます。印刷する場合、小さな文字や価格は Canva などで上から打ち直すと確実です。'],
+    base:()=>`あなたはプロの広告グラフィックデザイナーです。次の【デザイン指示】どおりのデザインを、画像として1枚生成してください。
 
 【共通仕様】
-・サイズ：指示のサイズの紙面を1枚、画面中央に表示する。印刷物は @page で用紙サイズを指定し、ブラウザの「印刷 → PDFに保存」でそのまま入稿用PDFにできるようにする（余白なし、背景色も印刷）
-・文字：日本語は Google Fonts（指示のフォント）を使う。文字はすべてHTMLのテキストにして、あとから書き換えられるようにする
-・写真：外部の画像は使わず、写真が入る枠をグラデーションや図形で作り、<img> を差し替えやすいようにする
-・内容：店名・価格・日付・住所などは指示の内容を使い、足りない部分はそれらしいサンプル文言を入れる（サンプルだと分かるよう、住所や電話番号は「000-0000」のようにする）
-・読みやすさ：一番伝えたいこと（店名・セール内容など）が3秒で目に入る強弱をつける
-・回答の最後に「差し替えるべき箇所」を箇条書きで教える`,
-    fix:[['ごちゃごちゃしている','「情報の優先順位を3段階に分けて、3番目の情報は文字を小さく・色を薄くして」'],['安っぽい','「色数を3色に減らし、余白を1.5倍にして、文字の字間を少し広げて」'],['目立たない','「一番伝えたい文字を2倍の大きさにして、背景と補色の関係にして」'],['印刷でずれる','「@page のサイズと余白0を指定し、塗り足し3mmを付けて」'],['画像にしたい','「html2canvas を使って、PNGで保存するボタンを付けて」']]},
+・仕上がり：指示のサイズ・向きで、紙面（または画面）のデザインそのものを作る。指示がない限り、机・手・モックアップ・周りの背景は入れない
+・文字：「」で囲んだ日本語・数字は、一字一句そのまま正確に入れる。誤字、崩れた文字、意味のない文字は入れない。小さな説明文は最小限にする
+・写真とイラスト：人物・料理・商品はリアルな広告写真の質感で。イラストの指定があるものは、指定のタッチで描く
+・実在の企業名・ブランドのロゴ・有名人は使わない。住所や電話番号は「000-0000」のようなサンプル表記にする
+・強弱：いちばん伝えたいこと（店名・セール内容・日時など）が3秒で目に入るように、大きさと色にメリハリをつける
+・日本の広告デザイナーが作った、印刷物として自然で完成度の高い仕上がりにする`,
+    fix:[['文字が崩れた・間違っている','「デザインはそのままで、〇〇の文字だけを「正しい文字」に直して」'],['ごちゃごちゃしている','「情報を半分に減らして、いちばん大きな見出しと価格だけを目立たせて」'],['安っぽい','「色数を3色にしぼり、余白を広げて、高級感のある広告にして」'],['写真がAIっぽい','「写真を、自然な光で撮ったプロの広告写真の質感にして（肌・料理・素材の質感をリアルに）」'],['文字をあとから入れたい','「同じデザインで、文字をすべて消した背景だけの版を作って」→ Canva などで文字をのせる'],['サイズを変えたい','「同じデザインのまま、正方形（1:1）のInstagram投稿用に組み直して」']]},
   i:{name:'イラスト変換',en:'PHOTO TO ILLUSTRATION',k:'--c-rose',ui:'illust',unit:'変換',lead:'写真1枚から、アニメ・3D・絵画・SNSで流行りのイラストへ。',
     ars:['元の写真と同じ','1:1（正方形）','9:16（縦長）','16:9（横長）'],arLabel:'仕上がりの比率',curAr:'元の写真と同じ',
     cats:{BASIC:1,ANIME:1,TOY:1,ART:1,GRAPHIC:1,TREND:1},
@@ -4482,9 +4484,318 @@ run(H,t){const sv=H.svg(1600,900);const id='cr'+Math.floor(Math.random()*1e6);co
   H.el('div',{fontSize:'24px',color:'#6b6b6b',marginTop:'10px'},C,'3〜12歳のアート教室。絵の具も、ねんども、ぜんぶ自由。');const bt=H.el('div',{padding:'20px 44px',borderRadius:'24px',background:'#ffc94a',border:'4px solid #3b3b3b',fontFamily:F.pop,fontSize:'24px',boxShadow:'0 6px 0 #3b3b3b'},C,'無料体験に申し込む');rise(H,bt,1000);
 }});
 
+/* ===== GRAPHIC：画像生成プロンプト（ChatGPTなど） ===== */
+const GIMG=[];
+const NM='佐藤 信',NMEN='Shin Sato';
+const GSZ={a4:'縦長（2:3）。A4縦のチラシ・ポスターの紙面だけを、正面から平らに',bn:'横長（3:2）。Web用バナーの画面だけを、正面から平らに',sq:'正方形（1:1）。投稿画像の画面だけを、正面から平らに',card:'横長（3:2）。名刺サイズ（91×55mm）のカードの「表」と「裏」を、明るいグレーの背景の上に左右に並べて、真上から撮ったように（カードの下にやわらかい影）'};
+const GP={
+'01':`スーパーの週末特売の、新聞折込チラシのデザインを作ってください。
+・サイズ：${GSZ.a4}
+・店名：「{T}」
+・雰囲気：日本のスーパーの折込チラシそのもの。にぎやかで、価格がとにかく目立つ。赤・黄色・白が基調
+・上部：赤い帯に、黄色のふち取りの極太文字で「週末大特売」。その下に黄色の帯で「10/25（土）・26（日）」
+・右上：黄色のギザギザの爆弾マークに「全品 ポイント5倍」
+・中央：商品の切り抜き写真をすき間なく並べる（12品ほど）。左上の一番大きなマスは目玉商品「たまご 10個入り 98円」で、赤い「本日の目玉」のリボン付き
+・ほかの商品：キャベツ 128円、豚こま 100g 88円、牛乳 158円、バナナ 98円、食パン 99円、トマト、鶏もも、刺身、お菓子、飲料など。価格は赤い極太の数字に白いふち、「円」は小さく
+・売り場ごとに「青果」「精肉」「鮮魚」の小さな色見出しを付ける
+・下部：緑の枠で「野菜つめ放題 398円」
+・最下部：赤い帯に白文字で「{T}」と「営業時間 9:00〜21:00」
+・商品写真はリアルでおいしそうに。文字は大きいものを優先し、細かい説明文は入れすぎない`,
+'02':`町の八百屋さんの「朝市」のチラシを、クラフト紙に手書きしたような、あたたかい雰囲気で作ってください。
+・サイズ：${GSZ.a4}
+・店名：「{T}」
+・背景：茶色いクラフト紙の質感。全体を手書き風の文字とイラストでまとめる
+・上部：緑の大きな筆文字で「朝市」。左右に小さく「毎週日曜」「朝7時から」
+・その下：緑の丸いハンコ風に「朝どれ・産地直送」
+・中央：野菜の水彩イラスト（トマト・きゅうり・とうもろこし・なす・にんじん・かぼちゃ）を3列×2段に。各野菜の下に手書きの名前と、赤い手書きの価格（トマト 3個 200円、きゅうり 4本 150円、とうもろこし 2本 250円、なす 3本 180円、にんじん 1袋 120円、かぼちゃ 1/4 160円）
+・野菜の枠は緑の点線の角丸。1か所に吹き出しで「おすすめ！」
+・下部：黄色いマーカーを引いた帯に「野菜詰め放題 1袋300円」
+・最下部：「{T}」と「〇〇駅から徒歩3分」
+・手作り感はありつつ、読みやすく整理されたレイアウトに`,
+'03':`鮮魚店の「大漁祭」のチラシを、漁港の市場のような迫力ある和のデザインで作ってください。
+・サイズ：${GSZ.a4}
+・店名：「{T}」
+・背景：深い藍色。うっすら波の模様（青海波）
+・上部：紙面の幅いっぱいの白い筆文字で「大漁祭」。右に朱色の丸いハンコ「本日限り」
+・その下：朱色の帯に白文字で「朝獲れ鮮魚 産地直送」
+・中央：大きなマスに、氷の上にのったマグロの刺身のリアルな写真と「本マグロ 中トロ 100g 598円」（価格は黄色の極太数字）
+・その下に3マス：サーモン 398円／アジ 98円／ホタテ 298円（それぞれ新鮮な魚介の写真）
+・下部：白い枠で「マグロの解体ショー 11:00〜」
+・最下部：白い筆文字で「{T}」
+・写真はみずみずしく、光沢のある新鮮な質感で`,
+'04':`夕方の「タイムセール」のチラシを、黒と黄色の目立つデザインで作ってください。
+・サイズ：${GSZ.a4}
+・店名：「{T}」
+・配色：黒・黄色・赤・白。上下の端に、黒と黄色の斜めストライプ
+・上部：黒い背景に、黄色の巨大な英字「TIME SALE」。その下に白で「夕方だけの、うれしい値段。」
+・時間：黄色い時計のアイコンと、白の極太文字「17:00 → 19:00」
+・中央：白い角丸のマスを2列×2段。お惣菜の写真（刺身盛合せ・からあげ・お弁当・にぎり寿司）、商品名、元の価格に取り消し線、赤い極太の新しい価格（490円・249円・418円・440円）
+・各マスの右上に、お店の値引きシールのような赤い丸「半額」「3割引」
+・下部：黄色の帯に黒文字「数量限定・なくなり次第終了」
+・最下部：白で「{T}」`,
+'05':`精肉店の「肉の日（毎月29日）」チラシを、焼肉屋のような赤と黒と金の力強いデザインで作ってください。
+・サイズ：${GSZ.a4}
+・店名：「{T}」
+・配色：黒・深い赤・金・白
+・上部：黒い背景に赤い大きな円。その中に白い筆文字の「肉」を巨大に。円の外側に金の細い二重線
+・円の左に白い縦書き「毎月29日は」、右下に金色で「肉の日」
+・中央：霜降りのお肉のリアルな写真を並べた商品リスト。一番上は赤い背景で目玉「黒毛和牛 切り落とし 100g 398円」
+・ほか：牛カルビ 焼肉用 298円／豚バラ うす切り 138円／鶏もも 98円（いずれも100gあたり）。価格は白の極太数字
+・下部：金の細枠で「お一人様2パックまで ／ ポイント2倍」
+・最下部：白で「{T}」
+・お肉は照りがあって、いちばんおいしそうに見える写真で`,
+'06':`カフェの「秋の新メニュー」のフライヤーを、雑誌のような余白のある上品なデザインで作ってください。
+・サイズ：${GSZ.a4}
+・店名：「{T}」
+・配色：生成り・こげ茶・差し色にテラコッタ（1か所だけ）。全体はやわらかく、くすんだトーン
+・上部：細い筆記体の英字「Autumn Seasonal Menu」、その下に細い明朝体で「秋の、ちいさなごほうび。」
+・中央：自然光で撮った、木のテーブルの上のマロンラテと焼き菓子の写真を丸く大きく切り抜く。右下にテラコッタの小さな丸いシール「NEW」
+・メニュー：写真の下に3品。「マロンラテ ¥680」「さつまいものタルト ¥620」「ほうじ茶のシフォン ¥580」。メニュー名と価格を点線でつなぐ
+・下部：細い線で区切って「10.1 — 11.30」「Open 8:00 – 18:00」を小さく
+・最下部：店名「{T}」を英字の細いセリフ体で
+・要素を詰めず、余白を大きく。高級感のある、落ち着いたカフェのフライヤーに`,
+'07':`百貨店の「北海道物産展」のチラシを、濃紺と金の格式あるデザインで作ってください。
+・サイズ：${GSZ.a4}
+・店名：「{T}」
+・配色：濃紺・金（光沢のあるグラデーション）・生成り
+・上部（45%）：濃紺の背景。右側に金色の縦書きの明朝体で大きく「北海道物産展」、左側に白い縦書きで「北の大地の、うまいもの。」。四隅に金の細い飾り線
+・日付：金の細い線ではさんで「10.23 wed — 11.4 mon」、その下に「本館7階 催事場」
+・中央（生成りの背景）：料理写真を大1つ＋小2つ、雑誌のように配置（いくら・カニの海鮮丼／チーズケーキ／味噌ラーメン）。各写真の下に明朝体の商品名と価格
+・下部：濃紺の帯に「各日 10:00〜20:00」と、金の細枠で「お買い上げ5,000円ごとに抽選券1枚」
+・最下部：明朝体で「{T}」
+・線は細く、余白は広く。百貨店らしい上品さを優先`,
+'08':`パン屋の「グランドオープン」のチラシを、小麦色とアイボリーのぬくもりあるデザインで作ってください。
+・サイズ：${GSZ.a4}
+・店名：「{T}」
+・配色：アイボリー・小麦色・こげ茶・差し色にオリーブ
+・上部：小さく「GRAND OPEN」、大きく英字のイタリック体で「{T}」、その下に丸い日本語で「まちの、焼きたて。」
+・中央：焼きたてのパンのかわいい手描きイラスト（クロワッサン・バゲット・食パン・あんぱん・ベーグル・メロンパン）を2段×3列に。各パンの下に名前と価格（¥240・¥320・¥420・¥200・¥230・¥190）
+・左下：小麦色の大きな数字「10.30」と「FRI OPEN 7:30 — 18:00」
+・右下：オリーブ色の丸いスタンプ風に「先着100名様 クロワッサンプレゼント」
+・最下部：「〇〇駅 西口から徒歩2分」
+・角はすべて丸く、線はこげ茶の手描き風で、やさしい雰囲気に`,
+'09':`フラワーショップの「母の日ギフト ご予約受付」のチラシを、くすみカラーのやわらかいデザインで作ってください。
+・サイズ：${GSZ.a4}
+・店名：「{T}」
+・配色：淡いピンク・セージグリーン・ローズ・グレーがかったブラウン
+・上部：ローズ色の筆記体の英字「Mother's Day」、その下に細い明朝体で「ありがとうを、花束にして。」
+・中央：上が半円のアーチ型の枠に、ピンクのカーネーションとバラの花束の写真（自然光、やわらかいボケ）。枠のまわりに水彩の花びらと葉を少し散らす
+・商品：アーチの下に3つ横並び「ブーケ S ¥3,300」「ブーケ M ¥5,500」「鉢植え ¥4,400」
+・予約：ローズの細枠で「ご予約締切 5.5 mon」「お渡し 5.9 fri — 5.11 sun ／ 全国配送OK」
+・最下部：英字の細いセリフ体で「{T}」
+・花びらが舞うような、軽やかで女性らしい雰囲気に`,
+'10':`美容クリニック（医療アートメイク）のキャンペーンチラシを、ベージュとくすみピンクの上品なデザインで作ってください。
+・サイズ：${GSZ.a4}
+・クリニック名：「{T}」
+・配色：ベージュ・グレージュ・くすみピンク（モーブ）・白。文字はこげ茶。大理石のようなやわらかい背景
+・上部右側：肌がきれいな、ナチュラルメイクの日本人女性モデルのポートレート写真（ほおに手を添えて、やさしく微笑む。明るい自然光）。写真は紙面の上半分の右側を大きく使う
+・上部左側：筆記体の英字「Medical Art Make」、その下に明朝体で大きく「アートメイク」と「GUEST ARTIST」。その下に「メイクに自信がない、時間がかかる…」「医療アートメイクで、理想の自分に」
+・写真の右側に、縦に大きな薄い英字「SPECIAL」
+・左に丸いバッジ「症例件数 1,500件以上」
+・右下にくすみピンクの円「Campaign 眉 ¥44,000」
+・中段：施術例の写真の枠を5つ横並び（パウダー眉・リップ・アイライン など、名前は小さく）
+・下部：細い線の料金表「アートメイク料金表」（眉／リップ／アイライン の3行、通常価格に取り消し線→キャンペーン価格）
+・最下部：くすみピンクの帯に「{T}」と「ご予約・カウンセリングは LINE から」
+・高級感と清潔感のある、美容雑誌の広告のような仕上がりに。写真は自然でリアルに`,
+'11':`北欧家具ショップの「AUTUMN FAIR」のポスターを、余白たっぷりで暮らしを感じるデザインで作ってください。
+・サイズ：${GSZ.a4}（B2ポスターと同じ縦横比）
+・店名：「{T}」
+・配色：オフホワイト・セージグリーン・オーク材の色・チャコール
+・上部60%：セージグリーンの壁とオークの床の、明るい北欧インテリアの写真（木のラウンジチェア・丸いペンダントライト・観葉植物。自然光、生活感はなく整った雰囲気）
+・その下：左寄せの日本語のキャッチコピー「暮らしに、余白を。」
+・英字の細い文字で「AUTUMN FAIR」と「10.1 — 10.31」
+・右下：細い枠の中に「対象家具 最大20%OFF」「送料無料」
+・最下部：店名「{T}」を英字の細い文字で、字間を広く
+・要素は左揃え、外周に広い余白。インテリア雑誌の広告のように`,
+'12':`美容室のポスターを、ファッション誌の表紙のような白黒のモードなデザインで作ってください。
+・サイズ：${GSZ.a4}（B2ポスターと同じ縦横比）
+・店名：「{T}」
+・配色：白・黒・グレーのみ（写真もモノクロ）
+・中央：ボブヘアの日本人女性モデルの、モノクロのファッションポートレート写真（横顔〜斜め、髪の質感がわかるライティング）
+・モデルの頭の後ろに、紙面の幅いっぱいの極細の英字「NEW STYLE」。文字の一部がモデルの頭の後ろに隠れて、奥行きを出す
+・右側：縦書きの細い明朝体「髪が変わると、毎日が変わる。」
+・左下：小さく「AUTUMN COLLECTION 2025」「カット＋カラー 初回20%OFF」
+・最下部：黒い帯に、白い英字で「{T}」（字間広め）と「ご予約は Instagram から」
+・情報は最小限。写真と文字の大きさの差で見せる`,
+'13':`町内会の「夏祭り」のポスターを、夜空に提灯と花火が映える、誰でも読みやすいデザインで作ってください。
+・サイズ：${GSZ.a4}（A2ポスターと同じ縦横比）
+・主催：「{T}」
+・配色：夜空の紺〜紫のグラデーション・提灯の赤と白・黄色
+・上部：横いっぱいに、ひもでつながった提灯（赤と白を交互に、あたたかく光る）
+・空：大きな打ち上げ花火を3つ（黄色・ピンク・水色）
+・中央：白い筆文字で大きく「夏祭り」、その上に小さく「第〇回」
+・日時：黄色の帯に紺の極太文字「8月16日（土）17:00〜21:00」。下に小さく「雨天時は翌日に延期」
+・場所：白い太字「会場：〇〇公園」
+・内容：丸いアイコン付きで「盆踊り」「屋台」「花火」「子どもくじ」を横並び
+・最下部：「主催：{T}」
+・遠くからでも読めるよう、文字は大きく、コントラストを強く。にぎやかで楽しい雰囲気に`,
+'14':`保育園の「園児募集・見学会」のポスターを、パステルカラーと丸い文字のやさしいデザインで作ってください。
+・サイズ：${GSZ.a4}（A3ポスターと同じ縦横比）
+・園名：「{T}」
+・配色：クリーム色の背景、パステルの黄・ピンク・水色・黄緑。文字はこげ茶
+・上部：にっこり笑うおひさまと、ふわふわの雲のかわいいイラスト
+・見出し：「園」「児」「募」「集」の1文字ずつを、色の違うパステルの丸の上に白抜きの丸文字で
+・その下：「0歳〜5歳 若干名」「2026年4月入園」
+・見学会：カレンダー風の角丸の四角を3つ横並び「11/8 土」「11/15 土」「11/22 土」、下に「10:00〜11:30 ／ 要予約」
+・園の特徴：アイコン付きで「園庭で毎日外あそび」「給食は手作り」「延長保育 19:00まで」
+・中央付近に、園庭で遊ぶ子どもたちのやさしい水彩イラストを小さく
+・最下部：白い角丸の帯に「{T}」とQRコードの枠
+・角はすべて丸く、余白は広めに、にぎやかすぎないように`,
+'15':`小規模事業者向けセミナーの告知チラシを、黄色と紺のポップで分かりやすいデザインで作ってください。
+・サイズ：${GSZ.a4}
+・主催：「{T}」
+・配色：明るい黄色の背景・濃い紺・白。差し色なし（この3色だけ）
+・上部：白い大きな吹き出し（雲形）の中に、紺の極太の丸ゴシックで2行「補助金 活用 / 攻略セミナー」。「補助金」の文字の一部を黄色に。吹き出しの上に小さく「＼ 小規模事業者向け ／」、下に「［第1回 経営者勉強会］」
+・吹き出しの右上：紺のえんぴつのキャラクターのイラストと「集客・販路開拓の武器に！」
+・右：紺の丸いバッジ「初回開催記念 無料」
+・左中段：紺の帯の見出し「補助金を活用して、Webを使ったPR活動に取り組もう」と、短い説明文
+・右中段：白い雲形の枠に、チェックボックス付きの「こんな悩みを持つ方におすすめ！」（販路開拓に悩んでいる／集客の時間がない／HPやチラシを活用したい など5つ）
+・日時：紺の札「日時」の横に、紺の大きな数字「2026 / 1/28（水）」と「14:00 - 15:30」
+・場所：紺の札「場所」の横に「{T} または Zoom」
+・内容：紺の札「セミナー内容」の横に、番号付きで3つ（補助金の概要と活用例／申請書作成のポイント／採択のコツ）
+・右下：「講師紹介」として、スーツの男性講師2名の写真（ビジネスポートレート）と名前・肩書き（〇〇 〇〇／中小企業診断士）
+・最下部：「お問い合わせはこちら」と、QRコードの枠を2つ
+・情報が多くても、紺の札と白い枠でブロックを分けて、スッと読めるように`,
+'16':`ネットショップの「MEGA SALE」のバナーを作ってください。
+・サイズ：${GSZ.bn}
+・ショップ名：「{T}」
+・配色：赤 → ピンク → オレンジの斜めグラデーション。文字は白、ボタンは黄色に黒文字
+・左側：白の極太の英字「MEGA SALE」、その下に巨大な「最大 70%OFF」（「70」をいちばん大きく、バナーの高さの半分）
+・右側：服・バッグ・コスメなどの商品写真を、白いふちのカードにして3枚、少し傾けて重ねる。各カードに赤い「-70%」「-50%」「-30%」
+・下部：「12.1 MON 0:00 — 12.3 WED 23:59」と、白い角丸の箱に1桁ずつ入ったカウントダウン「残り 23:59:59」
+・右下：黄色の角丸ボタン「今すぐチェック →」
+・背景に白い紙吹雪と半透明の丸。左上に小さくショップ名
+・文字は大きく少なく。スマホの小さな画面でも一瞬で読めるように`,
+'17':`オンラインセミナー（ウェビナー）の告知バナーを、信頼感のあるビジネス向けデザインで作ってください。
+・サイズ：${GSZ.bn}
+・主催：「{T}」
+・配色：濃紺 → 青の斜めグラデーション、アクセントはシアン、文字は白
+・背景：右側に、光の点と線がつながるネットワークのような模様を薄く
+・左上：シアンの枠のバッジ「FREE WEBINAR」と、シアンの塗りのバッジ「参加無料」
+・タイトル（2行）：「中小企業のための」（小）、「生成AI 活用入門」（大。「生成AI」だけシアン）
+・日時：シアンの細い線の下に、白の太い英数字で「11.20 THU 19:00 – 20:30」
+・右側：登壇者2名の丸く切り抜いたビジネスポートレート写真（白い細枠）。下に名前「〇〇 〇〇」と肩書き
+・右下：白い角丸のボタン「今すぐ申し込む →」
+・左下：「主催：{T}」「Zoomで開催 ／ 録画配信あり」
+・余白を保ち、情報は左揃え。派手すぎず、信頼感を優先`,
+'18':`スマホアプリのダウンロード告知のバナーを作ってください。
+・サイズ：${GSZ.bn}
+・アプリ名：「{T}」
+・配色：紫 → ピンクの斜めグラデーション。文字は白、特典バッジは黄色
+・左側：白い角丸のアプリアイコン＋アプリ名「{T}」。大きな見出し2行「毎日のお買い物が、/ もっとおトクに。」
+・その下：黒い角丸のボタンを2つ「App Store」「Google Play」（公式ロゴは使わず、文字だけ）
+・右側：少し傾けて浮かせたスマートフォン（黒いフレーム）。画面には「保有ポイント 500 pt」の大きなカードと、クーポンのリストのUI
+・スマホの左下：黄色い丸いバッジ「今なら 初回 500pt プレゼント」を少し傾けて
+・背景に白い半透明の大きな丸を2つ
+・実在のアプリやブランドに似せない、オリジナルのデザインで`,
+'19':`求人・採用のバナーを、明るく元気なデザインで作ってください。
+・サイズ：${GSZ.bn}
+・会社名：「{T}」
+・配色：黄色の背景（白い水玉模様）・黒・青・白
+・左側：白い吹き出しに「一緒に働きませんか？」、その下に巨大な極太文字「仲間募集」（「仲間」を青、「募集」を黒）
+・職種：「カフェスタッフ ／ 正社員・アルバイト」
+・条件：白い角丸の札を3つ横並び「時給 1,200円〜」「未経験OK」「週2日〜」（それぞれ青い小さなアイコン付き）
+・右側：エプロン姿で笑顔のスタッフたちの写真を、白い太いふちの丸に切り抜いて4つ（大小をつけて）。1つの横に吹き出し「先輩の声：みんな優しいです！」
+・左下：「{T}」
+・右下：青いボタン「くわしくはこちら →」
+・人物は自然な笑顔のリアルな写真で、職場の明るさが伝わるように`,
+'20':`Instagram の新商品のお知らせ投稿の画像を、洗練されたデザインで作ってください。
+・サイズ：${GSZ.sq}
+・ブランド名：「{T}」
+・配色：くすみベージュのグラデーション・ブラウン・差し色にテラコッタ
+・中央：スポイトキャップの付いた、テラコッタ色のガラスの美容液ボトルの商品写真。後ろに上が半円のアーチ型の明るい台座。午後の光で、ボトルの影が斜めに長く伸びる
+・左上：イタリック体の英字「New Arrival」、その下に細い明朝体「肌に、ひとしずくの余白を。」
+・右下：「Moist Serum 30ml」「¥4,180（税込）」「10.1 release」
+・左下：小さく英字で「{T}」
+・外周から少し内側に、細いブラウンの線の枠
+・ボトルにはブランド名以外の文字を入れない。高級コスメの広告写真のような質感に`,
+'21':`美容室のショップカードを、クラフト紙にはさみの線画をあしらったナチュラルなデザインで作ってください。
+・サイズ：${GSZ.card}
+・店名：「{T}」
+・表面：クラフト紙の質感。左上にこげ茶の大きな英字ロゴ「{T}」、その下に小さく「ヘアサロン」。右側に大きく、薄いこげ茶のはさみの線画（透かしのように）
+・表面の中央：「スタイリスト 〇〇 〇〇」と英字の名前
+・表面の右下：小さく「TEL 000-000-0000」「〇〇市〇〇町0-0-0」
+・裏面：白。左上に店名を小さく。住所・電話・営業時間「10:00 – 20:00（火曜定休）」。右下に予約用のQRコードと「ご予約はこちら」
+・裏面の下に、次回予約を書き込む欄「次回のご予約 ＿月＿日（＿）＿時」
+・余計な飾りはなく、落ち着いた大人のサロンらしく`,
+'22':`ネイルサロンのショップカード（表）とスタンプカード（裏）を、金箔のような上品なデザインで作ってください。
+・サイズ：${GSZ.card}
+・店名：「{T}」
+・表面：グレージュの大理石のような背景。中央に、金箔押しのような光沢のある筆記体で「{T}」。その上に金の小さな花の飾り、下に「nail & eyelash」
+・裏面：アイボリー。上に金の文字「STAMP CARD」と、名前を書く線「Name」
+・スタンプ枠：金の細い線の丸を5個×2段。10個目だけ金の塗りで「GIFT」
+・裏面の下：「10個たまると、ハンドケア1回無料」と小さなQRコード
+・金は本物の箔押しのような質感で、全体はやわらかく女性らしく`,
+'23':`カフェのショップカードを、ペンで描いた線画イラストと手描き地図のある、やさしいデザインで作ってください。
+・サイズ：${GSZ.card}
+・店名：「{T}」
+・表面：クラフト紙の質感。中央に、こげ茶の二重の丸で囲んだハンコ風のロゴ。円の中にコーヒーカップの線画と「{T}」、円の上の弧に沿って「COFFEE & BAKE」、下の弧に「since 2025」
+・裏面：薄いグレー。上に小さく店名。左半分に、ブルーの細い線で描いたシンプルな地図（「〇〇駅」と駅からの道、お店の位置に●と店名）
+・裏面の右半分：ティーポットとカップの、青い線画イラスト（北欧の器のような模様）。その下に「open 8:00 – 18:00」「close 水曜」
+・裏面の下：住所・電話・Instagram のアイコンと、小さなQRコード
+・インクは1〜2色だけ。手描きのぬくもりがある、雑貨屋さんのようなカードに`,
+'24':`和食の飲食店（居酒屋）のショップカードを、お店の外観イラストと手描き地図のある和のデザインで作ってください。
+・サイズ：${GSZ.card}
+・店名：「{T}」
+・表面：生成りの和紙の質感。上に筆文字で「{T}」。中央に、木の格子戸と小さな看板のある、お店の外観のやさしい色鉛筆風イラスト（入口に植木鉢）
+・裏面：生成りの和紙。左側に黒い丸の家紋風ロゴと、筆文字の店名「{T}」
+・裏面の右側：鉛筆で描いたような手描きの地図（駅の出口「A4」、通りの名前、目印のお店、自分の店の位置）
+・裏面の下：「OPEN 17:00 – 25:00」「CLOSE 日・祝」、電話、メール、Instagram のQRコード、住所「〇〇市〇〇町0-0-0」
+・墨色1色＋外観イラストだけに色。落ち着いた大人の隠れ家のような雰囲気に`,
+'25':`イタリアンレストランのショップカードを、陽気でおいしそうなデザインで作ってください。
+・サイズ：${GSZ.card}
+・店名：「{T}」
+・表面：クリーム色。上端と下端に、緑・白・赤の細いライン。中央に太いセリフ体の店名「{T}」、上に小さく筆記体で「Cucina Italiana」、下に「Pizza ・ Pasta ・ Vino」。店名の左右に、オリーブの枝の線画
+・裏面：クリーム色。左側に、窯焼きのマルゲリータピザを真上から撮った写真（丸く切り抜き）
+・裏面の右側：店名と、住所「〇〇市〇〇町0-0-0」、電話、「Lunch 11:30 – 14:30」「Dinner 17:30 – 22:00 ／ 月曜定休」
+・裏面の下：赤い帯に白文字「このカードのご提示で、グラスワイン1杯サービス」
+・ピザの写真はチーズがとろけて、いちばんおいしそうに`,
+'26':`ビジネス名刺を、白地のミニマルで端正なデザインで作ってください。
+・サイズ：${GSZ.card}
+・会社名：「{T}」
+・名前：「${NM}」（${NMEN}）、肩書き「代表取締役」
+・表面：白。左上に小さなネイビーの四角いロゴマークと、英字の太い会社名「{T}」。中央左寄りに、肩書き（小）→ 名前（大きく、字間広め）→ 英語表記（小、グレー）
+・表面の下部：ネイビーの細い短い横線の下に、小さく「〒000-0000 〇〇市〇〇町0-0-0」「TEL 000-000-0000 ／ mail@example.com ／ www.example.com」
+・裏面：薄いグレー。中央にネイビーの四角いロゴマークと、会社名「{T}」、その下にURL
+・色はネイビー1色だけをアクセントに。文字はすべて左端をそろえ、余白を広く`,
+'27':`IT企業・スタートアップの名刺を、鮮やかなグラデーションが記憶に残るデザインで作ってください。
+・サイズ：${GSZ.card}
+・会社名：「{T}」
+・名前：「${NM}」（${NMEN}）、肩書き「Product Designer」
+・表面：白。左上にグラデーションの小さな丸のロゴと、小文字の英字の会社名。中央に日本語の名前（大）、英語名と肩書き（小）。その下にグラデーションの細い線
+・表面の下部：小さなアイコン付きで、メール・電話・SNSの @ID・GitHub の ID を2列に。右下に黒いQRコード
+・裏面：紫 → ピンク → オレンジの斜めグラデーション一面。中央に白い太い英字で会社名、その下に細く「Build what's next.」。うっすら光の粒
+・表はシンプル、裏は大胆に。テック企業らしいモダンな仕上がりに`,
+'28':`士業（法律事務所）の名刺を、濃紺と金の、信頼と格式を感じるデザインで作ってください。
+・サイズ：${GSZ.card}
+・事務所名：「{T}」
+・名前：「${NM}」（${NMEN}）、肩書き「弁護士　代表」
+・表面：生成り。左上に金の細い線の円に天秤のマーク、その横に明朝体の事務所名「{T}」。中央に「弁護士　代表」（小）→ 名前（大きく、明朝体、字間広め）→ 英語名（小）
+・表面の下部：金の細い横線の下に、明朝体で小さく住所・電話・FAX・メール
+・裏面：濃紺。中央に金の天秤のマークと、金の明朝体で事務所名、その下に英字「NOBU LAW OFFICE」。四隅に金の細いL字の飾り。下に金の小さな文字「企業法務 ｜ 相続 ｜ 不動産 ｜ 労務」
+・金は本物の箔押しのような質感で、面積は小さく。誠実で格式のある仕上がりに`,
+'29':`フリーランスのライターの名刺を、ペンで描いた線画の似顔絵イラストが入った、親しみやすいデザインで作ってください。
+・サイズ：${GSZ.card}
+・屋号：「{T}」
+・名前：「${NM}」（${NMEN}）、肩書き「ライター」
+・表面：白。左上に小さく「ライター」、その下に大きく細い明朝体で「${NM}」。右側に、黒い線1本で描いたシンプルな似顔絵イラスト（ショートヘアの人がノートパソコンで文章を書いている。服だけ黒く塗る）
+・表面の左下：小さなQRコードと、アイコン付きで電話・メール・Webサイト
+・裏面：白。中央に屋号「{T}」と、「取材・インタビュー・Webコラム」。下に小さく「お仕事のご相談はお気軽に」
+・イラストは手描きの線のゆらぎがあるやさしいタッチで。色は黒1色、余白をたっぷり`,
+'30':`営業担当者の、顔写真入りの名刺を、親しみやすく信頼感のあるデザインで作ってください。
+・サイズ：${GSZ.card}
+・会社名：「{T}」
+・名前：「${NM}」（${NMEN}）、肩書き「営業部 住まいのアドバイザー」、資格「宅地建物取引士」
+・表面：白。左側に、笑顔の日本人男性のビジネスポートレート写真を、青緑の太いふちの丸に切り抜いて
+・表面の右側：会社名（小）→ 肩書き → 名前（大）→ 英語名と資格。その下に、黄色いマーカーを引いたような「ひとこと：地元〇〇市で10年、住まい探しのお手伝いをしています」
+・表面の下部：薄い青緑の帯に、携帯電話・店舗の電話・メールと小さなQRコード
+・裏面：薄い青緑。「私の得意なこと」として、番号付きで「はじめての家探し」「住宅ローンのご相談」「お子さまのいるご家族の住まい」。下に住所と営業時間、QRコード
+・写真は自然な笑顔で、清潔感のある明るい雰囲気に`
+};
+
 /* ===== GRAPHIC 01-15 ===== */
 CUR_SEC='g';
-const defG=o=>{o.bg=o.bg||'#d5d8de';o.loop=o.loop||6500;def(o)};
+const defG=o=>{o.bg=o.bg||'#d5d8de';o.loop=o.loop||6500;if(GP[o.no])o.p=GP[o.no];if(GIMG.includes(o.no))o.img='img/g'+o.no+'.jpg';def(o)};
 const desk=(H,c)=>H.abs({inset:'0',background:c||'radial-gradient(circle at 50% 35%,#eef0f3,#c9cdd4)'});
 const sheet=(H,w,h,css,x,y,dl)=>{const s=H.abs(Object.assign({left:(x??(800-w/2))+'px',top:(y??(450-h/2))+'px',width:w+'px',height:h+'px',background:'#fff',overflow:'hidden',boxShadow:'0 30px 60px rgba(0,0,0,.22),0 6px 14px rgba(0,0,0,.12)'},css||{}));H.a(s,[{opacity:0,transform:'translateY(40px) scale(.96)'},{opacity:1,transform:'none'}],{d:700,dl:dl||0});return s};
 const A4=(H,css)=>{desk(H);return sheet(H,560,792,css)};
@@ -4733,29 +5044,22 @@ run(H,t){desk(H);const s=sheet(H,560,792,{background:'#f6e4e1'});const C='#5b4b4
   T(H,s,{left:'0',width:'560px',top:'712px',textAlign:'center',fontFamily:F.serif,fontWeight:'500',fontSize:'30px',letterSpacing:'.12em',color:C},t,2300,'fade');T(H,s,{left:'0',width:'560px',top:'756px',textAlign:'center',fontFamily:F.min,fontSize:'11px',color:C},'10:00 – 19:00 ／ 〇〇市〇〇町0-0-0 ／ TEL 000-000-0000',2400,'fade');
   for(let i=0;i<8;i++){const pt=H.abs({left:rnd(0,540)+'px',top:'-20px',width:'14px',height:'10px',borderRadius:'50% 0',background:pick(['#e8a6ae','#fff','#c97b84'])},s);H.a(pt,[{transform:'translate(0,0) rotate(0)'},{transform:`translate(${rnd(-80,80)}px,820px) rotate(${rnd(200,600)}deg)`}],{d:rnd(5000,8000),dl:rnd(0,4000),e:E.lin,i:Infinity})}}});
 
-defG({no:'10',cat:'FLYER',name:'ギャラリーの展示会',en:'Exhibition Typography',text:'nobu gallery',lead:'白地に黒の大きな文字だけ。美術館のポスターのような、文字組みで魅せる案内。',
-use:'<b>個展・写真展・ギャラリー・美術館・デザイン事務所のイベント</b>に。情報を「文字の組み方」だけで美しく見せる型です。',
-tips:['フォントは1〜2種類だけ。大きさの差（ジャンプ率）を極端にすると洗練されます','情報は左端や上端にそろえて、見えない格子（グリッド）に沿って並べる','作品の写真は1枚だけ、大胆に裁ち落とし（紙の端まで）で置くと美術館らしくなります'],
-p:`ギャラリーの展示会のフライヤーを、白地に黒の文字組みで魅せる、美術館のポスターのようなデザインで A4縦 に作ってください。
-・会場名：「{T}」
-・配色：白 #FFFFFF、黒 #111111、差し色に朱色 #E8442E を1か所だけ（小さな丸）
-・フォント：英字は Montserrat（300 と 800）、日本語は Noto Sans JP（400/700）
-・レイアウト：12分割のグリッドを想定し、すべての要素を左端と縦のラインにそろえる
-・上部：展覧会名を英字の極太で巨大に、2行で「SILENT / FORMS」（紙面の幅いっぱい、行間を詰めて）。下に日本語タイトル「静かなかたち」と作家名「〇〇 〇〇 個展」
-・中央右：作品写真の枠（モノクロのグラデーション）を、紙面の右端まで裁ち落としで大きく
-・中央左：縦に「2025.11.08 sat — 12.21 sun」「11:00 – 19:00（月曜休廊）」「入場無料」を、細い英字で小さく
-・下部：細い黒の横線を1本引き、その下に会場名・住所 〇〇市〇〇町0-0-0・Webサイトの URL
-・朱色の小さな丸（直径12px）を展覧会名の横に1つだけ
-・全体：飾りは一切なし。余白とそろえだけで美しく`,
-run(H,t){desk(H);const s=sheet(H,560,792,{background:'#fff'});const K='#111';
-  T(H,s,{left:'36px',top:'34px',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'13px',letterSpacing:'.3em',color:K},'EXHIBITION 2025',200,'fade');
-  T(H,s,{left:'30px',top:'60px',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'104px',lineHeight:'.92',letterSpacing:'-.03em',color:K,whiteSpace:'pre-line'},'SILENT\nFORMS',400,'up');
-  const dt=R(H,s,{left:'470px',top:'80px',width:'14px',height:'14px',borderRadius:'50%',background:'#e8442e'},1200,'pop');
-  T(H,s,{left:'36px',top:'270px',fontFamily:F.sans,fontWeight:'700',fontSize:'22px',color:K},'静かなかたち',800);T(H,s,{left:'36px',top:'304px',fontFamily:F.sans,fontSize:'13px',color:K},'〇〇 〇〇 個展',900,'fade');
-  const ph=R(H,s,{left:'240px',top:'350px',width:'320px',height:'300px',background:'linear-gradient(160deg,#e5e5e5,#8a8a8a 55%,#2c2c2c)',transformOrigin:'right'},1100,'grow');R(H,ph,{left:'90px',top:'70px',width:'130px',height:'160px',borderRadius:'50% 50% 6px 6px',background:'rgba(255,255,255,.85)'},1500,'fade');
-  [['2025.11.08 sat','300'],['— 12.21 sun','300'],['11:00 – 19:00','300'],['月曜休廊','400'],['入場無料','700']].forEach((q,i)=>T(H,s,{left:'36px',top:370+i*30+'px',fontFamily:/[一-龥]/.test(q[0])?F.sans:"'Montserrat',sans-serif",fontWeight:q[1],fontSize:'15px',color:K},q[0],1300+i*100,'left'));
-  R(H,s,{left:'36px',width:'488px',top:'690px',height:'1px',background:K,transformOrigin:'left'},1900,'grow');
-  T(H,s,{left:'36px',top:'706px',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'22px',color:K},t,2100);T(H,s,{left:'36px',top:'740px',fontFamily:F.sans,fontSize:'11px',color:K},'〇〇市〇〇町0-0-0 ／ www.example.com',2200,'fade')}});
+defG({no:'10',cat:'FLYER',name:'美容クリニックのキャンペーン',en:'Beauty Clinic Campaign',text:'nobu clinic',lead:'ベージュとくすみピンク、モデルの写真。美容雑誌の広告のような、上品なキャンペーンチラシ。',
+use:'<b>美容クリニック・アートメイク・エステ・脱毛・まつげサロン</b>のキャンペーンに。高級感と清潔感で「ここなら任せられる」と思ってもらえます。',
+tips:['モデル写真は紙面の上半分を大きく使い、文字は写真のない側にまとめます','ベージュ・グレージュ・くすみピンクの3色に、文字はこげ茶。真っ黒を使わないのが上品さのコツ','料金表は細い線だけで組み、キャンペーン価格だけをくすみピンクで目立たせます'],
+p:'',
+run(H,t){desk(H);const s=sheet(H,560,792,{background:'radial-gradient(circle at 70% 20%,#fbf7f2,#ece3d9 60%,#e2d6ca)'});const C='#5a463c',MV='#b88a8a';
+  T(H,s,{right:'-6px',top:'40px',writingMode:'vertical-rl',fontFamily:F.serif,fontWeight:'700',fontSize:'84px',letterSpacing:'.08em',color:'rgba(255,255,255,.75)'},'SPECIAL',200,'fade');
+  const ph=R(H,s,{left:'250px',top:'0',width:'250px',height:'400px',background:'linear-gradient(160deg,#efe6dd,#d9c7b8)',overflow:'hidden'},300,'fade');H.abs({left:'40px',top:'40px',width:'190px',height:'300px',borderRadius:'95px 95px 60px 60px',background:'linear-gradient(170deg,#8a5a3c,#5e3a26)'},ph);H.abs({left:'70px',top:'80px',width:'120px',height:'150px',borderRadius:'50% 50% 46% 46%',background:'linear-gradient(160deg,#f6e2d3,#e9c8b2)'},ph);H.abs({left:'50px',top:'290px',width:'170px',height:'140px',borderRadius:'80px 80px 0 0',background:'#f4ede6'},ph);H.abs({left:'60px',top:'190px',width:'40px',height:'90px',borderRadius:'20px',background:'#ecd2bf',rotate:'-20deg'},ph);
+  T(H,s,{left:'30px',top:'40px',fontFamily:"'Great Vibes',cursive",fontSize:'40px',color:C},'Medical Art Make',500,'fade');
+  T(H,s,{left:'30px',top:'96px',fontFamily:F.min,fontWeight:'800',fontSize:'40px',color:C},'アートメイク',600);T(H,s,{left:'32px',top:'148px',fontFamily:F.serif,fontWeight:'700',fontSize:'22px',letterSpacing:'.1em',color:C},'GUEST ARTIST',700,'fade');
+  T(H,s,{left:'32px',top:'190px',fontFamily:F.min,fontSize:'13px',color:C},'メイクに自信がない、時間がかかる…',800,'fade');T(H,s,{left:'32px',top:'214px',fontFamily:F.min,fontWeight:'800',fontSize:'22px',lineHeight:'1.4',color:C,whiteSpace:'pre-line'},'医療アートメイクで\n理想の自分に',900);
+  T(H,s,{left:'34px',top:'300px',width:'92px',height:'92px',borderRadius:'50%',background:MV,color:'#fff',display:'flex',alignItems:'center',justifyContent:'center',textAlign:'center',fontFamily:F.min,fontSize:'12px',lineHeight:'1.4',whiteSpace:'pre-line'},'症例件数\n1,500件\n以上',1000,'pop');
+  const cp=T(H,s,{left:'400px',top:'330px',width:'136px',height:'136px',borderRadius:'50%',background:'#c99a9a',color:'#fff',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',fontFamily:F.min,boxShadow:'0 6px 20px rgba(90,70,60,.2)'},null,1100,'pop');H.el('div',{fontFamily:"'Great Vibes',cursive",fontSize:'24px'},cp,'Campaign');H.el('div',{fontSize:'12px'},cp,'眉 アートメイク');H.el('div',{fontSize:'24px',fontWeight:'800'},cp,'¥44,000');
+  ['パウダー眉','毛並み眉','リップ','アイライン','ほくろ'].forEach((w,i)=>{R(H,s,{left:30+i*100+'px',top:'420px',width:'88px',height:'72px',background:'linear-gradient(135deg,#d8c3b4,#b79c8a)'},1200+i*80,'pop');T(H,s,{left:30+i*100+'px',width:'88px',textAlign:'center',top:'496px',fontFamily:F.min,fontSize:'10px',color:C},w,1250+i*80,'fade')});
+  T(H,s,{left:'30px',top:'528px',fontFamily:F.min,fontWeight:'800',fontSize:'16px',color:C},'＋ アートメイク料金表',1500,'fade');
+  [['眉（パウダー）','¥60,000','¥45,000'],['リップ','¥88,000','¥64,000'],['アイライン','¥55,000','¥40,000']].forEach((r,i)=>{const y=560+i*36;R(H,s,{left:'30px',width:'500px',top:y+30+'px',height:'1px',background:'rgba(90,70,60,.25)'},1600+i*100);T(H,s,{left:'34px',top:y+'px',fontFamily:F.min,fontSize:'15px',color:C},r[0],1600+i*100,'fade');T(H,s,{left:'250px',top:y+'px',fontFamily:F.min,fontSize:'14px',color:'#9a8a80',textDecoration:'line-through'},r[1],1650+i*100,'fade');T(H,s,{left:'360px',top:y-4+'px',fontFamily:F.min,fontWeight:'800',fontSize:'20px',color:MV},'→ '+r[2],1700+i*100,'fade')});
+  R(H,s,{left:'0',bottom:'0',width:'560px',height:'90px',background:'#a98383'},1900,'fade');T(H,s,{left:'0',width:'560px',textAlign:'center',top:'716px',fontFamily:F.serif,fontWeight:'700',fontSize:'26px',letterSpacing:'.2em',color:'#fff'},t,2000,'fade');T(H,s,{left:'0',width:'560px',textAlign:'center',top:'756px',fontFamily:F.min,fontSize:'12px',color:'#fff'},'ご予約・カウンセリングは LINE から',2100,'fade')}});
 
 /* POSTER */
 defG({no:'11',cat:'POSTER',name:'北欧家具ショップのポスター',en:'Nordic Furniture Poster',text:'nobu furniture',lead:'セージグリーンとオーク材の色。余白たっぷりの、暮らしを感じる家具ポスター。',
@@ -4856,31 +5160,27 @@ run(H,t){desk(H);const s=sheet(H,560,792,{background:'#fff8e7'});const C='#5c403
   [['園庭で毎日外あそび','#b5e48c'],['給食は手作り','#ffd97d'],['延長保育 19:00まで','#a0d8ef']].forEach((f,i)=>{T(H,s,{left:'110px',top:584+i*40+'px',fontFamily:MG,fontWeight:'500',fontSize:'18px',color:C,paddingLeft:'36px'},f[0],2200+i*120,'left');R(H,s,{left:'110px',top:588+i*40+'px',width:'24px',height:'24px',borderRadius:'50%',background:f[1]},2200+i*120,'pop')});
   R(H,s,{left:'30px',width:'500px',top:'712px',height:'64px',borderRadius:'32px',background:'#fff'},2500,'fade');T(H,s,{left:'60px',top:'718px',fontFamily:MG,fontWeight:'900',fontSize:'24px',color:C},t,2600);T(H,s,{left:'60px',top:'750px',fontFamily:MG,fontSize:'11px',color:C},'〇〇市〇〇町0-0-0 ／ TEL 000-000-0000',2650,'fade');R(H,s,{left:'464px',top:'718px',width:'52px',height:'52px',background:'repeating-conic-gradient(#5c4033 0 25%,#fff 0 50%) 0 0/13px 13px',borderRadius:'6px'},2700,'pop')}});
 
-defG({no:'15',cat:'POSTER',name:'ヨガスタジオの体験レッスン',en:'Yoga Studio',text:'yoga studio nobu',lead:'テラコッタと砂色のアーチ。夕暮れのような、心が落ち着くポスター。',
-use:'<b>ヨガ・ピラティススタジオ、整体、エステ、ウェルネス系のサロン</b>の体験会や新規募集に。',
-tips:['アーチ（上が半円の形）は今いちばん人気のモチーフ。写真の枠に使うだけでおしゃれに','アースカラー（テラコッタ・砂・オリーブ）は、グラデーションでつなぐとより自然','人物は線画やシルエットにすると、どんな人でも「自分ごと」として見られます'],
-p:`ヨガスタジオの「体験レッスン」ポスターを、テラコッタと砂色のアーチが印象的な、心が落ち着くデザインで A3縦（画面では縦横比を同じに）で作ってください。
-・スタジオ名：「{T}」
-・配色：砂色 #EFE3D3、テラコッタ #C8714E、オレンジ #E9A86B、オリーブ #8A8F6A、文字はこげ茶 #4A3428
-・フォント：英字は Montserrat（300）、日本語は Zen Kaku Gothic New（400/700）
-・中央：大きなアーチ型の枠（上が半円）に、夕日のグラデーション（オレンジ→テラコッタ）。中に太陽の半円と、ヨガのポーズ（木のポーズ）をとる人のシルエット
-・アーチの後ろに、少しずらした細い線のアーチを2重に重ねる
-・上部：英字の細い文字で「BREATHE & BALANCE」、日本語で「からだを、ゆるめる時間。」
-・下部：「はじめての方限定」「体験レッスン ¥1,000」を大きく。テラコッタの円の中に「60分」
-・レッスン情報：朝ヨガ 7:00 ／ 夜ヨガ 19:30 ／ 少人数制（最大8名）
-・最下部：スタジオ名（英字、字間広め）、住所 〇〇市〇〇町0-0-0、予約は Web から（QRコードの枠）
-・全体：角は丸く、線は細く、ゆっくり呼吸するような余白に`,
-run(H,t){desk(H);const s=sheet(H,560,792,{background:'#efe3d3'});const C='#4a3428';
-  T(H,s,{left:'0',width:'560px',top:'40px',textAlign:'center',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'16px',letterSpacing:'.45em',color:C},'BREATHE & BALANCE',200,'fade');T(H,s,{left:'0',width:'560px',top:'70px',textAlign:'center',fontFamily:F.zen,fontWeight:'700',fontSize:'26px',letterSpacing:'.15em',color:C},'からだを、ゆるめる時間。',500);
-  [[150,130],[140,120]].forEach((q,i)=>R(H,s,{left:q[0]-10+i*24+'px',top:q[1]-10+i*24+'px',width:'280px',height:'380px',borderRadius:'140px 140px 0 0',border:'1px solid #c8714e',boxSizing:'border-box'},700+i*150,'fade'));
-  const ar=R(H,s,{left:'140px',top:'140px',width:'280px',height:'380px',borderRadius:'140px 140px 0 0',background:'linear-gradient(#e9a86b,#c8714e)',overflow:'hidden'},900,'up');const sun=R(H,ar,{left:'60px',top:'230px',width:'160px',height:'160px',borderRadius:'50%',background:'#f6d3a6'},1100,'fade');H.a(sun,[{translate:'0 40px'},{translate:'0 0'}],{d:3000,dl:1100});
-  R(H,ar,{left:'0',bottom:'0',width:'280px',height:'70px',background:'#8a8f6a'},1200,'fade');
-  const p=R(H,ar,{left:'110px',top:'120px',width:'60px',height:'200px'},1500,'up');const K='#4a3428';H.abs({left:'18px',top:'0',width:'24px',height:'24px',borderRadius:'50%',background:K},p);H.abs({left:'22px',top:'26px',width:'16px',height:'80px',borderRadius:'8px',background:K},p);H.abs({left:'27px',top:'100px',width:'7px',height:'90px',borderRadius:'4px',background:K},p);H.abs({left:'14px',top:'100px',width:'7px',height:'50px',borderRadius:'4px',background:K,rotate:'50deg',transformOrigin:'50% 0'},p);[[-1],[1]].forEach(d=>H.abs({left:'27px',top:'-50px',width:'6px',height:'70px',borderRadius:'3px',background:K,rotate:d[0]*14+'deg',transformOrigin:'50% 100%'},p));
-  T(H,s,{left:'0',width:'560px',top:'548px',textAlign:'center',fontFamily:F.zen,fontSize:'15px',color:C,letterSpacing:'.1em'},'はじめての方限定',1800,'fade');
-  T(H,s,{left:'110px',top:'572px',fontFamily:F.zen,fontWeight:'700',fontSize:'40px',color:'#c8714e'},'体験レッスン ¥1,000',2000);T(H,s,{left:'34px',top:'566px',width:'64px',height:'64px',borderRadius:'50%',background:'#c8714e',color:'#fff',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:F.zen,fontWeight:'700',fontSize:'18px'},'60分',2100,'pop');
-  T(H,s,{left:'0',width:'560px',top:'640px',textAlign:'center',fontFamily:F.zen,fontSize:'15px',color:C},'朝ヨガ 7:00 ／ 夜ヨガ 19:30 ／ 少人数制（最大8名）',2300,'fade');
-  R(H,s,{left:'60px',width:'440px',top:'684px',height:'1px',background:C,opacity:.3},2300);
-  T(H,s,{left:'60px',top:'702px',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'22px',letterSpacing:'.3em',color:C},t,2500,'fade');T(H,s,{left:'60px',top:'742px',fontFamily:F.zen,fontSize:'11px',color:C},'〇〇市〇〇町0-0-0 ／ ご予約は Web から',2600,'fade');R(H,s,{left:'448px',top:'700px',width:'52px',height:'52px',borderRadius:'8px',background:'repeating-conic-gradient(#4a3428 0 25%,#efe3d3 0 50%) 0 0/13px 13px'},2700,'pop')}});
+defG({no:'15',cat:'POSTER',name:'セミナー告知のチラシ',en:'Seminar Flyer',text:'nobu株式会社',lead:'黄色と紺の2色に、雲形の吹き出しの大見出し。情報が多くてもスッと読める勉強会のチラシ。',
+use:'<b>セミナー・勉強会・説明会・講演会・商工会のイベント</b>の告知に。日時・場所・内容・講師と情報が多いチラシを、読みやすく整理できます。',
+tips:['色は黄色・紺・白の3色だけ。情報が多いチラシほど、色数をしぼると読みやすくなります','「日時」「場所」「内容」を紺の札（ラベル）にして左にそろえると、ひと目で探せます','講師の顔写真があると参加率が上がります。肩書きと一緒に右下へ'],
+p:'',
+run(H,t){desk(H);const s=sheet(H,560,792,{background:'#ffd23f'});const NV='#1d2a6b',MG="'Zen Maru Gothic',sans-serif";
+  T(H,s,{left:'0',width:'560px',top:'34px',textAlign:'center',fontFamily:MG,fontWeight:'900',fontSize:'18px',color:NV},'＼ 小規模事業者向け ／',200,'fade');
+  const cl=R(H,s,{left:'24px',top:'62px',width:'512px',height:'176px',background:'#fff',borderRadius:'90px 70px 80px 60px / 60px 80px 60px 80px'},300,'pop');
+  const h=T(H,cl,{left:'0',width:'512px',top:'16px',textAlign:'center',fontFamily:MG,fontWeight:'900',fontSize:'50px',lineHeight:'1.25',color:NV,whiteSpace:'pre-line'},'補助金 活用\n攻略セミナー',500,'pop');
+  T(H,s,{left:'0',width:'560px',top:'246px',textAlign:'center',fontFamily:MG,fontWeight:'900',fontSize:'15px',color:NV},'［ 第1回 経営者勉強会 ］',700,'fade');
+  T(H,s,{left:'448px',top:'200px',width:'96px',height:'96px',borderRadius:'50%',background:NV,color:'#fff',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',fontFamily:MG,fontWeight:'900',fontSize:'11px',lineHeight:'1.3'},null,900,'pop').innerHTML='初回開催記念<br><span style="font-size:30px">無料</span>';
+  T(H,s,{left:'24px',top:'290px',width:'250px',background:NV,color:'#fff',padding:'8px 12px',fontFamily:MG,fontWeight:'900',fontSize:'15px',lineHeight:'1.5',whiteSpace:'pre-line',boxSizing:'border-box'},'補助金を活用して、\nWebを使ったPR活動に',1000,'left');
+  T(H,s,{left:'24px',top:'352px',width:'250px',fontFamily:F.sans,fontSize:'11px',lineHeight:'1.7',color:NV,whiteSpace:'normal'},'HPやチラシで集客したい事業者向けに、補助金の概要・活用方法・申請のコツをやさしく解説します。',1100,'fade');
+  const ck=R(H,s,{left:'290px',top:'290px',width:'246px',height:'150px',background:'#fff',borderRadius:'26px'},1100,'pop');H.el('div',{position:'absolute',left:'0',right:'0',top:'12px',textAlign:'center',fontFamily:MG,fontWeight:'900',fontSize:'13px',color:NV},ck,'こんな悩みを持つ方におすすめ！');
+  ['販路開拓に悩んでいる','集客の時間・人手がない','HPやチラシを活用したい','補助金について知りたい'].forEach((w,i)=>H.el('div',{position:'absolute',left:'18px',top:40+i*25+'px',fontFamily:F.sans,fontSize:'12px',color:NV},ck,'☑ '+w));
+  [['日時',null],['場所','nobu株式会社 または Zoom'],['セミナー内容','① 補助金の概要と活用例\n② 申請書作成のポイント\n③ 採択のコツ']].forEach((r,i)=>{const y=[452,532,586][i];T(H,s,{left:'24px',top:y+'px',width:'96px',textAlign:'center',background:NV,color:'#fff',padding:'6px 0',fontFamily:MG,fontWeight:'900',fontSize:'13px'},r[0],1300+i*150,'left');
+    if(i===0){const d=T(H,s,{left:'132px',top:y-14+'px',fontFamily:MG,fontWeight:'900',color:NV,lineHeight:'1.1'},null,1350,'fade');d.innerHTML='<span style="font-size:18px">2026/</span><span style="font-size:52px">1/28</span><span style="font-size:16px"> 水</span><br><span style="font-size:16px">14:00 - 15:30</span>'}
+    else T(H,s,{left:'132px',top:y+(i===1?2:0)+'px',fontFamily:MG,fontWeight:'900',fontSize:i===1?'17px':'12px',lineHeight:'1.7',color:NV,whiteSpace:'pre-line'},i===1?t+' または Zoom':r[1],1350+i*150,'fade')});
+  T(H,s,{left:'330px',top:'552px',background:NV,color:'#fff',padding:'3px 12px',fontFamily:MG,fontWeight:'900',fontSize:'12px'},'講師紹介',1700,'fade');
+  [0,1].forEach(i=>{const b=R(H,s,{left:'330px',top:578+i*74+'px',width:'206px',height:'66px',background:'#fff'},1800+i*120,'pop');H.abs({left:'0',top:'0',width:'66px',height:'66px',background:'radial-gradient(circle at 50% 40%,#e9c9b0 0 22%,transparent 23%),radial-gradient(circle at 50% 110%,#2b3550 0 48%,transparent 49%),#dfe6f0'},b);H.el('div',{position:'absolute',left:'76px',top:'12px',fontFamily:F.sans,fontSize:'10px',color:NV},b,'中小企業診断士');H.el('div',{position:'absolute',left:'76px',top:'30px',fontFamily:MG,fontWeight:'900',fontSize:'16px',color:NV},b,'〇〇 〇〇')});
+  R(H,s,{left:'24px',top:'700px',width:'512px',height:'72px',background:'#fff',borderRadius:'16px'},2100,'fade');T(H,s,{left:'44px',top:'716px',fontFamily:MG,fontWeight:'900',fontSize:'13px',lineHeight:'1.6',color:NV,whiteSpace:'pre-line'},'お問い合わせはこちら\nまたはSNSで直接連絡をお願いします',2200,'fade');qr(H,s,400,710,52,NV,'#fff',2300);qr(H,s,466,710,52,NV,'#fff',2350)}});
+
 
 /* ===== GRAPHIC 16-30 ===== */
 const BN=(H,css)=>{desk(H);return sheet(H,1200,628,css)};
@@ -4888,7 +5188,6 @@ const SQ=(H,css)=>{desk(H);return sheet(H,720,720,css)};
 const cards=(H,fc,bc)=>{desk(H);const f=sheet(H,600,363,Object.assign({borderRadius:'10px'},fc),130,250),b=sheet(H,600,363,Object.assign({borderRadius:'10px'},bc),870,250,350);
   [['表',430],['裏',1170]].forEach(q=>T(H,null,{left:q[1]-300+'px',width:'600px',top:'640px',textAlign:'center',fontFamily:F.sans,fontSize:'18px',letterSpacing:'.4em',color:'#7d828c'},q[0],600,'fade'));return [f,b]};
 const qr=(H,p,x,y,s,c,bg,dl)=>R(H,p,{left:x+'px',top:y+'px',width:s+'px',height:s+'px',background:`repeating-conic-gradient(${c} 0 25%,${bg} 0 50%) 0 0/${s/4}px ${s/4}px`,borderRadius:'4px',outline:`4px solid ${bg}`},dl,'pop');
-const NM='佐藤 信',NMEN='Shin Sato';
 
 /* POSTER：バナー */
 defG({no:'16',cat:'POSTER',name:'ECサイトのセールバナー',en:'EC Sale Banner',text:'nobu store',lead:'赤からピンクのグラデーションに「最大70%OFF」。クリックしたくなるセールバナー。',
@@ -4913,7 +5212,6 @@ run(H,t){const s=BN(H,{background:'linear-gradient(120deg,#ff1e56,#ff4fa3 55%,#f
   const big=T(H,s,{left:'56px',top:'170px',fontFamily:"'Anton',sans-serif",color:'#fff',lineHeight:'1',textShadow:'0 8px 0 rgba(0,0,0,.12)'},null,800,'pop');H.el('span',{fontFamily:F.sans,fontWeight:'900',fontSize:'48px',marginRight:'10px'},big,'最大');H.el('span',{fontSize:'260px'},big,'70');H.el('span',{fontSize:'110px'},big,'%OFF');
   T(H,s,{left:'60px',top:'470px',fontFamily:"'Anton',sans-serif",fontSize:'26px',color:'#fff',letterSpacing:'.06em'},'12.1 MON 0:00 — 12.3 WED 23:59',1300,'fade');
   const cd=T(H,s,{left:'60px',top:'514px',display:'flex',gap:'6px',alignItems:'center',fontFamily:F.sans,fontWeight:'900',fontSize:'18px',color:'#fff'},null,1500);H.el('span',{marginRight:'8px'},cd,'残り');const dg=[];'23:59:59'.split('').forEach(ch=>{if(ch===':'){H.el('span',{fontFamily:"'Anton',sans-serif",fontSize:'34px'},cd,':');return}dg.push(H.el('span',{background:'#fff',color:'#ff1e56',fontFamily:"'Anton',sans-serif",fontSize:'34px',width:'34px',textAlign:'center',borderRadius:'6px',padding:'2px 0'},cd,ch))});
-  let sec=59;const tick=()=>{sec=(sec+59)%60;dg[4].textContent=Math.floor(sec/10);dg[5].textContent=sec%10;H.wait(1000,tick)};H.wait(1500,tick);
   [[760,150,-10,'linear-gradient(135deg,#ffe0ec,#ff9cc2)'],[880,120,4,'linear-gradient(135deg,#fff3c4,#ffc65c)'],[990,170,12,'linear-gradient(135deg,#d8f2ff,#7cc8ff)']].forEach((q,i)=>{const c=R(H,s,{left:q[0]+'px',top:q[1]+'px',width:'180px',height:'230px',background:'#fff',borderRadius:'14px',padding:'12px',boxSizing:'border-box',boxShadow:'0 20px 40px rgba(0,0,0,.25)',rotate:q[2]+'deg'},1000+i*150,'pop');H.abs({left:'12px',top:'12px',right:'12px',height:'150px',borderRadius:'8px',background:q[3]},c);H.abs({left:'12px',top:'172px',width:'90px',height:'10px',borderRadius:'5px',background:'#eee'},c);H.el('div',{position:'absolute',left:'12px',top:'190px',fontFamily:"'Anton',sans-serif",fontSize:'22px',color:'#ff1e56'},c,['-70%','-50%','-30%'][i])});
   const bt=T(H,s,{left:'820px',top:'470px',padding:'20px 46px',borderRadius:'999px',background:'#ffe14d',color:'#111',fontFamily:F.sans,fontWeight:'900',fontSize:'28px',boxShadow:'0 10px 0 rgba(0,0,0,.15)'},'今すぐチェック →',1800,'pop');H.a(bt,[{scale:'1'},{scale:'1.06'},{scale:'1'}],{d:1000,dl:2500,i:Infinity,f:'none'})}});
 
@@ -4964,7 +5262,7 @@ run(H,t){const s=BN(H,{background:'linear-gradient(125deg,#6c3bff,#a64dff 50%,#f
   const ph=R(H,s,{left:'840px',top:'60px',width:'250px',height:'510px',borderRadius:'40px',background:'#111',padding:'12px',boxSizing:'border-box',rotate:'8deg',boxShadow:'0 40px 80px rgba(0,0,0,.35)'},900,'up');const sc=H.abs({left:'12px',top:'12px',right:'12px',bottom:'12px',borderRadius:'30px',background:'#f6f3ff',overflow:'hidden'},ph);H.abs({left:'76px',top:'0',width:'74px',height:'20px',borderRadius:'0 0 12px 12px',background:'#111'},sc);
   H.abs({left:'16px',top:'40px',right:'16px',height:'120px',borderRadius:'16px',background:'linear-gradient(125deg,#6c3bff,#ff5fa2)'},sc);H.el('div',{position:'absolute',left:'30px',top:'56px',color:'#fff',fontFamily:F.sans,fontSize:'12px'},sc,'保有ポイント');const pt=H.el('div',{position:'absolute',left:'30px',top:'80px',color:'#fff',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'40px'},sc,'0');
   for(let i=0;i<3;i++){H.abs({left:'16px',right:'16px',top:180+i*80+'px',height:'64px',borderRadius:'14px',background:'#fff',boxShadow:'0 4px 10px rgba(108,59,255,.1)'},sc);H.abs({left:'28px',top:192+i*80+'px',width:'40px',height:'40px',borderRadius:'10px',background:['#ffd84d','#ff5fa2','#6c3bff'][i]},sc);H.abs({left:'80px',top:200+i*80+'px',width:'90px',height:'10px',borderRadius:'5px',background:'#ddd'},sc);H.abs({left:'80px',top:218+i*80+'px',width:'60px',height:'8px',borderRadius:'4px',background:'#eee'},sc)}
-  H.wait(1400,()=>{const t0=performance.now();H.raf(()=>{const k=Math.min(1,(performance.now()-t0)/1200);pt.textContent=Math.round(500*k)+' pt'})});
+  pt.textContent='500 pt';
   H.a(ph,[{translate:'0 0'},{translate:'0 -14px'}],{d:1800,dl:1700,dir:'alternate',i:Infinity,f:'none',e:E.soft});
   const bd=T(H,s,{left:'640px',top:'330px',width:'170px',height:'170px',borderRadius:'50%',background:'#ffd84d',color:'#111',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',fontFamily:F.sans,fontWeight:'900',fontSize:'16px',lineHeight:'1.2',rotate:'-10deg',boxShadow:'0 10px 30px rgba(0,0,0,.2)'},null,1600,'pop');H.el('div',{},bd,'今なら 初回');H.el('div',{fontFamily:"'Montserrat',sans-serif",fontSize:'54px'},bd,'500');H.el('div',{},bd,'pt プレゼント');H.a(bd,[{scale:'1'},{scale:'1.07'},{scale:'1'}],{d:1100,dl:2300,i:Infinity,f:'none'})}});
 
@@ -5017,25 +5315,19 @@ run(H,t){const s=SQ(H,{background:'linear-gradient(160deg,#e9ded2,#d8c7b6)'});co
   T(H,s,{left:'60px',top:'640px',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'16px',letterSpacing:'.3em',color:C},t,2000,'fade')}});
 
 /* CARD：ショップカード */
-defG({no:'21',cat:'CARD',name:'美容室のモノトーンショップカード',en:'Salon Shop Card',text:'hair salon nobu',lead:'表は黒に白いロゴだけ、裏は白に情報。名刺サイズの、ミニマルなショップカード。',
-use:'<b>美容室・バーバー・ネイルサロン・アパレル</b>のショップカードに。レジ横に置いたり、お会計時に手渡ししたりする定番アイテムです。',
-tips:['表はロゴだけ、裏に情報。この「表と裏の役割分担」で一気に洗練されます','文字の大きさは最小でも7pt（画面では約9px）以上に。印刷すると思ったより小さく見えます','裏面の予約用QRコードは、右下にまとめると自然に目が行きます'],
-p:`美容室のショップカードを、名刺サイズ（91×55mm、横向き）の表・裏2面で、モノトーンのミニマルなデザインで作ってください。
-・店名：「{T}」
-・配色：表は黒 #111、裏は白 #FFF、文字は白／黒、グレー #8C8C8C
-・フォント：英字は Montserrat（300、字間広め）、日本語は Zen Kaku Gothic New（400）
-・表面：黒の中央に、店名を英字の細い文字で（字間 0.3em）。その下に、細い白線（幅30px）と小さく「HAIR & MAKE」
-・裏面（白）：左上に店名を小さく、その下に住所「〇〇市〇〇町0-0-0 〇〇ビル2F」、電話「000-000-0000」、営業時間「10:00 – 20:00（火曜定休）」
-・裏面の右下：予約用のQRコードの枠（20mm角）と「ご予約はこちら」
-・裏面の下部：Instagram の @ID とWebサイトのURL
-・印刷用：表と裏をそれぞれ1ページにして、@page で 91×55mm、塗り足し3mm、文字は端から3mm以上内側に
-・画面の確認用には、表と裏を横に並べて、少し影をつけて表示する`,
-run(H,t){const [f,b]=cards(H,{background:'#111'},{background:'#fff'});
-  T(H,f,{left:'0',width:'600px',top:'136px',textAlign:'center',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'38px',letterSpacing:'.3em',color:'#fff'},t,800,'fade');R(H,f,{left:'285px',top:'206px',width:'30px',height:'1px',background:'#fff',transformOrigin:'center'},1200,'grow');T(H,f,{left:'0',width:'600px',top:'222px',textAlign:'center',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'14px',letterSpacing:'.5em',color:'#8c8c8c'},'HAIR & MAKE',1400,'fade');
-  T(H,b,{left:'44px',top:'40px',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'22px',letterSpacing:'.25em',color:'#111'},t,1100,'fade');
-  ['〇〇市〇〇町0-0-0 〇〇ビル2F','TEL 000-000-0000','10:00 – 20:00（火曜定休）'].forEach((w,i)=>T(H,b,{left:'44px',top:110+i*32+'px',fontFamily:F.zen,fontSize:'16px',color:'#111'},w,1300+i*120,'left'));
-  R(H,b,{left:'44px',width:'512px',top:'250px',height:'1px',background:'#ddd'},1700);T(H,b,{left:'44px',top:'270px',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'14px',color:'#8c8c8c',lineHeight:'1.9',whiteSpace:'pre-line'},'Instagram @nobu_salon\nwww.example.com',1800,'fade');
-  qr(H,b,456,96,100,'#111','#fff',1600);T(H,b,{left:'436px',width:'140px',textAlign:'center',top:'206px',fontFamily:F.zen,fontSize:'12px',color:'#8c8c8c'},'ご予約はこちら',1700,'fade')}});
+defG({no:'21',cat:'CARD',name:'美容室のクラフト紙ショップカード',en:'Kraft Salon Card',text:'hair room nobu',lead:'クラフト紙に、透かしのようなはさみの線画。ナチュラルで大人っぽい美容室のカード。',
+use:'<b>美容室・バーバー・トリミングサロン・アトリエ</b>のショップカードに。紙の質感だけで「こだわりのあるお店」に見えます。',
+tips:['はさみなどの道具の線画を、薄い色で大きく敷くと「透かし」のような上品さが出ます','クラフト紙には、こげ茶1色の印刷がいちばん映えます','裏面に「次回のご予約」欄を入れると、予約カードとしても使えて捨てられにくくなります'],
+p:'',
+run(H,t){const kr={background:'#c9a77c',backgroundImage:'radial-gradient(rgba(62,42,30,.12) 1px,transparent 1.5px),radial-gradient(rgba(255,255,255,.12) 1px,transparent 1.5px)',backgroundSize:'5px 5px,7px 7px',backgroundPosition:'0 0,2px 3px'};const [f,b]=cards(H,kr,{background:'#fff'});const C='#4a3020';
+  const sc=R(H,f,{left:'260px',top:'40px',width:'330px',height:'200px'},700,'fade');const sv=H.svg(330,200,sc,{opacity:'.22'});H.sv('circle',{cx:260,cy:60,r:38,stroke:C,'stroke-width':6,fill:'none'},sv);H.sv('circle',{cx:260,cy:150,r:38,stroke:C,'stroke-width':6,fill:'none'},sv);H.sv('path',{d:'M225,78 L10,118 L222,132 M225,132 L40,96',stroke:C,'stroke-width':6,fill:'none','stroke-linecap':'round'},sv);
+  T(H,f,{left:'36px',top:'26px',fontFamily:"'Playfair Display',serif",fontWeight:'900',fontSize:'40px',lineHeight:'1',color:C},t,800,'fade');T(H,f,{left:'38px',top:'74px',fontFamily:F.zen,fontSize:'13px',color:C},'ヘアサロン',900,'fade');
+  T(H,f,{left:'40px',top:'206px',fontFamily:F.zen,fontSize:'14px',color:C},'スタイリスト',1000,'fade');T(H,f,{left:'38px',top:'228px',fontFamily:F.zen,fontWeight:'700',fontSize:'28px',letterSpacing:'.1em',color:C},'〇〇 〇〇',1100);
+  T(H,f,{right:'30px',top:'290px',textAlign:'right',fontFamily:F.zen,fontSize:'12px',lineHeight:'1.7',color:C,whiteSpace:'pre-line'},'TEL 000-000-0000\n〇〇市〇〇町0-0-0',1300,'fade');
+  T(H,b,{left:'40px',top:'34px',fontFamily:"'Playfair Display',serif",fontWeight:'900',fontSize:'22px',color:C},t,1000,'fade');
+  ['〇〇市〇〇町0-0-0','TEL 000-000-0000','10:00 – 20:00（火曜定休）'].forEach((w,i)=>T(H,b,{left:'40px',top:84+i*30+'px',fontFamily:F.zen,fontSize:'15px',color:'#333'},w,1100+i*100,'left'));
+  qr(H,b,470,80,90,'#333','#fff',1400);T(H,b,{left:'450px',width:'130px',textAlign:'center',top:'178px',fontFamily:F.zen,fontSize:'11px',color:'#777'},'ご予約はこちら',1500,'fade');
+  T(H,b,{left:'40px',top:'250px',width:'520px',border:'1px solid #c9a77c',padding:'14px 18px',fontFamily:F.zen,fontSize:'15px',color:C,boxSizing:'border-box'},'次回のご予約　　＿月　＿日（　）　＿時',1600,'fade')}});
 
 defG({no:'22',cat:'CARD',name:'ネイルサロンの金箔スタンプカード',en:'Gold Foil Stamp Card',text:'nail salon nobu',lead:'グレージュに金のグラデーション文字。裏がスタンプカードになった、サロンのカード。',
 use:'<b>ネイル・まつげ・エステ・リラクゼーションサロン</b>のショップカード兼スタンプカードに。リピートのきっかけになります。',
@@ -5060,9 +5352,9 @@ run(H,t){const [f,b]=cards(H,{background:'radial-gradient(circle at 20% 30%,rgba
     if(i<4)H.wait(2400+i*300,()=>{const st=H.el('div',{position:'absolute',inset:'8px',borderRadius:'50%',border:'3px solid #c97b84',color:'#c97b84',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Great Vibes',cursive",fontSize:'22px',rotate:'-15deg'},c,'nobu');H.a(st,[{opacity:0,transform:'scale(1.8)'},{opacity:1,transform:'scale(1)'}],{d:300,e:E.in})})}
   T(H,b,{left:'40px',top:'280px',fontFamily:F.min,fontSize:'14px',color:BR},'10個たまると、ハンドケア1回無料',2000,'fade');T(H,b,{left:'40px',top:'310px',fontFamily:F.min,fontSize:'11px',color:BR},'〇〇市〇〇町0-0-0 ／ TEL 000-000-0000',2100,'fade');qr(H,b,500,272,60,BR,'#faf6f1',2100)}});
 
-defG({no:'23',cat:'CARD',name:'カフェのクラフト紙カード',en:'Kraft Café Card',text:'Café nobu',lead:'クラフト紙に、こげ茶のハンコのようなロゴ。手作り感のあるカフェのカード。',
+defG({no:'23',cat:'CARD',name:'カフェの線画と地図のカード',en:'Line Art Café Card',text:'Café nobu',lead:'クラフト紙に、こげ茶のハンコのようなロゴ。手作り感のあるカフェのカード。',
 use:'<b>カフェ・コーヒースタンド・焼き菓子店・雑貨店</b>のショップカードに。紙袋やコーヒー豆の袋に添えても似合います。',
-tips:['クラフト紙は印刷所で選べます。画面では茶色の色＋細かい点の模様で再現','ロゴはハンコのように丸く囲むと、手作り感とお店らしさが出ます','地図は正確さより「駅からの道順」がわかるシンプルな線画で十分'],
+tips:['クラフト紙は印刷所で選べます。AIで作るときは「クラフト紙の質感」と書くだけで雰囲気が出ます','ロゴはハンコのように丸く囲むと、手作り感とお店らしさが出ます','地図は正確さより「駅からの道順」がわかるシンプルな線画で十分'],
 p:`カフェのショップカードを、名刺サイズ（91×55mm、横向き）の表・裏2面で、クラフト紙に印刷したような手作り感のあるデザインで作ってください。
 ・店名：「{T}」
 ・配色：背景はクラフト紙 #C9A77C（細かい点で紙の繊維を表現）、インクはこげ茶 #3E2A1E 1色だけ（実際の印刷でも1色刷りにできるように）
@@ -5086,28 +5378,18 @@ run(H,t){const kr={background:'#c9a77c',backgroundImage:'radial-gradient(rgba(62
   T(H,b,{left:'306px',top:'200px',fontFamily:"'Klee One',serif",fontSize:'12px',color:C},'コーヒー1杯ごとにスタンプ1つ',1900,'fade');
   for(let i=0;i<8;i++)R(H,b,{left:30+i*68+'px',top:'280px',width:'52px',height:'52px',borderRadius:'50%',border:'1.5px dashed '+C,boxSizing:'border-box'},2000+i*70,'pop')}});
 
-defG({no:'24',cat:'CARD',name:'居酒屋の和風ショップカード',en:'Izakaya Card',text:'酒処 のぶ',lead:'黒に縦書きの筆文字と朱色の落款。のれんをくぐりたくなる、和の飲食店カード。',
-use:'<b>居酒屋・焼き鳥・寿司・蕎麦・小料理屋・和菓子店</b>のショップカードに。お会計のときに手渡すと、再来店のきっかけになります。',
-tips:['店名は縦書きの筆文字で、カードの高さいっぱいに。和の店はこれだけで決まります','朱色の四角い判子（落款）を1つ添えると、一気に本格的に','裏面は白（生成り）にすると、文字が読みやすく上品'],
-p:`居酒屋のショップカードを、名刺サイズ（55×91mm、縦向き）の表・裏2面で、和の本格的なデザインで作ってください（画面確認用は横向きのカード2枚の中に縦書きで配置してもOK）。
-・店名：「{T}」
-・配色：表は墨色 #141414（うっすら和紙の質感）、文字は白、落款は朱色 #C8361F、裏は生成り #F5EFE3 に墨色の文字
-・フォント：店名は Yuji Syuku（筆文字）、本文は Shippori Mincho B1
-・表面：右寄りに、店名を縦書きの白い筆文字で大きく（カードの高さの70%）。その左下に朱色の四角い落款（中に白抜きで「のぶ」）
-・表面の左上：小さな縦書きで「旬の肴と、地酒」
-・表面の下：細い白線で波の模様（青海波）を、カードの下端に薄く
-・裏面：縦書きで、住所・電話・営業時間（17:00 – 24:00）・定休日（日曜）。右端に店名を小さく
-・裏面の左下：「ご予約承ります」と電話番号を大きめに、予約の QRコード
-・印刷用：表と裏をそれぞれ1ページ、@page 91×55mm、塗り足し3mm`,
-run(H,t){const [f,b]=cards(H,{background:'radial-gradient(circle at 30% 20%,#222,#141414 70%)'},{background:'#f5efe3'});const RD='#c8361f';
-  T(H,f,{right:'70px',top:'30px',writingMode:'vertical-rl',fontFamily:F.brush,fontSize:t.length>4?'64px':'78px',lineHeight:'1',color:'#fff',letterSpacing:'.05em'},t,800,'drop');
-  const lk=T(H,f,{left:'300px',top:'250px',width:'62px',height:'62px',background:RD,color:'#fff',borderRadius:'4px',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:F.brush,fontSize:'22px',writingMode:'vertical-rl'},'のぶ',1500,'pop');
-  T(H,f,{left:'60px',top:'40px',writingMode:'vertical-rl',fontFamily:F.min,fontSize:'18px',letterSpacing:'.4em',color:'rgba(255,255,255,.8)'},'旬の肴と、地酒',1200,'drop');
-  R(H,f,{left:'0',right:'0',bottom:'0',height:'50px',backgroundImage:'radial-gradient(circle at 50% 100%,transparent 14px,rgba(255,255,255,.15) 15px,rgba(255,255,255,.15) 16px,transparent 17px,transparent 22px,rgba(255,255,255,.15) 23px,rgba(255,255,255,.15) 24px,transparent 25px)',backgroundSize:'50px 25px'},1300,'fade');
-  T(H,b,{right:'40px',top:'30px',writingMode:'vertical-rl',fontFamily:F.brush,fontSize:'30px',color:'#141414'},t,1000,'drop');
-  ['〇〇市〇〇町0-0-0','電話 000-000-0000','営業 17:00 – 24:00','定休 日曜日'].forEach((w,i)=>T(H,b,{right:110+i*44+'px',top:'34px',writingMode:'vertical-rl',fontFamily:F.min,fontSize:'16px',color:'#141414',letterSpacing:'.1em'},w,1200+i*130,'drop'));
-  R(H,b,{left:'40px',top:'30px',width:'2px',height:'300px',background:RD,opacity:.6},1700);
-  T(H,b,{left:'64px',top:'40px',fontFamily:F.min,fontWeight:'800',fontSize:'16px',color:RD},'ご予約承ります',1800,'fade');T(H,b,{left:'64px',top:'70px',fontFamily:F.min,fontWeight:'800',fontSize:'20px',color:'#141414'},'000-000-0000',1900,'fade');qr(H,b,64,230,80,'#141414','#f5efe3',2000)}});
+defG({no:'24',cat:'CARD',name:'和食店の外観イラストカード',en:'Shopfront Illustration Card',text:'飯家 のぶ',lead:'和紙に、お店の外観の色鉛筆イラストと手描きの地図。思わず行きたくなる和食店のカード。',
+use:'<b>居酒屋・和食店・蕎麦屋・小料理屋・和菓子店・古民家カフェ</b>のショップカードに。外観のイラストがあると「このお店だ」と迷わず来てもらえます。',
+tips:['外観のイラストは、入口と看板がわかる正面からの絵がいちばん伝わります','地図は正確さより「駅の出口」と「目印のお店」。手描きの線のほうが親しみやすい','色は墨色＋イラストだけ。和紙の質感と合わせると一気に本格的に'],
+p:'',
+run(H,t){const wa={background:'#f2ebdc',backgroundImage:'radial-gradient(rgba(120,100,70,.08) 1px,transparent 1.5px)',backgroundSize:'6px 6px'};const [f,b]=cards(H,wa,wa);const K='#222';
+  T(H,f,{left:'0',width:'600px',top:'24px',textAlign:'center',fontFamily:F.brush,fontSize:'34px',color:K},t,700,'fade');
+  const sh=R(H,f,{left:'190px',top:'90px',width:'220px',height:'230px'},900,'up');H.abs({left:'0',top:'0',width:'220px',height:'34px',background:'#5c5c5c',borderRadius:'2px'},sh);H.abs({left:'60px',top:'8px',width:'100px',height:'18px',background:'#d9c9a8',fontSize:'11px',textAlign:'center',lineHeight:'18px',fontFamily:F.sans,fontWeight:'700',color:K},sh,'NOBU');H.abs({left:'10px',top:'34px',width:'200px',height:'170px',background:'#8a6a4c'},sh);H.abs({left:'110px',top:'48px',width:'80px',height:'156px',background:'repeating-linear-gradient(90deg,#3a3a3a 0 3px,#cfe0e8 3px 18px),#cfe0e8',backgroundBlendMode:'normal'},sh);H.abs({left:'110px',top:'48px',width:'80px',height:'156px',backgroundImage:'repeating-linear-gradient(#3a3a3a 0 3px,transparent 3px 26px)'},sh);H.abs({left:'24px',top:'60px',width:'72px',height:'70px',background:'#e9e2d0',border:'3px solid #5c4636',boxSizing:'border-box'},sh);H.abs({left:'0',top:'204px',width:'220px',height:'18px',background:'#6b4a33'},sh);H.abs({left:'40px',top:'150px',width:'30px',height:'40px',borderRadius:'50% 50% 4px 4px',background:'#5f7d5a'},sh);
+  const lg=R(H,b,{left:'40px',top:'50px',width:'110px',height:'110px',borderRadius:'50%',background:K},1000,'pop');for(let k=0;k<6;k++)H.abs({left:'45px',top:'14px',width:'20px',height:'40px',borderRadius:'50%',background:'#f2ebdc',transformOrigin:'50% 41px',rotate:k*60+'deg'},lg);
+  T(H,b,{left:'40px',top:'176px',fontFamily:F.brush,fontSize:'30px',color:K},t,1100,'fade');
+  const mp=R(H,b,{left:'260px',top:'24px',width:'316px',height:'210px'},1200,'fade');const ms=H.svg(316,210,mp);[['M10,60 H306',7],['M10,150 H306',5],['M90,0 V210',6],['M220,0 V210',5]].forEach((q,i)=>{const p=H.sv('path',{d:q[0],stroke:'#333','stroke-width':q[1],fill:'none','stroke-linecap':'round',opacity:.85},ms);const L=400;p.style.strokeDasharray=L;p.animate([{strokeDashoffset:L},{strokeDashoffset:0}],{duration:900,delay:1300+i*150,fill:'both'})});
+  [['〇〇駅 A4',20,40],['目印のコンビニ',110,120],['のぶ ★',230,96]].forEach(q=>{const e=H.sv('text',{x:q[1],y:q[2],fill:'#333','font-size':14,'font-family':'Klee One, serif'},ms);e.textContent=q[0]});
+  T(H,b,{left:'40px',top:'252px',fontFamily:F.min,fontSize:'14px',lineHeight:'1.7',color:K,whiteSpace:'pre-line'},'OPEN 17:00 – 25:00\nCLOSE 日・祝\nTEL 000-000-0000',1700,'fade');T(H,b,{left:'300px',top:'296px',fontFamily:F.min,fontSize:'12px',color:K},'〇〇市〇〇町0-0-0',1800,'fade');qr(H,b,510,262,64,K,'#f2ebdc',1900)}});
 
 defG({no:'25',cat:'CARD',name:'イタリアンのトリコロールカード',en:'Trattoria Card',text:'Trattoria nobu',lead:'クリーム色に緑・白・赤のライン。陽気でおいしそうな、イタリアンのカード。',
 use:'<b>イタリアン・ピッツェリア・ワインバー・パスタ専門店・ジェラート店</b>のショップカードに。',
@@ -5201,26 +5483,18 @@ run(H,t){const [f,b]=cards(H,{background:'#faf8f3'},{background:'#14274e'});cons
   mark(b,265,70,70,1100);T(H,b,{left:'0',width:'600px',top:'160px',textAlign:'center',fontFamily:F.min,fontWeight:'800',fontSize:'26px',letterSpacing:'.2em',color:GD},t,1300,'fade');T(H,b,{left:'0',width:'600px',top:'206px',textAlign:'center',fontFamily:F.serif,fontSize:'15px',letterSpacing:'.3em',color:'rgba(197,165,90,.8)'},'NOBU LAW OFFICE',1500,'fade');
   T(H,b,{left:'0',width:'600px',top:'282px',textAlign:'center',fontFamily:F.min,fontSize:'13px',letterSpacing:'.2em',color:GD},'企業法務 ｜ 相続 ｜ 不動産 ｜ 労務',1700,'fade')}});
 
-defG({no:'29',cat:'CARD',name:'クリエイターの個性派名刺',en:'Bold Creator Card',text:'nobu',lead:'大きな頭文字と、はっきりした色の面。一度見たら忘れない、クリエイターの名刺。',
-use:'<b>デザイナー・イラストレーター・カメラマン・映像クリエイター・ミュージシャン</b>の名刺に。作品の世界観ごと覚えてもらえます。',
-tips:['名前の頭文字1文字を、カードからはみ出すほど巨大に。それだけで個性が出ます','色は「主役の色1つ＋黒＋白」。主役の色は自分の作品に合わせて変えてOK','情報は小さく、端に寄せる。名刺というより「作品」として渡すイメージで'],
-p:`クリエイターの名刺を、名刺サイズ（91×55mm、横向き）の表・裏2面で、大胆で個性的な、一度見たら忘れないデザインで作ってください。
-・活動名：「{T}」
-・名前：「${NM}」（${NMEN}）、肩書き「Graphic Designer / Illustrator」
-・配色：主役の色はビビッドなオレンジ #FF5A1F、黒 #111、白、オフホワイト #F5F1EA
-・フォント：英字は Anton（極太）と Space Mono、日本語は Noto Sans JP 700
-・表面：オレンジ一面に、活動名の頭文字1文字を黒で巨大に（カードの高さの1.4倍、上下がはみ出して切れる）。右下に白で活動名、小さく肩書き
-・裏面：オフホワイトの背景を、黒い太い線で左右 2:1 に分割。左に名前と連絡先（メール・Instagram・Webサイト）を Space Mono で、右に作品集へ飛ぶ QRコードと「PORTFOLIO →」
-・裏面の左上に、オレンジの小さな丸（シール風）
-・遊び心：表面の頭文字の中に、うっすら作品のパターン（ストライプやドット）を入れる
-・印刷用：表と裏をそれぞれ1ページ、@page 91×55mm、塗り足し3mm（頭文字が裏まで切れても見栄えがいいように）`,
-run(H,t){const [f,b]=cards(H,{background:'#ff5a1f'},{background:'#f5f1ea'});const K='#111';const ini=(t.trim()[0]||'N').toUpperCase();
-  const L=T(H,f,{left:'20px',top:'-120px',fontFamily:"'Anton',sans-serif",fontSize:'560px',lineHeight:'1',color:K,background:'repeating-linear-gradient(45deg,#111 0 14px,#2a2a2a 14px 28px)',WebkitBackgroundClip:'text',backgroundClip:'text',WebkitTextFillColor:'transparent'},ini,700,'up');
-  T(H,f,{right:'30px',top:'262px',textAlign:'right',fontFamily:"'Anton',sans-serif",fontSize:'38px',letterSpacing:'.05em',color:'#fff'},t.toUpperCase(),1200,'left');T(H,f,{right:'30px',top:'312px',textAlign:'right',fontFamily:F.smono,fontSize:'12px',color:'#fff'},'Graphic Designer / Illustrator',1400,'fade');
-  R(H,b,{left:'396px',top:'0',width:'8px',height:'363px',background:K,transformOrigin:'top'},1000,'fade');R(H,b,{left:'30px',top:'30px',width:'34px',height:'34px',borderRadius:'50%',background:'#ff5a1f'},1100,'pop');
-  T(H,b,{left:'30px',top:'90px',fontFamily:F.sans,fontWeight:'700',fontSize:'32px',letterSpacing:'.12em',color:K},NM,1200);T(H,b,{left:'30px',top:'140px',fontFamily:F.smono,fontSize:'14px',color:K},NMEN,1300,'fade');
-  ['mail@example.com','IG  @nobu_works','www.example.com'].forEach((w,i)=>T(H,b,{left:'30px',top:212+i*34+'px',fontFamily:F.smono,fontSize:'14px',color:K},w,1400+i*120,'left'));
-  qr(H,b,446,90,110,K,'#f5f1ea',1600);T(H,b,{left:'420px',width:'160px',textAlign:'center',top:'230px',fontFamily:"'Anton',sans-serif",fontSize:'22px',letterSpacing:'.05em',color:K},'PORTFOLIO →',1800,'fade')}});
+defG({no:'29',cat:'CARD',name:'線画の似顔絵イラスト名刺',en:'Line Portrait Card',text:'nobu writing',lead:'黒い線1本で描いた似顔絵と、細い明朝体。余白たっぷりの、覚えてもらえる名刺。',
+use:'<b>ライター・デザイナー・カウンセラー・講師・個人事業主</b>の名刺に。似顔絵があると、交流会のあとでも顔と名前を思い出してもらえます。',
+tips:['似顔絵は「線1本＋服だけ黒く塗る」くらいシンプルにすると、名刺の小ささでもきれいに見えます','名前は細い明朝体で大きく。イラストと文字の間に余白をたっぷり','仕事をしている姿（パソコン・カメラ・本など）を描くと、職業がひと目で伝わります'],
+p:'',
+run(H,t){const [f,b]=cards(H,{background:'#fff'},{background:'#fff'});const K='#1a1a1a';
+  T(H,f,{left:'50px',top:'50px',fontFamily:F.min,fontSize:'14px',color:K},'ライター',700,'fade');T(H,f,{left:'48px',top:'74px',fontFamily:F.min,fontWeight:'500',fontSize:'42px',letterSpacing:'.12em',color:K},NM,800);
+  const il=R(H,f,{left:'350px',top:'70px',width:'220px',height:'240px'},1000,'fade');const sv=H.svg(220,240,il);
+  const ln=(d,dl)=>{const p=H.sv('path',{d,stroke:K,'stroke-width':3,fill:'none','stroke-linecap':'round','stroke-linejoin':'round'},sv);p.style.strokeDasharray=600;p.animate([{strokeDashoffset:600},{strokeDashoffset:0}],{duration:1200,delay:dl,fill:'both'})};
+  ln('M70,90 C60,40 140,30 140,80 C142,110 130,128 105,130 C82,130 70,115 70,90 Z',1100);ln('M68,82 C70,50 100,36 132,52 C120,60 95,62 70,80',1200);ln('M98,96 h2 M120,96 h2 M102,114 q8,5 14,0',1300);
+  H.sv('path',{d:'M40,240 C40,170 70,145 105,145 C140,145 165,170 170,200 L170,240 Z',fill:K},sv);H.sv('path',{d:'M120,170 L215,170 L200,215 L110,215 Z',fill:'#fff',stroke:K,'stroke-width':3},sv);
+  qr(H,f,50,250,64,K,'#fff',1500);T(H,f,{left:'130px',top:'252px',fontFamily:"'Montserrat',sans-serif",fontSize:'13px',lineHeight:'1.75',color:K,whiteSpace:'pre-line'},'☎ 000-000-0000\n✉ mail@example.com\n⌂ www.example.com',1600,'fade');
+  T(H,b,{left:'0',width:'600px',top:'130px',textAlign:'center',fontFamily:F.min,fontWeight:'500',fontSize:'32px',letterSpacing:'.15em',color:K},t,1100,'fade');T(H,b,{left:'0',width:'600px',top:'186px',textAlign:'center',fontFamily:F.min,fontSize:'15px',letterSpacing:'.15em',color:'#666'},'取材・インタビュー・Webコラム',1300,'fade');T(H,b,{left:'0',width:'600px',top:'290px',textAlign:'center',fontFamily:F.min,fontSize:'12px',color:'#888'},'お仕事のご相談はお気軽に',1500,'fade')}});
 
 defG({no:'30',cat:'CARD',name:'顔写真入りの営業名刺',en:'Sales Card with Photo',text:'nobu不動産',lead:'丸い顔写真とひとことメッセージ。「人」で選ばれる、営業・接客の名刺。',
 use:'<b>不動産・保険・車の販売・住宅メーカー・美容部員・地域密着のお店</b>など、「担当者の顔」で選ばれる仕事の名刺に。',
@@ -6209,7 +6483,7 @@ function renderItem(m){
   const S=SEC[m.sec];const k=`var(${CAT[m.cat].k})`;const i=ITEMS[m.sec].indexOf(m);const pv=ITEMS[m.sec][i-1],nx=ITEMS[m.sec][i+1];
   const P=$('#p-item');P.style.setProperty('--k',k);
   const txt=custom[m.id]??m.text;
-  const left=S.ui==='illust'?illustCard(m):`
+  const left=S.ui==='illust'?illustCard(m):S.ui==='graphic'?graphicCard(m,txt,S):`
       <div class="label">${S.showLabel}</div>
       <div class="monitor"><div class="screen" id="mScreen"><div class="stage" id="mStage"></div></div>
         <div class="mbar"><span class="rec"></span><span class="tc" id="mTc">00:00:00:00</span><span class="sp"></span><span class="tc">${S.monLabel}</span><button class="mini" id="replay" type="button">最初から再生</button></div></div>
@@ -6217,7 +6491,7 @@ function renderItem(m){
       <div class="hint">${m.multi?'スペースか「／」で区切ると、言葉ごとに使い分けられます。':'入力するとプレビューと右のプロンプトが同時に変わります。'}</div>`;
   P.innerHTML=`
   <div class="mhead"><div class="mno">No.${m.no}</div><div class="mtitle">
-    <div class="meta"><span class="chip">${m.cat}｜${CAT[m.cat].ja}</span><span>${m.en||''}</span>${m.loop&&S.ui!=='illust'?`<span>LOOP ${(m.loopFn?m.loopFn(words(m.text)):m.loop)/1000}s</span>`:''}</div>
+    <div class="meta"><span class="chip">${m.cat}｜${CAT[m.cat].ja}</span><span>${m.en||''}</span>${m.loop&&S.ui!=='illust'&&S.ui!=='graphic'?`<span>LOOP ${(m.loopFn?m.loopFn(words(m.text)):m.loop)/1000}s</span>`:''}</div>
     <h2>${m.name}</h2><p>${m.lead}</p></div></div>
   <div class="mgrid">
     <div>${left}<div style="margin-top:22px" class="usebox"><div class="label">使いどころ</div>${m.use}</div></div>
@@ -6234,9 +6508,9 @@ function renderItem(m){
   const showP=()=>{const t=getT();let h=esc(fill(m.p,t));if(t)h=h.replaceAll(esc(t),`<span class="ph">${esc(t)}</span>`);$('#ptext').innerHTML=h};
   showP();
   if(mplayer)mplayer.stop();mplayer=null;
-  if(S.ui!=='illust'){mplayer=new Player($('#mStage'),$('#mScreen'));const start=()=>mplayer.play(m,getT(),reduce);start();
+  if(S.ui!=='illust'){const st=$('#mStage');if(st)mplayer=new Player(st,$('#mScreen'));const start=()=>{if(mplayer)mplayer.play(m,getT(),reduce)};start();
     let deb;$('#mText').addEventListener('input',()=>{custom[m.id]=$('#mText').value;showP();clearTimeout(deb);deb=setTimeout(start,350)});
-    $('#resetText').onclick=()=>{delete custom[m.id];$('#mText').value=m.text;showP();start()};$('#replay').onclick=start;}
+    $('#resetText').onclick=()=>{delete custom[m.id];$('#mText').value=m.text;showP();start()};const rp=$('#replay');if(rp)rp.onclick=start;}
   const copyTo=(btn,text,label)=>{const ok=()=>{btn.textContent='コピーしました';btn.classList.add('done');setTimeout(()=>{btn.textContent=label;btn.classList.remove('done')},1600)};
     try{navigator.clipboard.writeText(text).then(ok,()=>{fallback(text);ok()})}catch(e){fallback(text);ok()}};
   $('#copyBtn').onclick=()=>{const a=sel?sel.value:S.ars?S.ars[0]:'';copyTo($('#copyBtn'),S.base(a)+`\n\n【${S.unit}指示】\n`+fill(m.p,getT()),'プロンプトをコピー')};
@@ -6244,6 +6518,13 @@ function renderItem(m){
 }
 function fallback(full){const p=$('#ptext');p.textContent=full;const r=document.createRange();r.selectNodeContents(p);const s=getSelection();s.removeAllRanges();s.addRange(r)}
 
+function graphicCard(m,txt,S){
+  const shot=m.img?`<div class="gshot"><img src="${m.img}" alt="${esc(m.name)}の作例" loading="lazy"></div><div class="exnote">作例：このプロンプトを ChatGPT（画像生成）に送って作った参考イメージです。文字や写真の細部は、AIや生成のたびに変わります。</div>`
+    :`<div class="monitor"><div class="screen" id="mScreen"><div class="stage" id="mStage"></div></div></div><div class="exnote">※AIでの作例画像は準備中です。仕上がりのイメージを再現した見本を表示しています。</div>`;
+  return `<div class="label">${S.showLabel}</div>${shot}
+      <div class="txtrow"><label for="mText">${S.inputLabel}</label><input id="mText" value="${esc(txt)}" maxlength="40"><button class="mini" id="resetText" type="button">元に戻す</button></div>
+      <div class="hint">入力すると、右のプロンプトの中の${S.inputLabel}が置き換わります。</div>`;
+}
 function illustCard(m){
   const pal=m.pal||['#222','#555','#888','#bbb','#eee'];
   const ex=m.img?`<div class="exrow"><figure><img src="img/base.jpg" alt="作例の元写真：公園に立つ架空の男の子" loading="lazy"><figcaption>BEFORE｜元の写真</figcaption></figure><i>→</i><figure><img src="${m.img}" alt="${esc(m.name)}の作例" loading="lazy"><figcaption>AFTER｜${esc(m.name)}</figcaption></figure></div><div class="exnote">作例：AIで生成した架空の男の子の写真をもとに作成した参考イメージです。${m.exnote?esc(m.exnote)+' ':''}仕上がりはAIや写真によって変わります。</div>`:'';
@@ -6259,7 +6540,7 @@ function illustCard(m){
 }
 
 let coverI=0,coverT;
-function coverLoop(){const picks=['a01','m01','o03','t01','g01','a11','m35','o31','t18','a21','h02','g13'].map(findItem).filter(Boolean);
+function coverLoop(){const picks=['a01','m01','o03','t01','a16','a11','m35','o31','t18','a21','h02','a26'].map(findItem).filter(Boolean);
   const m=picks[coverI%picks.length];coverI++;player.play(m,m.text,true);$('#coverName').textContent=`${SEC[m.sec].name} No.${m.no} ${m.name}`;coverT=setTimeout(coverLoop,Math.min(m.loop,6000))}
 
 function go(id){
