@@ -1,8 +1,8 @@
-<title>AIプロンプト図鑑200</title>
+<title>AIプロンプト図鑑310</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=DotGothic16&family=JetBrains+Mono:wght@400;700&family=Mochiy+Pop+One&family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho+B1:wght@500;800&family=Yuji+Syuku&family=Zen+Kaku+Gothic+New:wght@400;700&family=Cormorant+Garamond:wght@500;700&family=Space+Mono:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=DotGothic16&family=JetBrains+Mono:wght@400;700&family=Mochiy+Pop+One&family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho+B1:wght@500;800&family=Yuji+Syuku&family=Zen+Kaku+Gothic+New:wght@400;700&family=Cormorant+Garamond:wght@500;700&family=Space+Mono:wght@700&family=Bebas+Neue&family=Nunito:wght@800&family=Cinzel:wght@700&family=Anton&family=Great+Vibes&family=Fredoka:wght@700&family=Playfair+Display:wght@900&family=Abril+Fatface&family=Montserrat:wght@300;800&family=Kaisei+Decol:wght@700&family=Zen+Maru+Gothic:wght@500;900&family=Klee+One:wght@600&family=Creepster&display=swap">
 <style>
 /*APPLE*/
 </style>
@@ -25,7 +25,7 @@
     <div class="cover">
       <div class="eyebrow">AIプロンプト図鑑</div>
       <h1>AIに貼るだけ。<br><em>動く、映える、売れる。</em></h1>
-      <p>文字が動くテロップ、場面をつなぐトランジション、かっこいいホームページ、写真からのイラスト変換。発信に必要な4つの道具を、200のプロンプトにしました。</p>
+      <p>文字や図形が動くモーショングラフィック、映画のようなオープニング、ホームページ、チラシや名刺、写真からのイラスト変換。発信に必要な道具を、310のプロンプトにしました。</p>
       <div class="links"><button class="pill" type="button" data-go="m-top">はじめる</button><button type="button" data-go="i-top">イラスト変換の作例を見る ›</button></div>
       <div class="monitor">
         <div class="screen" id="coverScreen"><div class="stage" id="coverStage"></div></div>
@@ -43,7 +43,7 @@
 const CAT={};
 const E={out:'cubic-bezier(.16,1,.3,1)',back:'cubic-bezier(.34,1.56,.64,1)',in:'cubic-bezier(.7,0,.84,0)',io:'cubic-bezier(.87,0,.13,1)',lin:'linear',soft:'cubic-bezier(.4,0,.2,1)'};
 const F={heavy:"'Dela Gothic One','Noto Sans JP',sans-serif",sans:"'Noto Sans JP',sans-serif",min:"'Shippori Mincho B1','Noto Serif JP',serif",dot:"'DotGothic16',monospace",brush:"'Yuji Syuku',serif",pop:"'Mochiy Pop One','Noto Sans JP',sans-serif",mono:"'JetBrains Mono',monospace",serif:"'Cormorant Garamond','Shippori Mincho B1',serif",smono:"'Space Mono','JetBrains Mono',monospace",zen:"'Zen Kaku Gothic New','Noto Sans JP',sans-serif"};
-const ITEMS={m:[],t:[],h:[],i:[]};
+const ITEMS={m:[],t:[],o:[],a:[],h:[],g:[],i:[]};
 let CUR_SEC='m';
 function def(o){o.sec=o.sec||CUR_SEC;o.id=o.sec+o.no;ITEMS[o.sec].push(o)}
 const rnd=(a,b)=>a+Math.random()*(b-a);
@@ -92,7 +92,10 @@ const $=s=>document.querySelector(s);
 let ar='16:9';try{ar=localStorage.getItem('pz-ar')||'16:9'}catch(e){}
 const custom={};
 const SEC=SECTIONS();
-const ORDER=['m','t','h','i'];
+const ORDER=['m','t','o','a','h','g','i'];
+const GROUPS=[{n:'モーショングラフィック',sn:'モーション',s:['m','t','o']},{n:'アニメーション',sn:'アニメ',s:['a']},{n:'ホームページ',sn:'HP',s:['h']},{n:'グラフィック',s:['g']},{n:'イラスト変換',sn:'イラスト',s:['i']}];
+const grpOf=s=>GROUPS.find(g=>g.s.includes(s));
+const TOTAL=ORDER.reduce((a,s)=>a+ITEMS[s].length,0);
 const pages=['cover'];ORDER.forEach(s=>{pages.push(s+'-top');ITEMS[s].forEach(it=>pages.push(it.id))});
 let curPage='cover';
 const player=new Player($('#coverStage'),$('#coverScreen'));
@@ -102,8 +105,9 @@ const findItem=id=>ITEMS[id[0]]&&ITEMS[id[0]].find(x=>x.id===id);
 const fill=(p,t)=>p.replaceAll('{T}',t);
 
 function buildChrome(){
-  $('#tabs').innerHTML=ORDER.map(s=>`<button class="tab" type="button" data-tab="${s}" style="--k:var(${SEC[s].k})">${SEC[s].name}<small>${ITEMS[s].length}</small></button>`).join('');
-  $('#shelf').innerHTML=ORDER.map(s=>`<button type="button" data-go="${s}-top" style="--k:var(${SEC[s].k})"><small>${SEC[s].en}</small><b>${SEC[s].name}<em> ${ITEMS[s].length}</em></b><span>${SEC[s].lead}</span></button>`).join('');
+  $('#tabs').innerHTML=GROUPS.map(g=>`<button class="tab" type="button" data-tab="${g.s[0]}" data-grp="${g.s.join('')}" style="--k:var(${SEC[g.s[0]].k})"><span class="tl">${g.n}</span><span class="ts">${g.sn||g.n}</span><small>${g.s.reduce((a,s)=>a+ITEMS[s].length,0)}</small></button>`).join('');
+  $('#brand').innerHTML='AIプロンプト図鑑<b>'+TOTAL+'</b>';document.title='AIプロンプト図鑑'+TOTAL;
+  $('#shelf').innerHTML=ORDER.map(s=>`<button type="button" data-go="${s}-top" style="--k:var(${SEC[s].k})"><small>${grpOf(s).s.length>1?grpOf(s).n+'｜':''}${SEC[s].en}</small><b>${SEC[s].name}<em> ${ITEMS[s].length}</em></b><span>${SEC[s].lead}</span></button>`).join('');
   document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g){go(g.dataset.go);return}
     const tb=e.target.closest('[data-tab]');if(tb){go(tb.dataset.tab+'-top');return}
     const c=e.target.closest('[data-cat]');if(c){const it=ITEMS[c.dataset.sec].find(m=>m.cat===c.dataset.cat);if(it)go(it.id)}});
@@ -113,8 +117,9 @@ function buildChrome(){
 }
 function step(d){const i=pages.indexOf(curPage);go(pages[Math.min(pages.length-1,Math.max(0,i+d))])}
 function setChrome(sec,cat){
-  document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-current',b.dataset.tab===sec));
-  $('#chap').innerHTML=sec?Object.keys(SEC[sec].cats).map(c=>`<button type="button" data-sec="${sec}" data-cat="${c}" aria-current="${c===cat}" style="--k:var(${CAT[c].k})"><i></i>${c}｜${CAT[c].ja}</button>`).join(''):'';
+  document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-current',!!sec&&b.dataset.grp.includes(sec)));
+  const g=sec&&grpOf(sec);const subs=g&&g.s.length>1?'<span class="subseg">'+g.s.map(s=>`<button type="button" class="sub" data-go="${s}-top" aria-current="${s===sec}">${SEC[s].name}<small>${ITEMS[s].length}</small></button>`).join('')+'</span>':'';
+  $('#chap').innerHTML=subs+(sec?Object.keys(SEC[sec].cats).map(c=>`<button type="button" data-sec="${sec}" data-cat="${c}" aria-current="${c===cat}" style="--k:var(${CAT[c].k})"><i></i>${c}｜${CAT[c].ja}</button>`).join(''):'');
 }
 
 function renderSec(s){
@@ -191,7 +196,7 @@ function illustCard(m){
 }
 
 let coverI=0,coverT;
-function coverLoop(){const picks=['m01','t01','m21','t18','h02','m35','t34','h08','m48','t42'].map(findItem).filter(Boolean);
+function coverLoop(){const picks=['a01','m01','o03','t01','g01','a11','m35','o31','t18','a21','h02','g13'].map(findItem).filter(Boolean);
   const m=picks[coverI%picks.length];coverI++;player.play(m,m.text,true);$('#coverName').textContent=`${SEC[m.sec].name} No.${m.no} ${m.name}`;coverT=setTimeout(coverLoop,Math.min(m.loop,6000))}
 
 function go(id){
