@@ -1,8 +1,9 @@
 /* ===== ILLUST 01-30 ===== */
 CUR_SEC='i';
 const GPT='<b>◎</b> ChatGPT（画像生成）',GEM='<b>◎</b> Gemini',GPTo='ChatGPT（画像生成）',GEMo='Gemini',MJ='Midjourney（英語版）',FF='Adobe Firefly',CV='Canva AI';
-const EXIMG=['01','02','03','04','05','06','07','08','09','11','15'];
-const defI=o=>{o.text='';o.loop=0;if(EXIMG.includes(o.no))o.img='img/i'+o.no+'.jpg';def(o)};
+const EXIMG=['01','02','03','04','05','06','07','08','09','11','15','21','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60'];
+const EXNOTE={'57':'この作例は、元写真に動物がいないため架空の柴犬「こむぎ」で作っています。','58':'この作例は、男の子が描いたクレヨン画を想定して作っています（左下が元の絵）。'};
+const defI=o=>{o.text='';o.loop=0;if(EXIMG.includes(o.no))o.img='img/i'+o.no+'.jpg';o.exnote=EXNOTE[o.no]||'';def(o)};
 
 /* BASIC */
 defI({no:'01',cat:'BASIC',name:'画風チェンジの基本形',en:'Style Transfer Template',lead:'どんな画風にも使える「型」。まずはこれで変換のコツをつかむ。',

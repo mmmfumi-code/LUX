@@ -371,7 +371,7 @@ function SECTIONS(){
 ・実在の作品名・作家名・キャラクターには寄せず、指定した画風の特徴だけで描く
 ・1枚目を出したら、似せ具合を「もっと似せる／もっとイラストらしく」で調整できるように一言添える`,
     fix:[['本人に似ていない','「顔のパーツの位置と形は写真のまま、塗りと線だけをイラストにして」'],['画風が弱い','「スタイルの特徴をもっと強く。線の太さと色数を指定どおりにはっきり出して」'],['背景が変わってしまう','「背景は元の写真の場所のまま、同じ画風で描いて」'],['手や指がおかしい','「手の指を5本に正しく描き直して。ほかの部分は変えないで」'],['肖像権が気になる','他人が写った写真は、本人の許可を取ってから使いましょう。販売物に使う場合は特に注意が必要です。']],
-    extra:`<h3>作例に使った元の写真</h3><div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap"><img src="img/base.jpg" alt="公園に立つ架空の男の子の写真" style="width:200px;max-width:100%;border-radius:8px"><p style="flex:1;min-width:220px;margin:0">各ページの作例は、AIで生成した<b>架空の男の子</b>（実在しない人物）の写真をもとにしています。黒髪・黄色のパーカー・紺の短パン・赤い靴・青い帽子という特徴が、スタイルごとにどう描き変わるかを見比べてください。作例は Figma AI（画像生成）で、元写真と同じ特徴を指定して作った参考イメージです。実際の仕上がりは、使うAIや写真によって変わります。</p></div><h3>使う前に知っておきたいこと</h3><p>他人が写っている写真は、本人の許可を取ってから使ってください。また、特定のアニメ会社・作家・キャラクターの名前を出して「〇〇風」と指示するのは避け、この本のように<b>画風の特徴（線・塗り・色・質感）で指示する</b>のが安全で、しかも仕上がりのブレも少なくなります。</p>`}
+    extra:`<h3>作例に使った元の写真</h3><div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap"><img src="img/base.jpg" alt="公園に立つ架空の男の子の写真" style="width:200px;max-width:100%;border-radius:8px"><p style="flex:1;min-width:220px;margin:0">各ページの作例は、AIで生成した<b>架空の男の子</b>（実在しない人物）の写真をもとにしています。黒髪・黄色のパーカー・紺の短パン・赤い靴・青い帽子という特徴が、スタイルごとにどう描き変わるかを見比べてください。作例は Figma AI と ChatGPT（画像生成）で作った参考イメージです。実際の仕上がりは、使うAIや写真によって変わります。</p></div><h3>使う前に知っておきたいこと</h3><p>他人が写っている写真は、本人の許可を取ってから使ってください。また、特定のアニメ会社・作家・キャラクターの名前を出して「〇〇風」と指示するのは避け、この本のように<b>画風の特徴（線・塗り・色・質感）で指示する</b>のが安全で、しかも仕上がりのブレも少なくなります。</p>`}
   };
 }
 
@@ -3008,8 +3008,9 @@ run(H,t){const sv=H.svg(1600,900);const id='cr'+Math.floor(Math.random()*1e6);co
 /* ===== ILLUST 01-30 ===== */
 CUR_SEC='i';
 const GPT='<b>◎</b> ChatGPT（画像生成）',GEM='<b>◎</b> Gemini',GPTo='ChatGPT（画像生成）',GEMo='Gemini',MJ='Midjourney（英語版）',FF='Adobe Firefly',CV='Canva AI';
-const EXIMG=['01','02','03','04','05','06','07','08','09','11','15'];
-const defI=o=>{o.text='';o.loop=0;if(EXIMG.includes(o.no))o.img='img/i'+o.no+'.jpg';def(o)};
+const EXIMG=['01','02','03','04','05','06','07','08','09','11','15','21','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60'];
+const EXNOTE={'57':'この作例は、元写真に動物がいないため架空の柴犬「こむぎ」で作っています。','58':'この作例は、男の子が描いたクレヨン画を想定して作っています（左下が元の絵）。'};
+const defI=o=>{o.text='';o.loop=0;if(EXIMG.includes(o.no))o.img='img/i'+o.no+'.jpg';o.exnote=EXNOTE[o.no]||'';def(o)};
 
 /* BASIC */
 defI({no:'01',cat:'BASIC',name:'画風チェンジの基本形',en:'Style Transfer Template',lead:'どんな画風にも使える「型」。まずはこれで変換のコツをつかむ。',
@@ -4000,7 +4001,7 @@ function fallback(full){const p=$('#ptext');p.textContent=full;const r=document.
 
 function illustCard(m){
   const pal=m.pal||['#222','#555','#888','#bbb','#eee'];
-  const ex=m.img?`<div class="exrow"><figure><img src="img/base.jpg" alt="作例の元写真：公園に立つ架空の男の子" loading="lazy"><figcaption>BEFORE｜元の写真</figcaption></figure><i>→</i><figure><img src="${m.img}" alt="${esc(m.name)}の作例" loading="lazy"><figcaption>AFTER｜${esc(m.name)}</figcaption></figure></div><div class="exnote">作例：AIで生成した架空の男の子の写真をもとに作成した参考イメージです。仕上がりはAIや写真によって変わります。</div>`:'';
+  const ex=m.img?`<div class="exrow"><figure><img src="img/base.jpg" alt="作例の元写真：公園に立つ架空の男の子" loading="lazy"><figcaption>BEFORE｜元の写真</figcaption></figure><i>→</i><figure><img src="${m.img}" alt="${esc(m.name)}の作例" loading="lazy"><figcaption>AFTER｜${esc(m.name)}</figcaption></figure></div><div class="exnote">作例：AIで生成した架空の男の子の写真をもとに作成した参考イメージです。${m.exnote?esc(m.exnote)+' ':''}仕上がりはAIや写真によって変わります。</div>`:'';
   return `<div class="label">このプロンプトで、こうなる</div>
   <div class="scard">${ex}<div class="sart" ${m.img?'hidden':''}><div class="sw">${pal.map(c=>`<i style="background:${c}"></i>`).join('')}</div>
     <div style="position:absolute;inset:0;background:${m.art||'linear-gradient(transparent,rgba(0,0,0,.55))'}"></div>

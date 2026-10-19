@@ -178,7 +178,7 @@ function fallback(full){const p=$('#ptext');p.textContent=full;const r=document.
 
 function illustCard(m){
   const pal=m.pal||['#222','#555','#888','#bbb','#eee'];
-  const ex=m.img?`<div class="exrow"><figure><img src="img/base.jpg" alt="作例の元写真：公園に立つ架空の男の子" loading="lazy"><figcaption>BEFORE｜元の写真</figcaption></figure><i>→</i><figure><img src="${m.img}" alt="${esc(m.name)}の作例" loading="lazy"><figcaption>AFTER｜${esc(m.name)}</figcaption></figure></div><div class="exnote">作例：AIで生成した架空の男の子の写真をもとに作成した参考イメージです。仕上がりはAIや写真によって変わります。</div>`:'';
+  const ex=m.img?`<div class="exrow"><figure><img src="img/base.jpg" alt="作例の元写真：公園に立つ架空の男の子" loading="lazy"><figcaption>BEFORE｜元の写真</figcaption></figure><i>→</i><figure><img src="${m.img}" alt="${esc(m.name)}の作例" loading="lazy"><figcaption>AFTER｜${esc(m.name)}</figcaption></figure></div><div class="exnote">作例：AIで生成した架空の男の子の写真をもとに作成した参考イメージです。${m.exnote?esc(m.exnote)+' ':''}仕上がりはAIや写真によって変わります。</div>`:'';
   return `<div class="label">このプロンプトで、こうなる</div>
   <div class="scard">${ex}<div class="sart" ${m.img?'hidden':''}><div class="sw">${pal.map(c=>`<i style="background:${c}"></i>`).join('')}</div>
     <div style="position:absolute;inset:0;background:${m.art||'linear-gradient(transparent,rgba(0,0,0,.55))'}"></div>

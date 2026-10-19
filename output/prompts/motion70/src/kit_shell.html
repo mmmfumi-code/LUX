@@ -39,7 +39,7 @@ pre{margin:8px 0 0;padding:12px 14px;border-radius:10px;background:var(--fill);f
 </style>
 <div class="wrap">
   <h1>ChatGPT作例キット</h1>
-  <p class="lead">イラスト変換の残り49本を、ChatGPTで作るためのコピペ用シートです。</p>
+  <p class="lead">イラスト変換の残りの作例を、ChatGPTで作るためのコピペ用シートです。</p>
   <div class="card how">
     <img src="img/base.jpg" alt="元写真：公園に立つ架空の男の子">
     <ol>
@@ -66,7 +66,7 @@ const SPECIAL={
  '57':{note:'この作例は写真を添付せずに作ります（元写真に動物がいないため、架空の柴犬で作ります）。',pre:'写真の添付は不要です。茶色と白の毛の、元気な架空の柴犬「こむぎ」をペットとして想定してください。\n\n'},
  '58':{note:'写真の代わりに「男の子が描いたクレヨン画」を想定して作ります。添付した写真は「この子が描いた絵」という設定に使ってください。',pre:'添付した写真の男の子が、自分の姿をクレヨンで描いた子どもらしい絵（黄色いパーカー・紺の短パン・赤い靴・青い帽子）を想定し、その絵を立体化してください。\n\n'}
 };
-const done=new Set(['01','02','03','04','05','06','07','08','09','11','15']);
+const done=new Set(EXIMG);
 let saved={};try{saved=JSON.parse(localStorage.getItem('kit-done')||'{}')}catch(e){}
 const list=document.getElementById('list');const todo=ITEMS.i.filter(m=>!done.has(m.no));
 const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
