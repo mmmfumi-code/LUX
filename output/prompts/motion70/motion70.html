@@ -1,4 +1,4 @@
-<title>AIプロンプト図鑑310</title>
+<title>AIプロンプト図鑑339</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -239,7 +239,7 @@ details.base pre{box-shadow:none;background:var(--surface2);margin-bottom:4px}
     <div class="cover">
       <div class="eyebrow">AIプロンプト図鑑</div>
       <h1>AIに貼るだけ。<br><em>動く、映える、売れる。</em></h1>
-      <p>文字や図形が動くモーショングラフィック、映画のようなオープニング、ホームページ、チラシや名刺、写真からのイラスト変換。発信に必要な道具を、310のプロンプトにしました。</p>
+      <p>文字や図形が動くモーショングラフィック、映画のようなオープニング、ホームページ、チラシや名刺、プレゼン資料や建築・製品のボード、写真からのイラスト変換。発信と仕事に必要な道具を、339のプロンプトにしました。</p>
       <div class="links"><button class="pill" type="button" data-go="m-top">はじめる</button><button type="button" data-go="i-top">イラスト変換の作例を見る ›</button></div>
       <div class="monitor">
         <div class="screen" id="coverScreen"><div class="stage" id="coverStage"></div></div>
@@ -257,7 +257,7 @@ details.base pre{box-shadow:none;background:var(--surface2);margin-bottom:4px}
 const CAT={};
 const E={out:'cubic-bezier(.16,1,.3,1)',back:'cubic-bezier(.34,1.56,.64,1)',in:'cubic-bezier(.7,0,.84,0)',io:'cubic-bezier(.87,0,.13,1)',lin:'linear',soft:'cubic-bezier(.4,0,.2,1)'};
 const F={heavy:"'Dela Gothic One','Noto Sans JP',sans-serif",sans:"'Noto Sans JP',sans-serif",min:"'Shippori Mincho B1','Noto Serif JP',serif",dot:"'DotGothic16',monospace",brush:"'Yuji Syuku',serif",pop:"'Mochiy Pop One','Noto Sans JP',sans-serif",mono:"'JetBrains Mono',monospace",serif:"'Cormorant Garamond','Shippori Mincho B1',serif",smono:"'Space Mono','JetBrains Mono',monospace",zen:"'Zen Kaku Gothic New','Noto Sans JP',sans-serif"};
-const ITEMS={m:[],t:[],o:[],a:[],h:[],g:[],i:[]};
+const ITEMS={m:[],t:[],o:[],a:[],h:[],g:[],p:[],b:[],d:[],i:[]};
 let CUR_SEC='m';
 function def(o){o.sec=o.sec||CUR_SEC;o.id=o.sec+o.no;ITEMS[o.sec].push(o)}
 const rnd=(a,b)=>a+Math.random()*(b-a);
@@ -310,6 +310,9 @@ Object.assign(CAT,{
   PRINCIPLE:{ja:'動きの原則',k:'--c-flow',d:'気持ちいい動きの基本'},SHAPE:{ja:'図形',k:'--c-depth',d:'図形だけで見せる'},ICON:{ja:'アイコン',k:'--c-switch',d:'UIの小さな動き'},SCENE:{ja:'イラストシーン',k:'--c-play',d:'小さな物語を動かす'},INFO:{ja:'インフォグラフィック',k:'--c-design',d:'数字と図で伝える'},
   CINEMA:{ja:'映画・配信ロゴ風',k:'--c-impact',d:'作品の始まりを告げる'},SHOW:{ja:'番組・ドラマ風',k:'--c-orange',d:'テレビで見たあの感じ'},GENRE:{ja:'ジャンル・予告風',k:'--c-switch',d:'ジャンルの空気をまとう'},
   FLYER:{ja:'チラシ',k:'--c-impact',d:'特売から上品な案内まで'},POSTER:{ja:'ポスター・バナー',k:'--c-sky',d:'貼る・載せる告知'},CARD:{ja:'ショップカード・名刺',k:'--c-gold',d:'手渡しで覚えてもらう'},
+  BIZ:{ja:'事業計画',k:'--c-sky',d:'お金と信頼を集める'},PLAN:{ja:'新商品立案',k:'--c-orange',d:'社内で企画を通す'},SALES:{ja:'商品紹介',k:'--c-mint',d:'お客さまに選ばれる'},
+  COMMERCIAL:{ja:'商業・施設',k:'--c-gold',d:'人が集まる建物'},HOUSE:{ja:'戸建て',k:'--c-mint',d:'家族の暮らしを描く'},MANSION:{ja:'マンション',k:'--c-sky',d:'集まって住むかたち'},
+  KADEN:{ja:'家電',k:'--c-sky',d:'毎日使う道具を美しく'},FURN:{ja:'家具・照明',k:'--c-gold',d:'空間をつくる'},GOODS:{ja:'雑貨',k:'--c-rose',d:'手に取りたくなる小物'},
   ART:{ja:'絵画・アート',k:'--c-gold',d:'画材の質感で魅せる'},GRAPHIC:{ja:'グラフィック',k:'--c-mint',d:'デザイン素材として使える'},TREND:{ja:'SNSトレンド',k:'--c-texture',d:'今バズっている使い方'}
 });
 function SECTIONS(){
@@ -418,6 +421,52 @@ function SECTIONS(){
 ・強弱：いちばん伝えたいこと（店名・セール内容・日時など）が3秒で目に入るように、大きさと色にメリハリをつける
 ・日本の広告デザイナーが作った、印刷物として自然で完成度の高い仕上がりにする`,
     fix:[['文字が崩れた・間違っている','「デザインはそのままで、〇〇の文字だけを「正しい文字」に直して」'],['ごちゃごちゃしている','「情報を半分に減らして、いちばん大きな見出しと価格だけを目立たせて」'],['安っぽい','「色数を3色にしぼり、余白を広げて、高級感のある広告にして」'],['写真がAIっぽい','「写真を、自然な光で撮ったプロの広告写真の質感にして（肌・料理・素材の質感をリアルに）」'],['文字をあとから入れたい','「同じデザインで、文字をすべて消した背景だけの版を作って」→ Canva などで文字をのせる'],['サイズを変えたい','「同じデザインのまま、正方形（1:1）のInstagram投稿用に組み直して」']]},
+  p:{name:'プレゼン資料',en:'PRESENTATION DECK',k:'--c-sky',ui:'graphic',unit:'資料',lead:'事業計画・新商品の企画・商品紹介。1枚1メッセージの資料を、構成からデザインまで。',
+    showLabel:'このプロンプトで、こうなる（スライドの見本）',inputLabel:'会社名・商品名',mockNote:'※AIが作るスライドの構成とデザインを、主要な4枚で再現した見本です。',
+    cats:{BIZ:1,PLAN:1,SALES:1},
+    desc:'事業計画書、資金調達のピッチ、新商品の企画書、営業資料などのプレゼン資料を、AIに<b>構成・文章・デザインまでまとめて</b>作ってもらうプロンプトです。スライド1枚ずつの中身を指定しているので、「何を書けばいいか分からない」状態から一気に下書きが完成します。',
+    steps:['<b>目的に近い資料を選ぶ</b><br>入力欄に会社名や商品名を入れると、プロンプトの中の名前が置き換わります。','<b>自分の情報を書き足す</b><br>プロンプトの最後の【私の情報】に、事業の内容・数字・強みを箇条書きで入れます。分からない所は空欄でOK。','<b>Claude または ChatGPT に送る</b><br>PowerPoint（.pptx）のファイルで受け取れます。','<b>【要確認】を埋めて仕上げる</b><br>仮の数字や文章は【要確認】と表示されます。PowerPoint や Google スライドで開いて差し替えます。'],
+    base:()=>`あなたは経営コンサルタント兼プレゼン資料のデザイナーです。次の【資料指示】どおりのプレゼン資料を作ってください。
+
+【共通仕様】
+・形式：16:9 のスライド。PowerPoint（.pptx）ファイルで作成する。ファイルを作れない場合は、スライドごとに「見出し／本文／図や表の指示／話す内容」を書き出す
+・1枚1メッセージ：各スライドの上に、そのスライドで言いたいことを1文で書いた見出しを置く
+・文字量：本文は1枚あたり3〜5項目、1項目は30文字以内。文章を詰め込まず、図・表・グラフ・アイコンで見せる
+・数字と事実：【私の情報】にない数値・実績・固有名詞は作らない。仮の数字や文章は【要確認：〇〇】と書いて、ひと目で分かるようにする
+・デザイン：指示の配色とフォントを全スライドで統一する。余白を広く取り、要素の左端と上端をそろえる。表紙と章の区切りだけ背景色を変える
+・各スライドに、発表で話す内容（スピーカーノート）を2〜3文で付ける
+・最後に「差し替え・確認が必要な箇所」の一覧を出す`,
+    fix:[['文字が多い','「各スライドの文字を半分にして、残りは図か表にして」'],['ありきたり','「表紙と章の区切りスライドを、大きな写真と1行のコピーだけの印象的なデザインにして」'],['説得力が弱い','「各スライドの見出しを『結論→根拠』の順になるよう書き直して」'],['数字を入れたい','「次の数字を使って、売上計画の表とグラフを作り直して：（数字を貼る）」'],['枚数を減らしたい','「同じ内容を5枚に要約した短い版も作って」'],['話す練習をしたい','「この資料を5分で発表する台本を、スライドごとに書いて」']]},
+  b:{name:'建築ボード',en:'ARCHITECTURE BOARD',k:'--c-gold',ui:'graphic',unit:'ボード',lead:'外観パース・図面・素材をA3の1枚に。設計コンペのような建築のプレゼンボード。',
+    showLabel:'このプロンプトで、こうなる',inputLabel:'建物の名前',
+    cats:{COMMERCIAL:1,HOUSE:1,MANSION:1},
+    desc:'商業施設・戸建て・マンションなどの建物のイメージを、<b>外観パース・平面図・内観・素材サンプルをまとめたプレゼンボード</b>として、画像生成AI（ChatGPTなど）に1枚で作ってもらうプロンプトです。お客さまへの提案や、計画の初期イメージの共有に使えます。',
+    steps:['<b>近い建物を選ぶ</b><br>入力欄に建物の名前（プロジェクト名）を入れると、プロンプトの中の名前が置き換わります。','<b>敷地や規模を自分の計画に書き換える</b><br>階数・構造・素材・まわりの環境などを、送る前に書き換えます。','<b>ChatGPT に送る</b><br>A3横のボードが1枚の画像でできます。','<b>気になる所を一言で直す</b><br>「外観を夕景に」「木の色をもっと明るく」など。外観パースだけ欲しいときは「パースだけを大きく」と送ります。'],
+    base:()=>`あなたは建築設計事務所のデザイナーです。次の【ボード指示】どおりの、建築のプレゼンボードを画像として1枚生成してください。
+
+【共通仕様】
+・サイズ：横長（3:2）。A3横のプレゼンボードの紙面だけを、正面から平らに（机・手・モックアップは入れない）
+・構成：いちばん大きく外観パース（建築写真のようにリアルなCG）。そのまわりに、コンセプト文・平面図や配置図のダイアグラム・内観の小さなパース・素材サンプルを、白い余白とグリッドで整理して配置する
+・図面：平面図・配置図・断面図は線画のダイアグラムとして、それらしく見えればよい（寸法の正確さは不要）
+・文字：「」で囲んだ文字はそのまま正確に入れる。説明文は短く、小さな文字は最小限にする
+・実在の建物・企業名・ロゴは使わない。人・車・樹木は自然なスケールで添える
+・建築雑誌や設計コンペのボードのような、洗練された仕上がりにする`,
+    fix:[['文字が崩れた','「デザインはそのままで、〇〇の文字だけを「正しい文字」に直して」'],['パースがCGっぽい','「外観パースを、プロの建築写真のような自然な光と質感にして」'],['時間帯を変えたい','「同じ建物を、夕暮れで窓に明かりが灯った外観にして」'],['図面がごちゃごちゃ','「平面図は壁と部屋名だけのシンプルな線画にして」'],['パースだけ欲しい','「ボードではなく、外観パースだけを横長の1枚で大きく」'],['別案がほしい','「同じ条件で、外装の素材と屋根の形を変えたA案・B案を並べて」']]},
+  d:{name:'プロダクトボード',en:'PRODUCT DESIGN BOARD',k:'--c-rose',ui:'graphic',unit:'ボード',lead:'製品のCG・三面図・カラー・使用シーンを1枚に。家電・家具・雑貨のデザインボード。',
+    showLabel:'このプロンプトで、こうなる',inputLabel:'商品名・ブランド名',
+    cats:{KADEN:1,FURN:1,GOODS:1},
+    desc:'家電・家具・雑貨のプロダクトデザインを、<b>製品のCG・三面図・カラーバリエーション・使用シーン・仕様をまとめたプレゼンボード</b>として、画像生成AI（ChatGPTなど）に1枚で作ってもらうプロンプトです。商品企画の会議、試作前のイメージ共有、クラウドファンディングの準備に使えます。',
+    steps:['<b>近い製品を選ぶ</b><br>入力欄に商品名やブランド名を入れると、プロンプトの中の名前が置き換わります。','<b>形・素材・色を自分のアイデアに書き換える</b><br>「丸みのある」「木と布」など、思いつく言葉で十分です。','<b>ChatGPT に送る</b><br>A3横のボードが1枚の画像でできます。','<b>気になる所を一言で直す</b><br>「色をもう1色増やして」「もっと薄く」など、会話で形を詰めていきます。'],
+    base:()=>`あなたはプロダクトデザイナーです。次の【ボード指示】どおりの、製品のデザインプレゼンボードを画像として1枚生成してください。
+
+【共通仕様】
+・サイズ：横長（3:2）。A3横のプレゼンボードの紙面だけを、正面から平らに（机・手・モックアップは入れない）
+・構成：いちばん大きく製品のメインビジュアル（スタジオで撮影したような、リアルな製品CG）。そのまわりに、三面図（正面・側面・上面）の線画・カラーバリエーション・素材と仕上げのサンプル・使用シーンの写真・コンセプト文・主な仕様を、白い余白とグリッドで整理して配置する
+・三面図：細い線の製図風。寸法線は雰囲気でよい（数値の正確さは不要）
+・文字：「」で囲んだ文字はそのまま正確に入れる。説明文は短く、小さな文字は最小限にする
+・実在のブランド・ロゴ・既存製品のデザインは使わない（オリジナルのデザインにする）
+・デザイン賞の応募ボードや、メーカーの企画会議の資料のような、洗練された仕上がりにする`,
+    fix:[['文字が崩れた','「デザインはそのままで、〇〇の文字だけを「正しい文字」に直して」'],['製品がCGっぽい','「メインビジュアルを、スタジオ撮影のプロの製品写真の質感にして」'],['形を変えたい','「同じコンセプトで、もっと丸みのある形（または、もっと薄い形）にして」'],['色を変えたい','「カラーバリエーションを、くすみカラーの3色に変えて」'],['製品だけ欲しい','「ボードではなく、製品のメインビジュアルだけを正方形で大きく」'],['別案がほしい','「同じ条件で、形の違うA案・B案・C案を1枚に並べて比較できるようにして」']]},
   i:{name:'イラスト変換',en:'PHOTO TO ILLUSTRATION',k:'--c-rose',ui:'illust',unit:'変換',lead:'写真1枚から、アニメ・3D・絵画・SNSで流行りのイラストへ。',
     ars:['元の写真と同じ','1:1（正方形）','9:16（縦長）','16:9（横長）'],arLabel:'仕上がりの比率',curAr:'元の写真と同じ',
     cats:{BASIC:1,ANIME:1,TOY:1,ART:1,GRAPHIC:1,TREND:1},
@@ -5519,6 +5568,593 @@ run(H,t){const [f,b]=cards(H,{background:'#fff'},{background:'#e6f4f4'});const T
   ['はじめての家探し','住宅ローンのご相談','お子さまのいるご家族の住まい'].forEach((w,i)=>{R(H,b,{left:'40px',top:80+i*56+'px',width:'38px',height:'38px',borderRadius:'50%',background:TL},1200+i*150,'pop');T(H,b,{left:'40px',top:84+i*56+'px',width:'38px',textAlign:'center',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'20px',color:'#fff'},String(i+1),1250+i*150,'fade');T(H,b,{left:'94px',top:86+i*56+'px',fontFamily:F.zen,fontWeight:'700',fontSize:'20px',color:K},w,1300+i*150,'left')});
   T(H,b,{left:'40px',top:'270px',fontFamily:F.zen,fontSize:'13px',lineHeight:'1.8',color:K,whiteSpace:'pre-line'},'〒000-0000 〇〇市〇〇町0-0-0\n営業 10:00 – 19:00（水曜定休）',1800,'fade');qr(H,b,500,262,64,K,'#e6f4f4',1900)}});
 
+/* ===== PRESENTATION 01-09 ===== */
+CUR_SEC='p';
+const defP=o=>{o.bg='#d5d8de';o.loop=4000;o.p=o.p+`
+
+【私の情報】（分かる範囲で箇条書きに。空欄のままでもOK）
+・${o.info.join('\n・')}`;def(o)};
+const MY=(...a)=>a.map(s=>s+'：');
+const SLX=[60,820],SLY=[30,465];
+const slide=(H,i,th,dark)=>sheet(H,720,405,{background:dark?th.cbg:th.bg,borderRadius:'6px',color:dark?th.cfg:th.fg},SLX[i%2],SLY[i>>1],i*120);
+const shd=(H,s,th,h,n)=>{R(H,s,{left:'36px',top:'34px',width:'6px',height:'30px',background:th.ac,borderRadius:'3px'});T(H,s,{left:'54px',top:'30px',fontFamily:th.hf||F.sans,fontWeight:'700',fontSize:'24px',color:th.fg},h);T(H,s,{right:'26px',bottom:'16px',fontFamily:F.sans,fontSize:'12px',color:th.sub||'#999'},String(n))};
+const SLD={
+  cover(H,s,th,o,t){if(th.cimg)R(H,s,{right:'0',top:'0',width:'300px',height:'405px',background:th.cimg});R(H,s,{left:'40px',top:'60px',width:'60px',height:'5px',background:th.ac});T(H,s,{left:'40px',top:'84px',fontFamily:F.sans,fontWeight:'700',fontSize:'14px',letterSpacing:'.2em',color:th.ac},o.k||'');
+    T(H,s,{left:'40px',top:'112px',width:th.cimg?'360px':'640px',whiteSpace:'pre-line',fontFamily:th.hf||F.sans,fontWeight:'900',fontSize:o.fs||'40px',lineHeight:'1.3',color:th.cfg},o.t);T(H,s,{left:'40px',bottom:'40px',fontFamily:F.sans,fontSize:'15px',color:th.cfg,opacity:.8},t)},
+  list(H,s,th,o,t,n){shd(H,s,th,o.h,n);o.items.forEach((it,i)=>{const y=96+i*(270/o.items.length);const c=R(H,s,{left:'40px',top:y+'px',width:'640px',height:(270/o.items.length-12)+'px',background:th.ac2,borderRadius:'10px'});H.el('div',{position:'absolute',left:'18px',top:'50%',transform:'translateY(-50%)',width:'34px',height:'34px',borderRadius:'50%',background:th.ac,color:'#fff',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:F.sans,fontWeight:'700',fontSize:'16px'},c,String(i+1));H.el('div',{position:'absolute',left:'68px',top:'50%',transform:'translateY(-50%)',fontFamily:F.sans,fontWeight:'700',fontSize:'18px',color:th.fg,whiteSpace:'nowrap'},c,it)})},
+  bars(H,s,th,o,t,n){shd(H,s,th,o.h,n);const mx=Math.max(...o.v);o.v.forEach((v,i)=>{const w=520/o.v.length;const h=v/mx*220;R(H,s,{left:80+i*w+w*.2+'px',top:330-h+'px',width:w*.6+'px',height:h+'px',background:i===o.v.length-1?th.ac:th.ac+'88',borderRadius:'4px 4px 0 0'});T(H,s,{left:80+i*w+'px',width:w+'px',textAlign:'center',top:338+'px',fontFamily:F.sans,fontSize:'13px',color:th.sub||'#777'},o.l[i]);T(H,s,{left:80+i*w+'px',width:w+'px',textAlign:'center',top:306-h+'px',fontFamily:F.sans,fontWeight:'700',fontSize:'14px',color:th.fg},o.vl?o.vl[i]:'')});R(H,s,{left:'70px',top:'330px',width:'560px',height:'2px',background:th.fg,opacity:.3})},
+  kpi(H,s,th,o,t,n){shd(H,s,th,o.h,n);o.v.forEach((q,i)=>{const w=640/o.v.length;const c=R(H,s,{left:40+i*w+'px',top:'110px',width:w-16+'px',height:'200px',background:th.ac2,borderRadius:'12px'});H.el('div',{position:'absolute',left:'0',right:'0',top:'50px',textAlign:'center',fontFamily:F.sans,fontWeight:'900',fontSize:'44px',color:th.ac},c,q[0]);H.el('div',{position:'absolute',left:'0',right:'0',top:'120px',textAlign:'center',fontFamily:F.sans,fontSize:'15px',color:th.fg},c,q[1])})},
+  table(H,s,th,o,t,n){shd(H,s,th,o.h,n);o.rows.forEach((r,i)=>r.forEach((c,j)=>{const w=640/r.length;T(H,s,{left:40+j*w+'px',width:w+'px',top:96+i*52+'px',height:'46px',lineHeight:'46px',textAlign:j?'center':'left',paddingLeft:j?'0':'14px',boxSizing:'border-box',background:i===0?th.ac:(j===r.length-1?th.ac2:'transparent'),borderBottom:'1px solid rgba(0,0,0,.08)',fontFamily:F.sans,fontWeight:i===0||j===r.length-1?'700':'400',fontSize:'15px',color:i===0?'#fff':th.fg},c)}))},
+  flow(H,s,th,o,t,n){shd(H,s,th,o.h,n);o.steps.forEach((st,i)=>{const w=640/o.steps.length;const c=R(H,s,{left:40+i*w+'px',top:'140px',width:w-24+'px',height:'150px',background:i===o.steps.length-1?th.ac:th.ac2,borderRadius:'12px'});H.el('div',{position:'absolute',left:'0',right:'0',top:'26px',textAlign:'center',fontFamily:F.sans,fontWeight:'700',fontSize:'13px',color:i===o.steps.length-1?'#fff':th.ac},c,'STEP '+(i+1));H.el('div',{position:'absolute',left:'0',right:'0',top:'62px',textAlign:'center',fontFamily:F.sans,fontWeight:'700',fontSize:'18px',color:i===o.steps.length-1?'#fff':th.fg},c,st);if(i<o.steps.length-1)T(H,s,{left:40+i*w+w-22+'px',top:'196px',fontSize:'20px',color:th.ac},'▶')})},
+  photo(H,s,th,o,t,n){shd(H,s,th,o.h,n);R(H,s,{left:'40px',top:'92px',width:'300px',height:'270px',borderRadius:'12px',background:o.img});o.items.forEach((it,i)=>{T(H,s,{left:'370px',top:100+i*88+'px',fontFamily:F.sans,fontWeight:'700',fontSize:'18px',color:th.ac},it[0]);T(H,s,{left:'370px',top:128+i*88+'px',width:'320px',whiteSpace:'normal',fontFamily:F.sans,fontSize:'14px',lineHeight:'1.5',color:th.fg},it[1])})},
+  map(H,s,th,o,t,n){shd(H,s,th,o.h,n);R(H,s,{left:'200px',top:'90px',width:'2px',height:'280px',background:th.fg,opacity:.3});R(H,s,{left:'60px',top:'230px',width:'280px',height:'2px',background:th.fg,opacity:.3});[[110,140,'#bbb','A社'],[270,300,'#bbb','B社'],[130,300,'#bbb','C社'],[280,130,th.ac,t]].forEach(q=>{T(H,s,{left:q[0]-14+'px',top:q[1]-14+'px',width:'28px',height:'28px',borderRadius:'50%',background:q[2]},'',0,'pop');T(H,s,{left:q[0]+20+'px',top:q[1]-10+'px',fontFamily:F.sans,fontWeight:'700',fontSize:'13px',color:th.fg},q[3])});
+    o.items.forEach((it,i)=>T(H,s,{left:'390px',top:110+i*70+'px',width:'300px',whiteSpace:'normal',fontFamily:F.sans,fontSize:'15px',lineHeight:'1.5',color:th.fg,borderLeft:'3px solid '+th.ac,paddingLeft:'12px'},it))}
+};
+const deck=(H,t,th,sl)=>{desk(H);sl.forEach((d,i)=>{const s=slide(H,i,th,d[0]==='cover');SLD[d[0]](H,s,th,d[1],t,i+1)})};
+const PIMG='linear-gradient(135deg,#e9e4dc,#c9bfb1)';
+
+/* BIZ：事業計画 */
+defP({no:'01',cat:'BIZ',name:'カフェの創業計画書',en:'Startup Business Plan',text:'café nobu',lead:'融資や補助金の申請で求められる項目をすべて押さえた、誠実で読みやすい創業計画書。',
+use:'<b>日本政策金融公庫などの創業融資、補助金の申請、物件オーナーや家族への説明</b>に。飲食店以外の小さなお店の開業にも使えます。',
+tips:['審査する人が見るのは「経験」「数字の根拠」「返せるか」。この3つのスライドに力を入れます','売上は「客単価×客数×営業日数」の式で見せると、根拠のある計画に見えます','自分の経歴は、事業に関係する経験だけを具体的な年数と一緒に書きます'],
+info:MY('お店の名前と業態','開業予定の場所・時期','これまでの経験（年数）','メニューと価格','席数・営業時間','必要な資金と、自己資金・借入の内訳','想定の客単価・1日の客数'),
+p:`カフェの「創業計画書」のプレゼン資料を、13枚で作ってください。金融機関の融資担当者に、誠実で信頼できる印象を与えるものにします。
+・お店の名前：「{T}」
+・配色：背景は生成り #FAF7F2、文字はこげ茶 #3B2F2A、メインは深緑 #2F5D50、差し色はテラコッタ #C47A5A
+・フォント：見出しは Noto Serif JP（太め）、本文は Noto Sans JP
+・スライド構成：
+　1. 表紙（店名・「創業計画書」・日付・代表者名）
+　2. 事業の概要を一言で（どんなお店か、誰のためのお店か）
+　3. 創業の動機と、これまでの経験（年表の図）
+　4. 市場とターゲット（商圏の範囲と、来てほしいお客さまの人物像）
+　5. 競合と強み（近くの店との比較表。自店の列を色付けして強調）
+　6. 商品・メニューと価格（主力3品を写真の枠つきで）
+　7. 集客・販売の計画（開業前／開業後に分けて）
+　8. 店舗の計画（立地・席数・営業時間・定休日）
+　9. 売上計画（客単価×客数×営業日数の式と、1〜3年目の表と棒グラフ）
+　10. 資金計画（必要な資金と調達方法の2列の表。合計が一致すること）
+　11. 収支と返済の計画（毎月の利益から返済できることを示す）
+　12. 開業までのスケジュール（横長の工程表）
+　13. リスクと対策（3つ）
+・トーン：誇張せず、根拠のある言い方にする`});
+
+defP({no:'02',cat:'BIZ',name:'スタートアップの資金調達ピッチ',en:'Investor Pitch Deck',text:'nobu tech',lead:'投資家が見たい順番で並べた、10枚の資金調達ピッチ。大きな数字と少ない文字で、一気に伝える。',
+use:'<b>ベンチャーキャピタルやエンジェル投資家への資金調達、ピッチイベント、アクセラレーターの応募</b>に。',
+tips:['1枚目の次に「課題」。投資家は最初の3枚で興味を持つかを決めます','市場規模は TAM・SAM・SOM の3重の円で見せるのが定番','「なぜこのチームなのか」を経歴の一言で示すと、信頼が一気に上がります'],
+info:MY('サービス名と一言の説明','解決する課題と、困っている人','現在の実績（ユーザー数・売上・継続率など）','ビジネスモデル（誰からいくら）','チームの経歴','調達したい金額と使い道'),
+p:`スタートアップの資金調達用の「ピッチ資料」を、11枚で作ってください。投資家に3分で伝わる、大きな数字と少ない文字の資料にします。
+・会社名・サービス名：「{T}」
+・配色：表紙と章の区切りは濃紺 #0B1530 に白文字、本文スライドは白 #FFFFFF に濃紺の文字、アクセントはエレクトリックブルー #3D6BFF
+・フォント：見出しは Noto Sans JP 900、数字は Inter（太字）
+・スライド構成：
+　1. 表紙（サービス名と、一言で言うと何かのキャッチコピー）
+　2. 課題（誰が・何に・どれくらい困っているか。大きな数字を1つ）
+　3. 解決策（サービスで何が変わるか。ビフォー・アフターの図）
+　4. プロダクト（画面のモックアップの枠と、主な機能3つ）
+　5. 市場規模（TAM・SAM・SOM の3重の円）
+　6. ビジネスモデル（お金の流れの図と、料金）
+　7. トラクション（実績の推移グラフ。右肩上がりの所を強調）
+　8. 競合とポジショニング（2軸のマップで、自社が右上に来るように）
+　9. チーム（顔写真の丸い枠と、名前・役割・経歴の一言）
+　10. 調達額と資金の使い道（円グラフ）と、次の目標（マイルストーン）
+　11. ビジョン（一文のメッセージだけの締め）
+・1枚の文字は最小限。数字は大きく、単位は小さく`});
+
+defP({no:'03',cat:'BIZ',name:'3か年の中期経営計画',en:'Mid-term Management Plan',text:'nobu株式会社',lead:'振り返り→現状分析→戦略→数値目標の流れで組んだ、社員にも金融機関にも伝わる中期経営計画。',
+use:'<b>社内の方針発表会、金融機関への説明、株主・取引先への報告</b>に。事業承継や新体制のスタートにも。',
+tips:['最初に「前の計画の振り返り」を入れると、新しい計画に説得力が出ます','重点戦略は3つまで。多いと社員が覚えられません','数値目標はグラフ1枚にまとめ、3年後の数字だけを大きく'],
+info:MY('会社名・業種・社員数','直近3年の売上・利益','強みと課題','これからやりたいこと（新事業・設備投資・採用など）','3年後の目標の数字'),
+p:`会社の「中期経営計画（3か年）」のプレゼン資料を、12枚で作ってください。社員にも金融機関にも伝わる、端正で信頼感のある資料にします。
+・会社名：「{T}」
+・配色：背景は白、文字はチャコール #2B2B2B、メインはコーポレートネイビー #1F3A68、差し色はゴールド #B8975A（強調の数字だけ）
+・フォント：見出しは Noto Serif JP、本文は Noto Sans JP
+・スライド構成：
+　1. 表紙（「中期経営計画 2026–2028」と会社名）
+　2. トップメッセージ（代表の言葉を3行で）
+　3. 前の計画の振り返り（目標と実績の比較表。できたこと・できなかったこと）
+　4. 現状分析（SWOT の4マス）
+　5. 3年後に目指す姿（ビジョンを一文で、大きく）
+　6. 重点戦略の全体像（3本の柱の図）
+　7〜9. 重点戦略1〜3（それぞれ「目的・主な施策・KPI」の3段）
+　10. 数値目標（売上・営業利益の3年間の棒グラフと、主要KPIの表）
+　11. 実行ロードマップ（3年分の横長の工程表）
+　12. まとめ（社員へのメッセージ）`});
+
+/* PLAN：新商品立案 */
+defP({no:'04',cat:'PLAN',name:'食品の新商品企画書',en:'New Product Proposal',text:'nobu食品',lead:'背景→ターゲット→コンセプト→売れる根拠→決めてほしいこと。社内の企画会議で通る型。',
+use:'<b>食品・日用品メーカーの企画会議、商品開発の提案、上司への稟議</b>に。飲食店の新メニュー提案にも応用できます。',
+tips:['コンセプトは「誰の、どんな場面を、どう変えるか」を一文で','最後に「今日決めてほしいこと」を書くと、会議が前に進みます','パッケージ案はラフの絵でOK。イメージがあるだけで通りやすくなります'],
+info:MY('会社名・商品のジャンル','思いついたきっかけ（トレンド・お客さまの声）','ターゲット','味・容量・価格の案','売りたい場所（スーパー・コンビニ・ECなど）','発売したい時期'),
+p:`食品の「新商品企画書」のプレゼン資料を、12枚で作ってください。社内の企画会議で承認をもらうための資料です。
+・会社名：「{T}」（新商品の名前は仮で考えてOK）
+・配色：背景は白、文字は #2D2A26、メインはオレンジ #F28C28、サブはクリーム #FFF3E0
+・フォント：Noto Sans JP（見出し 900、本文 400）
+・スライド構成：
+　1. 表紙（商品の仮の名前・「新商品企画書」・提案部署・日付）
+　2. 提案の要約（何を・誰に・いつ・いくらで、を1枚で）
+　3. 企画の背景（市場のトレンドとお客さまの声。【要確認】のデータ枠つき）
+　4. ターゲット（人物像のカード：年齢・暮らし・困りごと）
+　5. 商品コンセプト（一文のコンセプトと、ポジショニングマップ）
+　6. 商品の仕様（味・容量・価格・保存方法の表）
+　7. パッケージ案（パッケージのラフの枠を2案並べる）
+　8. 差別化のポイント（他社商品との比較表）
+　9. 販売とプロモーション（売り場・SNS・試食などの施策）
+　10. 売上目標と原価（1年目の数量・売上・粗利の表）
+　11. 発売までのスケジュール
+　12. 今日決めてほしいこと（3つ）`});
+
+defP({no:'05',cat:'PLAN',name:'新規事業コンテストの提案',en:'New Business Proposal',text:'nobu株式会社',lead:'現場の課題から始めて、小さく試す計画で締める。社内の新規事業コンテストで評価される流れ。',
+use:'<b>社内の新規事業コンテスト、ビジネスプランコンテスト、経営会議での新サービス提案</b>に。',
+tips:['いきなり大きな計画ではなく「まず3か月で小さく試す」計画にすると通りやすい','課題は、アンケートやインタビューの「生の声」を引用すると説得力が増します','「お願いしたいこと（予算・人・期間）」をはっきり書いて終わります'],
+info:MY('会社名・自分の部署','気づいた課題と、そのきっかけ','考えた解決策（サービス）','お客さまになる人','試してみたいこと（期間・予算）'),
+p:`社内の「新規事業コンテスト」用の事業提案資料を、11枚で作ってください。審査員（経営陣）に「やってみよう」と思わせる資料にします。
+・会社名：「{T}」（新サービスの名前は仮で考えてOK）
+・配色：背景は白、文字は #1E2A2E、メインはティール #0F9D8A、差し色はイエロー #FFC93C
+・フォント：Noto Sans JP（見出し 900、本文 400）。アイコンを多めに使う
+・スライド構成：
+　1. 表紙（サービスの仮の名前と、一言のキャッチコピー）
+　2. 現場で見つけた課題（お客さまの「生の声」を吹き出しで3つ）
+　3. なぜ今やるべきか（市場や社会の変化）
+　4. 解決策（サービスの概要と、使う流れの図）
+　5. お客さまにとっての価値（ビフォー・アフター）
+　6. ビジネスモデル（お金の流れの図）
+　7. 市場の大きさ（【要確認】のデータ枠つき）
+　8. 小さく試す計画（3か月の検証計画：何を・どう測るか）
+　9. 収支の見込み（3年分の簡単な表）
+　10. 体制（必要な人数と役割）
+　11. お願いしたいこと（予算・人・期間）`});
+
+defP({no:'06',cat:'PLAN',name:'新ブランドの立ち上げ企画',en:'Brand Launch Plan',text:'nobu cosme',lead:'世界観のムードボードから、ローンチ計画まで。雑誌のように美しい、ブランドの企画書。',
+use:'<b>コスメ・アパレル・雑貨・食品などの新ブランド立ち上げ、D2Cブランドの企画、デザイナーや工場への説明</b>に。',
+tips:['最初に写真だけの「ムードボード」を見せると、言葉より早く世界観が伝わります','ターゲットは1人の具体的な人物（ペルソナ）にしぼって描きます','色・フォント・写真のトーンを「ブランドのルール」として1枚にまとめておくと、後がぶれません'],
+info:MY('ブランド名（仮でOK）・カテゴリ','届けたい人','ブランドで大事にしたいこと','最初に出したい商品と価格帯','売る場所（EC・SNS・店舗）','発売したい時期'),
+p:`新しい「コスメブランドの立ち上げ企画書」を、12枚で作ってください。雑誌のように美しく、世界観が伝わる資料にします。
+・ブランド名：「{T}」
+・配色：背景はベージュ #F3ECE4、文字は黒 #1C1C1C、差し色はくすみピンク #C98E8E
+・フォント：見出しは Shippori Mincho B1、英字は Cormorant Garamond、本文は Noto Sans JP（細め）
+・スライド構成：
+　1. 表紙（ブランド名を大きく、余白たっぷり）
+　2. ムードボード（世界観を表す写真の枠を6つ、雑誌のようにレイアウト）
+　3. 届けたい人（ペルソナ：年齢・暮らし・価値観・悩み）
+　4. ブランドコンセプト（一文のコンセプトと、大事にする3つの言葉）
+　5. ネーミングとロゴの考え方
+　6. 商品ラインナップ（3品の写真の枠と、価格）
+　7. パッケージ・デザインのルール（色・フォント・写真のトーン）
+　8. 価格の考え方（競合との価格帯の比較）
+　9. 販売チャネル（EC・SNS・ポップアップ）
+　10. ローンチ計画（発売前3か月〜発売後3か月の SNS・PR の流れ）
+　11. 目標（KPI：フォロワー・売上・リピート率）
+　12. スケジュールと次のステップ`});
+
+/* SALES：商品紹介 */
+defP({no:'07',cat:'SALES',name:'法人向けサービスの営業資料',en:'B2B Sales Deck',text:'nobu cloud',lead:'「こんなお悩みありませんか」から始まる、商談でそのまま使える営業資料。',
+use:'<b>法人向けのITツール・サービスの商談、オンライン商談、問い合わせ後に送る資料</b>に。',
+tips:['最初の3枚で「お悩み→解決→効果」を見せ、詳しい機能はその後に','導入効果は「月20時間の削減」のように、時間やお金の数字で','最後のスライドに、次にしてほしい行動（無料トライアル・相談予約）を1つだけ'],
+info:MY('サービス名・一言の説明','解決できる悩み','主な機能','導入の実績・事例','料金プラン','導入までの流れ'),
+p:`法人向けサービスの「営業資料」を、11枚で作ってください。商談でそのまま画面共有して使える資料にします。
+・サービス名：「{T}」
+・配色：背景は白、文字は #1F2937、メインはブルー #2563EB、サブは淡いブルー #EFF4FF
+・フォント：Noto Sans JP（見出し 700、本文 400）、数字は Inter
+・スライド構成：
+　1. 表紙（サービス名と、一言のベネフィット）
+　2. こんなお悩みありませんか？（悩みを4つ、イラストアイコンつきで）
+　3. 解決します（サービスの概要を1枚で）
+　4. 主な機能（3つ。画面のモックアップの枠つき）
+　5. 導入の効果（大きな数字を3つ。【要確認】の数値）
+　6. 導入事例（会社の業種・課題・結果の3段）
+　7. 他の方法との比較（表。自社の列を色付け）
+　8. 料金プラン（3プランの表。真ん中をおすすめとして強調）
+　9. 導入の流れ（4ステップ）
+　10. よくある質問（4つ）
+　11. お問い合わせ・無料トライアルのご案内`});
+
+defP({no:'08',cat:'SALES',name:'バイヤー向けの商品提案',en:'Buyer Proposal',text:'nobu食品',lead:'商品の魅力に加えて「売場でどう売れるか」まで見せる、小売店のバイヤーとの商談資料。',
+use:'<b>スーパー・百貨店・セレクトショップ・ECモールのバイヤーとの商談、展示会での商談</b>に。',
+tips:['バイヤーが知りたいのは「売れる根拠」と「売場のイメージ」。棚に並んだ絵を必ず入れます','規格・JANコード・ケース入数・賞味期限などの情報は、1枚の表にまとめて渡します','販促の支援（試食・POP・SNS）を書くと、採用されやすくなります'],
+info:MY('会社名・商品名','商品の特長と、売れている実績','規格（容量・ケース入数・賞味期限など）','卸価格・希望小売価格','販促でお手伝いできること'),
+p:`小売店のバイヤー向けの「商品提案書」を、10枚で作ってください。商談で「置いてみよう」と思ってもらうための資料です。
+・会社名：「{T}」
+・配色：背景は白、文字は #2B2B2B、メインは赤 #C8322B、サブは木目のベージュ #EFE4D2
+・フォント：Noto Sans JP（見出し 900、本文 400）
+・スライド構成：
+　1. 表紙（商品の写真の枠を大きく、商品名と会社名）
+　2. 会社の紹介（一言・創業・こだわり）
+　3. 商品ラインナップ（写真の枠つきで4品）
+　4. いちばんのおすすめ商品（写真と、3つの特長）
+　5. 売れる理由（販売実績・口コミ・メディア掲載。【要確認】の枠）
+　6. 売場の提案（棚に並んだイメージの枠と、POP の案）
+　7. 販促の支援（試食・POP・SNS 投稿）
+　8. 商品の規格（容量・JAN・ケース入数・賞味期限・保存方法の表）
+　9. お取引の条件（価格・最小ロット・納期）
+　10. 今後のスケジュールとご連絡先`});
+
+defP({no:'09',cat:'SALES',name:'新製品の発表資料',en:'Product Launch Keynote',text:'nobu AIR',lead:'黒い背景に、大きな製品写真と一言。ミニマルで印象に残る、新製品の発表スライド。',
+use:'<b>新製品の発表会、展示会のステージ、プレスリリースの説明会、社内の製品説明会</b>に。家電・ガジェット・アプリにも。',
+tips:['1枚に1つのことだけ。「特長1」「特長2」…と1枚ずつ見せると印象に残ります','背景は黒、文字は白、強調の数字だけ色を付けるとミニマルで高級に','最後は価格と発売日だけを大きく。ここで拍手が起きる構成です'],
+info:MY('製品名・ジャンル','開発の背景','いちばんの特長3つ','主な仕様','カラー','価格・発売日'),
+p:`新製品の「発表資料」を、10枚で作ってください。ステージで発表する、ミニマルで印象に残るスライドにします。
+・製品名：「{T}」
+・配色：背景は黒 #000000、文字は白、強調の数字だけ製品のテーマカラー（例：ミントグリーン #3DDC97）
+・フォント：見出しは Noto Sans JP 700（大きく、字間少し狭め）、英字と数字は Inter
+・スライド構成：
+　1. 表紙（製品の写真の枠を中央に大きく、製品名だけ）
+　2. 開発の背景（一文だけ）
+　3. 製品コンセプト（一文のキャッチコピー）
+　4〜6. 特長1〜3（各1枚。大きな数字か短い一文と、製品の写真の枠）
+　7. 主な仕様（細い線の表）
+　8. カラーバリエーション（製品を色違いで並べた写真の枠）
+　9. 使うシーン（写真の枠を3つ）
+　10. 価格と発売日（大きく2行だけ）
+・装飾はしない。余白と文字の大きさだけで見せる`});
+
+Object.assign(ITEMS.p[0],{run(H,t){deck(H,t,{bg:'#faf7f2',fg:'#3b2f2a',ac:'#2f5d50',ac2:'#eef2ee',cbg:'#2f5d50',cfg:'#fff',hf:"'Noto Serif JP','Shippori Mincho B1',serif"},[['cover',{k:'BUSINESS PLAN',t:'創業計画書\n〜まちの、ひと休み〜'}],['list',{h:'3つの強みで、地域の常連をつくる',items:['店長は飲食店勤務 10年の経験','駅から徒歩2分・朝7時から営業','焼き菓子のテイクアウトで客単価UP']}],['bars',{h:'3年目に月商 280万円を目指す',v:[150,220,280],l:['1年目','2年目','3年目'],vl:['150万','220万','280万']}],['table',{h:'必要資金 900万円の内訳',rows:[['必要な資金','金額','調達方法'],['内装・設備','600万円','借入'],['運転資金','300万円','自己資金']]}]])}});
+Object.assign(ITEMS.p[1],{run(H,t){deck(H,t,{bg:'#fff',fg:'#0b1530',ac:'#3d6bff',ac2:'#eef2ff',cbg:'#0b1530',cfg:'#fff'},[['cover',{k:'SEED ROUND',t:'働く時間を、\n半分にする。',fs:'44px'}],['kpi',{h:'月間ユーザーは半年で 8倍',v:[['8x','ユーザー数'],['92%','継続率'],['¥1.2M','月の売上']]}],['map',{h:'「かんたん×本格的」の空白を取る',items:['競合は「多機能だが難しい」か「簡単だが機能不足」','私たちは、5分で使える本格的なツール']}],['bars',{h:'調達額 1億円の使い道',v:[50,30,20],l:['開発','採用','マーケ'],vl:['50%','30%','20%']}]])}});
+Object.assign(ITEMS.p[2],{run(H,t){deck(H,t,{bg:'#fff',fg:'#2b2b2b',ac:'#1f3a68',ac2:'#eef1f6',cbg:'#1f3a68',cfg:'#fff',hf:"'Noto Serif JP','Shippori Mincho B1',serif"},[['cover',{k:'MID-TERM PLAN 2026–2028',t:'中期経営計画\n地域とともに、次の100年へ',fs:'34px'}],['list',{h:'3本の柱で、成長と安定を両立する',items:['既存事業の生産性を 20%向上','新事業で売上の柱をもう1本','人が育つ仕組みをつくる']}],['bars',{h:'2028年に売上 30億円を目指す',v:[22,25,27,30],l:['2025','2026','2027','2028'],vl:['22億','25億','27億','30億']}],['flow',{h:'3年間のロードマップ',steps:['基盤づくり','展開','拡大']}]])}});
+Object.assign(ITEMS.p[3],{run(H,t){deck(H,t,{bg:'#fff',fg:'#2d2a26',ac:'#f28c28',ac2:'#fff3e0',cbg:'#f28c28',cfg:'#fff',cimg:'radial-gradient(circle at 50% 50%,#ffd8a8,#f6a04d 60%,#d9761b)'},[['cover',{k:'NEW PRODUCT',t:'朝のたんぱく質\nスープ（仮）'}],['map',{h:'「手軽×栄養」の空いた場所を狙う',items:['朝食を抜く30代の働く人がターゲット','温めるだけで、たんぱく質15g']}],['photo',{h:'パッケージは2案で検討',img:'linear-gradient(135deg,#ffe0b8,#f28c28)',items:[['A案：毎日のごほうび','明るいオレンジで、店頭で目立つ'],['B案：シンプル','白地に大きく「15g」'],['価格：198円（税込）','コンビニの棚を想定']]}],['list',{h:'今日決めてほしいこと',items:['試作に進むかどうか','開発予算 300万円','発売時期：来年9月']}]])}});
+Object.assign(ITEMS.p[4],{run(H,t){deck(H,t,{bg:'#fff',fg:'#1e2a2e',ac:'#0f9d8a',ac2:'#e7f6f3',cbg:'#0f9d8a',cfg:'#fff'},[['cover',{k:'NEW BUSINESS PROPOSAL',t:'現場の「探す時間」を\nゼロにする'}],['list',{h:'現場の声：探すだけで1日1時間',items:['「資料がどこにあるか分からない」','「詳しい人が休むと止まる」','「同じ質問に何度も答えている」']}],['flow',{h:'まず3か月、1部署で小さく試す',steps:['ヒアリング','試作','1部署で検証','効果を測定']}],['kpi',{h:'お願いしたいこと',v:[['300万','予算'],['2名','メンバー'],['3か月','期間']]}]])}});
+Object.assign(ITEMS.p[5],{run(H,t){deck(H,t,{bg:'#f3ece4',fg:'#1c1c1c',ac:'#c98e8e',ac2:'#ebe0d6',cbg:'#e9dfd4',cfg:'#1c1c1c',hf:"'Shippori Mincho B1',serif",cimg:'linear-gradient(160deg,#e8d6cc,#c98e8e)'},[['cover',{k:'BRAND LAUNCH',t:'肌に、\n余白を。',fs:'48px'}],['photo',{h:'届けたい人：がんばりすぎない30代',img:'linear-gradient(160deg,#efe4da,#d4b8a8)',items:[['33歳・会社員','平日は忙しく、休日はゆっくり'],['大事にしていること','少なくても、いいものを'],['悩み','肌の調子が気分に出る']]}],['bars',{h:'まずは3品でスタート',v:[3800,4800,5800],l:['化粧水','美容液','クリーム'],vl:['¥3,800','¥4,800','¥5,800']}],['flow',{h:'発売前から、ファンをつくる',steps:['世界観の発信','先行予約','発売','レビュー']}]])}});
+Object.assign(ITEMS.p[6],{run(H,t){deck(H,t,{bg:'#fff',fg:'#1f2937',ac:'#2563eb',ac2:'#eff4ff',cbg:'#2563eb',cfg:'#fff'},[['cover',{k:'SERVICE GUIDE',t:'請求書の作業を、\nボタン1つに。'}],['list',{h:'こんなお悩みありませんか？',items:['毎月の請求書づくりに丸2日かかる','入金の確認が手作業でミスが出る','担当者しかやり方が分からない']}],['kpi',{h:'導入した会社の平均の効果',v:[['−20h','月の作業時間'],['0件','入力ミス'],['3日','導入まで']]}],['table',{h:'3つのプランから選べます',rows:[['','ライト','スタンダード'],['月額','¥3,000','¥8,000'],['ユーザー数','3人','無制限'],['サポート','メール','電話・メール']]}]])}});
+Object.assign(ITEMS.p[7],{run(H,t){deck(H,t,{bg:'#fff',fg:'#2b2b2b',ac:'#c8322b',ac2:'#f6ece0',cbg:'#efe4d2',cfg:'#2b2b2b',cimg:'radial-gradient(circle,#f3c9a0,#c8322b 75%)'},[['cover',{k:'PROPOSAL FOR BUYERS',t:'地元素材の\nおかずシリーズ'}],['photo',{h:'いちばんのおすすめ：だし巻き',img:'linear-gradient(135deg,#ffe9a8,#e8b04a)',items:[['売れている理由','地元の直売所で月3,000個'],['特長','国産卵とかつおだし'],['価格','希望小売価格 398円']]}],['photo',{h:'売場の提案：お惣菜の棚の横に',img:'repeating-linear-gradient(90deg,#efe4d2 0 60px,#e0d2bc 60px 64px)',items:[['POP','「地元の味」を大きく'],['試食','週末の試食をお手伝い'],['SNS','お店の告知を投稿します']]}],['table',{h:'商品の規格',rows:[['項目','内容'],['内容量','200g'],['ケース入数','12個'],['賞味期限','製造から7日']]}]])}});
+Object.assign(ITEMS.p[8],{run(H,t){deck(H,t,{bg:'#000',fg:'#fff',ac:'#3ddc97',ac2:'#111',cbg:'#000',cfg:'#fff',sub:'#666'},[['cover',{k:'INTRODUCING',t:t,fs:'64px'}],['kpi',{h:'1回の充電で、30時間。',v:[['30h','連続再生'],['4.5g','片耳の重さ'],['10min','急速充電']]}],['photo',{h:'4つの色から選べる',img:'radial-gradient(circle at 30% 50%,#3ddc97 0 14%,transparent 15%),radial-gradient(circle at 70% 50%,#eee 0 14%,transparent 15%),radial-gradient(circle at 30% 80%,#ff8fab 0 10%,transparent 11%),radial-gradient(circle at 70% 80%,#333 0 10%,transparent 11%),#111',items:[['Mint','さわやかな新色'],['White / Black','定番の2色'],['Pink','限定カラー']]}],['kpi',{h:'価格と発売日',v:[['¥14,800','税込'],['11.20','発売日']]}]])}});
+
+/* ===== ARCHITECTURE BOARD 01-10 ===== */
+CUR_SEC='b';
+const BIMG=[];
+const defB=o=>{o.bg='#d5d8de';o.loop=4000;if(BIMG.includes(o.no))o.img='img/b'+o.no+'.jpg';def(o)};
+const bx=(H,p,x,y,w,h,css)=>H.abs(Object.assign({left:x+'px',top:y+'px',width:w+'px',height:h+'px'},css||{}),p);
+const GLASS='linear-gradient(160deg,rgba(210,230,245,.95),rgba(120,150,175,.9) 60%,rgba(90,110,130,.95))';
+const WIN=(c,w,h,gx,gy)=>`repeating-linear-gradient(90deg,transparent 0 ${gx-2}px,${c} ${gx-2}px ${gx}px),repeating-linear-gradient(0deg,transparent 0 ${gy-2}px,${c} ${gy-2}px ${gy}px)`;
+const tree=(H,p,x,y,s,c)=>{bx(H,p,x-3,y-s*.3,6,s*.3+2,{background:'#6b5440'});bx(H,p,x-s*.35,y-s*1.1,s*.7,s*.9,{borderRadius:'50%',background:c||'#7d9a6a'})};
+const person=(H,p,x,y,c)=>{bx(H,p,x-4,y-34,8,8,{borderRadius:'50%',background:c||'#444'});bx(H,p,x-5,y-26,10,26,{borderRadius:'4px',background:c||'#444'})};
+const board=(H,t,o)=>{desk(H);const s=sheet(H,1400,800,{background:o.paper||'#fafaf8'});
+  const P=R(H,s,{left:'40px',top:'40px',width:'860px',height:'560px',background:o.sky||'linear-gradient(#cfe0ee,#f2efe8 75%)',overflow:'hidden'});bx(H,P,0,450,860,110,{background:o.ground||'linear-gradient(#c3c8bc,#a9b19c)'});o.draw(H,P);
+  T(H,s,{left:'940px',top:'44px',fontFamily:F.sans,fontWeight:'700',fontSize:'12px',letterSpacing:'.35em',color:'#999'},o.k);
+  T(H,s,{left:'938px',top:'64px',fontFamily:o.tf||F.min,fontWeight:'800',fontSize:t.length>12?'30px':'38px',color:'#222'},t);
+  T(H,s,{left:'940px',top:'124px',width:'420px',whiteSpace:'normal',fontFamily:F.min,fontSize:'15px',lineHeight:'1.85',color:'#444'},o.c);
+  const pl=R(H,s,{left:'940px',top:'250px',width:'200px',height:'200px',background:'#fff',border:'1px solid #ddd'});const sv=H.svg(200,200,pl);(o.plan||[[20,20,160,160],[20,20,90,80],[110,20,70,80],[20,100,160,80]]).forEach(r=>H.sv('rect',{x:r[0],y:r[1],width:r[2],height:r[3],fill:'none',stroke:'#333','stroke-width':2},sv));T(H,s,{left:'940px',top:'456px',fontFamily:F.sans,fontSize:'11px',letterSpacing:'.2em',color:'#888'},'PLAN');
+  [[1160,250,o.in1||'linear-gradient(135deg,#efe6d8,#c9b291)'],[1160,355,o.in2||'linear-gradient(135deg,#e9eef0,#b8c4c9)']].forEach((q,i)=>R(H,s,{left:q[0]+'px',top:q[1]+'px',width:'200px',height:'95px',background:q[2]}));T(H,s,{left:'1160px',top:'456px',fontFamily:F.sans,fontSize:'11px',letterSpacing:'.2em',color:'#888'},'INTERIOR');
+  T(H,s,{left:'940px',top:'500px',fontFamily:F.sans,fontSize:'11px',letterSpacing:'.2em',color:'#888'},'MATERIALS');(o.mat||['#c9a27e','#d8d4cc','#8fa2ad','#5c5c5c']).forEach((c,i)=>R(H,s,{left:940+i*62+'px',top:'524px',width:'48px',height:'48px',borderRadius:'50%',background:c,boxShadow:'inset 0 0 0 1px rgba(0,0,0,.08)'},0,'pop'));
+  (o.data||[]).forEach((d,i)=>{T(H,s,{left:40+i*215+'px',top:'628px',fontFamily:F.sans,fontSize:'11px',letterSpacing:'.2em',color:'#999'},d[0]);T(H,s,{left:40+i*215+'px',top:'650px',fontFamily:F.min,fontWeight:'800',fontSize:'20px',color:'#333'},d[1])});
+  R(H,s,{left:'40px',top:'712px',width:'1320px',height:'1px',background:'#ccc'});T(H,s,{left:'40px',top:'730px',fontFamily:F.min,fontSize:'14px',color:'#666'},o.foot||'ARCHITECTURE PRESENTATION BOARD');T(H,s,{right:'40px',top:'730px',fontFamily:F.sans,fontSize:'12px',letterSpacing:'.2em',color:'#999'},'A3 / 1:200')};
+
+/* COMMERCIAL */
+defB({no:'01',cat:'COMMERCIAL',name:'都市型の商業施設',en:'Urban Retail Complex',text:'nobu terrace',lead:'ガラスと木のルーバーの外観に、テラスに人が集まる。駅前の小さな商業施設のボード。',
+use:'<b>駅前の商業ビル・複合施設・テナントビル</b>の企画提案や、地域の説明会の資料に。',
+tips:['外観パースは「人が集まっている夕方」にすると、にぎわいが一瞬で伝わります','ガラス×木のルーバーは、今いちばん好まれる商業施設の外観です','平面図は「テナント」「広場」「通路」くらいの色分けで十分'],
+p:`駅前に建つ、都市型の小さな商業施設の建築プレゼンボードを作ってください。
+・建物の名前：「{T}」
+・建物：地上4階建て。1階は飲食店とベーカリー、2〜3階は雑貨とクリニック、屋上はテラス。鉄骨造
+・外観：大きなガラスのファサードに、縦の木のルーバー（格子）をリズムよく配置。1階は道路側に開いたテラス席。屋上に植栽
+・メインの外観パース：夕暮れどき、ガラス越しに店内の暖かい明かりが見え、テラスと前の広場に人が集まる。駅前の通りから少し見上げる構図
+・まわり：街路樹、歩く人、自転車
+・ボードの右側：コンセプト文「まちに、もうひとつの広場を。」と短い説明、1階の平面図（テナント・広場・通路を淡い色で色分け）、内観パースを2枚（吹き抜けのある1階のカフェ／屋上テラス）
+・素材サンプル：木のルーバー・ガラス・コンクリート・黒いスチールの丸いサンプル
+・ボードの下部：「用途：物販・飲食」「構造：鉄骨造 地上4階」「延床面積：約1,800㎡」の小さなデータ
+・ボード全体：白の背景に、黒と木の色の落ち着いたトーン`,
+run(H,t){board(H,t,{k:'COMMERCIAL COMPLEX',c:'まちに、もうひとつの広場を。ガラスと木のルーバーが通りに開き、1階のテラスと屋上が人の居場所になる。',sky:'linear-gradient(#5d6f8c,#e9b48a 70%,#f1d2b0)',ground:'linear-gradient(#6c6a66,#4f4d4a)',data:[['USE','物販・飲食'],['STRUCTURE','鉄骨造 地上4階'],['AREA','約1,800㎡'],['SITE','駅前・角地']],
+  draw(H,P){bx(H,P,150,110,560,340,{background:GLASS,boxShadow:'inset 0 0 80px rgba(255,190,120,.6)'});bx(H,P,150,110,560,340,{backgroundImage:WIN('rgba(40,40,40,.5)',560,340,80,85)});bx(H,P,150,110,560,340,{backgroundImage:'repeating-linear-gradient(90deg,#9a7350 0 10px,transparent 10px 34px)',opacity:.85});bx(H,P,150,280,560,170,{background:'linear-gradient(rgba(255,200,130,.75),rgba(255,170,90,.6))'});bx(H,P,130,96,600,16,{background:'#2c2c2c'});bx(H,P,160,80,540,18,{background:'linear-gradient(90deg,#6f8f5f,#94b07f)'});
+  for(let i=0;i<12;i++)person(H,P,100+i*60+rnd(-10,10),470+rnd(0,40),pick(['#333','#7a4b3a','#2d4a6b']));[[80,452],[790,452]].forEach(q=>tree(H,P,q[0],q[1],90,'#5f7d4f'))}})}});
+
+defB({no:'02',cat:'COMMERCIAL',name:'郊外のショッピングモール',en:'Suburban Mall',text:'nobu mall',lead:'大きな木の庇と広場、たっぷりの緑。家族で一日過ごせる郊外型モールのボード。',
+use:'<b>郊外型ショッピングセンター・道の駅・アウトレット</b>などの企画や、自治体・地域への提案資料に。',
+tips:['郊外型は「広さ」と「緑」が伝わるよう、少し高い位置から見下ろす構図に','入口の大きな庇（ひさし）は、施設の顔。木の質感を強調します','配置図に駐車場・広場・遊び場を入れると、使われ方がイメージできます'],
+p:`郊外に建つショッピングモールの建築プレゼンボードを作ってください。
+・建物の名前：「{T}」
+・建物：地上2階建ての横に長い商業施設。中央に大きなエントランス。スーパー・専門店・フードコート・子どもの遊び場。鉄骨造
+・外観：白い外壁と大きなガラス。エントランスには、木の格子で組んだ大きな庇（ひさし）が広場の上に張り出す。屋上や壁面に緑
+・メインの外観パース：晴れた休日の昼、少し高い位置から見下ろす構図。手前に芝生の広場と噴水、家族連れ、奥に整然とした駐車場と樹木
+・ボードの右側：コンセプト文「家族の休日が、ここに集まる。」と短い説明、配置図（建物・駐車場・広場・遊び場を淡い色で色分け）、内観パースを2枚（天窓のある吹き抜けのモール通路／フードコート）
+・素材サンプル：木の格子・白い外壁・ガラス・芝生
+・ボードの下部：「用途：物販・飲食・サービス」「構造：鉄骨造 地上2階」「駐車台数：約800台」
+・ボード全体：白い背景に、緑と木の明るいトーン`,
+run(H,t){board(H,t,{k:'SHOPPING CENTER',c:'家族の休日が、ここに集まる。木の大屋根の下の広場を中心に、買い物と遊びと食事がひとつながりになる。',ground:'linear-gradient(#a7c08b,#8fab73)',data:[['USE','物販・飲食'],['STRUCTURE','鉄骨造 地上2階'],['PARKING','約800台'],['SITE','郊外・幹線道路沿い']],plan:[[10,60,180,70],[10,60,60,70],[130,60,60,70],[70,140,60,50],[10,10,180,40]],
+  draw(H,P){bx(H,P,40,250,780,200,{background:'#f4f2ee'});bx(H,P,40,330,780,120,{background:GLASS,opacity:.9});bx(H,P,40,330,780,120,{backgroundImage:WIN('rgba(60,60,60,.4)',780,120,60,60)});bx(H,P,40,236,780,18,{background:'linear-gradient(90deg,#7e9b68,#9bb886)'});
+  bx(H,P,280,290,300,40,{background:'repeating-linear-gradient(90deg,#b98b5e 0 14px,#d4ab7d 14px 22px)',transform:'perspective(400px) rotateX(30deg)',boxShadow:'0 20px 30px rgba(0,0,0,.15)'});bx(H,P,330,470,200,40,{borderRadius:'50%',background:'radial-gradient(#cfe7f5,#8fc2e0)'});
+  for(let i=0;i<14;i++)person(H,P,120+i*48+rnd(-10,10),500+rnd(0,40),pick(['#e07a5f','#3d5a80','#444','#81b29a']));[[40,452],[200,470],[680,470],[820,452]].forEach(q=>tree(H,P,q[0],q[1],100,'#6a8f55'))}})}});
+
+defB({no:'03',cat:'COMMERCIAL',name:'路面のカフェ店舗',en:'Street-front Café',text:'café nobu',lead:'大きなガラス窓と木の扉、白い外壁。通りに開いた、小さなカフェの店舗ボード。',
+use:'<b>カフェ・ベーカリー・美容室・小さなお店</b>の店舗デザインの提案や、内装業者・物件オーナーへの説明に。',
+tips:['店舗は「通りから見た正面」の構図が基本。入りやすさが伝わります','夕方〜夜の明かりが灯った外観は、お店の雰囲気がいちばん伝わります','内観パースはカウンター側と客席側の2枚あると、イメージが固まります'],
+p:`路面に建つ小さなカフェの、店舗デザインのプレゼンボードを作ってください。
+・お店の名前：「{T}」
+・建物：木造平屋（一部ロフト）。間口8m・奥行12mの路面店。20席
+・外観：白いしっくいの外壁、大きなガラス窓、木の大きな扉、黒い細いスチールのフレーム。入口の上に小さな布のオーニング（日よけ）と、真鍮の小さな看板。窓辺に植栽
+・メインの外観パース：夕方、店内の暖かい明かりがガラス越しに見える。通りの正面からの構図。店先に小さなベンチと黒板の看板、歩く人
+・ボードの右側：コンセプト文「通りに、ひと休みの灯りを。」と短い説明、平面図（カウンター・客席・厨房・トイレ）、内観パースを2枚（木のカウンターと焙煎機／窓際の客席）
+・素材サンプル：しっくい・オーク材・真鍮・テラゾーの床
+・ボードの下部：「用途：飲食店」「構造：木造平屋」「客席：20席」
+・ボード全体：生成りの背景に、白・木・黒の上品なトーン`,
+run(H,t){board(H,t,{k:'CAFE / STORE DESIGN',paper:'#f7f3ec',c:'通りに、ひと休みの灯りを。大きな窓と木の扉が通りに開き、焙煎の香りとともに人を迎え入れる。',sky:'linear-gradient(#7c8aa3,#e7b994 70%)',ground:'linear-gradient(#8c8478,#6e675d)',mat:['#f1ece2','#c9a27e','#b08d57','#d9d3c7'],data:[['USE','飲食店'],['STRUCTURE','木造平屋'],['SEATS','20席'],['FRONTAGE','間口 8m']],in1:'linear-gradient(135deg,#d9b48b,#8a6243)',
+  draw(H,P){bx(H,P,180,170,500,280,{background:'#f1ece2'});bx(H,P,220,250,260,170,{background:'linear-gradient(rgba(255,205,140,.95),rgba(230,150,80,.85))',border:'6px solid #222',boxSizing:'border-box'});bx(H,P,520,240,110,210,{background:'linear-gradient(90deg,#8a6243,#b58a5e)',border:'5px solid #222',boxSizing:'border-box'});bx(H,P,200,214,300,30,{background:'repeating-linear-gradient(90deg,#3c4b3f 0 30px,#f1ece2 30px 60px)',clipPath:'polygon(0 0,100% 0,96% 100%,4% 100%)'});bx(H,P,280,186,140,22,{background:'#b08d57',color:'#222',fontSize:'14px',textAlign:'center',lineHeight:'22px',fontFamily:F.serif,fontWeight:'700'}).textContent='café';
+  bx(H,P,660,380,60,70,{background:'#2a2a2a',border:'3px solid #8a6243',boxSizing:'border-box'});bx(H,P,230,420,180,26,{background:'#8a6243'});[[150,452],[740,452]].forEach(q=>tree(H,P,q[0],q[1],80,'#6a8459'));person(H,P,80,520,'#3d3d3d');person(H,P,780,530,'#7a4b3a')}})}});
+
+defB({no:'04',cat:'COMMERCIAL',name:'木造のオフィスビル',en:'Timber Office Building',text:'nobu office',lead:'縦の木のフィンと、緑のテラス。環境にやさしい、これからのオフィスビルのボード。',
+use:'<b>本社ビル・オフィス・研究施設・ZEB（省エネ建築）</b>の企画や、社内・投資家への構想説明に。',
+tips:['木造・省エネの建物は、断面図で「光と風の流れ」を矢印で見せるのが効果的','縦のフィン（羽板）が並ぶ外観は、上品で日差しも遮る、今どきのデザイン','各階のテラスに緑を入れると、働く人の気持ちよさが伝わります'],
+p:`木造（CLT）のオフィスビルの建築プレゼンボードを作ってください。
+・建物の名前：「{T}」
+・建物：地上7階建てのオフィスビル。1階にカフェとロビー、最上階に社員ラウンジとテラス。木造と鉄骨のハイブリッド構造。省エネ（ZEB）
+・外観：外周に縦の木のフィン（羽板）を規則正しく並べ、各階の角にテラスと植栽。足元はガラス張りで開放的
+・メインの外観パース：晴れた朝、交差点から見上げる構図。木のフィンに朝日が当たり、テラスの緑が映える。足元に歩く人と街路樹
+・ボードの右側：コンセプト文「木に包まれて、働く。」と短い説明、断面図（光と風の流れを矢印で示したダイアグラム）、内観パースを2枚（木の天井が見える執務フロア／緑のある最上階のラウンジ）
+・素材サンプル：CLT（木の板）・ガラス・アルミ・植栽
+・ボードの下部：「用途：事務所」「構造：木造＋鉄骨造 地上7階」「延床面積：約6,000㎡」「省エネ：ZEB Ready」
+・ボード全体：白い背景に、木の色と緑のさわやかなトーン`,
+run(H,t){board(H,t,{k:'TIMBER OFFICE',c:'木に包まれて、働く。縦の木のフィンが日差しをやわらげ、各階のテラスが働く人に緑と風を届ける。',sky:'linear-gradient(#a9cfe8,#eef4f6 75%)',mat:['#d9b48b','#bcd2de','#c7c7c7','#7d9a6a'],data:[['USE','事務所'],['STRUCTURE','木造＋鉄骨 7階'],['AREA','約6,000㎡'],['ENERGY','ZEB Ready']],plan:[[20,20,160,160],[20,20,160,30],[20,60,160,30],[20,100,160,30],[20,140,160,40]],
+  draw(H,P){bx(H,P,260,20,340,430,{background:GLASS});bx(H,P,260,20,340,430,{backgroundImage:'repeating-linear-gradient(90deg,#c99c6b 0 10px,transparent 10px 26px)'});for(let i=0;i<7;i++){bx(H,P,250,20+i*60,360,6,{background:'#e8e2d8'});bx(H,P,540,30+i*60,70,14,{background:'#7d9a6a',borderRadius:'8px 8px 0 0'})}bx(H,P,260,390,340,60,{background:'linear-gradient(rgba(255,230,190,.9),rgba(220,200,170,.9))'});
+  [[150,452],[200,470],[700,452],[760,470]].forEach(q=>tree(H,P,q[0],q[1],100,'#6a8f55'));for(let i=0;i<6;i++)person(H,P,300+i*50,500+rnd(0,30))}})}});
+
+defB({no:'05',cat:'COMMERCIAL',name:'木造の保育園',en:'Timber Nursery School',text:'nobu保育園',lead:'小さな切妻屋根が連なる、木のぬくもりの保育園。子どもの目線で描く施設のボード。',
+use:'<b>保育園・幼稚園・こども園・児童館・学童</b>などの施設の計画提案や、保護者・自治体への説明資料に。',
+tips:['小さな屋根を連ねると、子どものスケールに合った、やさしい建物に見えます','パースには園庭で遊ぶ子どもを入れて、使われている様子を描きます','平面図は保育室・ホール・園庭のつながりが分かれば十分です'],
+p:`木造平屋の保育園の建築プレゼンボードを作ってください。
+・施設の名前：「{T}」
+・建物：木造平屋。定員90名。0〜5歳の保育室、ホール、給食室、事務室。南側に広い園庭
+・外観：小さな切妻屋根（三角屋根）が5つ連なる。外壁は明るい木の板張り、深い軒（のき）とウッドデッキが園庭に面する。大きな窓
+・メインの外観パース：晴れた午前、園庭側からの構図。デッキと園庭で遊ぶ子どもたち、大きな木、砂場
+・ボードの右側：コンセプト文「小さな屋根の下で、のびのび育つ。」と短い説明、平面図（保育室・ホール・園庭のつながりを淡い色で）、内観パースを2枚（木の三角天井の保育室／みんなで集まるホール）
+・素材サンプル：杉板・しっくい・芝生・ウッドデッキ
+・ボードの下部：「用途：保育所」「構造：木造平屋」「定員：90名」
+・ボード全体：生成りの背景に、木と緑のやさしいトーン。手描き風の小さなイラストを少し添えてもよい`,
+run(H,t){board(H,t,{k:'NURSERY SCHOOL',paper:'#faf6ee',c:'小さな屋根の下で、のびのび育つ。5つの三角屋根が子どものスケールで連なり、深い軒のデッキが園庭へとつながる。',sky:'linear-gradient(#b9dcf0,#f4f1e6 75%)',ground:'linear-gradient(#b5cf96,#9cb97c)',mat:['#e2c49c','#f2ede3','#9cb97c','#b88d62'],data:[['USE','保育所'],['STRUCTURE','木造平屋'],['CAPACITY','90名'],['GARDEN','南側に広い園庭']],in1:'linear-gradient(160deg,#f2dfc2,#d2ac7c)',
+  draw(H,P){for(let i=0;i<5;i++){const x=90+i*140;bx(H,P,x,300,140,150,{background:'linear-gradient(90deg,#d9b88c,#e8cba3)',backgroundImage:'repeating-linear-gradient(90deg,rgba(0,0,0,.06) 0 2px,transparent 2px 14px)'});bx(H,P,x-10,220,160,84,{background:'#5b5148',clipPath:'polygon(50% 0,100% 100%,0 100%)'});bx(H,P,x+25,340,90,80,{background:GLASS})}bx(H,P,70,440,740,14,{background:'#a7835d'});
+  tree(H,P,800,452,160,'#6a8f55');for(let i=0;i<9;i++){const x=120+i*70+rnd(-15,15),y=490+rnd(0,40);bx(H,P,x-4,y-24,8,8,{borderRadius:'50%',background:'#5a4636'});bx(H,P,x-5,y-16,10,16,{borderRadius:'3px',background:pick(['#ffadad','#a0d8ef','#ffd97d','#b5e48c'])})}}})}});
+
+/* HOUSE */
+defB({no:'06',cat:'HOUSE',name:'和モダンの平屋',en:'Modern Japanese House',text:'nobu邸',lead:'低く伸びる大屋根と、深い軒。庭とつながる、和モダンの平屋のボード。',
+use:'<b>注文住宅の提案、工務店・設計事務所のお客さま向け資料、住宅展示場の計画</b>に。',
+tips:['平屋は「横に長く、低く」見える構図にすると、落ち着いた美しさが出ます','深い軒と縁側・庭のつながりが、和モダンの見せどころ','夕暮れの、軒下に明かりが灯った時間帯がいちばん映えます'],
+p:`和モダンの平屋の住宅のプレゼンボードを作ってください。
+・住宅の名前：「{T}」
+・建物：木造平屋。延床面積 約100㎡、3LDK。夫婦と子ども2人の4人家族。南側に庭
+・外観：低い勾配の大きな片流れ（または切妻）屋根、ガルバリウムのダークグレーの屋根、深い軒。外壁は焼杉（黒い木）としっくい。庭側は大きな木製サッシの窓と縁側（ウッドデッキ）
+・メインの外観パース：夕暮れ、庭側からの構図。軒下と室内に暖かい明かり、庭にもみじと石、低い植栽
+・ボードの右側：コンセプト文「庭とともに、ゆっくり暮らす。」と短い説明、平面図（LDK・寝室・子ども部屋・縁側・庭）、内観パースを2枚（木の天井と庭が見えるLDK／畳の小上がり）
+・素材サンプル：焼杉・しっくい・ひのき・ガルバリウム
+・ボードの下部：「用途：専用住宅」「構造：木造平屋」「延床面積：約100㎡」「間取り：3LDK」
+・ボード全体：生成りの背景に、黒・木・白の落ち着いた和のトーン`,
+run(H,t){board(H,t,{k:'RESIDENCE / ONE-STORY',paper:'#f6f2ea',c:'庭とともに、ゆっくり暮らす。低く伸びる大屋根と深い軒が、室内と庭をひとつにつなぐ。',sky:'linear-gradient(#5f6f8a,#e3a982 72%)',ground:'linear-gradient(#7d8a6a,#5f6b4f)',mat:['#2e2b28','#efe9de','#e2c49c','#5c5f63'],data:[['USE','専用住宅'],['STRUCTURE','木造平屋'],['AREA','約100㎡'],['PLAN','3LDK']],in1:'linear-gradient(135deg,#e8d2b0,#a98257)',
+  draw(H,P){bx(H,P,110,300,640,150,{background:'#2e2b28'});bx(H,P,180,320,440,130,{background:'linear-gradient(rgba(255,200,130,.95),rgba(220,140,70,.85))'});bx(H,P,180,320,440,130,{backgroundImage:'repeating-linear-gradient(90deg,transparent 0 106px,#5a4030 106px 110px)'});bx(H,P,640,320,90,130,{background:'#efe9de'});bx(H,P,40,262,780,44,{background:'#3b3e42',clipPath:'polygon(4% 0,96% 0,100% 100%,0 100%)'});bx(H,P,140,440,620,14,{background:'#a7835d'});
+  bx(H,P,60,410,40,40,{borderRadius:'50%',background:'#8a8a84'});tree(H,P,790,452,150,'#b5452f');tree(H,P,70,452,90,'#5f7d4f')}})}});
+
+defB({no:'07',cat:'HOUSE',name:'北欧ナチュラルの2階建て',en:'Nordic Natural House',text:'nobu house',lead:'三角屋根と白い外壁、木のアクセント。明るく暮らしやすい、2階建ての家のボード。',
+use:'<b>注文住宅・規格住宅の提案、工務店の商品紹介、住宅展示場</b>に。子育て世代の家づくりに人気のスタイル。',
+tips:['シンプルな三角屋根の家は、正面から少し斜めの構図で可愛らしく見えます','白い外壁に木の板を一部だけ張ると、北欧らしいアクセントに','内観は「吹き抜けのリビング」と「キッチン」が、お客さまにいちばん響きます'],
+p:`北欧ナチュラルスタイルの2階建て住宅のプレゼンボードを作ってください。
+・住宅の名前：「{T}」
+・建物：木造2階建て。延床面積 約110㎡、4LDK。子育て世代の家族。小さな庭とウッドデッキ
+・外観：シンプルな三角屋根（切妻）、白い塗り壁の外壁に、玄関まわりと2階の一部だけ木の板張り。黒い窓枠の縦長の窓。玄関に小さな庇
+・メインの外観パース：晴れた昼、道路側から少し斜めの構図。前庭に芝生とシンボルツリー、自転車、ウッドデッキで遊ぶ子ども
+・ボードの右側：コンセプト文「明るい光と、家族の気配。」と短い説明、1階と2階の平面図（並べて）、内観パースを2枚（吹き抜けのあるリビング／対面キッチンとダイニング）
+・素材サンプル：白い塗り壁・パイン材・オークの床・黒いアルミ
+・ボードの下部：「用途：専用住宅」「構造：木造2階建て」「延床面積：約110㎡」「間取り：4LDK」
+・ボード全体：白い背景に、白・木・グレーの明るいトーン`,
+run(H,t){board(H,t,{k:'RESIDENCE / NORDIC',c:'明るい光と、家族の気配。三角屋根の吹き抜けに光が降り、リビングから家じゅうに家族の気配が伝わる。',sky:'linear-gradient(#bcdcf0,#f4f3ee 75%)',ground:'linear-gradient(#a9c48c,#8fab73)',mat:['#f4f2ee','#e2c49c','#c9a27e','#2b2b2b'],data:[['USE','専用住宅'],['STRUCTURE','木造2階建て'],['AREA','約110㎡'],['PLAN','4LDK']],plan:[[10,20,85,160],[105,20,85,160],[10,20,85,70],[105,20,40,60]],in1:'linear-gradient(160deg,#fbf6ee,#e2c9a6)',
+  draw(H,P){bx(H,P,270,220,320,230,{background:'#f4f2ee'});bx(H,P,250,110,360,116,{background:'#3a3d40',clipPath:'polygon(50% 0,100% 100%,0 100%)'});bx(H,P,270,220,110,230,{background:'repeating-linear-gradient(90deg,#d2ab7c 0 18px,#c39a6a 18px 20px)'});[[420,250],[500,250],[420,340],[500,340]].forEach(q=>bx(H,P,q[0],q[1],46,70,{background:GLASS,border:'4px solid #222',boxSizing:'border-box'}));bx(H,P,300,360,50,90,{background:'#2b2b2b'});
+  bx(H,P,590,410,140,40,{background:'#a7835d'});tree(H,P,180,452,160,'#6a8f55');tree(H,P,760,452,90,'#7d9a6a');person(H,P,640,410,'#e07a5f')}})}});
+
+defB({no:'08',cat:'HOUSE',name:'都市型の3階建てガレージハウス',en:'Urban Garage House',text:'nobu garage',lead:'狭い敷地を縦に使う、黒い箱のようなガレージハウス。都市の住宅のボード。',
+use:'<b>都市部の狭小住宅・ガレージハウス・店舗併用住宅</b>の提案や、趣味を楽しむ家の計画に。',
+tips:['狭小住宅は「断面図」で、縦のつながり（吹き抜け・階段）を見せると魅力が伝わります','ガレージの中に車やバイクを描くと、暮らしのイメージが一気に湧きます','黒い外壁＋木の玄関の組み合わせは、都市型住宅の定番'],
+p:`都市部の狭い敷地に建つ、3階建てのガレージハウスのプレゼンボードを作ってください。
+・住宅の名前：「{T}」
+・建物：木造（または鉄骨造）3階建て。敷地 約70㎡、延床面積 約105㎡。1階がビルトインガレージと玄関、2階がLDK、3階が寝室と書斎。屋上テラス
+・外観：黒いガルバリウムの外壁の、四角い箱のような形。細長いスリット窓と、2階の大きな窓。玄関の扉とガレージのシャッターだけ木
+・メインの外観パース：夜、正面からの構図。ガレージの中に明かりがつき、車とバイクが見える。2階の大きな窓から暖かい明かり
+・ボードの右側：コンセプト文「街なかに、自分だけの基地を。」と短い説明、断面図（3層のつながりと吹き抜けを示す）、内観パースを2枚（吹き抜けのある2階LDK／ガレージを眺める土間）
+・素材サンプル：黒いガルバリウム・レッドシダー・コンクリート・スチール
+・ボードの下部：「用途：専用住宅」「構造：木造3階建て」「延床面積：約105㎡」「駐車：1台＋バイク」
+・ボード全体：グレーの背景に、黒・木・コンクリートのクールなトーン`,
+run(H,t){board(H,t,{k:'URBAN GARAGE HOUSE',paper:'#f1f1f0',c:'街なかに、自分だけの基地を。黒い箱の中に、ガレージ・リビング・書斎が縦につながる。',sky:'linear-gradient(#20263a,#4a4f66 75%)',ground:'linear-gradient(#5a5a5a,#3e3e3e)',mat:['#2b2b2b','#b5774b','#a9a9a5','#6a6f74'],data:[['USE','専用住宅'],['STRUCTURE','木造3階建て'],['AREA','約105㎡'],['PARKING','1台＋バイク']],plan:[[60,10,80,180],[60,10,80,60],[60,70,80,60],[60,130,80,60]],
+  draw(H,P){bx(H,P,140,140,90,310,{background:'#3a3a3a'});bx(H,P,630,170,100,280,{background:'#4a4a4a'});bx(H,P,300,90,260,360,{background:'#232323'});bx(H,P,330,330,200,120,{background:'linear-gradient(rgba(255,210,150,.9),rgba(200,140,80,.8))'});bx(H,P,370,385,90,40,{borderRadius:'10px 10px 4px 4px',background:'#8a1f1f'});bx(H,P,320,200,220,90,{background:'linear-gradient(rgba(255,200,130,.9),rgba(220,140,70,.8))'});bx(H,P,520,110,10,80,{background:'#f2d8b0'});bx(H,P,320,120,180,6,{background:'#f2d8b0'});bx(H,P,540,330,20,120,{background:'#b5774b'})}})}});
+
+/* MANSION */
+defB({no:'09',cat:'MANSION',name:'都心のタワーマンション',en:'High-rise Residence',text:'nobu tower',lead:'夜景に浮かぶガラスのタワーと、緑の足元。分譲マンションのパンフレットのようなボード。',
+use:'<b>分譲・賃貸マンションの企画、販売パンフレットのイメージ、不動産の事業説明</b>に。',
+tips:['タワーは「少し下から見上げる」構図で、高さと迫力を出します','夜景＋窓の明かりは、高級マンションのパンフレットの定番の表現','足元の緑とエントランスを描くと、住む人の安心感が伝わります'],
+p:`都心に建つタワーマンションのプレゼンボードを作ってください。
+・建物の名前：「{T}」
+・建物：地上40階建ての超高層の分譲マンション。約400戸。足元に緑の広場と店舗。最上階にスカイラウンジ
+・外観：ガラスと白い縦のラインが美しいスリムなタワー。各階の白いバルコニーが横の線をつくる。低層部は石張りで、大きなエントランスの庇
+・メインの外観パース：夕暮れから夜へ変わる時間、街の夜景の中に立つタワーを少し下から見上げる構図。窓の明かりが点々と灯る。足元に緑の広場
+・ボードの右側：コンセプト文「空に近い場所で、静かに暮らす。」と短い説明、配置図（タワー・広場・車寄せ）、内観パースを2枚（夜景が見えるリビング／ホテルのようなエントランスロビー）
+・素材サンプル：ガラス・白いアルミ・御影石・木
+・ボードの下部：「用途：共同住宅」「構造：鉄筋コンクリート造 地上40階」「総戸数：約400戸」
+・ボード全体：濃紺の背景に、白と金の細い文字で、高級感のあるトーン`,
+run(H,t){board(H,t,{k:'HIGH-RISE RESIDENCE',c:'空に近い場所で、静かに暮らす。ガラスと白い線のスリムなタワーが、夜景の中に凛と立つ。',sky:'linear-gradient(#141c3a,#3b3f6b 60%,#d9926a)',ground:'linear-gradient(#2a2d3a,#1c1e28)',mat:['#bcd2de','#f4f4f4','#8a8580','#c9a27e'],data:[['USE','共同住宅'],['STRUCTURE','RC造 地上40階'],['UNITS','約400戸'],['HEIGHT','約140m']],in1:'linear-gradient(135deg,#1c2442,#e0a070)',
+  draw(H,P){[[90,250,120,200],[640,220,130,230],[230,300,80,150]].forEach(q=>{bx(H,P,q[0],q[1],q[2],q[3],{background:'#272b44'});bx(H,P,q[0],q[1],q[2],q[3],{backgroundImage:'radial-gradient(rgba(255,210,140,.8) 1.5px,transparent 2px)',backgroundSize:'14px 18px'})});
+  bx(H,P,350,10,180,440,{background:'linear-gradient(90deg,#3a4370,#5b6aa0 50%,#2c3358)'});bx(H,P,350,10,180,440,{backgroundImage:'repeating-linear-gradient(0deg,rgba(255,255,255,.75) 0 2px,transparent 2px 12px)'});for(let i=0;i<40;i++)bx(H,P,356+rnd(0,160),20+rnd(0,400),10,6,{background:'rgba(255,210,140,.9)'});bx(H,P,320,400,240,50,{background:'#8a8580'});tree(H,P,300,452,70,'#3f5a3a');tree(H,P,580,452,70,'#3f5a3a')}})}});
+
+defB({no:'10',cat:'MANSION',name:'緑のテラスの低層マンション',en:'Terraced Low-rise Residence',text:'nobu garden',lead:'階段状のテラスに緑があふれる、5階建ての低層マンション。住宅街になじむボード。',
+use:'<b>低層の分譲・賃貸マンション、社宅、シニア向け住宅</b>の企画や、近隣説明会の資料に。',
+tips:['上の階ほど後ろに下がる「セットバック」で、テラスが生まれ圧迫感も減ります','テラスにあふれる緑を描くと、暮らしの豊かさが伝わります','住宅街との調和を見せるため、まわりの家並みも少し描きます'],
+p:`住宅街に建つ、緑のテラスのある低層マンションのプレゼンボードを作ってください。
+・建物の名前：「{T}」
+・建物：地上5階建ての分譲マンション。約40戸。上の階ほど少しずつ後ろに下がる階段状（セットバック）で、各階に広いテラス
+・外観：白いコンクリートとあたたかい木の格子。各テラスに大きなプランターと植栽が垂れ下がる。1階に中庭とエントランス
+・メインの外観パース：晴れた午後、通りの斜め向かいからの構図。テラスの緑があふれ、まわりの戸建ての家並みとなじむ。歩道に街路樹と歩く人
+・ボードの右側：コンセプト文「緑のテラスで、空と暮らす。」と短い説明、断面図（階段状のテラスと日当たりを矢印で）、内観パースを2枚（テラスとつながるリビング／中庭）
+・素材サンプル：白いコンクリート・木の格子・植栽・タイル
+・ボードの下部：「用途：共同住宅」「構造：鉄筋コンクリート造 地上5階」「総戸数：約40戸」
+・ボード全体：白い背景に、緑と木のやわらかいトーン`,
+run(H,t){board(H,t,{k:'TERRACED RESIDENCE',c:'緑のテラスで、空と暮らす。上の階ほど少しずつ下がる形が、すべての住戸に空と緑のテラスをつくる。',sky:'linear-gradient(#b9dcf0,#f3f2ec 75%)',mat:['#efede8','#c9a27e','#7d9a6a','#b8a99a'],data:[['USE','共同住宅'],['STRUCTURE','RC造 地上5階'],['UNITS','約40戸'],['GREEN','全住戸にテラス']],plan:[[20,150,160,30],[40,115,140,30],[60,80,120,30],[80,45,100,30],[100,10,80,30]],
+  draw(H,P){for(let i=0;i<5;i++){const x=140+i*50,w=600-i*100;bx(H,P,x,390-i*70,w,70,{background:'#efede8'});bx(H,P,x+20,402-i*70,w-60,46,{background:GLASS});bx(H,P,x+20,402-i*70,w-60,46,{backgroundImage:'repeating-linear-gradient(90deg,#b98b5e 0 6px,transparent 6px 22px)'});bx(H,P,x-10,382-i*70,w+20,14,{background:'linear-gradient(90deg,#6f8f5f,#94b07f,#6f8f5f)',borderRadius:'7px'})}
+  [[60,452],[800,452],[120,470]].forEach(q=>tree(H,P,q[0],q[1],110,'#6a8f55'));bx(H,P,0,370,60,80,{background:'#d9cfc2'});bx(H,P,790,380,70,70,{background:'#cfd6d9'});person(H,P,420,520);person(H,P,480,510,'#7a4b3a')}})}});
+
+/* ===== PRODUCT BOARD 01-10 ===== */
+CUR_SEC='d';
+const DIMG=[];
+const defD=o=>{o.bg='#d5d8de';o.loop=4000;if(DIMG.includes(o.no))o.img='img/d'+o.no+'.jpg';def(o)};
+/* 形の部品：中心(cx,cy)・倍率k、line=true で製図風の線画 */
+const pp=(H,p,c,x,y,w,h,r,bg,css)=>bx(H,p,c.cx+x*c.k-w*c.k/2,c.cy+y*c.k-h*c.k/2,w*c.k,h*c.k,Object.assign(c.line?{border:'1.5px solid #333',boxSizing:'border-box',borderRadius:r}:{background:bg,borderRadius:r},css||{}));
+const SHADE=(c1,c2)=>`linear-gradient(110deg,${c2},${c1} 40%,${c2})`;
+const PROD={
+  buds(H,p,c,col){pp(H,p,c,0,30,180,110,'40px',SHADE(col,'#cfcfcf'));pp(H,p,c,0,-5,180,6,'3px','rgba(0,0,0,.15)');pp(H,p,c,-42,-60,54,54,'50%',SHADE(col,'#bbb'));pp(H,p,c,42,-60,54,54,'50%',SHADE(col,'#bbb'));pp(H,p,c,-42,-60,22,22,'50%','#333');pp(H,p,c,42,-60,22,22,'50%','#333')},
+  coffee(H,p,c,col){pp(H,p,c,0,-30,150,200,'24px',SHADE(col,'#777'));pp(H,p,c,0,85,170,24,'8px','#2b2b2b');pp(H,p,c,0,40,100,80,'12px 12px 30px 30px','rgba(200,225,240,.7)',{border:c.line?'1.5px solid #333':'2px solid rgba(255,255,255,.8)'});pp(H,p,c,0,55,80,40,'0 0 26px 26px','#5a3a26');pp(H,p,c,40,-90,30,30,'50%','#f0f0f0')},
+  vacuum(H,p,c,col){pp(H,p,c,0,-10,16,280,'8px','#888');pp(H,p,c,0,-120,46,80,'20px',SHADE(col,'#999'));pp(H,p,c,8,-170,30,50,'12px','#2b2b2b');pp(H,p,c,0,135,120,30,'14px','#2b2b2b')},
+  humid(H,p,c,col){pp(H,p,c,0,30,150,190,'50% 50% 30px 30px/40% 40% 30px 30px',SHADE(col,'#ddd'));pp(H,p,c,0,-60,40,16,'8px','#555');if(!c.line)for(let i=0;i<3;i++)pp(H,p,c,(i-1)*14,-110-i*12,40,60,'50%','rgba(255,255,255,.55)',{filter:'blur(8px)'})},
+  chair(H,p,c,col){pp(H,p,c,-10,-40,170,120,'40px 40px 20px 20px',SHADE(col,'#999'));pp(H,p,c,0,30,200,50,'20px',SHADE(col,'#888'));[[-80,90],[80,90]].forEach(q=>pp(H,p,c,q[0],q[1],14,90,'6px','#a77b52'));pp(H,p,c,0,60,210,10,'5px','#a77b52')},
+  lamp(H,p,c,col){pp(H,p,c,0,-140,3,120,'0','#333');pp(H,p,c,0,-30,220,110,'110px 110px 6px 6px',SHADE(col,'#999'));if(!c.line)pp(H,p,c,0,30,180,90,'50%','rgba(255,220,150,.6)',{filter:'blur(18px)'})},
+  stool(H,p,c,col){pp(H,p,c,0,-70,170,30,'50%',SHADE(col,'#a0764e'));[[-55,10,-8],[55,10,8],[0,20,0]].forEach(q=>pp(H,p,c,q[0],q[1],16,150,'8px','#a0764e',{rotate:q[2]+'deg'}));pp(H,p,c,0,30,120,8,'4px','#8a6440')},
+  mug(H,p,c,col){pp(H,p,c,-10,0,140,160,'10px 10px 26px 26px',SHADE(col,'#ccc'));pp(H,p,c,75,0,50,80,'50%','transparent',{border:c.line?'1.5px solid #333':'14px solid '+col,boxSizing:'border-box'});pp(H,p,c,-10,-80,140,14,'50%','#5a3a26')},
+  clock(H,p,c,col){pp(H,p,c,0,-20,200,200,'50%',SHADE(col,'#aaa'));pp(H,p,c,0,-20,160,160,'50%','#faf8f4');pp(H,p,c,0,-45,4,52,'2px','#222');pp(H,p,c,18,-20,40,4,'2px','#222');pp(H,p,c,0,100,140,26,'10px',SHADE(col,'#999'))},
+  pen(H,p,c,col){pp(H,p,c,-30,0,170,220,'6px',SHADE(col,'#bbb'));pp(H,p,c,-30,0,6,220,'0','rgba(0,0,0,.2)');pp(H,p,c,80,0,18,230,'9px','#2b2b2b',{rotate:'12deg'});pp(H,p,c,80,-100,18,30,'9px 9px 0 0','#c9a24b',{rotate:'12deg'})}
+};
+const pboard=(H,t,o)=>{desk(H);const s=sheet(H,1400,800,{background:o.paper||'#f7f7f5'});
+  const M=R(H,s,{left:'40px',top:'40px',width:'860px',height:'560px',background:o.studio||'radial-gradient(circle at 50% 40%,#ffffff,#e4e4e2 70%)',overflow:'hidden'});bx(H,M,230,470,400,40,{borderRadius:'50%',background:'radial-gradient(rgba(0,0,0,.22),transparent 70%)'});PROD[o.f](H,M,{cx:430,cy:290,k:1.5},o.cols[0]);
+  T(H,s,{left:'940px',top:'44px',fontFamily:F.sans,fontWeight:'700',fontSize:'12px',letterSpacing:'.35em',color:'#999'},o.k);T(H,s,{left:'938px',top:'64px',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:t.length>12?'30px':'38px',color:'#222'},t);
+  T(H,s,{left:'940px',top:'120px',width:'420px',whiteSpace:'normal',fontFamily:F.sans,fontSize:'14px',lineHeight:'1.85',color:'#444'},o.c);
+  ['FRONT','SIDE','TOP'].forEach((v,i)=>{const b=R(H,s,{left:940+i*142+'px',top:'232px',width:'130px',height:'150px',background:'#fff',border:'1px solid #e2e2e2',overflow:'hidden'});PROD[o.f](H,b,{cx:65,cy:68,k:.4,line:true},'#fff');H.el('div',{position:'absolute',left:'8px',bottom:'6px',fontFamily:F.sans,fontSize:'10px',letterSpacing:'.2em',color:'#999'},b,v)});
+  T(H,s,{left:'940px',top:'402px',fontFamily:F.sans,fontSize:'11px',letterSpacing:'.2em',color:'#888'},'COLOR VARIATION');o.cols.forEach((c,i)=>{const b=R(H,s,{left:940+i*106+'px',top:'424px',width:'96px',height:'96px',background:'#fff',border:'1px solid #eee',overflow:'hidden'});PROD[o.f](H,b,{cx:48,cy:50,k:.28},c)});
+  T(H,s,{left:'940px',top:'540px',fontFamily:F.sans,fontSize:'11px',letterSpacing:'.2em',color:'#888'},'MATERIALS');(o.mat||['#d8d4cc','#a77b52','#888','#2b2b2b']).forEach((c,i)=>R(H,s,{left:940+i*52+'px',top:'562px',width:'40px',height:'40px',borderRadius:'50%',background:c,boxShadow:'inset 0 0 0 1px rgba(0,0,0,.08)'}));
+  R(H,s,{left:'1160px',top:'540px',width:'200px',height:'62px',background:o.scene||'linear-gradient(135deg,#efe6d8,#c9b291)'});T(H,s,{left:'1160px',top:'608px',fontFamily:F.sans,fontSize:'10px',letterSpacing:'.2em',color:'#999'},'SCENE');
+  (o.data||[]).forEach((d,i)=>{T(H,s,{left:40+i*215+'px',top:'628px',fontFamily:F.sans,fontSize:'11px',letterSpacing:'.2em',color:'#999'},d[0]);T(H,s,{left:40+i*215+'px',top:'650px',fontFamily:F.sans,fontWeight:'700',fontSize:'18px',color:'#333'},d[1])});
+  R(H,s,{left:'40px',top:'712px',width:'1320px',height:'1px',background:'#ccc'});T(H,s,{left:'40px',top:'730px',fontFamily:F.sans,fontSize:'13px',color:'#666'},'PRODUCT DESIGN PRESENTATION BOARD');T(H,s,{right:'40px',top:'730px',fontFamily:F.sans,fontSize:'12px',letterSpacing:'.2em',color:'#999'},'A3 / CONCEPT')};
+const PBTAIL=`・ボード全体：白い背景に細い線とグリッド。文字は少なく、製品がいちばん目立つように`;
+
+/* KADEN */
+defD({no:'01',cat:'KADEN',name:'ワイヤレスイヤホン',en:'Wireless Earbuds',text:'nobu buds',lead:'小石のような丸いケースと、くすみカラー。毎日持ち歩きたくなるイヤホンのボード。',
+use:'<b>オーディオ機器・ガジェット・ウェアラブル</b>の商品企画、クラウドファンディングのページづくり、デザインコンペに。',
+tips:['小さな製品は、手のひらに乗せた使用シーンの写真を入れると大きさが伝わります','色は「くすみカラー3色＋定番の黒か白」の4色が売りやすい構成','三面図があるだけで、イメージ画像が「企画資料」に変わります'],
+p:`ワイヤレスイヤホンのプロダクトデザインのプレゼンボードを作ってください。
+・商品名：「{T}」
+・製品：完全ワイヤレスイヤホンと充電ケース。ケースは川辺の小石のような、角のない丸い形。手のひらに収まるサイズ
+・素材と仕上げ：マットな樹脂（さらさらした手ざわり）、ケースのふたの継ぎ目は細い1本の線だけ。ロゴは小さな刻印
+・カラーバリエーション：セージグリーン・サンドベージュ・ストーングレー・ブラックの4色
+・メインビジュアル：ふたを少し開けたケースと、イヤホン2つ。やわらかい自然光のスタジオ撮影、淡いベージュの背景、小石と並べて
+・ボードの右側：コンセプト文「ポケットに、静けさを。」と短い説明、三面図（ケースの正面・側面・上面）、4色のカラーバリエーション、素材サンプル、使用シーンの写真（カフェで耳に着けている横顔）
+・ボードの下部：「再生時間：最大30時間（ケース込み）」「重さ：片耳 4.5g」「防水：IPX4」の主な仕様
+${PBTAIL}`,
+run(H,t){pboard(H,t,{f:'buds',k:'WIRELESS EARBUDS',c:'ポケットに、静けさを。川辺の小石のような、角のない丸い形。手のひらにすっと収まり、毎日持ち歩きたくなる。',cols:['#9caf98','#d9c7ad','#9a9a96','#2b2b2b'],studio:'radial-gradient(circle at 50% 40%,#fbf7f0,#e3dccf 70%)',data:[['BATTERY','最大30時間'],['WEIGHT','片耳 4.5g'],['WATERPROOF','IPX4'],['COLORS','4色']],scene:'linear-gradient(135deg,#e9dccb,#9c8a76)'})}});
+
+defD({no:'02',cat:'KADEN',name:'コーヒーメーカー',en:'Coffee Maker',text:'nobu drip',lead:'キッチンに置きっぱなしでも美しい、細身のコーヒーメーカー。暮らしになじむ家電のボード。',
+use:'<b>キッチン家電・調理家電・生活家電</b>の商品企画や、デザインの社内レビュー、量販店への提案資料に。',
+tips:['家電は「キッチンに置いた写真」を入れると、暮らしになじむかが伝わります','金属・ガラス・木など、異なる素材の組み合わせを素材サンプルで見せます','操作ボタンは数を減らして描くと、ミニマルで使いやすそうに見えます'],
+p:`コーヒーメーカーのプロダクトデザインのプレゼンボードを作ってください。
+・商品名：「{T}」
+・製品：1〜4杯用のドリップ式コーヒーメーカー。キッチンに出しっぱなしでも美しい、幅15cmの細身の縦長の形
+・素材と仕上げ：本体はマットなスチール、ガラスのサーバー、取っ手と天板の一部に木。操作はダイヤル1つだけ
+・カラーバリエーション：オフホワイト・チャコール・ミストブルーの3色
+・メインビジュアル：サーバーにコーヒーが落ちている瞬間、湯気がほんのり。朝の光のスタジオ撮影、明るいグレーの背景
+・ボードの右側：コンセプト文「朝の一杯を、もっと静かに。」と短い説明、三面図（正面・側面・上面）、3色のカラーバリエーション、素材サンプル（スチール・ガラス・木）、使用シーンの写真（朝のキッチンカウンター）
+・ボードの下部：「容量：最大4杯（600ml）」「サイズ：幅150×奥行240×高さ330mm」「保温：30分」の主な仕様
+${PBTAIL}`,
+run(H,t){pboard(H,t,{f:'coffee',k:'COFFEE MAKER',c:'朝の一杯を、もっと静かに。幅15cmの細身の形に、操作はダイヤル1つだけ。キッチンに出しっぱなしでも美しい。',cols:['#efede8','#4a4a4a','#9fb3c2'],mat:['#c9ccd0','#dbe9f0','#a77b52','#2b2b2b'],data:[['CAPACITY','最大4杯'],['SIZE','W150×D240×H330'],['KEEP WARM','30分'],['COLORS','3色']],scene:'linear-gradient(135deg,#f3eee6,#b9a68c)'})}});
+
+defD({no:'03',cat:'KADEN',name:'コードレス掃除機',en:'Cordless Stick Vacuum',text:'nobu clean',lead:'壁に立てかけても絵になる、細いスティック掃除機。見せる収納の家電のボード。',
+use:'<b>掃除機・生活家電・ロボット家電</b>の商品企画や、デザインの比較検討に。',
+tips:['長い製品は、ボードの縦いっぱいに斜めに置くと迫力が出ます','「立てかけたまま収納できる」など、使い方の特長は使用シーンの写真で見せます','差し色を1か所だけ（ボタンやパイプ）に入れると、上品で印象に残ります'],
+p:`コードレスのスティック掃除機のプロダクトデザインのプレゼンボードを作ってください。
+・商品名：「{T}」
+・製品：軽量のコードレススティック掃除機。細いパイプと小さな本体。自立して壁に立てかけられる
+・素材と仕上げ：マットな樹脂の本体、アルミのパイプ。差し色はパイプだけに1色
+・カラーバリエーション：ホワイト×テラコッタ・グレー×ミント・ブラック×ゴールドの3色
+・メインビジュアル：斜めに置いた掃除機の全体。スタジオ撮影、淡いグレーの背景、床に細い影
+・ボードの右側：コンセプト文「出しっぱなしでも、絵になる。」と短い説明、三面図（正面・側面・上面）、3色のカラーバリエーション、素材サンプル、使用シーンの写真（リビングの壁に立てかけた様子）
+・ボードの下部：「重さ：1.4kg」「運転時間：最大40分」「充電：約3時間」の主な仕様
+${PBTAIL}`,
+run(H,t){pboard(H,t,{f:'vacuum',k:'CORDLESS VACUUM',c:'出しっぱなしでも、絵になる。細いパイプと小さな本体で、壁に立てかけたまま収納できる。',cols:['#f2f0ec','#9a9a96','#2b2b2b'],mat:['#f2f0ec','#c9ccd0','#c87a5a','#2b2b2b'],data:[['WEIGHT','1.4kg'],['RUN TIME','最大40分'],['CHARGE','約3時間'],['COLORS','3色']],scene:'linear-gradient(135deg,#f1ece4,#cbbfae)'})}});
+
+defD({no:'04',cat:'KADEN',name:'アロマ加湿器',en:'Aroma Humidifier',text:'nobu mist',lead:'陶器のようなやわらかな形から、ふわりと立ちのぼるミスト。心がほどける家電のボード。',
+use:'<b>加湿器・空気清浄機・照明・ヒーター</b>など、インテリアになじむ季節家電の企画に。',
+tips:['ミストや光など「目に見えにくい機能」は、メインビジュアルで美しく見せます','陶器・木・布など、家電らしくない素材感が今の人気','夜の寝室での使用シーンを入れると、癒やしの価値が伝わります'],
+p:`アロマ加湿器のプロダクトデザインのプレゼンボードを作ってください。
+・商品名：「{T}」
+・製品：卓上のアロマ超音波加湿器。陶器の花びんのような、上がすぼまったやわらかい形。上の小さな穴からミストが立ちのぼる。足元がほんのり光る
+・素材と仕上げ：陶器のような質感のマットな樹脂、木の台座
+・カラーバリエーション：アイボリー・ペールピンク・セージ・チャコールの4色
+・メインビジュアル：ミストがふわりと立ちのぼる瞬間。暗めの背景に、足元のやわらかな光。スタジオ撮影
+・ボードの右側：コンセプト文「部屋に、やさしい霧を。」と短い説明、三面図（正面・側面・上面）、4色のカラーバリエーション、素材サンプル、使用シーンの写真（夜の寝室のサイドテーブル）
+・ボードの下部：「タンク容量：500ml」「連続運転：約10時間」「適用床面積：〜8畳」の主な仕様
+${PBTAIL}`,
+run(H,t){pboard(H,t,{f:'humid',k:'AROMA HUMIDIFIER',c:'部屋に、やさしい霧を。陶器の花びんのような形から、ミストがふわりと立ちのぼる。',cols:['#f1ece2','#e8c9c4','#a9b9a3','#4a4a4a'],studio:'radial-gradient(circle at 50% 45%,#6b6f78,#2f323a 75%)',mat:['#f1ece2','#a77b52','#e8c9c4','#888'],data:[['TANK','500ml'],['RUN TIME','約10時間'],['ROOM','〜8畳'],['COLORS','4色']],scene:'linear-gradient(135deg,#3a3f55,#c49a7a)'})}});
+
+/* FURN */
+defD({no:'05',cat:'FURN',name:'ラウンジチェア',en:'Lounge Chair',text:'nobu lounge',lead:'包みこむ丸い座面と、細い木の脚。長く座っていたくなる、ひとりがけのチェアのボード。',
+use:'<b>椅子・ソファ・家具</b>の商品企画、家具メーカーへの提案、インテリアショップの新作発表に。',
+tips:['家具は「人が座っている写真」より「空間に置かれた写真」のほうが、デザインが伝わります','布の色と木の色の組み合わせを、カラーバリエーションで見せます','三面図の側面図で、座面の角度と背もたれの傾きが伝わります'],
+p:`ひとりがけのラウンジチェアのプロダクトデザインのプレゼンボードを作ってください。
+・商品名：「{T}」
+・製品：低めのラウンジチェア。包みこむような丸い背もたれと厚みのある座面、細いオーク材の脚
+・素材と仕上げ：ブークレ（もこもこした布）の張り地、オーク無垢材のオイル仕上げ
+・カラーバリエーション：アイボリー・テラコッタ・オリーブ・チャコールの4色の張り地
+・メインビジュアル：斜め前からの全体。スタジオ撮影、明るいベージュの背景、床にやわらかい影
+・ボードの右側：コンセプト文「身体を、まるごと預ける。」と短い説明、三面図（正面・側面・上面）、4色の張り地のバリエーション、素材サンプル（布・オーク材）、使用シーンの写真（窓辺のリビング）
+・ボードの下部：「サイズ：幅780×奥行820×高さ720mm」「座面高：380mm」「素材：オーク無垢材・ブークレ」の主な仕様
+${PBTAIL}`,
+run(H,t){pboard(H,t,{f:'chair',k:'LOUNGE CHAIR',c:'身体を、まるごと預ける。包みこむ丸い背もたれと、細いオーク材の脚。長く座っていたくなる。',cols:['#efe9de','#c47a5a','#8a8f6a','#4a4a4a'],studio:'radial-gradient(circle at 50% 40%,#fbf7f0,#e6dccd 70%)',mat:['#efe9de','#c9a27e','#c47a5a','#8a8f6a'],data:[['SIZE','W780×D820×H720'],['SEAT HEIGHT','380mm'],['MATERIAL','オーク・ブークレ'],['COLORS','4色']],scene:'linear-gradient(135deg,#f1e8da,#b49a7a)'})}});
+
+defD({no:'06',cat:'FURN',name:'ペンダントライト',en:'Pendant Light',text:'nobu light',lead:'和紙のようにやわらかく光る、丸いシェード。食卓の上を照らす照明のボード。',
+use:'<b>照明器具・インテリア小物</b>の商品企画や、店舗・住宅の照明計画の提案に。',
+tips:['照明は「点灯した状態」と「消灯した状態」の両方を見せると魅力が伝わります','光の色（電球色）が分かるよう、暗めの背景で撮った写真をメインに','食卓の上に吊るした使用シーンで、大きさと高さの感覚が伝わります'],
+p:`ペンダントライト（吊り下げ照明）のプロダクトデザインのプレゼンボードを作ってください。
+・商品名：「{T}」
+・製品：ダイニングテーブルの上に吊るす、直径45cmのドーム型のペンダントライト。和紙のようにやわらかく光が透けるシェード
+・素材と仕上げ：和紙のような質感の樹脂シェード、真鍮の小さな金具、布巻きのコード
+・カラーバリエーション：ナチュラル・スモークグレー・ペールイエローの3色
+・メインビジュアル：点灯して、シェード全体がやわらかく光っている状態。暗めの背景のスタジオ撮影
+・ボードの右側：コンセプト文「食卓に、月あかりを。」と短い説明、三面図（正面・側面・上面）、3色のカラーバリエーション、素材サンプル（和紙・真鍮・布コード）、使用シーンの写真（夜の木のダイニングテーブルの上）、消灯時の小さな写真
+・ボードの下部：「サイズ：直径450×高さ300mm」「光源：LED 電球色」「コード長：最大1.5m」の主な仕様
+${PBTAIL}`,
+run(H,t){pboard(H,t,{f:'lamp',k:'PENDANT LIGHT',c:'食卓に、月あかりを。和紙のように光が透ける丸いシェードが、テーブルをやわらかく照らす。',cols:['#f3e6cc','#8f8f8c','#f1dfa0'],studio:'radial-gradient(circle at 50% 45%,#5a5550,#25221f 75%)',mat:['#f3e6cc','#c9a24b','#d9d4cc','#2b2b2b'],data:[['SIZE','φ450×H300'],['LIGHT','LED 電球色'],['CORD','最大1.5m'],['COLORS','3色']],scene:'linear-gradient(135deg,#2e2a26,#d9a560)'})}});
+
+defD({no:'07',cat:'FURN',name:'木のスツール',en:'Wooden Stool',text:'nobu stool',lead:'3本脚の、軽やかな木のスツール。椅子にも、サイドテーブルにもなる小さな家具のボード。',
+use:'<b>小さな家具・木工製品・地域の木材を使った商品</b>の企画、工房の作品紹介、ふるさと納税の返礼品に。',
+tips:['木の製品は「木目」が主役。メインビジュアルで木目がはっきり見えるように','「椅子にもテーブルにもなる」など、使い方を複数の写真で見せます','地域材を使うなら、産地の森の写真を小さく添えるとストーリーが生まれます'],
+p:`木のスツールのプロダクトデザインのプレゼンボードを作ってください。
+・商品名：「{T}」
+・製品：3本脚の丸いスツール。座面はゆるやかにくぼんでいて、脚は少し外に開く。椅子にもサイドテーブルにもなる
+・素材と仕上げ：国産の広葉樹（ナラ材）の無垢材、オイル仕上げ。木目が美しく見えるように
+・カラーバリエーション：ナチュラル・ウォルナット色・ブラック塗装の3色
+・メインビジュアル：斜め上からの全体。木目がはっきり見える、やわらかい自然光のスタジオ撮影、白い背景
+・ボードの右側：コンセプト文「座る、置く、飾る。」と短い説明、三面図（正面・側面・上面）、3色のバリエーション、素材サンプル（ナラ材の木目）、使用シーンの写真を2枚（玄関で腰かける／ソファの横で本を置く）
+・ボードの下部：「サイズ：直径340×高さ450mm」「重さ：2.2kg」「素材：ナラ無垢材」の主な仕様
+${PBTAIL}`,
+run(H,t){pboard(H,t,{f:'stool',k:'WOODEN STOOL',c:'座る、置く、飾る。ゆるやかにくぼんだ座面と、少し外に開いた3本の脚。暮らしのどこにでもなじむ。',cols:['#d2ab7c','#6b4a33','#2b2b2b'],mat:['#d2ab7c','#b88d62','#6b4a33','#f1ece2'],data:[['SIZE','φ340×H450'],['WEIGHT','2.2kg'],['MATERIAL','ナラ無垢材'],['COLORS','3色']],scene:'linear-gradient(135deg,#f3eee6,#c9a27e)'})}});
+
+/* GOODS */
+defD({no:'08',cat:'GOODS',name:'陶器のマグカップ',en:'Ceramic Mug',text:'nobu mug',lead:'手になじむ、ころんとした形と釉薬のゆらぎ。毎朝使いたくなるマグカップのボード。',
+use:'<b>食器・キッチン雑貨・ノベルティ・オリジナルグッズ</b>の企画や、窯元・工場への発注前のイメージ共有に。',
+tips:['器は、釉薬（うわぐすり）の色むらやゆらぎが分かる、寄りの写真が効果的','色違いを3〜4個並べた写真は、それだけでSNS映えするメインビジュアルに','容量と重さは、買う人がいちばん気にする情報です'],
+p:`陶器のマグカップのプロダクトデザインのプレゼンボードを作ってください。
+・商品名：「{T}」
+・製品：容量300mlの陶器のマグカップ。少しふっくらした、ころんとした形。指が3本入る大きめの取っ手
+・素材と仕上げ：陶器、マットな釉薬。縁だけ土の色が見える。釉薬の色むらとゆらぎがある
+・カラーバリエーション：ミルクホワイト・ターコイズ・ハニー（あめ色）・スレートグレーの4色
+・メインビジュアル：4色を並べた写真。やわらかい自然光、木のテーブルとリネンの布の上
+・ボードの右側：コンセプト文「両手で包む、朝の時間。」と短い説明、三面図（正面・側面・上面）、4色のカラーバリエーション、素材サンプル（釉薬の色見本）、使用シーンの写真（湯気の立つカフェオレ）
+・ボードの下部：「容量：300ml」「サイズ：直径85×高さ90mm」「電子レンジ・食洗機：使用可」の主な仕様
+${PBTAIL}`,
+run(H,t){pboard(H,t,{f:'mug',k:'CERAMIC MUG',c:'両手で包む、朝の時間。ふっくらした形と、釉薬のやさしいゆらぎ。毎朝、手が伸びるマグカップ。',cols:['#f4f0e8','#5fa8a0','#d49a4a','#6f7479'],studio:'linear-gradient(#f6f2ea 60%,#d9c4a6 60%)',mat:['#f4f0e8','#5fa8a0','#d49a4a','#8a6a4a'],data:[['CAPACITY','300ml'],['SIZE','φ85×H90'],['CARE','レンジ・食洗機OK'],['COLORS','4色']],scene:'linear-gradient(135deg,#efe4d4,#a98257)'})}});
+
+defD({no:'09',cat:'GOODS',name:'置き時計',en:'Table Clock',text:'nobu clock',lead:'丸い文字盤と、木の台座。数字のない、静かな置き時計のボード。',
+use:'<b>時計・インテリア雑貨・ギフト商品・記念品</b>の企画に。',
+tips:['時計は「数字なし」「細い針」にすると一気にデザイン雑貨らしくなります','ギフト向けなら、箱やパッケージの写真も小さく添えると効果的','「音がしない（スイープ式）」など、使い心地の特長をコンセプトに入れます'],
+p:`置き時計のプロダクトデザインのプレゼンボードを作ってください。
+・商品名：「{T}」
+・製品：直径12cmの丸い置き時計。文字盤には数字がなく、細い線の目盛りだけ。木の台座に乗る。秒針の音がしないスイープ式
+・素材と仕上げ：アルミの外枠（マット）、紙のような質感の文字盤、ウォルナットの台座
+・カラーバリエーション：シルバー×ホワイト・ゴールド×アイボリー・ブラック×ブラックの3色
+・メインビジュアル：斜め前からの全体。スタジオ撮影、明るいグレーの背景、やわらかい影
+・ボードの右側：コンセプト文「時間を、静かに眺める。」と短い説明、三面図（正面・側面・上面）、3色のカラーバリエーション、素材サンプル（アルミ・紙・ウォルナット）、使用シーンの写真（書斎のデスク）、ギフトボックスの小さな写真
+・ボードの下部：「サイズ：直径120×奥行60×高さ140mm」「ムーブメント：スイープ式（無音）」「電池：単3形1本」の主な仕様
+${PBTAIL}`,
+run(H,t){pboard(H,t,{f:'clock',k:'TABLE CLOCK',c:'時間を、静かに眺める。数字のない文字盤に、細い針がなめらかに進む。秒針の音はしない。',cols:['#c9ccd0','#c9a24b','#2b2b2b'],mat:['#c9ccd0','#faf8f4','#6b4a33','#c9a24b'],data:[['SIZE','φ120×D60×H140'],['MOVEMENT','無音スイープ'],['BATTERY','単3形×1'],['COLORS','3色']],scene:'linear-gradient(135deg,#e9e6e0,#8f8579)'})}});
+
+defD({no:'10',cat:'GOODS',name:'ノートとペンのセット',en:'Stationery Set',text:'nobu note',lead:'手ざわりのいい布張りのノートと、金の差し色のペン。持つ人の気分を上げる文具のボード。',
+use:'<b>文具・手帳・ノベルティ・企業のオリジナルグッズ</b>の企画や、印刷会社への発注前のイメージ共有に。',
+tips:['文具は、机の上を真上から撮った「フラットレイ」の写真が定番でおしゃれ','セット商品は、組み合わせたときの色の相性をカラーバリエーションで見せます','ノベルティなら、ロゴの入れ方（刻印・箔押し）を素材サンプルで見せると決まりやすい'],
+p:`ノートとペンのセットのプロダクトデザインのプレゼンボードを作ってください。
+・商品名：「{T}」
+・製品：A5サイズの布張りハードカバーのノートと、細身のボールペンのセット。ノートの表紙にロゴの小さな箔押し。ペンのクリップだけ金色
+・素材と仕上げ：リネンのような布の表紙、クリーム色の上質な紙、マットなアルミのペン
+・カラーバリエーション：ネイビー・テラコッタ・セージ・ブラックの4色（ノートとペンは同じ色）
+・メインビジュアル：木の机の上に、ノートとペンを真上から撮った写真（フラットレイ）。コーヒーカップと眼鏡を少し添えて
+・ボードの右側：コンセプト文「書くことが、楽しみになる。」と短い説明、三面図（ノートとペンの正面・側面・上面）、4色のカラーバリエーション、素材サンプル（布・紙・アルミ・金の箔）、使用シーンの写真（ノートを開いて書いている手元）
+・ボードの下部：「ノート：A5・192ページ・方眼」「ペン：0.5mm 油性」「ギフトボックス入り」の主な仕様
+${PBTAIL}`,
+run(H,t){pboard(H,t,{f:'pen',k:'STATIONERY SET',c:'書くことが、楽しみになる。手ざわりのいい布張りのノートに、金の差し色のペンを合わせて。',cols:['#2c3e5c','#c47a5a','#8a9a7e','#2b2b2b'],studio:'linear-gradient(135deg,#d9b993,#b88d62)',mat:['#2c3e5c','#f6efdf','#c9ccd0','#c9a24b'],data:[['NOTE','A5・192p・方眼'],['PEN','0.5mm 油性'],['PACKAGE','ギフトボックス'],['COLORS','4色']],scene:'linear-gradient(135deg,#f1e8da,#6b4a33)'})}});
+
 /* ===== ILLUST 01-30 ===== */
 CUR_SEC='i';
 const GPT='<b>◎</b> ChatGPT（画像生成）',GEM='<b>◎</b> Gemini',GPTo='ChatGPT（画像生成）',GEMo='Gemini',MJ='Midjourney（英語版）',FF='Adobe Firefly',CV='Canva AI';
@@ -6429,8 +7065,8 @@ const $=s=>document.querySelector(s);
 let ar='16:9';try{ar=localStorage.getItem('pz-ar')||'16:9'}catch(e){}
 const custom={};
 const SEC=SECTIONS();
-const ORDER=['m','t','o','a','h','g','i'];
-const GROUPS=[{n:'モーショングラフィック',sn:'モーション',s:['m','t','o']},{n:'アニメーション',sn:'アニメ',s:['a']},{n:'ホームページ',sn:'HP',s:['h']},{n:'グラフィック',s:['g']},{n:'イラスト変換',sn:'イラスト',s:['i']}];
+const ORDER=['m','t','o','a','h','g','p','b','d','i'];
+const GROUPS=[{n:'モーショングラフィック',sn:'モーション',s:['m','t','o']},{n:'アニメーション',sn:'アニメ',s:['a']},{n:'ホームページ',sn:'HP',s:['h']},{n:'グラフィック',s:['g']},{n:'プレゼン',s:['p','b','d']},{n:'イラスト変換',sn:'イラスト',s:['i']}];
 const grpOf=s=>GROUPS.find(g=>g.s.includes(s));
 const TOTAL=ORDER.reduce((a,s)=>a+ITEMS[s].length,0);
 const pages=['cover'];ORDER.forEach(s=>{pages.push(s+'-top');ITEMS[s].forEach(it=>pages.push(it.id))});
@@ -6520,7 +7156,7 @@ function fallback(full){const p=$('#ptext');p.textContent=full;const r=document.
 
 function graphicCard(m,txt,S){
   const shot=m.img?`<div class="gshot"><img src="${m.img}" alt="${esc(m.name)}の作例" loading="lazy"></div><div class="exnote">作例：このプロンプトを ChatGPT（画像生成）に送って作った参考イメージです。文字や写真の細部は、AIや生成のたびに変わります。</div>`
-    :`<div class="monitor"><div class="screen" id="mScreen"><div class="stage" id="mStage"></div></div></div><div class="exnote">※AIでの作例画像は準備中です。仕上がりのイメージを再現した見本を表示しています。</div>`;
+    :`<div class="monitor"><div class="screen" id="mScreen"><div class="stage" id="mStage"></div></div></div><div class="exnote">${S.mockNote||'※AIでの作例画像は準備中です。仕上がりのイメージを再現した見本を表示しています。'}</div>`;
   return `<div class="label">${S.showLabel}</div>${shot}
       <div class="txtrow"><label for="mText">${S.inputLabel}</label><input id="mText" value="${esc(txt)}" maxlength="40"><button class="mini" id="resetText" type="button">元に戻す</button></div>
       <div class="hint">入力すると、右のプロンプトの中の${S.inputLabel}が置き換わります。</div>`;

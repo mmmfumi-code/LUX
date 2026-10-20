@@ -1,4 +1,4 @@
-<title>グラフィック作例キット</title>
+<title>作例画像キット</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
 /* Layout: 1列のチェックリスト。上に手順と元写真、下に49本のコピー用カード */
@@ -38,14 +38,14 @@ details summary{cursor:pointer;font-size:13px;color:var(--accent)}
 pre{margin:8px 0 0;padding:12px 14px;border-radius:10px;background:var(--fill);font-family:var(--mono);font-size:12px;white-space:pre-wrap;word-break:break-word;max-height:300px;overflow:auto}
 </style>
 <div class="wrap">
-  <h1>グラフィック作例キット</h1>
-  <p class="lead">グラフィック30本の作例画像を、ChatGPTで作るためのコピペ用シートです。</p>
+  <h1>作例画像キット</h1>
+  <p class="lead">グラフィック・建築ボード・プロダクトボードの作例画像を、ChatGPTで作るためのコピペ用シートです。</p>
   <div class="card how" style="grid-template-columns:1fr">
     <ol>
       <li>ChatGPTで<b>新しいチャット</b>を開く（写真の添付は不要です）</li>
       <li>下のカードの<b>「コピー」</b>を押して貼り付け、送信</li>
       <li>文字が崩れていたら「〇〇の文字を正しく直して」と1回だけ直してもらう</li>
-      <li>できた画像を保存し、<b>番号と一緒に</b>Claudeのチャットに送る（例：「No.12」）。何枚かまとめても、順番がバラバラでもOK</li>
+      <li>できた画像を保存し、<b>番号と一緒に</b>Claudeのチャットに送る（例：「建築 03」「製品 07」）。何枚かまとめても、順番がバラバラでもOK</li>
       <li>送ったら「済み」にチェック（このブラウザに記録されます）</li>
     </ol>
   </div>
@@ -53,26 +53,26 @@ pre{margin:8px 0 0;padding:12px 14px;border-radius:10px;background:var(--fill);f
   <div id="list" class="wrap" style="gap:12px"></div>
 </div>
 <script>
-const CAT={};const ITEMS={g:[]};let CUR_SEC='g';function def(o){o.sec=o.sec||CUR_SEC;o.id=o.sec+o.no;ITEMS[o.sec].push(o)}
+const CAT={};const ITEMS={g:[],p:[],b:[],d:[]};let CUR_SEC='g';function def(o){o.sec=o.sec||CUR_SEC;o.id=o.sec+o.no;ITEMS[o.sec].push(o)}
 const F={};
 </script>
 <script>
 /*DATA*/
 </script>
 <script>
-const SEC=SECTIONS();const base=SEC.g.base();
+const SEC=SECTIONS();
 const SPECIAL={};
 const done=new Set(GIMG);
-let saved={};try{saved=JSON.parse(localStorage.getItem('gkit-done')||'{}')}catch(e){}
-const list=document.getElementById('list');const todo=ITEMS.g.filter(m=>!done.has(m.no));
+let saved={};try{saved=JSON.parse(localStorage.getItem('bdkit-done')||'{}')}catch(e){}
+const list=document.getElementById('list');const todo=[...ITEMS.g,...ITEMS.b,...ITEMS.d].filter(m=>!m.img);
 const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-function text(m){const sp=SPECIAL[m.no];return base+'\n\n【デザイン指示】\n'+m.p.replaceAll('{T}',m.text)}
+function text(m){const sp=SPECIAL[m.no];return SEC[m.sec].base()+'\n\n【'+SEC[m.sec].unit+'指示】\n'+m.p.replaceAll('{T}',m.text)}
 todo.forEach(m=>{const c=document.createElement('div');c.className='card item';const sp=SPECIAL[m.no];
-  c.innerHTML=`<div class="row"><span class="no">No.${m.no}</span><span class="nm">${esc(m.name)}<br><span class="cat">${CAT[m.cat]?CAT[m.cat].ja:''}・${esc(m.en)}</span></span><button class="copy" type="button">コピー</button><label class="chk"><input type="checkbox" id="c${m.no}">済み</label></div>${sp?`<div class="note">${sp.note}</div>`:''}<details><summary>プロンプトを見る</summary><pre>${esc(text(m))}</pre></details>`;
+  c.innerHTML=`<div class="row"><span class="no">${m.sec==='g'?'G':m.sec==='b'?'建築':'製品'} ${m.no}</span><span class="nm">${esc(m.name)}<br><span class="cat">${CAT[m.cat]?CAT[m.cat].ja:''}・${esc(m.en)}</span></span><button class="copy" type="button">コピー</button><label class="chk"><input type="checkbox" id="c${m.id}">済み</label></div>${sp?`<div class="note">${sp.note}</div>`:''}<details><summary>プロンプトを見る</summary><pre>${esc(text(m))}</pre></details>`;
   const b=c.querySelector('.copy');b.onclick=()=>{const t=text(m);const ok=()=>{b.textContent='コピーしました';b.classList.add('ok');setTimeout(()=>{b.textContent='コピー';b.classList.remove('ok')},1500)};
     try{navigator.clipboard.writeText(t).then(ok,()=>{c.querySelector('details').open=true;const r=document.createRange();r.selectNodeContents(c.querySelector('pre'));getSelection().removeAllRanges();getSelection().addRange(r)})}catch(e){c.querySelector('details').open=true}};
-  const cb=c.querySelector('input');cb.checked=!!saved[m.no];c.classList.toggle('done',cb.checked);
-  cb.onchange=()=>{saved[m.no]=cb.checked;c.classList.toggle('done',cb.checked);try{localStorage.setItem('gkit-done',JSON.stringify(saved))}catch(e){}upd()};list.appendChild(c)});
-function upd(){const n=todo.filter(m=>saved[m.no]).length;document.getElementById('cnt').textContent=`${n} / ${todo.length}`;document.getElementById('barI').style.width=(n/todo.length*100)+'%'}
+  const cb=c.querySelector('input');cb.checked=!!saved[m.id];c.classList.toggle('done',cb.checked);
+  cb.onchange=()=>{saved[m.id]=cb.checked;c.classList.toggle('done',cb.checked);try{localStorage.setItem('bdkit-done',JSON.stringify(saved))}catch(e){}upd()};list.appendChild(c)});
+function upd(){const n=todo.filter(m=>saved[m.id]).length;document.getElementById('cnt').textContent=`${n} / ${todo.length}`;document.getElementById('barI').style.width=(n/todo.length*100)+'%'}
 upd();
 </script>
