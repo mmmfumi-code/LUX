@@ -1,4 +1,4 @@
-<title>AIプロンプト図鑑350</title>
+<title>AIプロンプト図鑑360</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,7 +71,7 @@ button{cursor:pointer}
 .chap button[aria-current="true"]{background:var(--fg);color:var(--bg)}
 @media (max-width:760px){.chap{padding-top:6px}.chap>button{display:none}.subseg{margin:0 auto}.navbtns{margin-left:auto}.tabs{order:3;flex-basis:100%;max-width:none}.tabs{flex-wrap:wrap}.tab{padding:5px 4px;font-size:12px;flex:1 0 24%}.tab small{display:none}.tab .tl{display:none}.tab .ts{display:inline}}
 @media (max-width:1600px) and (min-width:761px){.tab{padding:5px 8px}.tab small{display:none}}
-@media (max-width:1300px) and (min-width:761px){.tab .tl{display:none}.tab .ts{display:inline}}
+@media (max-width:1500px) and (min-width:761px){.tab .tl{display:none}.tab .ts{display:inline}}
 
 main{max-width:1200px;margin-inline:auto;padding-top:40px}
 .page{display:none}.page.on{display:block;animation:fade .4s ease}
@@ -240,7 +240,7 @@ details.base pre{box-shadow:none;background:var(--surface2);margin-bottom:4px}
     <div class="cover">
       <div class="eyebrow">AIプロンプト図鑑</div>
       <h1>AIに貼るだけ。<br><em>動く、映える、売れる。</em></h1>
-      <p>文字や図形が動くモーショングラフィック、映画のようなオープニング、ホームページ、チラシや名刺、プレゼン資料や建築・製品のボード、マーケティングの分析と戦略、写真からのイラスト変換。発信と仕事に必要な道具を、350のプロンプトにしました。</p>
+      <p>文字や図形が動くモーショングラフィック、映画のようなオープニング、ホームページ、チラシや名刺、プレゼン資料や建築・製品のボード、マーケティングの分析と戦略、切り抜きやテロップの動画編集、写真からのイラスト変換。発信と仕事に必要な道具を、360のプロンプトにしました。</p>
       <div class="links"><button class="pill" type="button" data-go="m-top">はじめる</button><button type="button" data-go="i-top">イラスト変換の作例を見る ›</button></div>
       <div class="monitor">
         <div class="screen" id="coverScreen"><div class="stage" id="coverStage"></div></div>
@@ -258,7 +258,7 @@ details.base pre{box-shadow:none;background:var(--surface2);margin-bottom:4px}
 const CAT={};
 const E={out:'cubic-bezier(.16,1,.3,1)',back:'cubic-bezier(.34,1.56,.64,1)',in:'cubic-bezier(.7,0,.84,0)',io:'cubic-bezier(.87,0,.13,1)',lin:'linear',soft:'cubic-bezier(.4,0,.2,1)'};
 const F={heavy:"'Dela Gothic One','Noto Sans JP',sans-serif",sans:"'Noto Sans JP',sans-serif",min:"'Shippori Mincho B1','Noto Serif JP',serif",dot:"'DotGothic16',monospace",brush:"'Yuji Syuku',serif",pop:"'Mochiy Pop One','Noto Sans JP',sans-serif",mono:"'JetBrains Mono',monospace",serif:"'Cormorant Garamond','Shippori Mincho B1',serif",smono:"'Space Mono','JetBrains Mono',monospace",zen:"'Zen Kaku Gothic New','Noto Sans JP',sans-serif"};
-const ITEMS={m:[],t:[],o:[],a:[],h:[],g:[],p:[],b:[],d:[],k:[],i:[]};
+const ITEMS={m:[],t:[],o:[],a:[],h:[],g:[],p:[],b:[],d:[],k:[],v:[],i:[]};
 let CUR_SEC='m';
 function def(o){o.sec=o.sec||CUR_SEC;o.id=o.sec+o.no;ITEMS[o.sec].push(o)}
 const rnd=(a,b)=>a+Math.random()*(b-a);
@@ -315,6 +315,7 @@ Object.assign(CAT,{
   COMMERCIAL:{ja:'商業・施設',k:'--c-gold',d:'人が集まる建物'},HOUSE:{ja:'戸建て',k:'--c-mint',d:'家族の暮らしを描く'},MANSION:{ja:'マンション',k:'--c-sky',d:'集まって住むかたち'},
   KADEN:{ja:'家電',k:'--c-sky',d:'毎日使う道具を美しく'},FURN:{ja:'家具・照明',k:'--c-gold',d:'空間をつくる'},GOODS:{ja:'雑貨',k:'--c-rose',d:'手に取りたくなる小物'},
   ANALYZE:{ja:'現状を知る',k:'--c-sky',d:'自分とお客さまと競合を分析'},TREND:{ja:'流れを読む',k:'--c-orange',d:'市場・トレンド・バズを分析'},STRATEGY:{ja:'作戦を立てる',k:'--c-mint',d:'1人で動ける計画に落とす'},
+  CLIP:{ja:'切り抜き',k:'--c-impact',d:'長い動画から見どころを探す'},TELOP:{ja:'テロップ・字幕',k:'--c-gold',d:'文字で見やすく・面白く'},EDIT:{ja:'編集・仕上げ',k:'--c-sky',d:'カット・チャプター・サムネ'},
   ART:{ja:'絵画・アート',k:'--c-gold',d:'画材の質感で魅せる'},GRAPHIC:{ja:'グラフィック',k:'--c-mint',d:'デザイン素材として使える'},TREND:{ja:'SNSトレンド',k:'--c-texture',d:'今バズっている使い方'}
 });
 function SECTIONS(){
@@ -486,6 +487,21 @@ function SECTIONS(){
 ・最後に必ず「今週やること」を3つ、かかる時間の目安と一緒に書いてください
 ・不安をあおる言い方はせず、できていることも認めながら、前向きに進められる言葉で伝えてください`,
     fix:[['話が大きすぎる','「1日30分・月1万円以内でできることだけに絞って、作り直して」'],['よく分からない','「中学生にも分かる言葉で、たとえ話を使って説明し直して」'],['根拠が知りたい','「それぞれの提案の根拠と、参考にした情報の出典を表にして」'],['優先順位が分からない','「効果の大きさと手間の少なさで2×2の表にして、最初にやる1つを決めて」'],['続けられるか不安','「この計画を、毎週月曜に見返すチェックリストにして」'],['1か月後に振り返りたい','「前回の分析はこれです：（貼る）。今月の結果はこれです：（貼る）。何がうまくいき、次に何を変えるべきか分析して」']]},
+  v:{name:'動画編集',en:'VIDEO EDITING',k:'--c-impact',ui:'graphic',unit:'編集',lead:'切り抜き・テロップ・字幕・カット。文字起こしを貼るだけで、編集の「設計図」ができる。',
+    showLabel:'このプロンプトで、こうなる（編集のイメージ）',inputLabel:'チャンネル名・番組名',mockNote:'※AIが作る編集の指示（切り抜き位置・テロップ・字幕など）と、仕上がりのイメージを再現した見本です。',
+    cats:{CLIP:1,TELOP:1,EDIT:1},
+    desc:'長い動画からの切り抜き、テロップ入れ、字幕づくり、無駄なところのカットを、<b>AIに「編集の設計図」として作ってもらう</b>プロンプトです。動画の文字起こしを貼るだけで、どこを切り抜くか、どんなテロップを入れるかが秒単位で出てきます。あとは無料の CapCut などで、その通りに作業するだけ。字幕は SRT ファイルで出るので、読み込むだけで一気に入ります。',
+    steps:['<b>動画の文字起こしを用意する</b><br>CapCut の「自動字幕」、YouTube の「文字起こしを表示」などで、時間付きのテキストを書き出します。','<b>目的に合うプロンプトを選んでコピー</b><br>【私の情報】に文字起こしを貼り、動画の長さや使うSNSを書き足します。','<b>Claude または ChatGPT に送る</b><br>切り抜く時間・テロップの文言・字幕ファイル（SRT）などが返ってきます。','<b>CapCut などで、その通りに作業する</b><br>SRT は字幕の「読み込み」で一発で入ります。ChatGPT に短い動画を直接渡して、カットしてもらうこともできます。'],
+    base:()=>`あなたは、YouTube・TikTok・Instagram の動画を何千本も手がけてきたプロの動画編集者です。次の【編集指示】どおりに、動画編集の設計図を作ってください。
+
+【共通ルール】
+・時間は「分:秒」（例 03:25）で書き、開始と終了をはっきりさせる。文字起こしにない内容は作らない
+・編集ソフトは、無料の CapCut（スマホ・PC）で再現できる方法を前提にする。手順を書くときは、CapCut のメニュー名で説明する
+・字幕を出すときは、そのまま保存して読み込める SRT 形式でコードブロックに入れる
+・テロップは1行15文字以内、2行まで。話し言葉の「えー」「あのー」は消し、意味を変えずに読みやすく整える
+・動画ファイルを直接受け取って処理できる場合は、カットや字幕の焼き込みまで実行してよい（できない場合は、作業の手順を書く）
+・最後に「作業のチェックリスト」を付ける`,
+    fix:[['もっと短く','「同じ内容で、30秒以内に収まるように切り直して」'],['テロップが多すぎる','「テロップは要点だけに減らして、1画面1つにして」'],['面白さが足りない','「ツッコミのテロップと効果音の指示を、3か所足して」'],['字幕がずれる','「SRTの時間を、文字起こしの時間に合わせて0.2秒ずつ後ろにずらして」'],['自動でやりたい','「この指示を ffmpeg のコマンドにして。Windows（またはMac）で動く形で」'],['別のSNS用にも','「同じ切り抜きを、YouTubeショート・TikTok・リール用に、タイトルと説明文を変えて3つ作って」']]},
   i:{name:'イラスト変換',en:'PHOTO TO ILLUSTRATION',k:'--c-rose',ui:'illust',unit:'変換',lead:'写真1枚から、アニメ・3D・絵画・SNSで流行りのイラストへ。',
     ars:['元の写真と同じ','1:1（正方形）','9:16（縦長）','16:9（横長）'],arLabel:'仕上がりの比率',curAr:'元の写真と同じ',
     cats:{BASIC:1,ANIME:1,TOY:1,ART:1,GRAPHIC:1,TREND:1},
@@ -6367,6 +6383,207 @@ p:`90日後の目標から逆算して、1人で実行できるマーケティ�
 ・最後に、今日からの最初の1週間のやることを、曜日ごとに書いてください`,
 sl:[['cover',{k:'90-DAY PLAN',t:'迷ったら開く、\n90日の計画書'}],['flow',{h:'3か月の全体像',steps:['1か月目：土台','2か月目：発信','3か月目：申込']}],['table',{h:'週ごとの計画（抜粋）',rows:[['週','やること','時間'],['1','プロフィールと料金を整える','3h'],['2','実績を5件まとめる','4h'],['3','動画の型を決めて3本撮る','5h']]}],['kpi',{h:'毎週見る3つの数字',v:[['3本','投稿数'],['5件','問い合わせ'],['2件','申込']]}]]});
 
+/* ===== VIDEO EDITING 01-10 ===== */
+CUR_SEC='v';
+const defV=o=>{o.bg='#d5d8de';o.loop=4000;o.p=o.p+`
+
+【私の情報】（分かる範囲で。文字起こしは、そのまま貼ってOK）
+・${o.info.join('\n・')}`;def(o)};
+const VPH='radial-gradient(circle at 50% 36%,#e9c9b0 0 13%,transparent 13.5%),radial-gradient(circle at 50% 78%,#3d4a66 0 30%,transparent 30.5%),linear-gradient(160deg,#c9d3e0,#7b8aa3 55%,#4a5570)';
+const vmock=(H,t,o)=>{desk(H);const ph=sheet(H,340,604,{background:'#111',borderRadius:'36px',padding:'10px',boxSizing:'border-box'},130,148);
+  const sc=bx(H,ph,10,10,320,584,{borderRadius:'28px',overflow:'hidden',background:o.bgv||VPH});
+  if(o.top)T(H,sc,{left:'0',width:'320px',top:'40px',textAlign:'center',whiteSpace:'pre-line',fontFamily:F.heavy,fontSize:'26px',lineHeight:'1.25',color:'#fff',textShadow:'0 0 0 #000,2px 2px 0 #000,-2px 2px 0 #000,2px -2px 0 #000,-2px -2px 0 #000'},o.top,500,'pop');
+  (o.tel||[]).forEach((q,i)=>T(H,sc,Object.assign({left:'0',width:'320px',textAlign:'center',whiteSpace:'pre-line'},q[1]),q[0],700+i*250,q[2]||'pop'));
+  T(H,sc,{left:'14px',bottom:'16px',fontFamily:F.sans,fontWeight:'700',fontSize:'12px',color:'rgba(255,255,255,.85)'},'@'+t.replace(/\s/g,'_'),600,'fade');
+  const pn=sheet(H,860,604,{background:'#fff',borderRadius:'14px'},560,148,200);
+  R(H,pn,{left:'32px',top:'34px',width:'6px',height:'26px',background:'#e0442b',borderRadius:'3px'});T(H,pn,{left:'50px',top:'30px',fontFamily:F.sans,fontWeight:'700',fontSize:'22px',color:'#222'},o.h,400);
+  if(o.code){T(H,pn,{left:'32px',top:'84px',width:'796px',height:'480px',boxSizing:'border-box',padding:'18px 22px',borderRadius:'10px',background:'#1e1e24',color:'#d8dee9',whiteSpace:'pre',fontFamily:F.mono,fontSize:'15px',lineHeight:'1.65',overflow:'hidden'},o.code,600,'fade');return}
+  (o.rows||[]).forEach((r,i)=>{const y=84+i*(480/Math.max(6,o.rows.length));const rh=480/Math.max(6,o.rows.length)-10;R(H,pn,{left:'32px',top:y+'px',width:'796px',height:rh+'px',background:i===0&&o.head?'#e0442b':(i%2?'#fafafa':'#f2f3f5'),borderRadius:'8px'},500+i*90,'left');
+    r.forEach((c,j)=>T(H,pn,{left:(j===0?50:j===1?(o.c2||200):(o.c3||640))+'px',top:y+rh/2-12+'px',width:j===1?((o.c3||640)-(o.c2||200)-20)+'px':'auto',overflow:'hidden',textOverflow:'ellipsis',fontFamily:j===0?F.mono:F.sans,fontWeight:i===0&&o.head||j===0?'700':'400',fontSize:'16px',color:i===0&&o.head?'#fff':(j===0?'#e0442b':'#333')},c,550+i*90,'fade'))})};
+const OUT='2px 2px 0 #000,-2px 2px 0 #000,2px -2px 0 #000,-2px -2px 0 #000,0 3px 6px rgba(0,0,0,.4)';
+const RIGHTS='・他の人の動画を切り抜く場合は、必ず権利者の許可（切り抜きガイドライン）を確認すること。注意点を最後に一言添えてください';
+
+/* CLIP：切り抜き */
+defV({no:'01',cat:'CLIP',name:'長い動画から切り抜きポイントを探す',en:'Find Clip Moments',text:'nobu channel',lead:'30分〜2時間の動画の文字起こしから、ショートで伸びそうな場面を5つ、秒単位で見つける。',
+use:'<b>YouTubeの長い動画・ライブ配信・セミナー・ポッドキャスト</b>を、ショート動画に切り分けたいときに。何時間も見返す作業がなくなります。',
+tips:['文字起こしは「時間付き」で貼るのが必須。YouTubeの「文字起こしを表示」や CapCut の自動字幕で出せます','「最初の一言で引き込める場面」を優先させると、伸びる切り抜きになります','長すぎる文字起こしは、30分ずつに分けて送ると精度が上がります'],
+info:['元の動画のテーマと長さ','時間付きの文字起こし（貼る）','切り抜きを載せるSNS（YouTubeショート・TikTok・リールなど）','1本の長さの希望（30秒・60秒など）'],
+p:`長い動画の文字起こしから、ショート動画として伸びそうな「切り抜きポイント」を5つ見つけてください。
+・チャンネル名：「{T}」
+・選ぶ基準：最初の3秒で引き込める一言がある／その場面だけで話が完結する／意外性・共感・役に立つのどれかが強い
+・それぞれについて：
+　1. 開始〜終了の時間（例 12:34〜13:31）と、切り抜きの長さ
+　2. 冒頭の一言（そのまま最初のテロップになる言葉）
+　3. 伸びそうな理由（意外性・共感・役立ち のどれか）
+　4. ショート用のタイトル案を3つ（30文字以内）
+　5. 前後の話が分からなくても通じるようにするための、補足テロップの文言
+・5つを「伸びそうな順」に並べ、表にまとめてください
+・切り抜きの間で、言い直しや「えー」で間延びする部分があれば、カットする時間も書いてください
+${RIGHTS}`,
+run(H,t){vmock(H,t,{h:'切り抜きポイント 5選',head:1,c2:270,c3:660,top:'9割の人が\n知らない話',rows:[['時間','冒頭の一言','長さ'],['12:34〜13:31','「実はこれ、逆なんです」','57秒'],['28:05〜28:52','「失敗した理由は1つだけ」','47秒'],['41:10〜42:02','「お客さんに言われた一言」','52秒'],['55:40〜56:28','「今日からできる方法」','48秒'],['01:08:15〜01:09:00','「正直に言います」','45秒']],tel:[['実はこれ、逆なんです',{bottom:'150px',fontFamily:F.heavy,fontSize:'24px',color:'#ffe14d',textShadow:OUT}]]})}});
+
+defV({no:'02',cat:'CLIP',name:'横長の動画を縦型ショートに作り直す',en:'Horizontal to Vertical Short',text:'nobu channel',lead:'横長の動画を、縦型60秒のショートに。構成・カット・画面の切り取り位置までまとめて指示。',
+use:'<b>YouTubeの横長動画、ウェビナー、セミナーの録画</b>を、TikTok・リール・ショート用に縦型で作り直したいときに。',
+tips:['縦型にすると左右が切れるので、「誰を中心に映すか」を秒ごとに指示させると失敗しません','画面の上下の余白は、タイトルとテロップの置き場所に使うのが定番','60秒に収めるため、話の順番を入れ替えてもよいと伝えると、より面白い構成になります'],
+info:['元の動画の内容と長さ','時間付きの文字起こし（使いたい部分だけでOK）','画面に映っている人数と位置（例：左に司会、右にゲスト）','載せるSNS'],
+p:`横長の動画の一部を、縦型（9:16）・60秒以内のショート動画に作り直すための編集指示を作ってください。
+・チャンネル名：「{T}」
+・作るもの：
+　1. 構成：「つかみ（0〜3秒）→本題→オチ・まとめ→次の行動（フォロー・保存）」の流れで、使う元動画の時間を並べた表（話の順番は入れ替えてOK）
+　2. 画面の切り取り位置：各カットで、縦型の枠の中心に誰（何）を置くか（左の人・右の人・資料など）
+　3. 画面の上の固定タイトル（2行・1行10文字以内）
+　4. 下のテロップ：話している内容を要約した文言（1行15文字以内）を時間ごとに
+　5. CapCut での作り方：縦型に変える手順、切り取り位置の動かし方（キーフレーム）、タイトルの固定の仕方
+・合計の長さが60秒を超えないように、各カットの秒数を足した合計も書いてください
+${RIGHTS}`,
+run(H,t){vmock(H,t,{h:'縦型ショートの構成（合計 58秒）',head:1,c2:210,c3:640,top:'やってはいけない\n3つのこと',bgv:'linear-gradient(#111 0 18%,transparent 18% 82%,#111 82%),'+VPH,rows:[['元の時間','やること','中心'],['04:12〜04:15','つかみ「9割が間違えてます」','右の人'],['04:40〜05:02','間違い①と②','右の人'],['06:10〜06:28','間違い③と正解','資料'],['07:55〜08:05','まとめ「保存して」','左の人']],tel:[['間違い①：最初に値下げする',{bottom:'130px',fontFamily:F.heavy,fontSize:'20px',color:'#fff',textShadow:OUT}]]})}});
+
+defV({no:'03',cat:'CLIP',name:'ライブ・対談の名場面集',en:'Live Stream Highlights',text:'nobu channel',lead:'盛り上がった瞬間・笑い・名言を見つけて、テンポのいい「名場面集」にする。',
+use:'<b>ライブ配信・ゲーム実況・対談・ラジオ・ポッドキャスト</b>のハイライト動画づくりに。コメント欄を貼ると、さらに盛り上がりポイントが正確になります。',
+tips:['ライブのコメント（チャット）を時間付きで貼ると、「みんなが反応した瞬間」が分かります','名場面集は1場面10〜20秒、全体で3〜5分がちょうどいい長さ','場面の間に「次は…」の予告テロップを入れると、最後まで見られやすくなります'],
+info:['配信・対談の内容と長さ','時間付きの文字起こし（貼る）','ライブのコメント（あれば時間付きで貼る）','作りたい名場面集の長さ'],
+p:`ライブ配信や対談の文字起こしから、盛り上がった場面を集めた「名場面集」の編集指示を作ってください。
+・番組名：「{T}」
+・作るもの：
+　1. 名場面を8〜10個：開始〜終了の時間、種類（笑い・名言・驚き・感動・ハプニング）、ひとこと説明
+　2. コメントを貼った場合：コメントが急に増えた時間を見つけ、名場面と照らし合わせる
+　3. 並べる順番：最初に一番強い場面、最後にオチ。全体の流れを表に
+　4. 場面ごとのテロップ：その場面のタイトル（例：「伝説の言い間違い」）と、ツッコミのテロップ
+　5. 場面の間の予告テロップ（例：「このあと、まさかの展開に…」）
+　6. 動画のタイトル案3つと、サムネイルに使う場面の時間
+・全体の長さが指定に収まるよう、各場面の秒数と合計を書いてください
+${RIGHTS}`,
+run(H,t){vmock(H,t,{h:'名場面 TOP5（全体 4分12秒）',head:1,c2:210,c3:660,top:'伝説の\n言い間違い',rows:[['時間','場面','種類'],['00:42:10','まさかの言い間違い','笑い'],['01:05:33','「それが一番大事」','名言'],['01:20:02','機材トラブルで大慌て','ハプニング'],['01:48:40','視聴者からの手紙','感動'],['02:01:15','最後の大逆転','驚き']],tel:[['（言えてない）',{bottom:'200px',fontFamily:F.pop,fontSize:'22px',color:'#fff',background:'#e0442b',width:'auto',left:'90px',padding:'4px 14px',borderRadius:'10px'}],['wwwww',{bottom:'140px',fontFamily:F.heavy,fontSize:'30px',color:'#7cf',textShadow:OUT}]]})}});
+
+/* TELOP：テロップ・字幕 */
+defV({no:'04',cat:'TELOP',name:'字幕ファイル（SRT）をつくる',en:'Subtitle File (SRT)',text:'nobu channel',lead:'文字起こしを、読みやすい長さに区切った字幕ファイルに。CapCutやYouTubeに読み込むだけ。',
+use:'<b>すべての動画</b>に。音を出さずに見る人が多いSNSでは、字幕があるだけで最後まで見られる割合が上がります。',
+tips:['自動字幕は誤字が多いので、固有名詞（商品名・人の名前）を【私の情報】に書いておくと直してくれます','1行15文字・1枚2行までが、スマホで読みやすい長さです','SRTはメモ帳に貼って「.srt」の名前で保存すれば、そのまま読み込めます'],
+info:['時間付きの文字起こし（自動字幕の書き出しでOK）','動画に出てくる固有名詞（商品名・人の名前・専門用語）','横長か縦型か'],
+p:`文字起こしから、そのまま読み込める字幕ファイル（SRT形式）を作ってください。
+・チャンネル名：「{T}」
+・字幕のルール：
+　1. 1枚の字幕は2行まで、1行15文字以内（縦型の場合は12文字以内）。意味の区切りで改行する
+　2. 1枚の表示時間は1〜6秒。話し始めに合わせ、次の字幕と重ならないようにする
+　3. 「えー」「あのー」「まあ」などは消す。言い直しは最後の言い方だけ残す
+　4. 誤字・聞き間違いを直す。固有名詞は【私の情報】の表記に合わせる
+　5. 句読点は使わず、区切りはスペースか改行にする（字幕らしい見た目に）
+・出力：
+　1. SRT形式のコードブロック（番号・時間・字幕の順。時間は 00:00:01,200 --> 00:00:03,800 の形）
+　2. CapCut で読み込む手順（「テキスト」→「字幕を読み込む」など）と、YouTube Studio で読み込む手順
+　3. 直した言葉の一覧（元の文字 → 直した文字）`,
+run(H,t){vmock(H,t,{h:'字幕ファイル（SRT）',top:'',code:'1\n00:00:01,200 --> 00:00:03,800\n今日は 動画の字幕を\n一瞬で入れる方法です\n\n2\n00:00:04,000 --> 00:00:06,900\n使うのは 無料の\nCapCut だけ\n\n3\n00:00:07,100 --> 00:00:10,400\nまず 文字起こしを\nAIに貼り付けます',tel:[['今日は 動画の字幕を\n一瞬で入れる方法です',{bottom:'120px',fontFamily:F.sans,fontWeight:'700',fontSize:'19px',lineHeight:'1.5',color:'#fff',textShadow:OUT}]]})}});
+
+defV({no:'05',cat:'TELOP',name:'バラエティ風の強調テロップ',en:'Variety-style Captions',text:'nobu channel',lead:'大事な言葉を大きく・色付きで。ツッコミや効果音の指示まで入った、テレビのバラエティ風テロップ。',
+use:'<b>トーク・ゲーム実況・Vlog・料理・商品レビュー</b>など、楽しく見てほしい動画に。テロップだけで面白さが2倍になります。',
+tips:['強調するのは「数字」「意外な言葉」「オチ」の3つ。全部を強調すると逆に読まれません','色の役割を決めておくと（黄色＝大事・赤＝驚き・青＝ツッコミ）、統一感が出ます','効果音は CapCut の「オーディオ」→「効果音」に無料でたくさん入っています'],
+info:['動画の内容と雰囲気（楽しい・ゆるい・テンポ重視など）','時間付きの文字起こし（貼る）','出演者の名前（話者ごとに色を変える場合）'],
+p:`文字起こしに、テレビのバラエティ番組のような「強調テロップ」と演出の指示を付けてください。
+・チャンネル名：「{T}」
+・テロップの種類と色の決まり：
+　・話の要点（大）：白い文字に黒いふち、大事な単語だけ黄色 #FFE14D
+　・驚き・オチ（特大）：赤 #FF3B3B に白いふち、ポンと弾んで出る
+　・ツッコミ・心の声（小）：青 #4DB8FF、画面のすみに斜めに
+　・話者の名前：話者ごとに色の違う小さなラベル
+・作るもの：
+　1. 時間ごとの表：時間・テロップの文言・種類（要点／驚き／ツッコミ）・出し方（ポン・スッ・ドン）・効果音（例：「ジャン！」「チーン」「どよめき」）
+　2. ツッコミのテロップを5〜10か所、話の流れに合わせて考える（悪口や人を傷つける表現は使わない）
+　3. ここぞという場面での演出（ズーム・画面の揺れ・一時停止・BGMを止める）を3か所
+　4. CapCut での作り方：テキストのテンプレート、色・ふちの設定、アニメーション（ポップ・バウンス）、効果音の入れ方
+・テロップは1画面2つまで。要点のテロップは1行12文字以内`,
+run(H,t){vmock(H,t,{h:'強調テロップの指示',head:1,c2:200,c3:620,rows:[['時間','テロップ','演出'],['00:12','「たった3分で」（黄色）','ポン＋ジャン！'],['00:25','まさかの失敗…（赤・特大）','ドン＋どよめき'],['00:31','（いや、そこ？）','青・斜め'],['00:48','結果は「2倍」に！（黄色）','ズーム']],tel:[['まさかの失敗…',{top:'210px',fontFamily:F.heavy,fontSize:'38px',color:'#ff3b3b',textShadow:'3px 3px 0 #fff,-3px 3px 0 #fff,3px -3px 0 #fff,-3px -3px 0 #fff,0 6px 10px rgba(0,0,0,.4)',rotate:'-6deg'}],['（いや、そこ？）',{top:'90px',left:'130px',width:'auto',fontFamily:F.pop,fontSize:'18px',color:'#4db8ff',textShadow:OUT,rotate:'8deg'},'fade'],['たった3分で2倍に',{bottom:'110px',fontFamily:F.heavy,fontSize:'22px',color:'#ffe14d',textShadow:OUT}]]})}});
+
+defV({no:'06',cat:'TELOP',name:'テロップのデザインを決める',en:'Caption Style Guide',text:'nobu channel',lead:'チャンネルの雰囲気に合うテロップの色・フォント・位置を、CapCutで再現できる形で決める。',
+use:'<b>チャンネルを始めるとき、テロップがバラバラで素人っぽいと感じるとき、ブランドの雰囲気を統一したいとき</b>に。',
+tips:['テロップのデザインは3種類（基本・強調・補足）だけ決めれば十分。毎回迷わなくなります','決めたデザインは CapCut の「テキストのテンプレート」に保存すると、次から1タップ','フォントは CapCut に入っている無料の日本語フォントから選ばせると、すぐ使えます'],
+info:['チャンネルのジャンルと雰囲気（例：上品・元気・ゆるい・かっこいい）','見てほしい人（年代など）','ブランドカラー（あれば）','参考にしたいチャンネルの雰囲気（名前は書かなくてもOK）'],
+p:`私のチャンネルに合った「テロップのデザインのルール」を作ってください。CapCut でそのまま再現できる形でお願いします。
+・チャンネル名：「{T}」
+・作るもの：
+　1. 雰囲気に合うデザインの方向性を3案（例：シンプル上品／ポップ元気／シネマ風）。それぞれの特徴と、向いている動画
+　2. おすすめの1案について、テロップ3種類の詳しい設定：
+　　・基本（話の字幕）／強調（大事な言葉）／補足（小さな説明）
+　　・それぞれ：フォント（CapCut にある無料フォント名）、文字の大きさ、文字色（カラーコード）、ふち・影・背景の帯の設定、画面のどこに置くか、出るときと消えるときのアニメーション
+　3. 縦型と横長での位置の違い（SNSのボタンや説明文に隠れない位置）
+　4. やってはいけないこと（読みにくくなる組み合わせ）を5つ
+　5. CapCut で「テンプレートとして保存」して使い回す手順
+・カラーコードと数値は、そのまま入力できる形で書いてください`,
+run(H,t){vmock(H,t,{h:'テロップのデザインルール',head:1,c2:200,c3:560,rows:[['種類','設定','位置'],['基本','白 #FFFFFF／黒ふち 6／太ゴシック','下から18%'],['強調','黄 #FFE14D／黒ふち 8／ポップで出る','中央'],['補足','白／半透明の黒い帯','上から12%'],['タイトル','白／赤の帯 #E0442B','上（固定）']],tel:[['3分でわかる\n字幕の入れ方',{top:'40px',fontFamily:F.heavy,fontSize:'24px',lineHeight:'1.3',color:'#fff',background:'#e0442b',width:'auto',left:'50px',padding:'8px 18px',borderRadius:'6px'},'drop'],['ここが大事！',{top:'270px',fontFamily:F.heavy,fontSize:'32px',color:'#ffe14d',textShadow:OUT}],['今日は 字幕の入れ方を\n紹介します',{bottom:'110px',fontFamily:F.sans,fontWeight:'900',fontSize:'18px',lineHeight:'1.5',color:'#fff',textShadow:OUT}]]})}});
+
+defV({no:'07',cat:'TELOP',name:'YouTubeのチャプターと概要欄',en:'Chapters & Description',text:'nobu channel',lead:'文字起こしから、目次（チャプター）・概要欄・ハッシュタグをまとめて作る。',
+use:'<b>10分以上のYouTube動画、ポッドキャスト、セミナーのアーカイブ</b>に。チャプターがあると、見たい所へ飛べて、検索にも強くなります。',
+tips:['チャプターは「00:00」から始めて、3つ以上・各10秒以上がYouTubeのルールです','チャプターの名前は、視聴者が検索しそうな言葉にすると見つけてもらいやすくなります','概要欄の最初の2行は、検索結果にも出る大事な場所。動画で得られることを書きます'],
+info:['動画のテーマと長さ','時間付きの文字起こし（貼る）','概要欄に入れたいリンク（SNS・HP・商品ページなど）'],
+p:`動画の文字起こしから、YouTube のチャプター（目次）と概要欄を作ってください。
+・チャンネル名：「{T}」
+・作るもの：
+　1. チャプター：「00:00 はじめに」から始めて、話題が変わるところで区切る（5〜12個、各10秒以上）。名前は15文字以内で、検索されそうな言葉を入れる
+　2. 概要欄：
+　　・最初の2行：この動画で分かること（検索結果に表示される部分）
+　　・動画の要約（3〜5行）
+　　・チャプター
+　　・関連動画・リンクの欄（【私の情報】のリンクを使う）
+　　・ハッシュタグ3つ
+　3. 動画のタイトル案を3つ（40文字以内、検索されそうな言葉を前半に）
+　4. 固定コメントの文案（視聴者に質問を投げかけるもの）
+・概要欄は、そのままコピーして貼れる形でコードブロックに入れてください`,
+run(H,t){vmock(H,t,{h:'チャプターと概要欄',top:'',code:'この動画では、無料のCapCutだけで\n字幕を一瞬で入れる方法が分かります。\n\n00:00 はじめに\n00:42 文字起こしを書き出す方法\n02:15 AIで字幕ファイルを作る\n04:30 CapCutに読み込む手順\n06:05 デザインを整えるコツ\n08:20 まとめ\n\n#動画編集 #CapCut #字幕',bgv:'linear-gradient(#000 0 30%,'+'#222 30%)',tel:[['▶',{top:'60px',fontSize:'60px',color:'#fff'}],['00:42 文字起こしを書き出す',{top:'210px',left:'14px',width:'292px',textAlign:'left',fontFamily:F.sans,fontSize:'15px',color:'#9cf'},'fade'],['02:15 AIで字幕ファイルを作る',{top:'240px',left:'14px',width:'292px',textAlign:'left',fontFamily:F.sans,fontSize:'15px',color:'#9cf'},'fade'],['04:30 CapCutに読み込む',{top:'270px',left:'14px',width:'292px',textAlign:'left',fontFamily:F.sans,fontSize:'15px',color:'#9cf'},'fade']]})}});
+
+/* EDIT：編集・仕上げ */
+defV({no:'08',cat:'EDIT',name:'カット編集の指示表',en:'Jump-cut List',text:'nobu channel',lead:'言い間違い・無言・「えー」・話の脱線を見つけて、消す時間を一覧に。テンポのいい動画に。',
+use:'<b>しゃべり中心の動画（解説・Vlog・セミナー・インタビュー）</b>に。カット作業のいちばん面倒な「見つける」部分をAIに任せます。',
+tips:['無言の部分は CapCut の「自動カット（無音部分の削除）」でも消せます。AIには「話の中身」で消す所を探させるのが効率的','カットしすぎると息つぎがなくなって疲れる動画に。「間（ま）を残す所」も聞いておくと自然になります','最終的な長さの目標を伝えると、優先順位をつけてカットしてくれます'],
+info:['動画の内容と今の長さ','時間付きの文字起こし（貼る）','仕上がりの長さの目標'],
+p:`動画の文字起こしから、カット（削除）する部分の一覧を作ってください。テンポのいい動画にしたいです。
+・チャンネル名：「{T}」
+・カットする候補：
+　1. 言い間違い・言い直し（言い直した後だけ残す）
+　2. 「えー」「あのー」などのつなぎ言葉が続く所
+　3. 2秒以上の無言
+　4. 話の脱線・同じ話のくり返し・なくても意味が通じる部分
+・出力：
+　1. カット一覧の表：番号・開始〜終了の時間・カットする理由・カットした後のつなぎ方（そのまま／ズームで切り替え／テロップで補う）
+　2. カットしないほうがいい所：笑い・間（ま）・感情が伝わる部分
+　3. カット後のおおよその長さと、目標の長さに足りない場合の追加の候補
+　4. CapCut での作業の手順（「分割」→「削除」、無音部分の自動カット機能の使い方）
+・時間は前から順に並べ、作業しながら上から消していける形にしてください`,
+run(H,t){vmock(H,t,{h:'カット一覧（12分 → 8分40秒）',head:1,c2:250,c3:620,rows:[['時間','理由','つなぎ方'],['00:35〜00:41','言い直し','そのまま'],['01:12〜01:20','「えー」が続く','ズーム'],['02:48〜03:30','話の脱線','テロップで補う'],['05:02〜05:06','無言 4秒','そのまま'],['07:44〜08:15','同じ話のくり返し','そのまま']],tel:[['✂ CUT',{top:'250px',fontFamily:"'Anton',sans-serif",fontSize:'48px',color:'#fff',textShadow:OUT}]]})}});
+
+defV({no:'09',cat:'EDIT',name:'ChatGPTに動画を渡して自動編集',en:'Automated Editing with Code',text:'nobu channel',lead:'短い動画ファイルを渡して、カット・つなぎ・字幕の焼き込み・縦型への変換をAIに実行してもらう。',
+use:'<b>編集ソフトを触る時間がないとき、同じ作業を何本もくり返すとき</b>に。ChatGPT（ファイルを処理できるモード）や、パソコンでコマンドを動かせる人向けです。',
+tips:['ChatGPT に直接渡せるのは、短く軽い動画（目安：数分・数百MBまで）。長い動画は ffmpeg のコマンドを作ってもらい、自分のパソコンで実行します','最初は1本だけで試し、結果を確認してから同じ指示を他の動画にも使います','元の動画は必ずコピーを取っておきましょう'],
+info:['動画ファイル（ChatGPTに添付する場合）または、動画の長さと形式（mp4など）','やりたいこと（カットする時間・縦型にする・字幕を入れるなど）','字幕のSRT（あれば貼る。No.04で作れます）','使っているパソコン（Windows・Mac）'],
+p:`添付した動画を、次の指示どおりに自動で編集してください。動画を直接処理できない場合は、私のパソコンで実行できる ffmpeg のコマンドと手順を作ってください。
+・チャンネル名：「{T}」
+・やってほしいこと（必要なものだけ残して使う）：
+　1. カット：【私の情報】の時間の部分を削除して、残りをつなぐ
+　2. 縦型に変換：9:16（1080×1920）にする。左右を切り取るか、上下に黒い帯を足すかを選べるようにする
+　3. 字幕の焼き込み：SRT を動画に焼き込む。文字は白、黒いふち、下から18%の位置、日本語が表示できるフォントを使う
+　4. 音量をそろえる：声の大きさを平均化し、BGMがある場合は声より小さくする
+　5. 書き出し：mp4（H.264）、SNSに上げやすい設定で
+・処理した場合：できあがった動画のファイルと、行った処理の一覧をください
+・コマンドの場合：ffmpeg のインストール方法（Windows・Mac）、そのまま貼って実行できるコマンド、各部分の意味の説明、うまくいかないときの対処
+・元の動画は上書きせず、別の名前で保存してください`,
+run(H,t){vmock(H,t,{h:'自動編集のコマンド（例）',top:'',code:'# 1. 不要な所をカットしてつなぐ\nffmpeg -i input.mp4 -vf "select=\'not(between(t,35,41))\'" ...\n\n# 2. 縦型（9:16）に変換\nffmpeg -i cut.mp4 -vf "crop=ih*9/16:ih,scale=1080:1920" vertical.mp4\n\n# 3. 字幕を焼き込む\nffmpeg -i vertical.mp4 -vf "subtitles=sub.srt:force_style=\'FontName=Noto Sans JP,Outline=3\'" out.mp4\n\n# 4. 音量をそろえる\nffmpeg -i out.mp4 -af loudnorm final.mp4',tel:[['AUTO EDIT',{top:'250px',fontFamily:"'Anton',sans-serif",fontSize:'40px',letterSpacing:'.05em',color:'#fff',textShadow:OUT}],['字幕も自動で焼き込み',{bottom:'110px',fontFamily:F.sans,fontWeight:'900',fontSize:'18px',color:'#fff',textShadow:OUT}]]})}});
+
+defV({no:'10',cat:'EDIT',name:'冒頭3秒とサムネイルの設計',en:'Hook & Thumbnail Plan',text:'nobu channel',lead:'動画の「最初の3秒」と「サムネイル」を設計。見てもらえるかどうかが決まる2か所を強くする。',
+use:'<b>すべての動画の仕上げ</b>に。いい内容なのに再生されない、すぐ離脱される、という悩みに効きます。',
+tips:['冒頭3秒は「結論」か「問いかけ」か「意外な映像」から。あいさつや自己紹介は後回しに','サムネイルの文字は8文字前後。スマホの小さな画面で読める大きさにします','サムネイルの画像は、No.04〜06と同じ配色にすると、チャンネルの統一感が出ます'],
+info:['動画のテーマと内容（文字起こしを貼るとよい）','見てほしい人','チャンネルの雰囲気・色','今の冒頭の流れ（あいさつから始めているなど）'],
+p:`動画の「冒頭3秒」と「サムネイル」を設計してください。見てもらえる動画にしたいです。
+・チャンネル名：「{T}」
+・作るもの：
+　1. 冒頭3秒の案を3つ：最初に映すもの、最初の一言、テロップの文言。それぞれ「結論型」「問いかけ型」「意外な映像型」で
+　2. 文字起こしの中から、冒頭に持ってくると効果的な場面（時間）を選ぶ
+　3. 冒頭10秒までの流れ（離脱されないための、2つ目のつかみ）
+　4. サムネイルの案を3つ：
+　　・大きな文字（8文字前後）と小さな文字
+　　・写真の内容（表情・ポーズ・映すもの）
+　　・配色（カラーコード）とレイアウト
+　5. サムネイルを画像生成AI（ChatGPTなど）で作るための指示文を1つ（文字は「」で囲んで、正確に入れるよう指示）
+　6. タイトル案を3つ（サムネイルの文字と、同じ言葉をくり返さない）`,
+run(H,t){vmock(H,t,{h:'冒頭3秒とサムネイル',head:1,c2:200,c3:600,top:'',rows:[['型','最初の一言','映すもの'],['結論型','「字幕は1分で入ります」','完成した動画'],['問いかけ型','「まだ手で打ってますか？」','困った顔'],['意外型','（無言で一瞬で字幕が入る）','画面の早回し']],bgv:'linear-gradient(rgba(255,225,77,.95) 0 46%,transparent 62%),'+VPH,tel:[['字幕が\n1分で入る',{top:'110px',fontFamily:F.heavy,fontSize:'44px',lineHeight:'1.15',color:'#111',textShadow:'3px 3px 0 #fff,-3px 3px 0 #fff,3px -3px 0 #fff,-3px -3px 0 #fff'}],['無料のCapCutだけ',{top:'240px',fontFamily:F.heavy,fontSize:'20px',color:'#fff',background:'#e0442b',width:'auto',left:'60px',padding:'6px 14px',borderRadius:'6px'}]]})}});
+
 /* ===== ILLUST 01-30 ===== */
 CUR_SEC='i';
 const GPT='<b>◎</b> ChatGPT（画像生成）',GEM='<b>◎</b> Gemini',GPTo='ChatGPT（画像生成）',GEMo='Gemini',MJ='Midjourney（英語版）',FF='Adobe Firefly',CV='Canva AI';
@@ -7277,8 +7494,8 @@ const $=s=>document.querySelector(s);
 let ar='16:9';try{ar=localStorage.getItem('pz-ar')||'16:9'}catch(e){}
 const custom={};
 const SEC=SECTIONS();
-const ORDER=['m','t','o','a','h','g','p','b','d','k','i'];
-const GROUPS=[{n:'モーショングラフィック',sn:'モーション',s:['m','t','o']},{n:'アニメーション',sn:'アニメ',s:['a']},{n:'ホームページ',sn:'HP',s:['h']},{n:'グラフィック',s:['g']},{n:'プレゼン',s:['p','b','d']},{n:'マーケティング',sn:'マーケ',s:['k']},{n:'イラスト変換',sn:'イラスト',s:['i']}];
+const ORDER=['m','t','o','a','h','g','p','b','d','k','v','i'];
+const GROUPS=[{n:'モーショングラフィック',sn:'モーション',s:['m','t','o']},{n:'アニメーション',sn:'アニメ',s:['a']},{n:'ホームページ',sn:'HP',s:['h']},{n:'グラフィック',s:['g']},{n:'プレゼン',s:['p','b','d']},{n:'マーケティング',sn:'マーケ',s:['k']},{n:'動画編集',sn:'編集',s:['v']},{n:'イラスト変換',sn:'イラスト',s:['i']}];
 const grpOf=s=>GROUPS.find(g=>g.s.includes(s));
 const TOTAL=ORDER.reduce((a,s)=>a+ITEMS[s].length,0);
 const pages=['cover'];ORDER.forEach(s=>{pages.push(s+'-top');ITEMS[s].forEach(it=>pages.push(it.id))});

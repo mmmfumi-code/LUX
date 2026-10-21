@@ -65,7 +65,7 @@ button{cursor:pointer}
 .chap button[aria-current="true"]{background:var(--fg);color:var(--bg)}
 @media (max-width:760px){.chap{padding-top:6px}.chap>button{display:none}.subseg{margin:0 auto}.navbtns{margin-left:auto}.tabs{order:3;flex-basis:100%;max-width:none}.tabs{flex-wrap:wrap}.tab{padding:5px 4px;font-size:12px;flex:1 0 24%}.tab small{display:none}.tab .tl{display:none}.tab .ts{display:inline}}
 @media (max-width:1600px) and (min-width:761px){.tab{padding:5px 8px}.tab small{display:none}}
-@media (max-width:1300px) and (min-width:761px){.tab .tl{display:none}.tab .ts{display:inline}}
+@media (max-width:1500px) and (min-width:761px){.tab .tl{display:none}.tab .ts{display:inline}}
 
 main{max-width:1200px;margin-inline:auto;padding-top:40px}
 .page{display:none}.page.on{display:block;animation:fade .4s ease}
