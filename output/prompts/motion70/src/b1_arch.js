@@ -1,6 +1,6 @@
 /* ===== ARCHITECTURE BOARD 01-10 ===== */
 CUR_SEC='b';
-const BIMG=[];
+const BIMG=['01','02','03','04','05','06','07','08','09','10'];
 const defB=o=>{o.bg='#d5d8de';o.loop=4000;if(BIMG.includes(o.no))o.img='img/b'+o.no+'.jpg';def(o)};
 const bx=(H,p,x,y,w,h,css)=>H.abs(Object.assign({left:x+'px',top:y+'px',width:w+'px',height:h+'px'},css||{}),p);
 const GLASS='linear-gradient(160deg,rgba(210,230,245,.95),rgba(120,150,175,.9) 60%,rgba(90,110,130,.95))';

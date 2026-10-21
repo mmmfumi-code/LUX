@@ -1,6 +1,6 @@
 /* ===== PRODUCT BOARD 01-10 ===== */
 CUR_SEC='d';
-const DIMG=[];
+const DIMG=['01','02','03','04','05','06','07','08','09','10'];
 const defD=o=>{o.bg='#d5d8de';o.loop=4000;if(DIMG.includes(o.no))o.img='img/d'+o.no+'.jpg';def(o)};
 /* 形の部品：中心(cx,cy)・倍率k、line=true で製図風の線画 */
 const pp=(H,p,c,x,y,w,h,r,bg,css)=>bx(H,p,c.cx+x*c.k-w*c.k/2,c.cy+y*c.k-h*c.k/2,w*c.k,h*c.k,Object.assign(c.line?{border:'1.5px solid #333',boxSizing:'border-box',borderRadius:r}:{background:bg,borderRadius:r},css||{}));
