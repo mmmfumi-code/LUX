@@ -94,7 +94,7 @@ let ar='16:9';try{ar=localStorage.getItem('pz-ar')||'16:9'}catch(e){}
 const custom={};
 const SEC=SECTIONS();
 const ORDER=['m','t','o','a','h','g','p','b','d','k','v','i'];
-const GROUPS=[{n:'モーショングラフィック',sn:'モーション',s:['m','t','o']},{n:'アニメーション',sn:'アニメ',s:['a']},{n:'ホームページ',sn:'HP',s:['h']},{n:'グラフィック',s:['g']},{n:'プレゼン',s:['p','b','d']},{n:'マーケティング',sn:'マーケ',s:['k']},{n:'動画編集',sn:'編集',s:['v']},{n:'イラスト変換',sn:'イラスト',s:['i']}];
+const GROUPS=[{n:'モーショングラフィック',sn:'モーション',s:['m','t','o']},{n:'アニメーション',s:['a']},{n:'ホームページ',sn:'HP',s:['h']},{n:'グラフィック',s:['g']},{n:'プレゼン',s:['p','b','d']},{n:'マーケティング',sn:'マーケ',s:['k']},{n:'動画編集',sn:'編集',s:['v']},{n:'イラスト変換',sn:'イラスト',s:['i']}];
 const grpOf=s=>GROUPS.find(g=>g.s.includes(s));
 const TOTAL=ORDER.reduce((a,s)=>a+ITEMS[s].length,0);
 const pages=['cover'];ORDER.forEach(s=>{pages.push(s+'-top');ITEMS[s].forEach(it=>pages.push(it.id))});
