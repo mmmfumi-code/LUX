@@ -42,7 +42,7 @@ button{cursor:pointer}
 .bar1{display:flex;align-items:center;gap:16px;min-height:52px;flex-wrap:wrap}
 .brand{font-weight:600;font-size:17px;letter-spacing:-.02em;background:none;border:0;padding:0;white-space:nowrap}
 .brand b{font-weight:600;color:var(--fg2)}
-.tabs{display:flex;gap:2px;flex:1;min-width:0;justify-content:flex-start;background:var(--fill);border-radius:10px;padding:2px;max-width:780px;margin-inline:auto;overflow-x:auto;scrollbar-width:none}
+.tabs{display:flex;gap:2px;flex:1;min-width:0;justify-content:flex-start;background:var(--fill);border-radius:10px;padding:2px;max-width:1000px;margin-inline:auto;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
 .tab .ts{display:none}
 .tab{flex:1;background:none;border:0;border-radius:8px;padding:5px 12px;white-space:nowrap;color:var(--fg2);font-size:13px;font-weight:500;display:flex;align-items:baseline;justify-content:center;gap:5px}
@@ -63,8 +63,9 @@ button{cursor:pointer}
 .chap button i{width:7px;height:7px;border-radius:50%;background:var(--k)}
 .chap button:hover{color:var(--fg)}
 .chap button[aria-current="true"]{background:var(--fg);color:var(--bg)}
-@media (max-width:760px){.chap{padding-top:6px}.chap>button{display:none}.subseg{margin:0 auto}.navbtns{margin-left:auto}.tabs{order:3;flex-basis:100%;max-width:none}.tab{padding:5px 4px;font-size:12px}.tab small{display:none}.tab .tl{display:none}.tab .ts{display:inline}}
-@media (max-width:1180px) and (min-width:761px){.tab{padding:5px 8px}.tab small{display:none}}
+@media (max-width:760px){.chap{padding-top:6px}.chap>button{display:none}.subseg{margin:0 auto}.navbtns{margin-left:auto}.tabs{order:3;flex-basis:100%;max-width:none}.tabs{flex-wrap:wrap}.tab{padding:5px 4px;font-size:12px;flex:1 0 24%}.tab small{display:none}.tab .tl{display:none}.tab .ts{display:inline}}
+@media (max-width:1600px) and (min-width:761px){.tab{padding:5px 8px}.tab small{display:none}}
+@media (max-width:1300px) and (min-width:761px){.tab .tl{display:none}.tab .ts{display:inline}}
 
 main{max-width:1200px;margin-inline:auto;padding-top:40px}
 .page{display:none}.page.on{display:block;animation:fade .4s ease}
