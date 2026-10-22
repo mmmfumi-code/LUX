@@ -152,6 +152,7 @@ function renderItem(m){
       <div class="monitor"><div class="screen" id="mScreen"><div class="stage" id="mStage"></div></div>
         <div class="mbar"><span class="rec"></span><span class="tc" id="mTc">00:00:00:00</span><span class="sp"></span><span class="tc">${S.monLabel}</span><button class="mini" id="replay" type="button">最初から再生</button></div></div>
       <div class="txtrow"><label for="mText">${S.inputLabel}</label><input id="mText" value="${esc(txt)}" maxlength="40"><button class="mini" id="resetText" type="button">元に戻す</button></div>
+      ${S.video?`<a class="dlv" href="video/${m.id}.mp4" download="${m.id}_${esc(m.name)}.mp4">サンプル動画をダウンロード<small>MP4・1920×1080・30fps・10秒｜Premiere Pro でそのまま編集できます</small></a>`:''}
       <div class="hint">${m.multi?'スペースか「／」で区切ると、言葉ごとに使い分けられます。':'入力するとプレビューと右のプロンプトが同時に変わります。'}</div>`;
   P.innerHTML=`
   <div class="mhead"><div class="mno">No.${m.no}</div><div class="mtitle">
@@ -180,6 +181,11 @@ function renderItem(m){
   $('#copyBtn').onclick=()=>{const a=sel?sel.value:S.ars?S.ars[0]:'';copyTo($('#copyBtn'),S.base(a)+`\n\n【${S.unit}指示】\n`+fill(m.p,getT()),'プロンプトをコピー')};
   const ce=$('#copyEn');if(ce)ce.onclick=()=>copyTo(ce,m.enp,'英語版をコピー');
 }
+document.addEventListener('click',e=>{const a=e.target.closest('a.dlv');if(!a||!(window.claude&&window.claude.use))return;e.preventDefault();
+  const sm=a.querySelector('small');const msg=t=>{if(sm){const o=sm.dataset.o||(sm.dataset.o=sm.textContent);sm.textContent=t;setTimeout(()=>{sm.textContent=o},4000)}};
+  (async()=>{const dl=await window.claude.use('downloads');if(!dl){window.open(a.href,'_blank');return}
+    try{msg('準備しています…');const blob=await (await fetch(a.href)).blob();await dl.save({filename:a.getAttribute('download')||'sample.mp4',data:blob});msg('保存しました')}
+    catch(err){msg(err&&err.code==='declined'?'キャンセルしました':'保存できませんでした。時間をおいてお試しください')}})()});
 function fallback(full){const p=$('#ptext');p.textContent=full;const r=document.createRange();r.selectNodeContents(p);const s=getSelection();s.removeAllRanges();s.addRange(r)}
 
 function graphicCard(m,txt,S){
