@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>AIプロンプト図鑑360</title>
+<title>AIプロンプト図鑑400</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -225,6 +225,8 @@ details.base pre{box-shadow:none;background:var(--surface2);margin-bottom:4px}
 @media (max-width:560px){.pager{grid-template-columns:1fr}.pager button:last-child{text-align:left}.exrow{grid-template-columns:1fr}.exrow>i{display:none}.flow{grid-template-columns:1fr}.flow>i{display:none}}
 @media (prefers-reduced-motion:reduce){.rec{animation:none}.page.on{animation:none}}
 
+.dlv{display:flex;flex-direction:column;gap:2px;margin-top:14px;padding:12px 18px;border-radius:12px;background:var(--fg);color:var(--bg);text-decoration:none;font-weight:600;font-size:15px}.dlv small{font-weight:400;font-size:12px;opacity:.75}.dlv:hover{opacity:.9}
+
 </style>
 
 <header class="bar">
@@ -245,7 +247,7 @@ details.base pre{box-shadow:none;background:var(--surface2);margin-bottom:4px}
     <div class="cover">
       <div class="eyebrow">AIプロンプト図鑑</div>
       <h1>AIに貼るだけ。<br><em>動く、映える、売れる。</em></h1>
-      <p>文字や図形が動くモーショングラフィック、映画のようなオープニング、ホームページ、チラシや名刺、プレゼン資料や建築・製品のボード、マーケティングの分析と戦略、切り抜きやテロップの動画編集、写真からのイラスト変換。発信と仕事に必要な道具を、360のプロンプトにしました。</p>
+      <p>文字や図形が動くモーショングラフィック、映画のようなオープニング、ホームページ、チラシや名刺、プレゼン資料や建築・製品のボード、マーケティングの分析と戦略、切り抜きやテロップの動画編集、結婚式のムービー、写真からのイラスト変換。発信と仕事に必要な道具を、400のプロンプトにしました。</p>
       <div class="links"><button class="pill" type="button" data-go="m-top">はじめる</button><button type="button" data-go="i-top">イラスト変換の作例を見る ›</button></div>
       <div class="monitor">
         <div class="screen" id="coverScreen"><div class="stage" id="coverStage"></div></div>
@@ -263,7 +265,7 @@ details.base pre{box-shadow:none;background:var(--surface2);margin-bottom:4px}
 const CAT={};
 const E={out:'cubic-bezier(.16,1,.3,1)',back:'cubic-bezier(.34,1.56,.64,1)',in:'cubic-bezier(.7,0,.84,0)',io:'cubic-bezier(.87,0,.13,1)',lin:'linear',soft:'cubic-bezier(.4,0,.2,1)'};
 const F={heavy:"'Dela Gothic One','Noto Sans JP',sans-serif",sans:"'Noto Sans JP',sans-serif",min:"'Shippori Mincho B1','Noto Serif JP',serif",dot:"'DotGothic16',monospace",brush:"'Yuji Syuku',serif",pop:"'Mochiy Pop One','Noto Sans JP',sans-serif",mono:"'JetBrains Mono',monospace",serif:"'Cormorant Garamond','Shippori Mincho B1',serif",smono:"'Space Mono','JetBrains Mono',monospace",zen:"'Zen Kaku Gothic New','Noto Sans JP',sans-serif"};
-const ITEMS={m:[],t:[],o:[],a:[],h:[],g:[],p:[],b:[],d:[],k:[],v:[],i:[]};
+const ITEMS={m:[],t:[],o:[],a:[],h:[],g:[],p:[],b:[],d:[],k:[],v:[],e:[],f:[],i:[]};
 let CUR_SEC='m';
 function def(o){o.sec=o.sec||CUR_SEC;o.id=o.sec+o.no;ITEMS[o.sec].push(o)}
 const rnd=(a,b)=>a+Math.random()*(b-a);
@@ -321,6 +323,8 @@ Object.assign(CAT,{
   KADEN:{ja:'家電',k:'--c-sky',d:'毎日使う道具を美しく'},FURN:{ja:'家具・照明',k:'--c-gold',d:'空間をつくる'},GOODS:{ja:'雑貨',k:'--c-rose',d:'手に取りたくなる小物'},
   ANALYZE:{ja:'現状を知る',k:'--c-sky',d:'自分とお客さまと競合を分析'},TREND:{ja:'流れを読む',k:'--c-orange',d:'市場・トレンド・バズを分析'},STRATEGY:{ja:'作戦を立てる',k:'--c-mint',d:'1人で動ける計画に落とす'},
   CLIP:{ja:'切り抜き',k:'--c-impact',d:'長い動画から見どころを探す'},TELOP:{ja:'テロップ・字幕',k:'--c-gold',d:'文字で見やすく・面白く'},EDIT:{ja:'編集・仕上げ',k:'--c-sky',d:'カット・チャプター・サムネ'},
+  WSTREAM:{ja:'配信・SNS風',k:'--c-impact',d:'いつも見ているあの画面'},WGAME:{ja:'ゲーム・番組風',k:'--c-lime',d:'会場が笑って盛り上がる'},WSTORY:{ja:'映画・物語風',k:'--c-gold',d:'しっとり感動させる'},
+  WSIMPLE:{ja:'シンプル・スタイリッシュ',k:'--c-sky',d:'余白と文字で魅せる大人の上品さ'},WCUTE:{ja:'メルヘン・かわいい',k:'--c-rose',d:'パステルと絵本のようなかわいさ'},
   ART:{ja:'絵画・アート',k:'--c-gold',d:'画材の質感で魅せる'},GRAPHIC:{ja:'グラフィック',k:'--c-mint',d:'デザイン素材として使える'},TREND:{ja:'SNSトレンド',k:'--c-texture',d:'今バズっている使い方'}
 });
 function SECTIONS(){
@@ -507,6 +511,45 @@ function SECTIONS(){
 ・動画ファイルを直接受け取って処理できる場合は、カットや字幕の焼き込みまで実行してよい（できない場合は、作業の手順を書く）
 ・最後に「作業のチェックリスト」を付ける`,
     fix:[['もっと短く','「同じ内容で、30秒以内に収まるように切り直して」'],['テロップが多すぎる','「テロップは要点だけに減らして、1画面1つにして」'],['面白さが足りない','「ツッコミのテロップと効果音の指示を、3か所足して」'],['字幕がずれる','「SRTの時間を、文字起こしの時間に合わせて0.2秒ずつ後ろにずらして」'],['自動でやりたい','「この指示を ffmpeg のコマンドにして。Windows（またはMac）で動く形で」'],['別のSNS用にも','「同じ切り抜きを、YouTubeショート・TikTok・リール用に、タイトルと説明文を変えて3つ作って」']]},
+  e:{name:'オープニングムービー',en:'WEDDING OPENING MOVIE',k:'--c-rose',ui:'motion',unit:'ムービー',lead:'披露宴の始まりを盛り上げる、約3分のオープニング。誰もが見たことのあるあの画面風に。',
+    showLabel:'このプロンプトで、こうなる',monLabel:'OPENING MOVIE PREVIEW',video:1,inputLabel:'ふたりの名前',ars:['16:9','4:3'],curAr:'16:9',arLabel:'会場のスクリーン',
+    cats:{WSTREAM:1,WGAME:1,WSTORY:1,WSIMPLE:1,WCUTE:1},
+    desc:'結婚式・披露宴の入場前に流す、約3分のオープニングムービーのプロンプトです。動画配信サービスの作品ページ、SNSのストーリーズ、レトロRPG、ニュース速報など、ゲストの誰もが「あ、あれだ！」と分かる雰囲気を参考に、オリジナルのデザインで作れます。完成したムービーは<b>MP4で書き出して、Adobe Premiere Pro にそのまま読み込めます</b>。各ページには、雰囲気を確認できる<b>サンプル動画（MP4）</b>も付いています。',
+    steps:['<b>雰囲気を選んで、プレビューで確認</b><br>入力欄にふたりの名前を入れると、プレビューとプロンプトが同時に変わります（例：Nobu & Yui）。','<b>【ふたりの情報】を書き足して、Claude に送る</b><br>日付・会場・エピソードを入れるほど、ふたりらしいムービーになります。','<b>できたコードを opening.html で保存して、ブラウザ（Chrome）で開く</b><br>「写真を読み込む」で写真を入れて、再生して確認します。','<b>「MP4で書き出す」→ Premiere Pro で BGM を入れて仕上げ</b><br>会場の決まり（形式・長さ・曲の手続き）は、事前に会場へ確認してください。'],
+    base:a=>`あなたは結婚式の映像クリエイター兼フロントエンドエンジニアです。次の【ムービー指示】どおりの結婚式のオープニングムービー（約3分）を、HTML・JavaScript の1ファイルで作ってください。完成した動画は、Adobe Premiere Pro に読み込める動画ファイルとして書き出せるようにします。
+
+【共通仕様】
+・画面：${a.startsWith('4:3')?'4:3（1440×1080）':'16:9（1920×1080）'}。すべて1枚の <canvas> に描き、30fps で再生する。ブラウザでは比率を保ったまま中央に表示する
+・時間の管理：経過時間（秒）からすべての見た目を計算する作りにして、処理が遅れても動きと時間がずれないようにする。各シーンの開始・終了の秒数は配列にまとめる
+・設定：ふたりの名前・日付・会場・各シーンの文章・写真の割り当ては、コード冒頭の const CONFIG にまとめ、書き換えるだけで全体が変わるようにする
+・写真：「写真を読み込む」ボタンで複数枚を選ぶと、ファイル名の順に写真の枠へ入る。写真がないときは、名前と番号入りの仮の枠を表示する。写真は枠に合わせて中央で切り抜き、ゆっくり寄る動き（ケン・バーンズ）を付ける
+・書き出し：「MP4で書き出す」ボタンを押すと、最初から最後まで再生しながら canvas.captureStream(30) と MediaRecorder で録画し、ファイルを保存する。'video/mp4;codecs=avc1' に対応していれば MP4（H.264）、対応していなければ WebM で保存し、どちらで保存したかを画面に表示する。録画中は画面に「録画中 00:00 / 03:00」のように進み具合を出す
+・操作：「再生」「最初から」ボタンとシークバー。スペースキーで再生・一時停止。シーン一覧から好きな場面に飛べる
+・著作権：実在の会社・サービス・ゲームのロゴ、マーク、キャラクター、効果音、音楽は使わない。指定した雰囲気を参考にした、オリジナルのデザインにする
+・音：BGM は入れない（結婚式で流す曲は著作権の手続きが必要なため、Premiere Pro で後から入れる）
+・文字：Google Fonts から読み込み、document.fonts.ready を待ってから描く。会場の大きなスクリーンでも読めるよう、本文は最小でも 40px
+・回答の最後に、次の3つを書く：①Premiere Pro への読み込み方（WebM になった場合に、無料の HandBrake で MP4 に変換する方法も）、②BGM を合わせるとよい場面と秒数、③CONFIG で書き換える場所の一覧`,
+    fix:[['長さを変えたい','「全体を〇分〇秒にして。各シーンの長さを同じ割合で伸ばして（縮めて）」'],['写真の枚数が違う','「写真の枚数を〇枚にして、シーンの長さを自動で調整して」'],['文字が読みにくい','「会場の後ろの席からも読めるよう、文字を1.3倍にして、文字の後ろに半透明の帯を敷いて」'],['もっと感動させたい','「最後の1分の動きを全体に1.5倍ゆっくりにして、光のにじみとフィルムのざらつきを足して」'],['本物に似すぎて不安','「参考にした雰囲気は残しつつ、形・色・言葉づかいをオリジナルに変えて」'],['書き出せない','「MediaRecorder が使えないときのために、連番PNGで書き出すボタンも付けて（Premiere Pro では読み込み時に“画像シーケンス”にチェック）」']]},
+
+  f:{name:'プロフィールムービー',en:'WEDDING PROFILE MOVIE',k:'--c-gold',ui:'motion',unit:'ムービー',lead:'ふたりの生い立ちと出会いを、5〜7分で。写真を入れるだけの、あの画面風プロフィール。',
+    showLabel:'このプロンプトで、こうなる',monLabel:'PROFILE MOVIE PREVIEW',video:1,inputLabel:'ふたりの名前',ars:['16:9','4:3'],curAr:'16:9',arLabel:'会場のスクリーン',
+    cats:{WSTREAM:1,WGAME:1,WSTORY:1,WSIMPLE:1,WCUTE:1},
+    desc:'披露宴の歓談中に流す、5〜7分のプロフィールムービーのプロンプトです。新郎・新婦それぞれの生い立ち、ふたりの出会い、ゲストへの感謝までを、写真を読み込むだけで1本にまとめられます。SNSのフィード、RPGのステータス画面、配信サービスのエピソード一覧など、ゲストが思わず笑顔になる演出を選べます。<b>MP4で書き出して、Adobe Premiere Pro にそのまま読み込めます</b>。各ページには、雰囲気を確認できる<b>サンプル動画（MP4）</b>も付いています。',
+    steps:['<b>雰囲気を選んで、プレビューで確認</b><br>入力欄にふたりの名前を入れると、プレビューとプロンプトが同時に変わります。','<b>写真を選んで、ファイル名に番号を付ける</b><br>新郎 01〜15、新婦 16〜30、ふたり 31〜45 のように並べておくと、そのまま順番に入ります。','<b>【ふたりの情報】を書き足して、Claude に送る</b><br>できたコードを profile.html で保存し、Chrome で開いて写真を読み込みます。','<b>「MP4で書き出す」→ Premiere Pro で BGM を入れて仕上げ</b><br>コメントの誤字と、写真の向き・順番は、必ず家族と一緒に確認しましょう。'],
+    base:a=>`あなたは結婚式の映像クリエイター兼フロントエンドエンジニアです。次の【ムービー指示】どおりの結婚式のプロフィールムービー（5〜7分）を、HTML・JavaScript の1ファイルで作ってください。完成した動画は、Adobe Premiere Pro に読み込める動画ファイルとして書き出せるようにします。
+
+【共通仕様】
+・画面：${a.startsWith('4:3')?'4:3（1440×1080）':'16:9（1920×1080）'}。すべて1枚の <canvas> に描き、30fps で再生する。ブラウザでは比率を保ったまま中央に表示する
+・時間の管理：経過時間（秒）からすべての見た目を計算する作りにして、処理が遅れても動きと時間がずれないようにする。各シーンの開始・終了の秒数は配列にまとめる
+・設定：ふたりの名前・日付・会場・各シーンの文章・写真の割り当ては、コード冒頭の const CONFIG にまとめ、書き換えるだけで全体が変わるようにする
+・写真：「写真を読み込む」ボタンで複数枚を選ぶと、ファイル名の順に写真の枠へ入る。写真がないときは、名前と番号入りの仮の枠を表示する。写真は枠に合わせて中央で切り抜き、ゆっくり寄る動き（ケン・バーンズ）を付ける
+・書き出し：「MP4で書き出す」ボタンを押すと、最初から最後まで再生しながら canvas.captureStream(30) と MediaRecorder で録画し、ファイルを保存する。'video/mp4;codecs=avc1' に対応していれば MP4（H.264）、対応していなければ WebM で保存し、どちらで保存したかを画面に表示する。録画中は画面に「録画中 00:00 / 03:00」のように進み具合を出す
+・操作：「再生」「最初から」ボタンとシークバー。スペースキーで再生・一時停止。シーン一覧から好きな場面に飛べる
+・著作権：実在の会社・サービス・ゲームのロゴ、マーク、キャラクター、効果音、音楽は使わない。指定した雰囲気を参考にした、オリジナルのデザインにする
+・音：BGM は入れない（結婚式で流す曲は著作権の手続きが必要なため、Premiere Pro で後から入れる）
+・文字：Google Fonts から読み込み、document.fonts.ready を待ってから描く。会場の大きなスクリーンでも読めるよう、本文は最小でも 40px
+・回答の最後に、次の3つを書く：①Premiere Pro への読み込み方（WebM になった場合に、無料の HandBrake で MP4 に変換する方法も）、②BGM を合わせるとよい場面と秒数、③CONFIG で書き換える場所の一覧`,
+    fix:[['長さを変えたい','「全体を〇分〇秒にして。各シーンの長さを同じ割合で伸ばして（縮めて）」'],['写真の枚数が違う','「写真の枚数を〇枚にして、シーンの長さを自動で調整して」'],['文字が読みにくい','「会場の後ろの席からも読めるよう、文字を1.3倍にして、文字の後ろに半透明の帯を敷いて」'],['もっと感動させたい','「最後の1分の動きを全体に1.5倍ゆっくりにして、光のにじみとフィルムのざらつきを足して」'],['本物に似すぎて不安','「参考にした雰囲気は残しつつ、形・色・言葉づかいをオリジナルに変えて」'],['書き出せない','「MediaRecorder が使えないときのために、連番PNGで書き出すボタンも付けて（Premiere Pro では読み込み時に“画像シーケンス”にチェック）」']]},
   i:{name:'イラスト変換',en:'PHOTO TO ILLUSTRATION',k:'--c-rose',ui:'illust',unit:'変換',lead:'写真1枚から、アニメ・3D・絵画・SNSで流行りのイラストへ。',
     ars:['元の写真と同じ','1:1（正方形）','9:16（縦長）','16:9（横長）'],arLabel:'仕上がりの比率',curAr:'元の写真と同じ',
     cats:{BASIC:1,ANIME:1,TOY:1,ART:1,GRAPHIC:1,TREND:1},
@@ -6589,6 +6632,1067 @@ p:`動画の「冒頭3秒」と「サムネイル」を設計してください�
 　6. タイトル案を3つ（サムネイルの文字と、同じ言葉をくり返さない）`,
 run(H,t){vmock(H,t,{h:'冒頭3秒とサムネイル',head:1,c2:200,c3:600,top:'',rows:[['型','最初の一言','映すもの'],['結論型','「字幕は1分で入ります」','完成した動画'],['問いかけ型','「まだ手で打ってますか？」','困った顔'],['意外型','（無言で一瞬で字幕が入る）','画面の早回し']],bgv:'linear-gradient(rgba(255,225,77,.95) 0 46%,transparent 62%),'+VPH,tel:[['字幕が\n1分で入る',{top:'110px',fontFamily:F.heavy,fontSize:'44px',lineHeight:'1.15',color:'#111',textShadow:'3px 3px 0 #fff,-3px 3px 0 #fff,3px -3px 0 #fff,-3px -3px 0 #fff'}],['無料のCapCutだけ',{top:'240px',fontFamily:F.heavy,fontSize:'20px',color:'#fff',background:'#e0442b',width:'auto',left:'60px',padding:'6px 14px',borderRadius:'6px'}]]})}});
 
+/* ===== WEDDING OPENING 01-10 ===== */
+CUR_SEC='e';
+const WT='Nobu & Yui';
+const nm=t=>{const a=t.split(/\s*[&＆・×]\s*/);return [a[0]||'Nobu',a[1]||'Yui']};
+const WINFO_E=`
+
+【ふたりの情報】（分かる範囲で。空欄のところは、仮の文章で作ってください）
+・新郎の名前（ローマ字・漢字）：
+・新婦の名前（ローマ字・漢字）：
+・結婚式の日付・会場：
+・ふたりの出会い・思い出のエピソード（3つ）：
+・使う写真の枚数：
+・ゲストへのひとこと：`;
+const WINFO_F=`
+
+【ふたりの情報】（分かる範囲で。空欄のところは、仮の文章で作ってください）
+・新郎：名前（ローマ字・漢字）／生年月日／出身地／趣味・特技／家族構成
+・新婦：名前（ローマ字・漢字）／生年月日／出身地／趣味・特技／家族構成
+・それぞれの写真の枚数と、時代ごとのコメント（例：3歳 七五三。この頃から食いしん坊）：
+・ふたりの出会い・交際・プロポーズのエピソード：
+・結婚式の日付・会場：
+・ゲストへの感謝のメッセージ：`;
+const defW=o=>{o.bg=o.bg||'#000';o.text=o.text||WT;o.loop=o.loop||10000;o.p+=(o.sec||CUR_SEC)==='f'?WINFO_F:WINFO_E;def(o)};
+/* 写真の仮枠：k = couple / boy / girl / baby / man / woman */
+const PHC={couple:['#f7d9c4','#c9a7a0'],boy:['#cfe3f4','#8fb3d9'],girl:['#f9d7e3','#e3a3bd'],baby:['#fff1d6','#f2c98a'],man:['#d9e2ea','#8798ab'],woman:['#f6e3dc','#d2a596']};
+const pho=(H,p,x,y,w,h,k,dl,css)=>{k=k||'couple';const c=PHC[k];const b=H.abs(Object.assign({left:x+'px',top:y+'px',width:w+'px',height:h+'px',overflow:'hidden',background:`linear-gradient(160deg,${c[0]},${c[1]})`},css||{}),p);
+  const fig=(cx,hr,body,hair,dress)=>{H.abs({left:cx*w-hr+'px',top:h*.36-hr+'px',width:2*hr+'px',height:2*hr+'px',borderRadius:'50%',background:'#f0c9a8',boxShadow:`0 ${-hr*.35}px 0 ${hair}`},b);H.abs({left:cx*w-hr*1.7+'px',top:h*.36+hr*1.15+'px',width:hr*3.4+'px',height:h+'px',borderRadius:`${hr*1.6}px ${hr*1.6}px 0 0`,background:body},b);if(dress)H.abs({left:cx*w-hr*2.3+'px',top:h*.62+'px',width:hr*4.6+'px',height:h+'px',borderRadius:'50% 50% 0 0',background:body},b)};
+  const r=Math.min(w,h)*.13;
+  if(k==='couple'){fig(.37,r,'#2d3446','#3a2a20');fig(.63,r*.95,'#fffaf3','#4a3326',1)}else if(k==='baby'){fig(.5,r*1.5,'#fff8ec','#5a4030')}else if(k==='boy'||k==='man'){fig(.5,r*(k==='boy'?1.2:1.1),k==='boy'?'#ffcc66':'#2d3446','#2a2420')}else{fig(.5,r*(k==='girl'?1.2:1.1),k==='girl'?'#ff9fbf':'#fffaf3','#4a3326',k==='woman')}
+  if(dl!=null)H.a(b,[{opacity:0,transform:'scale(1.06)'},{opacity:1,transform:'scale(1)'}],{d:800,dl});return b};
+const kb=(H,el,dl,d)=>H.a(el,[{scale:'1'},{scale:'1.08'}],{d:d||4000,dl:dl||0,e:E.lin});
+const fadeIO=(H,el,a,b,d)=>{d=d||500;H.a(el,[{opacity:0},{opacity:1,offset:d/(b-a)},{opacity:1,offset:1-d/(b-a)},{opacity:0}],{d:b-a,dl:a,e:E.lin})};
+const dots=(H,p,n,c)=>{for(let i=0;i<n;i++){const d=H.abs({left:rnd(0,1600)+'px',top:rnd(0,900)+'px',width:'3px',height:'3px',borderRadius:'50%',background:c||'#fff'},p);H.a(d,[{opacity:0},{opacity:rnd(.3,.9)},{opacity:0}],{d:rnd(1500,3000),dl:rnd(0,3000),i:Infinity})}};
+
+/* WSTREAM：配信・SNS風 */
+defW({no:'01',cat:'WSTREAM',name:'配信サービス風「ウェディング・オリジナル」',en:'Streaming Original',lead:'あの赤いロゴの配信サービスのように、光の帯がほどけてふたりの作品ページが始まる。',
+use:'<b>いちばん人気の“配信サービス風”</b>。ゲストが一瞬で「あれだ！」と分かり、拍手から披露宴が始まります。',
+tips:['ロゴは配信サービスの文字ではなく、ふたりのイニシャル（N&Y）のモノグラムにするのがポイント','「マッチ度98%」「#感動 #ラブストーリー」など、作品ページの小ネタが笑いを生みます','最後のカウントダウンは、司会者と「入場の合図」を合わせておくと決まります'],
+p:`動画配信サービスの冒頭と作品ページの雰囲気で、結婚式のオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：黒 #000、深い赤 #E50914 に近い赤、白、グレー #B3B3B3
+・フォント：英字は Bebas Neue、日本語は Noto Sans JP（700/900）
+・シーン構成：
+　0:00〜0:08　黒い画面の奥から、赤・ピンク・紫の光の帯が集まり、ふたりのイニシャルのモノグラム（例「N&Y」）になって光る。一気に寄って、光の帯がほどけて消える
+　0:08〜0:15　白い細い文字で「A WEDDING ORIGINAL」
+　0:15〜0:45　作品ページ：背景いっぱいにふたりの写真（ゆっくり寄る）。左下にタイトル（ふたりの名前）、「マッチ度98%」「2025」「全年齢」「シーズン1」、タグ「#感動 #ラブストーリー #ハッピーエンド」、短いあらすじ（出会いのエピソード）
+　0:45〜1:15　キャスト紹介：新郎・新婦の写真を左右に並べ、役名（例「主演：新郎 ○○ ／ 役：食いしん坊な優しい人」）
+　1:15〜2:30　エピソード一覧：「第1話 出会い」「第2話 はじめてのデート」「第3話 プロポーズ」…5話。各話のサムネイル写真・タイトル・あらすじ（1行）・再生時間を並べ、1話ずつ選ばれて写真が大きく映る
+　2:30〜2:50　「次のエピソードがまもなく始まります」と、右下に赤い進行バーが減っていく
+　2:50〜3:00　画面中央に「第4話 本日、結婚します。」→ 黒にフェード（ここで新郎新婦が入場）`,
+run(H,t){const [a,b]=nm(t);const ini=(a[0]+'&'+b[0]).toUpperCase();
+  const L=H.box({},null);for(let i=0;i<40;i++){const r=H.abs({left:rnd(400,1200)+'px',top:'-100px',width:rnd(4,18)+'px',height:'1100px',background:`linear-gradient(${pick(['#e50914','#ff4f8b','#7b2cff','#ff8a3d'])},transparent)`,opacity:.8},L);H.a(r,[{transform:'translateY(-600px) scaleY(.2)',opacity:0},{transform:'translateY(0) scaleY(1)',opacity:.9},{opacity:0}],{d:2200,dl:rnd(0,400)})}
+  const lg=H.abs({left:'0',right:'0',top:'290px',textAlign:'center',fontFamily:"'Bebas Neue',sans-serif",fontSize:'300px',lineHeight:'1',color:'#e50914',textShadow:'0 0 40px rgba(229,9,20,.8)'},null,ini);H.a(lg,[{opacity:0,transform:'scale(.6)'},{opacity:1,transform:'scale(1)',offset:.3},{opacity:1,transform:'scale(1.1)',offset:.75},{opacity:0,transform:'scale(4)'}],{d:3000,dl:300,e:E.in});
+  const pg=H.abs({inset:'0',opacity:0});H.a(pg,[{opacity:0},{opacity:1}],{d:700,dl:3200});const ph=pho(H,pg,0,0,1600,900,'couple');kb(H,ph,3200,6000);H.abs({inset:'0',background:'linear-gradient(90deg,#000 10%,rgba(0,0,0,.6) 45%,transparent 75%),linear-gradient(transparent 60%,#000)'},pg);
+  T(H,pg,{left:'90px',top:'220px',fontFamily:"'Bebas Neue',sans-serif",fontSize:'26px',letterSpacing:'.3em',color:'#e50914'},'A WEDDING ORIGINAL',3600);
+  T(H,pg,{left:'86px',top:'260px',fontFamily:"'Bebas Neue',sans-serif",fontSize:'130px',lineHeight:'1',color:'#fff'},t.toUpperCase(),3800);
+  T(H,pg,{left:'90px',top:'410px',fontFamily:F.sans,fontWeight:'700',fontSize:'26px',color:'#fff'},null,4200).innerHTML='<span style="color:#46d369">マッチ度98%</span>　2025　<span style="border:1px solid #aaa;padding:0 8px">全年齢</span>　シーズン1';
+  T(H,pg,{left:'90px',top:'470px',width:'640px',whiteSpace:'normal',fontFamily:F.sans,fontSize:'24px',lineHeight:'1.6',color:'#ddd'},'大学のサークルで出会ったふたり。すれ違いと笑いの日々の先に、ついに迎える最終話——。',4500,'fade');
+  T(H,pg,{left:'90px',top:'610px',fontFamily:F.sans,fontSize:'22px',color:'#b3b3b3'},'#感動　#ラブストーリー　#ハッピーエンド',4800,'fade');
+  const bt=T(H,pg,{left:'90px',top:'680px',background:'#fff',color:'#000',fontFamily:F.sans,fontWeight:'900',fontSize:'28px',padding:'14px 40px',borderRadius:'6px'},'▶ 再生',5200,'pop');H.a(bt,[{scale:'1'},{scale:'1.06'},{scale:'1'}],{d:900,dl:6200,i:Infinity,f:'none'})}});
+
+defW({no:'02',cat:'WSTREAM',name:'配信サービス風「おすすめ作品の列」',en:'Streaming Carousel',lead:'青いグラデーションの配信サービスのように、思い出の写真が「作品の列」になって流れる。',bg:'#0f171e',
+use:'<b>写真をたくさん見せたいオープニング</b>に。思い出の写真が作品のサムネイルとして並ぶので、写真の多いふたりにぴったりです。',
+tips:['列の名前を「ふたりのおすすめ作品」「ゲストのみなさまが出演した作品」にすると、会場が沸きます','サムネイルにゲストとの写真を入れると、自分を見つけたゲストが喜びます','最後に1枚のサムネイルが画面いっぱいに広がって本編へ、が気持ちいい流れです'],
+p:`青いグラデーションが特徴の動画配信サービスのホーム画面のような雰囲気で、結婚式のオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：背景は濃い紺 #0F171E、アクセントは水色 #00A8E1、白、グレー #8197A4
+・フォント：英字は Montserrat（800）、日本語は Noto Sans JP（700）
+・シーン構成：
+　0:00〜0:10　水色の細い線が弧を描いて走り、ふたりの名前のロゴに変わる（矢印やほほえみの形は使わない）
+　0:10〜0:40　ホーム画面：上に大きなメインの作品（ふたりの写真、タイトル「{T}」、★★★★★、「独占配信」の小さなラベル、「今すぐ観る」ボタン）。自動で3枚が横にスライドして切り替わる
+　0:40〜2:20　作品の列を3つ。列ごとに見出しを付けて、写真のサムネイル（16:9、角丸）が右から流れてくる
+　　・「ふたりのおすすめ作品」：出会い〜プロポーズまでの写真
+　　・「新郎が出演した作品」「新婦が出演した作品」：それぞれの子どもの頃の写真
+　　・「ゲストのみなさまが出演した作品」：ゲストとの写真
+　　各列で1枚ずつ水色の枠で選ばれ、少し大きくなってタイトル（例「第1話 はじめてのデート」）が出る
+　2:20〜2:45　最後に選ばれた1枚が画面いっぱいに広がり、「まもなく配信開始」の文字と、水色の読み込みの円
+　2:45〜3:00　「本日、配信開始。」とふたりの名前・日付 → 白い光でフェードアウト`,
+run(H,t){const S=H.abs({inset:'0',background:'linear-gradient(#0f171e,#1a242f)'});
+  const hero=H.abs({left:'0',top:'0',width:'1600px',height:'420px',overflow:'hidden'},S);const hp=pho(H,hero,0,0,1600,420,'couple',0);kb(H,hp,0,10000);H.abs({inset:'0',background:'linear-gradient(90deg,#0f171e 15%,rgba(15,23,30,.5) 50%,transparent),linear-gradient(transparent 60%,#0f171e)'},hero);
+  T(H,hero,{left:'80px',top:'80px',fontFamily:F.sans,fontWeight:'700',fontSize:'18px',color:'#00a8e1',letterSpacing:'.1em'},'独占配信',300);
+  T(H,hero,{left:'76px',top:'110px',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'86px',color:'#fff'},t,500);
+  T(H,hero,{left:'80px',top:'220px',fontFamily:F.sans,fontSize:'24px',color:'#ffc93c'},'★★★★★　2025　ラブストーリー',800,'fade');
+  T(H,hero,{left:'80px',top:'280px',background:'#00a8e1',color:'#fff',fontFamily:F.sans,fontWeight:'700',fontSize:'24px',padding:'14px 34px',borderRadius:'6px'},'▶ 今すぐ観る',1100,'pop');
+  [['ふたりのおすすめ作品',['couple','couple','couple','couple','couple','couple'],480],['ゲストのみなさまが出演した作品',['man','woman','girl','boy','man','woman'],700]].forEach((r,ri)=>{T(H,S,{left:'60px',top:r[2]-44+'px',fontFamily:F.sans,fontWeight:'700',fontSize:'24px',color:'#fff'},r[0],1400+ri*300);
+    const row=H.abs({left:'60px',top:r[2]+'px',display:'flex',gap:'18px'},S);r[1].forEach((k,i)=>{const c=H.abs({position:'relative',width:'267px',height:'150px',flex:'0 0 auto',borderRadius:'8px',overflow:'hidden'},row);pho(H,c,0,0,267,150,k);H.abs({left:'10px',bottom:'8px',fontFamily:F.sans,fontWeight:'700',fontSize:'15px',color:'#fff',textShadow:'0 1px 4px #000'},c,['第1話 出会い','第2話 初デート','第3話 旅行','第4話 同棲','第5話 プロポーズ','第6話 本日'][i])});
+    H.a(row,[{transform:'translateX(1600px)'},{transform:'translateX(0)'},{transform:'translateX(-500px)'}],{d:8000,dl:1500+ri*300,e:E.soft});
+    if(!ri)H.a(row.children[2],[{outline:'0 solid #00a8e1',scale:'1'},{outline:'4px solid #00a8e1',scale:'1.08'}],{d:400,dl:4800})})}});
+
+defW({no:'03',cat:'WSTREAM',name:'SNSストーリーズ風',en:'Social Stories',lead:'写真共有SNSのストーリーズのように、上の進行バーと一緒にふたりの日常がテンポよく流れる。',bg:'#111',
+use:'<b>20〜30代のゲストが多い披露宴</b>に。スマホで毎日見ている画面なので、説明しなくても伝わります。',
+tips:['画面は16:9の真ん中に縦長のスマホ画面を置き、左右はぼかした写真で埋めると会場でも見やすい','「質問スタンプ」でゲストからの質問に答える演出は、ほぼ確実にウケます','ハートやコメントが流れるライブ配信風のシーンを最後に入れると盛り上がります'],
+p:`写真共有SNSのストーリーズ（縦長の短い投稿が次々に切り替わる画面）の雰囲気で、結婚式のオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・画面：16:9 の中央に、縦長（9:16）のスマホ画面の枠。左右の余白は、今映っている写真を大きくぼかして敷く
+・配色：白・黒、アクセントはピンク〜オレンジ〜紫のグラデーション（アイコンの丸い枠）
+・フォント：Noto Sans JP（700）、英字は Montserrat
+・ストーリーズの見た目：上に細い白い進行バー（ストーリーの数だけ分かれ、1つずつ左から右へ伸びる）、その下に丸いアイコン（グラデーションの枠）とアカウント名（例「nobu_yui_wedding」）と「2時間前」
+・シーン構成（1枚6〜8秒、全部で約22枚）：
+　0:00〜0:15　「新しいストーリーがあります」の丸いアイコンがタップされて開く
+　0:15〜1:00　新郎のストーリー5枚：写真＋手書き風の文字スタンプ（例「新郎です」「趣味：キャンプ」）、位置情報スタンプ風の「📍出身地」
+　1:00〜1:45　新婦のストーリー5枚：同じ形で
+　1:45〜2:20　ふたりのストーリー：「質問箱」風スタンプ（例「Q. 第一印象は？」→ 次の画面で答え）、アンケートスタンプ（「どっちが先に好きになった？」の2択と％）
+　2:20〜2:45　ライブ配信風：「LIVE」の赤いラベル、視聴者数が増え、ハートとコメント（「おめでとう！」「待ってた！」）が下から流れる
+　2:45〜3:00　最後のストーリー「このあと、ふたりが入場します」→ 画面を上にスワイプして閉じる動き → 白にフェード`,
+run(H,t){const [a,b]=nm(t);const bg=pho(H,null,0,0,1600,900,'couple');bg.style.filter='blur(30px) brightness(.6)';bg.style.transform='scale(1.2)';
+  const ph=H.abs({left:'545px',top:'20px',width:'510px',height:'860px',borderRadius:'26px',overflow:'hidden',background:'#000',boxShadow:'0 30px 80px rgba(0,0,0,.6)'});
+  const ks=['man','woman','couple','couple'];const lb=[['新郎です','#fff'],['新婦です','#fff'],['Q. 第一印象は？','#000'],['今日、結婚します','#fff']];
+  ks.forEach((k,i)=>{const p=pho(H,ph,0,0,510,860,k);p.style.opacity=0;H.a(p,[{opacity:1},{opacity:1}],{d:2400,dl:i*2400,f:'none'});kb(H,p,i*2400,2400);
+    const st=H.abs({left:'60px',top:'560px',width:'390px',textAlign:'center',fontFamily:F.sans,fontWeight:'900',fontSize:'34px',color:lb[i][1],background:i===2?'#fff':'transparent',borderRadius:'18px',padding:'14px 0',textShadow:i===2?'none':'0 2px 8px rgba(0,0,0,.6)',opacity:0},ph,lb[i][0]);H.a(st,[{opacity:0,transform:'scale(.6) rotate(-6deg)'},{opacity:1,transform:'scale(1) rotate(-3deg)',offset:.2},{opacity:1,transform:'scale(1) rotate(-3deg)',offset:.95},{opacity:0}],{d:2400,dl:i*2400,e:E.out})});
+  const bars=H.abs({left:'14px',right:'14px',top:'12px',display:'flex',gap:'6px'},ph);for(let i=0;i<4;i++){const bb=H.el('div',{flex:'1',height:'4px',borderRadius:'2px',background:'rgba(255,255,255,.4)',overflow:'hidden'},bars);const f=H.el('div',{height:'100%',background:'#fff',transformOrigin:'left'},bb);H.a(f,[{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{d:2400,dl:i*2400,e:E.lin})}
+  const hd=H.abs({left:'16px',top:'28px',display:'flex',alignItems:'center',gap:'10px'},ph);H.el('div',{width:'44px',height:'44px',borderRadius:'50%',border:'3px solid transparent',background:'linear-gradient(#ddd,#ddd) padding-box,linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf) border-box'},hd);H.el('div',{fontFamily:F.sans,fontWeight:'700',fontSize:'18px',color:'#fff',textShadow:'0 1px 4px #000'},hd,(a+'_'+b+'_wedding').toLowerCase());H.el('div',{fontFamily:F.sans,fontSize:'16px',color:'rgba(255,255,255,.8)'},hd,'2時間前');
+  for(let i=0;i<10;i++){const h=H.abs({left:rnd(380,460)+'px',top:'800px',fontSize:rnd(28,46)+'px',color:pick(['#ff3b6b','#ff8fab','#fff'])},ph,'♥');H.a(h,[{opacity:0,transform:'translateY(0)'},{opacity:1},{opacity:0,transform:`translate(${rnd(-60,30)}px,-${rnd(250,450)}px)`}],{d:2000,dl:7400+rnd(0,1800)})}}});
+
+/* WGAME：ゲーム・番組風 */
+defW({no:'04',cat:'WGAME',name:'レトロRPG風「ふたりのぼうけん」',en:'Retro RPG Adventure',lead:'ドット絵の勇者と仲間が冒険するように。「やせいの ゲストが あらわれた！」で会場が沸く。',bg:'#000',
+use:'<b>ゲーム好きのふたり、男性ゲストが多い披露宴</b>に。モンスター育成RPGや国民的RPGを遊んだ世代なら、誰もが笑顔になります。',
+tips:['文字は「ひらがな＋全角スペース」で書くと、レトロゲームらしさが一気に出ます','バトルの選択肢を「たたかう／しゅくふく／ごしゅうぎ／にげる」にすると笑いが起きます','実在のゲームのキャラクターやモンスターは出さず、ふたりのドット絵で作りましょう'],
+p:`昔の携帯ゲーム機のRPG（モンスターを集めて育てる冒険ゲームなど）の雰囲気で、結婚式のオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・見た目：ドット絵（1ドット＝6px、くっきり表示：imageSmoothingEnabled = false）。色数は少なめのレトロな配色
+・フォント：DotGothic16（日本語のドット文字）。文章は「ひらがな＋全角スペース」で、1文字ずつ表示される
+・メッセージウィンドウ：画面下の白い角丸の枠、黒い文字、右下で▼が点滅
+・シーン構成：
+　0:00〜0:15　タイトル画面：ドット絵の大きなタイトル「{T}」、「バージョン：ウェディング」、「PRESS START」が点滅 → 押される
+　0:15〜0:40　オープニング：博士のような人物の代わりに、ふたりの両親のシルエットが「ようこそ！ けっこんしきの せかいへ！」と話す
+　0:40〜1:20　フィールド：草むら・道・小さな町のドット絵のマップ。新郎のキャラクターが歩き、新婦のキャラクターと出会う → 「ゆうしゃ ○○は ○○と であった！」
+　1:20〜2:10　バトル画面：「やせいの ゲストが あらわれた！」。左上に相手（ゲストのシルエット）、右下に新郎新婦とHPバー。コマンド「たたかう／しゅくふく／ごしゅうぎ／にげる」→「しゅくふく」が選ばれ、「こうかは ばつぐんだ！」
+　2:10〜2:40　レベルアップ：「ふたりは けっこんした！」「レベルが あがった！ Lv.30 → Lv.31」、ステータス（やさしさ・たよりがい・えがお が上がる）
+　2:40〜3:00　「レポートを かきこんでいます…」→「このあと、ふたりが にゅうじょうします！」→ 白いフラッシュで終わる
+・実在のゲームのキャラクター、モンスター、ロゴ、効果音は使わない`,
+run(H,t){const [a,b]=nm(t);const S=H.abs({inset:'0',background:'#8fd16a',imageRendering:'pixelated'});
+  S.style.backgroundImage='linear-gradient(90deg,rgba(0,0,0,.06) 1px,transparent 1px),linear-gradient(rgba(0,0,0,.06) 1px,transparent 1px)';S.style.backgroundSize='60px 60px';
+  H.abs({left:'0',right:'0',top:'360px',height:'120px',background:'#e8d39a'},S);for(let i=0;i<14;i++)H.abs({left:i*120+'px',top:'120px',width:'60px',height:'60px',background:'#3f8f3a',boxShadow:'60px 60px 0 #3f8f3a'},S);
+  H.abs({left:'1240px',top:'140px',width:'240px',height:'220px',background:'#f2efe6',boxShadow:'0 -60px 0 -0px #c0392b'},S);H.abs({left:'1330px',top:'280px',width:'60px',height:'80px',background:'#7a4b2a'},S);H.abs({left:'1240px',top:'60px',width:'240px',height:'80px',background:'#c0392b',clipPath:'polygon(50% 0,100% 100%,0 100%)'},S);
+  const spr=(c,h)=>{const s=H.abs({width:'60px',height:'78px'},S);H.abs({left:'12px',top:'0',width:'36px',height:'30px',background:'#f0c9a8',boxShadow:`0 -12px 0 ${h}`},s);H.abs({left:'6px',top:'30px',width:'48px',height:'36px',background:c},s);H.abs({left:'12px',top:'66px',width:'12px',height:'12px',background:'#333',boxShadow:'24px 0 0 #333'},s);return s};
+  const p1=spr('#3a5bd9','#2a1a10'),p2=spr('#ff7aa8','#5a3a20');p1.style.top='380px';p2.style.top='380px';H.a(p1,[{left:'40px'},{left:'640px'}],{d:3000,e:'steps(15)'});H.a(p2,[{left:'1500px'},{left:'760px'}],{d:3000,e:'steps(15)'});
+  const box=H.abs({left:'60px',right:'60px',bottom:'40px',height:'210px',background:'#fff',border:'8px solid #333',borderRadius:'14px',boxShadow:'inset 0 0 0 6px #fff,inset 0 0 0 10px #6a9adf',opacity:0});H.a(box,[{opacity:0},{opacity:1}],{d:10,dl:3100});
+  const tx=H.abs({left:'50px',top:'34px',right:'50px',fontFamily:F.dot,fontSize:'44px',lineHeight:'1.6',color:'#222',whiteSpace:'pre-wrap'},box);
+  const msgs=[`ゆうしゃ　${a.toUpperCase()}は\n${b.toUpperCase()}と　であった！`,'やせいの　ゲストが\nあらわれた！','▶しゅくふく　　ごしゅうぎ\n　たたかう　　　にげる'];let k=0;
+  msgs.forEach((m,mi)=>H.wait(3200+mi*2200,()=>{tx.textContent='';let i=0;const ch=[...m];const tick=()=>{if(i<ch.length){tx.textContent+=ch[i++];H.wait(45,tick)}};tick()}));
+  const ar=H.abs({right:'40px',bottom:'20px',fontFamily:F.dot,fontSize:'30px',color:'#222'},box,'▼');H.a(ar,[{opacity:1},{opacity:0}],{d:500,i:Infinity,dir:'alternate'})}});
+
+defW({no:'05',cat:'WGAME',name:'ニュース速報風',en:'Breaking News',lead:'「速報 ふたりが本日結婚」。テレビのニュース番組のテロップと中継で、会場がざわつく。',bg:'#0b1d3a',
+use:'<b>年代を問わず楽しめる、定番の面白オープニング</b>に。おじいちゃん・おばあちゃんにも一発で伝わります。',
+tips:['「関係者への取材」として、友人や両親のコメントを入れると盛り上がります','画面下を流れるテロップ（ティッカー）に小ネタを仕込むと、気づいた人から笑いが広がります','速報のチャイムは著作権のない効果音を Premiere Pro で後から足しましょう'],
+p:`テレビのニュース番組の「速報」の雰囲気で、結婚式のオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：紺 #0B1D3A、ニュースの赤 #D7001D、白、黄色 #FFD400（強調）
+・フォント：Noto Sans JP（900/700）、数字は Roboto Condensed
+・画面の決まり：左上に番組ロゴ風の「WEDDING NEWS」と「LIVE」の赤いラベル、右上に時刻（本日の日付と時刻）、画面下に白い帯の見出しテロップと、その下に右から左へ流れるニュースのティッカー
+・シーン構成：
+　0:00〜0:10　放送が切り替わるように画面が乱れて、「ニュース速報」の赤い帯が上からスライド。チャイムが鳴るタイミングで帯が光る
+　0:10〜0:30　大きな見出し「速報　{T}さん　本日結婚へ」。背景はスタジオ風の青いグラデーションと世界地図の模様
+　0:30〜1:10　「ふたりの経歴」：新郎・新婦の写真に、ニュースの人物紹介のような名前と肩書きのテロップ（例「新郎　○○さん（30）会社員」）
+　1:10〜1:50　「なれそめ」の特集：ニュースのフリップ（白いボード）風に、出会い→交際→プロポーズを年表で
+　1:50〜2:30　「関係者の声」：友人・両親の写真に、インタビュー風のテロップ（例「新郎の友人は“正直、意外でした”と話しています」）
+　2:30〜2:50　中継：「会場から中継です」→ 会場の外観写真に「LIVE」と現地の時刻
+　2:50〜3:00　「このあと、ふたりが入場します。引き続き、お楽しみください」→ 番組のエンドカード
+・ティッカーの例：「ご祝儀袋の準備を」「スマホはマナーモードに」「このあと乾杯の予定」`,
+run(H,t){const S=H.abs({inset:'0',background:'radial-gradient(circle at 70% 40%,#1e4fd8,#0b1d3a 70%)'});S.style.backgroundImage+=',repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 1px,transparent 1px 80px)';
+  const ph=pho(H,S,820,140,640,420,'couple',1200,{borderRadius:'10px',border:'4px solid #fff'});
+  const lv=T(H,S,{left:'50px',top:'40px',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'30px',color:'#fff'},null,200,'fade');lv.innerHTML='WEDDING NEWS <span style="background:#d7001d;padding:2px 12px;margin-left:10px;font-size:22px">● LIVE</span>';
+  T(H,S,{right:'50px',top:'44px',fontFamily:F.sans,fontWeight:'700',fontSize:'26px',color:'#fff'},'本日 12:00',300,'fade');
+  const fl=H.abs({left:'0',top:'130px',height:'90px',background:'#d7001d',display:'flex',alignItems:'center',padding:'0 50px',fontFamily:F.sans,fontWeight:'900',fontSize:'52px',color:'#fff'},null,'ニュース速報');H.a(fl,[{transform:'translateX(-100%)'},{transform:'translateX(0)'}],{d:600,dl:400});H.a(fl,[{filter:'brightness(1)'},{filter:'brightness(1.6)'},{filter:'brightness(1)'}],{d:600,dl:1000,i:3,f:'none'});
+  const hb=H.abs({left:'0',right:'0',top:'640px',height:'150px',background:'#fff'});H.a(hb,[{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{d:500,dl:1800});hb.style.transformOrigin='left';
+  H.abs({left:'0',top:'0',width:'30px',height:'150px',background:'#d7001d'},hb);
+  T(H,hb,{left:'60px',top:'22px',fontFamily:F.sans,fontWeight:'900',fontSize:'66px',color:'#0b1d3a'},null,2200).innerHTML=`<span style="color:#d7001d">速報</span>　${t}さん　本日結婚へ`;
+  const tk=H.abs({left:'0',right:'0',top:'790px',height:'60px',background:'#0b1d3a',overflow:'hidden'});const tt=H.abs({left:'0',top:'10px',whiteSpace:'nowrap',fontFamily:F.sans,fontWeight:'700',fontSize:'30px',color:'#ffd400'},tk,'◆ ご祝儀袋のご準備を　◆ スマートフォンはマナーモードに　◆ このあと乾杯の予定　◆ 新郎、昨夜はよく眠れなかった模様　');H.a(tt,[{transform:'translateX(1600px)'},{transform:'translateX(-1800px)'}],{d:9000,dl:2500,e:E.lin})}});
+
+defW({no:'06',cat:'WSTREAM',name:'メッセージアプリ風',en:'Chat App',lead:'緑の吹き出しのメッセージアプリのように、ふたりのやりとりで物語が進む。「既読」にクスッ。',bg:'#8ab0d4',
+use:'<b>写真が少ないふたり</b>にもおすすめ。言葉だけで物語が作れるので、ふたりらしさがいちばん出ます。',
+tips:['実際のやりとりを元にすると、ふたりにしか作れないムービーになります（恥ずかしい所はほどほどに）','「既読」がつくまでの“間”が、笑いと感動を生みます','最後にゲストのグループトークに「本日はありがとう」を送る流れは、ほっこりします'],
+p:`スマートフォンのメッセージアプリ（緑の吹き出しのトーク画面）の雰囲気で、結婚式のオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・画面：16:9 の中央に、縦長のスマホ画面。左右は淡い水色のグラデーションに、ハートや花の線画がゆっくり漂う
+・トーク画面：上にアイコンと相手の名前の帯、背景は淡い青、右側に緑 #8DE055 の吹き出し（自分）、左側に白い吹き出し（相手）と丸いアイコン、吹き出しの横に小さく時刻と「既読」
+・フォント：Noto Sans JP（500）。メッセージは1つずつ、入力中の「…」が出てから表示される
+・シーン構成：
+　0:00〜0:15　スマホのロック画面に通知「新郎：明日、楽しみだね」→ タップしてトーク画面が開く
+　0:15〜1:20　出会った頃のやりとり（日付の区切り線「2019年4月10日」付き）：はじめてのメッセージ、デートの約束、ぎこちない敬語
+　1:20〜2:00　付き合ってからのやりとり：写真が送られてくる（思い出の写真3枚）、スタンプ風の大きな絵文字（オリジナルのイラスト）
+　2:00〜2:30　プロポーズの日のやりとり：「話があるんだけど」「…」（長い間）→「はい！」
+　2:30〜2:50　トーク画面が「ゲストのみなさん」というグループに切り替わり、ふたりから「本日は来てくれて、ありがとう！」→ ゲストの名前のアイコンから「おめでとう！」が次々と届く
+　2:50〜3:00　「まもなく、ふたりが入場します」の通知 → 画面が暗くなって終わる
+・実在のアプリのロゴやスタンプのキャラクターは使わない`,
+run(H,t){const [a,b]=nm(t);const ph=H.abs({left:'545px',top:'20px',width:'510px',height:'860px',borderRadius:'30px',overflow:'hidden',background:'#8ab0d4',border:'10px solid #111',boxSizing:'border-box'});
+  const hd=H.abs({left:'0',right:'0',top:'0',height:'80px',background:'rgba(255,255,255,.9)',display:'flex',alignItems:'center',padding:'0 24px',fontFamily:F.sans,fontWeight:'700',fontSize:'24px',color:'#222'},ph,'‹　'+b);
+  const msgs=[[0,'はじめまして！今日はありがとうございました','21:02'],[1,'こちらこそ！また、ごはん行きませんか？','21:05'],[0,'ぜひ！どこがいいですか？','21:06'],[1,'話があるんだけど','2024.12.24'],[1,'…','',1],[0,'はい！','',2]];
+  msgs.forEach((m,i)=>{const me=m[0]===0;const w=H.abs(Object.assign({top:110+i*118+'px',display:'flex',alignItems:'flex-end',gap:'8px',flexDirection:me?'row-reverse':'row'},me?{right:'18px'}:{left:'18px'}),ph);
+    if(!me)H.el('div',{width:'46px',height:'46px',borderRadius:'50%',background:'#d9e2ea',flex:'0 0 auto'},w);
+    H.el('div',{maxWidth:'310px',background:me?'#8de055':'#fff',borderRadius:'22px',padding:'14px 20px',fontFamily:F.sans,fontSize:m[3]===2?'40px':'22px',fontWeight:m[3]===2?'900':'500',lineHeight:'1.45',color:'#222'},w,m[1]);
+    H.el('div',{fontFamily:F.sans,fontSize:'14px',color:'#334',whiteSpace:'pre'},w,me?'既読\n'+m[2]:m[2]);
+    H.a(w,[{opacity:0,transform:'translateY(20px) scale(.9)'},{opacity:1,transform:'none'}],{d:400,dl:600+i*1300+(m[3]===2?800:0),e:E.back})});
+  for(let i=0;i<14;i++){const h=H.abs({left:pick([rnd(60,480),rnd(1120,1540)])+'px',top:rnd(0,900)+'px',fontSize:rnd(24,44)+'px',color:'rgba(255,255,255,.6)'},null,pick(['♡','✿']));H.a(h,[{transform:'translateY(0)'},{transform:'translateY(-80px)'}],{d:6000,dir:'alternate',i:Infinity,e:E.soft})}}});
+
+defW({no:'07',cat:'WGAME',name:'横スクロールアクションゲーム風',en:'Side-scrolling Action Game',lead:'「PRESS START」から始まる、ドット絵の横スクロールゲーム。思い出のステージをジャンプで進む。',bg:'#5c94fc',
+use:'<b>ゲーム好き・子どものゲストが多い披露宴</b>に。音楽が鳴った瞬間に、世代を問わず笑顔になれる演出です。',
+tips:['ステージ名を「WORLD 1-1 出会い」「WORLD 2-1 初デート」のようにすると、ゲーム好きが反応します','コインの代わりに「♥」を集めると、結婚式らしくなります','実在のゲームのキャラクター・ブロックの柄・音楽は使わず、オリジナルのドット絵にしましょう'],
+p:`昔の家庭用ゲーム機の横スクロールアクションゲームの雰囲気で、結婚式のオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・見た目：ドット絵（1ドット＝6px、くっきり表示）。空は青 #5C94FC、地面はレンガ色のブロック、白い雲、緑の丘
+・フォント：英字は Press Start 2P、日本語は DotGothic16
+・シーン構成：
+　0:00〜0:15　タイトル画面：ドット文字の大きなタイトル「{T}」、「1P 新郎　2P 新婦」の選択、「PRESS START」が点滅 → 決定
+　0:15〜0:25　黒い画面に「WORLD 1-1　出会い」と残りの人数「×2」
+　0:25〜1:00　ステージ1：新郎のキャラクターが右へ走り、ジャンプしてブロックを叩くと「♥」が飛び出す。画面上に「SCORE」「♥×00」「TIME」。思い出の写真が看板のように背景に立っている
+　1:00〜1:40　「WORLD 2-1　はじめてのデート」：新婦のキャラクターと合流して、ふたりで走る。写真入りの土管やブロック
+　1:40〜2:20　「WORLD 3-1　プロポーズ」：お城の前で、新郎が指輪を見せる → 花火
+　2:20〜2:45　「COURSE CLEAR!」とスコアの集計（♥の数がカウントアップ）
+　2:45〜3:00　「NEXT STAGE：披露宴」→「PRESS START で入場」が点滅して終わる
+・実在のゲームのキャラクター、ブロックやアイテムのデザイン、ロゴ、音楽は使わない`,
+run(H,t){const S=H.abs({inset:'0',background:'#5c94fc',imageRendering:'pixelated'});
+  const ground=H.abs({left:'0',top:'780px',width:'3200px',height:'120px',background:'#c84c0c',backgroundImage:'linear-gradient(90deg,rgba(0,0,0,.35) 4px,transparent 4px),linear-gradient(rgba(0,0,0,.35) 4px,transparent 4px)',backgroundSize:'60px 60px'},S);
+  const world=H.abs({left:'0',top:'0',width:'3200px',height:'900px'},S);world.appendChild(ground);
+  [[200,200],[900,150],[1700,220],[2500,170]].forEach(q=>H.abs({left:q[0]+'px',top:q[1]+'px',width:'180px',height:'50px',borderRadius:'30px',background:'#fff',boxShadow:'50px -24px 0 0 #fff,100px 0 0 0 #fff'},world));
+  [[500,'hill'],[1300,'hill'],[2200,'hill']].forEach(q=>H.abs({left:q[0]+'px',top:'640px',width:'280px',height:'140px',borderRadius:'140px 140px 0 0',background:'#00a800'},world));
+  [[700,540],[760,540],[820,540],[1500,540],[2300,500]].forEach((q,i)=>{const bl=H.abs({left:q[0]+'px',top:q[1]+'px',width:'60px',height:'60px',background:i===1||i===3?'#ffb30f':'#c84c0c',border:'4px solid #000',boxSizing:'border-box',color:'#000',fontFamily:F.dot,fontSize:'36px',textAlign:'center',lineHeight:'52px'},world,i===1||i===3?'?':'');});
+  [[1000,600],[1060,600],[1120,600],[1900,560],[1960,560]].forEach(q=>{const h=H.abs({left:q[0]+'px',top:q[1]+'px',fontFamily:F.dot,fontSize:'44px',color:'#ff2a6d'},world,'♥');H.a(h,[{translate:'0 0'},{translate:'0 -10px'}],{d:400,dir:'alternate',i:Infinity,f:'none'})});
+  const sg=pho(H,world,1600,400,240,180,'couple',null,{border:'8px solid #8b5a2b'});H.abs({left:'1700px',top:'580px',width:'40px',height:'200px',background:'#8b5a2b'},world);
+  H.a(world,[{transform:'translateX(0)'},{transform:'translateX(-1600px)'}],{d:10000,e:E.lin});
+  const pl=H.abs({left:'360px',top:'702px',width:'60px',height:'78px'});H.abs({left:'12px',top:'0',width:'36px',height:'30px',background:'#f0c9a8',boxShadow:'0 -12px 0 #d12'},pl);H.abs({left:'6px',top:'30px',width:'48px',height:'36px',background:'#2a4bd9'},pl);H.abs({left:'6px',top:'66px',width:'18px',height:'12px',background:'#6a3a10',boxShadow:'30px 0 0 #6a3a10'},pl);
+  H.a(pl,[{transform:'translateY(0)'},{transform:'translateY(-220px)',offset:.5},{transform:'translateY(0)'}],{d:900,dl:1600,i:4,f:'none',e:'cubic-bezier(.3,0,.7,1)'});
+  const hud=H.abs({left:'60px',right:'60px',top:'30px',display:'flex',justifyContent:'space-between',fontFamily:F.dot,fontSize:'34px',color:'#fff',textShadow:'3px 3px 0 #000'},null);H.el('div',{},hud,'SCORE 002025');H.el('div',{},hud,'♥×12');H.el('div',{},hud,'WORLD 1-1 出会い');H.el('div',{},hud,'TIME 300');
+  const ti=H.abs({inset:'0',background:'#000',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'30px'});H.el('div',{fontFamily:F.dot,fontSize:'96px',color:'#fff',textShadow:'6px 6px 0 #d12'},ti,t.toUpperCase());const ps=H.el('div',{fontFamily:F.dot,fontSize:'40px',color:'#fff'},ti,'PRESS START');H.a(ps,[{opacity:1},{opacity:0}],{d:350,i:Infinity,dir:'alternate'});H.a(ti,[{opacity:1},{opacity:1,offset:.9},{opacity:0}],{d:1500,f:'forwards'})}});
+
+defW({no:'08',cat:'WGAME',name:'天気予報風',en:'Weather Forecast',lead:'「本日の天気 晴れのち、幸せ」。テレビの天気予報の地図とアイコンで、ほっこり笑える。',bg:'#dfeefa',
+use:'<b>和やかな雰囲気にしたい披露宴、親族中心の会</b>に。誰にでも伝わるやさしい笑いのオープニングです。',
+tips:['「降水確率（うれし涙）80%」「新郎の緊張指数」など、天気の言葉をもじると楽しくなります','地図には、ふたりの出身地と式場をピンで示すと、遠方のゲストが喜びます','天気キャスターの代わりに、ふたりの写真を右下にワイプで出す演出も人気です'],
+p:`テレビの天気予報の雰囲気で、結婚式のオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：空色 #DFEEFA、地図の緑 #A8D5A2、海の青 #7FB8E6、白、太陽のオレンジ #FFB020、雨の青 #3D7BE0
+・フォント：Noto Sans JP（900/500）、数字は Roboto
+・画面の決まり：左上に「ウェディング天気」のロゴ、右上に日付と時刻、天気アイコンは丸くかわいいオリジナルのイラスト
+・シーン構成：
+　0:00〜0:15　お天気コーナーのオープニング：雲が左右に開いて、タイトル「本日のウェディング天気」
+　0:15〜0:50　全国の天気：日本地図（簡略化したもの）に、新郎の出身地・新婦の出身地・式場の場所にピンと天気アイコン。式場には大きな太陽と「晴れのち幸せ」
+　0:50〜1:30　週間予報：ふたりの交際の歴史を、7日間の天気のように並べる（例「出会い：晴れ」「遠距離：くもり」「プロポーズ：快晴」）。各日に写真のワイプ
+　1:30〜2:10　本日の詳しい予報：「降水確率（うれし涙）80%」「新郎の緊張指数 MAX」「笑顔の湿度 100%」などを、グラフや針のメーターで
+　2:10〜2:40　ふたりのコメント：写真のワイプと「おでかけには、ハンカチをお持ちください」
+　2:40〜3:00　「このあと、ふたりが入場します。引き続き、快晴の一日をお楽しみください」→ 雲が閉じて終わる`,
+run(H,t){const S=H.abs({inset:'0',background:'linear-gradient(#dfeefa,#f6fbff)'});
+  T(H,S,{left:'50px',top:'36px',fontFamily:F.sans,fontWeight:'900',fontSize:'40px',color:'#1e4f8a'},'ウェディング天気',200,'left');T(H,S,{right:'50px',top:'40px',fontFamily:F.sans,fontWeight:'700',fontSize:'30px',color:'#1e4f8a'},'本日 11:30',300,'fade');
+  const mp=R(H,S,{left:'60px',top:'130px',width:'760px',height:'700px',borderRadius:'20px',background:'#7fb8e6',overflow:'hidden'},400,'fade');const sv=H.svg(760,700,mp);H.sv('path',{d:'M520,60 C600,60 640,120 600,180 C560,230 520,230 500,300 C480,360 420,380 380,430 C330,490 260,500 210,560 C170,610 120,630 90,600 C60,570 110,520 160,480 C220,430 260,400 300,350 C340,300 380,280 420,220 C460,160 450,60 520,60 Z',fill:'#a8d5a2',stroke:'#fff','stroke-width':4},sv);
+  const ic=(x,y,k,lab,dl)=>{const w=R(H,mp,{left:x+'px',top:y+'px',width:'110px',textAlign:'center'},dl,'pop');H.el('div',{fontSize:'64px',lineHeight:'1',color:k==='s'?'#ffb020':'#fff',textShadow:'0 2px 6px rgba(0,0,0,.2)'},w,k==='s'?'☀':'☁');H.el('div',{fontFamily:F.sans,fontWeight:'900',fontSize:'20px',color:'#fff',textShadow:'0 1px 4px rgba(0,0,0,.4)'},w,lab)};
+  ic(470,90,'c','新郎の町',900);ic(120,470,'c','新婦の町',1100);const big=R(H,mp,{left:'280px',top:'260px',width:'200px',textAlign:'center'},1400,'pop');H.el('div',{fontSize:'130px',lineHeight:'1',color:'#ffb020',textShadow:'0 0 40px #fff'},big,'☀');H.el('div',{fontFamily:F.sans,fontWeight:'900',fontSize:'26px',color:'#fff',background:'#ff6b5a',borderRadius:'999px',padding:'4px 0'},big,'式場');H.a(big.firstChild,[{rotate:'0deg'},{rotate:'360deg'}],{d:12000,i:Infinity,e:E.lin,f:'none'});
+  const card=R(H,S,{left:'860px',top:'130px',width:'680px',height:'700px',borderRadius:'20px',background:'#fff',boxShadow:'0 10px 30px rgba(30,79,138,.15)'},600,'up');
+  T(H,card,{left:'40px',top:'36px',fontFamily:F.sans,fontWeight:'900',fontSize:'42px',color:'#1e4f8a'},'本日の天気',1800);T(H,card,{left:'40px',top:'100px',fontFamily:F.sans,fontWeight:'900',fontSize:'64px',color:'#ff8a00'},'晴れのち、幸せ',2100,'pop');
+  [['降水確率（うれし涙）','80%','#3d7be0'],['新郎の緊張指数','MAX','#ff5a5a'],['笑顔の湿度','100%','#1aa36f']].forEach((q,i)=>{T(H,card,{left:'40px',top:250+i*110+'px',fontFamily:F.sans,fontWeight:'500',fontSize:'30px',color:'#333'},q[0],2600+i*400,'left');T(H,card,{right:'40px',top:236+i*110+'px',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'52px',color:q[2]},q[1],2800+i*400,'pop')});
+  T(H,card,{left:'40px',top:'600px',width:'600px',whiteSpace:'normal',fontFamily:F.sans,fontSize:'24px',color:'#555'},'おでかけには、ハンカチをお持ちください。'+t+' より',4400,'fade')}});
+
+/* WSTORY：映画・物語風 */
+defW({no:'09',cat:'WSTORY',name:'映画の予告編風',en:'Movie Trailer',lead:'黒い画面に白い文字、「この秋、ふたりの物語が――」。ハリウッド映画の予告編のような王道。',bg:'#000',
+use:'<b>しっとり＆かっこよく始めたいふたり</b>に。BGMを壮大な曲にすれば、会場が一気に映画館になります。',
+tips:['文字だけの黒い画面と写真を交互に見せるのが、予告編らしさのいちばんのコツ','文字は短く。「この秋——」「ふたりの物語が——」「ついに、完結する」のように3つに分けます','最後は「本日公開」と日付。ここで拍手が起きるよう、少し長めに止めます'],
+p:`ハリウッド映画の予告編の雰囲気で、結婚式のオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・見た目：上下に黒い帯（シネマスコープ 2.39:1）、写真はシネマ風の色（暗部は青緑、明部はオレンジ）、フィルムのざらつき、光のにじみ
+・フォント：英字は Cinzel（700）、日本語は Shippori Mincho B1（800）
+・シーン構成：
+　0:00〜0:08　最初に、予告編の前に出る緑の画面の代わりに、白い枠の「この予告編は、すべてのゲストのみなさまに向けて上映されます」の案内カード
+　0:08〜0:30　黒い画面に白い文字が1つずつ：「誰にでも、運命の出会いがある。」→ 写真（新郎の子どもの頃）→「そして——」
+　0:30〜1:30　写真と文字が交互に、だんだん速く：新郎の生い立ち／新婦の生い立ち／ふたりの出会い／ケンカ／旅行／プロポーズ。写真は2秒ずつ、ゆっくり寄りながら。途中で一度、画面が真っ白に光って止まる「間」を入れる
+　1:30〜2:15　キャストの紹介：「主演 ○○（新郎）」「主演 ○○（新婦）」「友情出演 ゲストのみなさま」「特別出演 両家の家族」を、写真と一緒に重厚な文字で
+　2:15〜2:40　タイトル：黒い画面から光が差して、金色の文字でふたりの名前のタイトル「{T}」が浮かび上がる
+　2:40〜3:00　「本日、公開。」と日付・会場名 → 一度暗転して、小さく「上映開始まで、あと少し。」→ 終わり`,
+run(H,t){const S=H.abs({inset:'0',background:'#000'});
+  const card=H.abs({inset:'0',display:'flex',alignItems:'center',justifyContent:'center'},S);const cc=H.el('div',{border:'3px solid #fff',padding:'40px 70px',fontFamily:F.min,fontWeight:'800',fontSize:'36px',color:'#fff',textAlign:'center',lineHeight:'1.7'},card,'この予告編は、\nすべてのゲストのみなさまに向けて上映されます');cc.style.whiteSpace='pre-line';H.a(card,[{opacity:0},{opacity:1,offset:.15},{opacity:1,offset:.85},{opacity:0}],{d:2200,f:'forwards'});
+  const cine=H.abs({inset:'0',opacity:0});H.a(cine,[{opacity:0},{opacity:1}],{d:10,dl:2300});const p1=pho(H,cine,0,0,1600,900,'boy');p1.style.filter='saturate(.7) contrast(1.1) sepia(.2)';kb(H,p1,2300,2500);H.a(p1,[{opacity:1},{opacity:1,offset:.9},{opacity:0}],{d:2600,dl:2300,f:'both'});
+  const p2=pho(H,cine,0,0,1600,900,'couple');p2.style.filter='saturate(.8) contrast(1.1)';p2.style.opacity=0;H.a(p2,[{opacity:0},{opacity:1}],{d:600,dl:5000});kb(H,p2,5000,3000);
+  H.abs({left:'0',right:'0',top:'0',height:'115px',background:'#000'},cine);H.abs({left:'0',right:'0',bottom:'0',height:'115px',background:'#000'},cine);
+  const tx=(s,a,b,sz)=>{const e=H.abs({left:'0',right:'0',top:'390px',textAlign:'center',fontFamily:F.min,fontWeight:'800',fontSize:(sz||60)+'px',color:'#fff',letterSpacing:'.15em',textShadow:'0 0 20px rgba(0,0,0,.8)',opacity:0},cine,s);fadeIO(H,e,a,b,400)};
+  tx('誰にでも、運命の出会いがある。',2500,4700,52);tx('そして——',5100,6300);
+  const ttl=H.abs({left:'0',right:'0',top:'330px',textAlign:'center',fontFamily:"'Cinzel',serif",fontWeight:'700',fontSize:'120px',letterSpacing:'.08em',background:'linear-gradient(100deg,#8a6a2f,#f6e3a8 45%,#c9a24b 60%,#8a6a2f)',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent',opacity:0},null,t.toUpperCase());
+  const bk=H.abs({inset:'0',background:'#000',opacity:0});H.a(bk,[{opacity:0},{opacity:1}],{d:600,dl:7000});H.S.appendChild(ttl);H.a(ttl,[{opacity:0,filter:'blur(12px)'},{opacity:1,filter:'blur(0)'}],{d:1200,dl:7500});
+  const rl=H.abs({left:'0',right:'0',top:'520px',textAlign:'center',fontFamily:F.min,fontWeight:'800',fontSize:'44px',letterSpacing:'.4em',color:'#fff',opacity:0},null,'本日、公開。');H.a(rl,[{opacity:0},{opacity:1}],{d:800,dl:8400})}});
+
+defW({no:'10',cat:'WSTORY',name:'飛び出す絵本風',en:'Storybook',lead:'「むかしむかし、あるところに…」。手描き風の絵本がめくれて、ふたりの物語が始まる。',bg:'#efe4d0',
+use:'<b>子どものゲストが多い披露宴、やさしい雰囲気にしたいふたり</b>に。年配のゲストにも伝わりやすい、温かいオープニングです。',
+tips:['文字は手書き風のフォント（Klee One）にすると、絵本らしさが一気に出ます','写真は角を少し丸めて、マスキングテープで貼ったように見せるとかわいくなります','ナレーションをふたりの声で録音して、Premiere Pro で重ねるのもおすすめです'],
+p:`手描きの絵本がめくれていく雰囲気で、結婚式のオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・見た目：木の机の上に置いた、開いた絵本を真上から見た構図。紙はクリーム色で、ほんのり紙の質感。絵は色えんぴつ・水彩風のやさしいタッチ（Canvas で描く）
+・フォント：Klee One（600）。文章はひらがな多めの絵本の言葉で、1文字ずつ浮かぶように表示
+・ページのめくり：右ページが左へめくれる立体的な動き（ページの影とたわみ付き）
+・シーン構成（見開き1つ15〜20秒）：
+　0:00〜0:15　表紙：布張りの表紙に、金の箔押し風のタイトル「ふたりの ものがたり」と「{T}」。表紙が開く
+　0:15〜0:35　「むかしむかし、あるところに、げんきな おとこのこが いました」＋新郎の子どもの頃の写真（マスキングテープで貼ったように）
+　0:35〜0:55　「となりの まちには、えがおの すてきな おんなのこが いました」＋新婦の写真
+　0:55〜1:50　出会い・初デート・プロポーズを3つの見開きで。各ページに写真と、手描きの小さな絵（花・星・ハート）が少しずつ描かれていく
+　1:50〜2:30　「ふたりは、たくさんの ひとに ささえられて おおきく なりました」＋家族・友人の写真をアルバムのように数枚
+　2:30〜2:50　「そして きょう、ふたりは けっこんします」の見開き。ページから花びらが舞い上がる
+　2:50〜3:00　最後のページ「つづきは、このあと ほんぺんで」→ 本が閉じて終わる`,
+run(H,t){const S=H.abs({inset:'0',background:'repeating-linear-gradient(90deg,#b98b5e 0 120px,#a97b4e 120px 124px)'});
+  const bk=H.abs({left:'160px',top:'90px',width:'1280px',height:'720px',background:'#6b3a2a',borderRadius:'14px',boxShadow:'0 30px 60px rgba(0,0,0,.35)'},S);
+  const L=H.abs({left:'20px',top:'20px',width:'620px',height:'680px',background:'linear-gradient(90deg,#fbf5e6 85%,#e8dcc0)',borderRadius:'6px 0 0 6px'},bk);const Rp=H.abs({left:'640px',top:'20px',width:'620px',height:'680px',background:'linear-gradient(90deg,#e8dcc0,#fbf5e6 15%)',borderRadius:'0 6px 6px 0'},bk);
+  const p=pho(H,L,110,90,400,300,'boy',800,{rotate:'-3deg',boxShadow:'0 6px 14px rgba(0,0,0,.15)'});H.abs({left:'250px',top:'70px',width:'120px',height:'34px',background:'rgba(255,200,120,.7)',rotate:'4deg'},L);
+  const tx=H.abs({left:'70px',top:'440px',width:'480px',fontFamily:"'Klee One',serif",fontWeight:'600',fontSize:'36px',lineHeight:'1.8',color:'#5a4030'},L);const msg='むかしむかし、あるところに、げんきな おとこのこが いました。';let i=0;const ch=[...msg];H.wait(1200,function tk(){if(i<ch.length){tx.textContent+=ch[i++];H.wait(70,tk)}});
+  const p2=pho(H,Rp,110,90,400,300,'girl',null,{rotate:'3deg',boxShadow:'0 6px 14px rgba(0,0,0,.15)'});T(H,Rp,{left:'70px',top:'440px',width:'480px',whiteSpace:'normal',fontFamily:"'Klee One',serif",fontWeight:'600',fontSize:'36px',lineHeight:'1.8',color:'#5a4030'},'となりの まちには、えがおの すてきな おんなのこが いました。',4600,'fade');
+  const fl=H.abs({left:'640px',top:'20px',width:'620px',height:'680px',background:'#fbf5e6',transformOrigin:'0 50%',borderRadius:'0 6px 6px 0',boxShadow:'0 0 40px rgba(0,0,0,.25)'},bk);H.abs({left:'0',right:'0',top:'260px',textAlign:'center',fontFamily:"'Klee One',serif",fontWeight:'600',fontSize:'44px',color:'#b9875a'},fl,t);
+  H.a(fl,[{transform:'perspective(2400px) rotateY(0deg)'},{transform:'perspective(2400px) rotateY(-180deg)'}],{d:1400,dl:3600,e:E.io});H.a(fl,[{opacity:1},{opacity:0}],{d:10,dl:4300});
+  for(let k=0;k<12;k++){const f=H.abs({left:rnd(300,1300)+'px',top:'800px',width:'18px',height:'14px',borderRadius:'50% 0',background:pick(['#ffb3c7','#ffd28a','#fff'])},null);H.a(f,[{opacity:0,transform:'translateY(0) rotate(0)'},{opacity:1},{opacity:0,transform:`translateY(-${rnd(400,700)}px) rotate(${rnd(200,500)}deg)`}],{d:3000,dl:6500+rnd(0,2000)})}}});
+
+/* ===== WEDDING PROFILE 01-10 ===== */
+CUR_SEC='f';
+const PCHAP=`　・オープニング（20秒）：タイトルとふたりの名前
+　・新郎の生い立ち（約2分）：写真15枚、1枚6〜8秒。年齢・年号とコメント付き
+　・新婦の生い立ち（約2分）：写真15枚、同じ形で
+　・ふたりの歩み（約1分30秒）：出会い〜プロポーズまで、写真10枚
+　・ゲストへの感謝（約40秒）：メッセージと、ゲストとの写真
+　・エンディング（10秒）：「これからも よろしくお願いします」と日付`;
+
+/* WSTREAM：配信・SNS風 */
+defW({no:'01',cat:'WSTREAM',name:'配信サービス風「ドキュメンタリーシリーズ」',en:'Streaming Docuseries',lead:'あの配信サービスのドキュメンタリーのように、生い立ちが「エピソード一覧」になって再生されていく。',
+use:'<b>いちばん人気の“配信サービス風”のプロフィール</b>に。オープニング No.01 と合わせると、シリーズ物として統一できます。',
+tips:['エピソード名を「第1話 誕生」「第4話 反抗期」のように付けると、笑いと共感が生まれます','各話の「再生時間」に年齢を入れる（例「0〜6歳」）と分かりやすい','最終話を「第10話 本日」にして、エンディングで“続きは本日の披露宴で”と締めましょう'],
+p:`動画配信サービスのドキュメンタリーシリーズの作品ページとエピソード一覧の雰囲気で、結婚式のプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：黒 #141414、赤 #E50914 に近い赤（進行バー・選択枠だけ）、白、グレー #B3B3B3
+・フォント：英字は Bebas Neue、日本語は Noto Sans JP（700/400）
+・全体の流れ：
+${PCHAP}
+・見た目の決まり：
+　1. 新郎・新婦それぞれの章の始まりは「作品ページ」：背景いっぱいに子どもの頃の写真、左にシリーズ名（例「新郎 ○○ ── 誕生から今日まで」）、「全5話」、短いあらすじ
+　2. 続いて「エピソード一覧」：左にサムネイル（写真）、右に「第1話 誕生（1995年）」のようなタイトル・1行のあらすじ・「0〜3歳」の時間表示。今のエピソードに赤い枠と、サムネイルの下に赤い進行バー
+　3. エピソードが選ばれると、その写真が全画面で再生されるように大きくなり、下に字幕風のコメント（白い文字、黒いふち）
+　4. ふたりの章は「シーズン2：ふたりの物語」として同じ形で
+　5. 最後は「すべてのエピソードを視聴しました」→「シーズン3 制作決定。」と日付`,
+run(H,t){const [a,b]=nm(t);const S=H.abs({inset:'0',background:'#141414'});
+  T(H,S,{left:'70px',top:'50px',fontFamily:"'Bebas Neue',sans-serif",fontSize:'28px',letterSpacing:'.3em',color:'#e50914'},'DOCUSERIES',200,'fade');T(H,S,{left:'66px',top:'84px',fontFamily:F.sans,fontWeight:'900',fontSize:'60px',color:'#fff'},`新郎 ${a} ── 誕生から今日まで`,400);
+  T(H,S,{left:'70px',top:'170px',fontFamily:F.sans,fontSize:'24px',color:'#b3b3b3'},null,600,'fade').innerHTML='<span style="color:#46d369;font-weight:700">マッチ度99%</span>　全5話　1995-2025';
+  const eps=[['第1話　誕生','0〜3歳','元気な産声とともに。','baby'],['第2話　わんぱく時代','4〜12歳','虫取りと自転車の毎日。','boy'],['第3話　青春','13〜18歳','部活に打ち込んだ3年間。','boy'],['第4話　旅立ち','19〜25歳','初めての一人暮らし。','man']];
+  eps.forEach((e,i)=>{const y=240+i*150;const row=R(H,S,{left:'70px',top:y+'px',width:'1460px',height:'130px',borderRadius:'8px',background:i===1?'#2a2a2a':'transparent'},800+i*200,'left');pho(H,row,14,10,200,112,e[3],null,{borderRadius:'6px'});
+    H.el('div',{position:'absolute',left:'240px',top:'18px',fontFamily:F.sans,fontWeight:'700',fontSize:'30px',color:'#fff'},row,e[0]);H.el('div',{position:'absolute',left:'240px',top:'66px',fontFamily:F.sans,fontSize:'22px',color:'#b3b3b3'},row,e[2]);H.el('div',{position:'absolute',right:'30px',top:'22px',fontFamily:F.sans,fontSize:'24px',color:'#b3b3b3'},row,e[1]);
+    const pb=H.el('div',{position:'absolute',left:'14px',top:'118px',width:'200px',height:'5px',background:'#555'},row);const f=H.el('div',{height:'100%',background:'#e50914',transformOrigin:'left'},pb);H.a(f,[{transform:'scaleX(0)'},{transform:`scaleX(${i<1?1:i===1?.6:0})`}],{d:1500,dl:1800})});
+  const fs=H.abs({inset:'0',opacity:0});H.a(fs,[{opacity:0,transform:'scale(.4) translate(-300px,-60px)'},{opacity:1,transform:'none'}],{d:900,dl:5200,e:E.io});const ph=pho(H,fs,0,0,1600,900,'boy');kb(H,ph,5200,4800);
+  H.abs({left:'0',right:'0',top:'740px',textAlign:'center',fontFamily:F.sans,fontWeight:'900',fontSize:'46px',color:'#fff',textShadow:OUT},fs,'8歳　夏休みは毎日、虫取りでした');H.abs({left:'60px',top:'50px',fontFamily:F.sans,fontWeight:'700',fontSize:'30px',color:'#fff',textShadow:'0 2px 6px #000'},fs,'第2話　わんぱく時代')}});
+
+defW({no:'02',cat:'WSTREAM',name:'写真SNSのフィード風',en:'Social Feed',lead:'写真共有SNSのプロフィール画面のように。投稿をたどると、ふたりの成長記録になっている。',bg:'#fff',
+use:'<b>写真がたくさんあるふたり、SNS世代のゲストが多い披露宴</b>に。「いいね」の数やコメントで、自然に笑いが生まれます。',
+tips:['投稿のキャプションにハッシュタグ（#1995 #誕生 #初めての笑顔）を付けると、SNSらしさが一気に出ます','「いいね」の数を年齢や体重にするなど、数字で小ネタを仕込むのがおすすめ','コメント欄に、家族や友人の名前で「この頃から食いしん坊」などを入れると会場が沸きます'],
+p:`写真共有SNSのプロフィール画面と投稿の雰囲気で、結婚式のプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・画面：16:9 の中央に、縦長のスマホ画面（9:16）。左右の余白は、今の投稿の写真を大きくぼかして敷く
+・配色：白・黒・グレー #8E8E8E、ハートの赤 #FF3040、アイコンの枠はピンク〜オレンジ〜紫のグラデーション
+・フォント：Noto Sans JP（700/400）、英字は Montserrat
+・全体の流れ：
+${PCHAP}
+・見た目の決まり：
+　1. 章の始まりは「プロフィール画面」：丸いアイコン、アカウント名（例「nobu_1995」）、「投稿 15　フォロワー ○○　フォロー ○○」（数字はネタにしてよい：フォロワー＝家族の人数など）、自己紹介文（出身地・趣味・好きな食べ物）、その下に写真の3列グリッド
+　2. グリッドの写真が1枚ずつタップされて「投稿画面」になる：上にアカウント名、正方形の写真、♥・コメント・送信のアイコン、「いいね！○○件」、キャプション（コメント＋ハッシュタグ）、「コメント○件をすべて見る」と、家族や友人からのコメント1〜2件
+　3. 投稿が表示されると、少し遅れてハートがダブルタップされたように大きく弾む
+　4. ふたりの章は、ふたりの共同アカウント（例「nobu_yui_wedding」）として同じ形で
+　5. 最後は「新しい投稿があります」→ 結婚式の日付の投稿「今日、結婚しました。」に「いいね！」が増え続けて終わる
+・実在のSNSのロゴは使わない`,
+run(H,t){const [a,b]=nm(t);const bg=pho(H,null,0,0,1600,900,'boy');bg.style.filter='blur(30px) brightness(.85)';bg.style.transform='scale(1.2)';
+  const ph=H.abs({left:'545px',top:'20px',width:'510px',height:'860px',borderRadius:'26px',overflow:'hidden',background:'#fff',boxShadow:'0 30px 80px rgba(0,0,0,.4)'});
+  const pf=H.abs({inset:'0'},ph);const av=H.abs({left:'24px',top:'40px',width:'110px',height:'110px',borderRadius:'50%',border:'4px solid transparent',background:'linear-gradient(#fff,#fff) padding-box,linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf) border-box'},pf);pho(H,av,6,6,90,90,'boy',null,{borderRadius:'50%'});
+  [['15','投稿'],['4','フォロワー'],['1','フォロー']].forEach((q,i)=>{const c=H.abs({left:170+i*110+'px',top:'62px',width:'100px',textAlign:'center',fontFamily:F.sans,color:'#222'},pf);H.el('div',{fontWeight:'900',fontSize:'30px'},c,q[0]);H.el('div',{fontSize:'16px'},c,q[1])});
+  H.abs({left:'24px',top:'170px',fontFamily:F.sans,fontWeight:'700',fontSize:'20px',color:'#222'},pf,a.toLowerCase()+'_1995');H.abs({left:'24px',top:'198px',width:'460px',fontFamily:F.sans,fontSize:'17px',lineHeight:'1.5',color:'#333'},pf,'〇〇県出身｜趣味：キャンプ｜好物：からあげ');
+  const ks=['baby','boy','boy','boy','man','man','man','couple','man'];ks.forEach((k,i)=>{const c=pho(H,pf,(i%3)*170,270+Math.floor(i/3)*170,168,168,k);H.a(c,[{opacity:0},{opacity:1}],{d:300,dl:500+i*120})});
+  const post=H.abs({inset:'0',background:'#fff',opacity:0},ph);H.a(post,[{opacity:0,transform:'translateY(40px)'},{opacity:1,transform:'none'}],{d:500,dl:3800});
+  H.abs({left:'20px',top:'24px',fontFamily:F.sans,fontWeight:'700',fontSize:'20px',color:'#222'},post,a.toLowerCase()+'_1995');const pp=pho(H,post,0,70,510,510,'boy');kb(H,pp,4000,6000);
+  H.abs({left:'20px',top:'596px',fontSize:'34px',color:'#222'},post,'♡　💬　➤');H.abs({left:'20px',top:'650px',fontFamily:F.sans,fontWeight:'700',fontSize:'20px',color:'#222'},post,'いいね！ 1,995件');
+  H.abs({left:'20px',top:'684px',width:'470px',fontFamily:F.sans,fontSize:'19px',lineHeight:'1.5',color:'#222'},post,'8歳。夏休みは毎日、虫取り。 #1995 #わんぱく #今と同じ顔').style.whiteSpace='normal';
+  H.abs({left:'20px',top:'770px',fontFamily:F.sans,fontSize:'17px',color:'#8e8e8e'},post,'母：この頃から食いしん坊でした');
+  const ht=H.abs({left:'155px',top:'225px',fontSize:'200px',color:'#fff',textShadow:'0 4px 20px rgba(0,0,0,.3)',opacity:0},post,'♥');H.a(ht,[{opacity:0,transform:'scale(.2)'},{opacity:1,transform:'scale(1.15)',offset:.3},{opacity:1,transform:'scale(1)',offset:.6},{opacity:0,transform:'scale(1)'}],{d:1200,dl:5200})}});
+
+/* WGAME：ゲーム・番組風 */
+defW({no:'03',cat:'WGAME',name:'レトロRPG風「ぼうけんのきろく」',en:'Retro RPG Status',lead:'ステータス画面とレベルアップで生い立ちを紹介。「Lv.8 むしとりの わざを おぼえた！」',bg:'#000',
+use:'<b>ゲーム好きのふたり</b>に。オープニング No.04 と合わせると、RPGの世界観で統一できます。',
+tips:['年齢＝レベルにすると、自然に生い立ちの順番になります','「おぼえた わざ」に特技や資格を入れると、自己紹介がそのままゲームのネタになります','ステータスの数値（やさしさ 999 など）は、家族や友人に決めてもらうと盛り上がります'],
+p:`昔の携帯ゲーム機のRPGのステータス画面と冒険の記録の雰囲気で、結婚式のプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・見た目：ドット絵（くっきり表示）。黒い背景に、白い二重線の角丸ウィンドウ。色数は少なめのレトロな配色
+・フォント：DotGothic16。文章は「ひらがな＋全角スペース」で、1文字ずつ表示
+・全体の流れ：
+${PCHAP}
+・見た目の決まり：
+　1. 章の始まりは「キャラクターせんたく」画面：新郎（または新婦）のドット絵と、「なまえ：○○」「しゅっしん：○○」「タイプ：やさしい／くいしんぼう」
+　2. 写真1枚ごとに「レベルアップ画面」：左に写真（ドット絵風の枠）、右にステータスのウィンドウ
+　　・「Lv.8（8さい）」とレベルの数字がカウントアップ
+　　・ステータス（ちから・すばやさ・かしこさ・やさしさ）のバーが伸びる
+　　・下のメッセージウィンドウに「むしとりの わざを おぼえた！」のような、その年のエピソード
+　3. 大きな出来事（入学・卒業・就職）は「イベント発生！」と画面が光る
+　4. ふたりの章は「なかまに なった！」から始まり、ふたり並んだステータス画面に
+　5. 最後は「ぼうけんの きろくを かきこみますか？ ▶はい いいえ」→「はい」→ 日付とメッセージ
+・実在のゲームのキャラクター、ロゴ、効果音は使わない`,
+run(H,t){const [a,b]=nm(t);const S=H.abs({inset:'0',background:'#000'});const win=(x,y,w,h)=>H.abs({left:x+'px',top:y+'px',width:w+'px',height:h+'px',border:'6px solid #fff',borderRadius:'12px',boxShadow:'inset 0 0 0 4px #000,inset 0 0 0 8px #fff'},S);
+  const pw=win(70,60,620,520);const ph=pho(H,pw,24,24,560,460,'boy');ph.style.imageRendering='pixelated';ph.style.filter='contrast(1.2)';
+  const sw=win(740,60,790,520);const lv=H.abs({left:'40px',top:'30px',fontFamily:F.dot,fontSize:'52px',color:'#fff'},sw);let n=0;const tick=()=>{if(n<8){n++;lv.textContent=`${a.toUpperCase()}　Lv.${n}`;H.wait(220,tick)}};lv.textContent=`${a.toUpperCase()}　Lv.0`;H.wait(600,tick);
+  [['ちから',.55],['すばやさ',.8],['かしこさ',.4],['やさしさ',.95]].forEach((q,i)=>{H.abs({left:'40px',top:140+i*80+'px',fontFamily:F.dot,fontSize:'38px',color:'#fff'},sw,q[0]);const bb=H.abs({left:'260px',top:152+i*80+'px',width:'460px',height:'30px',border:'4px solid #fff',boxSizing:'border-box'},sw);const f=H.el('div',{height:'100%',background:i===3?'#ff6b9a':'#5ad65a',transformOrigin:'left'},bb);H.a(f,[{transform:`scaleX(${q[1]*.6})`},{transform:`scaleX(${q[1]})`}],{d:1200,dl:2400+i*150,e:'steps(8)'})});
+  const lu=H.abs({left:'40px',top:'450px',fontFamily:F.dot,fontSize:'34px',color:'#ffd400',opacity:0},sw,'レベルが　あがった！');H.a(lu,[{opacity:0},{opacity:1}],{d:300,dl:2400,i:5,dir:'alternate',f:'forwards'});
+  const mw=win(70,620,1460,220);const tx=H.abs({left:'50px',top:'40px',right:'50px',fontFamily:F.dot,fontSize:'44px',lineHeight:'1.6',color:'#fff',whiteSpace:'pre-wrap'},mw);
+  [`${a.toUpperCase()}は　むしとりの　わざを\nおぼえた！`,`${a.toUpperCase()}は　じてんしゃに\nのれるように　なった！`].forEach((m,mi)=>H.wait(3600+mi*3000,()=>{tx.textContent='';let i=0;const ch=[...m];const tk=()=>{if(i<ch.length){tx.textContent+=ch[i++];H.wait(50,tk)}};tk()}))}});
+
+defW({no:'04',cat:'WGAME',name:'ニュース特集「ふたりの歩み」',en:'News Feature',lead:'夕方のニュースの特集コーナーのように、年表とインタビュー風テロップでふたりの歩みを伝える。',bg:'#0b1d3a',
+use:'<b>年代を問わず楽しめる、分かりやすいプロフィール</b>に。オープニング No.05（ニュース速報風）と合わせると統一感が出ます。',
+tips:['年表を「その年の出来事（流行・ニュース）」と並べると、同世代のゲストが懐かしがります','両親や友人のコメントを「関係者の話」として入れると、ニュースらしさと温かさが両立します','画面下のテロップは、句点で区切った短い文が読みやすい'],
+p:`夕方のニュース番組の特集コーナーの雰囲気で、結婚式のプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：紺 #0B1D3A、白、赤 #D7001D（ラベル）、黄色 #FFD400（強調）
+・フォント：Noto Sans JP（900/700）、数字は Roboto Condensed
+・全体の流れ：
+${PCHAP}
+・見た目の決まり：
+　1. 左上に特集のロゴ「特集　ふたりの歩み」、右上に「LIVE」ではなく「VTR」の小さなラベル
+　2. 写真の下に、ニュースの白い帯のテロップ（大きな見出し＋小さな説明）。例：見出し「1995年　〇〇県に誕生」説明「3,200gの元気な男の子」
+　3. 時代の区切りでは、年表のグラフィック：横に伸びる線に年号の目盛りが流れ、その年の世の中の出来事（流行語・ヒット曲の年など）と、本人の出来事を上下に並べる
+　4. 家族・友人のコメントは「インタビュー」風：写真の左下に名前と関係（例「新郎の母」）、話した言葉をカギカッコで
+　5. ふたりの章は「現地からの中継」風：思い出の場所の写真に「LIVE」のラベルと地名
+　6. 最後は「以上、特集でした」→ ふたりの写真とメッセージ → 番組のエンドカード`,
+run(H,t){const [a,b]=nm(t);const S=H.abs({inset:'0',background:'#0b1d3a'});const ph=pho(H,S,0,0,1600,900,'boy');kb(H,ph,0,10000);
+  const lg=T(H,S,{left:'50px',top:'40px',background:'#d7001d',color:'#fff',fontFamily:F.sans,fontWeight:'900',fontSize:'30px',padding:'8px 22px'},'特集　ふたりの歩み',200,'left');T(H,S,{right:'50px',top:'44px',background:'rgba(0,0,0,.6)',color:'#fff',fontFamily:F.sans,fontWeight:'700',fontSize:'22px',padding:'6px 14px'},'VTR',300,'fade');
+  const tb=H.abs({left:'60px',right:'60px',top:'640px',height:'160px',background:'#fff',transformOrigin:'left'});H.a(tb,[{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{d:500,dl:800});
+  H.abs({left:'0',top:'0',width:'26px',height:'160px',background:'#d7001d'},tb);T(H,tb,{left:'60px',top:'16px',fontFamily:F.sans,fontWeight:'900',fontSize:'60px',color:'#0b1d3a'},'1995年　〇〇県に誕生',1200);T(H,tb,{left:'64px',top:'100px',fontFamily:F.sans,fontWeight:'700',fontSize:'32px',color:'#444'},'3,200gの元気な男の子',1500,'fade');
+  const tl=H.abs({left:'0',right:'0',top:'440px',height:'140px',background:'rgba(11,29,58,.85)',opacity:0});H.a(tl,[{opacity:0},{opacity:1}],{d:500,dl:4200});H.abs({left:'0',right:'0',top:'68px',height:'4px',background:'#ffd400'},tl);
+  const yr=H.abs({left:'0',top:'0',width:'4000px',height:'140px'},tl);[1995,2000,2005,2010,2015,2020,2025].forEach((y,i)=>{H.abs({left:200+i*500+'px',top:'56px',width:'28px',height:'28px',borderRadius:'50%',background:'#ffd400'},yr);H.abs({left:170+i*500+'px',top:'92px',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'34px',color:'#fff'},yr,String(y));H.abs({left:120+i*500+'px',top:'6px',fontFamily:F.sans,fontWeight:'700',fontSize:'24px',color:'#ffd400'},yr,['誕生','小学校入学','中学で野球部','高校卒業','社会人に','ふたりが出会う','本日、結婚'][i])});H.a(yr,[{transform:'translateX(0)'},{transform:'translateX(-2500px)'}],{d:5500,dl:4400,e:E.soft})}});
+
+defW({no:'05',cat:'WGAME',name:'クイズ番組風「ふたりのこと、どこまで知ってる？」',en:'Quiz Show',lead:'4択クイズで生い立ちを紹介。正解発表のたびに会場から「えー！」の声が上がる参加型。',bg:'#1b0f4a',
+use:'<b>ゲストと一緒に盛り上がりたいふたり</b>に。歓談中でもつい画面を見てしまう、参加型のプロフィールムービーです。',
+tips:['問題は「答えが写真で分かる」ものにすると、正解発表の写真で笑いが起きます','1問につき考える時間を5秒、正解発表を5秒にすると、テンポよく進みます','最後の問題を「ふたりからゲストへの質問」にすると、温かい締めになります'],
+p:`テレビのクイズ番組の雰囲気で、結婚式のプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：濃い紫 #1B0F4A の背景に光のライン、選択肢のパネルは青 #2D5BFF、正解は黄色 #FFD400、不正解はグレー
+・フォント：Noto Sans JP（900）、数字は Montserrat（800）
+・全体の流れ：
+${PCHAP}
+　（それぞれの章を「クイズ」＋「正解発表の写真」で進める。新郎・新婦の章はそれぞれ5問、ふたりの章は3問）
+・見た目の決まり：
+　1. タイトル「ふたりのこと、どこまで知ってる？ クイズ」がスポットライトの中に現れる
+　2. 問題画面：上に「Q.3」と問題文（例「新郎が小学生のときになりたかったものは？」）、下に4つの選択肢パネル「A〜D」、右上に5秒のカウントダウンの円
+　3. 正解発表：正解のパネルが黄色に光り、他はグレーに。続いて答えの写真が大きく現れ、コメント（例「正解は B. 電車の運転士。毎日、駅で手を振っていました」）
+　4. 問題と問題の間に、その時代の写真を2〜3枚、短いコメント付きで見せる
+　5. ふたりの章の最後の問題は「Q. ふたりがいちばん伝えたいことは？」→ 答え「来てくれて、ありがとう」
+　6. エンディング：「全問正解したあなたは、ふたりの大親友です」と日付`,
+run(H,t){const S=H.abs({inset:'0',background:'radial-gradient(circle at 50% 30%,#3a2a9a,#1b0f4a 70%)'});for(let i=0;i<8;i++){const l=H.abs({left:'800px',top:'-200px',width:'6px',height:'1400px',background:'linear-gradient(transparent,rgba(255,255,255,.25),transparent)',transformOrigin:'50% 0',rotate:(i-3.5)*12+'deg'},S);H.a(l,[{opacity:.3},{opacity:.9}],{d:1200,dir:'alternate',i:Infinity,dl:i*150,f:'none'})}
+  T(H,S,{left:'90px',top:'60px',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'90px',color:'#ffd400'},'Q.3',200,'pop');
+  T(H,S,{left:'300px',top:'78px',width:'1100px',whiteSpace:'normal',fontFamily:F.sans,fontWeight:'900',fontSize:'52px',lineHeight:'1.3',color:'#fff'},'新郎が小学生のとき、なりたかったものは？',500);
+  const cd=H.abs({right:'90px',top:'240px',width:'130px',height:'130px',borderRadius:'50%',border:'10px solid #ffd400',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'60px',color:'#fff',boxSizing:'border-box'},S,'5');for(let k=1;k<=5;k++)H.wait(800+k*700,()=>{cd.textContent=String(5-k)});
+  const ch=['A. 宇宙飛行士','B. 電車の運転士','C. パン屋さん','D. 忍者'];const pans=ch.map((c,i)=>T(H,S,{left:120+(i%2)*700+'px',top:420+Math.floor(i/2)*160+'px',width:'660px',height:'130px',borderRadius:'65px',background:'#2d5bff',border:'5px solid #fff',display:'flex',alignItems:'center',paddingLeft:'50px',boxSizing:'border-box',fontFamily:F.sans,fontWeight:'900',fontSize:'46px',color:'#fff'},c,900+i*150,'pop'));
+  pans.forEach((p,i)=>H.a(p,i===1?[{background:'#2d5bff',color:'#fff'},{background:'#ffd400',color:'#1b0f4a'}]:[{opacity:1},{opacity:.35}],{d:400,dl:4600,f:'forwards'}));
+  const ans=H.abs({inset:'0',opacity:0});H.a(ans,[{opacity:0},{opacity:1}],{d:600,dl:6200});const ap=pho(H,ans,0,0,1600,900,'boy');kb(H,ap,6200,3800);H.abs({left:'0',right:'0',top:'700px',textAlign:'center',fontFamily:F.sans,fontWeight:'900',fontSize:'48px',color:'#fff',textShadow:OUT},ans,'正解は B. 電車の運転士！');H.abs({left:'0',right:'0',top:'780px',textAlign:'center',fontFamily:F.sans,fontWeight:'700',fontSize:'32px',color:'#ffd400',textShadow:OUT},ans,'毎日、駅で電車に手を振っていました')}});
+
+defW({no:'06',cat:'WSTREAM',name:'スマホの写真アプリ「思い出」風',en:'Photo Memories',lead:'スマホの写真アプリが自動で作る「思い出」のように、年ごとのアルバムからふたりの軌跡がよみがえる。',bg:'#000',
+use:'<b>シンプルで上品にまとめたいふたり</b>に。写真が主役なので、写真の多いふたりにぴったり。編集の手間も少なめです。',
+tips:['章のタイトルを「〇年前の今日」「〇〇の思い出」のように、写真アプリの言い方にするとそれらしくなります','写真はゆっくり寄るだけで十分。切り替えはクロスフェードで統一すると上品です','最後に「新しい思い出が作成されました」で結婚式当日につなげると、じんわり感動します'],
+p:`スマートフォンの写真アプリが自動で作る「思い出（メモリー）」ムービーの雰囲気で、結婚式のプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：黒・白、グレー #8E8E93、アクセントは青 #0A84FF（小さく）
+・フォント：英字は Inter（太さを変えて）、日本語は Noto Sans JP（300/700）
+・全体の流れ：
+${PCHAP}
+・見た目の決まり：
+　1. 最初は「ライブラリ」画面：年ごとの写真のグリッド（「1995」「2005」「2015」「2025」の大きな年号と、写真が細かく並ぶ）が上にスクロールし、1つの年がタップされる
+　2. 章のタイトル：写真の上に大きな白い文字で「新郎 ○○」、その下に細い文字で「1995 – 2025」。写真の写る場所の地名を小さく
+　3. 写真：1枚ずつゆっくり寄りながらクロスフェード。ときどき3枚を並べたコラージュの画面も入れる
+　4. コメントは画面左下に小さく、細い白い文字で（例「7歳・運動会」）
+　5. 区切りに「〇年前の今日」のカード（角丸の白いカードに写真と日付）
+　6. 最後は「新しい思い出が作成されました」の通知 → 結婚式の日付のタイトルカード「{T} ── 本日」
+・実在のアプリのロゴや画面は使わず、雰囲気だけを参考にする`,
+run(H,t){const [a,b]=nm(t);const S=H.abs({inset:'0',background:'#000'});
+  const lib=H.abs({left:'0',top:'0',width:'1600px',height:'2400px'},S);const yrs=['1995','2005','2015','2025'];yrs.forEach((y,yi)=>{H.abs({left:'60px',top:40+yi*560+'px',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'80px',color:'#fff'},lib,y);for(let i=0;i<16;i++)pho(H,lib,60+(i%8)*186,150+yi*560+Math.floor(i/8)*186,180,180,['baby','boy','man','couple'][yi]);});
+  H.a(lib,[{transform:'translateY(0)'},{transform:'translateY(-1200px)'}],{d:3000,e:E.io,f:'forwards'});
+  const m=H.abs({inset:'0',opacity:0});H.a(m,[{opacity:0},{opacity:1}],{d:700,dl:3200});const p1=pho(H,m,0,0,1600,900,'boy');kb(H,p1,3200,6800);H.abs({inset:'0',background:'linear-gradient(transparent 50%,rgba(0,0,0,.6))'},m);
+  const ti=H.abs({left:'0',right:'0',top:'330px',textAlign:'center',color:'#fff',opacity:0},m);H.el('div',{fontFamily:F.sans,fontWeight:'700',fontSize:'90px',letterSpacing:'.04em'},ti,'新郎 '+a);H.el('div',{fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'40px',letterSpacing:'.3em',marginTop:'10px'},ti,'1995 – 2025');H.a(ti,[{opacity:0},{opacity:1,offset:.12},{opacity:1,offset:.88},{opacity:0}],{d:5600,dl:3600});
+  T(H,m,{left:'60px',bottom:'60px',fontFamily:F.sans,fontWeight:'300',fontSize:'34px',color:'#fff'},'7歳・運動会',7400,'fade');
+  const nt=H.abs({left:'50%',top:'30px',width:'640px',marginLeft:'-320px',background:'rgba(40,40,44,.92)',borderRadius:'26px',padding:'18px 26px',display:'flex',gap:'16px',alignItems:'center',fontFamily:F.sans,color:'#fff',opacity:0},null);H.el('div',{width:'54px',height:'54px',borderRadius:'12px',background:'linear-gradient(135deg,#ffcc66,#ff6b8a,#7b6bff)'},nt);const tx=H.el('div',{},nt);H.el('div',{fontWeight:'700',fontSize:'22px'},tx,'新しい思い出が作成されました');H.el('div',{fontSize:'18px',color:'#bbb'},tx,t+' ── 本日');H.a(nt,[{opacity:0,transform:'translateY(-40px)'},{opacity:1,transform:'none'}],{d:500,dl:8600,e:E.back})}});
+
+/* WSTORY：映画・物語風 */
+defW({no:'07',cat:'WSTORY',name:'8ミリフィルム風',en:'Vintage Film',lead:'カタカタと回るフィルムのざらつきと、セピア色の思い出。いちばん泣ける、王道のプロフィール。',bg:'#120d08',
+use:'<b>感動的に仕上げたいふたり、両親への感謝を伝えたいふたり</b>に。古い写真ほど味が出るので、子どもの頃の写真が多い方におすすめ。',
+tips:['子どもの頃はセピア、大人になるにつれて色が戻っていく演出にすると、時間の流れが伝わります','フィルムの傷や揺れは「少しだけ」。強すぎると写真が見にくくなります','コメントは明朝体で短く。「ありがとう」を言いたい相手を最後にまとめると泣けます'],
+p:`古い8ミリフィルムの映写の雰囲気で、結婚式のプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・見た目：フィルムのざらつき（ノイズ）、細い縦の傷、ゆっくりした明るさのちらつき、画面のわずかな揺れ。画面の左右にフィルムの送り穴の帯
+・色：子どもの頃の写真はセピア、10代は色あせたカラー、大人〜ふたりの写真は自然なカラー（年代とともに色が戻っていく）
+・フォント：英字は Cormorant Garamond、日本語は Shippori Mincho B1（500）
+・全体の流れ：
+${PCHAP}
+・見た目の決まり：
+　1. 最初に、映写機のカウントダウン（円と線が回る「5・4・3・2・1」のリーダー）
+　2. 章のタイトル：黒い画面に、白い明朝体で「新郎　○○」と生年月日、小さく英字で「Chapter 1」
+　3. 写真：1枚6〜8秒、ゆっくり寄る。写真の下に明朝体の短いコメント（例「1995年　春　〇〇病院にて」）
+　4. 場面の区切りでは、フィルムが焼けるように白く光ってから次の章へ
+　5. ゲストへの感謝：写真をフィルムの帯のように横に流し、その上にメッセージ
+　6. エンディング：フィルムが終わり、送り穴の帯がカタカタと流れ去って、「Fin. ── and our story continues」`,
+run(H,t){const S=H.abs({inset:'0',background:'#120d08'});
+  const ld=H.abs({inset:'0',display:'flex',alignItems:'center',justifyContent:'center',background:'#d9cdb4'},S);const ci=H.el('div',{width:'520px',height:'520px',borderRadius:'50%',border:'8px solid #222',position:'relative',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:F.serif,fontWeight:'700',fontSize:'300px',color:'#222'},ld,'3');const sw=H.abs({left:'252px',top:'0',width:'8px',height:'252px',background:'#222',transformOrigin:'50% 100%'},ci);H.a(sw,[{rotate:'0deg'},{rotate:'360deg'}],{d:800,i:3,e:E.lin});H.wait(800,()=>{ci.firstChild.textContent='2'});H.wait(1600,()=>{ci.firstChild.textContent='1'});
+  ci.firstChild||ci.insertBefore(document.createTextNode('3'),sw);H.a(ld,[{opacity:1},{opacity:0}],{d:200,dl:2400,f:'forwards'});
+  const fl=H.abs({left:'90px',right:'90px',top:'0',bottom:'0',opacity:0},S);H.a(fl,[{opacity:0},{opacity:1}],{d:600,dl:2500});const ph=pho(H,fl,0,0,1420,900,'baby');ph.style.filter='sepia(.9) contrast(1.1) brightness(.95)';kb(H,ph,2500,7500);
+  T(H,fl,{left:'0',right:'0',top:'760px',textAlign:'center',fontFamily:F.min,fontWeight:'500',fontSize:'44px',letterSpacing:'.2em',color:'#f6efdf',textShadow:'0 2px 10px #000'},'1995年　春　〇〇病院にて',4000,'fade');
+  [0,1].forEach(i=>{const s=H.abs({left:i?'1510px':'0',top:'-100px',width:'90px',height:'1100px',background:'#0a0704',backgroundImage:'linear-gradient(#e8dcc0 0 40px,transparent 40px)',backgroundSize:'40px 110px',backgroundPosition:'25px 0',backgroundRepeat:'repeat-y'},S);H.a(s,[{transform:'translateY(0)'},{transform:'translateY(110px)'}],{d:300,i:Infinity,e:E.lin})});
+  const gr=H.abs({inset:'0',pointerEvents:'none',opacity:.18,background:'repeating-radial-gradient(circle at 30% 40%,#fff 0 1px,transparent 1px 3px)'});H.a(gr,[{transform:'translate(0,0)'},{transform:'translate(-6px,4px)'},{transform:'translate(4px,-3px)'}],{d:150,i:Infinity,e:'steps(3)'});
+  for(let i=0;i<3;i++){const sc=H.abs({left:rnd(200,1400)+'px',top:'0',width:'2px',height:'900px',background:'rgba(255,255,255,.35)'});H.a(sc,[{opacity:0},{opacity:1},{opacity:0}],{d:400,dl:rnd(2500,9000),i:3})}
+  const fk=H.abs({inset:'0',background:'#000',pointerEvents:'none'});H.a(fk,[{opacity:0},{opacity:.12},{opacity:.02},{opacity:.1}],{d:400,i:Infinity,e:'steps(4)'})}});
+
+defW({no:'08',cat:'WSTORY',name:'めくれるアルバム',en:'Photo Album',lead:'革のアルバムのページがめくれ、手書きのメモと写真が並ぶ。家族みんなで見返したくなるナチュラル系。',bg:'#5a3b2a',
+use:'<b>ナチュラル・ガーデン・レストランウエディング</b>に。手作り感があり、両親世代にも好評の定番スタイルです。',
+tips:['1ページに写真2〜3枚。少し傾けて、角にフォトコーナーやマスキングテープを付けるとアルバムらしくなります','手書き風の文字で、家族のひとこと（母より）を添えると温かくなります','ページの端に年号のインデックス（つまみ）を付けると、どの時代か一目で分かります'],
+p:`革の表紙のフォトアルバムをめくっていく雰囲気で、結婚式のプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・見た目：木の机の上に置いた、開いたアルバムを少し斜め上から見た構図。ページはクラフト紙色 #EFE4D0、表紙はこげ茶の革
+・フォント：手書き風の Klee One（600）、英字は Great Vibes（タイトル用）
+・全体の流れ：
+${PCHAP}
+・見た目の決まり：
+　1. 最初は閉じたアルバム：革の表紙に、金の箔押し風の文字「Our Story」と「{T}」。表紙が開く
+　2. 見開きごとに写真2〜4枚：少し傾けて、角に黒いフォトコーナーやマスキングテープ。写真の下に手書きのメモ（年齢・ひとこと）
+　3. 写真が1枚ずつ、手で置かれたように少し回転しながら着地。最後に置かれた写真へゆっくり寄って、次のページへ
+　4. ページのめくりは、紙のたわみと影のある立体的な動き
+　5. ページの右端に、年代のインデックスのつまみ（「0〜6歳」「7〜12歳」…）。今の章のつまみが少し飛び出す
+　6. ふたりの章は、写真の周りにシールやチケットの半券、押し花の素材をあしらう
+　7. 最後のページは空白で「ここからの ページは、みなさんと一緒に」→ アルバムが閉じて終わる`,
+run(H,t){const S=H.abs({inset:'0',background:'repeating-linear-gradient(90deg,#8a5a3c 0 140px,#7d5034 140px 144px)'});
+  const al=H.abs({left:'120px',top:'70px',width:'1360px',height:'760px',background:'#4a2c1e',borderRadius:'16px',boxShadow:'0 30px 60px rgba(0,0,0,.4)'},S);
+  const L=H.abs({left:'20px',top:'20px',width:'660px',height:'720px',background:'#efe4d0'},al),Rp=H.abs({left:'680px',top:'20px',width:'660px',height:'720px',background:'#efe4d0'},al);
+  const put=(pg,x,y,w,h,k,r,dl,memo)=>{const c=H.abs({left:x+'px',top:y+'px',width:w+'px',height:h+'px',background:'#fff',padding:'12px',boxSizing:'border-box',boxShadow:'0 6px 14px rgba(0,0,0,.2)',rotate:r+'deg'},pg);pho(H,c,12,12,w-24,h-24,k);H.a(c,[{opacity:0,transform:'translateY(-60px) scale(1.15) rotate(8deg)'},{opacity:1,transform:'none'}],{d:600,dl,e:E.back});
+    [[0,0],[1,0],[0,1],[1,1]].forEach(q=>H.abs({left:q[0]?w-28+'px':'0',top:q[1]?h-28+'px':'0',width:'28px',height:'28px',background:'#222',clipPath:q[0]===q[1]?'polygon(0 0,100% 0,0 100%)':'polygon(0 0,100% 0,100% 100%)',transform:q[0]===q[1]&&q[0]?'rotate(180deg)':q[0]?'none':'rotate(-90deg)'},c));
+    T(H,pg,{left:x+10+'px',top:y+h+14+'px',fontFamily:"'Klee One',serif",fontWeight:'600',fontSize:'26px',color:'#5a4030',rotate:r+'deg'},memo,dl+400,'fade')};
+  put(L,60,60,330,250,'baby',-4,400,'0歳　はじめての笑顔');put(L,300,380,320,240,'boy',3,1000,'5歳　七五三');
+  put(Rp,60,60,330,250,'boy',2,1800,'8歳　虫取りの夏');put(Rp,320,360,300,260,'boy',-3,2500,'12歳　卒業式');
+  ['0〜6歳','7〜12歳','13〜18歳','19歳〜'].forEach((x,i)=>{const tb=H.abs({left:i===1?'1340px':'1328px',top:100+i*120+'px',width:'60px',height:'100px',background:['#e8b4a0','#a7c4a0','#a0b8d8','#e8d39a'][i],borderRadius:'0 10px 10px 0',writingMode:'vertical-rl',fontFamily:"'Klee One',serif",fontWeight:'600',fontSize:'20px',color:'#4a2c1e',display:'flex',alignItems:'center',justifyContent:'center'},al,x)});
+  const fl=H.abs({left:'680px',top:'20px',width:'660px',height:'720px',background:'#efe4d0',transformOrigin:'0 50%',boxShadow:'0 0 40px rgba(0,0,0,.3)',opacity:0},al);H.a(fl,[{opacity:1,transform:'perspective(2600px) rotateY(0deg)'},{opacity:1,transform:'perspective(2600px) rotateY(-180deg)'}],{d:1500,dl:6500,e:E.io});H.a(fl,[{opacity:1},{opacity:0}],{d:10,dl:7300,f:'forwards'})}});
+
+defW({no:'09',cat:'WSTORY',name:'地図をたどる旅',en:'Journey Map',lead:'生まれた町から式場まで、地図の上に線が伸びていく。ふたりの道がひとつになる瞬間が見どころ。',bg:'#f3ecdf',
+use:'<b>出身地が離れているふたり、遠方からのゲストが多い披露宴</b>に。地元の友人が「うちの町だ！」と喜びます。',
+tips:['地図は正確でなくてOK。手描き風の簡単な地図のほうが温かく、見やすくなります','ピンの場所には写真を丸く切り抜いて、吹き出しのように出すと楽しい','ふたりの線が合流する場所（出会いの地）で、ハートのマークを弾ませましょう'],
+p:`地図の上を旅していくような演出で、結婚式のプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・見た目：アンティークの紙の地図風。背景はクリーム色 #F3ECDF、海は淡い水色、陸地は淡いベージュ、細い茶色の線で道や川。地図は手描き風に簡略化（実在の地図の正確さは不要）
+・フォント：英字は Playfair Display（イタリック）、日本語は Zen Maru Gothic（500/900）
+・全体の流れ：
+${PCHAP}
+・見た目の決まり：
+　1. 最初は地図の全体：ふたりの出身地と式場にピンが立ち、タイトル「ふたりの道のり」
+　2. 新郎の章：新郎の出身地に寄って、点線の道が少しずつ伸びていく。道の途中のピン（生まれた病院・小学校・部活の大会の場所・大学の町など）で止まり、写真が丸い吹き出しで出て、コメントが表示される
+　3. 新婦の章：別の色の点線で、同じように
+　4. ふたりの章：2本の線が出会いの場所で合流し、ハートが弾む。そこからは1本の太い線になって、デートの場所・旅行先・プロポーズの場所をたどる
+　5. 最後は式場のピンに着き、地図が引いて全体が見える。2本の道が1本になった軌跡の上に「ここから、ふたりの新しい道へ」と日付
+　6. 地図の移動は、ゆっくり寄ったり引いたりするカメラワークで（急な移動はしない）`,
+run(H,t){const S=H.abs({inset:'0',background:'#bfdbe8'});const W=H.abs({left:'0',top:'0',width:'1600px',height:'900px',transformOrigin:'50% 50%'},S);
+  const sv=H.svg(1600,900,W);H.sv('path',{d:'M180,820 C200,640 320,560 420,520 C520,480 560,380 700,330 C820,290 900,200 1060,170 C1200,140 1320,90 1460,120 C1540,200 1480,300 1380,360 C1260,430 1160,470 1080,560 C980,660 860,700 720,760 C560,830 380,880 180,820 Z',fill:'#f3ecdf',stroke:'#c9b79a','stroke-width':4},sv);
+  const pth=(d,c,dl)=>{const p=H.sv('path',{d,stroke:c,'stroke-width':10,fill:'none','stroke-linecap':'round','stroke-dasharray':'2 22'},sv);const L=1400;p.style.clipPath='none';const m=H.sv('path',{d,stroke:'#f3ecdf','stroke-width':16,fill:'none'},sv);m.style.strokeDasharray=L;m.style.strokeDashoffset=0;m.animate([{strokeDashoffset:0},{strokeDashoffset:-L}],{duration:3000,delay:dl,fill:'both',easing:'linear'});sv.appendChild(m)};
+  pth('M300,760 C400,700 520,640 640,560 C720,500 760,470 820,440','#3a6ea5',800);pth('M1300,330 C1200,350 1100,380 1020,400 C940,420 880,430 820,440','#d9637a',1600);
+  const pin=(x,y,c,lab,k,dl)=>{const p=R(H,W,{left:x-30+'px',top:y-80+'px',width:'60px',height:'80px'},dl,'drop');H.abs({left:'0',top:'0',width:'60px',height:'60px',borderRadius:'50% 50% 50% 0',rotate:'-45deg',background:c},p);T(H,W,{left:x-90+'px',top:y+6+'px',width:'180px',textAlign:'center',fontFamily:"'Zen Maru Gothic',sans-serif",fontWeight:'900',fontSize:'24px',color:'#5a4030'},lab,dl+200,'fade');if(k){const b=pho(H,W,x-80,y-260,160,160,k,dl+300,{borderRadius:'50%',border:'6px solid #fff',boxShadow:'0 6px 16px rgba(0,0,0,.2)'})}};
+  pin(300,760,'#3a6ea5','新郎の町','boy',600);pin(1300,330,'#d9637a','新婦の町','girl',1400);pin(820,440,'#e8a33a','出会いの場所','couple',4800);
+  const hh=H.abs({left:'790px',top:'400px',fontSize:'70px',color:'#ff4f7a',opacity:0},W,'♥');H.a(hh,[{opacity:0,transform:'scale(0)'},{opacity:1,transform:'scale(1.4)'},{opacity:1,transform:'scale(1)'}],{d:700,dl:5400,e:E.back});
+  T(H,S,{left:'60px',top:'40px',fontFamily:"'Zen Maru Gothic',sans-serif",fontWeight:'900',fontSize:'56px',color:'#5a4030'},'ふたりの道のり',200,'left');T(H,S,{left:'64px',top:'110px',fontFamily:"'Playfair Display',serif",fontStyle:'italic',fontSize:'30px',color:'#8a6a4a'},t,500,'fade');
+  H.a(W,[{transform:'scale(1)'},{transform:'scale(1.25) translate(-40px,40px)',offset:.5},{transform:'scale(1)'}],{d:10000,e:E.soft})}});
+
+defW({no:'10',cat:'WSTORY',name:'雑誌の表紙風',en:'Magazine Covers',lead:'各年の自分が、ファッション誌の表紙に。「1998年 夏号」「特集：わんぱく盛り」の見出しで笑いを誘う。',bg:'#e9e4dc',
+use:'<b>おしゃれに、少し笑いも取りたいふたり</b>に。1枚ずつの写真が「表紙」になるので、写真の枚数が少なくても成立します。',
+tips:['雑誌の名前をふたりの名前にして（例「NOBU」）、号数を年号にすると統一感が出ます','見出しは「特集：〇〇」「人気No.1 〇〇」など雑誌の言い回しで、小ネタを仕込むのがコツ','表紙は1枚6秒、ページをめくる動きでつなぐとテンポよく見られます'],
+p:`ファッション誌の表紙が次々に切り替わる演出で、結婚式のプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・見た目：画面の中央に、縦長の雑誌の表紙（A4の比率）。背景は淡いグレージュ #E9E4DC で、表紙に少し影。表紙が切り替わるときは、ページをめくる動き
+・フォント：雑誌名は Playfair Display（900）または Bodoni 風、見出しは Noto Sans JP（900）と Montserrat
+・全体の流れ：
+${PCHAP}
+・見た目の決まり：
+　1. 新郎の雑誌名は新郎の名前（例「NOBU」）、新婦の雑誌名は新婦の名前で、表紙の上部に大きく。写真が文字の手前に少し重なる配置
+　2. 表紙ごとに「1998年 夏号」「Vol.3」、バーコード風の飾り、価格の代わりに年齢（例「8歳」）
+　3. 見出しは3〜4本：特集の大見出し（例「特集：わんぱく盛り、夏。」）と、小見出し（例「人気No.1 虫取りスポット」「今月の好物：からあげ」）
+　4. 時代ごとに表紙のデザインの色を変える（子ども：ポップ、10代：ストリート、大人：モード）
+　5. ふたりの章は、ふたりの名前を合わせた雑誌（例「NOBU & YUI」）の特別号：「創刊記念号」「総力特集：ふたりの歩み」
+　6. 最後は「最新号：本日発売」と結婚式の日付の表紙`,
+run(H,t){const [a,b]=nm(t);const S=H.abs({inset:'0',background:'#e9e4dc'});
+  const cov=(k,yr,age,head,subs,col,dl,dur)=>{const c=H.abs({left:'540px',top:'40px',width:'520px',height:'735px',background:col,overflow:'hidden',boxShadow:'0 30px 60px rgba(0,0,0,.25)',opacity:0},S);
+    const ph=pho(H,c,0,120,520,615,k);H.abs({left:'0',right:'0',top:'14px',textAlign:'center',fontFamily:"'Playfair Display',serif",fontWeight:'900',fontSize:'128px',lineHeight:'1',letterSpacing:'-.02em',color:'#fff',mixBlendMode:'normal',textShadow:'0 2px 10px rgba(0,0,0,.15)'},c,a.toUpperCase());
+    H.abs({left:'24px',top:'150px',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'20px',color:'#fff',textShadow:'0 1px 6px rgba(0,0,0,.4)'},c,yr);
+    H.abs({left:'24px',top:'440px',width:'300px',fontFamily:F.sans,fontWeight:'900',fontSize:'40px',lineHeight:'1.2',color:'#fff',textShadow:'0 2px 10px rgba(0,0,0,.4)',whiteSpace:'pre-line'},c,head);
+    subs.forEach((s,i)=>H.abs({right:'24px',top:200+i*80+'px',width:'190px',textAlign:'right',fontFamily:F.sans,fontWeight:'700',fontSize:'20px',lineHeight:'1.3',color:'#fff',textShadow:'0 1px 6px rgba(0,0,0,.5)'},c,s));
+    H.abs({right:'24px',bottom:'22px',width:'90px',height:'50px',background:'repeating-linear-gradient(90deg,#000 0 3px,#fff 3px 5px,#000 5px 6px,#fff 6px 9px)',border:'4px solid #fff'},c);H.abs({left:'24px',bottom:'26px',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'24px',color:'#fff'},c,age);
+    H.a(c,[{opacity:0,transform:'perspective(2000px) rotateY(60deg) translateX(200px)'},{opacity:1,transform:'none',offset:.12},{opacity:1,transform:'none',offset:.88},{opacity:0,transform:'perspective(2000px) rotateY(-70deg) translateX(-200px)'}],{d:dur,dl,e:E.io});kb(H,ph,dl,dur)};
+  cov('baby','1995年 春号 Vol.1','0歳','特集：\nはじめまして、\nこの世界。',['人気No.1\nミルクの時間','今月の好物：\nおかゆ'],'#f6b4a0',0,3600);
+  cov('boy','2003年 夏号 Vol.8','8歳','特集：\nわんぱく盛り、\n夏。',['人気No.1\n虫取りスポット','今月の好物：\nからあげ','付録：\n夏休みの絵日記'],'#7cc4e8',3300,3600);
+  cov('man','2020年 秋号 Vol.25','25歳','特集：\n大人の\nはじまり。',['この秋の\n通勤コーデ','運命の出会い\nまで、あと1年'],'#2b2b2b',6600,3600);
+  T(H,S,{left:'90px',top:'360px',fontFamily:"'Playfair Display',serif",fontStyle:'italic',fontSize:'52px',color:'#5a4a3c'},'Profile',200,'left');T(H,S,{left:'92px',top:'430px',fontFamily:F.sans,fontWeight:'700',fontSize:'26px',color:'#5a4a3c'},'新郎 '+a,400,'fade')}});
+
+/* ===== WEDDING OPENING 11-20：シンプル・メルヘン ===== */
+CUR_SEC='e';
+const swap=(H,p,words,css,start,each)=>words.forEach((w,i)=>{const e=H.abs(Object.assign({left:'0',right:'0',textAlign:'center',opacity:0},css),p,w);fadeIO(H,e,start+i*each,start+(i+1)*each,350)});
+
+/* WSIMPLE：シンプル・スタイリッシュ */
+defW({no:'11',cat:'WSIMPLE',name:'モノクロのタイポグラフィ',en:'Monochrome Typography',lead:'白い画面に、細い英字が一語ずつ入れ替わる。写真に頼らず、言葉と余白だけで魅せる大人のオープニング。',bg:'#fff',
+use:'<b>ホテル・レストランウエディング、落ち着いた大人の披露宴</b>に。写真が少なくても、洗練された始まりにできます。',
+tips:['フォントは細い1書体だけ。太さと大きさの差で強弱をつけるのが上品さのコツ','言葉は短い英単語で。「Two / Hearts / One / Day」のように、韻やリズムがある並びにすると心地よい','BGMはピアノやストリングスの静かな曲が合います。言葉の切り替えを拍に合わせて'],
+p:`白い画面に細い文字の言葉が入れ替わっていく、モノクロのタイポグラフィのオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：白 #FFFFFF の背景、文字は黒 #111、グレー #9A9A9A。色はこれだけ（写真もモノクロにする）
+・フォント：英字は Cormorant Garamond（300 とイタリック）、日本語は Shippori Mincho B1（500）
+・動きの決まり：文字は「ふわっと現れて、少し止まって、消える」だけ。字間がゆっくり広がる動き（letter-spacing を少しずつ広げる）を加える。派手な動きはしない
+・シーン構成：
+　0:00〜0:20　画面中央に細い横線が1本、左から右へ引かれる → 線の上に小さく「Welcome」
+　0:20〜1:00　英単語が1つずつ、中央に大きく入れ替わる：「Two」→「Hearts」→「One」→「Day」→「Forever」。それぞれ4秒
+　1:00〜1:40　写真（モノクロ）が画面の右半分にゆっくり現れ、左半分に縦書きの日本語の短い言葉（例「出会えたことに、ありがとう。」）
+　1:40〜2:20　ふたりの名前を1文字ずつタイプするように表示し、その下に結婚式の日付をローマ数字や英語で（例「October 25, 2025」）
+　2:20〜2:50　写真を3枚、細い白い余白で区切って横に並べ、1枚ずつゆっくり寄る
+　2:50〜3:00　すべてが消えて、中央に「Thank you for coming.」→ ゆっくり白に溶けて終わる`,
+run(H,t){const S=H.abs({inset:'0',background:'#fff'});const ln=H.abs({left:'400px',top:'449px',width:'800px',height:'2px',background:'#111',transformOrigin:'left'},S);H.a(ln,[{transform:'scaleX(0)'},{transform:'scaleX(1)'},{transform:'scaleX(1)',opacity:1,offset:.85},{opacity:0}],{d:2200,e:E.io});
+  const wl=H.abs({left:'0',right:'0',top:'400px',textAlign:'center',fontFamily:F.serif,fontStyle:'italic',fontSize:'36px',color:'#9a9a9a',opacity:0},S,'Welcome');fadeIO(H,wl,600,2200,300);
+  const ws=['Two','Hearts','One','Day'];ws.forEach((w,i)=>{const e=H.abs({left:'0',right:'0',top:'300px',textAlign:'center',fontFamily:F.serif,fontWeight:'300',fontSize:'200px',color:'#111',opacity:0},S,w);H.a(e,[{opacity:0,letterSpacing:'0em'},{opacity:1,offset:.2},{opacity:1,offset:.8},{opacity:0,letterSpacing:'.12em'}],{d:1500,dl:2200+i*1400,e:E.lin})});
+  const nmEl=H.abs({left:'0',right:'0',top:'360px',textAlign:'center',fontFamily:F.serif,fontWeight:'300',fontSize:'120px',letterSpacing:'.1em',color:'#111'},S,'');const ch=[...t];let i=0;H.wait(7900,function tk(){if(i<ch.length){nmEl.textContent+=ch[i++];H.wait(90,tk)}});
+  T(H,S,{left:'0',right:'0',top:'530px',textAlign:'center',fontFamily:F.serif,fontStyle:'italic',fontSize:'36px',letterSpacing:'.3em',color:'#9a9a9a'},'October 25, 2025',9000,'fade')}});
+
+defW({no:'12',cat:'WSIMPLE',name:'1本の金の線',en:'Golden Line',lead:'左右から伸びた2本の金の線が、画面の真ん中で出会ってひとつになる。ふたりの人生をシンプルに描く。',bg:'#0f0f12',
+use:'<b>シンプルでも感動させたいふたり</b>に。「別々の道が、ひとつになる」というメッセージが、言葉なしで伝わります。',
+tips:['線は細く（2〜3px）、ゆっくり。速くすると安っぽく見えます','2本の線が出会う瞬間に、小さな光の粒をはじけさせると、そこが見せ場になります','黒の代わりにネイビーや深い緑の背景にすると、会場の色に合わせやすい'],
+p:`2本の金色の線が左右から伸びて、中央で出会ってひとつになる、シンプルでスタイリッシュなオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：背景は黒に近い #0F0F12、線と文字は金色（#C9A24B → #F3E3B5 のグラデーションで光沢）、写真はやや暗く落ち着いたトーン
+・フォント：英字は Cinzel（400/700）、日本語は Shippori Mincho B1
+・シーン構成：
+　0:00〜0:30　左端から新郎の線、右端から新婦の線が、ゆっくりと伸びていく。線は途中で小さな曲がり角や丸い点（人生の出来事）を通り、点のところで小さく年号と出来事が表示される（例「1995 誕生」）
+　0:30〜1:30　線の点ごとに、写真が線の上下に小さく現れて消える（新郎側・新婦側で交互に）
+　1:30〜2:00　2本の線が中央に近づき、出会う瞬間に光の粒がはじける →「2019 出会い」
+　2:00〜2:40　1本になった太い線が、画面の右へ進む。線の上に、ふたりの写真が順に現れる
+　2:40〜3:00　線が画面いっぱいの円を描いて、その中にふたりの名前と日付 → ゆっくり暗転
+・動きはすべてゆっくり。線の先には、小さく光る点を付ける`,
+run(H,t){const S=H.abs({inset:'0',background:'#0f0f12'});const G='linear-gradient(90deg,#c9a24b,#f3e3b5,#c9a24b)';
+  const l1=H.abs({left:'0',top:'449px',width:'800px',height:'3px',background:G,transformOrigin:'left',boxShadow:'0 0 12px rgba(243,227,181,.6)'},S);const l2=H.abs({left:'800px',top:'449px',width:'800px',height:'3px',background:G,transformOrigin:'right',boxShadow:'0 0 12px rgba(243,227,181,.6)'},S);
+  [l1,l2].forEach(l=>H.a(l,[{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{d:4200,e:E.soft}));
+  [[200,'1995　誕生',0],[1400,'1996　誕生',1],[420,'2014　上京',0],[1180,'2016　就職',1]].forEach((q,i)=>{const d=H.abs({left:q[0]-7+'px',top:'443px',width:'14px',height:'14px',borderRadius:'50%',background:'#f3e3b5',boxShadow:'0 0 14px #f3e3b5',opacity:0},S);H.a(d,[{opacity:0,transform:'scale(0)'},{opacity:1,transform:'scale(1)'}],{d:400,dl:900+i*700,e:E.back});T(H,S,{left:q[0]-150+'px',width:'300px',textAlign:'center',top:i%2?'480px':'390px',fontFamily:F.min,fontSize:'28px',letterSpacing:'.1em',color:'#c9a24b'},q[1],1100+i*700,'fade')});
+  for(let k=0;k<26;k++){const s=H.abs({left:'797px',top:'447px',width:'6px',height:'6px',borderRadius:'50%',background:'#f3e3b5'},S);const a=rnd(0,Math.PI*2),r=rnd(80,260);H.a(s,[{opacity:1,transform:'translate(0,0)'},{opacity:0,transform:`translate(${Math.cos(a)*r}px,${Math.sin(a)*r}px)`}],{d:1600,dl:4200})}
+  const c=H.abs({left:'500px',top:'150px',width:'600px',height:'600px',borderRadius:'50%',border:'3px solid #c9a24b',opacity:0},S);H.a(c,[{opacity:0,transform:'scale(.2)'},{opacity:1,transform:'scale(1)'}],{d:1400,dl:5600,e:E.out});
+  T(H,S,{left:'0',right:'0',top:'380px',textAlign:'center',fontFamily:"'Cinzel',serif",fontSize:'84px',letterSpacing:'.1em',background:G,WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'},t.toUpperCase(),6600,'fade');T(H,S,{left:'0',right:'0',top:'500px',textAlign:'center',fontFamily:"'Cinzel',serif",fontSize:'30px',letterSpacing:'.4em',color:'#c9a24b'},'10 . 25 . 2025',7400,'fade')}});
+
+defW({no:'13',cat:'WSIMPLE',name:'ホテルの招待状風・黒と金のモノグラム',en:'Luxury Monogram',lead:'黒と金、紋章のようなモノグラム。高級ホテルの招待状を開くような、格式あるオープニング。',bg:'#0b0b0b',
+use:'<b>ホテル・ゲストハウスでの格式ある披露宴</b>に。親族や会社関係のゲストが多くても、上品に始められます。',
+tips:['モノグラムは、ふたりのイニシャルを重ねて円や月桂樹の枠で囲むと、一気に格式が出ます','金色は面積を小さく。細い線・文字・小さな粒だけに使います','招待状の文面風に「〜様」「謹んでご案内申し上げます」を入れると、ホテルらしい丁寧さに'],
+p:`高級ホテルの招待状のような、黒と金のモノグラムが印象的なオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：黒 #0B0B0B、金（#B8913F → #F3E3B5 → #C9A24B の光沢グラデーション）、アイボリー #F4EFE6
+・フォント：英字は Cinzel と Great Vibes（筆記体）、日本語は Shippori Mincho B1（500/800）
+・シーン構成：
+　0:00〜0:20　黒い画面に、金の細い線で描かれた月桂樹の枠が、左右から描かれていく。中央にふたりのイニシャルを重ねたモノグラム（例「N」と「Y」を重ねて）が光とともに現れる
+　0:20〜0:50　金の粒がゆっくり舞う中、筆記体で「Welcome to our Wedding」
+　0:50〜1:40　招待状のカードが画面中央に現れ、封蝋（金のシーリングスタンプ）が割れて開く。カードの中に、丁寧な日本語のメッセージ（「本日はご多用のところ ご臨席を賜り 誠にありがとうございます」）
+　1:40〜2:30　写真を、金の細い額縁に入れて3〜4枚。1枚ずつゆっくり寄り、額縁の下に小さく英字のキャプション
+　2:30〜2:50　ふたりの名前（Cinzel で大きく）と日付・会場名
+　2:50〜3:00　モノグラムが再び現れて、金の光がゆっくり消えて暗転`,
+run(H,t){const [a,b]=nm(t);const S=H.abs({inset:'0',background:'radial-gradient(circle at 50% 45%,#1c1a16,#0b0b0b 65%)'});const G='linear-gradient(110deg,#b8913f,#f3e3b5 45%,#c9a24b 60%,#8a6a2f)';dots(H,S,40,'#f3e3b5');
+  const sv=H.svg(1600,900,S);[[1,-1],[-1,1]].forEach(([s],k)=>{for(let i=0;i<8;i++){const ang=(-70+i*20)*Math.PI/180;const x=800+s*Math.cos(ang)*230,y=380+Math.sin(ang)*230;const e=H.sv('ellipse',{cx:x,cy:y,rx:10,ry:24,fill:'none',stroke:'#c9a24b','stroke-width':2,transform:`rotate(${s*(i*20-70)+90} ${x} ${y})`},sv);e.animate([{opacity:0},{opacity:1}],{duration:400,delay:200+i*120,fill:'both'})}});
+  const mono=H.abs({left:'0',right:'0',top:'250px',textAlign:'center',fontFamily:"'Cinzel',serif",fontWeight:'700',fontSize:'210px',lineHeight:'1',background:G,WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent',opacity:0},S,a[0].toUpperCase()+b[0].toUpperCase());H.a(mono,[{opacity:0,filter:'blur(10px)'},{opacity:1,filter:'blur(0)'}],{d:1400,dl:1200});
+  T(H,S,{left:'0',right:'0',top:'560px',textAlign:'center',fontFamily:"'Great Vibes',cursive",fontSize:'80px',color:'#f3e3b5'},'Welcome to our Wedding',2800,'fade');
+  T(H,S,{left:'0',right:'0',top:'690px',textAlign:'center',fontFamily:"'Cinzel',serif",fontSize:'32px',letterSpacing:'.35em',color:'#c9a24b'},t.toUpperCase(),3800,'fade');
+  const card=H.abs({left:'520px',top:'140px',width:'560px',height:'620px',background:'#f4efe6',boxShadow:'0 30px 80px rgba(0,0,0,.6)',opacity:0},S);H.a(card,[{opacity:0,transform:'translateY(60px)'},{opacity:1,transform:'none'}],{d:900,dl:6200});
+  H.abs({left:'30px',top:'30px',right:'30px',bottom:'30px',border:'1px solid #c9a24b'},card);H.abs({left:'0',right:'0',top:'120px',textAlign:'center',fontFamily:F.min,fontWeight:'500',fontSize:'30px',lineHeight:'2.1',color:'#3a2f22',whiteSpace:'pre-line'},card,'本日はご多用のところ\nご臨席を賜り\n誠にありがとうございます');
+  H.abs({left:'0',right:'0',top:'430px',textAlign:'center',fontFamily:"'Great Vibes',cursive",fontSize:'54px',color:'#b8913f'},card,t);const seal=H.abs({left:'235px',top:'510px',width:'90px',height:'90px',borderRadius:'50%',background:'radial-gradient(circle at 35% 30%,#e8c97a,#a07a35)',boxShadow:'0 4px 10px rgba(0,0,0,.3)'},card)}});
+
+defW({no:'14',cat:'WSIMPLE',name:'グリッドと大きな数字',en:'Swiss Grid Kinetic',lead:'白地に黒の格子、大きな日付の数字が動き出す。デザイン誌のような、知的でスタイリッシュな始まり。',bg:'#f2f2f0',
+use:'<b>デザインや建築が好きなふたり、モダンな会場</b>に。日付そのものを主役にした、印象に残るオープニングです。',
+tips:['フォントは太いゴシック1種類（Montserrat 800 など）。数字を画面からはみ出すほど大きくすると迫力が出ます','差し色は1色だけ（朱色・ブルーなど）。会場の装花の色に合わせると統一感が出ます','写真は格子のマス目に合わせて四角く切り抜くと、デザインが崩れません'],
+p:`白地に黒い格子（グリッド）と大きな数字が動く、デザイン誌のようなスタイリッシュなオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：オフホワイト #F2F2F0、黒 #111、差し色は朱色 #E8442E（1か所ずつだけ）
+・フォント：Montserrat（800 と 300）、日本語は Noto Sans JP（700）
+・画面の決まり：12列×7行の細い黒い格子（線の太さ1px）が画面全体に敷かれ、すべての要素は格子のマス目にぴったり合わせて置く
+・シーン構成：
+　0:00〜0:15　格子の線が、縦・横の順に一本ずつ素早く引かれていく
+　0:15〜0:45　結婚式の日付の数字（例「10」「25」「2025」）が、格子をまたぐほど巨大に、上下からスライドして入れ替わる。数字の一部が朱色
+　0:45〜1:30　格子のマス目が開いて、写真が四角く現れる（3〜6マス分）。写真の横のマスに、小さな英字のキャプション（例「01 / FIRST MEET」）
+　1:30〜2:20　マス目単位で、写真と文字がパズルのように入れ替わる。テンポよく、拍に合わせて
+　2:20〜2:50　ふたりの名前が格子いっぱいに大きく、文字ごとに1マスずつ埋まるように表示
+　2:50〜3:00　格子の線が逆の順に消えて、白い画面に小さく日付 → 終わり`,
+run(H,t){const S=H.abs({inset:'0',background:'#f2f2f0'});for(let i=1;i<12;i++){const l=H.abs({left:i*133.3+'px',top:'0',width:'1px',height:'900px',background:'#111',transformOrigin:'top'},S);H.a(l,[{transform:'scaleY(0)'},{transform:'scaleY(1)'}],{d:400,dl:i*50})}for(let j=1;j<7;j++){const l=H.abs({left:'0',top:j*128.6+'px',width:'1600px',height:'1px',background:'#111',transformOrigin:'left'},S);H.a(l,[{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{d:400,dl:600+j*50})}
+  const big=(txt,dl,col)=>{const e=H.abs({left:'60px',top:'60px',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'560px',lineHeight:'1',letterSpacing:'-.04em',color:col||'#111',opacity:0},S,txt);H.a(e,[{opacity:0,transform:'translateY(200px)'},{opacity:1,transform:'none',offset:.2},{opacity:1,transform:'none',offset:.8},{opacity:0,transform:'translateY(-200px)'}],{d:1600,dl,e:E.io})};
+  big('10',1100);big('25',2600,'#e8442e');big('2025',4100);
+  const ph=pho(H,S,666.6,257,533,386,'couple',5600);H.abs({left:'1213px',top:'270px',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'22px',letterSpacing:'.2em',color:'#111'},S,'01 / FIRST MEET');
+  [...t.toUpperCase()].forEach((c,i)=>{if(i>11)return;T(H,S,{left:i*133.3+'px',top:'643px',width:'133px',height:'128px',lineHeight:'128px',textAlign:'center',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'96px',color:c==='&'?'#e8442e':'#111'},c,7200+i*90,'pop')})}});
+
+defW({no:'15',cat:'WSIMPLE',name:'余白のフォトギャラリー',en:'Gallery White',lead:'白い壁の美術館に、ふたりの写真が1枚ずつ展示されていく。広い余白と細い文字の、静かなオープニング。',bg:'#f6f5f2',
+use:'<b>写真がきれいなふたり（前撮り・フォトウェディング）</b>に。写真をいちばん美しく見せる、引き算のデザインです。',
+tips:['写真のまわりの余白は、写真と同じくらいの広さを取るのがギャラリーらしく見せるコツ','キャプションは「No.01 / 2019 / Kyoto」のように、作品の展示札風にすると洗練されます','前撮りの写真がある場合は、これがいちばん映えます'],
+p:`白い壁の美術館に写真が1枚ずつ展示されていくような、余白の美しいオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：壁はオフホワイト #F6F5F2、文字は濃いグレー #333、展示札は薄いグレー #DDD の細い線
+・フォント：英字は Montserrat（300）、日本語は Noto Sans JP（300）
+・見た目：写真は画面の中央に、上下左右に大きな余白をとって1枚ずつ。写真の下に、展示札のような小さなキャプション（例「No.03　2019　Kyoto」と短い一言）。写真には薄い影
+・カメラ：美術館の中を横に歩いているように、画面全体がゆっくり右から左へ流れ、次の写真が現れる
+・シーン構成：
+　0:00〜0:20　白い壁に、細い文字で展覧会のタイトル「{T}　Exhibition」と会期（結婚式の日付）
+　0:20〜2:30　写真を12〜15枚、1枚ずつ展示（1枚8〜10秒）。ときどき2枚並び・3枚並びの壁もはさむ
+　2:30〜2:50　最後の壁に、ふたりの写真を大きく1枚と「Thank you for visiting.」
+　2:50〜3:00　画面がゆっくり白くなって終わる`,
+run(H,t){const S=H.abs({inset:'0',background:'#f6f5f2'});const W=H.abs({left:'0',top:'0',width:'4800px',height:'900px'},S);
+  H.abs({left:'520px',top:'360px',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'64px',letterSpacing:'.2em',color:'#333'},W,t);H.abs({left:'524px',top:'460px',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'26px',letterSpacing:'.4em',color:'#999'},W,'EXHIBITION — 2025.10.25');
+  [['couple','No.01　2019　Kyoto'],['couple','No.02　2021　Okinawa'],['couple','No.03　2024　Tokyo']].forEach((q,i)=>{const x=1900+i*1000;pho(H,W,x,180,600,420,q[0],null,{boxShadow:'0 20px 40px rgba(0,0,0,.12)'});H.abs({left:x+'px',top:'640px',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'24px',letterSpacing:'.15em',color:'#333',borderTop:'1px solid #ddd',paddingTop:'14px',width:'600px'},W,q[1])});
+  H.a(W,[{transform:'translateX(0)'},{transform:'translateX(0)',offset:.15},{transform:'translateX(-2800px)'}],{d:10000,e:E.soft})}});
+
+/* WCUTE：メルヘン・かわいい */
+const cloud=(H,p,x,y,s,c)=>{const w=H.abs({left:x+'px',top:y+'px',width:200*s+'px',height:80*s+'px'},p);[[0,30,80],[50,0,100],[120,25,80]].forEach(q=>H.abs({left:q[0]*s+'px',top:q[1]*s+'px',width:q[2]*s+'px',height:q[2]*s+'px',borderRadius:'50%',background:c||'#fff'},w));return w};
+const animal=(H,p,x,y,s,c,ear)=>{const w=H.abs({left:x+'px',top:y+'px',width:120*s+'px',height:150*s+'px'},p);
+  if(ear==='rabbit'){[30,70].forEach(ex=>H.abs({left:ex*s-12*s+'px',top:'0',width:24*s+'px',height:60*s+'px',borderRadius:'50%',background:c},w))}else{[22,78].forEach(ex=>H.abs({left:ex*s-16*s+'px',top:22*s+'px',width:32*s+'px',height:32*s+'px',borderRadius:'50%',background:c},w))}
+  H.abs({left:10*s+'px',top:40*s+'px',width:100*s+'px',height:90*s+'px',borderRadius:'50%',background:c},w);[40,72].forEach(ex=>H.abs({left:ex*s+'px',top:78*s+'px',width:9*s+'px',height:11*s+'px',borderRadius:'50%',background:'#4a3428'},w));H.abs({left:30*s+'px',top:98*s+'px',width:14*s+'px',height:8*s+'px',borderRadius:'50%',background:'#ffb3c1',boxShadow:`${46*s}px 0 0 #ffb3c1`},w);return w};
+
+defW({no:'16',cat:'WCUTE',name:'森の動物たちの絵本',en:'Forest Friends',lead:'うさぎやくまが、ふたりの名前の旗を持って森を行進する。子どもも大人も笑顔になる、絵本のオープニング。',bg:'#dff0d8',
+use:'<b>子どものゲストが多い披露宴、ガーデンウエディング</b>に。かわいい動物たちが、会場をやさしい空気にしてくれます。',
+tips:['動物は丸と楕円だけで描くと、ゆるくてかわいい雰囲気になります','ふたりを動物にたとえる（新郎＝くま、新婦＝うさぎ）と、会場から「似てる！」の声が','パステルの色数は4つまで。背景は淡いミントやクリームに'],
+p:`森の動物たちがふたりの名前の旗を持って行進する、絵本のようなメルヘンでかわいいオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：淡いミント #DFF0D8、クリーム #FFF8E7、木の緑 #8CC084、うさぎの白、くまの茶 #C8956D、リボンのピンク #FFB3C7
+・フォント：Zen Maru Gothic（900/500）、英字は Fredoka（700）
+・絵のタッチ：丸と楕円で描いた、ゆるくてかわいい動物（うさぎ・くま・りす・小鳥）。線のない、色だけの絵本風。Canvas で描く
+・シーン構成：
+　0:00〜0:20　絵本の表紙のように、森の木々が左右から開いて、タイトル「ふたりの けっこんしき」
+　0:20〜1:00　森の小道を、動物たちが1匹ずつ跳ねながら行進。くま（新郎役）とうさぎ（新婦役）が、ふたりの名前の旗を持っている
+　1:00〜1:50　木の枝にかかった額縁に、ふたりの写真が順に現れる。小鳥が額縁をくわえて運んでくる演出
+　1:50〜2:30　動物たちが輪になって踊り、花びらと音符が舞う。中央に「おめでとう！」
+　2:30〜2:50　くまとうさぎが向かい合って、ハートが浮かぶ。下にふたりの名前と日付
+　2:50〜3:00　「まもなく ふたりが にゅうじょうします」→ 森の木々が閉じて終わる`,
+run(H,t){const S=H.abs({inset:'0',background:'linear-gradient(#e6f5ff,#dff0d8 60%)'});cloud(H,S,200,80,1);cloud(H,S,1150,120,.8);
+  for(let i=0;i<9;i++){const x=i*200-40;H.abs({left:x+70+'px',top:'470px',width:'26px',height:'140px',background:'#a07a55'},S);H.abs({left:x+'px',top:'300px',width:'170px',height:'210px',borderRadius:'50%',background:i%2?'#8cc084':'#9fd08f'},S)}
+  H.abs({left:'0',right:'0',top:'640px',height:'260px',background:'#c4e3a8'},S);H.abs({left:'0',right:'0',top:'700px',height:'80px',background:'#f2e2c0',borderRadius:'40px'},S);
+  const par=H.abs({left:'0',top:'560px',width:'1600px',height:'220px'},S);
+  const bear=animal(H,par,0,30,1.2,'#c8956d'),rab=animal(H,par,170,30,1.1,'#fff','rabbit'),sq=animal(H,par,330,60,.8,'#e8a87c');
+  const flag=H.abs({left:'120px',top:'-80px',width:'240px',height:'70px',background:'#ffb3c7',borderRadius:'10px',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Fredoka',sans-serif",fontWeight:'700',fontSize:'34px',color:'#fff'},par,t);H.abs({left:'230px',top:'-10px',width:'6px',height:'70px',background:'#a07a55'},par);
+  H.a(par,[{transform:'translateX(-500px)'},{transform:'translateX(620px)'}],{d:6000,e:E.lin});[bear,rab,sq].forEach((a,i)=>H.a(a,[{translate:'0 0'},{translate:'0 -26px'},{translate:'0 0'}],{d:500,dl:i*120,i:Infinity,f:'none',e:E.soft}));
+  const tt=T(H,S,{left:'0',right:'0',top:'120px',textAlign:'center',fontFamily:"'Zen Maru Gothic',sans-serif",fontWeight:'900',fontSize:'90px',color:'#fff',textShadow:'0 6px 0 #ffb3c7,0 0 30px rgba(255,179,199,.6)'},'ふたりの けっこんしき',300,'pop');
+  for(let i=0;i<14;i++){const f=H.abs({left:rnd(0,1600)+'px',top:'-30px',fontSize:rnd(24,44)+'px',color:pick(['#ffb3c7','#fff','#ffd97d'])},S,pick(['✿','♪','❀']));H.a(f,[{transform:'translateY(0) rotate(0)'},{transform:`translateY(950px) rotate(${rnd(180,540)}deg)`}],{d:rnd(5000,8000),dl:6000+rnd(0,3000),e:E.lin})}
+  T(H,S,{left:'0',right:'0',top:'260px',textAlign:'center',fontFamily:"'Zen Maru Gothic',sans-serif",fontWeight:'900',fontSize:'70px',color:'#ff8fab'},'おめでとう！',6500,'pop')}});
+
+defW({no:'17',cat:'WCUTE',name:'パステルのお菓子の国',en:'Sweets Land',lead:'マカロンやケーキが空からぽんぽん降ってきて、ふたりの名前のケーキが完成する。ゆめかわいいオープニング。',bg:'#fde8ef',
+use:'<b>かわいいもの好きの新婦、デザートビュッフェのある披露宴</b>に。女性ゲストから「かわいい！」の声が上がります。',
+tips:['色はパステルのピンク・ミント・ラベンダー・レモンの4色で統一すると、ゆめかわいい世界に','お菓子が弾んで着地する動き（バウンド）を入れると、楽しさが倍増します','最後のウエディングケーキの上に、ふたりの名前のプレートをのせましょう'],
+p:`パステルカラーのお菓子が降ってきて、ふたりのウエディングケーキが完成する、ゆめかわいいオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：背景はピンク #FDE8EF とラベンダー #E8E0F8 のグラデーション、お菓子はパステルのピンク #FFB3C7・ミント #B5EAD7・ラベンダー #C7B8F5・レモン #FFF1A8、白いクリーム
+・フォント：Mochiy Pop One、英字は Fredoka（700）
+・絵のタッチ：丸みのある、つやつやしたお菓子のイラスト（Canvas で描く。光のハイライトを入れる）
+・シーン構成：
+　0:00〜0:20　空からマカロン・キャンディ・カップケーキが次々に降ってきて、弾んで着地する
+　0:20〜0:50　お菓子の山の上に、タイトル「Sweet Wedding」がクリームで書かれるように現れる
+　0:50〜1:50　マカロンの間に、丸く切り抜いたふたりの写真が順に現れる（周りにスプリンクルが散る）
+　1:50〜2:30　3段のウエディングケーキが下から1段ずつ積み上がり、いちご・リボン・ハートで飾られていく
+　2:30〜2:50　ケーキのいちばん上に、ふたりの名前のチョコプレートがのる。日付も
+　2:50〜3:00　キラキラが舞って、「まもなく入場です」→ ピンクの光で終わる`,
+run(H,t){const S=H.abs({inset:'0',background:'linear-gradient(160deg,#fde8ef,#e8e0f8)'});const cols=['#ffb3c7','#b5ead7','#c7b8f5','#fff1a8'];
+  for(let i=0;i<16;i++){const x=rnd(40,1520),c=pick(cols),mac=H.abs({left:x+'px',top:'-120px',width:'90px',height:'64px'},S);H.abs({left:'0',top:'0',width:'90px',height:'28px',borderRadius:'45px 45px 14px 14px',background:`radial-gradient(circle at 35% 30%,#fff8,transparent 40%),${c}`},mac);H.abs({left:'4px',top:'26px',width:'82px',height:'10px',background:'#fffaf2',borderRadius:'5px'},mac);H.abs({left:'0',top:'36px',width:'90px',height:'28px',borderRadius:'14px 14px 45px 45px',background:c},mac);
+    H.a(mac,[{transform:'translateY(0)'},{transform:`translateY(${rnd(760,880)}px)`,offset:.7},{transform:`translateY(${rnd(700,780)}px)`,offset:.85},{transform:`translateY(${rnd(770,830)}px)`}],{d:1400,dl:i*180,e:E.in})}
+  T(H,S,{left:'0',right:'0',top:'90px',textAlign:'center',fontFamily:"'Fredoka',sans-serif",fontWeight:'700',fontSize:'110px',color:'#fff',textShadow:'0 6px 0 #ffb3c7,0 12px 20px rgba(255,143,171,.4)'},'Sweet Wedding',2800,'pop');
+  const ck=H.abs({left:'560px',top:'0',width:'480px',height:'900px'},S);[[0,620,480,170,'#fffaf2'],[60,470,360,150,'#ffe3ec'],[120,340,240,130,'#fffaf2']].forEach((q,i)=>{const tier=H.abs({left:q[0]+'px',top:q[1]+'px',width:q[2]+'px',height:q[3]+'px',borderRadius:'18px',background:q[4],boxShadow:'inset 0 -14px 0 rgba(255,179,199,.5)'},ck);H.abs({left:'0',top:'0',width:'100%',height:'26px',background:'repeating-radial-gradient(circle at 20px 0,#fff 0 18px,transparent 19px) 0 0/40px 26px'},tier);H.a(tier,[{opacity:0,transform:'translateY(200px)'},{opacity:1,transform:'none'}],{d:700,dl:4400+i*600,e:E.back});for(let k=0;k<4;k++)H.abs({left:30+k*(q[2]-60)/3+'px',top:'40px',width:'26px',height:'26px',borderRadius:'50% 50% 50% 50%/60% 60% 40% 40%',background:'#ff5c7a'},tier)});
+  const pl=H.abs({left:'110px',top:'250px',width:'260px',height:'80px',borderRadius:'12px',background:'#6b3f2a',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Fredoka',sans-serif",fontWeight:'700',fontSize:'36px',color:'#fff1d0',opacity:0},ck,t);H.a(pl,[{opacity:0,transform:'translateY(-200px) rotate(-8deg)'},{opacity:1,transform:'none'}],{d:800,dl:6600,e:E.back})}});
+
+defW({no:'18',cat:'WCUTE',name:'シャボン玉の空',en:'Bubble Sky',lead:'青空に浮かぶシャボン玉の中に、ふたりの思い出の写真。ふわふわと漂って、パチンとはじけて次の場面へ。',bg:'#cfe9fb',
+use:'<b>ナチュラル・ガーデン・海辺のウエディング</b>に。やさしくて透明感のある、ふんわりしたオープニングです。',
+tips:['シャボン玉は、虹色の薄いふちと、白いハイライトの2つで表現するとそれらしく見えます','写真は丸く切り抜いて、シャボン玉の中で少し揺らすと浮遊感が出ます','はじける瞬間に小さな光の粒を散らすと、場面の切り替えが気持ちよくなります'],
+p:`青空に浮かぶシャボン玉の中にふたりの写真が入って漂う、透明感のあるかわいいオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：空色 #CFE9FB → 白 のグラデーション、白い雲、シャボン玉のふちは虹色（ピンク・水色・黄色・紫がゆっくり変わる）
+・フォント：Zen Maru Gothic（500/900）、英字は Great Vibes
+・シャボン玉の見た目：ほぼ透明な円、虹色の細いふち、左上に白いハイライト。中の写真は丸く切り抜き、半透明に重ねる
+・シーン構成：
+　0:00〜0:20　画面の下から、大小のシャボン玉がたくさん浮かび上がる。雲がゆっくり流れる
+　0:20〜0:40　大きなシャボン玉が中央で止まり、中に筆記体で「Welcome」と、ふたりの名前
+　0:40〜2:20　写真入りのシャボン玉が1つずつ、ふわふわと揺れながら上がってくる（新郎の写真→新婦の写真→ふたりの写真）。中央で少し止まって、写真の下にひとことコメント。パチンとはじけて光の粒が散り、次のシャボン玉へ
+　2:20〜2:50　2つのシャボン玉がくっついて、ハートの形に。中にふたりの写真と日付
+　2:50〜3:00　すべてのシャボン玉が一斉にはじけて、白い光で終わる`,
+run(H,t){const S=H.abs({inset:'0',background:'linear-gradient(#a9d8f5,#e9f6ff 80%)'});cloud(H,S,100,120,1.2);cloud(H,S,1200,200,.9);const cl=cloud(H,S,600,60,.7);H.a(cl,[{transform:'translateX(0)'},{transform:'translateX(300px)'}],{d:10000,e:E.lin});
+  const bub=(x,s,dl,d,k)=>{const b=H.abs({left:x+'px',top:'900px',width:s+'px',height:s+'px',borderRadius:'50%',border:'3px solid transparent',background:'radial-gradient(circle at 30% 25%,rgba(255,255,255,.9) 0 8%,transparent 9%),radial-gradient(circle,rgba(255,255,255,.08) 60%,rgba(255,255,255,.35)) padding-box,conic-gradient(#ffb3c7,#a0e7ff,#fff3a0,#d2b8ff,#ffb3c7) border-box',overflow:'hidden'},S);if(k){const p=pho(H,b,0,0,s,s,k);p.style.opacity='.75';p.style.borderRadius='50%';b.appendChild(H.abs({left:s*.18+'px',top:s*.12+'px',width:s*.2+'px',height:s*.12+'px',borderRadius:'50%',background:'rgba(255,255,255,.8)'},b))}
+    H.a(b,[{transform:'translateY(0)'},{transform:`translateY(-${900+s}px) translateX(${rnd(-80,80)}px)`}],{d,dl,e:E.lin});return b};
+  for(let i=0;i<18;i++)bub(rnd(0,1550),rnd(40,140),rnd(0,6000),rnd(6000,9000));
+  const big=H.abs({left:'550px',top:'200px',width:'500px',height:'500px',borderRadius:'50%',border:'4px solid transparent',background:'radial-gradient(circle at 30% 25%,rgba(255,255,255,.9) 0 6%,transparent 7%),radial-gradient(circle,rgba(255,255,255,.12) 60%,rgba(255,255,255,.4)) padding-box,conic-gradient(#ffb3c7,#a0e7ff,#fff3a0,#d2b8ff,#ffb3c7) border-box',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'},S);
+  H.el('div',{fontFamily:"'Great Vibes',cursive",fontSize:'90px',color:'#fff',textShadow:'0 2px 10px rgba(80,140,200,.5)'},big,'Welcome');H.el('div',{fontFamily:"'Zen Maru Gothic',sans-serif",fontWeight:'900',fontSize:'40px',color:'#5a8fc0'},big,t);
+  H.a(big,[{opacity:0,transform:'translateY(500px) scale(.6)'},{opacity:1,transform:'none',offset:.3},{opacity:1,transform:'translateY(-14px)',offset:.85},{opacity:0,transform:'scale(1.3)'}],{d:5000,dl:400,e:E.soft});
+  const pb=H.abs({left:'600px',top:'200px',width:'400px',height:'400px',borderRadius:'50%',overflow:'hidden',border:'4px solid #fff8',opacity:0},S);pho(H,pb,0,0,400,400,'boy');H.a(pb,[{opacity:0,transform:'translateY(500px)'},{opacity:1,transform:'none',offset:.4},{opacity:1,transform:'translateY(-10px)',offset:.9},{opacity:0,transform:'scale(1.4)'}],{d:4000,dl:5600,e:E.soft});
+  T(H,S,{left:'0',right:'0',top:'650px',textAlign:'center',fontFamily:"'Zen Maru Gothic',sans-serif",fontWeight:'900',fontSize:'44px',color:'#5a8fc0'},'しんろう　3さいの なつ',6800,'fade')}});
+
+defW({no:'19',cat:'WCUTE',name:'星空とおとぎ話のお城',en:'Fairytale Castle',lead:'夜空に流れ星、丘の上のお城に明かりが灯る。おとぎ話の始まりのような、魔法のオープニング。',bg:'#1b1640',
+use:'<b>夜の披露宴、テーマパーク好きのふたり</b>に。会場の照明を落として流すと、まるで魔法の世界の始まりです。',
+tips:['お城はシルエットだけで十分。窓の明かりを1つずつ灯すと物語が動き出します','流れ星の軌跡に、きらきらの粒を残すとおとぎ話らしくなります','実在のテーマパークのお城やロゴには似せず、オリジナルのお城にしましょう'],
+p:`夜空の下、丘の上のお城に明かりが灯り、流れ星が名前を描く、おとぎ話のようなオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：夜空は濃い紫 #1B1640 → 群青 #2B3A7A のグラデーション、星と光は淡い金 #FFE9A8、お城のシルエットは紺 #120F2E、窓の明かりは暖かいオレンジ
+・フォント：英字は Great Vibes と Cinzel、日本語は Shippori Mincho B1
+・シーン構成：
+　0:00〜0:20　真っ暗な画面に、星が1つずつまたたき始める。丘の上にお城のシルエットが浮かぶ（実在のお城やテーマパークには似せない、オリジナルの形）
+　0:20〜0:45　お城の窓に、下から順に明かりが灯る。お城の上に小さな花火
+　0:45〜1:10　流れ星が夜空を横切り、その軌跡がきらきらの粒で筆記体のふたりの名前を描く
+　1:10〜2:20　夜空の星座がつながって、星の線で描いた額縁が生まれ、その中にふたりの写真が順に現れる（「Once upon a time…」から始まる短い言葉と一緒に）
+　2:20〜2:50　お城の前で花火が大きく上がり、「and they lived happily ever after」と日付
+　2:50〜3:00　星の光が集まって画面中央で光り、白くなって終わる`,
+run(H,t){const S=H.abs({inset:'0',background:'linear-gradient(#1b1640,#2b3a7a 75%,#3a4a8a)'});dots(H,S,80,'#ffe9a8');
+  const ca=H.svg(1600,900,S);H.sv('path',{d:'M0,900 L0,760 C300,700 500,690 800,690 C1100,690 1300,700 1600,760 L1600,900 Z',fill:'#120f2e'},ca);
+  const cs=H.abs({left:'640px',top:'360px',width:'320px',height:'340px'},S);[[0,140,70,200],[250,140,70,200],[60,60,200,280],[125,0,70,140]].forEach(q=>H.abs({left:q[0]+'px',top:q[1]+'px',width:q[2]+'px',height:q[3]+'px',background:'#120f2e'},cs));[[0,100,70],[250,100,70],[125,-50,70]].forEach(q=>H.abs({left:q[0]-6+'px',top:q[1]-10+'px',width:q[2]+12+'px',height:'60px',background:'#120f2e',clipPath:'polygon(50% 0,100% 100%,0 100%)'},cs));
+  [[30,200],[275,200],[100,150],[200,150],[150,230],[150,60],[100,250],[200,250]].forEach((q,i)=>{const w=H.abs({left:q[0]+'px',top:q[1]+'px',width:'18px',height:'26px',borderRadius:'9px 9px 0 0',background:'#ffb04a',boxShadow:'0 0 14px #ffb04a',opacity:0},cs);H.a(w,[{opacity:0},{opacity:1}],{d:300,dl:1200+i*250})});
+  const st=H.abs({left:'-100px',top:'120px',width:'120px',height:'4px',borderRadius:'2px',background:'linear-gradient(90deg,transparent,#fff)',boxShadow:'0 0 12px #fff',rotate:'12deg'},S);H.a(st,[{transform:'translate(0,0)'},{transform:'translate(1800px,380px)'}],{d:1600,dl:3600,e:E.in});
+  const nmEl=H.abs({left:'0',right:'0',top:'130px',textAlign:'center',fontFamily:"'Great Vibes',cursive",fontSize:'150px',color:'#ffe9a8',textShadow:'0 0 20px #ffe9a8',clipPath:'inset(0 100% 0 0)'},S,t);H.a(nmEl,[{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)'}],{d:1600,dl:3800,e:E.lin});
+  T(H,S,{left:'0',right:'0',top:'330px',textAlign:'center',fontFamily:F.serif,fontStyle:'italic',fontSize:'40px',letterSpacing:'.2em',color:'#cfd8ff'},'Once upon a time…',5800,'fade');
+  for(let k=0;k<3;k++){const fw=H.abs({left:[420,1180,800][k]+'px',top:[440,420,260][k]+'px'},S);for(let j=0;j<14;j++)H.abs({left:'0',top:'0',width:'70px',height:'3px',background:`linear-gradient(90deg,transparent,${['#ffb3c7','#ffe9a8','#a0e7ff'][k]})`,transformOrigin:'0 50%',rotate:j*25.7+'deg'},fw);H.a(fw,[{scale:'.1',opacity:1},{scale:'1',opacity:1,offset:.6},{scale:'1.1',opacity:0}],{d:1600,dl:6800+k*700})}}});
+
+defW({no:'20',cat:'WCUTE',name:'届いた手紙と招待状',en:'Love Letter',lead:'ポストに手紙が届き、封筒が開いてふたりからのメッセージ。切手やスタンプがかわいい、手紙のオープニング。',bg:'#f7efe3',
+use:'<b>手作り感を大切にしたいふたり、感謝を伝えたいふたり</b>に。招待状とデザインをそろえると、より統一感が出ます。',
+tips:['切手の絵柄に、ふたりの写真や思い出の場所を入れると、細かいところまで楽しめます','消印の日付を結婚式の日にするのがおすすめ','封筒の色は招待状と同じにすると、ゲストが「あ、招待状と一緒だ」と気づいてくれます'],
+p:`ポストに届いた手紙が開いて、ふたりからのメッセージが出てくる、かわいい手紙のオープニングムービー（3分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：背景はクリーム #F7EFE3、封筒はくすみピンク #E8B4B8、便せんは白、切手と消印はネイビー #2E3A59 と赤 #C8454A、差し色に金
+・フォント：手書き風の Klee One（600）、英字は Great Vibes
+・シーン構成：
+　0:00〜0:20　画面の左から、かわいい赤いポストが現れ、手紙がコトンと入る音のタイミングで揺れる
+　0:20〜0:40　封筒が画面中央に大きく。宛名は「ゲストのみなさまへ」、切手（ふたりの写真入り）と、結婚式の日付の消印がポンと押される
+　0:40〜1:00　封筒のフタが開き、ハートのシーリングスタンプがはずれて、便せんがすっと出てくる
+　1:00〜2:20　便せんに、手書き風の文字でメッセージが1文字ずつ書かれていく（例「本日は来てくれて、ありがとう。わたしたちの はじまりの日を、一緒にすごしてください」）。便せんの余白に、ふたりの写真がマスキングテープで貼られていく
+　2:20〜2:50　最後に、ふたりの名前のサインと日付。小さなハートの落書き
+　2:50〜3:00　便せんが封筒に戻って、封筒が閉じて終わる`,
+run(H,t){const S=H.abs({inset:'0',background:'#f7efe3'});S.style.backgroundImage='radial-gradient(rgba(200,180,150,.15) 2px,transparent 2px)';S.style.backgroundSize='30px 30px';
+  const env=H.abs({left:'400px',top:'260px',width:'800px',height:'500px',background:'#e8b4b8',borderRadius:'10px',boxShadow:'0 30px 60px rgba(120,80,60,.2)'},S);H.a(env,[{opacity:0,transform:'translateX(-900px) rotate(-10deg)'},{opacity:1,transform:'none'}],{d:900,e:E.out});
+  const letter=H.abs({left:'60px',top:'40px',width:'680px',height:'440px',background:'#fff',borderRadius:'6px',boxShadow:'0 4px 10px rgba(0,0,0,.08)'},env);
+  const flap=H.abs({left:'0',top:'0',width:'800px',height:'300px',background:'#dba3a8',clipPath:'polygon(0 0,100% 0,50% 100%)',transformOrigin:'50% 0',zIndex:'2'},env);H.abs({left:'0',top:'160px',width:'800px',height:'340px',background:'#e8b4b8',clipPath:'polygon(0 100%,50% 30%,100% 100%)',zIndex:'3'},env);
+  H.a(flap,[{transform:'perspective(1200px) rotateX(0)'},{transform:'perspective(1200px) rotateX(180deg)'}],{d:900,dl:2400,e:E.io});H.a(flap,[{zIndex:2},{zIndex:0}],{d:10,dl:2850});
+  const seal=H.abs({left:'360px',top:'250px',width:'80px',height:'80px',borderRadius:'50%',background:'radial-gradient(circle at 35% 30%,#e86a74,#a8323c)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'38px',color:'#ffd5d8',zIndex:'4'},env,'♥');H.a(seal,[{opacity:1},{opacity:0,transform:'translateY(60px) rotate(40deg)'}],{d:500,dl:2000});
+  const stamp=H.abs({left:'640px',top:'40px',width:'110px',height:'130px',background:'#fff',padding:'8px',boxSizing:'border-box',zIndex:'4',boxShadow:'0 0 0 4px #fff,0 0 0 6px #2e3a59'},env);pho(H,stamp,8,8,94,114,'couple');
+  const pm=H.abs({left:'520px',top:'70px',width:'150px',height:'150px',borderRadius:'50%',border:'4px solid #2e3a59',color:'#2e3a59',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',fontFamily:"'Klee One',serif",fontWeight:'600',fontSize:'22px',zIndex:'5',opacity:0},env);H.el('div',{},pm,'2025.10.25');H.el('div',{fontSize:'18px'},pm,'WEDDING');H.a(pm,[{opacity:0,transform:'scale(1.8)'},{opacity:.85,transform:'scale(1) rotate(-12deg)'}],{d:300,dl:1200,e:E.in});
+  H.a(letter,[{transform:'translateY(0)'},{transform:'translateY(-300px)'}],{d:900,dl:3300,e:E.out});H.a(letter,[{zIndex:1},{zIndex:6}],{d:10,dl:4200});H.a(letter,[{transform:'translateY(-300px)'},{transform:'translateY(-200px) scale(1.15)'}],{d:600,dl:4200});
+  const tx=H.abs({left:'50px',top:'50px',width:'580px',fontFamily:"'Klee One',serif",fontWeight:'600',fontSize:'32px',lineHeight:'1.9',color:'#5a4030'},letter);const msg='本日は 来てくれて、ありがとう。わたしたちの はじまりの日を、一緒に すごしてください。';let i=0;const ch=[...msg];H.wait(4900,function tk(){if(i<ch.length){tx.textContent+=ch[i++];H.wait(80,tk)}});
+  T(H,letter,{right:'50px',bottom:'40px',fontFamily:"'Great Vibes',cursive",fontSize:'54px',color:'#c8454a'},t+' ♡',8400,'fade')}});
+
+/* ===== WEDDING PROFILE 11-20：シンプル・メルヘン ===== */
+CUR_SEC='f';
+
+/* WSIMPLE：シンプル・スタイリッシュ */
+defW({no:'11',cat:'WSIMPLE',name:'ミニマルな年表',en:'Minimal Timeline',lead:'1本の細い線の上を、年号とともに写真が流れていく。余白をたっぷり取った、上品でシンプルなプロフィール。',bg:'#fafaf8',
+use:'<b>ホテル・レストランの落ち着いた披露宴</b>に。年号と写真だけで構成するので、写真の枚数が多くても少なくても整って見えます。',
+tips:['年号は大きく細い数字で。写真よりも年号を主役にすると、ぐっとスタイリッシュになります','コメントは1行20文字まで。説明しすぎないのが上品さのコツ','線の色を会場のテーマカラーにすると、さりげない統一感が出ます'],
+p:`1本の細い横線の年表の上を写真が流れていく、余白の美しいミニマルなプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：オフホワイト #FAFAF8、文字はチャコール #2B2B2B、線と年号はグレー #9A9A9A、差し色は1色（例：くすみブルー #7A93AC）
+・フォント：数字と英字は Montserrat（200/300）、日本語は Noto Sans JP（300）
+・全体の流れ：
+${PCHAP}
+・見た目の決まり：
+　1. 画面の下から3分の1の位置に、左右いっぱいの細い横線（1px）。線の上に年号の目盛りが等間隔に並ぶ
+　2. 写真1枚ごとに、年表全体が左へゆっくり流れ、今の年号の目盛りが中央に来て止まる。年号は細い数字で大きく（例「1999」）
+　3. 写真は線の上、中央に1枚。写真のまわりに広い余白。写真の下、線の下側に1行のコメント
+　4. 章の区切りは、線が一度だけ差し色に変わり、中央に細い文字で「Groom ── ○○」「Bride ── ○○」「Our Story」
+　5. ふたりの章では、新郎の線と新婦の線（上下2本）が、出会いの年で1本に合流する
+　6. エンディング：線がゆっくり右へ伸びて画面の外へ消え、「and the story continues.」と日付`,
+run(H,t){const [a]=nm(t);const S=H.abs({inset:'0',background:'#fafaf8'});const W=H.abs({left:'0',top:'0',width:'4400px',height:'900px'},S);
+  H.abs({left:'0',top:'640px',width:'4400px',height:'1px',background:'#9a9a9a'},W);
+  [1995,1999,2003,2008,2014,2019].forEach((y,i)=>{const x=800+i*700;H.abs({left:x+'px',top:'632px',width:'1px',height:'16px',background:'#9a9a9a'},W);H.abs({left:x-200+'px',width:'400px',textAlign:'center',top:'40px',fontFamily:"'Montserrat',sans-serif",fontWeight:'200',fontSize:'120px',color:'#2b2b2b'},W,String(y));pho(H,W,x-200,190,400,400,['baby','boy','boy','boy','man','couple'][i]);H.abs({left:x-300+'px',width:'600px',textAlign:'center',top:'670px',fontFamily:F.sans,fontWeight:'300',fontSize:'30px',color:'#2b2b2b'},W,['〇〇県に誕生','七五三','少年野球を始める','中学の入学式','社会人一年目','ふたりが出会う'][i])});
+  H.a(W,[{transform:'translateX(0)'},{transform:'translateX(-700px)',offset:.2},{transform:'translateX(-700px)',offset:.3},{transform:'translateX(-1400px)',offset:.5},{transform:'translateX(-1400px)',offset:.6},{transform:'translateX(-2100px)',offset:.8},{transform:'translateX(-2100px)'}],{d:10000,e:E.soft});
+  T(H,S,{left:'60px',top:'820px',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'24px',letterSpacing:'.3em',color:'#7a93ac'},'GROOM ── '+a.toUpperCase(),300,'fade')}});
+
+defW({no:'12',cat:'WSIMPLE',name:'モノクロのポートレート展',en:'Monochrome Portraits',lead:'すべての写真をモノクロにして、細い明朝の言葉を添える。写真家の個展のような、静かで美しいプロフィール。',bg:'#111',
+use:'<b>大人っぽく、しっとり見せたいふたり</b>に。写真の色や画質がバラバラでも、モノクロにすることで統一感が出ます。',
+tips:['モノクロにすると、古い写真と最近の写真の差が気にならなくなります','最後の1枚だけカラーに戻すと、そこが一番の見せ場に','言葉は写真の邪魔をしない小さな明朝体で。1枚に1行まで'],
+p:`すべての写真をモノクロにして、写真家の個展のように見せる、静かで美しいプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：背景は黒に近い #111、文字は白 #F2F2F2 とグレー #8A8A8A。写真はすべてモノクロ（コントラスト強め）、最後の1枚だけカラー
+・フォント：日本語は Shippori Mincho B1（500）、英字は Cormorant Garamond（イタリック）
+・全体の流れ：
+${PCHAP}
+・見た目の決まり：
+　1. 写真は画面の左右どちらかに寄せて大きく（縦写真なら縦長のまま）、反対側の余白に小さな文字（年・場所・一言）
+　2. 写真は、黒からゆっくり明るくなって現れ、少し寄って、また黒へ消える（フェードイン・アウトのみ。派手な切り替えは使わない）
+　3. 章のタイトル：黒い画面に、細い英字のイタリックで「Chapter I ── Groom」と、日本語の名前
+　4. ときどき、2枚の写真を左右に並べて、同じ場所・同じポーズの「昔と今」を見せる
+　5. エンディング：最後のふたりの写真だけ、モノクロからゆっくりカラーに戻る。下に「Thank you」と日付`,
+run(H,t){const [a]=nm(t);const S=H.abs({inset:'0',background:'#111'});
+  const ch=H.abs({inset:'0',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'16px'},S);H.el('div',{fontFamily:F.serif,fontStyle:'italic',fontSize:'56px',color:'#f2f2f2'},ch,'Chapter I ── Groom');H.el('div',{fontFamily:F.min,fontSize:'34px',letterSpacing:'.4em',color:'#8a8a8a'},ch,'新郎　'+a);H.a(ch,[{opacity:0},{opacity:1,offset:.2},{opacity:1,offset:.8},{opacity:0}],{d:3000,f:'forwards'});
+  const p1=pho(H,S,160,90,560,720,'boy');p1.style.filter='grayscale(1) contrast(1.25)';H.a(p1,[{opacity:0,filter:'grayscale(1) contrast(1.25) brightness(0)'},{opacity:1,filter:'grayscale(1) contrast(1.25) brightness(1)',offset:.3},{opacity:1,offset:.85},{opacity:0}],{d:3800,dl:3000,f:'both'});kb(H,p1,3000,3800);
+  [[400,F.serif,'40px','#8a8a8a','2003 ── Summer'],[470,F.min,'34px','#f2f2f2','虫取りに夢中だった、8歳の夏。']].forEach((q,i)=>{const e=H.abs({left:'860px',top:q[0]+'px',fontFamily:q[1],fontStyle:i?'normal':'italic',fontSize:q[2],color:q[3],opacity:0},S,q[4]);fadeIO(H,e,3700+i*400,6600,400)});
+  const p2=pho(H,S,420,90,760,720,'couple');H.a(p2,[{opacity:0,filter:'grayscale(1)'},{opacity:1,filter:'grayscale(1)',offset:.3},{opacity:1,filter:'grayscale(0)'}],{d:3000,dl:7000});
+  T(H,S,{left:'0',right:'0',top:'830px',textAlign:'center',fontFamily:F.serif,fontStyle:'italic',fontSize:'34px',letterSpacing:'.3em',color:'#f2f2f2'},'Thank you',8600,'fade')}});
+
+defW({no:'13',cat:'WSIMPLE',name:'白い壁のポラロイド',en:'Polaroid Wall',lead:'白い壁に、ポラロイド写真がピンで1枚ずつ留められていく。手書きのメモが添えられた、シンプルでおしゃれなプロフィール。',bg:'#f4f3ef',
+use:'<b>カジュアルで洗練された雰囲気にしたいふたり</b>に。写真の枚数が多くても、壁いっぱいに並ぶ最後の画面が圧巻です。',
+tips:['ポラロイドは少しずつ角度を変えて貼ると、手作りの温かさが出ます','白い余白の下部に、手書き風のメモ（年・ひとこと）を入れるのがポイント','最後に全部の写真が壁いっぱいに並んだ「引き」の画面を見せると、感動的です'],
+p:`白い壁にポラロイド写真が1枚ずつピンで留められていく、シンプルでおしゃれなプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：壁は温かみのある白 #F4F3EF（ほんのり漆喰の質感）、ポラロイドの枠は白、ピンは黒・真鍮色、文字はチャコール
+・フォント：手書き風の Klee One（600）、英字は Caveat 風の手書きか Cormorant Garamond（イタリック）
+・全体の流れ：
+${PCHAP}
+・見た目の決まり：
+　1. カメラが壁に近づいた状態から始まり、ポラロイドが1枚ずつ「上からひらりと落ちてきて、ピンで留まる」動き。角度は±6度でばらつかせる
+　2. 写真は枠の中でゆっくり現像されるように、白から色が出てくる
+　3. ポラロイドの下の余白に、手書き風のメモ（例「'03 夏 虫取り名人」）
+　4. 1枚留まるごとに、カメラがゆっくり横へ移動して次の場所へ
+　5. 章の区切りでは、壁に細い紐と木のクリップで「GROOM」「BRIDE」「US」の文字カードを吊るす
+　6. エンディング：カメラが大きく引いて、壁いっぱいに並んだすべてのポラロイドが見える。中央に「Thank you」のカード`,
+run(H,t){const S=H.abs({inset:'0',background:'#f4f3ef'});S.style.backgroundImage='radial-gradient(rgba(0,0,0,.025) 1px,transparent 1px)';S.style.backgroundSize='8px 8px';
+  const W=H.abs({left:'0',top:'0',width:'1600px',height:'900px',transformOrigin:'50% 50%'},S);
+  const pol=(x,y,r,k,memo,dl)=>{const c=H.abs({left:x+'px',top:y+'px',width:'300px',height:'360px',background:'#fff',boxShadow:'0 10px 20px rgba(0,0,0,.15)',rotate:r+'deg'},W);const p=pho(H,c,18,18,264,264,k);H.a(p,[{filter:'brightness(2.2) saturate(0)'},{filter:'brightness(1) saturate(1)'}],{d:1800,dl:dl+400});
+    H.abs({left:'0',right:'0',top:'296px',textAlign:'center',fontFamily:"'Klee One',serif",fontWeight:'600',fontSize:'26px',color:'#3a3a3a'},c,memo);H.abs({left:'140px',top:'-8px',width:'20px',height:'20px',borderRadius:'50%',background:'radial-gradient(circle at 35% 30%,#e8c97a,#8a6a2f)'},c);
+    H.a(c,[{opacity:0,transform:'translateY(-500px) rotate(20deg)'},{opacity:1,transform:'none'}],{d:900,dl,e:E.out})};
+  pol(130,120,-5,'baby',"'95 春 誕生",300);pol(470,170,4,'boy',"'03 夏 虫取り名人",1300);pol(810,110,-3,'boy',"'08 中学入学",2300);pol(1150,180,6,'man',"'14 上京",3300);
+  pol(300,540,3,'man',"'19 出会い",4300);pol(650,520,-6,'couple',"'22 初めての旅行",5300);pol(1000,560,4,'couple',"'24 プロポーズ",6300);
+  H.a(W,[{transform:'scale(1.6) translate(250px,150px)'},{transform:'scale(1.6) translate(-50px,150px)',offset:.35},{transform:'scale(1.4) translate(0,-80px)',offset:.65},{transform:'scale(.95)'}],{d:10000,e:E.soft})}});
+
+defW({no:'14',cat:'WSIMPLE',name:'数字で見るふたり',en:'Infographic',lead:'「出会って2,190日」「交わしたLINE 48,000通」。ふたりの歩みを、おしゃれなインフォグラフィックで見せる。',bg:'#f1efe9',
+use:'<b>知的でユーモアのあるプロフィールにしたいふたり</b>に。数字がおもしろいほど、会場から笑いと拍手が起きます。',
+tips:['数字は大きく、単位は小さく。カウントアップするだけで見ごたえが出ます','「身長差」「好きな食べ物の一致率」など、ふたりならではの数字を探すのが楽しい','数字が正確でない場合は「約」を付けて、楽しい雰囲気で'],
+p:`ふたりの歩みを数字とグラフで見せる、スタイリッシュなインフォグラフィックのプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：背景はベージュグレー #F1EFE9、文字はネイビー #1F2A44、グラフの色は新郎＝くすみブルー #6C8EBF、新婦＝くすみピンク #D59AA0、共通＝ゴールド #C9A24B
+・フォント：数字は Montserrat（800）、英字は Montserrat（300）、日本語は Noto Sans JP（500/900）
+・全体の流れ：
+${PCHAP}
+　（それぞれの章を「写真」と「数字のカード」を交互に見せて進める）
+・見た目の決まり：
+　1. 数字のカード：大きな数字がカウントアップし、その下に小さな説明（例「12 ── 新郎が少年野球を続けた年数」）。横に細い線のアイコン
+　2. プロフィールの比較：新郎と新婦を左右に並べ、身長・出身地・血液型・好きな食べ物を、左右対称の横棒グラフや円グラフで
+　3. 写真：数字のカードの合間に、写真を正方形で大きく。左下に年号
+　4. ふたりの章：「出会ってから ○○日」「一緒に行った旅行 ○回」「交わしたメッセージ 約○通」「ケンカ ○回（仲直り 同じ回数）」を、テンポよくカウントアップ
+　5. エンディング：「これから一緒に過ごす日 ∞」と日付`,
+run(H,t){const S=H.abs({inset:'0',background:'#f1efe9'});const NV='#1f2a44';
+  const card=(x,y,num,unit,lab,col,dl)=>{const c=R(H,S,{left:x+'px',top:y+'px',width:'440px',height:'300px',background:'#fff',borderRadius:'20px',boxShadow:'0 10px 30px rgba(31,42,68,.08)'},dl,'up');const n=H.abs({left:'36px',top:'40px',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'110px',lineHeight:'1',color:col},c,'0');H.abs({left:'36px',top:'170px',fontFamily:F.sans,fontWeight:'900',fontSize:'30px',color:NV},c,unit);H.abs({left:'36px',top:'222px',fontFamily:F.sans,fontWeight:'500',fontSize:'22px',color:'#666'},c,lab);
+    let v=0;const steps=30;H.wait(dl+200,function tk(){v++;n.textContent=Math.round(num*v/steps).toLocaleString();if(v<steps)H.wait(40,tk)})};
+  T(H,S,{left:'90px',top:'60px',fontFamily:"'Montserrat',sans-serif",fontWeight:'300',fontSize:'32px',letterSpacing:'.4em',color:'#c9a24b'},'OUR STORY IN NUMBERS',200,'fade');
+  card(90,160,2190,'日','出会ってから今日まで','#c9a24b',600);card(580,160,48000,'通','交わしたメッセージ（約）','#6c8ebf',1400);card(1070,160,23,'回','一緒に行った旅行','#d59aa0',2200);
+  const cmp=R(H,S,{left:'90px',top:'500px',width:'1420px',height:'330px',background:'#fff',borderRadius:'20px'},3200,'up');
+  [['身長',180,158],['好きな食べ物の一致率',82,82],['朝型度',30,90]].forEach((q,i)=>{const y=40+i*95;H.abs({left:'0',right:'0',top:y+'px',textAlign:'center',fontFamily:F.sans,fontWeight:'900',fontSize:'26px',color:NV},cmp,q[0]);const l=H.abs({right:'760px',top:y+40+'px',height:'26px',width:q[1]*3+'px',background:'#6c8ebf',borderRadius:'13px 0 0 13px',transformOrigin:'right'},cmp);const r=H.abs({left:'760px',top:y+40+'px',height:'26px',width:q[2]*3+'px',background:'#d59aa0',borderRadius:'0 13px 13px 0',transformOrigin:'left'},cmp);[l,r].forEach(e=>H.a(e,[{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{d:1000,dl:3800+i*300,e:E.out}))});
+  H.abs({left:'60px',top:'20px',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'24px',color:'#6c8ebf'},cmp,'GROOM');H.abs({right:'60px',top:'20px',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'24px',color:'#d59aa0'},cmp,'BRIDE')}});
+
+defW({no:'15',cat:'WSIMPLE',name:'左右の分割画面',en:'Split Screen',lead:'画面を左右に分けて、新郎と新婦が同じ年に何をしていたかを同時に見せる。最後に画面がひとつになる演出が見どころ。',bg:'#ffffff',
+use:'<b>同い年・近い年のふたり</b>に。「同じ頃、遠くの町で」という見せ方が、出会いのドラマを引き立てます。',
+tips:['左右の写真は、できるだけ同じ年齢・同じ行事（入学式・成人式など）でそろえると比べて楽しい','中央の年号は大きく。左右の写真は少しずらしたタイミングで切り替えるとリズムが出ます','出会った年で、中央の線がゆっくり消えて1枚の写真になる瞬間を、いちばんの見せ場に'],
+p:`画面を左右に分けて、新郎と新婦の同じ年の写真を同時に見せる、スタイリッシュな分割画面のプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：白 #FFFFFF、文字は黒 #111、新郎側のラベルはネイビー #2B3A67、新婦側はローズ #C27C88
+・フォント：英字と数字は Montserrat（800/300）、日本語は Noto Sans JP（500/900）
+・全体の流れ（この作品は、新郎・新婦の生い立ちを「同時に」見せる）：
+　・オープニング（20秒）：画面の中央に縦線が引かれ、左に「GROOM」、右に「BRIDE」
+　・ふたりの生い立ち（約4分）：同じ年ごとに、左に新郎の写真、右に新婦の写真。中央の上に大きな年号（例「2003」）。左右の写真の下に、それぞれ年齢とひとこと（写真各15枚）
+　・出会い（20秒）：出会った年になると、中央の線がゆっくり消えて、1枚のふたりの写真が画面いっぱいに広がる
+　・ふたりの歩み（約1分）：画面いっぱいの写真で、出会い〜プロポーズ
+　・ゲストへの感謝とエンディング（約50秒）
+・見た目の決まり：左右の写真は同じ大きさ・同じ高さにそろえる。切り替えは左右で0.3秒ずらして、縦にスライド`,
+run(H,t){const [a,b]=nm(t);const S=H.abs({inset:'0',background:'#fff'});
+  const side=(x,ks,col,lab)=>{H.abs({left:x+60+'px',top:'40px',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'26px',letterSpacing:'.3em',color:col},S,lab);const box=H.abs({left:x+60+'px',top:'110px',width:'680px',height:'620px',overflow:'hidden'},S);ks.forEach((k,i)=>{const p=pho(H,box,0,0,680,620,k);H.a(p,i===ks.length-1?[{transform:'translateY(100%)'},{transform:'translateY(0)',offset:.15},{transform:'translateY(0)'}]:[{transform:'translateY(100%)'},{transform:'translateY(0)',offset:.15},{transform:'translateY(0)',offset:.85},{transform:'translateY(-100%)'}],{d:3200,dl:i*2800+(x?300:0),e:E.io})});return box};
+  side(0,['baby','boy','man'],'#2b3a67','GROOM ── '+a.toUpperCase());side(800,['baby','girl','woman'],'#c27c88','BRIDE ── '+b.toUpperCase());
+  const ln=H.abs({left:'799px',top:'0',width:'2px',height:'900px',background:'#111'},S);H.a(ln,[{opacity:1},{opacity:0}],{d:600,dl:8200,f:'forwards'});
+  ['1995','2003','2014'].forEach((y,i)=>{const e=H.abs({left:'0',right:'0',top:'750px',textAlign:'center',fontFamily:"'Montserrat',sans-serif",fontWeight:'800',fontSize:'110px',lineHeight:'1',color:'#111',opacity:0},S,y);fadeIO(H,e,i*2800+200,i*2800+2900,300)});
+  const one=pho(H,S,0,0,1600,900,'couple');one.style.opacity=0;H.a(one,[{opacity:0,clipPath:'inset(0 50% 0 50%)'},{opacity:1,clipPath:'inset(0 0 0 0)'}],{d:1200,dl:8400,e:E.io})}});
+
+/* WCUTE：メルヘン・かわいい */
+defW({no:'16',cat:'WCUTE',name:'くまのぬいぐるみが案内する絵本',en:'Teddy Bear Guide',lead:'ちいさなくまのぬいぐるみが、ページをめくりながらふたりの思い出を紹介してくれる。ゆめかわいいプロフィール。',bg:'#fdf1f4',
+use:'<b>かわいい雰囲気が好きなふたり、子どものゲストが多い披露宴</b>に。くまのしぐさに、会場がほっこり笑顔になります。',
+tips:['案内役のくまに名前を付けて（例「ノブくま」）、吹き出しで話させると親しみがわきます','くまのしぐさ（手を振る・おじぎ・ジャンプ）を場面ごとに変えると飽きません','ふたりの思い出のぬいぐるみがあれば、その色や形に合わせて描くのもおすすめ'],
+p:`ちいさなくまのぬいぐるみが案内役になって、ふたりの思い出を紹介する、ゆめかわいいプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：背景は淡いピンク #FDF1F4 とミント #E6F7F1、くまはキャラメル色 #D9A574（おなかとほっぺは薄いピンク）、リボンはラベンダー #C7B8F5、星とハートは黄色 #FFE08A
+・フォント：Zen Maru Gothic（900/500）、英字は Fredoka
+・案内役のくま：丸と楕円だけで描いた、オリジナルのくまのぬいぐるみ（実在のキャラクターに似せない）。画面の右下にいて、ふわふわ揺れながら、吹き出しで話す
+・全体の流れ：
+${PCHAP}
+・見た目の決まり：
+　1. 最初に、くまが画面に跳ねて登場し「こんにちは！きょうは ふたりの おはなしを するね」
+　2. 写真は、パステルのフレーム（波形のふち・リボン付き）に入れて画面の左〜中央に。写真が変わるたびに、くまが吹き出しでコメント（例「この ころから くいしんぼう だったんだって！」）
+　3. 章の区切りでは、くまがページをめくるしぐさをして、画面全体がページのようにめくれる
+　4. 背景に、星・ハート・雲の小さなイラストがゆっくり浮かぶ
+　5. エンディング：くまがおじぎをして「きてくれて ありがとう！」→ 手を振りながら去っていく`,
+run(H,t){const S=H.abs({inset:'0',background:'linear-gradient(135deg,#fdf1f4,#e6f7f1)'});for(let i=0;i<14;i++){const e=H.abs({left:rnd(0,1600)+'px',top:rnd(0,900)+'px',fontSize:rnd(24,50)+'px',color:pick(['#ffe08a','#ffb3c7','#c7b8f5'])},S,pick(['★','♥','☁']));H.a(e,[{translate:'0 0'},{translate:'0 -30px'}],{d:rnd(2000,3500),dir:'alternate',i:Infinity,f:'none',e:E.soft})}
+  const fr=H.abs({left:'140px',top:'110px',width:'760px',height:'620px',borderRadius:'40px',background:'#fff',padding:'26px',boxSizing:'border-box',boxShadow:'0 0 0 10px #c7b8f5,0 20px 40px rgba(199,184,245,.4)'},S);const p=pho(H,fr,26,26,708,568,'boy',300,{borderRadius:'24px'});kb(H,p,300,9000);
+  H.abs({left:'330px',top:'-40px',width:'100px',height:'60px',background:'#c7b8f5',clipPath:'polygon(0 0,45% 40%,0 100%,100% 0,55% 40%,100% 100%)'},fr);
+  const bear=animal(H,S,1180,480,2.4,'#d9a574');H.abs({left:85+'px',top:'230px',width:'120px',height:'100px',borderRadius:'50%',background:'#ffd5c8'},bear);H.a(bear,[{opacity:0,transform:'translateY(300px)'},{opacity:1,transform:'translateY(-40px)',offset:.6},{opacity:1,transform:'none'}],{d:900,dl:200,e:E.out});H.a(bear,[{rotate:'-4deg'},{rotate:'4deg'}],{d:900,dl:1100,i:Infinity,dir:'alternate',f:'none',e:E.soft});
+  const sp=(txt,dl,d)=>{const e=H.abs({left:'960px',top:'230px',width:'540px',padding:'26px 30px',boxSizing:'border-box',background:'#fff',borderRadius:'30px',fontFamily:"'Zen Maru Gothic',sans-serif",fontWeight:'900',fontSize:'36px',lineHeight:'1.5',color:'#8a5a3c',boxShadow:'0 10px 20px rgba(217,165,116,.25)',opacity:0},S,txt);H.a(e,[{opacity:0,transform:'scale(.6)'},{opacity:1,transform:'none',offset:.1},{opacity:1,transform:'none',offset:.9},{opacity:0}],{d,dl,e:E.back})};
+  sp('こんにちは！ きょうは ふたりの おはなしを するね',800,3800);sp('この ころから くいしんぼう だったんだって！',4800,4800)}});
+
+defW({no:'17',cat:'WCUTE',name:'パステルのガーランドと風船',en:'Garland & Balloons',lead:'三角の旗のガーランドと、ふわふわ揺れる風船。お誕生日会のように楽しく明るい、パステルのプロフィール。',bg:'#fff7ea',
+use:'<b>明るく楽しい披露宴、カジュアルなパーティー形式のウエディング</b>に。家族や友人が多い、にぎやかな会にぴったりです。',
+tips:['ガーランドの旗1枚に1文字ずつ入れると、名前やメッセージをかわいく見せられます','風船に年齢の数字（1・2・3…）を入れると、成長が一目で分かって楽しい','色はパステル4〜5色を順番にくり返すと、まとまりのあるにぎやかさに'],
+p:`三角の旗のガーランドと風船が揺れる、お誕生日会のように明るいパステルのプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：背景はクリーム #FFF7EA、パステルのピンク #FFC6D3・ミント #BDECD9・水色 #BFE3F7・レモン #FFF0A8・ラベンダー #D9CCF7 をくり返して使う
+・フォント：Mochiy Pop One、英字は Fredoka（700）
+・全体の流れ：
+${PCHAP}
+・見た目の決まり：
+　1. 画面の上に、三角の旗のガーランドがゆるく弧を描いてかかり、ゆらゆら揺れる。旗1枚に1文字ずつ、章のタイトル（例「N・O・B・U」「Y・U・I」「O・U・R　S・T・O・R・Y」）
+　2. 写真は、角の丸いパステル色のフレームに入れて中央に。フレームの角に小さなリボン
+　3. 写真の横に、年齢の数字が入った風船が下からふわっと上がってくる（例「3」の風船と「3さい 七五三」）
+　4. 写真が変わるときは、紙吹雪がぱっと舞う
+　5. エンディング：たくさんの風船が一斉に空へ上がっていき、ガーランドに「THANK YOU」、下に日付`,
+run(H,t){const [a]=nm(t);const S=H.abs({inset:'0',background:'#fff7ea'});const cols=['#ffc6d3','#bdecd9','#bfe3f7','#fff0a8','#d9ccf7'];
+  const sv=H.svg(1600,200,S);H.sv('path',{d:'M0,40 Q800,150 1600,40',stroke:'#c9a27e','stroke-width':3,fill:'none'},sv);
+  const lt=a.toUpperCase().split('');const n=Math.max(lt.length,8);for(let i=0;i<n;i++){const x=80+i*(1440/(n-1));const y=40+110*(1-Math.pow((x-800)/800,2))*.9;const f=H.abs({left:x-50+'px',top:y+'px',width:'100px',height:'110px',background:cols[i%5],clipPath:'polygon(0 0,100% 0,50% 100%)',transformOrigin:'50% 0',display:'flex',justifyContent:'center',paddingTop:'14px',boxSizing:'border-box',fontFamily:"'Fredoka',sans-serif",fontWeight:'700',fontSize:'40px',color:'#7a5a4a'},S,lt[i-Math.floor((n-lt.length)/2)]||'');H.a(f,[{rotate:'-6deg'},{rotate:'6deg'}],{d:1400+i*80,i:Infinity,dir:'alternate',f:'none',e:E.soft})}
+  const fr=H.abs({left:'420px',top:'230px',width:'760px',height:'560px',borderRadius:'36px',background:cols[1],padding:'22px',boxSizing:'border-box'},S);const p=pho(H,fr,22,22,716,516,'boy',300,{borderRadius:'22px'});kb(H,p,300,9000);
+  const bal=(x,num,c,dl)=>{const b=H.abs({left:x+'px',top:'900px',width:'170px',height:'210px'},S);H.abs({left:'0',top:'0',width:'170px',height:'200px',borderRadius:'50% 50% 48% 48%',background:`radial-gradient(circle at 32% 28%,#fff9 0 10%,transparent 11%),${c}`,display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Fredoka',sans-serif",fontWeight:'700',fontSize:'90px',color:'#fff'},b,num);H.abs({left:'84px',top:'200px',width:'2px',height:'200px',background:'#bbb'},b);H.a(b,[{transform:'translateY(0)'},{transform:'translateY(-620px)',offset:.4},{transform:'translateY(-640px) rotate(4deg)',offset:.7},{transform:'translateY(-620px)'}],{d:6000,dl,e:E.out})};
+  bal(1240,'8',cols[0],800);bal(160,'3',cols[2],2000);
+  T(H,S,{left:'1220px',top:'650px',fontFamily:F.pop,fontSize:'36px',color:'#7a5a4a'},'8さい 夏休み',2600,'pop');
+  for(let i=0;i<30;i++){const c=H.abs({left:rnd(300,1300)+'px',top:'-20px',width:'14px',height:'20px',background:pick(cols)},S);H.a(c,[{transform:'translateY(0) rotate(0)'},{transform:`translate(${rnd(-100,100)}px,950px) rotate(${rnd(200,700)}deg)`}],{d:rnd(2500,4000),dl:6000+rnd(0,800),e:E.lin})}}});
+
+defW({no:'18',cat:'WCUTE',name:'お花畑で育つ',en:'Flower Garden',lead:'1年ごとに、土から芽が出て花が咲く。ふたりの成長を、お花畑が育っていく様子に重ねたやさしいプロフィール。',bg:'#eaf6e4',
+use:'<b>ガーデンウエディング、花が好きなふたり</b>に。ゆっくり花が咲いていく動きが、両親への感謝のシーンにもよく合います。',
+tips:['写真ごとに1本ずつ花が咲く演出にすると、最後に満開のお花畑が完成して感動的','ふたりの誕生花や、会場の装花と同じ花を入れると、ゲストが気づいて喜びます','花の茎がのびる動きはゆっくり（2秒以上）。焦らず育てるのがコツ'],
+p:`1年ごとに花が咲いていくお花畑に、ふたりの成長を重ねる、やさしくてかわいいプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：空は淡い水色 #DFF1FB、地面は若草色 #CDE8B5 と土の茶色、花はパステルのピンク・黄色・白・ラベンダー、葉は #8CC084
+・フォント：Zen Maru Gothic（500/900）、英字は Great Vibes
+・絵のタッチ：水彩のようにやわらかい、丸みのある花のイラスト（Canvas で描く）
+・全体の流れ：
+${PCHAP}
+・見た目の決まり：
+　1. 画面の下に、地面のお花畑の列。写真が変わるごとに、左から順に1本ずつ、芽が出て茎がのびて、花が開く
+　2. 写真は、画面の上半分に、丸いフレーム（ふちに小さな花と葉）で
+　3. 写真の下に、手書き風のやさしい文字で年齢とひとこと
+　4. 新郎の章はピンク以外の花、新婦の章はピンクの花、ふたりの章は2色が混ざった花を咲かせる
+　5. ちょうちょが、ときどき写真のまわりを飛ぶ
+　6. エンディング：お花畑が満開になり、花びらが風に舞い上がって「ありがとう」と日付`,
+run(H,t){const S=H.abs({inset:'0',background:'linear-gradient(#dff1fb 60%,#cde8b5 60%)'});cloud(H,S,180,60,.8);cloud(H,S,1250,90,.7);
+  const fr=H.abs({left:'550px',top:'40px',width:'500px',height:'500px',borderRadius:'50%',overflow:'hidden',border:'14px solid #fff',boxShadow:'0 10px 30px rgba(140,192,132,.4)'},S);const p=pho(H,fr,0,0,500,500,'boy',200);kb(H,p,200,9000);
+  T(H,S,{left:'0',right:'0',top:'560px',textAlign:'center',fontFamily:"'Zen Maru Gothic',sans-serif",fontWeight:'900',fontSize:'38px',color:'#5a7a4a'},'5さい　はじめての お花の水やり',900,'fade');
+  const cols=['#ffd1dc','#fff1a8','#ffffff','#d9ccf7','#ffb3c7','#bfe3f7'];for(let i=0;i<12;i++){const x=70+i*128,dl=1200+i*600;const st=H.abs({left:x+'px',top:'880px',width:'6px',height:'0',background:'#8cc084',transformOrigin:'bottom'},S);const hgt=rnd(140,220);H.a(st,[{height:'0px',top:'880px'},{height:hgt+'px',top:880-hgt+'px'}],{d:1400,dl,e:E.out});
+    const fl=H.abs({left:x-37+'px',top:880-hgt-40+'px',width:'80px',height:'80px'},S);for(let k=0;k<6;k++)H.abs({left:'28px',top:'0',width:'24px',height:'40px',borderRadius:'50%',background:cols[i%6],transformOrigin:'50% 40px',rotate:k*60+'deg',boxShadow:'0 0 0 1px rgba(0,0,0,.03)'},fl);H.abs({left:'28px',top:'28px',width:'24px',height:'24px',borderRadius:'50%',background:'#ffcf5a'},fl);H.a(fl,[{transform:'scale(0) rotate(-90deg)'},{transform:'scale(1) rotate(0)'}],{d:900,dl:dl+1200,e:E.back})}
+  const bf=H.abs({left:'0',top:'0',fontSize:'50px',color:'#c7b8f5'},S,'❦');H.a(bf,[{transform:'translate(300px,400px)'},{transform:'translate(700px,250px)'},{transform:'translate(1100px,420px)'},{transform:'translate(1350px,200px)'}],{d:10000,e:E.soft})}});
+
+defW({no:'19',cat:'WCUTE',name:'夜空の星座とお月さま',en:'Starry Constellation',lead:'ひとつずつ灯る星が、ふたりの星座になってつながる。お月さまが見守る、ロマンチックでかわいいプロフィール。',bg:'#1e2150',
+use:'<b>夜の披露宴、ロマンチックにしたいふたり</b>に。照明を落とした会場で、星がひとつずつ灯るたびに、うっとりした空気になります。',
+tips:['写真を星のように丸く光らせて、星座の点として並べると幻想的です','新郎と新婦の星座がつながって、ハートの形になるラストがおすすめ','月にうさぎのシルエットを入れると、メルヘンさが増します'],
+p:`ひとつずつ灯る星がふたりの星座になってつながる、ロマンチックでかわいいプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：夜空は紺 #1E2150 → 紫 #3B2E6E のグラデーション、星は淡い黄色 #FFF3B0、星座の線は白（半透明）、月はクリーム色
+・フォント：Zen Maru Gothic（500/900）、英字は Great Vibes
+・全体の流れ：
+${PCHAP}
+・見た目の決まり：
+　1. 画面の右上に、やさしく笑うお月さま（顔のある三日月。うさぎのシルエット付き）。全体を見守っている
+　2. 写真1枚ごとに、夜空のどこかに星がひとつ灯り、その星から写真が丸く光りながら大きく現れる。写真の下に、星のような小さな文字で年齢とひとこと
+　3. 写真が小さく戻ると、星と星が白い細い線でつながっていく。新郎の章で「新郎座」、新婦の章で「新婦座」の星座が完成する（星座の名前を筆記体で）
+　4. ふたりの章では、2つの星座が近づいて、線がつながってハートの形の星座になる
+　5. 流れ星が、ときどき空を横切る
+　6. エンディング：ハートの星座が明るく光り、「ありがとう」と日付。お月さまがウインク`,
+run(H,t){const S=H.abs({inset:'0',background:'linear-gradient(#1e2150,#3b2e6e)'});dots(H,S,90,'#fff3b0');
+  const mn=H.abs({left:'1260px',top:'60px',width:'220px',height:'220px',borderRadius:'50%',background:'#fff7d6',boxShadow:'0 0 60px rgba(255,247,214,.6)'},S);H.abs({left:'70px',top:'-20px',width:'220px',height:'220px',borderRadius:'50%',background:'#2a2560'},mn);
+  const pts=[[300,620],[420,480],[560,560],[520,700],[700,430]];const sv=H.svg(1600,900,S);
+  pts.forEach((q,i)=>{const s=H.abs({left:q[0]-14+'px',top:q[1]-14+'px',width:'28px',height:'28px',borderRadius:'50%',background:'#fff3b0',boxShadow:'0 0 24px #fff3b0',opacity:0},S);H.a(s,[{opacity:0,transform:'scale(0)'},{opacity:1,transform:'scale(1.6)'},{opacity:1,transform:'scale(1)'}],{d:700,dl:600+i*1500,e:E.back});
+    if(i){const [x0,y0]=pts[i-1];const l=H.sv('line',{x1:x0,y1:y0,x2:q[0],y2:q[1],stroke:'rgba(255,255,255,.7)','stroke-width':3},sv);const L=Math.hypot(q[0]-x0,q[1]-y0);l.style.strokeDasharray=L;l.animate([{strokeDashoffset:L},{strokeDashoffset:0}],{duration:800,delay:900+i*1500,fill:'both'})}
+    if(i<4){const ph=H.abs({left:q[0]-150+'px',top:q[1]-150+'px',width:'300px',height:'300px',borderRadius:'50%',overflow:'hidden',boxShadow:'0 0 60px #fff3b0',opacity:0},S);pho(H,ph,0,0,300,300,['baby','boy','boy','man'][i]);H.a(ph,[{opacity:0,transform:'scale(.1)'},{opacity:1,transform:'scale(1)',offset:.25},{opacity:1,transform:'scale(1)',offset:.75},{opacity:0,transform:'scale(.1)'}],{d:1400,dl:700+i*1500,e:E.out})}});
+  T(H,S,{left:'260px',top:'300px',fontFamily:"'Great Vibes',cursive",fontSize:'70px',color:'#fff3b0'},'Groom',7600,'fade');
+  const st=H.abs({left:'-100px',top:'100px',width:'140px',height:'3px',background:'linear-gradient(90deg,transparent,#fff)',rotate:'15deg'},S);H.a(st,[{transform:'translate(0,0)'},{transform:'translate(1800px,480px)'}],{d:1400,dl:5200,e:E.in})}});
+
+defW({no:'20',cat:'WCUTE',name:'着せかえ紙人形の成長日記',en:'Paper Doll Diary',lead:'紙で作った人形が、年ごとに服を着がえて大きくなる。切り絵のような手作り感が楽しい、かわいいプロフィール。',bg:'#fbf3e6',
+use:'<b>手作り感が好きなふたり、写真が少ないふたり</b>に。紙人形が成長を演じるので、写真がない時代も楽しく埋められます。',
+tips:['紙人形は、ふたりの今の髪型や服の色に寄せると「似てる！」と盛り上がります','紙の質感（ふちの白い縁取りと、少しずれた影）を付けると切り絵らしくなります','ランドセル・学ラン・セーラー服など、時代ごとの“着せかえ”がいちばんの見どころ'],
+p:`紙で作った着せかえ人形が、年ごとに服を着がえて成長していく、切り絵風のかわいいプロフィールムービー（約6分）を作ってください。
+・ふたりの名前：「{T}」
+・配色：背景は紙の色 #FBF3E6（うっすら紙のすじ）、パステルの色紙（ピンク・水色・黄色・ミント）、人形の肌はやさしいベージュ
+・フォント：Klee One（600）、英字は Fredoka
+・絵のタッチ：色紙を切り抜いたような、ふちに白い縁取りと少しずれた影のある平面のイラスト（Canvas で描く）。人形は丸い顔に点の目、ほっぺはピンク
+・全体の流れ：
+${PCHAP}
+・見た目の決まり：
+　1. 画面の左側に、新郎（または新婦）の紙人形が立っている。年齢が上がるごとに、人形が少し大きくなり、服が上からひらりと着せかえられる（ベビー服 → 七五三 → ランドセル → 制服 → スーツ／ドレス）
+　2. 画面の右側に、その年の写真をマスキングテープで貼る。写真の下に手書き風のコメント
+　3. 人形の頭の上に、年齢の数字を切り抜いた色紙で
+　4. 章の区切りは、色紙がパタパタとめくれて次の色になる
+　5. ふたりの章では、新郎と新婦の紙人形が並んで、手をつなぐ。最後はタキシードとウエディングドレスに着せかえ
+　6. エンディング：紙吹雪（色紙の丸）が舞って「ありがとう」と日付`,
+run(H,t){const S=H.abs({inset:'0',background:'#fbf3e6'});S.style.backgroundImage='repeating-linear-gradient(90deg,rgba(180,150,110,.05) 0 2px,transparent 2px 9px)';
+  const doll=H.abs({left:'240px',top:'180px',width:'360px',height:'640px',transformOrigin:'50% 100%',filter:'drop-shadow(0 0 0 #fff) drop-shadow(6px 6px 0 rgba(0,0,0,.12))'},S);
+  H.abs({left:'110px',top:'40px',width:'140px',height:'150px',borderRadius:'50%',background:'#f5d6bd',boxShadow:'0 0 0 6px #fff'},doll);H.abs({left:'104px',top:'26px',width:'152px',height:'70px',borderRadius:'76px 76px 20px 20px',background:'#4a3428'},doll);
+  [[150,120],[200,120]].forEach(q=>H.abs({left:q[0]+'px',top:q[1]+'px',width:'10px',height:'10px',borderRadius:'50%',background:'#4a3428'},doll));H.abs({left:'132px',top:'140px',width:'20px',height:'12px',borderRadius:'50%',background:'#ffb3c1',boxShadow:'76px 0 0 #ffb3c1'},doll);
+  const outfits=[['#fff1a8','ベビー服'],['#ffc6d3','七五三'],['#bfe3f7','ランドセル'],['#2b3a67','スーツ']];outfits.forEach((o,i)=>{const c=H.abs({left:'80px',top:'190px',width:'200px',height:'360px',borderRadius:'40px 40px 20px 20px',background:o[0],boxShadow:'0 0 0 6px #fff'},doll);H.a(c,[{opacity:0,transform:'translateY(-300px) rotate(-10deg)'},{opacity:1,transform:'none',offset:.12},{opacity:1,transform:'none',offset:.9},{opacity:i===3?1:0}],{d:2500,dl:i*2400,e:E.out,f:i===3?'both':'both'})});
+  [80,200].forEach(x=>H.abs({left:x+50+'px',top:'550px',width:'40px',height:'80px',background:'#f5d6bd',boxShadow:'0 0 0 6px #fff'},doll));
+  H.a(doll,[{transform:'scale(.6)'},{transform:'scale(.75)',offset:.25},{transform:'scale(.88)',offset:.5},{transform:'scale(1)',offset:.75},{transform:'scale(1)'}],{d:10000,e:'steps(4,start)'});
+  ['0','3','7','25'].forEach((n,i)=>{const e=H.abs({left:'380px',top:'60px',width:'110px',height:'110px',borderRadius:'50%',background:['#fff1a8','#ffc6d3','#bfe3f7','#bdecd9'][i],display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Fredoka',sans-serif",fontWeight:'700',fontSize:'60px',color:'#7a5a4a',boxShadow:'0 0 0 6px #fff,6px 6px 0 6px rgba(0,0,0,.1)',opacity:0},S,n);fadeIO(H,e,i*2400,i*2400+2400,200)});
+  ['baby','boy','boy','man'].forEach((k,i)=>{const c=H.abs({left:'800px',top:'160px',width:'600px',height:'480px',background:'#fff',padding:'18px',boxSizing:'border-box',rotate:(i%2?3:-3)+'deg',boxShadow:'0 8px 20px rgba(0,0,0,.12)',opacity:0},S);pho(H,c,18,18,564,444,k);H.abs({left:'240px',top:'-16px',width:'130px',height:'34px',background:'rgba(189,236,217,.85)',rotate:'-4deg'},c);H.abs({left:'0',right:'0',top:'500px',textAlign:'center',fontFamily:"'Klee One',serif",fontWeight:'600',fontSize:'34px',color:'#5a4030'},c,['0さい うまれたよ','3さい 七五三','7さい 小学校に入学','25さい 社会人に'][i]);fadeIO(H,c,i*2400+200,i*2400+2400,300)})}});
+
 /* ===== ILLUST 01-30 ===== */
 CUR_SEC='i';
 const GPT='<b>◎</b> ChatGPT（画像生成）',GEM='<b>◎</b> Gemini',GPTo='ChatGPT（画像生成）',GEMo='Gemini',MJ='Midjourney（英語版）',FF='Adobe Firefly',CV='Canva AI';
@@ -7499,8 +8603,8 @@ const $=s=>document.querySelector(s);
 let ar='16:9';try{ar=localStorage.getItem('pz-ar')||'16:9'}catch(e){}
 const custom={};
 const SEC=SECTIONS();
-const ORDER=['k','p','b','d','g','h','i','m','t','o','a','v'];
-const GROUPS=[{n:'マーケティング',s:['k']},{n:'プレゼン',s:['p','b','d']},{n:'グラフィック',s:['g']},{n:'ホームページ',s:['h']},{n:'イラスト',s:['i']},{n:'モーショングラフィック',s:['m','t','o']},{n:'アニメーション',s:['a']},{n:'動画編集',s:['v']}];
+const ORDER=['k','p','b','d','g','h','i','m','t','o','a','v','e','f'];
+const GROUPS=[{n:'マーケティング',s:['k']},{n:'プレゼン',s:['p','b','d']},{n:'グラフィック',s:['g']},{n:'ホームページ',s:['h']},{n:'イラスト',s:['i']},{n:'モーショングラフィック',s:['m','t','o']},{n:'アニメーション',s:['a']},{n:'動画編集',s:['v']},{n:'ウェディング',s:['e','f']}];
 const grpOf=s=>GROUPS.find(g=>g.s.includes(s));
 const TOTAL=ORDER.reduce((a,s)=>a+ITEMS[s].length,0);
 const pages=['cover'];ORDER.forEach(s=>{pages.push(s+'-top');ITEMS[s].forEach(it=>pages.push(it.id))});
@@ -7558,6 +8662,7 @@ function renderItem(m){
       <div class="monitor"><div class="screen" id="mScreen"><div class="stage" id="mStage"></div></div>
         <div class="mbar"><span class="rec"></span><span class="tc" id="mTc">00:00:00:00</span><span class="sp"></span><span class="tc">${S.monLabel}</span><button class="mini" id="replay" type="button">最初から再生</button></div></div>
       <div class="txtrow"><label for="mText">${S.inputLabel}</label><input id="mText" value="${esc(txt)}" maxlength="40"><button class="mini" id="resetText" type="button">元に戻す</button></div>
+      ${S.video?`<a class="dlv" href="video/${m.id}.mp4" download="${m.id}_${esc(m.name)}.mp4">サンプル動画をダウンロード<small>MP4・1920×1080・30fps・10秒｜Premiere Pro でそのまま編集できます</small></a>`:''}
       <div class="hint">${m.multi?'スペースか「／」で区切ると、言葉ごとに使い分けられます。':'入力するとプレビューと右のプロンプトが同時に変わります。'}</div>`;
   P.innerHTML=`
   <div class="mhead"><div class="mno">No.${m.no}</div><div class="mtitle">
@@ -7586,6 +8691,11 @@ function renderItem(m){
   $('#copyBtn').onclick=()=>{const a=sel?sel.value:S.ars?S.ars[0]:'';copyTo($('#copyBtn'),S.base(a)+`\n\n【${S.unit}指示】\n`+fill(m.p,getT()),'プロンプトをコピー')};
   const ce=$('#copyEn');if(ce)ce.onclick=()=>copyTo(ce,m.enp,'英語版をコピー');
 }
+document.addEventListener('click',e=>{const a=e.target.closest('a.dlv');if(!a||!(window.claude&&window.claude.use))return;e.preventDefault();
+  const sm=a.querySelector('small');const msg=t=>{if(sm){const o=sm.dataset.o||(sm.dataset.o=sm.textContent);sm.textContent=t;setTimeout(()=>{sm.textContent=o},4000)}};
+  (async()=>{const dl=await window.claude.use('downloads');if(!dl){window.open(a.href,'_blank');return}
+    try{msg('準備しています…');const blob=await (await fetch(a.href)).blob();await dl.save({filename:a.getAttribute('download')||'sample.mp4',data:blob});msg('保存しました')}
+    catch(err){msg(err&&err.code==='declined'?'キャンセルしました':'保存できませんでした。時間をおいてお試しください')}})()});
 function fallback(full){const p=$('#ptext');p.textContent=full;const r=document.createRange();r.selectNodeContents(p);const s=getSelection();s.removeAllRanges();s.addRange(r)}
 
 function graphicCard(m,txt,S){
